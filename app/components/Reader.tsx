@@ -1,7 +1,6 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   getAllUnknownWords,
-  getText,
   getWord,
   putUnknownWord,
   deleteWord,
@@ -9,11 +8,19 @@ import {
 } from "../db";
 import type { AudioRef } from "../types";
 // import type { Token } from "../utils/tokenize";
-import { tokenize, normalizeWord } from "../utils/tokenize";
+import { normalizeWord } from "../utils/tokenize";
 import { speak } from "../utils/tts";
 import { translate } from "../utils/translate";
 import { ensureReadPermission } from "../utils/fs";
-import { Link } from "react-router";
+import ReaderHeader from "./reader/ReaderHeader";
+import AudioSection from "./reader/AudioSection";
+import ReaderText from "./reader/ReaderText";
+import WordPopup from "./reader/WordPopup";
+import SelectionPopup from "./reader/SelectionPopup";
+import type {
+  WordPopupState as PopupState,
+  SelectionPopupState as SelPopupState,
+} from "./reader/types";
 
 interface Props {
   text: {
@@ -26,21 +33,7 @@ interface Props {
   };
 }
 
-interface PopupState {
-  x: number;
-  y: number;
-  word: string;
-  lower: string;
-  translation: string;
-}
-
-interface SelPopupState {
-  x: number;
-  y: number;
-  text: string;
-  lowers: string[];
-  translations: Array<{ word: string; translation: string }>;
-}
+// Types moved to ./reader/types
 
 export default function Reader({ text }: Props) {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -283,149 +276,37 @@ export default function Reader({ text }: Props) {
         if (!t.closest(`.word-token`)) clearPopups();
       }}
     >
-      <div className="flex items-center gap-4 px-4 py-2 border-b border-gray-200 dark:border-gray-800 bg-white/90 dark:bg-gray-900/90 sticky top-0 z-10">
-        <Link
-          to="../"
-          className="px-2 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-        >
-          ← Volver
-        </Link>
-        <div className="font-semibold text-base truncate">
-          {text.title || "Sin título"}
-        </div>
-      </div>
-      {text.audioRef && (
-        <audio
-          className="my-3 mx-4 w-[min(500px,100%)] max-w-full"
-          controls
-          src={text.audioUrl || undefined}
-        >
-          Tu navegador no soporta audio HTML5
-        </audio>
-      )}
-      {text.audioRef?.type === "file" && audioAccessError && (
-        <div className="text-xs text-red-700 dark:text-red-400 mx-3 my-1 flex items-center gap-2">
-          No hay permiso para acceder al archivo de audio.
-          <button
-            className="ml-2 px-2 py-0.5 rounded border border-red-700 dark:border-red-400 hover:bg-red-50 dark:hover:bg-red-900 transition"
-            onClick={reauthorizeAudio}
-          >
-            Reautorizar audio
-          </button>
-        </div>
-      )}
-      <div
-        id="reader-text"
-        className="p-4 leading-relaxed text-lg whitespace-pre-line break-words min-h-[120px] select-text"
-        onMouseUp={(e) => {
-          const sel = window.getSelection();
-          console.log(sel?.toString());
-        }}
-        // renderParts uses .word-token for word spans
-      >
-        {tokenize(text.content).map((t, idx) => {
-          if (!t.isWord) return <span key={idx}>{t.text}</span>;
-          const low = t.lower || normalizeWord(t.text);
-          const isUnknown = unknownSet.has(low);
-          return (
-            <span
-              key={idx}
-              className={
-                `word-token cursor-pointer transition rounded px-1` +
-                (isUnknown
-                  ? " bg-yellow-200 dark:bg-yellow-700/40 text-yellow-900 dark:text-yellow-100 font-semibold"
-                  : " hover:bg-blue-100 dark:hover:bg-blue-800/50")
-              }
-              data-lower={low}
-              data-word={t.text}
-              onClick={onWordClick}
-            >
-              {t.text}
-            </span>
-          );
-        })}
-      </div>
+      <ReaderHeader title={text.title} />
+
+      <AudioSection
+        show={!!text.audioRef}
+        src={audioUrl ?? text.audioUrl ?? undefined}
+        showReauthorize={Boolean(text.audioRef?.type === "file" && audioAccessError)}
+        onReauthorize={reauthorizeAudio}
+      />
+
+      <ReaderText
+        content={text.content}
+        unknownSet={unknownSet}
+        onWordClick={onWordClick}
+      />
+
       {popup && (
-        <div
-          className="absolute min-w-[180px] max-w-[220px] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg shadow-lg border border-gray-300 dark:border-gray-700 z-30"
-          style={{
-            left: Math.max(6, popup.x - 110),
-            top: Math.max(6, popup.y - 60),
-          }}
-        >
-          <div className="flex justify-between items-center border-b border-gray-200 dark:border-gray-700 px-4 py-2">
-            <div className="font-semibold">{popup.word}</div>
-            <div className="flex gap-2 items-center">
-              <button
-                className="hover:text-blue-600"
-                onClick={(e) => onSpeak(popup.word, e)}
-                title="Escuchar"
-              >
-                🔊
-              </button>
-              {unknownSet.has(popup.lower) ? (
-                <button
-                  className="px-2 py-0.5 text-xs rounded border border-green-600 hover:bg-green-100 dark:hover:bg-green-800 transition"
-                  onClick={() => markKnown(popup.lower)}
-                >
-                  Conocida
-                </button>
-              ) : (
-                <button
-                  className="px-2 py-0.5 text-xs rounded border border-red-700 text-red-700 dark:border-red-500 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900 transition"
-                  onClick={() => markUnknown(popup.lower, popup.word)}
-                >
-                  Desconocida
-                </button>
-              )}
-            </div>
-          </div>
-          <div className="px-4 py-2">
-            <strong className="text-xl">🇪🇸 {popup.translation}</strong>
-          </div>
-        </div>
+        <WordPopup
+          popup={popup}
+          isUnknown={unknownSet.has(popup.lower)}
+          onSpeak={onSpeak}
+          onMarkKnown={markKnown}
+          onMarkUnknown={markUnknown}
+        />
       )}
+
       {selPopup && (
-        <div
-          className="absolute min-w-[220px] max-w-[320px] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg shadow-lg border border-gray-300 dark:border-gray-700 z-30"
-          style={{
-            left: Math.max(6, selPopup.x - 130),
-            top: Math.max(6, selPopup.y - 70),
-          }}
-        >
-          <div className="px-4 py-2 text-sm italic text-gray-700 dark:text-gray-300 truncate">
-            "{selPopup.text.slice(0, 80)}"
-          </div>
-          <div className="px-4 py-2">
-            {selPopup.translations.length ? (
-              <ul className="list-disc pl-5 space-y-1">
-                {selPopup.translations.map((t) => (
-                  <li key={t.word} className="text-sm">
-                    <b>{t.word}</b>: {t.translation || "—"}
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <div className="text-sm text-gray-400">
-                Sin traducciones locales
-              </div>
-            )}
-          </div>
-          <div className="flex gap-2 flex-wrap justify-end px-4 py-2 border-t border-gray-200 dark:border-gray-700">
-            <button
-              className="px-2 py-0.5 text-xs rounded border border-red-700 text-red-700 dark:border-red-500 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900 transition"
-              onClick={saveSelectionUnknowns}
-            >
-              Guardar como desconocidas
-            </button>
-            <button
-              className="px-2 py-0.5 text-xs rounded border border-gray-400 hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-800 transition"
-              onClick={() => setSelPopup(null)}
-            >
-              Cerrar
-            </button>
-          </div>
-        </div>
+        <SelectionPopup
+          selPopup={selPopup}
+          onSaveUnknowns={saveSelectionUnknowns}
+          onClose={() => setSelPopup(null)}
+        />
       )}
     </div>
   );

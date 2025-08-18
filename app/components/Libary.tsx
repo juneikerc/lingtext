@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-// import styles from "./Library.module.css";
 import { addText, deleteText, getAllTexts, updateTextAudioRef } from "../db";
 import type { AudioRef, TextItem } from "../types";
 import { uid } from "../utils/id";

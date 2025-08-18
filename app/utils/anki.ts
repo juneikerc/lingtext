@@ -8,11 +8,11 @@ function toCsvCell(s: string): string {
 
 export async function exportUnknownWordsCsv(filename = 'lumi-words.csv'): Promise<void> {
   const words = await getAllUnknownWords()
-  // Columns: Expression (word), Meaning (translations joined by '; ')
+  // Columns: Expression (word), Meaning (translation)
   const header = ['Expression', 'Meaning']
   const lines = [header.map(toCsvCell).join(',')]
   for (const w of words) {
-    const row = [w.word, (w.translations || []).join('; ')]
+    const row = [w.word, w.translation || '']
     lines.push(row.map(toCsvCell).join(','))
   }
   const content = lines.join('\n')

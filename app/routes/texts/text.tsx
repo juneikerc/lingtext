@@ -7,6 +7,7 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
   const id = params.id;
   const text = await getText(id);
 
+  document.title = text?.title || "Sin título";
   const formatAudioRef = async (audioRef: AudioRef | null) => {
     if (audioRef?.type === "url") return audioRef.url;
     if (audioRef?.type === "file") {
@@ -35,6 +36,13 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     audioUrl?: string | null;
   };
 }
+
+// export function meta({ loaderData }: Route.MetaArgs) {
+//   return [
+//     { title: loaderData.title || "Sin título" },
+//     { name: "description", content: "" },
+//   ];
+// }
 
 export default function Text({ loaderData }: Route.ComponentProps) {
   const text = loaderData;
