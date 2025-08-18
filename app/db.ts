@@ -97,6 +97,7 @@ export async function putUnknownWord(entry: WordEntry): Promise<void> {
   const normalized: WordEntry = {
     ...entry,
     wordLower: entry.word.toLowerCase(),
+    translation: entry.translation,
     status: "unknown",
   };
   await tx(["words"], "readwrite", (t) => {

@@ -31,7 +31,7 @@ interface PopupState {
   y: number;
   word: string;
   lower: string;
-  translations: string[];
+  translation: string;
 }
 
 interface SelPopupState {
@@ -39,7 +39,7 @@ interface SelPopupState {
   y: number;
   text: string;
   lowers: string[];
-  translations: Array<{ word: string; translations: string[] }>;
+  translations: Array<{ word: string; translation: string }>;
 }
 
 export default function Reader({ text }: Props) {
@@ -107,27 +107,25 @@ export default function Reader({ text }: Props) {
     setUnknownSet(new Set(all.map((w) => w.wordLower)));
   }
 
-  const onWordClick = useCallback(
-    async (e: React.MouseEvent<HTMLSpanElement>) => {
-      const target = e.currentTarget as HTMLSpanElement;
-      if (!target?.dataset?.lower || !target?.dataset?.word) return;
-      const rect = target.getBoundingClientRect();
-      const el = containerRef.current;
-      let x = rect.left + rect.width / 2;
-      let y = rect.top;
-      if (el) {
-        const r = el.getBoundingClientRect();
-        x -= r.left;
-        y -= r.top;
-      }
-      const word = target.dataset.word;
-      const lower = target.dataset.lower;
-      const translations = await translate(word);
-      setSelPopup(null);
-      setPopup({ x, y, word, lower, translations });
-    },
-    []
-  );
+  const onWordClick = async (e: React.MouseEvent<HTMLSpanElement>) => {
+    const target = e.currentTarget as HTMLSpanElement;
+    if (!target?.dataset?.lower || !target?.dataset?.word) return;
+    const rect = target.getBoundingClientRect();
+    const el = containerRef.current;
+    let x = rect.left + rect.width / 2;
+    let y = rect.top;
+    if (el) {
+      const r = el.getBoundingClientRect();
+      x -= r.left;
+      y -= r.top;
+    }
+    const word = target.dataset.word;
+    const lower = target.dataset.lower;
+    const translation = await translate(word);
+    console.log(translation);
+    setSelPopup(null);
+    setPopup({ x, y, word, lower, translation });
+  };
 
   // const renderParts = useMemo(() => {
   //   return tokenize(text.content).map((t, idx) => {
@@ -160,12 +158,12 @@ export default function Reader({ text }: Props) {
   }
 
   async function markUnknown(lower: string, original: string) {
-    const translations = await translate(original);
+    const translation = await translate(original);
     const settings = await getSettings();
     await putUnknownWord({
       word: original,
       wordLower: lower,
-      translations,
+      translation,
       status: "unknown",
       addedAt: Date.now(),
       voice: {
@@ -190,7 +188,8 @@ export default function Reader({ text }: Props) {
     setPopup(null);
   }
 
-  async function onSpeak(word: string) {
+  async function onSpeak(word: string, e: React.MouseEvent) {
+    e.stopPropagation();
     const settings = await getSettings();
     await speak(word, settings.tts);
   }
@@ -238,11 +237,11 @@ export default function Reader({ text }: Props) {
       .map((m) => normalizeWord(m[0]))
       .filter(Boolean);
     const lowers = Array.from(new Set(words));
-    const translations: Array<{ word: string; translations: string[] }> = [];
+    const translations: Array<{ word: string; translation: string }> = [];
     for (const w of lowers) {
       const orig = w; // use lower as key; for display we can use w
       const t = await translate(orig);
-      translations.push({ word: orig, translations: t });
+      translations.push({ word: orig, translation: t });
     }
     setPopup(null);
     setSelPopup({ x, y, text, lowers, translations });
@@ -258,7 +257,7 @@ export default function Reader({ text }: Props) {
       await putUnknownWord({
         word: lower,
         wordLower: lower,
-        translations: t,
+        translation: t,
         status: "unknown",
         addedAt: Date.now(),
         voice: {
@@ -359,7 +358,7 @@ export default function Reader({ text }: Props) {
             <div className="flex gap-2 items-center">
               <button
                 className="hover:text-blue-600"
-                onClick={() => onSpeak(popup.word)}
+                onClick={(e) => onSpeak(popup.word, e)}
                 title="Escuchar"
               >
                 🔊
@@ -381,10 +380,8 @@ export default function Reader({ text }: Props) {
               )}
             </div>
           </div>
-          <div className="px-4 py-2 text-sm">
-            {popup.translations.length
-              ? popup.translations.join(", ")
-              : "Sin traducción local"}
+          <div className="px-4 py-2">
+            <strong className="text-xl">🇪🇸 {popup.translation}</strong>
           </div>
         </div>
       )}
@@ -404,7 +401,7 @@ export default function Reader({ text }: Props) {
               <ul className="list-disc pl-5 space-y-1">
                 {selPopup.translations.map((t) => (
                   <li key={t.word} className="text-sm">
-                    <b>{t.word}</b>: {t.translations.join(", ") || "—"}
+                    <b>{t.word}</b>: {t.translation || "—"}
                   </li>
                 ))}
               </ul>

@@ -25,7 +25,7 @@ export interface VoiceParams {
 export interface WordEntry {
   word: string;
   wordLower: string;
-  translations: string[];
+  translation: string;
   status: "unknown";
   addedAt: number;
   voice?: VoiceParams;
