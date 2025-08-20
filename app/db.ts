@@ -1,6 +1,6 @@
 import type { AudioRef, Settings, TextItem, WordEntry } from "./types";
 
-const DB_NAME = "lumi_text_db";
+const DB_NAME = "ling_text_db";
 const DB_VERSION = 1;
 
 function openDB(): Promise<IDBDatabase> {

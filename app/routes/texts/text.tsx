@@ -2,6 +2,7 @@ import { getText } from "~/db";
 import type { Route } from "./+types/text";
 import Reader from "~/components/Reader";
 import type { AudioRef } from "~/types";
+import ReaderHeader from "~/components/reader/ReaderHeader";
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
   const id = params.id;
@@ -37,15 +38,13 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
   };
 }
 
-// export function meta({ loaderData }: Route.MetaArgs) {
-//   return [
-//     { title: loaderData.title || "Sin título" },
-//     { name: "description", content: "" },
-//   ];
-// }
-
 export default function Text({ loaderData }: Route.ComponentProps) {
   const text = loaderData;
 
-  return <Reader text={text} />;
+  return (
+    <>
+      <ReaderHeader title={text.title} />
+      <Reader text={text} />
+    </>
+  );
 }

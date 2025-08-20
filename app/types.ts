@@ -37,3 +37,9 @@ export interface Settings {
     voiceName?: string;
   };
 }
+
+export enum TRANSLATORS {
+  CHROME = "chrome",
+  GPT_OSS_20B_FREE = "openai/gpt-oss-20b:free",
+  GEMMA_3N_E4B_IT_FREE = "google/gemma-3n-e4b-it:free",
+}

@@ -6,13 +6,13 @@ import {
   deleteWord,
   getSettings,
 } from "../db";
-import type { AudioRef } from "../types";
+import { TRANSLATORS, type AudioRef } from "../types";
 // import type { Token } from "../utils/tokenize";
 import { normalizeWord } from "../utils/tokenize";
 import { speak } from "../utils/tts";
-import { translate } from "../utils/translate";
+import { translateFromChrome } from "../utils/translate";
 import { ensureReadPermission } from "../utils/fs";
-import ReaderHeader from "./reader/ReaderHeader";
+
 import AudioSection from "./reader/AudioSection";
 import ReaderText from "./reader/ReaderText";
 import WordPopup from "./reader/WordPopup";
@@ -21,6 +21,7 @@ import type {
   WordPopupState as PopupState,
   SelectionPopupState as SelPopupState,
 } from "./reader/types";
+import { useTranslatorStore } from "~/context/translatorSelector";
 
 interface Props {
   text: {
@@ -36,6 +37,7 @@ interface Props {
 // Types moved to ./reader/types
 
 export default function Reader({ text }: Props) {
+  const { selected } = useTranslatorStore();
   const containerRef = useRef<HTMLDivElement | null>(null);
   // const [item, setItem] = useState<Props["text"] | null>(null);
   // const [tokens, setTokens] = useState<Token[]>([]);
@@ -115,11 +117,17 @@ export default function Reader({ text }: Props) {
     const word = target.dataset.word;
     const lower = target.dataset.lower;
 
-    // const translation = await translate(word);
-    const translation = await fetch(
-      `/translate/${encodeURIComponent(word)}`
-    ).then((res) => res.json());
+    let translation;
+    if (selected === TRANSLATORS.CHROME) {
+      translation = await translateFromChrome(word);
+    } else {
+      translation = await fetch(
+        `/translate/${encodeURIComponent(word)}?model=${selected}`
+      ).then((res) => res.json());
+    }
+
     console.log(translation.translation);
+
     setSelPopup(null);
     setPopup({ x, y, word, lower, translation: translation.translation });
   };
@@ -154,13 +162,16 @@ export default function Reader({ text }: Props) {
     return { x: x - r.left, y: y - r.top };
   }
 
-  async function markUnknown(lower: string, original: string) {
-    const translation = await translate(original);
+  async function markUnknown(
+    lower: string,
+    original: string,
+    translation: string
+  ) {
     const settings = await getSettings();
     await putUnknownWord({
       word: original,
       wordLower: lower,
-      translation,
+      translation: translation,
       status: "unknown",
       addedAt: Date.now(),
       voice: {
@@ -237,8 +248,15 @@ export default function Reader({ text }: Props) {
     const translations: Array<{ word: string; translation: string }> = [];
     for (const w of lowers) {
       const orig = w; // use lower as key; for display we can use w
-      const t = await translate(orig);
-      translations.push({ word: orig, translation: t });
+      let t;
+      if (selected === TRANSLATORS.CHROME) {
+        t = await translateFromChrome(orig);
+      } else {
+        t = await fetch(
+          `/translate/${encodeURIComponent(orig)}?model=${selected}`
+        ).then((res) => res.json());
+      }
+      translations.push({ word: orig, translation: t.translation });
     }
     setPopup(null);
     setSelPopup({ x, y, text, lowers, translations });
@@ -250,11 +268,18 @@ export default function Reader({ text }: Props) {
     for (const lower of selPopup.lowers) {
       const existing = await getWord(lower);
       if (existing) continue;
-      const t = await translate(lower);
+      let t;
+      if (selected === TRANSLATORS.CHROME) {
+        t = await translateFromChrome(lower);
+      } else {
+        t = await fetch(
+          `/translate/${encodeURIComponent(lower)}?model=${selected}`
+        ).then((res) => res.json());
+      }
       await putUnknownWord({
         word: lower,
         wordLower: lower,
-        translation: t,
+        translation: t.translation,
         status: "unknown",
         addedAt: Date.now(),
         voice: {
@@ -280,8 +305,6 @@ export default function Reader({ text }: Props) {
         if (!t.closest(`.word-token`)) clearPopups();
       }}
     >
-      <ReaderHeader title={text.title} />
-
       <AudioSection
         show={!!text.audioRef}
         src={audioUrl ?? text.audioUrl ?? undefined}

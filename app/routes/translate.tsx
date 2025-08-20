@@ -3,7 +3,10 @@ import OpenAI from "openai";
 
 // That is a "endpoint" Resource Route that returns the text to translate as a response without any html
 
-export async function loader({ params }: Route.LoaderArgs) {
+export async function loader({ params, request }: Route.LoaderArgs) {
+  const url = new URL(request.url);
+  const model =
+    new URLSearchParams(url.search).get("model") || "openai/gpt-oss-20b:free";
   const text = decodeURIComponent(params.text);
 
   const openai = new OpenAI({
@@ -14,7 +17,7 @@ export async function loader({ params }: Route.LoaderArgs) {
   // model: "google/gemma-3n-e4b-it:free",
 
   const completion = await openai.chat.completions.create({
-    model: "openai/gpt-oss-20b:free",
+    model: model,
     messages: [
       {
         role: "user",

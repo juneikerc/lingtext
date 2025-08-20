@@ -1,4 +1,6 @@
-export async function translate(term: string): Promise<string> {
+export async function translateFromChrome(
+  term: string
+): Promise<{ translation: string }> {
   if ("Translator" in self) {
     const translateWithChromeAPI = async () => {
       try {
@@ -15,8 +17,8 @@ export async function translate(term: string): Promise<string> {
       }
     };
 
-    return translateWithChromeAPI();
+    return { translation: await translateWithChromeAPI() };
   } else {
-    return "";
+    return { translation: "" };
   }
 }

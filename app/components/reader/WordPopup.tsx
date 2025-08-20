@@ -6,7 +6,7 @@ interface WordPopupProps {
   isUnknown: boolean;
   onSpeak: (word: string, e: React.MouseEvent) => void;
   onMarkKnown: (lower: string) => void;
-  onMarkUnknown: (lower: string, original: string) => void;
+  onMarkUnknown: (lower: string, original: string, translation: string) => void;
 }
 
 export default function WordPopup({
@@ -44,7 +44,9 @@ export default function WordPopup({
           ) : (
             <button
               className="px-2 py-0.5 text-xs rounded border border-red-700 text-red-700 dark:border-red-500 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900 transition"
-              onClick={() => onMarkUnknown(popup.lower, popup.word)}
+              onClick={() =>
+                onMarkUnknown(popup.lower, popup.word, popup.translation)
+              }
             >
               Desconocida
             </button>
