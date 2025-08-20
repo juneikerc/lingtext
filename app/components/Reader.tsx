@@ -114,10 +114,14 @@ export default function Reader({ text }: Props) {
     }
     const word = target.dataset.word;
     const lower = target.dataset.lower;
-    const translation = await translate(word);
-    console.log(translation);
+
+    // const translation = await translate(word);
+    const translation = await fetch(
+      `/translate/${encodeURIComponent(word)}`
+    ).then((res) => res.json());
+    console.log(translation.translation);
     setSelPopup(null);
-    setPopup({ x, y, word, lower, translation });
+    setPopup({ x, y, word, lower, translation: translation.translation });
   };
 
   // const renderParts = useMemo(() => {
@@ -281,7 +285,9 @@ export default function Reader({ text }: Props) {
       <AudioSection
         show={!!text.audioRef}
         src={audioUrl ?? text.audioUrl ?? undefined}
-        showReauthorize={Boolean(text.audioRef?.type === "file" && audioAccessError)}
+        showReauthorize={Boolean(
+          text.audioRef?.type === "file" && audioAccessError
+        )}
         onReauthorize={reauthorizeAudio}
       />
 
