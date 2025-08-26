@@ -6,6 +6,8 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
+import { useEffect } from "react";
+import { seedInitialDataOnce } from "~/utils/seed";
 
 import type { Route } from "./+types/root";
 import "./app.css";
@@ -42,6 +44,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  useEffect(() => {
+    // Seed default text/audio and unknown words once per browser
+    seedInitialDataOnce();
+  }, []);
   return <Outlet />;
 }
 
