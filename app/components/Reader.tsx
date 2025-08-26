@@ -6,11 +6,11 @@ import {
   deleteWord,
   getSettings,
 } from "../db";
-import { TRANSLATORS, type AudioRef } from "../types";
+import { type AudioRef } from "../types";
 // import type { Token } from "../utils/tokenize";
 import { normalizeWord } from "../utils/tokenize";
 import { speak } from "../utils/tts";
-import { translateFromChrome } from "../utils/translate";
+import { translateTerm } from "../utils/translate";
 import { ensureReadPermission } from "../utils/fs";
 
 import AudioSection from "./reader/AudioSection";
@@ -46,6 +46,15 @@ export default function Reader({ text }: Props) {
   const [selPopup, setSelPopup] = useState<SelPopupState | null>(null);
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [audioAccessError, setAudioAccessError] = useState(false);
+
+  // If audio file couldn't be materialized by the loader, mark reauthorization required
+  useEffect(() => {
+    if (text?.audioRef?.type === "file" && !text?.audioUrl) {
+      setAudioAccessError(true);
+    } else {
+      setAudioAccessError(false);
+    }
+  }, [text?.audioRef, text?.audioUrl]);
 
   // console.log(text.audioRef);
 
@@ -92,6 +101,15 @@ export default function Reader({ text }: Props) {
     };
   }, [audioUrl]);
 
+  // Revoke object URL provided by clientLoader on unmount/change
+  useEffect(() => {
+    const src = text.audioUrl;
+    if (!src || src.startsWith("http")) return;
+    return () => {
+      URL.revokeObjectURL(src);
+    };
+  }, [text.audioUrl]);
+
   // load unknown words
   useEffect(() => {
     refreshUnknowns();
@@ -114,20 +132,10 @@ export default function Reader({ text }: Props) {
       x -= r.left;
       y -= r.top;
     }
-    const word = target.dataset.word;
-    const lower = target.dataset.lower;
+    const word = target.dataset.word!;
+    const lower = target.dataset.lower!;
 
-    let translation;
-    if (selected === TRANSLATORS.CHROME) {
-      translation = await translateFromChrome(word);
-    } else {
-      translation = await fetch(
-        `/translate/${encodeURIComponent(word)}?model=${selected}`
-      ).then((res) => res.json());
-    }
-
-    console.log(translation.translation);
-
+    const translation = await translateTerm(word, selected);
     setSelPopup(null);
     setPopup({ x, y, word, lower, translation: translation.translation });
   };
@@ -248,14 +256,7 @@ export default function Reader({ text }: Props) {
     const translations: Array<{ word: string; translation: string }> = [];
     for (const w of lowers) {
       const orig = w; // use lower as key; for display we can use w
-      let t;
-      if (selected === TRANSLATORS.CHROME) {
-        t = await translateFromChrome(orig);
-      } else {
-        t = await fetch(
-          `/translate/${encodeURIComponent(orig)}?model=${selected}`
-        ).then((res) => res.json());
-      }
+      const t = await translateTerm(orig, selected);
       translations.push({ word: orig, translation: t.translation });
     }
     setPopup(null);
@@ -268,14 +269,7 @@ export default function Reader({ text }: Props) {
     for (const lower of selPopup.lowers) {
       const existing = await getWord(lower);
       if (existing) continue;
-      let t;
-      if (selected === TRANSLATORS.CHROME) {
-        t = await translateFromChrome(lower);
-      } else {
-        t = await fetch(
-          `/translate/${encodeURIComponent(lower)}?model=${selected}`
-        ).then((res) => res.json());
-      }
+      const t = await translateTerm(lower, selected);
       await putUnknownWord({
         word: lower,
         wordLower: lower,

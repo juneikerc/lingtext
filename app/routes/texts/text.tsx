@@ -12,9 +12,14 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
   const formatAudioRef = async (audioRef: AudioRef | null) => {
     if (audioRef?.type === "url") return audioRef.url;
     if (audioRef?.type === "file") {
-      const file = await audioRef?.fileHandle.getFile();
-      const url = URL.createObjectURL(file!);
-      return url;
+      try {
+        const file = await audioRef.fileHandle.getFile();
+        const url = URL.createObjectURL(file);
+        return url;
+      } catch (e) {
+        // No permission or failed to read file. We'll allow reauthorization in the Reader.
+        return null;
+      }
     }
     return null;
   };
