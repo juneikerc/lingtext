@@ -21,10 +21,12 @@ export async function loader({ params, request }: Route.LoaderArgs) {
     messages: [
       {
         role: "user",
-        content: `translate this word to spanish (if the word "${text}" has multiple translations, return the most the 3 most common separated by a comma)(if the word has only one translation, return only 1 translation): ${text}  (respond only with the translation no additional text)`,
+        content: `translate this word to spanish (if the word "${text}" has multiple translations, return the most the 3 most common separated by a comma)(if the word has only one translation, return only 1 translation): ${text} (respond only with the translation no additional text)`,
       },
     ],
   });
+
+  // console.log(completion.choices);
 
   return new Response(
     JSON.stringify({

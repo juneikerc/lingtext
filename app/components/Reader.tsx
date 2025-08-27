@@ -235,7 +235,7 @@ export default function Reader({ text }: Props) {
 
   return (
     <div
-      className="relative flex flex-col flex-1 overflow-auto bg-white dark:bg-gray-900"
+      className="relative flex flex-col flex-1  bg-white dark:bg-gray-900"
       ref={containerRef}
       onMouseUp={handleMouseUp}
       onClick={(e) => {

@@ -21,6 +21,20 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
   //    </div>
   //  </div>
 
+  {
+    /* CTA Buttons */
+  }
+  //    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+  //    <button className="group relative px-8 py-4 bg-gradient-to-r from-purple-500 to-blue-600 rounded-xl font-semibold text-white shadow-lg hover:shadow-purple-500/25 transform hover:scale-105 transition-all duration-300">
+  //      <span className="relative z-10">Comenzar a Aprender</span>
+  //      <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-700 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+  //    </button>
+
+  //    <button className="px-8 py-4 border-2 border-white/20 rounded-xl font-semibold text-white hover:bg-white/10 hover:border-white/40 transition-all duration-300">
+  //      Ver Demo
+  //    </button>
+  //  </div>
+
   return (
     <section
       className={`relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white py-20 px-4 text-center ${className}`}
@@ -92,18 +106,6 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
             </div>
             <span className="text-gray-200 font-medium">Seguimiento</span>
           </div>
-        </div>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button className="group relative px-8 py-4 bg-gradient-to-r from-purple-500 to-blue-600 rounded-xl font-semibold text-white shadow-lg hover:shadow-purple-500/25 transform hover:scale-105 transition-all duration-300">
-            <span className="relative z-10">Comenzar a Aprender</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-700 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </button>
-
-          <button className="px-8 py-4 border-2 border-white/20 rounded-xl font-semibold text-white hover:bg-white/10 hover:border-white/40 transition-all duration-300">
-            Ver Demo
-          </button>
         </div>
       </div>
     </section>
