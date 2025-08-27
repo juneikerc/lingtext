@@ -22,6 +22,18 @@ export interface VoiceParams {
   volume?: number;
 }
 
+export interface SpacedRepetitionData {
+  easeFactor: number; // Factor de facilidad (por defecto 2.5)
+  interval: number; // Intervalo actual en días
+  repetitions: number; // Número de repeticiones exitosas
+  nextReview: number; // Timestamp del próximo repaso
+  reviewHistory: Array<{
+    date: number; // Timestamp de la revisión
+    quality: number; // Calidad de la respuesta (0-5, donde 5 es perfecta)
+    interval: number; // Intervalo usado en esa revisión
+  }>;
+}
+
 export interface WordEntry {
   word: string;
   wordLower: string;
@@ -29,6 +41,8 @@ export interface WordEntry {
   status: "unknown";
   addedAt: number;
   voice?: VoiceParams;
+  // Datos del algoritmo de repetición espaciada
+  srData?: SpacedRepetitionData;
 }
 
 export interface Settings {
