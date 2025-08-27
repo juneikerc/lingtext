@@ -66,6 +66,11 @@ export default function Review({ loaderData }: Route.ComponentProps) {
     }
   };
 
+  const handleRetryWord = (word: WordEntry) => {
+    // Añadir la palabra al final de la lista para reintento
+    setWords(prevWords => [...prevWords, word]);
+  };
+
   // Si no hay palabras listas para repaso
   if (words.length === 0) {
     return (
@@ -118,6 +123,7 @@ export default function Review({ loaderData }: Route.ComponentProps) {
       onNext={nextWord}
       onPrev={prevWord}
       onRefresh={refreshWords}
+      onRetryWord={handleRetryWord}
       totalWords={words.length}
     />
   );

@@ -11,6 +11,7 @@ interface ReviewModeProps {
   onPrev: () => void;
   onRefresh: () => void;
   totalWords: number;
+  onRetryWord: (word: WordEntry) => void; // Nueva prop para añadir palabra al final
 }
 
 // Algoritmo de repetición espaciada (versión simplificada con 2 niveles)
@@ -95,6 +96,7 @@ export default function ReviewMode({
   onNext,
   onPrev,
   onRefresh,
+  onRetryWord,
   totalWords,
 }: ReviewModeProps) {
   const [showTranslation, setShowTranslation] = useState(false);
@@ -130,30 +132,53 @@ export default function ReviewMode({
       const quality = remembered ? 5 : 1;
       const newSrData = calculateNextReview(currentWord.srData, quality);
 
-      await putUnknownWord({
-        word: currentWord.word,
-        wordLower: currentWord.wordLower,
-        translation: currentWord.translation,
-        status: "unknown",
-        addedAt: currentWord.addedAt,
-        voice: currentWord.voice,
-        srData: newSrData,
-      });
+      if (remembered) {
+        // Respuesta correcta: actualizar datos SR y continuar
+        await putUnknownWord({
+          word: currentWord.word,
+          wordLower: currentWord.wordLower,
+          translation: currentWord.translation,
+          status: "unknown",
+          addedAt: currentWord.addedAt,
+          voice: currentWord.voice,
+          srData: newSrData,
+        });
 
-      setSessionStats(prev => ({
-        ...prev,
-        [remembered ? "correct" : "incorrect"]: prev[remembered ? "correct" : "incorrect"] + 1,
-        total: prev.total + 1,
-      }));
+        setSessionStats(prev => ({
+          ...prev,
+          correct: prev.correct + 1,
+          total: prev.total + 1,
+        }));
 
-      // Avanzar automáticamente después de un delay
-      setTimeout(() => {
-        if (currentIndex < words.length - 1) {
-          onNext();
-        } else {
-          onRefresh(); // Refrescar para actualizar el orden
-        }
-      }, 1000);
+        // Avanzar automáticamente después de un delay
+        setTimeout(() => {
+          if (currentIndex < words.length - 1) {
+            onNext();
+          } else {
+            onRefresh(); // Refrescar para actualizar el orden
+          }
+        }, 1000);
+      } else {
+        // Respuesta incorrecta: añadir al final de la lista para reintento en la misma sesión
+        // Solo actualizar estadísticas, no guardar en BD aún
+        setSessionStats(prev => ({
+          ...prev,
+          incorrect: prev.incorrect + 1,
+          total: prev.total + 1,
+        }));
+
+        // Añadir la palabra al final de la lista para reintento
+        onRetryWord(currentWord);
+
+        // Avanzar automáticamente después de mostrar la respuesta
+        setTimeout(() => {
+          if (currentIndex < words.length - 1) {
+            onNext();
+          } else {
+            onRefresh();
+          }
+        }, 2000); // Dar tiempo para ver la respuesta correcta
+      }
     } finally {
       setProcessing(false);
     }
