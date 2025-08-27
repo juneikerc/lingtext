@@ -7,7 +7,11 @@ interface SelectionPopupProps {
   onClose: () => void;
 }
 
-export default function SelectionPopup({ selPopup, onSaveUnknowns, onClose }: SelectionPopupProps) {
+export default function SelectionPopup({
+  selPopup,
+  onSaveUnknowns,
+  onClose,
+}: SelectionPopupProps) {
   return (
     <div
       className="absolute min-w-[220px] max-w-[320px] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg shadow-lg border border-gray-300 dark:border-gray-700 z-30"

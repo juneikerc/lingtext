@@ -7,7 +7,6 @@ import {
   getSettings,
 } from "../db";
 import { type AudioRef } from "../types";
-// import type { Token } from "../utils/tokenize";
 import { normalizeWord } from "../utils/tokenize";
 import { speak } from "../utils/tts";
 import { translateTerm } from "../utils/translate";
@@ -39,8 +38,6 @@ interface Props {
 export default function Reader({ text }: Props) {
   const { selected } = useTranslatorStore();
   const containerRef = useRef<HTMLDivElement | null>(null);
-  // const [item, setItem] = useState<Props["text"] | null>(null);
-  // const [tokens, setTokens] = useState<Token[]>([]);
   const [unknownSet, setUnknownSet] = useState<Set<string>>(new Set());
   const [popup, setPopup] = useState<PopupState | null>(null);
   const [selPopup, setSelPopup] = useState<SelPopupState | null>(null);
@@ -55,43 +52,6 @@ export default function Reader({ text }: Props) {
       setAudioAccessError(false);
     }
   }, [text?.audioRef, text?.audioUrl]);
-
-  // console.log(text.audioRef);
-
-  // load text and tokens
-  // useEffect(() => {
-  //   let alive = true;
-  //   getText(id!).then(async (t) => {
-  //     if (!alive) return;
-  //     if (t) {
-  //       setItem(t);
-  //       setTokens(tokenize(t.content));
-  //       // prepare audio url if any
-  //       if (t.audioRef) {
-  //         if (t.audioRef.type === "url") {
-  //           setAudioUrl(t.audioRef.url);
-  //         } else if (t.audioRef.type === "file") {
-  //           try {
-  //             // try to read the file; if permission is needed, this may throw
-  //             const file = await t.audioRef.fileHandle.getFile();
-  //             const url = URL.createObjectURL(file);
-  //             if (alive) setAudioUrl(url);
-  //             setAudioAccessError(false);
-  //           } catch (e) {
-  //             console.warn(
-  //               "No se pudo acceder al archivo de audio. Reautoriza el acceso desde la biblioteca.",
-  //               e
-  //             );
-  //             setAudioAccessError(true);
-  //           }
-  //         }
-  //       }
-  //     }
-  //   });
-  //   return () => {
-  //     alive = false;
-  //   };
-  // }, [id]);
 
   // Revoke audio URL when it changes or on unmount
   useEffect(() => {
@@ -135,33 +95,17 @@ export default function Reader({ text }: Props) {
     const word = target.dataset.word!;
     const lower = target.dataset.lower!;
 
+    const existing = await getWord(lower);
+
+    if (existing) {
+      setPopup({ x, y, word, lower, translation: existing.translation });
+      return;
+    }
+
     const translation = await translateTerm(word, selected);
     setSelPopup(null);
     setPopup({ x, y, word, lower, translation: translation.translation });
   };
-
-  // const renderParts = useMemo(() => {
-  //   return tokenize(text.content).map((t, idx) => {
-  //     if (!t.isWord) return <span key={idx}>{t.text}</span>;
-  //     const low = t.lower || normalizeWord(t.text);
-  //     const isUnknown = unknownSet.has(low);
-  //     return (
-  //       <span
-  //         key={idx}
-  //         className={
-  //           isUnknown
-  //             ? "cursor-pointer underline decoration-wavy decoration-red-500 text-red-700 dark:text-red-300"
-  //             : "cursor-pointer hover:underline"
-  //         }
-  //         data-lower={low}
-  //         data-word={t.text}
-  //         onClick={onWordClick}
-  //       >
-  //         {t.text}
-  //       </span>
-  //     );
-  //   });
-  // }, [tokens, unknownSet, onWordClick]);
 
   function relativePos(x: number, y: number) {
     const el = containerRef.current;
