@@ -43,13 +43,22 @@ export default function Reader({ text }: Props) {
   const [selPopup, setSelPopup] = useState<SelPopupState | null>(null);
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [audioAccessError, setAudioAccessError] = useState(false);
+  const [isLocalFile, setIsLocalFile] = useState(false);
+  const [fileSize, setFileSize] = useState<number | null>(null);
 
-  // If audio file couldn't be materialized by the loader, mark reauthorization required
+  // Detectar si es archivo local y obtener información
   useEffect(() => {
-    if (text?.audioRef?.type === "file" && !text?.audioUrl) {
-      setAudioAccessError(true);
+    if (text?.audioRef?.type === "file") {
+      setIsLocalFile(true);
+      // Intentar obtener información del archivo sin solicitar permiso aún
+      if (text.audioRef.fileHandle) {
+        // No solicitamos el archivo aquí, solo verificamos permisos
+        setAudioAccessError(!text.audioUrl); // Solo mostrar error si no hay URL
+      }
     } else {
+      setIsLocalFile(false);
       setAudioAccessError(false);
+      setFileSize(null);
     }
   }, [text?.audioRef, text?.audioUrl]);
 
@@ -162,23 +171,93 @@ export default function Reader({ text }: Props) {
   async function reauthorizeAudio() {
     const t = text;
     if (!t || !t.audioRef || t.audioRef.type !== "file") return;
-    const ok = await ensureReadPermission(t.audioRef.fileHandle);
-    if (!ok) {
-      alert(
-        "Permiso denegado. Vuelve a intentarlo o re-adjunta el audio desde la biblioteca."
-      );
-      return;
-    }
+
     try {
+      // Limpiar URL anterior si existe
+      if (audioUrl && !audioUrl.startsWith("http")) {
+        URL.revokeObjectURL(audioUrl);
+        setAudioUrl(null);
+      }
+
+      console.log("Intentando obtener permisos para archivo local...");
+
+      // Verificar y solicitar permisos
+      const hasPermission = await ensureReadPermission(t.audioRef.fileHandle);
+      if (!hasPermission) {
+        console.warn("Permiso denegado para archivo local");
+        setAudioAccessError(true);
+        alert(
+          "Permiso denegado. Vuelve a intentarlo o re-adjunta el audio desde la biblioteca."
+        );
+        return;
+      }
+
+      console.log("Permisos obtenidos, obteniendo archivo...");
+
+      // Obtener el archivo
       const file = await t.audioRef.fileHandle.getFile();
+
+      // Validar que sea un archivo de audio válido
+      const fileName = file.name.toLowerCase();
+      const isAudioFile = file.type.startsWith('audio/') ||
+                         fileName.endsWith('.mp3') ||
+                         fileName.endsWith('.wav') ||
+                         fileName.endsWith('.m4a') ||
+                         fileName.endsWith('.aac') ||
+                         fileName.endsWith('.ogg') ||
+                         fileName.endsWith('.flac');
+
+      if (!isAudioFile) {
+        throw new Error(`Tipo de archivo no válido: ${file.type || 'desconocido'}. Solo se permiten archivos de audio (MP3, WAV, M4A, AAC, OGG, FLAC).`);
+      }
+
+      // Verificar tamaño del archivo (advertir si es muy grande)
+      const maxSize = 500 * 1024 * 1024; // 500MB
+      if (file.size > maxSize) {
+        const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
+        const shouldContinue = confirm(
+          `El archivo es muy grande (${sizeMB}MB). Puede causar problemas de rendimiento. ¿Deseas continuar?`
+        );
+        if (!shouldContinue) {
+          setAudioAccessError(true);
+          return;
+        }
+      }
+
+      setFileSize(file.size);
+      console.log(`Archivo obtenido: ${file.name} (${file.size} bytes, ${file.type})`);
+
+      // Crear ObjectURL de forma segura
       const url = URL.createObjectURL(file);
+      console.log("ObjectURL creado:", url);
+
       setAudioUrl(url);
       setAudioAccessError(false);
-    } catch (e) {
-      console.warn("No se pudo abrir el archivo de audio tras reautorizar", e);
-      alert(
-        "No se pudo abrir el archivo de audio. Re-adjunta el audio desde la biblioteca."
-      );
+
+      console.log("Audio local cargado exitosamente");
+
+    } catch (error) {
+      console.error("Error al cargar archivo local:", error);
+
+      // Limpiar estado de error
+      setAudioAccessError(true);
+
+      // Determinar tipo de error y mostrar mensaje apropiado
+      let errorMessage = "Error desconocido al cargar el archivo";
+
+      if (error instanceof Error) {
+        if (error.message.includes("NotAllowedError")) {
+          errorMessage = "Permiso denegado para acceder al archivo";
+        } else if (error.message.includes("NotFoundError")) {
+          errorMessage = "El archivo ya no existe o ha sido movido";
+        } else if (error.message.includes("Tipo de archivo")) {
+          errorMessage = error.message;
+        } else {
+          errorMessage = `Error al cargar archivo: ${error.message}`;
+        }
+      }
+
+      alert(`${errorMessage}. Re-adjunta el audio desde la biblioteca.`);
     }
   }
 
@@ -250,6 +329,8 @@ export default function Reader({ text }: Props) {
           text.audioRef?.type === "file" && audioAccessError
         )}
         onReauthorize={reauthorizeAudio}
+        isLocalFile={isLocalFile}
+        fileSize={fileSize}
       />
 
       <ReaderText
