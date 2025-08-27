@@ -222,12 +222,12 @@ export default function ReviewMode({
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-purple-50/30 to-pink-50/30 dark:from-gray-950 dark:via-purple-950/10 dark:to-pink-950/10">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <div className="relative">
-        {/* Elementos decorativos de fondo */}
+        {/* Elementos decorativos de fondo - más sutiles */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-24 left-1/3 h-96 w-96 rounded-full bg-purple-400/5 blur-3xl"></div>
-          <div className="absolute -bottom-24 right-1/3 h-96 w-96 rounded-full bg-pink-400/5 blur-3xl"></div>
+          <div className="absolute -top-24 left-1/3 h-96 w-96 rounded-full bg-gray-200/30 dark:bg-gray-800/20 blur-3xl"></div>
+          <div className="absolute -bottom-24 right-1/3 h-96 w-96 rounded-full bg-gray-300/20 dark:bg-gray-700/20 blur-3xl"></div>
         </div>
 
         <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-8">
@@ -236,7 +236,7 @@ export default function ReviewMode({
             <div className="flex items-center justify-between mb-6">
               <Link
                 to="/words"
-                className="group flex items-center space-x-2 px-4 py-2 rounded-xl bg-white/80 dark:bg-gray-900/80 hover:bg-purple-500 hover:text-white text-gray-700 dark:text-gray-300 font-medium transition-all duration-200 shadow-lg hover:shadow-purple-500/25"
+                className="group flex items-center space-x-2 px-4 py-2 rounded-lg bg-white/90 dark:bg-gray-800/90 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium transition-all duration-200 shadow-sm hover:shadow-md"
               >
                 <span className="text-lg group-hover:-translate-x-1 transition-transform duration-200">←</span>
                 <span>Vocabulario</span>
@@ -250,16 +250,16 @@ export default function ReviewMode({
             </div>
 
             <div className="text-center mb-8">
-              <div className="inline-flex items-center px-4 py-2 mb-4 text-sm font-medium text-purple-600 bg-purple-100/80 dark:bg-purple-900/30 dark:text-purple-300 rounded-full border border-purple-200/50 dark:border-purple-800/50 backdrop-blur-sm">
-                <span className="w-2 h-2 bg-purple-500 rounded-full mr-2 animate-pulse"></span>
+              <div className="inline-flex items-center px-4 py-2 mb-4 text-sm font-medium text-gray-600 bg-gray-100/80 dark:bg-gray-800/80 dark:text-gray-400 rounded-full border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm">
+                <span className="w-2 h-2 bg-gray-500 rounded-full mr-2 animate-pulse"></span>
                 Modo Repaso Inteligente
               </div>
-              <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
-                <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
+              <h1 className="text-3xl md:text-4xl font-bold mb-4">
+                <span className="bg-gradient-to-r from-gray-700 to-gray-600 dark:from-gray-200 dark:to-gray-300 bg-clip-text text-transparent">
                   ¿Recuerdas esta palabra?
                 </span>
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
                 El algoritmo de repetición espaciada optimiza tu aprendizaje
               </p>
             </div>
@@ -267,31 +267,31 @@ export default function ReviewMode({
 
           {/* Estadísticas de sesión */}
           <div className="grid grid-cols-3 gap-4 mb-8">
-            <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-4 text-center">
-              <div className="text-2xl font-bold text-green-600 dark:text-green-400">{sessionStats.correct}</div>
+            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl border border-gray-200/50 dark:border-gray-700/50 shadow-sm p-4 text-center">
+              <div className="text-2xl font-bold text-green-700 dark:text-green-400">{sessionStats.correct}</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">Correctas</div>
             </div>
-            <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-4 text-center">
-              <div className="text-2xl font-bold text-red-600 dark:text-red-400">{sessionStats.incorrect}</div>
+            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl border border-gray-200/50 dark:border-gray-700/50 shadow-sm p-4 text-center">
+              <div className="text-2xl font-bold text-red-700 dark:text-red-400">{sessionStats.incorrect}</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">Incorrectas</div>
             </div>
-            <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-4 text-center">
-              <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">{Math.round(sessionStats.total > 0 ? (sessionStats.correct / sessionStats.total) * 100 : 0)}%</div>
+            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl border border-gray-200/50 dark:border-gray-700/50 shadow-sm p-4 text-center">
+              <div className="text-2xl font-bold text-blue-700 dark:text-blue-400">{Math.round(sessionStats.total > 0 ? (sessionStats.correct / sessionStats.total) * 100 : 0)}%</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">Precisión</div>
             </div>
           </div>
 
           {/* Información del algoritmo SR */}
           {currentWord.srData && (
-            <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-4 mb-8">
+            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl border border-gray-200/50 dark:border-gray-700/50 shadow-sm p-4 mb-8">
               <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
                 <div className="flex items-center space-x-4">
-                  <span>Repeticiones: <span className="font-semibold text-purple-600">{currentWord.srData.repetitions}</span></span>
-                  <span>Factor: <span className="font-semibold text-blue-600">{currentWord.srData.easeFactor}</span></span>
-                  <span>Intervalo: <span className="font-semibold text-green-600">{currentWord.srData.interval}d</span></span>
+                  <span>Repeticiones: <span className="font-semibold text-gray-700 dark:text-gray-300">{currentWord.srData.repetitions}</span></span>
+                  <span>Factor: <span className="font-semibold text-gray-700 dark:text-gray-300">{currentWord.srData.easeFactor}</span></span>
+                  <span>Intervalo: <span className="font-semibold text-gray-700 dark:text-gray-300">{currentWord.srData.interval}d</span></span>
                 </div>
                 <div className="text-right">
-                  <span>Próximo repaso: <span className="font-semibold text-orange-600">
+                  <span>Próximo repaso: <span className="font-semibold text-gray-700 dark:text-gray-300">
                     {formatTimeUntilReview(currentWord.srData.nextReview)}
                   </span></span>
                 </div>
@@ -300,19 +300,19 @@ export default function ReviewMode({
           )}
 
           {/* Tarjeta de repaso */}
-          <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-2xl overflow-hidden">
+          <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg overflow-hidden">
             {/* Palabra */}
             <div className="p-8 text-center border-b border-gray-200/50 dark:border-gray-700/50">
               <div className="flex items-center justify-center space-x-4 mb-4">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100">
                   {currentWord.word}
                 </h2>
                 <button
                   onClick={playAudio}
-                  className="p-3 rounded-xl bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 hover:bg-purple-200 dark:hover:bg-purple-800/50 transition-colors duration-200"
+                  className="p-3 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200"
                   title="Escuchar pronunciación"
                 >
-                  <span className="text-2xl">🔊</span>
+                  <span className="text-xl">🔊</span>
                 </button>
               </div>
 
@@ -330,7 +330,7 @@ export default function ReviewMode({
                 <div className="space-y-6">
                   {/* Respuesta correcta */}
                   <div className="text-center">
-                    <div className="inline-flex items-center px-6 py-2 mb-4 text-lg font-medium text-green-600 bg-green-100/80 dark:bg-green-900/30 dark:text-green-300 rounded-full border border-green-200/50 dark:border-green-800/50">
+                    <div className="inline-flex items-center px-6 py-2 mb-4 text-lg font-medium text-gray-700 bg-gray-100/80 dark:bg-gray-700/80 dark:text-gray-300 rounded-full border border-gray-200/50 dark:border-gray-600/50">
                       <span className="text-xl mr-2">🇪🇸</span>
                       <span>{currentWord.translation}</span>
                     </div>
@@ -340,7 +340,7 @@ export default function ReviewMode({
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <button
                       onClick={() => handleAnswer(true)}
-                      className="flex-1 flex items-center justify-center space-x-2 px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-medium rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-green-500/25"
+                      className="flex-1 flex items-center justify-center space-x-2 px-6 py-3 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 hover:bg-green-100 dark:hover:bg-green-800/40 border border-green-200 dark:border-green-800/50 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-sm hover:shadow-md"
                     >
                       <span>✅</span>
                       <span>La recordaba</span>
@@ -348,7 +348,7 @@ export default function ReviewMode({
                     <button
                       onClick={() => handleAnswer(false)}
                       disabled={processing}
-                      className="flex-1 flex items-center justify-center space-x-2 px-6 py-3 bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white font-medium rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-red-500/25 disabled:opacity-50"
+                      className="flex-1 flex items-center justify-center space-x-2 px-6 py-3 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-800/40 border border-red-200 dark:border-red-800/50 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-sm hover:shadow-md disabled:opacity-50"
                     >
                       <span>❌</span>
                       <span>No la recordaba</span>
@@ -364,7 +364,7 @@ export default function ReviewMode({
 
                     <button
                       onClick={handleShowTranslation}
-                      className="flex items-center justify-center space-x-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-semibold rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25"
+                      className="flex items-center justify-center space-x-3 px-8 py-4 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 border border-gray-200 dark:border-gray-600 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-sm hover:shadow-md"
                     >
                       <span>👁️</span>
                       <span>Mostrar traducción</span>
@@ -380,7 +380,7 @@ export default function ReviewMode({
             <button
               onClick={onPrev}
               disabled={currentIndex === 0}
-              className="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 disabled:bg-gray-50 dark:disabled:bg-gray-900 disabled:text-gray-400 text-gray-700 dark:text-gray-300 font-medium rounded-xl transition-all duration-200 disabled:cursor-not-allowed"
+              className="flex items-center space-x-2 px-4 py-2 bg-white/90 dark:bg-gray-800/90 hover:bg-gray-100 dark:hover:bg-gray-700 disabled:bg-gray-50 dark:disabled:bg-gray-900 disabled:text-gray-400 text-gray-700 dark:text-gray-300 font-medium rounded-lg transition-all duration-200 disabled:cursor-not-allowed shadow-sm hover:shadow-md"
             >
               <span>←</span>
               <span>Anterior</span>
@@ -393,7 +393,7 @@ export default function ReviewMode({
             <button
               onClick={onNext}
               disabled={currentIndex === words.length - 1}
-              className="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 disabled:bg-gray-50 dark:disabled:bg-gray-900 disabled:text-gray-400 text-gray-700 dark:text-gray-300 font-medium rounded-xl transition-all duration-200 disabled:cursor-not-allowed"
+              className="flex items-center space-x-2 px-4 py-2 bg-white/90 dark:bg-gray-800/90 hover:bg-gray-100 dark:hover:bg-gray-700 disabled:bg-gray-50 dark:disabled:bg-gray-900 disabled:text-gray-400 text-gray-700 dark:text-gray-300 font-medium rounded-lg transition-all duration-200 disabled:cursor-not-allowed shadow-sm hover:shadow-md"
             >
               <span>Siguiente</span>
               <span>→</span>
