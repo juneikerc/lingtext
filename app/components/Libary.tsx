@@ -89,110 +89,190 @@ export default function Library({ onOpen }: Props) {
   }
 
   return (
-    <div className="max-w-2xl mx-auto mt-8 bg-white dark:bg-gray-900 rounded-lg shadow p-6 flex flex-col gap-8">
-      <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">
-        Tu Biblioteca
-      </h2>
-
-      <div className="flex flex-col md:flex-row gap-2 md:items-end">
-        <input
-          className="flex-1 px-3 py-2 rounded border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          placeholder="Título"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <button
-          className="px-4 py-2 rounded bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 hover:bg-blue-200 dark:hover:bg-blue-800 text-sm font-medium"
-          onClick={() => fileInputRef.current?.click()}
-          type="button"
-        >
-          Importar .txt
-        </button>
-        <input
-          ref={fileInputRef}
-          type="file"
-          accept=".txt,text/plain"
-          style={{ display: "none" }}
-          onChange={onImportTxt}
-        />
-        <button
-          className="px-4 py-2 rounded bg-green-500 text-white hover:bg-green-600 text-sm font-medium disabled:opacity-40"
-          onClick={onAdd}
-          disabled={!content.trim()}
-          type="button"
-        >
-          Agregar texto
-        </button>
+    <section className="relative overflow-hidden py-12 px-4">
+      {/* Elementos decorativos de fondo */}
+      <div className="absolute inset-0">
+        <div className="absolute top-10 left-10 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl"></div>
       </div>
 
-      <textarea
-        className="w-full min-h-[120px] rounded border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-2 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-vertical"
-        placeholder="Pega aquí tu texto en inglés..."
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-      />
+      <div className="relative max-w-4xl mx-auto">
+        {/* Header elegante */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-blue-600 bg-blue-100/80 dark:bg-blue-900/30 dark:text-blue-300 rounded-full border border-blue-200/50 dark:border-blue-800/50 backdrop-blur-sm">
+            <span className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
+            Biblioteca Personal
+          </div>
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
+              Tus Textos
+            </span>
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Crea tu colección personal de textos para aprender inglés de forma inmersiva
+          </p>
+        </div>
 
-      <div className="space-y-4">
-        {texts.map((t) => (
-          <div
-            key={t.id}
-            className="flex flex-col md:flex-row md:items-center justify-between gap-2 p-3 rounded border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800"
-          >
-            <div className="flex-1">
-              <div className="font-medium text-gray-900 dark:text-gray-100">
-                {t.title}
-              </div>
-              <div className="text-xs text-gray-500">
-                {new Date(t.createdAt).toLocaleString()}
-              </div>
+        {/* Formulario de agregar texto */}
+        <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-8 mb-12">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 flex items-center">
+            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mr-3">
+              <span className="text-white text-sm">+</span>
             </div>
-            <div className="flex flex-wrap gap-2 mt-2 md:mt-0">
-              <Link
-                to={`/texts/${t.id}`}
-                className="px-3 py-1 rounded bg-blue-500 text-white text-xs font-medium hover:bg-blue-600"
-              >
-                Leer
-              </Link>
-              <button
-                className="px-3 py-1 rounded bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-100 text-xs font-medium hover:bg-yellow-200 dark:hover:bg-yellow-800"
-                onClick={() => onAttachAudioUrl(t.id)}
-                type="button"
-              >
-                Audio URL
-              </button>
-              <button
-                className="px-3 py-1 rounded bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-100 text-xs font-medium hover:bg-indigo-200 dark:hover:bg-indigo-800"
-                onClick={() => onAttachAudioFile(t.id)}
-                type="button"
-              >
-                Audio Archivo
-              </button>
-              {t.audioRef ? (
+            Agregar Nuevo Texto
+          </h3>
+
+          <div className="space-y-6">
+            <div className="grid md:grid-cols-3 gap-4">
+              <div className="md:col-span-2">
+                <input
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder-gray-500 dark:placeholder-gray-400"
+                  placeholder="Título del texto"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+              </div>
+              <div className="flex gap-3">
                 <button
-                  className="px-3 py-1 rounded bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-medium hover:bg-gray-300 dark:hover:bg-gray-600"
-                  onClick={() => onClearAudio(t.id)}
+                  className="flex-1 px-4 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium hover:from-blue-600 hover:to-blue-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-blue-500/25"
+                  onClick={() => fileInputRef.current?.click()}
                   type="button"
                 >
-                  Quitar Audio
+                  📁 Importar
                 </button>
-              ) : null}
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept=".txt,text/plain"
+                  style={{ display: "none" }}
+                  onChange={onImportTxt}
+                />
+              </div>
+            </div>
+
+            <textarea
+              className="w-full min-h-[140px] px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-vertical transition-all duration-200 placeholder-gray-500 dark:placeholder-gray-400"
+              placeholder="Pega aquí tu texto en inglés..."
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+            />
+
+            <div className="flex justify-end">
               <button
-                className="px-3 py-1 rounded bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-200 text-xs font-medium hover:bg-red-200 dark:hover:bg-red-800"
-                onClick={() => onDeleteText(t.id)}
-                style={{ color: "#b00" }}
+                className="px-8 py-3 rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold hover:from-green-600 hover:to-emerald-700 disabled:from-gray-400 disabled:to-gray-500 transform hover:scale-105 disabled:transform-none transition-all duration-200 shadow-lg hover:shadow-green-500/25 disabled:shadow-none disabled:cursor-not-allowed"
+                onClick={onAdd}
+                disabled={!content.trim()}
                 type="button"
               >
-                Eliminar
+                ✨ Crear Texto
               </button>
             </div>
           </div>
-        ))}
-        {texts.length === 0 && (
-          <div className="p-3 text-center text-gray-500">
-            Aún no hay textos. Agrega uno arriba.
-          </div>
-        )}
+        </div>
+
+        {/* Lista de textos */}
+        <div className="space-y-4">
+          {texts.length > 0 ? (
+            texts.map((t) => (
+              <div
+                key={t.id}
+                className="group bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg hover:shadow-xl hover:border-blue-300/50 dark:hover:border-blue-600/50 transition-all duration-300 overflow-hidden"
+              >
+                <div className="p-6">
+                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                    <div className="flex-1">
+                      <div className="flex items-start justify-between mb-2">
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+                          {t.title}
+                        </h3>
+                        <div className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full">
+                          {new Date(t.createdAt).toLocaleDateString()}
+                        </div>
+                      </div>
+                      <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-2 mb-4">
+                        {t.content.substring(0, 150)}...
+                      </p>
+
+                      {t.audioRef && (
+                        <div className="flex items-center text-sm text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 px-3 py-1 rounded-full w-fit">
+                          <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                          Audio: {t.audioRef.type === 'url' ? 'URL' : t.audioRef.name}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="flex flex-wrap gap-3">
+                      <Link
+                        to={`/texts/${t.id}`}
+                        className="inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium hover:from-blue-600 hover:to-blue-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-blue-500/25"
+                      >
+                        📖 Leer Ahora
+                      </Link>
+
+                      <div className="flex gap-2">
+                        <button
+                          className="p-3 rounded-xl bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-300 hover:bg-yellow-100 dark:hover:bg-yellow-900/40 transition-all duration-200"
+                          onClick={() => onAttachAudioUrl(t.id)}
+                          title="Agregar audio desde URL"
+                          type="button"
+                        >
+                          🔗
+                        </button>
+                        <button
+                          className="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 transition-all duration-200"
+                          onClick={() => onAttachAudioFile(t.id)}
+                          title="Agregar archivo de audio"
+                          type="button"
+                        >
+                          📁
+                        </button>
+                        {t.audioRef && (
+                          <button
+                            className="p-3 rounded-xl bg-gray-50 dark:bg-gray-900/20 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900/40 transition-all duration-200"
+                            onClick={() => onClearAudio(t.id)}
+                            title="Remover audio"
+                            type="button"
+                          >
+                            ❌
+                          </button>
+                        )}
+                        <button
+                          className="p-3 rounded-xl bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 hover:bg-red-100 dark:hover:bg-red-900/40 transition-all duration-200"
+                          onClick={() => onDeleteText(t.id)}
+                          title="Eliminar texto"
+                          type="button"
+                        >
+                          🗑️
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="text-center py-16">
+              <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 rounded-full flex items-center justify-center">
+                <span className="text-4xl">📚</span>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                Tu biblioteca está vacía
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-md mx-auto">
+                Comienza agregando tu primer texto para comenzar tu viaje de aprendizaje en inglés
+              </p>
+              <div className="flex justify-center">
+                <button
+                  className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-blue-500/25"
+                  onClick={() => (document.querySelector('input[placeholder="Título del texto"]') as HTMLInputElement)?.focus()}
+                >
+                  ✨ Crear Primer Texto
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
