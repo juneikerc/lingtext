@@ -3,9 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "react-router build",
-    "dev": "react-router dev",
-    "start": "react-router-serve ./build/server/index.js",
+    "build": "vite build",
+    "dev": "vite",
+    "preview": "vite preview",
+    "deploy": "wrangler deploy",
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
@@ -19,6 +20,8 @@
     "zustand": "^5.0.8"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.12.1",
+    "@cloudflare/workers-types": "^4.20250829.0",
     "@react-router/dev": "^7.7.1",
     "@tailwindcss/vite": "^4.1.4",
     "@types/node": "^20",
@@ -27,6 +30,7 @@
     "tailwindcss": "^4.1.4",
     "typescript": "^5.8.3",
     "vite": "^6.3.3",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^5.1.4",
+    "wrangler": "^4.33.1"
   }
 }
