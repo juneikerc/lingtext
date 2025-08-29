@@ -3,7 +3,7 @@ import OpenAI from "openai";
 
 // That is a "endpoint" Resource Route that returns the text to translate as a response without any html
 
-export async function loader({ params, request, context }: Route.LoaderArgs) {
+export async function loader({ params, request }: Route.LoaderArgs) {
   const url = new URL(request.url);
   const model =
     new URLSearchParams(url.search).get("model") || "openai/gpt-oss-20b:free";
@@ -11,7 +11,7 @@ export async function loader({ params, request, context }: Route.LoaderArgs) {
 
   const openai = new OpenAI({
     baseURL: "https://openrouter.ai/api/v1",
-    apiKey: context.cloudflare.env.OPEN_ROUTER_API_KEY,
+    apiKey: process.env.OPEN_ROUTER_API_KEY,
   });
   // model: "openai/gpt-oss-20b:free",
   // model: "google/gemma-3n-e4b-it:free",
