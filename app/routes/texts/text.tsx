@@ -4,6 +4,15 @@ import Reader from "~/components/Reader";
 import type { AudioRef } from "~/types";
 import ReaderHeader from "~/components/reader/ReaderHeader";
 
+export function meta({ params }: Route.MetaArgs) {
+  return [
+    {
+      name: "robots",
+      content: "noindex",
+    },
+  ];
+}
+
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
   const id = params.id;
   const text = await getText(id);

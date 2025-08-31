@@ -17,6 +17,10 @@ export function meta({}: Route.MetaArgs) {
       content:
         "Gestiona tus palabras desconocidas marcadas durante tu tiempo de lectura.",
     },
+    {
+      name: "robots",
+      content: "noindex",
+    },
   ];
 }
 

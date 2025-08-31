@@ -12,6 +12,10 @@ export function meta({}: Route.MetaArgs) {
       content:
         "Repasa las palabras que has marcado como desconocidas durante tu tiempo de lectura.",
     },
+    {
+      name: "robots",
+      content: "noindex",
+    },
   ];
 }
 
