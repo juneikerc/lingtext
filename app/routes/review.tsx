@@ -4,11 +4,22 @@ import { useState, useEffect } from "react";
 import type { WordEntry } from "~/types";
 import ReviewMode from "~/components/ReviewMode";
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Repaso de vocabulario | LingText" },
+    {
+      name: "description",
+      content:
+        "Repasa las palabras que has marcado como desconocidas durante tu tiempo de lectura.",
+    },
+  ];
+}
+
 export async function clientLoader({ request }: Route.ClientLoaderArgs) {
   const allWords = await getAllUnknownWords();
 
   // Filtrar solo palabras listas para repaso
-  const wordsReadyForReview = allWords.filter(word => {
+  const wordsReadyForReview = allWords.filter((word) => {
     // Primera vez que se ve la palabra
     if (!word.srData) return true;
 
@@ -30,12 +41,17 @@ export async function clientLoader({ request }: Route.ClientLoaderArgs) {
     words: wordsReadyForReview,
     selectedWord,
     totalWords: allWords.length,
-    readyWordsCount: wordsReadyForReview.length
+    readyWordsCount: wordsReadyForReview.length,
   };
 }
 
 export default function Review({ loaderData }: Route.ComponentProps) {
-  const { words: initialWords, selectedWord, totalWords, readyWordsCount } = loaderData;
+  const {
+    words: initialWords,
+    selectedWord,
+    totalWords,
+    readyWordsCount,
+  } = loaderData;
   const [words, setWords] = useState<WordEntry[]>(initialWords);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
 
@@ -68,7 +84,7 @@ export default function Review({ loaderData }: Route.ComponentProps) {
 
   const handleRetryWord = (word: WordEntry) => {
     // Añadir la palabra al final de la lista para reintento
-    setWords(prevWords => [...prevWords, word]);
+    setWords((prevWords) => [...prevWords, word]);
   };
 
   // Si no hay palabras listas para repaso
@@ -83,7 +99,8 @@ export default function Review({ loaderData }: Route.ComponentProps) {
             No hay palabras para repasar
           </h2>
           <p className="text-gray-600 dark:text-gray-400 mb-8">
-            Todas las palabras están programadas para repasos futuros. Has hecho un excelente trabajo manteniendo tu rutina de estudio.
+            Todas las palabras están programadas para repasos futuros. Has hecho
+            un excelente trabajo manteniendo tu rutina de estudio.
           </p>
 
           <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-6 mb-8">

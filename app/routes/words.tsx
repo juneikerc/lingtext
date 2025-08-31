@@ -9,6 +9,17 @@ export async function clientLoader() {
   return words;
 }
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Gestión de vocabulario | LingText" },
+    {
+      name: "description",
+      content:
+        "Gestiona tus palabras desconocidas marcadas durante tu tiempo de lectura.",
+    },
+  ];
+}
+
 export default function Words({ loaderData }: Route.ComponentProps) {
   const wordsLoaderData = loaderData;
   const [words, setWords] = useState<WordEntry[]>(wordsLoaderData);
