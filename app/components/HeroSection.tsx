@@ -65,7 +65,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
           <span className="bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
             LingText
           </span>
-          <br />
+          <br />{" "}
           <span className="text-3xl md:text-4xl font-light text-gray-300 mt-2 block">
             Alternativa gratuita a LingQ
           </span>
