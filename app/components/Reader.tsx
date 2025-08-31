@@ -199,16 +199,19 @@ export default function Reader({ text }: Props) {
 
       // Validar que sea un archivo de audio válido
       const fileName = file.name.toLowerCase();
-      const isAudioFile = file.type.startsWith('audio/') ||
-                         fileName.endsWith('.mp3') ||
-                         fileName.endsWith('.wav') ||
-                         fileName.endsWith('.m4a') ||
-                         fileName.endsWith('.aac') ||
-                         fileName.endsWith('.ogg') ||
-                         fileName.endsWith('.flac');
+      const isAudioFile =
+        file.type.startsWith("audio/") ||
+        fileName.endsWith(".mp3") ||
+        fileName.endsWith(".wav") ||
+        fileName.endsWith(".m4a") ||
+        fileName.endsWith(".aac") ||
+        fileName.endsWith(".ogg") ||
+        fileName.endsWith(".flac");
 
       if (!isAudioFile) {
-        throw new Error(`Tipo de archivo no válido: ${file.type || 'desconocido'}. Solo se permiten archivos de audio (MP3, WAV, M4A, AAC, OGG, FLAC).`);
+        throw new Error(
+          `Tipo de archivo no válido: ${file.type || "desconocido"}. Solo se permiten archivos de audio (MP3, WAV, M4A, AAC, OGG, FLAC).`
+        );
       }
 
       // Verificar tamaño del archivo (advertir si es muy grande)
@@ -225,7 +228,9 @@ export default function Reader({ text }: Props) {
       }
 
       setFileSize(file.size);
-      console.log(`Archivo obtenido: ${file.name} (${file.size} bytes, ${file.type})`);
+      console.log(
+        `Archivo obtenido: ${file.name} (${file.size} bytes, ${file.type})`
+      );
 
       // Crear ObjectURL de forma segura
       const url = URL.createObjectURL(file);
@@ -235,7 +240,6 @@ export default function Reader({ text }: Props) {
       setAudioAccessError(false);
 
       console.log("Audio local cargado exitosamente");
-
     } catch (error) {
       console.error("Error al cargar archivo local:", error);
 
@@ -263,11 +267,13 @@ export default function Reader({ text }: Props) {
 
   async function handleMouseUp() {
     const sel = window.getSelection();
+
     if (!sel || sel.isCollapsed) return;
     const range = sel.getRangeAt(0);
+    console.log(sel.toString());
     const parent = containerRef.current;
     if (!parent || !parent.contains(range.commonAncestorContainer)) return;
-    const text = sel.toString().trim();
+    const text = sel.toString().trim().replaceAll("Clic para traducir", "");
     if (!text) return;
     const rect = range.getBoundingClientRect();
     const { x, y } = relativePos(rect.left + rect.width / 2, rect.top);
@@ -275,6 +281,7 @@ export default function Reader({ text }: Props) {
     const words = Array.from(text.matchAll(/[A-Za-z]+(?:'[A-Za-z]+)?/g))
       .map((m) => normalizeWord(m[0]))
       .filter(Boolean);
+
     const lowers = Array.from(new Set(words));
     const translations: Array<{ word: string; translation: string }> = [];
     for (const w of lowers) {
