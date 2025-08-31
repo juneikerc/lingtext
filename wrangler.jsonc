@@ -10,9 +10,6 @@
   "vars": {
     "VALUE_FROM_CLOUDFLARE": "Hello from Cloudflare",
   },
-  "assets": {
-    "html_handling": "force-trailing-slash",
-  },
   "observability": {
     "enabled": true,
   },
