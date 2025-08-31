@@ -19,7 +19,7 @@ export function meta({}: Route.MetaArgs) {
 export const links: Route.LinksFunction = () => [
   {
     rel: "canonical",
-    href: "https://lingtext.com",
+    href: "https://lingtext.org",
   },
 ];
 
