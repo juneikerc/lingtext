@@ -10,6 +10,5 @@ export interface SelectionPopupState {
   x: number;
   y: number;
   text: string;
-  lowers: string[];
-  translations: Array<{ word: string; translation: string }>;
+  translation: string;
 }

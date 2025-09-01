@@ -270,54 +270,57 @@ export default function Reader({ text }: Props) {
 
     if (!sel || sel.isCollapsed) return;
     const range = sel.getRangeAt(0);
-    console.log(sel.toString());
     const parent = containerRef.current;
     if (!parent || !parent.contains(range.commonAncestorContainer)) return;
+
     const text = sel.toString().trim().replaceAll("Clic para traducir", "");
+
     if (!text) return;
     const rect = range.getBoundingClientRect();
     const { x, y } = relativePos(rect.left + rect.width / 2, rect.top);
     // collect word lowers
-    const words = Array.from(text.matchAll(/[A-Za-z]+(?:'[A-Za-z]+)?/g))
-      .map((m) => normalizeWord(m[0]))
-      .filter(Boolean);
+    // const words = Array.from(text.matchAll(/[A-Za-z]+(?:'[A-Za-z]+)?/g))
+    //   .map((m) => normalizeWord(m[0]))
+    //   .filter(Boolean);
 
-    const lowers = Array.from(new Set(words));
-    const translations: Array<{ word: string; translation: string }> = [];
-    for (const w of lowers) {
-      const orig = w; // use lower as key; for display we can use w
-      const t = await translateTerm(orig, selected);
-      translations.push({ word: orig, translation: t.translation });
-    }
+    // const lowers = Array.from(new Set(words));
+    // const translations: Array<{ word: string; translation: string }> = [];
+    // for (const w of lowers) {
+    //   const orig = w; // use lower as key; for display we can use w
+    //   const t = await translateTerm(orig, selected);
+    //   translations.push({ word: orig, translation: t.translation });
+    // }
+
+    const translation = await translateTerm(text, selected);
     setPopup(null);
-    setSelPopup({ x, y, text, lowers, translations });
+    setSelPopup({ x, y, text, translation: translation.translation });
   }
 
-  async function saveSelectionUnknowns() {
-    if (!selPopup) return;
-    const settings = await getSettings();
-    for (const lower of selPopup.lowers) {
-      const existing = await getWord(lower);
-      if (existing) continue;
-      const t = await translateTerm(lower, selected);
-      await putUnknownWord({
-        word: lower,
-        wordLower: lower,
-        translation: t.translation,
-        status: "unknown",
-        addedAt: Date.now(),
-        voice: {
-          name: settings.tts.voiceName,
-          lang: settings.tts.lang,
-          rate: settings.tts.rate,
-          pitch: settings.tts.pitch,
-          volume: settings.tts.volume,
-        },
-      });
-    }
-    await refreshUnknowns();
-    setSelPopup(null);
-  }
+  // async function saveSelectionUnknowns() {
+  //   if (!selPopup) return;
+  //   const settings = await getSettings();
+  //   for (const lower of selPopup.lowers) {
+  //     const existing = await getWord(lower);
+  //     if (existing) continue;
+  //     const t = await translateTerm(lower, selected);
+  //     await putUnknownWord({
+  //       word: lower,
+  //       wordLower: lower,
+  //       translation: t.translation,
+  //       status: "unknown",
+  //       addedAt: Date.now(),
+  //       voice: {
+  //         name: settings.tts.voiceName,
+  //         lang: settings.tts.lang,
+  //         rate: settings.tts.rate,
+  //         pitch: settings.tts.pitch,
+  //         volume: settings.tts.volume,
+  //       },
+  //     });
+  //   }
+  //   await refreshUnknowns();
+  //   setSelPopup(null);
+  // }
 
   return (
     <div
@@ -357,11 +360,7 @@ export default function Reader({ text }: Props) {
       )}
 
       {selPopup && (
-        <SelectionPopup
-          selPopup={selPopup}
-          onSaveUnknowns={saveSelectionUnknowns}
-          onClose={() => setSelPopup(null)}
-        />
+        <SelectionPopup selPopup={selPopup} onClose={() => setSelPopup(null)} />
       )}
     </div>
   );
