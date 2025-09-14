@@ -1,9 +1,14 @@
-import { useEffect, useRef, useState } from "react";
-import { addText, deleteText, getAllTexts, updateTextAudioRef } from "../db";
-import type { AudioRef, TextItem } from "../types";
-import { uid } from "../utils/id";
-import { pickAudioFile } from "../utils/fs";
+import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router";
+import {
+  getAllTexts,
+  addText,
+  deleteText,
+  updateTextAudioRef,
+} from "../db";
+import type { TextItem, AudioRef } from "../types";
+import { pickAudioFile } from "../utils/fs";
+import { validateTextContent, validateTitle, validateFileType, sanitizeTextContent } from "../utils/validation";
 
 interface Props {
   onOpen: (id: string) => void;
@@ -26,17 +31,39 @@ export default function Library({ onOpen }: Props) {
   }
 
   async function onAdd() {
-    const t = title.trim() || "Sin título";
-    const c = content.trim();
-    if (!c) return;
-    const item: TextItem = {
-      id: uid(),
-      title: t,
-      content: c,
+    if (!content.trim()) return;
+
+    // Validate title
+    const titleValidation = validateTitle(title.trim() || "Texto sin título");
+    if (!titleValidation.isValid) {
+      alert(`Error en el título: ${titleValidation.error}`);
+      return;
+    }
+
+    // Validate and sanitize content
+    const contentValidation = validateTextContent(content.trim());
+    if (!contentValidation.isValid) {
+      alert(`Error en el contenido: ${contentValidation.error}`);
+      return;
+    }
+
+    // Show warnings if any
+    if (contentValidation.warnings && contentValidation.warnings.length > 0) {
+      const warningMessage = "Advertencias encontradas:\n" + contentValidation.warnings.join("\n");
+      const proceed = confirm(warningMessage + "\n\n¿Deseas continuar?");
+      if (!proceed) return;
+    }
+
+    const sanitizedContent = sanitizeTextContent(content.trim());
+    
+    const text: TextItem = {
+      id: crypto.randomUUID(),
+      title: title.trim() || "Texto sin título",
+      content: sanitizedContent,
       createdAt: Date.now(),
       audioRef: null,
     };
-    await addText(item);
+    await addText(text);
     setTitle("");
     setContent("");
     await refresh();
@@ -45,10 +72,54 @@ export default function Library({ onOpen }: Props) {
   async function onImportTxt(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
-    const text = await file.text();
-    setTitle(file.name.replace(/\.[^.]+$/, ""));
-    setContent(text);
-    e.target.value = "";
+
+    try {
+      // Validate file type and size
+      const fileValidation = validateFileType(file);
+      if (!fileValidation.isValid) {
+        alert(`Error en el archivo: ${fileValidation.error}`);
+        e.target.value = "";
+        return;
+      }
+
+      const text = await file.text();
+      const filename = file.name.replace(/\.[^.]+$/, "");
+
+      // Validate content
+      const contentValidation = validateTextContent(text, file.name);
+      if (!contentValidation.isValid) {
+        alert(`Error en el contenido del archivo: ${contentValidation.error}`);
+        e.target.value = "";
+        return;
+      }
+
+      // Show warnings if any
+      if (contentValidation.warnings && contentValidation.warnings.length > 0) {
+        const warningMessage = "Advertencias encontradas en el archivo:\n" + contentValidation.warnings.join("\n");
+        const proceed = confirm(warningMessage + "\n\n¿Deseas continuar con la importación?");
+        if (!proceed) {
+          e.target.value = "";
+          return;
+        }
+      }
+
+      // Validate title
+      const titleValidation = validateTitle(filename);
+      if (!titleValidation.isValid) {
+        alert(`Error en el nombre del archivo: ${titleValidation.error}`);
+        e.target.value = "";
+        return;
+      }
+
+      const sanitizedContent = sanitizeTextContent(text);
+      setTitle(filename);
+      setContent(sanitizedContent);
+      e.target.value = "";
+    } catch (error) {
+      console.error("Error importing file:", error);
+      alert("Error al importar el archivo. Verifica que sea un archivo de texto válido.");
+      e.target.value = "";
+    }
   }
 
   async function onAttachAudioUrl(textId: string) {
