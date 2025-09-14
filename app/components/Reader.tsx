@@ -5,9 +5,12 @@ import {
   putUnknownWord,
   deleteWord,
   getSettings,
+  getAllPhrases,
+  putPhrase,
+  getPhrase,
 } from "../db";
 import { type AudioRef } from "../types";
-import { normalizeWord } from "../utils/tokenize";
+import { normalizeWord, tokenize } from "../utils/tokenize";
 import { speak } from "../utils/tts";
 import { translateTerm } from "../utils/translate";
 import { ensureReadPermission } from "../utils/fs";
@@ -39,12 +42,14 @@ export default function Reader({ text }: Props) {
   const { selected } = useTranslatorStore();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [unknownSet, setUnknownSet] = useState<Set<string>>(new Set());
+  const [phrases, setPhrases] = useState<string[][]>([]);
   const [popup, setPopup] = useState<PopupState | null>(null);
   const [selPopup, setSelPopup] = useState<SelPopupState | null>(null);
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [audioAccessError, setAudioAccessError] = useState(false);
   const [isLocalFile, setIsLocalFile] = useState(false);
   const [fileSize, setFileSize] = useState<number | null>(null);
+  const phraseCacheRef = useRef<Map<string, string>>(new Map());
 
   // Detectar si es archivo local y obtener información
   useEffect(() => {
@@ -82,11 +87,17 @@ export default function Reader({ text }: Props) {
   // load unknown words
   useEffect(() => {
     refreshUnknowns();
+    refreshPhrases();
   }, []);
 
   const refreshUnknowns = useCallback(async () => {
     const all = await getAllUnknownWords();
     setUnknownSet(new Set(all.map((w) => w.wordLower)));
+  }, []);
+
+  const refreshPhrases = useCallback(async () => {
+    const all = await getAllPhrases();
+    setPhrases(all.map((p) => p.parts));
   }, []);
 
   const onWordClick = useCallback(async (e: React.MouseEvent<HTMLSpanElement>) => {
@@ -284,10 +295,65 @@ export default function Reader({ text }: Props) {
     //   translations.push({ word: orig, translation: t.translation });
     // }
 
+    // Intentar usar cache de frases: primero en DB, luego en memoria
+    const parts = tokenize(text)
+      .filter((t) => t.isWord)
+      .map((t) => t.lower || normalizeWord(t.text))
+      .filter((w) => w.length > 0);
+
+    if (parts.length >= 2) {
+      const phraseLower = parts.join(" ");
+      try {
+        const existing = await getPhrase(phraseLower);
+        if (existing && existing.translation) {
+          setPopup(null);
+          setSelPopup({ x, y, text, translation: existing.translation });
+          return;
+        }
+        const cached = phraseCacheRef.current.get(phraseLower);
+        if (cached) {
+          setPopup(null);
+          setSelPopup({ x, y, text, translation: cached });
+          return;
+        }
+      } catch {}
+    }
+
     const translation = await translateTerm(text, selected);
+    // Guardar en cache en memoria si es frase (multi-palabra)
+    if (parts.length >= 2) {
+      const phraseLower = parts.join(" ");
+      phraseCacheRef.current.set(phraseLower, translation.translation);
+    }
     setPopup(null);
     setSelPopup({ x, y, text, translation: translation.translation });
   }
+
+  const onSavePhrase = useCallback(async (text: string, translation: string) => {
+    const parts = tokenize(text)
+      .filter((t) => t.isWord)
+      .map((t) => t.lower || normalizeWord(t.text))
+      .filter((w) => w.length > 0);
+
+    if (parts.length < 2) {
+      alert("Selecciona al menos dos palabras para guardar una frase compuesta.");
+      return;
+    }
+
+    const phraseLower = parts.join(" ");
+    await putPhrase({
+      phrase: text,
+      phraseLower,
+      translation,
+      parts,
+      addedAt: Date.now(),
+    });
+
+    // Actualizar lista local de frases para subrayado inmediato
+    setPhrases((prev) => [...prev, parts]);
+
+    setSelPopup(null);
+  }, []);
 
   // async function saveSelectionUnknowns() {
   //   if (!selPopup) return;
@@ -339,6 +405,7 @@ export default function Reader({ text }: Props) {
       <ReaderText
         content={text.content}
         unknownSet={unknownSet}
+        phrases={phrases}
         onWordClick={onWordClick}
       />
 
@@ -353,7 +420,11 @@ export default function Reader({ text }: Props) {
       )}
 
       {selPopup && (
-        <SelectionPopup selPopup={selPopup} onClose={() => setSelPopup(null)} />
+        <SelectionPopup
+          selPopup={selPopup}
+          onClose={() => setSelPopup(null)}
+          onSavePhrase={onSavePhrase}
+        />
       )}
     </div>
   );

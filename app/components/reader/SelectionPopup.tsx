@@ -4,11 +4,13 @@ import type { SelectionPopupState } from "./types";
 interface SelectionPopupProps {
   selPopup: SelectionPopupState;
   onClose: () => void;
+  onSavePhrase: (text: string, translation: string) => void;
 }
 
 export default function SelectionPopup({
   selPopup,
   onClose,
+  onSavePhrase,
 }: SelectionPopupProps) {
   return (
     <div
@@ -53,6 +55,23 @@ export default function SelectionPopup({
                   </span>
                 )}
               </p>
+            </div>
+            {/* Acciones para la selección */}
+            <div className="mt-4 flex gap-2 justify-center">
+              <button
+                className="px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-lg border border-green-200 dark:border-green-800 hover:bg-green-200/60 dark:hover:bg-green-800/50 transition-colors"
+                onClick={() => onSavePhrase(selPopup.text, selPopup.translation)}
+                title="Guardar como frase compuesta"
+              >
+                Guardar frase
+              </button>
+              <button
+                className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                onClick={onClose}
+                title="Cerrar"
+              >
+                Cerrar
+              </button>
             </div>
           </div>
         </div>

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
 import type { WordEntry } from "~/types";
-import { deleteWord, getSettings, putUnknownWord } from "~/db";
+import { deleteWord, getSettings, putUnknownWord, getPhrase, putPhrase, deletePhrase } from "~/db";
 import { speak } from "~/utils/tts";
 import { calculateNextReview, formatTimeUntilReview } from "~/utils/spaced-repetition";
+import { tokenize, normalizeWord } from "~/utils/tokenize";
 
 interface ReviewModeProps {
   words: WordEntry[];
@@ -61,16 +62,40 @@ export default function ReviewMode({
       const newSrData = calculateNextReview(currentWord.srData, quality);
 
       if (remembered) {
-        // Respuesta correcta: actualizar datos SR y continuar
-        await putUnknownWord({
-          word: currentWord.word,
-          wordLower: currentWord.wordLower,
-          translation: currentWord.translation,
-          status: "unknown",
-          addedAt: currentWord.addedAt,
-          voice: currentWord.voice,
-          srData: newSrData,
-        });
+        // Respuesta correcta: actualizar SR según sea palabra o frase
+        if (currentWord.isPhrase) {
+          // Actualizar la frase existente en DB (o crear si faltara)
+          const existing = await getPhrase(currentWord.wordLower);
+          if (existing) {
+            await putPhrase({
+              ...existing,
+              srData: newSrData,
+            });
+          } else {
+            // Fallback: reconstruir parts desde el texto de la frase
+            const parts = tokenize(currentWord.word)
+              .filter(t => t.isWord)
+              .map(t => t.lower || normalizeWord(t.text));
+            await putPhrase({
+              phrase: currentWord.word,
+              phraseLower: currentWord.wordLower,
+              translation: currentWord.translation,
+              parts,
+              addedAt: currentWord.addedAt,
+              srData: newSrData,
+            });
+          }
+        } else {
+          await putUnknownWord({
+            word: currentWord.word,
+            wordLower: currentWord.wordLower,
+            translation: currentWord.translation,
+            status: "unknown",
+            addedAt: currentWord.addedAt,
+            voice: currentWord.voice,
+            srData: newSrData,
+          });
+        }
 
         setSessionStats(prev => ({
           ...prev,
@@ -114,7 +139,11 @@ export default function ReviewMode({
 
   const markAsKnown = async () => {
     if (!currentWord) return;
-    await deleteWord(currentWord.wordLower);
+    if (currentWord.isPhrase) {
+      await deletePhrase(currentWord.wordLower);
+    } else {
+      await deleteWord(currentWord.wordLower);
+    }
     onRefresh();
 
     if (currentIndex >= words.length - 1) {

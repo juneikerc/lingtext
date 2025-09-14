@@ -1,4 +1,4 @@
-import { getAllUnknownWords } from "~/db";
+import { getAllUnknownWords, getAllPhrases } from "~/db";
 import type { Route } from "./+types/review";
 import { useState, useEffect, Suspense, lazy } from "react";
 import type { WordEntry } from "~/types";
@@ -23,9 +23,23 @@ export function meta({}: Route.MetaArgs) {
 
 export async function clientLoader({ request }: Route.ClientLoaderArgs) {
   const allWords = await getAllUnknownWords();
+  const allPhrases = await getAllPhrases();
+
+  // Map phrases to WordEntry-like items for review UI
+  const phraseWords = allPhrases.map((p) => ({
+    word: p.phrase,
+    wordLower: p.phraseLower,
+    translation: p.translation,
+    status: "unknown" as const,
+    addedAt: p.addedAt,
+    srData: p.srData,
+    isPhrase: true,
+  }));
+
+  const combined = [...allWords, ...phraseWords];
 
   // Filtrar solo palabras listas para repaso
-  const wordsReadyForReview = allWords.filter((word) => {
+  const wordsReadyForReview = combined.filter((word) => {
     // Primera vez que se ve la palabra
     if (!word.srData) return true;
 
@@ -46,7 +60,7 @@ export async function clientLoader({ request }: Route.ClientLoaderArgs) {
   return {
     words: wordsReadyForReview,
     selectedWord,
-    totalWords: allWords.length,
+    totalWords: combined.length,
     readyWordsCount: wordsReadyForReview.length,
   };
 }

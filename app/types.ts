@@ -43,6 +43,24 @@ export interface WordEntry {
   voice?: VoiceParams;
   // Datos del algoritmo de repetición espaciada
   srData?: SpacedRepetitionData;
+  // Flag opcional para indicar que este item representa una frase en el UI de repaso
+  isPhrase?: boolean;
+}
+
+// Nueva entidad para frases compuestas
+export interface PhraseEntry {
+  // Frase original tal como la seleccionó el usuario
+  phrase: string;
+  // Clave normalizada en minúsculas sin puntuación, separada por espacios
+  phraseLower: string;
+  // Traducción de la frase
+  translation: string;
+  // Partes (palabras) normalizadas que componen la frase, en orden
+  parts: string[];
+  // Fecha en la que se añadió
+  addedAt: number;
+  // Datos del algoritmo de repetición espaciada para frases
+  srData?: SpacedRepetitionData;
 }
 
 export interface Settings {

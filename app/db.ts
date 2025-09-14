@@ -1,7 +1,7 @@
-import type { AudioRef, Settings, TextItem, WordEntry } from "./types";
+import type { AudioRef, Settings, TextItem, WordEntry, PhraseEntry } from "./types";
 
 const DB_NAME = "ling_text_db";
-const DB_VERSION = 1;
+const DB_VERSION = 2; // bumped to add phrases store
 
 function openDB(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
@@ -20,6 +20,10 @@ function openDB(): Promise<IDBDatabase> {
       // settings store
       if (!db.objectStoreNames.contains("settings")) {
         db.createObjectStore("settings", { keyPath: "id" });
+      }
+      // phrases store, keyed by normalized phraseLower
+      if (!db.objectStoreNames.contains("phrases")) {
+        db.createObjectStore("phrases", { keyPath: "phraseLower" });
       }
     };
 
@@ -135,6 +139,51 @@ export async function getAllUnknownWords(): Promise<WordEntry[]> {
       .getAll();
     req.onsuccess = () => resolve((req.result || []) as WordEntry[]);
     req.onerror = () => reject(req.error);
+  });
+}
+
+// Phrases (multi-word expressions)
+export async function putPhrase(entry: PhraseEntry): Promise<void> {
+  const normalized: PhraseEntry = {
+    ...entry,
+    phraseLower: entry.parts.join(" "),
+    parts: entry.parts.map((p) => p.toLowerCase()),
+  };
+  await tx(["phrases"], "readwrite", (t) => {
+    t.objectStore("phrases").put(normalized);
+  });
+}
+
+export async function getAllPhrases(): Promise<PhraseEntry[]> {
+  const db = await openDB();
+  return new Promise<PhraseEntry[]>((resolve, reject) => {
+    const req = db
+      .transaction(["phrases"], "readonly")
+      .objectStore("phrases")
+      .getAll();
+    req.onsuccess = () => resolve((req.result || []) as PhraseEntry[]);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+export async function getPhrase(
+  phraseOrLower: string
+): Promise<PhraseEntry | undefined> {
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const req = db
+      .transaction(["phrases"], "readonly")
+      .objectStore("phrases")
+      .get(phraseOrLower.toLowerCase());
+    req.onsuccess = () => resolve(req.result as PhraseEntry | undefined);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+export async function deletePhrase(phraseOrLower: string): Promise<void> {
+  const key = phraseOrLower.toLowerCase();
+  await tx(["phrases"], "readwrite", (t) => {
+    t.objectStore("phrases").delete(key);
   });
 }
 
