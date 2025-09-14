@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import {
   getAllUnknownWords,
   getWord,
@@ -84,12 +84,12 @@ export default function Reader({ text }: Props) {
     refreshUnknowns();
   }, []);
 
-  async function refreshUnknowns() {
+  const refreshUnknowns = useCallback(async () => {
     const all = await getAllUnknownWords();
     setUnknownSet(new Set(all.map((w) => w.wordLower)));
-  }
+  }, []);
 
-  const onWordClick = async (e: React.MouseEvent<HTMLSpanElement>) => {
+  const onWordClick = useCallback(async (e: React.MouseEvent<HTMLSpanElement>) => {
     const target = e.currentTarget as HTMLSpanElement;
     if (!target?.dataset?.lower || !target?.dataset?.word) return;
     const rect = target.getBoundingClientRect();
@@ -114,20 +114,20 @@ export default function Reader({ text }: Props) {
     const translation = await translateTerm(word, selected);
     setSelPopup(null);
     setPopup({ x, y, word, lower, translation: translation.translation });
-  };
+  }, [selected]);
 
-  function relativePos(x: number, y: number) {
+  const relativePos = useCallback((x: number, y: number) => {
     const el = containerRef.current;
     if (!el) return { x, y };
     const r = el.getBoundingClientRect();
     return { x: x - r.left, y: y - r.top };
-  }
+  }, []);
 
-  async function markUnknown(
+  const markUnknown = useCallback(async (
     lower: string,
     original: string,
     translation: string
-  ) {
+  ) => {
     const settings = await getSettings();
     await putUnknownWord({
       word: original,
@@ -145,9 +145,9 @@ export default function Reader({ text }: Props) {
     });
     setUnknownSet((prev) => new Set(prev).add(lower));
     setPopup(null);
-  }
+  }, []);
 
-  async function markKnown(lower: string) {
+  const markKnown = useCallback(async (lower: string) => {
     await deleteWord(lower);
     setUnknownSet((prev) => {
       const n = new Set(prev);
@@ -155,18 +155,18 @@ export default function Reader({ text }: Props) {
       return n;
     });
     setPopup(null);
-  }
+  }, []);
 
-  async function onSpeak(word: string, e: React.MouseEvent) {
+  const onSpeak = useCallback(async (word: string, e: React.MouseEvent) => {
     e.stopPropagation();
     const settings = await getSettings();
     await speak(word, settings.tts);
-  }
+  }, []);
 
-  function clearPopups() {
+  const clearPopups = useCallback(() => {
     setPopup(null);
     setSelPopup(null);
-  }
+  }, []);
 
   async function reauthorizeAudio() {
     const t = text;
@@ -179,7 +179,6 @@ export default function Reader({ text }: Props) {
         setAudioUrl(null);
       }
 
-      console.log("Intentando obtener permisos para archivo local...");
 
       // Verificar y solicitar permisos
       const hasPermission = await ensureReadPermission(t.audioRef.fileHandle);
@@ -192,7 +191,6 @@ export default function Reader({ text }: Props) {
         return;
       }
 
-      console.log("Permisos obtenidos, obteniendo archivo...");
 
       // Obtener el archivo
       const file = await t.audioRef.fileHandle.getFile();
@@ -228,18 +226,13 @@ export default function Reader({ text }: Props) {
       }
 
       setFileSize(file.size);
-      console.log(
-        `Archivo obtenido: ${file.name} (${file.size} bytes, ${file.type})`
-      );
 
       // Crear ObjectURL de forma segura
       const url = URL.createObjectURL(file);
-      console.log("ObjectURL creado:", url);
 
       setAudioUrl(url);
       setAudioAccessError(false);
 
-      console.log("Audio local cargado exitosamente");
     } catch (error) {
       console.error("Error al cargar archivo local:", error);
 

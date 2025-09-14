@@ -1,8 +1,10 @@
 import { getAllUnknownWords } from "~/db";
 import type { Route } from "./+types/review";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense, lazy } from "react";
 import type { WordEntry } from "~/types";
-import ReviewMode from "~/components/ReviewMode";
+import LoadingSpinner from "~/components/LoadingSpinner";
+
+const ReviewMode = lazy(() => import("~/components/ReviewMode"));
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -138,14 +140,16 @@ export default function Review({ loaderData }: Route.ComponentProps) {
   }
 
   return (
-    <ReviewMode
-      words={words}
-      currentIndex={currentWordIndex}
-      onNext={nextWord}
-      onPrev={prevWord}
-      onRefresh={refreshWords}
-      onRetryWord={handleRetryWord}
-      totalWords={words.length}
-    />
+    <Suspense fallback={<LoadingSpinner message="Cargando modo repaso..." />}>
+      <ReviewMode
+        words={words}
+        currentIndex={currentWordIndex}
+        onNext={nextWord}
+        onPrev={prevWord}
+        onRefresh={refreshWords}
+        onRetryWord={handleRetryWord}
+        totalWords={words.length}
+      />
+    </Suspense>
   );
 }

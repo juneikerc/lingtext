@@ -1,8 +1,10 @@
 import { getAllUnknownWords } from "~/db";
 import type { Route } from "./+types/words";
-import { useState } from "react";
+import { useState, Suspense, lazy } from "react";
 import type { WordEntry } from "~/types";
-import UnknownWordsSection from "~/components/UnknownWordsSection";
+import LoadingSpinner from "~/components/LoadingSpinner";
+
+const UnknownWordsSection = lazy(() => import("~/components/UnknownWordsSection"));
 
 export async function clientLoader() {
   const words = await getAllUnknownWords();
@@ -28,12 +30,13 @@ export default function Words({ loaderData }: Route.ComponentProps) {
   const wordsLoaderData = loaderData;
   const [words, setWords] = useState<WordEntry[]>(wordsLoaderData);
 
+  const handleRemove = (wordLower: string) => {
+    setWords((prev) => prev.filter((w) => w.wordLower !== wordLower))
+  }
+
   return (
-    <UnknownWordsSection
-      words={words}
-      onRemove={(wordLower) =>
-        setWords((prev) => prev.filter((w) => w.wordLower !== wordLower))
-      }
-    />
+    <Suspense fallback={<LoadingSpinner message="Cargando vocabulario..." />}>
+      <UnknownWordsSection words={words} onRemove={handleRemove} />
+    </Suspense>
   );
 }

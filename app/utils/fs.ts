@@ -32,7 +32,6 @@ export async function pickAudioFile(): Promise<FileSystemFileHandle | null> {
     ],
   });
 
-  console.log(handle);
   return handle ?? null;
 }
 

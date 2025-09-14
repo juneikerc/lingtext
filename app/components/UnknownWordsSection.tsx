@@ -4,42 +4,8 @@ import type { WordEntry } from "~/types";
 import { exportUnknownWordsCsv } from "~/utils/anki";
 import { deleteWord, getSettings } from "~/db";
 import { speak } from "~/utils/tts";
+import { isWordReadyForReview, formatTimeUntilReview, calculateReadyWords } from "~/utils/spaced-repetition";
 
-// Función para determinar si una palabra está lista para repaso
-const isWordReadyForReview = (word: WordEntry): boolean => {
-  if (!word.srData) return true; // Primera vez
-  return Date.now() >= word.srData.nextReview;
-};
-
-// Función para formatear tiempo restante
-const formatTimeUntilReview = (nextReview: number): string => {
-  const now = Date.now();
-  const diff = nextReview - now;
-
-  if (diff <= 0) return "Ahora";
-
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-  if (days > 0) {
-    return `${days} día${days > 1 ? 's' : ''}`;
-  } else if (hours > 0) {
-    return `${hours} hora${hours > 1 ? 's' : ''}`;
-  } else {
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    return `${minutes} min`;
-  }
-};
-
-// Función para calcular palabras listas para repaso
-const calculateReadyWords = (words: WordEntry[]) => {
-  const ready = words.filter(isWordReadyForReview);
-  return {
-    ready: ready.length,
-    total: words.length,
-    percentage: words.length > 0 ? Math.round((ready.length / words.length) * 100) : 0
-  };
-};
 
 interface UnknownWordsSectionProps {
   words: WordEntry[];

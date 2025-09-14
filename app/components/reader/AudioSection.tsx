@@ -137,7 +137,6 @@ export default function AudioSection({
         const bufferedEnd = buffered.end(buffered.length - 1);
         const duration = audioRef.current.duration;
         const bufferedPercentage = duration > 0 ? (bufferedEnd / duration) * 100 : 0;
-        console.log(`Buffer progress: ${bufferedPercentage.toFixed(1)}%`);
       }
     }
   };

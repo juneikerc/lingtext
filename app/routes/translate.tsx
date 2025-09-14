@@ -26,7 +26,6 @@ export async function loader({ params, request, context }: Route.LoaderArgs) {
     ],
   });
 
-  // console.log(completion.choices);
 
   return new Response(
     JSON.stringify({

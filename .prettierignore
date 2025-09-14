@@ -1,0 +1,8 @@
+build/
+node_modules/
+.react-router/
+*.min.js
+*.min.css
+package-lock.json
+worker-configuration.d.ts
+.wrangler/

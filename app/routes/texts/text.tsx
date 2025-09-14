@@ -1,8 +1,12 @@
 import { getText } from "~/db";
 import type { Route } from "./+types/text";
-import Reader from "~/components/Reader";
+import { Suspense, lazy } from "react";
 import type { AudioRef } from "~/types";
 import ReaderHeader from "~/components/reader/ReaderHeader";
+import LoadingSpinner from "~/components/LoadingSpinner";
+import ReaderErrorBoundary from "~/components/ReaderErrorBoundary";
+
+const Reader = lazy(() => import("~/components/Reader"));
 
 export function meta({ params }: Route.MetaArgs) {
   return [
@@ -58,7 +62,11 @@ export default function Text({ loaderData }: Route.ComponentProps) {
   return (
     <>
       <ReaderHeader title={text.title} />
-      <Reader text={text} />
+      <ReaderErrorBoundary>
+        <Suspense fallback={<LoadingSpinner message="Cargando lector..." />}>
+          <Reader text={text} />
+        </Suspense>
+      </ReaderErrorBoundary>
     </>
   );
 }
