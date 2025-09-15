@@ -1,14 +1,14 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router";
-import {
-  getAllTexts,
-  addText,
-  deleteText,
-  updateTextAudioRef,
-} from "../db";
+import { getAllTexts, addText, deleteText, updateTextAudioRef } from "../db";
 import type { TextItem, AudioRef } from "../types";
 import { pickAudioFile } from "../utils/fs";
-import { validateTextContent, validateTitle, validateFileType, sanitizeTextContent } from "../utils/validation";
+import {
+  validateTextContent,
+  validateTitle,
+  validateFileType,
+  sanitizeTextContent,
+} from "../utils/validation";
 
 interface Props {
   onOpen: (id: string) => void;
@@ -18,7 +18,7 @@ export default function Library({ onOpen }: Props) {
   const [texts, setTexts] = useState<TextItem[]>([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [inputFormat, setInputFormat] = useState<'txt' | 'markdown'>('txt');
+  const [inputFormat, setInputFormat] = useState<"txt" | "markdown">("txt");
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
@@ -50,13 +50,14 @@ export default function Library({ onOpen }: Props) {
 
     // Show warnings if any
     if (contentValidation.warnings && contentValidation.warnings.length > 0) {
-      const warningMessage = "Advertencias encontradas:\n" + contentValidation.warnings.join("\n");
+      const warningMessage =
+        "Advertencias encontradas:\n" + contentValidation.warnings.join("\n");
       const proceed = confirm(warningMessage + "\n\n¿Deseas continuar?");
       if (!proceed) return;
     }
 
     const sanitizedContent = sanitizeTextContent(content.trim());
-    
+
     const text: TextItem = {
       id: crypto.randomUUID(),
       title: title.trim() || "Texto sin título",
@@ -65,6 +66,7 @@ export default function Library({ onOpen }: Props) {
       createdAt: Date.now(),
       audioRef: null,
     };
+
     await addText(text);
     setTitle("");
     setContent("");
@@ -97,8 +99,12 @@ export default function Library({ onOpen }: Props) {
 
       // Show warnings if any
       if (contentValidation.warnings && contentValidation.warnings.length > 0) {
-        const warningMessage = "Advertencias encontradas en el archivo:\n" + contentValidation.warnings.join("\n");
-        const proceed = confirm(warningMessage + "\n\n¿Deseas continuar con la importación?");
+        const warningMessage =
+          "Advertencias encontradas en el archivo:\n" +
+          contentValidation.warnings.join("\n");
+        const proceed = confirm(
+          warningMessage + "\n\n¿Deseas continuar con la importación?"
+        );
         if (!proceed) {
           e.target.value = "";
           return;
@@ -119,7 +125,9 @@ export default function Library({ onOpen }: Props) {
       e.target.value = "";
     } catch (error) {
       console.error("Error importing file:", error);
-      alert("Error al importar el archivo. Verifica que sea un archivo de texto válido.");
+      alert(
+        "Error al importar el archivo. Verifica que sea un archivo de texto válido."
+      );
       e.target.value = "";
     }
   }
@@ -182,7 +190,8 @@ export default function Library({ onOpen }: Props) {
             </span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Crea tu colección personal de textos para aprender inglés de forma inmersiva
+            Crea tu colección personal de textos para aprender inglés de forma
+            inmersiva
           </p>
         </div>
 
@@ -227,22 +236,22 @@ export default function Library({ onOpen }: Props) {
             <div className="flex gap-2 mb-2">
               <button
                 type="button"
-                onClick={() => setInputFormat('txt')}
+                onClick={() => setInputFormat("txt")}
                 className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                  inputFormat === 'txt'
-                    ? 'bg-blue-500 text-white shadow-lg'
-                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                  inputFormat === "txt"
+                    ? "bg-blue-500 text-white shadow-lg"
+                    : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
                 }`}
               >
                 📝 Texto Plano
               </button>
               <button
                 type="button"
-                onClick={() => setInputFormat('markdown')}
+                onClick={() => setInputFormat("markdown")}
                 className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                  inputFormat === 'markdown'
-                    ? 'bg-blue-500 text-white shadow-lg'
-                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                  inputFormat === "markdown"
+                    ? "bg-blue-500 text-white shadow-lg"
+                    : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
                 }`}
               >
                 📄 Markdown
@@ -251,9 +260,11 @@ export default function Library({ onOpen }: Props) {
 
             <textarea
               className="w-full min-h-[140px] px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-vertical transition-all duration-200 placeholder-gray-500 dark:placeholder-gray-400 font-mono"
-              placeholder={inputFormat === 'markdown' 
-                ? "Pega aquí tu texto en inglés con formato Markdown...\n\nEjemplo:\n# Título\n**negrita** *cursiva* [enlace](url)\n- lista\n> cita"
-                : "Pega aquí tu texto en inglés..."}
+              placeholder={
+                inputFormat === "markdown"
+                  ? "Pega aquí tu texto en inglés con formato Markdown...\n\nEjemplo:\n# Título\n**negrita** *cursiva* [enlace](url)\n- lista\n> cita"
+                  : "Pega aquí tu texto en inglés..."
+              }
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
@@ -297,7 +308,8 @@ export default function Library({ onOpen }: Props) {
                       {t.audioRef && (
                         <div className="flex items-center text-sm text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 px-3 py-1 rounded-full w-fit">
                           <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                          Audio: {t.audioRef.type === 'url' ? 'URL' : t.audioRef.name}
+                          Audio:{" "}
+                          {t.audioRef.type === "url" ? "URL" : t.audioRef.name}
                         </div>
                       )}
                     </div>
@@ -360,12 +372,19 @@ export default function Library({ onOpen }: Props) {
                 Tu biblioteca está vacía
               </h3>
               <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-md mx-auto">
-                Comienza agregando tu primer texto para comenzar tu viaje de aprendizaje en inglés
+                Comienza agregando tu primer texto para comenzar tu viaje de
+                aprendizaje en inglés
               </p>
               <div className="flex justify-center">
                 <button
                   className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-blue-500/25"
-                  onClick={() => (document.querySelector('input[placeholder="Título del texto"]') as HTMLInputElement)?.focus()}
+                  onClick={() =>
+                    (
+                      document.querySelector(
+                        'input[placeholder="Título del texto"]'
+                      ) as HTMLInputElement
+                    )?.focus()
+                  }
                 >
                   ✨ Crear Primer Texto
                 </button>
