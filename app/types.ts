@@ -10,6 +10,7 @@ export interface TextItem {
   id: string;
   title: string;
   content: string;
+  format?: 'txt' | 'markdown'; // Formato del contenido
   createdAt: number;
   audioRef?: AudioRef | null;
 }

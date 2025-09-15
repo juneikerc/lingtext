@@ -18,6 +18,7 @@ export default function Library({ onOpen }: Props) {
   const [texts, setTexts] = useState<TextItem[]>([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [inputFormat, setInputFormat] = useState<'txt' | 'markdown'>('txt');
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
@@ -60,6 +61,7 @@ export default function Library({ onOpen }: Props) {
       id: crypto.randomUUID(),
       title: title.trim() || "Texto sin título",
       content: sanitizedContent,
+      format: inputFormat,
       createdAt: Date.now(),
       audioRef: null,
     };
@@ -221,9 +223,37 @@ export default function Library({ onOpen }: Props) {
               </div>
             </div>
 
+            {/* Tabs para cambiar entre texto plano y markdown */}
+            <div className="flex gap-2 mb-2">
+              <button
+                type="button"
+                onClick={() => setInputFormat('txt')}
+                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                  inputFormat === 'txt'
+                    ? 'bg-blue-500 text-white shadow-lg'
+                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                }`}
+              >
+                📝 Texto Plano
+              </button>
+              <button
+                type="button"
+                onClick={() => setInputFormat('markdown')}
+                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                  inputFormat === 'markdown'
+                    ? 'bg-blue-500 text-white shadow-lg'
+                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                }`}
+              >
+                📄 Markdown
+              </button>
+            </div>
+
             <textarea
-              className="w-full min-h-[140px] px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-vertical transition-all duration-200 placeholder-gray-500 dark:placeholder-gray-400"
-              placeholder="Pega aquí tu texto en inglés..."
+              className="w-full min-h-[140px] px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-vertical transition-all duration-200 placeholder-gray-500 dark:placeholder-gray-400 font-mono"
+              placeholder={inputFormat === 'markdown' 
+                ? "Pega aquí tu texto en inglés con formato Markdown...\n\nEjemplo:\n# Título\n**negrita** *cursiva* [enlace](url)\n- lista\n> cita"
+                : "Pega aquí tu texto en inglés..."}
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />

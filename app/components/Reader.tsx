@@ -17,6 +17,7 @@ import { ensureReadPermission } from "../utils/fs";
 
 import AudioSection from "./reader/AudioSection";
 import ReaderText from "./reader/ReaderText";
+import MarkdownReaderText from "./reader/MarkdownReaderText";
 import WordPopup from "./reader/WordPopup";
 import SelectionPopup from "./reader/SelectionPopup";
 import type {
@@ -30,7 +31,7 @@ interface Props {
     id: string;
     title: string;
     content: string;
-    createdAt: number;
+    format?: 'txt' | 'markdown';
     audioRef?: AudioRef | null;
     audioUrl?: string | null;
   };
@@ -402,12 +403,21 @@ export default function Reader({ text }: Props) {
         fileSize={fileSize}
       />
 
-      <ReaderText
-        content={text.content}
-        unknownSet={unknownSet}
-        phrases={phrases}
-        onWordClick={onWordClick}
-      />
+      {text.format === 'markdown' ? (
+        <MarkdownReaderText
+          content={text.content}
+          unknownSet={unknownSet}
+          phrases={phrases}
+          onWordClick={onWordClick}
+        />
+      ) : (
+        <ReaderText
+          content={text.content}
+          unknownSet={unknownSet}
+          phrases={phrases}
+          onWordClick={onWordClick}
+        />
+      )}
 
       {popup && (
         <WordPopup
