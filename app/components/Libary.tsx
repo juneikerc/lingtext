@@ -11,19 +11,19 @@ import {
 } from "../utils/validation";
 
 interface Props {
-  onOpen: (id: string) => void;
+  textsList: TextItem[];
 }
 
-export default function Library({ onOpen }: Props) {
-  const [texts, setTexts] = useState<TextItem[]>([]);
+export default function Library({ textsList }: Props) {
+  const [texts, setTexts] = useState<TextItem[]>(textsList);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [inputFormat, setInputFormat] = useState<"txt" | "markdown">("txt");
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  useEffect(() => {
-    refresh();
-  }, []);
+  // useEffect(() => {
+  //   refresh();
+  // }, []);
 
   async function refresh() {
     const list = await getAllTexts();

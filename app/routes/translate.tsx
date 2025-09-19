@@ -95,7 +95,7 @@ export async function loader({ params, request, context }: Route.LoaderArgs) {
         status: statusCode,
         headers: {
           "Content-Type": "application/json",
-          "X-RateLimit-Limit": "15",
+          "X-RateLimit-Limit": "20",
           "X-RateLimit-Remaining": rateLimitResult.remaining.toString(),
           "X-RateLimit-Reset": Math.floor(
             rateLimitResult.resetTime / 1000

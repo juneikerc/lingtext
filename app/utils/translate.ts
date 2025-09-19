@@ -27,7 +27,7 @@ export async function translateFromChrome(
 
 export async function translateRemote(
   term: string,
-  model: string = TRANSLATORS.GPT_OSS_20B_FREE
+  model: string = TRANSLATORS.GEMMA_3N_E4B_IT_FREE
 ): Promise<{ translation: string }> {
   try {
     const res = await fetch(
@@ -54,7 +54,7 @@ export async function translateTerm(
     const value = (local.translation || "").trim();
     if (value && value !== "Translation failed.") return { translation: value };
     // Fallback automático al modelo por defecto si Chrome no existe o falla
-    return translateRemote(term, TRANSLATORS.GPT_OSS_20B_FREE);
+    return translateRemote(term, TRANSLATORS.GEMMA_3N_E4B_IT_FREE);
   }
   // Selección explícita de modelo remoto
   return translateRemote(term, selected);
