@@ -4,6 +4,7 @@ import HeroSection from "~/components/HeroSection";
 import PurposeSection from "~/components/PurposeSection";
 import UsageGuideSection from "~/components/UsageGuideSection";
 import TechAndPrivacySection from "~/components/TechAndPrivacySection";
+import { seedInitialDataOnce } from "~/utils/seed";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -22,6 +23,10 @@ export const links: Route.LinksFunction = () => [
     href: "https://lingtext.org",
   },
 ];
+
+export async function clientLoader() {
+  seedInitialDataOnce();
+}
 
 export default function Home() {
   return (
