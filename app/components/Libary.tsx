@@ -9,7 +9,6 @@ import {
   validateFileType,
   sanitizeTextContent,
 } from "../utils/validation";
-import { seedInitialDataOnce } from "~/utils/seed";
 
 interface Props {
   onOpen: (id: string) => void;
@@ -23,7 +22,6 @@ export default function Library({ onOpen }: Props) {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
-    seedInitialDataOnce();
     refresh();
   }, []);
 
