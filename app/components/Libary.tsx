@@ -9,21 +9,23 @@ import {
   validateFileType,
   sanitizeTextContent,
 } from "../utils/validation";
+import { seedInitialDataOnce } from "~/utils/seed";
 
-interface Props {
-  textsList: TextItem[];
-}
+// interface Props {
+//   libraryTexts: TextItem[];
+// }
 
-export default function Library({ textsList }: Props) {
-  const [texts, setTexts] = useState<TextItem[]>(textsList);
+export default function Library() {
+  const [texts, setTexts] = useState<TextItem[]>([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [inputFormat, setInputFormat] = useState<"txt" | "markdown">("txt");
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  // useEffect(() => {
-  //   refresh();
-  // }, []);
+  useEffect(() => {
+    seedInitialDataOnce();
+    setTimeout(() => refresh(), 2000);
+  }, []);
 
   async function refresh() {
     const list = await getAllTexts();

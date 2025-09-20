@@ -4,8 +4,6 @@ import HeroSection from "~/components/HeroSection";
 import PurposeSection from "~/components/PurposeSection";
 import UsageGuideSection from "~/components/UsageGuideSection";
 import TechAndPrivacySection from "~/components/TechAndPrivacySection";
-import { seedInitialDataOnce } from "~/utils/seed";
-import { getAllTexts } from "~/db";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -25,19 +23,11 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
-export async function clientLoader() {
-  await seedInitialDataOnce();
-  const list = await getAllTexts();
-  return list.sort((a, b) => b.createdAt - a.createdAt);
-}
-
-export default function Home({ loaderData }: Route.ComponentProps) {
-  const texts = loaderData;
-
+export default function Home() {
   return (
     <>
       <HeroSection />
-      <Library textsList={texts} />
+      <Library />
       <PurposeSection />
       <UsageGuideSection />
       <TechAndPrivacySection />

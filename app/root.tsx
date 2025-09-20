@@ -6,8 +6,6 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-import { useEffect } from "react";
-import { seedInitialDataOnce } from "~/utils/seed";
 
 import type { Route } from "./+types/root";
 import "./app.css";
