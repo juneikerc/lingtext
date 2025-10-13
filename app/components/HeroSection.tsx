@@ -1,110 +1,153 @@
 import React from "react";
+import { Link } from "react-router";
 
 interface HeroSectionProps {
   className?: string;
 }
 
 export default function HeroSection({ className = "" }: HeroSectionProps) {
-  //    {/* Estadísticas sociales */}
-  //    <div className="flex justify-center items-center mt-16 space-x-8 text-sm text-gray-400">
-  //    <div className="flex items-center space-x-2">
-  //      <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-  //      <span>+1000 usuarios activos</span>
-  //    </div>
-  //    <div className="hidden sm:block">•</div>
-  //    <div className="flex items-center space-x-2">
-  //      <span>⭐ 4.8/5 valoración</span>
-  //    </div>
-  //    <div className="hidden sm:block">•</div>
-  //    <div className="flex items-center space-x-2">
-  //      <span>100% Gratuito</span>
-  //    </div>
-  //  </div>
-
-  {
-    /* CTA Buttons */
-  }
-  //    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-  //    <button className="group relative px-8 py-4 bg-gradient-to-r from-purple-500 to-blue-600 rounded-xl font-semibold text-white shadow-lg hover:shadow-purple-500/25 transform hover:scale-105 transition-all duration-300">
-  //      <span className="relative z-10">Comenzar a Aprender</span>
-  //      <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-700 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-  //    </button>
-
-  //    <button className="px-8 py-4 border-2 border-white/20 rounded-xl font-semibold text-white hover:bg-white/10 hover:border-white/40 transition-all duration-300">
-  //      Ver Demo
-  //    </button>
-  //  </div>
-
   return (
     <section
-      className={`relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white py-20 px-4 text-center ${className}`}
+      className={`relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 py-16 px-4 md:py-24 ${className}`}
     >
       {/* Elementos decorativos de fondo */}
-      <div className="absolute inset-0">
-        <div className="absolute top-10 left-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div
-          className="absolute top-20 right-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"
-          style={{ animationDelay: "2s" }}
-        ></div>
-        <div
-          className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"
-          style={{ animationDelay: "4s" }}
-        ></div>
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[20%] left-[20%] w-64 h-64 bg-purple-200 rounded-full opacity-20 blur-3xl"></div>
+        <div className="absolute top-[70%] right-[20%] w-64 h-64 bg-blue-200 rounded-full opacity-20 blur-3xl"></div>
       </div>
 
-      {/* Contenido principal */}
-      <div className="relative z-10 max-w-4xl mx-auto">
-        {/* Badge destacado */}
-        <div className="inline-flex items-center px-4 py-2 mb-8 text-sm font-medium text-purple-200 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-          <span className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
-          Gratuito y Open Source
+      {/* Contenedor principal */}
+      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        {/* Contenido izquierdo */}
+        <div className="max-w-2xl">
+          {/* Badge destacado */}
+          <div className="inline-flex items-center px-3 py-1.5 mb-6 text-xs font-medium text-purple-700 bg-purple-100 rounded-full border border-purple-200">
+            <span className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+            Gratuito y Open Source
+          </div>
+
+          {/* Título principal */}
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-gray-900">
+            LingText{" "}
+            <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+              Alternativa gratuita a lingQ
+            </span>
+          </h1>
+
+          {/* Descripción */}
+          <p className="text-lg md:text-xl leading-relaxed text-gray-600 mb-8">
+            Aprende inglés de forma gratuita a través de la lectura. Agrega tus
+            propios textos y audios para sumergirte en el idioma con un método
+            probado y efectivo.
+          </p>
+
+          {/* Botones CTA */}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <a
+              href="#library"
+              className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium rounded-lg hover:from-purple-700 hover:to-blue-700 transform hover:-translate-y-0.5 transition-all duration-200 shadow-lg hover:shadow-xl"
+            >
+              Comenzar a Aprender
+            </a>
+            <Link
+              to="/words"
+              className="inline-flex items-center justify-center px-6 py-3 bg-transparent text-purple-600 font-medium rounded-lg border-2 border-purple-600 hover:bg-purple-600 hover:text-white transform hover:-translate-y-0.5 transition-all duration-200"
+            >
+              Progreso
+            </Link>
+          </div>
         </div>
 
-        {/* Título principal */}
-        <h1 className="text-5xl md:text-7xl font-extrabold mb-8 leading-tight">
-          <span className="bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
+        {/* Ilustración derecha */}
+        <div className="relative h-96 lg:h-[500px] flex items-center justify-center">
+          {/* Círculo de conexión */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 border-2 border-dashed border-gray-300 rounded-full"></div>
+
+          {/* Nodo central */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-44 h-16 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg shadow-lg flex items-center justify-center font-semibold text-lg hover:scale-105 transition-transform duration-300">
             LingText
-          </span>
-          <br />{" "}
-          <span className="text-3xl md:text-4xl font-light text-gray-300 mt-2 block">
-            Alternativa gratuita a LingQ
-          </span>
-        </h1>
-
-        {/* Descripción */}
-        <p className="text-xl md:text-2xl leading-relaxed text-gray-300 mb-10 max-w-3xl mx-auto font-light">
-          Aprende inglés de forma{" "}
-          <span className="font-semibold text-white">gratuita</span> a través de
-          la lectura. Agrega tus propios textos y audios para sumergirte en el
-          idioma a través de la
-          <span className="font-semibold text-purple-300">
-            {" "}
-            lectura activa inteligente
-          </span>
-          .
-        </p>
-
-        {/* Características destacadas */}
-        <div className="flex flex-wrap justify-center gap-6 mb-12">
-          <div className="flex items-center space-x-3 bg-white/5 backdrop-blur-sm rounded-xl px-6 py-3 border border-white/10 hover:bg-white/10 transition-all duration-300">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-lg flex items-center justify-center">
-              <span className="text-white text-sm">📖</span>
-            </div>
-            <span className="text-gray-200 font-medium">Lectura Activa</span>
           </div>
 
-          <div className="flex items-center space-x-3 bg-white/5 backdrop-blur-sm rounded-xl px-6 py-3 border border-white/10 hover:bg-white/10 transition-all duration-300">
-            <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-500 rounded-lg flex items-center justify-center">
-              <span className="text-white text-sm">🔊</span>
-            </div>
-            <span className="text-gray-200 font-medium">Audio Integrado</span>
+          {/* Nodo: Lectura Activa */}
+          <div className="absolute top-[15%] left-[15%] w-28 h-20 bg-white border-2 border-blue-500 text-blue-600 rounded-lg shadow-md flex flex-col items-center justify-center gap-1 hover:scale-105 hover:shadow-lg transition-all duration-300">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+            <span className="text-xs font-medium">Lectura</span>
           </div>
 
-          <div className="flex items-center space-x-3 bg-white/5 backdrop-blur-sm rounded-xl px-6 py-3 border border-white/10 hover:bg-white/10 transition-all duration-300">
-            <div className="w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-500 rounded-lg flex items-center justify-center">
-              <span className="text-white text-sm">📊</span>
-            </div>
-            <span className="text-gray-200 font-medium">Seguimiento</span>
+          {/* Nodo: Audio */}
+          <div className="absolute top-[25%] right-[8%] w-28 h-20 bg-white border-2 border-green-500 text-green-600 rounded-lg shadow-md flex flex-col items-center justify-center gap-1 hover:scale-105 hover:shadow-lg transition-all duration-300">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            </svg>
+            <span className="text-xs font-medium">Audio</span>
+          </div>
+
+          {/* Nodo: Traducción */}
+          <div className="absolute bottom-[25%] left-[12%] w-28 h-20 bg-white border-2 border-purple-500 text-purple-600 rounded-lg shadow-md flex flex-col items-center justify-center gap-1 hover:scale-105 hover:shadow-lg transition-all duration-300">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="m5 8 6 6"></path>
+              <path d="m4 14 6-6 2-3"></path>
+              <path d="M2 5h12"></path>
+              <path d="M7 2h1"></path>
+              <path d="m22 22-5-10-5 10"></path>
+              <path d="M14 18h6"></path>
+            </svg>
+            <span className="text-xs font-medium">Traducción</span>
+          </div>
+
+          {/* Nodo: Seguimiento */}
+          <div className="absolute bottom-[18%] right-[12%] w-28 h-20 bg-white border-2 border-pink-500 text-pink-600 rounded-lg shadow-md flex flex-col items-center justify-center gap-1 hover:scale-105 hover:shadow-lg transition-all duration-300">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="12" y1="20" x2="12" y2="10"></line>
+              <line x1="18" y1="20" x2="18" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="16"></line>
+            </svg>
+            <span className="text-xs font-medium">Progreso</span>
           </div>
         </div>
       </div>

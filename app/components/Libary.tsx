@@ -285,7 +285,7 @@ export default function Library() {
         </div>
 
         {/* Lista de textos */}
-        <div className="space-y-4">
+        <div id="library" className="space-y-4">
           {texts.length > 0 ? (
             texts.map((t) => (
               <div
@@ -296,9 +296,11 @@ export default function Library() {
                   <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                     <div className="flex-1">
                       <div className="flex items-start justify-between mb-2">
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
-                          {t.title}
-                        </h3>
+                        <Link to={`/texts/${t.id}`}>
+                          <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+                            {t.title}
+                          </h3>
+                        </Link>
                         <div className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full">
                           {new Date(t.createdAt).toLocaleDateString()}
                         </div>
@@ -331,7 +333,7 @@ export default function Library() {
                           title="Agregar audio desde URL"
                           type="button"
                         >
-                          🔗
+                          🔊 🔗
                         </button>
                         <button
                           className="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 transition-all duration-200"
@@ -339,7 +341,7 @@ export default function Library() {
                           title="Agregar archivo de audio"
                           type="button"
                         >
-                          📁
+                          🔊
                         </button>
                         {t.audioRef && (
                           <button
