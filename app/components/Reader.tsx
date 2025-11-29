@@ -8,7 +8,7 @@ import {
   getAllPhrases,
   putPhrase,
   getPhrase,
-} from "../db";
+} from "../services/db";
 import { type AudioRef } from "../types";
 import { normalizeWord, tokenize } from "../utils/tokenize";
 import { speak } from "../utils/tts";

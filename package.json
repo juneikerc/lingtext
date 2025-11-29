@@ -16,6 +16,7 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@sqlite.org/sqlite-wasm": "^3.51.1-build1",
     "isbot": "^5.1.27",
     "openai": "^5.12.2",
     "react": "^19.1.0",

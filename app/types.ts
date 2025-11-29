@@ -42,6 +42,8 @@ export interface WordEntry {
   status: "unknown";
   addedAt: number;
   voice?: VoiceParams;
+  // Context where the word was found (optional)
+  context?: string;
   // Datos del algoritmo de repetición espaciada
   srData?: SpacedRepetitionData;
   // Flag opcional para indicar que este item representa una frase en el UI de repaso

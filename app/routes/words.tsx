@@ -1,4 +1,4 @@
-import { getAllUnknownWords, getAllPhrases } from "~/db";
+import { getAllUnknownWords, getAllPhrases } from "~/services/db";
 import type { Route } from "./+types/words";
 import { useState, Suspense, lazy } from "react";
 import type { WordEntry } from "~/types";

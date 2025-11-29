@@ -1,4 +1,4 @@
-import { getText } from "~/db";
+import { getText } from "~/services/db";
 import type { Route } from "./+types/text";
 import { Suspense, lazy } from "react";
 import type { AudioRef } from "~/types";

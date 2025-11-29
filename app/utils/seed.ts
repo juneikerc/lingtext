@@ -1,4 +1,4 @@
-import { addText, putUnknownWord } from "~/db";
+import { addText, putUnknownWord } from "~/services/db";
 import type { AudioRef, TextItem, WordEntry } from "~/types";
 import { uid } from "~/utils/id";
 

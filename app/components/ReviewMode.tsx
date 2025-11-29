@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
 import type { WordEntry } from "~/types";
-import { deleteWord, getSettings, putUnknownWord, getPhrase, putPhrase, deletePhrase } from "~/db";
+import { deleteWord, getSettings, putUnknownWord, getPhrase, putPhrase, deletePhrase } from "~/services/db";
 import { speak } from "~/utils/tts";
 import { calculateNextReview, formatTimeUntilReview } from "~/utils/spaced-repetition";
 import { tokenize, normalizeWord } from "~/utils/tokenize";

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import type { WordEntry } from "~/types";
 import { exportUnknownWordsCsv } from "~/utils/anki";
-import { deleteWord, getSettings } from "~/db";
+import { deleteWord, getSettings } from "~/services/db";
 import { speak } from "~/utils/tts";
 import { isWordReadyForReview, formatTimeUntilReview, calculateReadyWords } from "~/utils/spaced-repetition";
 

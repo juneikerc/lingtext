@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router";
-import { getAllTexts, addText, deleteText, updateTextAudioRef } from "../db";
+import { getAllTexts, addText, deleteText, updateTextAudioRef, exportDatabase, importDatabase } from "../services/db";
 import type { TextItem, AudioRef } from "../types";
 import { pickAudioFile } from "../utils/fs";
 import {
@@ -28,9 +28,13 @@ export default function Library() {
   }, []);
 
   async function refresh() {
-    const list = await getAllTexts();
-    list.sort((a, b) => b.createdAt - a.createdAt);
-    setTexts(list);
+    try {
+      const list = await getAllTexts();
+      list.sort((a, b) => b.createdAt - a.createdAt);
+      setTexts(list);
+    } catch (e) {
+      console.error("Error refreshing texts:", e);
+    }
   }
 
   async function onAdd() {
@@ -171,6 +175,25 @@ export default function Library() {
     await refresh();
   }
 
+  async function onExportDB() {
+    try {
+      await exportDatabase();
+    } catch (e) {
+      console.error(e);
+      alert("Error exportando base de datos: " + (e as any).message);
+    }
+  }
+
+  async function onImportDB() {
+    if (!confirm("Importar una base de datos SOBRESCRIBIRÁ la actual. ¿Estás seguro?")) return;
+    try {
+      await importDatabase();
+    } catch (e) {
+      console.error(e);
+      alert("Error importando base de datos: " + (e as any).message);
+    }
+  }
+
   return (
     <section className="relative overflow-hidden py-12 px-4">
       {/* Elementos decorativos de fondo */}
@@ -191,10 +214,25 @@ export default function Library() {
               Tus Textos
             </span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-4">
             Crea tu colección personal de textos para aprender inglés de forma
             inmersiva
           </p>
+
+          <div className="flex justify-center gap-4">
+            <button
+              onClick={onExportDB}
+              className="px-4 py-2 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg text-sm font-medium transition-colors"
+            >
+              💾 Respaldar DB
+            </button>
+            <button
+              onClick={onImportDB}
+              className="px-4 py-2 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg text-sm font-medium transition-colors"
+            >
+              📥 Restaurar DB
+            </button>
+          </div>
         </div>
 
         {/* Formulario de agregar texto */}
