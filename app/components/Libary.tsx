@@ -25,6 +25,7 @@ import { seedInitialDataOnce } from "~/utils/seed";
 
 export default function Library() {
   const [texts, setTexts] = useState<TextItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [inputFormat, setInputFormat] = useState<"txt" | "markdown">("txt");
@@ -39,8 +40,30 @@ export default function Library() {
   } | null>(null);
 
   useEffect(() => {
-    seedInitialDataOnce();
-    setTimeout(() => refresh(), 2000);
+    let mounted = true;
+
+    async function initializeData() {
+      try {
+        // First, seed initial data if needed
+        await seedInitialDataOnce();
+        // Then load texts
+        if (mounted) {
+          await refresh();
+        }
+      } catch (error) {
+        console.error("[Library] Failed to initialize:", error);
+      } finally {
+        if (mounted) {
+          setIsLoading(false);
+        }
+      }
+    }
+
+    initializeData();
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   async function refresh() {
@@ -245,6 +268,77 @@ export default function Library() {
       return;
     await deleteText(id);
     await refresh();
+  }
+
+  // Loading skeleton
+  if (isLoading) {
+    return (
+      <section className="relative overflow-hidden py-12 px-4">
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-10 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-10 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="relative max-w-4xl mx-auto">
+          {/* Header skeleton */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-blue-600 bg-blue-100/80 dark:bg-blue-900/30 dark:text-blue-300 rounded-full border border-blue-200/50 dark:border-blue-800/50 backdrop-blur-sm">
+              <span className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
+              Cargando biblioteca...
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
+                Tus Textos
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              Preparando tu colección personal...
+            </p>
+          </div>
+
+          {/* Skeleton cards */}
+          <div className="space-y-6">
+            {/* Database section skeleton */}
+            <div className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 rounded-2xl border border-emerald-200/50 dark:border-emerald-800/50 p-6 animate-pulse">
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-emerald-200 dark:bg-emerald-800 rounded-xl mr-4"></div>
+                <div className="flex-1">
+                  <div className="h-4 bg-emerald-200 dark:bg-emerald-800 rounded w-32 mb-2"></div>
+                  <div className="h-3 bg-emerald-100 dark:bg-emerald-900 rounded w-48"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Form skeleton */}
+            <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-8 animate-pulse">
+              <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-48 mb-6"></div>
+              <div className="space-y-4">
+                <div className="h-12 bg-gray-100 dark:bg-gray-800 rounded-xl"></div>
+                <div className="h-32 bg-gray-100 dark:bg-gray-800 rounded-xl"></div>
+                <div className="h-12 bg-blue-200 dark:bg-blue-800 rounded-xl w-32"></div>
+              </div>
+            </div>
+
+            {/* Text cards skeleton */}
+            <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-8 animate-pulse">
+              <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-40 mb-6"></div>
+              <div className="space-y-4">
+                {[1, 2].map((i) => (
+                  <div
+                    key={i}
+                    className="border border-gray-200 dark:border-gray-700 rounded-xl p-4"
+                  >
+                    <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-3"></div>
+                    <div className="h-3 bg-gray-100 dark:bg-gray-800 rounded w-1/2 mb-2"></div>
+                    <div className="h-3 bg-gray-100 dark:bg-gray-800 rounded w-1/3"></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
   }
 
   return (
