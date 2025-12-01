@@ -1,9 +1,9 @@
 import { generateSessionDeck } from "~/utils/scheduler";
 import type { Route } from "./+types/review";
 import { useState, useEffect, Suspense, lazy } from "react";
-import type { WordEntry, PhraseEntry } from "~/types";
-import LoadingSpinner from "~/components/LoadingSpinner";
-import { Link } from "react-router"; // Usamos Link para navegación interna más rápida
+import type { WordEntry } from "~/types";
+import { type DailyStats } from "~/services/db";
+import { Link } from "react-router";
 
 const ReviewMode = lazy(() => import("~/components/ReviewMode"));
 
@@ -22,61 +22,147 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export async function clientLoader({ request }: Route.ClientLoaderArgs) {
-  // 1. Usamos el Scheduler Inteligente
-  const { deck, limitReached, stats } = await generateSessionDeck();
+// Skeleton component for loading state
+function ReviewSkeleton() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-white via-purple-50/30 to-pink-50/30 dark:from-gray-950 dark:via-purple-950/10 dark:to-pink-950/10">
+      {/* Background decorations */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-pink-500/10 rounded-full blur-3xl"></div>
+      </div>
 
-  // 2. Normalización: Asegurar que las frases tengan el flag 'isPhrase'
-  // El scheduler devuelve WordEntry y PhraseEntry mezclados.
-  // Detectamos frases por la existencia de la propiedad 'parts' (si tus tipos lo permiten)
-  const formattedDeck = deck.map((item) => {
-    // Si tiene 'parts', asumimos que es una frase (comprobación básica basada en tus tipos)
-    if ("parts" in item) {
-      return {
-        ...item,
-        isPhrase: true,
-        status: "unknown", // Asegurar compatibilidad
-      } as WordEntry & { isPhrase: boolean };
-    }
-    return item;
-  });
+      <div className="relative max-w-2xl mx-auto px-4 py-12">
+        {/* Header skeleton */}
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-purple-600 bg-purple-100/80 dark:bg-purple-900/30 dark:text-purple-300 rounded-full border border-purple-200/50 dark:border-purple-800/50 backdrop-blur-sm">
+            <span className="w-2 h-2 bg-purple-500 rounded-full mr-2 animate-pulse"></span>
+            Preparando sesión de repaso...
+          </div>
+          <h1 className="text-3xl md:text-4xl font-extrabold mb-4">
+            <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-purple-800 bg-clip-text text-transparent">
+              Repaso de Vocabulario
+            </span>
+          </h1>
+        </div>
 
-  const url = new URL(request.url);
-  const selectedWord = url.searchParams.get("word");
+        {/* Card skeleton */}
+        <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-3xl border border-gray-200/50 dark:border-gray-700/50 shadow-2xl p-8 animate-pulse">
+          {/* Progress bar skeleton */}
+          <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full mb-8"></div>
 
-  return {
-    words: formattedDeck,
-    selectedWord,
-    totalSessionWords: formattedDeck.length,
-    limitReached, // Booleano: ¿Se detuvo por límite diario?
-    dailyStats: stats, // Datos: { newCardsStudied: 5, date: ... }
-  };
+          {/* Word skeleton */}
+          <div className="text-center mb-8">
+            <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded-xl w-48 mx-auto mb-4"></div>
+            <div className="h-6 bg-gray-100 dark:bg-gray-800 rounded-lg w-64 mx-auto"></div>
+          </div>
+
+          {/* Buttons skeleton */}
+          <div className="flex justify-center gap-4 mb-6">
+            <div className="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-xl"></div>
+            <div className="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-xl"></div>
+            <div className="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-xl"></div>
+          </div>
+
+          {/* Rating buttons skeleton */}
+          <div className="grid grid-cols-4 gap-3">
+            {[1, 2, 3, 4].map((i) => (
+              <div
+                key={i}
+                className="h-14 bg-gray-200 dark:bg-gray-700 rounded-xl"
+              ></div>
+            ))}
+          </div>
+        </div>
+
+        {/* Stats skeleton */}
+        <div className="mt-6 flex justify-center gap-8">
+          <div className="text-center animate-pulse">
+            <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-8 mx-auto mb-1"></div>
+            <div className="h-3 bg-gray-100 dark:bg-gray-800 rounded w-16"></div>
+          </div>
+          <div className="text-center animate-pulse">
+            <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-8 mx-auto mb-1"></div>
+            <div className="h-3 bg-gray-100 dark:bg-gray-800 rounded w-16"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default function Review({ loaderData }: Route.ComponentProps) {
-  const {
-    words: initialWords,
-    selectedWord,
-    totalSessionWords,
-    limitReached,
-    dailyStats,
-  } = loaderData;
+interface ReviewData {
+  words: WordEntry[];
+  selectedWord: string | null;
+  limitReached: boolean;
+  dailyStats: DailyStats;
+}
 
-  const [words, setWords] = useState<WordEntry[]>(initialWords);
+export default function Review() {
+  const [data, setData] = useState<ReviewData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [words, setWords] = useState<WordEntry[]>([]);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
 
-  // Si hay una palabra específica seleccionada por URL, intentamos saltar a ella
+  // Load data on mount
   useEffect(() => {
-    if (selectedWord && words.length > 0) {
-      const index = words.findIndex((w) => w.wordLower === selectedWord);
+    let mounted = true;
+
+    async function loadData() {
+      try {
+        const { deck, limitReached, stats } = await generateSessionDeck();
+
+        if (!mounted) return;
+
+        // Normalize: ensure phrases have 'isPhrase' flag
+        const formattedDeck = deck.map((item) => {
+          if ("parts" in item) {
+            return {
+              ...item,
+              isPhrase: true,
+              status: "unknown",
+            } as WordEntry & { isPhrase: boolean };
+          }
+          return item;
+        });
+
+        const url = new URL(window.location.href);
+        const selectedWord = url.searchParams.get("word");
+
+        setData({
+          words: formattedDeck,
+          selectedWord,
+          limitReached,
+          dailyStats: stats,
+        });
+        setWords(formattedDeck);
+      } catch (error) {
+        console.error("[Review] Failed to load data:", error);
+      } finally {
+        if (mounted) {
+          setIsLoading(false);
+        }
+      }
+    }
+
+    loadData();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  // Handle selected word from URL
+  useEffect(() => {
+    if (data?.selectedWord && words.length > 0) {
+      const index = words.findIndex((w) => w.wordLower === data.selectedWord);
       if (index !== -1) {
         setCurrentWordIndex(index);
       }
     }
-  }, [selectedWord, words]);
+  }, [data?.selectedWord, words]);
 
   const refreshWords = async () => {
-    // Recargar para generar un nuevo mazo o actualizar estado
     window.location.reload();
   };
 
@@ -93,9 +179,20 @@ export default function Review({ loaderData }: Route.ComponentProps) {
   };
 
   const handleRetryWord = (word: WordEntry) => {
-    // Añadir la palabra al final de la lista actual para reintento inmediato
     setWords((prevWords) => [...prevWords, word]);
   };
+
+  // Show skeleton while loading
+  if (isLoading) {
+    return <ReviewSkeleton />;
+  }
+
+  // Default stats
+  const dailyStats = data?.dailyStats ?? {
+    date: new Date().toISOString().split("T")[0],
+    newCardsStudied: 0,
+  };
+  const limitReached = data?.limitReached ?? false;
 
   // ============================================================
   // ESTADO: SIN PALABRAS (Dos variantes: Fin real o Límite)
@@ -169,9 +266,7 @@ export default function Review({ loaderData }: Route.ComponentProps) {
   }
 
   return (
-    <Suspense
-      fallback={<LoadingSpinner message="Preparando sesión de estudio..." />}
-    >
+    <Suspense fallback={<ReviewSkeleton />}>
       <ReviewMode
         words={words}
         currentIndex={currentWordIndex}
