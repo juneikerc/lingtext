@@ -5,6 +5,9 @@ import {
   addText,
   deleteText,
   updateTextAudioRef,
+  exportDatabase,
+  importDatabase,
+  getDatabaseInfo,
 } from "../services/db";
 import type { TextItem, AudioRef } from "../types";
 import { pickAudioFile } from "../utils/fs";
@@ -27,6 +30,14 @@ export default function Library() {
   const [inputFormat, setInputFormat] = useState<"txt" | "markdown">("txt");
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
+  // Database backup/restore state
+  const [isExporting, setIsExporting] = useState(false);
+  const [isImporting, setIsImporting] = useState(false);
+  const [dbMessage, setDbMessage] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
+
   useEffect(() => {
     seedInitialDataOnce();
     setTimeout(() => refresh(), 2000);
@@ -36,6 +47,66 @@ export default function Library() {
     const list = await getAllTexts();
     list.sort((a, b) => b.createdAt - a.createdAt);
     setTexts(list);
+  }
+
+  // Database export handler
+  async function handleExportDatabase() {
+    setIsExporting(true);
+    setDbMessage(null);
+    try {
+      const success = await exportDatabase();
+      if (success) {
+        const info = await getDatabaseInfo();
+        setDbMessage({
+          type: "success",
+          text: `Base de datos exportada (${info.textCount} textos, ${info.wordCount} palabras)`,
+        });
+      }
+      // If not success, user cancelled - no message needed
+    } catch (error) {
+      setDbMessage({
+        type: "error",
+        text: `Error al exportar: ${(error as Error).message}`,
+      });
+    } finally {
+      setIsExporting(false);
+    }
+  }
+
+  // Database import handler
+  async function handleImportDatabase() {
+    const confirmed = window.confirm(
+      "⚠️ Importar una base de datos reemplazará TODOS tus datos actuales.\n\n" +
+        "Esto incluye:\n" +
+        "• Todos tus textos\n" +
+        "• Todas tus palabras guardadas\n" +
+        "• Tu progreso de aprendizaje\n\n" +
+        "¿Estás seguro de que deseas continuar?"
+    );
+
+    if (!confirmed) return;
+
+    setIsImporting(true);
+    setDbMessage(null);
+    try {
+      const success = await importDatabase();
+      if (success) {
+        setDbMessage({
+          type: "success",
+          text: "Base de datos importada correctamente. Recargando...",
+        });
+        // Reload to reflect new data
+        setTimeout(() => window.location.reload(), 1500);
+      }
+      // If not success, user cancelled - no message needed
+    } catch (error) {
+      setDbMessage({
+        type: "error",
+        text: `Error al importar: ${(error as Error).message}`,
+      });
+    } finally {
+      setIsImporting(false);
+    }
   }
 
   async function onAdd() {
@@ -200,6 +271,114 @@ export default function Library() {
             Crea tu colección personal de textos para aprender inglés de forma
             inmersiva
           </p>
+        </div>
+
+        {/* Backup/Restore Database Section */}
+        <div className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 rounded-2xl border border-emerald-200/50 dark:border-emerald-800/50 p-6 mb-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center">
+              <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center mr-4">
+                <span className="text-white text-xl">💾</span>
+              </div>
+              <div>
+                <h3 className="font-bold text-gray-900 dark:text-gray-100">
+                  Tus Datos, Tu Control
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Exporta o importa tu base de datos SQLite
+                </p>
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <button
+                onClick={handleExportDatabase}
+                disabled={isExporting || isImporting}
+                className="flex items-center px-4 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium rounded-xl hover:from-blue-600 hover:to-blue-700 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-blue-500/25"
+              >
+                {isExporting ? (
+                  <>
+                    <svg
+                      className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                    Exportando...
+                  </>
+                ) : (
+                  <>
+                    <span className="mr-2">📤</span>
+                    Exportar
+                  </>
+                )}
+              </button>
+
+              <button
+                onClick={handleImportDatabase}
+                disabled={isExporting || isImporting}
+                className="flex items-center px-4 py-2.5 bg-gradient-to-r from-purple-500 to-purple-600 text-white font-medium rounded-xl hover:from-purple-600 hover:to-purple-700 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-purple-500/25"
+              >
+                {isImporting ? (
+                  <>
+                    <svg
+                      className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                    Importando...
+                  </>
+                ) : (
+                  <>
+                    <span className="mr-2">📥</span>
+                    Importar
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* Message */}
+          {dbMessage && (
+            <div
+              className={`mt-4 p-3 rounded-lg text-sm ${
+                dbMessage.type === "success"
+                  ? "bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-300"
+                  : "bg-red-100 dark:bg-red-900/30 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300"
+              }`}
+            >
+              {dbMessage.text}
+            </div>
+          )}
         </div>
 
         {/* Formulario de agregar texto */}

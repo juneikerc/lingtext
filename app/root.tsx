@@ -6,10 +6,32 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
+import { useEffect } from "react";
 
 import type { Route } from "./+types/root";
 import "./app.css";
 import Footer from "~/components/Footer";
+
+// Expose DB debug functions to window for console access
+function useExposeDbDebug() {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      import("~/services/db").then((db) => {
+        // @ts-expect-error - Adding to window for debugging
+        window.dbDebug = {
+          getDatabaseInfo: db.getDatabaseInfo,
+          listOPFSFiles: db.listOPFSFiles,
+          forceSave: db.forceSave,
+          exportDatabase: db.exportDatabase,
+          importDatabase: db.importDatabase,
+          getAllTexts: db.getAllTexts,
+          getAllUnknownWords: db.getAllUnknownWords,
+        };
+        console.log("[Debug] DB functions available at window.dbDebug");
+      });
+    }
+  }, []);
+}
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -45,6 +67,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  useExposeDbDebug();
   return <Outlet />;
 }
 

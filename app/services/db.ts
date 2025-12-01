@@ -69,21 +69,32 @@ async function loadFromOPFS(): Promise<ArrayBuffer | null> {
 }
 
 /**
- * Save database to OPFS (debounced)
+ * Save database to OPFS
  */
 async function saveToOPFS(): Promise<void> {
-  if (!db || !sqlite3Instance) return;
+  if (!db || !sqlite3Instance) {
+    console.warn("[DB] Cannot save - db or sqlite3Instance not ready");
+    return;
+  }
 
   try {
+    console.log("[DB] Exporting database...");
     const data = sqlite3Instance.capi.sqlite3_js_db_export(db);
+    console.log("[DB] Exported", data.byteLength, "bytes");
+
     const opfsRoot = await navigator.storage.getDirectory();
     const fileHandle = await opfsRoot.getFileHandle(DB_NAME, { create: true });
     const writable = await fileHandle.createWritable();
     await writable.write(new Uint8Array(data));
     await writable.close();
-    console.log("[DB] Saved to OPFS:", data.byteLength, "bytes");
+    console.log("[DB] ✅ Saved to OPFS:", data.byteLength, "bytes");
+
+    // Verify the save
+    const verifyHandle = await opfsRoot.getFileHandle(DB_NAME);
+    const verifyFile = await verifyHandle.getFile();
+    console.log("[DB] Verified file size:", verifyFile.size, "bytes");
   } catch (error) {
-    console.error("[DB] Failed to save to OPFS:", error);
+    console.error("[DB] ❌ Failed to save to OPFS:", error);
   }
 }
 
@@ -91,9 +102,14 @@ async function saveToOPFS(): Promise<void> {
  * Schedule a save to OPFS (debounced to avoid too many writes)
  */
 function scheduleSave(): void {
-  if (!isPersistent) return;
+  if (!isPersistent) {
+    console.log("[DB] scheduleSave skipped - not persistent");
+    return;
+  }
+  console.log("[DB] Scheduling save...");
   if (saveTimer) clearTimeout(saveTimer);
   saveTimer = setTimeout(() => {
+    console.log("[DB] Executing scheduled save");
     saveToOPFS();
     saveTimer = null;
   }, 500); // Save 500ms after last write
@@ -141,27 +157,40 @@ async function initDB(): Promise<any> {
         // Try to load existing database from OPFS
         const existingData = await loadFromOPFS();
 
-        if (existingData && existingData.byteLength > 0) {
-          // Deserialize existing database
-          const p = sqlite3.wasm.allocFromTypedArray(
-            new Uint8Array(existingData)
-          );
-          db = new sqlite3.oo1.DB();
-          const rc = sqlite3.capi.sqlite3_deserialize(
-            db.pointer,
-            "main",
-            p,
-            existingData.byteLength,
-            existingData.byteLength,
-            sqlite3.capi.SQLITE_DESERIALIZE_FREEONCLOSE |
-              sqlite3.capi.SQLITE_DESERIALIZE_RESIZEABLE
-          );
-          if (rc !== 0) {
-            console.warn("[DB] Failed to deserialize, creating new database");
-            db.close();
+        if (existingData && existingData.byteLength > 100) {
+          // Import existing database using the simpler approach
+          try {
+            // Create a new DB and import the data
+            db = new sqlite3.oo1.DB();
+            const bytes = new Uint8Array(existingData);
+
+            // Use the capi to deserialize
+            const pDb = db.pointer;
+            const pData = sqlite3.wasm.allocFromTypedArray(bytes);
+            const rc = sqlite3.capi.sqlite3_deserialize(
+              pDb,
+              "main",
+              pData,
+              bytes.length,
+              bytes.length,
+              sqlite3.capi.SQLITE_DESERIALIZE_FREEONCLOSE |
+                sqlite3.capi.SQLITE_DESERIALIZE_RESIZEABLE
+            );
+
+            if (rc === 0) {
+              console.log("[DB] Successfully loaded database from OPFS");
+            } else {
+              console.warn(
+                "[DB] Deserialize returned:",
+                rc,
+                "- creating new database"
+              );
+              db.close();
+              db = new sqlite3.oo1.DB(":memory:");
+            }
+          } catch (loadError) {
+            console.warn("[DB] Failed to load from OPFS:", loadError);
             db = new sqlite3.oo1.DB(":memory:");
-          } else {
-            console.log("[DB] Loaded database from OPFS");
           }
         } else {
           // Create new in-memory database (will be saved to OPFS)
@@ -630,8 +659,9 @@ export async function incrementNewCardsCount(): Promise<void> {
 
 /**
  * Export the database to a file using File System Access API
+ * @returns true if export was successful, false if cancelled by user
  */
-export async function exportDatabase(): Promise<void> {
+export async function exportDatabase(): Promise<boolean> {
   const database = await getDB();
 
   try {
@@ -670,6 +700,7 @@ export async function exportDatabase(): Promise<void> {
       await writable.close();
 
       console.log("[DB] Database exported successfully");
+      return true;
     } else {
       // Fallback: download via blob
       const blob = new Blob([data.buffer], { type: "application/x-sqlite3" });
@@ -681,11 +712,12 @@ export async function exportDatabase(): Promise<void> {
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
+      return true;
     }
   } catch (error) {
     if ((error as Error).name === "AbortError") {
       console.log("[DB] Export cancelled by user");
-      return;
+      return false; // User cancelled
     }
     console.error("[DB] Export failed:", error);
     throw error;
@@ -694,8 +726,9 @@ export async function exportDatabase(): Promise<void> {
 
 /**
  * Import a database file and replace the current OPFS database
+ * @returns true if import was successful, false if cancelled by user
  */
-export async function importDatabase(): Promise<void> {
+export async function importDatabase(): Promise<boolean> {
   try {
     let fileData: ArrayBuffer;
 
@@ -754,10 +787,11 @@ export async function importDatabase(): Promise<void> {
     await initDB();
 
     console.log("[DB] Database imported successfully");
+    return true;
   } catch (error) {
     if ((error as Error).name === "AbortError") {
       console.log("[DB] Import cancelled by user");
-      return;
+      return false; // User cancelled
     }
     console.error("[DB] Import failed:", error);
     throw error;
@@ -777,33 +811,85 @@ export async function isOPFSAvailable(): Promise<boolean> {
 }
 
 /**
- * Get database info
+ * Get database info for diagnostics
  */
 export async function getDatabaseInfo(): Promise<{
-  isOPFS: boolean;
+  isPersistent: boolean;
+  opfsAvailable: boolean;
   filename: string;
-  size?: number;
+  opfsFileSize?: number;
+  tablesExist: boolean;
+  textCount: number;
+  wordCount: number;
 }> {
   const database = await getDB();
-  const isOPFS = database.filename.includes(DB_NAME);
 
-  let size: number | undefined;
-  if (isOPFS) {
+  let opfsAvailable = false;
+  let opfsFileSize: number | undefined;
+
+  try {
+    const opfsRoot = await navigator.storage.getDirectory();
+    opfsAvailable = true;
     try {
-      const opfsRoot = await navigator.storage.getDirectory();
       const fileHandle = await opfsRoot.getFileHandle(DB_NAME);
       const file = await fileHandle.getFile();
-      size = file.size;
+      opfsFileSize = file.size;
     } catch {
-      // Ignore errors
+      // File doesn't exist yet
     }
+  } catch {
+    opfsAvailable = false;
+  }
+
+  // Check if tables exist and count records
+  let tablesExist = false;
+  let textCount = 0;
+  let wordCount = 0;
+
+  try {
+    const texts = database.selectObjects("SELECT COUNT(*) as count FROM texts");
+    const words = database.selectObjects("SELECT COUNT(*) as count FROM words");
+    tablesExist = true;
+    textCount = texts[0]?.count || 0;
+    wordCount = words[0]?.count || 0;
+  } catch {
+    tablesExist = false;
   }
 
   return {
-    isOPFS,
-    filename: database.filename,
-    size,
+    isPersistent,
+    opfsAvailable,
+    filename: database.filename || ":memory:",
+    opfsFileSize,
+    tablesExist,
+    textCount,
+    wordCount,
   };
+}
+
+/**
+ * List all files in OPFS (for debugging)
+ */
+export async function listOPFSFiles(): Promise<string[]> {
+  const files: string[] = [];
+  try {
+    const opfsRoot = await navigator.storage.getDirectory();
+    // @ts-expect-error - entries() is not in all TypeScript definitions
+    for await (const [name] of opfsRoot.entries()) {
+      files.push(name);
+    }
+  } catch (error) {
+    console.error("[DB] Failed to list OPFS files:", error);
+  }
+  return files;
+}
+
+/**
+ * Force save to OPFS (for debugging)
+ */
+export async function forceSave(): Promise<void> {
+  console.log("[DB] Force saving to OPFS...");
+  await saveToOPFS();
 }
 
 // ============================================================================
