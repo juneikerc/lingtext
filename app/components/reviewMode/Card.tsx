@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { getSettings } from "~/db";
+import { getSettings } from "~/services/db";
 import type { WordEntry } from "~/types";
 import { speak } from "~/utils/tts";
 import { promptText } from "~/utils/promptAI";

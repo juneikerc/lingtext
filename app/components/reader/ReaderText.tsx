@@ -15,6 +15,19 @@ export default function ReaderText({
   phrases,
   onWordClick,
 }: ReaderTextProps) {
+  // Guard against undefined content
+  if (!content) {
+    return (
+      <div className="mx-auto max-w-4xl px-6 py-8">
+        <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-8 text-center">
+          <p className="text-gray-500 dark:text-gray-400">
+            No hay contenido para mostrar
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="relative">
       {/* Indicador de modo de lectura */}
@@ -41,9 +54,14 @@ export default function ReaderText({
               {(() => {
                 const tokens = tokenize(paragraph);
                 // Marca tokens que pertenecen a alguna frase guardada cuando aparecen contiguamente
-                const isPhraseToken: boolean[] = new Array(tokens.length).fill(false);
+                const isPhraseToken: boolean[] = new Array(tokens.length).fill(
+                  false
+                );
 
-                const tryMatch = (startIdx: number, parts: string[]): number[] | null => {
+                const tryMatch = (
+                  startIdx: number,
+                  parts: string[]
+                ): number[] | null => {
                   const indices: number[] = [];
                   let p = 0;
                   let j = startIdx;
@@ -52,7 +70,8 @@ export default function ReaderText({
                       j++;
                       continue;
                     }
-                    const low = tokens[j].lower || normalizeWord(tokens[j].text);
+                    const low =
+                      tokens[j].lower || normalizeWord(tokens[j].text);
                     if (low !== parts[p]) return null;
                     indices.push(j);
                     p++;
@@ -65,7 +84,8 @@ export default function ReaderText({
                   if (!tokens[i].isWord) continue;
                   for (const parts of phrases) {
                     if (parts.length < 2) continue;
-                    const startLow = tokens[i].lower || normalizeWord(tokens[i].text);
+                    const startLow =
+                      tokens[i].lower || normalizeWord(tokens[i].text);
                     if (startLow !== parts[0]) continue;
                     const matchIdxs = tryMatch(i, parts);
                     if (matchIdxs) {
@@ -76,7 +96,11 @@ export default function ReaderText({
 
                 return tokens.map((t, tokenIndex) => {
                   if (!t.isWord) {
-                    return <span key={`${paragraphIndex}-${tokenIndex}`}>{t.text}</span>;
+                    return (
+                      <span key={`${paragraphIndex}-${tokenIndex}`}>
+                        {t.text}
+                      </span>
+                    );
                   }
                   const low = t.lower || normalizeWord(t.text);
                   const isUnknown = unknownSet.has(low);

@@ -1,4 +1,4 @@
-import { getText } from "~/db";
+import { getText } from "~/services/db";
 import type { Route } from "./+types/text";
 import { Suspense, lazy } from "react";
 import type { AudioRef } from "~/types";
@@ -43,7 +43,7 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     id: text?.id,
     title: text?.title,
     content: text?.content,
-    format: text?.format || 'txt',
+    format: text?.format || "txt",
     createdAt: text?.createdAt,
     audioRef: text?.audioRef,
     audioUrl,
@@ -51,7 +51,7 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     id: string;
     title: string;
     content: string;
-    format: 'txt' | 'markdown';
+    format: "txt" | "markdown";
     audioRef?: AudioRef | null;
     createdAt: number;
     audioUrl?: string | null;

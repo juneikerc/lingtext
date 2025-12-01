@@ -1,6 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router";
-import { getAllTexts, addText, deleteText, updateTextAudioRef } from "../db";
+import {
+  getAllTexts,
+  addText,
+  deleteText,
+  updateTextAudioRef,
+} from "../services/db";
 import type { TextItem, AudioRef } from "../types";
 import { pickAudioFile } from "../utils/fs";
 import {

@@ -1,8 +1,8 @@
-import { addText, putUnknownWord } from "~/db";
+import { addText, putUnknownWord, getAllTexts } from "~/services/db";
 import type { AudioRef, TextItem, WordEntry } from "~/types";
 import { uid } from "~/utils/id";
 
-const SEED_KEY = "lingtext:seeded:v1";
+const SEED_KEY = "lingtext:seeded:v2"; // Bumped version for SQLite migration
 
 function makeDefaultWords(): Array<Pick<WordEntry, "word" | "translation">> {
   return [
@@ -22,7 +22,18 @@ function makeDefaultWords(): Array<Pick<WordEntry, "word" | "translation">> {
 export async function seedInitialDataOnce(): Promise<void> {
   if (typeof window === "undefined") return; // only client
   try {
-    if (localStorage.getItem(SEED_KEY)) return;
+    // Check if we already seeded AND if data actually exists
+    const alreadySeeded = localStorage.getItem(SEED_KEY);
+    if (alreadySeeded) {
+      // Verify data actually exists (in case DB was reset)
+      const existingTexts = await getAllTexts();
+      if (existingTexts.length > 0) {
+        return; // Data exists, no need to seed
+      }
+      // Data was lost, clear the flag and re-seed
+      console.log("[Seed] Data was lost, re-seeding...");
+      localStorage.removeItem(SEED_KEY);
+    }
 
     // Fetch default text content from public
     const res = await fetch("/the_box_by_the_river.txt");

@@ -3,7 +3,7 @@ import {
   getAllPhrases,
   getDailyStats,
   type DailyStats,
-} from "~/db";
+} from "~/services/db";
 import type { WordEntry, PhraseEntry } from "~/types";
 
 // CONFIGURACIÓN: Aquí defines tu límite por defecto (ej. 15)

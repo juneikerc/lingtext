@@ -8,8 +8,8 @@ import {
   getPhrase,
   putPhrase,
   deletePhrase,
-  incrementNewCardsCount, // <--- IMPORTANTE: Importar la nueva función
-} from "~/db";
+  incrementNewCardsCount,
+} from "~/services/db";
 import { speak } from "~/utils/tts";
 import {
   calculateNextReview,

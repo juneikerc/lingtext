@@ -1,14 +1,15 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { Link } from "react-router";
 import type { WordEntry } from "~/types";
-import type { DailyStats } from "~/db"; // Asegúrate de exportar esta interfaz en db.ts o types.ts
+import type { DailyStats } from "~/services/db";
 import { exportUnknownWordsCsv } from "~/utils/anki";
-import { deleteWord, getSettings } from "~/db";
+import { deleteWord, getSettings } from "~/services/db";
 import { speak } from "~/utils/tts";
 import {
   isWordReadyForReview,
   formatTimeUntilReview,
 } from "~/utils/spaced-repetition";
+import DatabaseSettings from "./DatabaseSettings";
 
 interface UnknownWordsSectionProps {
   words: WordEntry[];
@@ -200,6 +201,9 @@ export default function UnknownWordsSection({
                   📥 Exportar CSV (Anki)
                 </button>
               </div>
+
+              {/* Database Settings */}
+              <DatabaseSettings />
 
               {/* Lista de palabras (Igual que antes, pero mostrando status) */}
               <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl border border-gray-200/50 dark:border-gray-700/50 shadow-sm overflow-hidden">

@@ -1,4 +1,4 @@
-import { getAllUnknownWords } from "../db";
+import { getAllUnknownWords } from "../services/db";
 
 function toCsvCell(s: string): string {
   // escape quotes and wrap in quotes
