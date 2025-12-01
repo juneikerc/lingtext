@@ -139,6 +139,13 @@ async function initDB(): Promise<any> {
       const sqlite3: any = await sqlite3InitModule({
         print: console.log,
         printErr: console.error,
+        // Specify the location of the WASM file for production builds
+        locateFile: (file: string) => {
+          if (file.endsWith(".wasm")) {
+            return `/assets/${file}`;
+          }
+          return file;
+        },
       });
       sqlite3Instance = sqlite3;
 
