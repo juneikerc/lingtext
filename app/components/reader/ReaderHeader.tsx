@@ -1,13 +1,56 @@
 import { Link } from "react-router";
 import { useTranslatorStore } from "~/context/translatorSelector";
-import { TRANSLATORS } from "~/types";
+import TranslatorSelector from "~/components/TranslatorSelector";
 
 interface ReaderHeaderProps {
   title: string;
 }
 
 export default function ReaderHeader({ title }: ReaderHeaderProps) {
-  const { selected, setSelected } = useTranslatorStore();
+  const { status, modelReady } = useTranslatorStore();
+
+  // Get status indicator
+  const getStatusIndicator = () => {
+    if (status === "downloading") {
+      return (
+        <div className="flex items-center space-x-1 px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-md text-xs font-medium">
+          <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+          <span>Descargando</span>
+        </div>
+      );
+    }
+    if (status === "computing") {
+      return (
+        <div className="flex items-center space-x-1 px-2 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 rounded-md text-xs font-medium">
+          <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full animate-pulse"></div>
+          <span>Traduciendo</span>
+        </div>
+      );
+    }
+    if (modelReady || status === "ready") {
+      return (
+        <div className="flex items-center space-x-1 px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-md text-xs font-medium">
+          <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+          <span>Listo</span>
+        </div>
+      );
+    }
+    if (status === "error") {
+      return (
+        <div className="flex items-center space-x-1 px-2 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-md text-xs font-medium">
+          <div className="w-1.5 h-1.5 bg-red-500 rounded-full"></div>
+          <span>Error</span>
+        </div>
+      );
+    }
+    return (
+      <div className="flex items-center space-x-1 px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-md text-xs font-medium">
+        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+        <span>Inactivo</span>
+      </div>
+    );
+  };
+
   return (
     <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200/50 dark:border-gray-700/50 sticky top-0 z-20">
       <div className="mx-auto max-w-6xl w-full px-4 sm:px-6 lg:px-8">
@@ -18,7 +61,9 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
               to="../"
               className="group flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-blue-500 hover:text-white text-gray-700 dark:text-gray-300 font-medium transition-all duration-200"
             >
-              <span className="text-sm group-hover:-translate-x-0.5 transition-transform duration-200">←</span>
+              <span className="text-sm group-hover:-translate-x-0.5 transition-transform duration-200">
+                ←
+              </span>
               <span className="text-sm">Volver</span>
             </Link>
 
@@ -32,10 +77,7 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
           </div>
 
           {/* Indicador de estado compacto */}
-          <div className="hidden sm:flex items-center space-x-1 px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-md text-xs font-medium">
-            <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
-            <span>Listo</span>
-          </div>
+          <div className="hidden sm:flex">{getStatusIndicator()}</div>
         </div>
 
         {/* Segunda fila compacta - Selector de traductor */}
@@ -44,27 +86,12 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
             <div className="w-4 h-4 bg-gradient-to-r from-purple-500 to-blue-500 rounded flex items-center justify-center">
               <span className="text-white text-xs">🌐</span>
             </div>
-            <span className="text-sm font-medium text-gray-900 dark:text-gray-100">Traductor:</span>
+            <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
+              Traductor Local:
+            </span>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-3">
-            <select
-              className="px-3 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm font-medium"
-              value={selected}
-              onChange={(e) => setSelected(e.target.value as TRANSLATORS)}
-            >
-              <option value={TRANSLATORS.CHROME}>⚡ Rápido | Básico</option>
-              <option value={TRANSLATORS.GEMMA_3N_E4B_IT_FREE}>🧠 Inteligente | Medio</option>
-              <option value={TRANSLATORS.GPT_OSS_20B_FREE}>🚀 Muy Inteligente | Lento</option>
-            </select>
-
-            {/* Información compacta del traductor seleccionado */}
-            <div className="text-xs text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">
-              {selected === TRANSLATORS.CHROME && "Nativo"}
-              {selected === TRANSLATORS.GEMMA_3N_E4B_IT_FREE && "IA Optimizada"}
-              {selected === TRANSLATORS.GPT_OSS_20B_FREE && "IA Avanzada"}
-            </div>
-          </div>
+          <TranslatorSelector compact />
         </div>
       </div>
     </div>

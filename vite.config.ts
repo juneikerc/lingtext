@@ -5,6 +5,10 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import { cloudflare } from "@cloudflare/vite-plugin";
 import path from "path";
 import fs from "fs";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Plugin to copy SQLite WASM files to public directory
 function copySqliteWasm() {
@@ -55,9 +59,13 @@ export default defineConfig({
       "Cross-Origin-Embedder-Policy": "require-corp",
     },
   },
-  // Optimize SQLite WASM dependencies - exclude from pre-bundling
+  // Optimize dependencies - exclude WASM packages from pre-bundling
   optimizeDeps: {
-    exclude: ["@sqlite.org/sqlite-wasm"],
+    exclude: [
+      "@sqlite.org/sqlite-wasm",
+      "@xenova/transformers",
+      "onnxruntime-web",
+    ],
   },
   // Force browser entry point for SQLite WASM in all environments
   resolve: {
@@ -66,6 +74,27 @@ export default defineConfig({
         __dirname,
         "node_modules/@sqlite.org/sqlite-wasm/index.mjs"
       ),
+    },
+  },
+  // Worker configuration for AI inference
+  worker: {
+    format: "es",
+  },
+  // Build configuration
+  build: {
+    target: "esnext",
+    rollupOptions: {
+      output: {
+        // Ensure workers are properly chunked
+        manualChunks: (id) => {
+          if (id.includes("@xenova/transformers")) {
+            return "transformers";
+          }
+          if (id.includes("@mlc-ai/web-llm")) {
+            return "webllm";
+          }
+        },
+      },
     },
   },
 });

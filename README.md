@@ -9,7 +9,7 @@ Su objetivo es ayudar a construir vocabulario en contexto, minimizando fricción
 ## Características principales
 
 - **Lectura centrada en el aprendizaje**: biblioteca de textos locales o por URL, con soporte de audio adjunto y formato Markdown.
-- **Traducción instantánea**: usa la API de Traducción local de Chrome si está disponible; si no, hace fallback automático a un endpoint remoto basado en OpenRouter (requiere clave).
+- **Traducción 100% local**: sistema de traducción tiered que corre completamente en el navegador usando Chrome AI, WebGPU (web-llm) o CPU (transformers.js). Sin API keys, sin envío de datos.
 - **TTS (Text‑to‑Speech)**: pronuncia palabras al instante con la Web Speech API y configura voz, idioma y velocidad.
 - **Gestión de vocabulario**: marca palabras y frases como "desconocidas", guárdalas con repetición espaciada integrada.
 - **Base de datos SQLite local**: todos tus datos se almacenan en SQLite WASM con persistencia en OPFS (Origin Private File System).
@@ -22,8 +22,8 @@ Su objetivo es ayudar a construir vocabulario en contexto, minimizando fricción
 
 - **Autoestudio guiado**: pensado para estudiantes autodidactas que quieren leer y construir vocabulario con mínimo contexto técnico.
 - **Local‑first con propiedad de datos**: todos los textos, audio y palabras se guardan en SQLite dentro de tu navegador (OPFS). Puedes exportar tu base de datos completa como archivo `.sqlite` y llevarla a otro dispositivo.
-- **Privacidad por defecto**: la traducción remota solo envía la palabra o selección al servidor cuando se usa el fallback. Nunca se envían tus textos completos ni tu vocabulario.
-- **Bajo coste**: aprovecha capacidades locales (Chrome Translator, TTS, SQLite WASM) y solo usa modelos remotos cuando es necesario.
+- **Privacidad total**: TODA la traducción corre localmente en tu navegador. Nunca se envían datos a servidores externos.
+- **Cero coste**: aprovecha modelos de IA locales (Chrome AI, Qwen, Llama, Gemma) sin necesidad de API keys ni suscripciones.
 
 —
 
@@ -42,7 +42,8 @@ Su objetivo es ayudar a construir vocabulario en contexto, minimizando fricción
 - **Estado global**: `zustand` (`app/context/translatorSelector.ts`).
 - **Base de datos**: SQLite WASM (`@sqlite.org/sqlite-wasm`) con persistencia en OPFS (`app/services/db.ts`).
 - **TTS**: Web Speech API (`app/utils/tts.ts`).
-- **Traducción**: Chrome Translator local si existe (`app/utils/translate.ts`) y endpoint remoto con OpenRouter (`app/routes/translate.tsx`).
+- **Traducción local**: Sistema tiered con Chrome AI (Tier 0), Transformers.js/CPU (Tier 1), WebLLM/GPU (Tiers 2-4).
+- **Workers de IA**: `app/workers/cpu.worker.ts` (Qwen 0.5B) y `app/workers/gpu.worker.ts` (Qwen 1.5B, Llama 3.1 8B, Gemma 2 9B).
 - **Backup/Restore**: File System Access API para exportar/importar archivos `.sqlite`.
 
 —
@@ -52,11 +53,17 @@ Su objetivo es ayudar a construir vocabulario en contexto, minimizando fricción
 - `app/`
   - `components/`
     - `Reader.tsx`, `reader/` (UI de lectura, popups, audio)
+    - `TranslatorSelector.tsx` (selector de modelos de IA local)
     - `UnknownWordsSection.tsx` (listado y acciones)
   - `routes/`
-    - `home.tsx`, `texts/text.tsx`, `words.tsx`, `review.tsx`, `translate.tsx`
+    - `home.tsx`, `texts/text.tsx`, `words.tsx`, `review.tsx`
   - `services/`
     - `db.ts` (SQLite WASM con OPFS)
+  - `hooks/`
+    - `useTranslationEngine.ts` (motor de traducción local tiered)
+  - `workers/`
+    - `cpu.worker.ts` (Transformers.js para CPU)
+    - `gpu.worker.ts` (WebLLM para GPU)
   - `context/translatorSelector.ts` (zustand)
   - `utils/` (`translate.ts`, `tts.ts`, `tokenize.ts`, `anki.ts`, `fs.ts`, `scheduler.ts`, `spaced-repetition.ts`)
 - `public/` (assets y textos de ejemplo)
@@ -70,7 +77,6 @@ Su objetivo es ayudar a construir vocabulario en contexto, minimizando fricción
 - `/texts/:id` → `app/routes/texts/text.tsx`: lector, audio y popups de traducción.
 - `/words` → listado de palabras desconocidas con estadísticas de repaso.
 - `/review` → sesión de repaso con repetición espaciada.
-- `/translate/:text` → endpoint JSON para traducción remota.
 
 —
 
@@ -104,12 +110,22 @@ Base de datos SQLite almacenada en OPFS del navegador (`lingtext.sqlite3`):
 
 —
 
-## Traducción: local y remota (fallback)
+## Sistema de Traducción Local (Tiered)
 
-- **Local (Chrome)**: `translateFromChrome(term)` usa la API `Translator` si existe.
-- **Remota (OpenRouter)**: `translateRemote(term, model)` consulta `/translate/:term`.
-- **Unificación**: `translateTerm(term, selected)` prioriza Chrome y cae a remoto si no hay resultado válido — sin bloquear la UI.
-- **Clave API**: define `OPEN_ROUTER_API_KEY` en el entorno del servidor para habilitar el endpoint remoto en desarrollo y producción.
+LingText usa un sistema de traducción 100% local con múltiples niveles según el hardware disponible:
+
+| Tier | Modelo       | Tecnología             | Requisitos      | Descarga |
+| ---- | ------------ | ---------------------- | --------------- | -------- |
+| 0    | Chrome AI    | window.ai/Translator   | Chrome 121+     | 0 MB     |
+| 1    | Qwen 0.5B    | Transformers.js (WASM) | Cualquier CPU   | ~400 MB  |
+| 2    | Qwen 1.5B    | WebLLM (WebGPU)        | GPU ~1.8GB VRAM | ~1.1 GB  |
+| 3    | Llama 3.1 8B | WebLLM (WebGPU)        | GPU ~6GB VRAM   | ~5.0 GB  |
+| 4    | Gemma 2 9B   | WebLLM (WebGPU)        | GPU ~8GB VRAM   | ~6.0 GB  |
+
+- **Detección automática**: La app detecta WebGPU y Chrome AI al cargar.
+- **Descarga bajo demanda**: Los modelos se descargan solo cuando el usuario los selecciona.
+- **Caché persistente**: Los modelos se guardan en la Cache API del navegador.
+- **Workers separados**: CPU y GPU corren en Web Workers para no bloquear la UI.
 
 —
 
@@ -124,7 +140,7 @@ Base de datos SQLite almacenada en OPFS del navegador (`lingtext.sqlite3`):
 
 ## Instalación y ejecución
 
-Requisitos: Node 20+ y un navegador moderno. Para usar traducción remota, necesitarás una clave de OpenRouter.
+Requisitos: Node 20+ y un navegador moderno con soporte para SharedArrayBuffer (Chrome, Edge, Firefox).
 
 1. Instalar dependencias
 
@@ -142,7 +158,6 @@ npm run dev
 3. Producción
 
 ```bash
-# Requiere variable: OPEN_ROUTER_API_KEY
 npm run build
 npm run start
 # Servirá ./build/server/index.js
@@ -152,14 +167,14 @@ npm run start
 
 ```bash
 docker build -t lingtext .
-docker run -e OPEN_ROUTER_API_KEY=sk-... -p 3000:3000 lingtext
+docker run -p 3000:3000 lingtext
 ```
 
 —
 
 ## Variables de entorno
 
-- `OPEN_ROUTER_API_KEY`: clave para `app/routes/translate.tsx`. Solo se usa en el servidor (SSR).
+No se requieren variables de entorno para la funcionalidad principal. La traducción es 100% local.
 
 —
 
@@ -176,10 +191,14 @@ docker run -e OPEN_ROUTER_API_KEY=sk-... -p 3000:3000 lingtext
 - **No se reproduce el audio local**
   - Usa Chrome/Edge en `localhost` o sitio HTTPS (requisito de File System Access API).
   - Si ves “Reautorizar audio”, pulsa y concede permiso. Si falla, re‑adjunta el archivo desde la biblioteca.
-- **La traducción devuelve vacío**
-  - Verifica `OPEN_ROUTER_API_KEY` y conectividad. Chrome Translator puede no estar disponible en tu navegador; se hará fallback, pero sin API key el resultado será vacío.
-- **No aparece la opción de Chrome Translator**
-  - La API `Translator` es experimental y solo está en algunas versiones de Chrome. Usa los modelos remotos.
+- **La traducción devuelve vacío o es lenta**
+  - Asegúrate de que el modelo esté descargado (verás una barra de progreso).
+  - Los modelos GPU requieren WebGPU. Verifica en `chrome://gpu` que esté habilitado.
+  - El modelo CPU (Tier 1) funciona en cualquier dispositivo pero es más lento.
+- **No aparece la opción de Chrome AI**
+  - La API `Translator` es experimental y solo está en Chrome 121+. Usa los modelos locales de IA.
+- **Los modelos GPU no aparecen**
+  - Tu navegador no soporta WebGPU. Usa Chrome/Edge actualizado o el modelo CPU.
 
 —
 
