@@ -1,5 +1,6 @@
 import React from "react";
 import type { WordPopupState } from "./types";
+import { isTranslationJson } from "~/helpers/isTranslationJson";
 
 interface WordPopupProps {
   popup: WordPopupState;
@@ -33,7 +34,9 @@ export default function WordPopup({
             </div>
             <div>
               <h3 className="font-bold text-lg">{popup.word}</h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">Palabra seleccionada</p>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
+                Palabra seleccionada
+              </p>
             </div>
           </div>
           <button
@@ -54,12 +57,34 @@ export default function WordPopup({
             <div className="w-5 h-5 bg-gray-200 dark:bg-gray-600 rounded-lg flex items-center justify-center">
               <span className="text-white text-xs">🇪🇸</span>
             </div>
-            <span className="font-semibold text-gray-700 dark:text-gray-300">Traducción</span>
+            <span className="font-semibold text-gray-700 dark:text-gray-300">
+              Traducción
+            </span>
           </div>
           <div className="bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-lg p-3">
-            <span className="text-xl font-bold text-gray-900 dark:text-gray-100">
-              {popup.translation}
-            </span>
+            {isTranslationJson(popup.translation) ? (
+              <div className="space-y-2">
+                {(() => {
+                  const parsed = JSON.parse(popup.translation);
+                  return Object.entries(parsed.info).map(
+                    ([category, translations]) => (
+                      <div key={category}>
+                        <p className="text-sm font-semibold text-gray-600 dark:text-gray-400">
+                          {category}
+                        </p>
+                        <p className="text-gray-900 dark:text-gray-100">
+                          {(translations as string[]).join(", ")}
+                        </p>
+                      </div>
+                    )
+                  );
+                })()}
+              </div>
+            ) : (
+              <span className="text-xl font-bold text-gray-900 dark:text-gray-100">
+                {popup.translation}
+              </span>
+            )}
           </div>
         </div>
 
@@ -69,16 +94,22 @@ export default function WordPopup({
             <div className="w-5 h-5 bg-gray-200 dark:bg-gray-600 rounded-lg flex items-center justify-center">
               <span className="text-white text-xs">🎯</span>
             </div>
-            <span className="font-semibold text-gray-700 dark:text-gray-300">Estado</span>
+            <span className="font-semibold text-gray-700 dark:text-gray-300">
+              Estado
+            </span>
           </div>
-          <div className={`inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium ${
-            isUnknown
-              ? "bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-400 border border-orange-200 dark:border-orange-800/50"
-              : "bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800/50"
-          }`}>
-            <span className={`w-2 h-2 rounded-full mr-2 ${
-              isUnknown ? "bg-orange-500" : "bg-green-500"
-            }`}></span>
+          <div
+            className={`inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium ${
+              isUnknown
+                ? "bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-400 border border-orange-200 dark:border-orange-800/50"
+                : "bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800/50"
+            }`}
+          >
+            <span
+              className={`w-2 h-2 rounded-full mr-2 ${
+                isUnknown ? "bg-orange-500" : "bg-green-500"
+              }`}
+            ></span>
             {isUnknown ? "Por aprender" : "Conocida"}
           </div>
         </div>

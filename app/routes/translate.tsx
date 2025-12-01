@@ -45,7 +45,46 @@ export async function loader({ params, request, context }: Route.LoaderArgs) {
       messages: [
         {
           role: "user",
-          content: `translate this word to spanish (if the word "${sanitizedText}" has multiple translations, return the most the 3 most common separated by a comma)(if the word has only one translation, return only 1 translation): ${sanitizedText} (respond only with the translation no additional text)`,
+          content: `You are a machine that outputs strict JSON. You receive an English word and output its Spanish translations grouped by grammatical category as a list of strings.
+Rules:
+1. Use only valid JSON.
+2. Values must be arrays of strings.
+3. Only include relevant categories.
+
+EXAMPLES:
+
+User: "run"
+Assistant:
+{
+  "word": "run",
+  "info": {
+    "Verb": ["correr", "ejecutar", "administrar"],
+    "Noun": ["carrera", "recorrido", "racha"]
+  }
+}
+
+User: "fast"
+Assistant:
+{
+  "word": "fast",
+  "info": {
+    "Adjective": ["rápido", "veloz", "adelantado"],
+    "Adverb": ["rápidamente"],
+    "Noun": ["ayuno"],
+    "Verb": ["ayunar"]
+  }
+}
+
+User: "beautiful"
+Assistant:
+{
+  "word": "beautiful",
+  "info": {
+    "Adjective": ["hermoso", "bello", "bonito"]
+  }
+}
+          
+          translate this word to spanish: ${sanitizedText} (respond only with the translation no additional text)`,
         },
       ],
       max_tokens: 100,
@@ -59,7 +98,11 @@ export async function loader({ params, request, context }: Route.LoaderArgs) {
 
     return new Response(
       JSON.stringify({
-        translation: translation,
+        translation: translation
+          .replaceAll("```", "")
+          .replaceAll("```", "")
+          .replace("json", "")
+          .trim(),
       }),
       {
         status: 200,

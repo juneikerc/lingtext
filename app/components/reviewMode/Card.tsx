@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { getSettings } from "~/services/db";
 import type { WordEntry } from "~/types";
 import { speak } from "~/utils/tts";
-import { promptText } from "~/utils/promptAI";
+import { isTranslationJson } from "~/helpers/isTranslationJson";
 interface CardProps {
   word: WordEntry;
   showTranslation: boolean;
@@ -20,32 +20,7 @@ export default function Card({
 }: CardProps) {
   useEffect(() => {
     playAudio();
-    somethingWithPromptAI();
   }, [word]);
-
-  const somethingWithPromptAI = async () => {
-    const promptSessionOptions = {
-      initialPrompts: [
-        { role: "system", content: "You are a helpful assistant." },
-      ],
-    };
-    const result = await promptText(
-      [
-        {
-          role: "user",
-          content: [
-            {
-              type: "text",
-              value: "Cual es la traduccion de la palabra hola al ingles",
-            },
-          ],
-        },
-      ],
-      promptSessionOptions
-    );
-
-    console.log(result);
-  };
 
   const playAudio = async () => {
     if (!word) return;
@@ -85,8 +60,27 @@ export default function Card({
             {/* Respuesta correcta */}
             <div className="text-center">
               <div className="inline-flex items-center px-6 py-2 mb-4 text-lg font-medium text-gray-700 bg-gray-100/80 dark:bg-gray-700/80 dark:text-gray-300 rounded-full border border-gray-200/50 dark:border-gray-600/50">
-                <span className="text-xl mr-2">🇪🇸</span>
-                <span>{word.translation}</span>
+                {isTranslationJson(word.translation) ? (
+                  <div className="space-y-2">
+                    {(() => {
+                      const parsed = JSON.parse(word.translation);
+                      return Object.entries(parsed.info).map(
+                        ([category, translations]) => (
+                          <div key={category}>
+                            <p className="text-sm font-semibold text-gray-600 dark:text-gray-400">
+                              {category}
+                            </p>
+                            <p className="text-gray-900 dark:text-gray-100">
+                              {(translations as string[]).join(", ")}
+                            </p>
+                          </div>
+                        )
+                      );
+                    })()}
+                  </div>
+                ) : (
+                  <span>{word.translation}</span>
+                )}
               </div>
             </div>
 
@@ -112,16 +106,12 @@ export default function Card({
         ) : (
           <div className="space-y-6">
             <div className="text-center">
-              <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
-                ¿Recuerdas el significado de esta palabra?
-              </p>
-
               <button
                 onClick={() => setShowTranslation(true)}
                 className="flex items-center justify-center space-x-3 px-8 py-4 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 border border-gray-200 dark:border-gray-600 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-sm hover:shadow-md"
               >
                 <span>👁️</span>
-                <span>Mostrar traducción</span>
+                <span>Show Translation</span>
               </button>
             </div>
           </div>

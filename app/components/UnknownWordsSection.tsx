@@ -9,6 +9,7 @@ import {
   isWordReadyForReview,
   formatTimeUntilReview,
 } from "~/utils/spaced-repetition";
+import { isTranslationJson } from "~/helpers/isTranslationJson";
 
 interface UnknownWordsSectionProps {
   words: WordEntry[];
@@ -235,9 +236,29 @@ export default function UnknownWordsSection({
                               🔊
                             </button>
                           </div>
-                          <p className="text-gray-600 dark:text-gray-400 mb-3">
-                            {word.translation}
-                          </p>
+                          {isTranslationJson(word.translation) ? (
+                            <div className="space-y-2 mb-3">
+                              {(() => {
+                                const parsed = JSON.parse(word.translation);
+                                return Object.entries(parsed.info).map(
+                                  ([category, translations]) => (
+                                    <div key={category}>
+                                      <p className="text-sm font-semibold text-gray-600 dark:text-gray-400">
+                                        {category}
+                                      </p>
+                                      <p className="text-gray-900 dark:text-gray-100">
+                                        {(translations as string[]).join(", ")}
+                                      </p>
+                                    </div>
+                                  )
+                                );
+                              })()}
+                            </div>
+                          ) : (
+                            <p className="text-gray-600 dark:text-gray-400 mb-3">
+                              {word.translation}
+                            </p>
+                          )}
 
                           {/* Estado de la palabra */}
                           <div className="flex items-center space-x-4 text-xs md:text-sm">
