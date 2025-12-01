@@ -745,6 +745,7 @@ export async function exportDatabase(): Promise<boolean> {
  */
 export async function importDatabase(): Promise<boolean> {
   // Ensure SQLite WASM is initialized first (loads the WASM file)
+  // This also ensures sqlite3Instance is available
   await initDB();
 
   try {
@@ -787,11 +788,10 @@ export async function importDatabase(): Promise<boolean> {
       });
     }
 
-    // Close current database
+    // Close current database connection (but keep sqlite3Instance)
     if (db) {
       db.close();
       db = null;
-      initPromise = null;
     }
 
     // Write to OPFS
@@ -801,8 +801,33 @@ export async function importDatabase(): Promise<boolean> {
     await writable.write(fileData);
     await writable.close();
 
-    // Reinitialize database
-    await initDB();
+    // Reopen database from OPFS using existing sqlite3Instance
+    // Don't call initDB() again - just open the new database directly
+    if (sqlite3Instance) {
+      const opfsVfs = sqlite3Instance.oo1.OpfsDb;
+      if (opfsVfs) {
+        db = new opfsVfs(DB_NAME);
+        console.log("[DB] Database imported and reopened via OPFS");
+      } else {
+        // Fallback to in-memory with deserialization
+        db = new sqlite3Instance.oo1.DB(":memory:");
+        const data = new Uint8Array(fileData);
+        const rc = sqlite3Instance.capi.sqlite3_deserialize(
+          db.pointer,
+          "main",
+          data,
+          data.byteLength,
+          data.byteLength,
+          0
+        );
+        if (rc !== 0) {
+          throw new Error(`sqlite3_deserialize failed with code ${rc}`);
+        }
+        console.log("[DB] Database imported via deserialize (fallback)");
+      }
+    } else {
+      throw new Error("SQLite instance not available");
+    }
 
     console.log("[DB] Database imported successfully");
     return true;
