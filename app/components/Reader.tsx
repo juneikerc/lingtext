@@ -31,7 +31,7 @@ interface Props {
     id: string;
     title: string;
     content: string;
-    format?: 'txt' | 'markdown';
+    format?: "txt" | "markdown";
     audioRef?: AudioRef | null;
     audioUrl?: string | null;
   };
@@ -101,32 +101,35 @@ export default function Reader({ text }: Props) {
     setPhrases(all.map((p) => p.parts));
   }, []);
 
-  const onWordClick = useCallback(async (e: React.MouseEvent<HTMLSpanElement>) => {
-    const target = e.currentTarget as HTMLSpanElement;
-    if (!target?.dataset?.lower || !target?.dataset?.word) return;
-    const rect = target.getBoundingClientRect();
-    const el = containerRef.current;
-    let x = rect.left + rect.width / 2;
-    let y = rect.top;
-    if (el) {
-      const r = el.getBoundingClientRect();
-      x -= r.left;
-      y -= r.top;
-    }
-    const word = target.dataset.word!;
-    const lower = target.dataset.lower!;
+  const onWordClick = useCallback(
+    async (e: React.MouseEvent<HTMLSpanElement>) => {
+      const target = e.currentTarget as HTMLSpanElement;
+      if (!target?.dataset?.lower || !target?.dataset?.word) return;
+      const rect = target.getBoundingClientRect();
+      const el = containerRef.current;
+      let x = rect.left + rect.width / 2;
+      let y = rect.top;
+      if (el) {
+        const r = el.getBoundingClientRect();
+        x -= r.left;
+        y -= r.top;
+      }
+      const word = target.dataset.word!;
+      const lower = target.dataset.lower!;
 
-    const existing = await getWord(lower);
+      const existing = await getWord(lower);
 
-    if (existing) {
-      setPopup({ x, y, word, lower, translation: existing.translation });
-      return;
-    }
+      if (existing) {
+        setPopup({ x, y, word, lower, translation: existing.translation });
+        return;
+      }
 
-    const translation = await translateTerm(word, selected);
-    setSelPopup(null);
-    setPopup({ x, y, word, lower, translation: translation.translation });
-  }, [selected]);
+      const translation = await translateTerm(word, selected);
+      setSelPopup(null);
+      setPopup({ x, y, word, lower, translation: translation.translation });
+    },
+    [selected]
+  );
 
   const relativePos = useCallback((x: number, y: number) => {
     const el = containerRef.current;
@@ -135,29 +138,28 @@ export default function Reader({ text }: Props) {
     return { x: x - r.left, y: y - r.top };
   }, []);
 
-  const markUnknown = useCallback(async (
-    lower: string,
-    original: string,
-    translation: string
-  ) => {
-    const settings = await getSettings();
-    await putUnknownWord({
-      word: original,
-      wordLower: lower,
-      translation: translation,
-      status: "unknown",
-      addedAt: Date.now(),
-      voice: {
-        name: settings.tts.voiceName,
-        lang: settings.tts.lang,
-        rate: settings.tts.rate,
-        pitch: settings.tts.pitch,
-        volume: settings.tts.volume,
-      },
-    });
-    setUnknownSet((prev) => new Set(prev).add(lower));
-    setPopup(null);
-  }, []);
+  const markUnknown = useCallback(
+    async (lower: string, original: string, translation: string) => {
+      const settings = await getSettings();
+      await putUnknownWord({
+        word: original,
+        wordLower: lower,
+        translation: translation,
+        status: "unknown",
+        addedAt: Date.now(),
+        voice: {
+          name: settings.tts.voiceName,
+          lang: settings.tts.lang,
+          rate: settings.tts.rate,
+          pitch: settings.tts.pitch,
+          volume: settings.tts.volume,
+        },
+      });
+      setUnknownSet((prev) => new Set(prev).add(lower));
+      setPopup(null);
+    },
+    []
+  );
 
   const markKnown = useCallback(async (lower: string) => {
     await deleteWord(lower);
@@ -191,7 +193,6 @@ export default function Reader({ text }: Props) {
         setAudioUrl(null);
       }
 
-
       // Verificar y solicitar permisos
       const hasPermission = await ensureReadPermission(t.audioRef.fileHandle);
       if (!hasPermission) {
@@ -202,7 +203,6 @@ export default function Reader({ text }: Props) {
         );
         return;
       }
-
 
       // Obtener el archivo
       const file = await t.audioRef.fileHandle.getFile();
@@ -244,7 +244,6 @@ export default function Reader({ text }: Props) {
 
       setAudioUrl(url);
       setAudioAccessError(false);
-
     } catch (error) {
       console.error("Error al cargar archivo local:", error);
 
@@ -330,31 +329,36 @@ export default function Reader({ text }: Props) {
     setSelPopup({ x, y, text, translation: translation.translation });
   }
 
-  const onSavePhrase = useCallback(async (text: string, translation: string) => {
-    const parts = tokenize(text)
-      .filter((t) => t.isWord)
-      .map((t) => t.lower || normalizeWord(t.text))
-      .filter((w) => w.length > 0);
+  const onSavePhrase = useCallback(
+    async (text: string, translation: string) => {
+      const parts = tokenize(text)
+        .filter((t) => t.isWord)
+        .map((t) => t.lower || normalizeWord(t.text))
+        .filter((w) => w.length > 0);
 
-    if (parts.length < 2) {
-      alert("Selecciona al menos dos palabras para guardar una frase compuesta.");
-      return;
-    }
+      if (parts.length < 2) {
+        alert(
+          "Selecciona al menos dos palabras para guardar una frase compuesta."
+        );
+        return;
+      }
 
-    const phraseLower = parts.join(" ");
-    await putPhrase({
-      phrase: text,
-      phraseLower,
-      translation,
-      parts,
-      addedAt: Date.now(),
-    });
+      const phraseLower = parts.join(" ");
+      await putPhrase({
+        phrase: text,
+        phraseLower,
+        translation,
+        parts,
+        addedAt: Date.now(),
+      });
 
-    // Actualizar lista local de frases para subrayado inmediato
-    setPhrases((prev) => [...prev, parts]);
+      // Actualizar lista local de frases para subrayado inmediato
+      setPhrases((prev) => [...prev, parts]);
 
-    setSelPopup(null);
-  }, []);
+      setSelPopup(null);
+    },
+    []
+  );
 
   // async function saveSelectionUnknowns() {
   //   if (!selPopup) return;
@@ -403,7 +407,7 @@ export default function Reader({ text }: Props) {
         fileSize={fileSize}
       />
 
-      {text.format === 'markdown' ? (
+      {text.format === "markdown" ? (
         <MarkdownReaderText
           content={text.content}
           unknownSet={unknownSet}

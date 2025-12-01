@@ -1,10 +1,12 @@
 import type { WordEntry, SpacedRepetitionData } from "~/types";
 
 /**
- * Determina si una palabra está lista para repaso basado en su algoritmo de repetición espaciada
+ * Determina si una palabra está lista para repaso
+ * Si no tiene datos (es nueva), se considera lista.
+ * Si tiene datos, se compara la fecha.
  */
 export function isWordReadyForReview(word: WordEntry): boolean {
-  if (!word.srData) return true; // Primera vez
+  if (!word.srData) return true; // Primera vez (Nueva)
   return Date.now() >= word.srData.nextReview;
 }
 
@@ -21,76 +23,97 @@ export function formatTimeUntilReview(nextReview: number): string {
   const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
   if (days > 0) {
-    return `${days} día${days > 1 ? 's' : ''}`;
+    return `${days} día${days > 1 ? "s" : ""}`;
   } else if (hours > 0) {
-    return `${hours} hora${hours > 1 ? 's' : ''}`;
+    return `${hours} h`;
   } else {
     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    return minutes > 0 ? `${minutes} min` : "Menos de 1 minuto";
+    return minutes > 0 ? `${minutes} min` : "< 1 min";
   }
 }
 
 /**
- * Calcula estadísticas de palabras listas para repaso
+ * Calcula estadísticas de palabras listas para repaso.
+ * Útil para mostrar contadores en el UI.
  */
 export function calculateReadyWords(words: WordEntry[]) {
   const ready = words.filter(isWordReadyForReview);
   return {
     ready: ready.length,
     total: words.length,
-    percentage: words.length > 0 ? Math.round((ready.length / words.length) * 100) : 0
+    percentage:
+      words.length > 0 ? Math.round((ready.length / words.length) * 100) : 0,
   };
 }
 
 /**
- * Algoritmo de repetición espaciada (versión simplificada con 2 niveles)
+ * Algoritmo SM-2 (Estilo Anki) Mejorado
+ * * @param currentData Datos actuales de SR (undefined si es nueva)
+ * @param quality Calidad de la respuesta: 0-5 (0=olvido total, 3=aprobado, 5=perfecto)
  */
 export function calculateNextReview(
   currentData: SpacedRepetitionData | undefined,
-  quality: number // 1 = incorrecto, 5 = correcto
+  quality: number
 ): SpacedRepetitionData {
   const now = Date.now();
-  const easeFactor = currentData?.easeFactor ?? 2.5;
-  const repetitions = currentData?.repetitions ?? 0;
 
-  let newInterval: number;
-  let newRepetitions: number;
+  // Valores por defecto si es una palabra nueva
+  if (!currentData) {
+    // Si la calidad es baja (<3), programamos para muy pronto (ej. 1 hora o 1 día)
+    // Si es alta, empezamos con 1 día.
+    const initialInterval = quality >= 3 ? 1 : 0.04; // 0.04 días ~= 1 hora
 
-  if (quality >= 3) {
-    // Respuesta correcta
-    if (repetitions === 0) {
-      newInterval = 1; // Primera repetición exitosa: 1 día
-      newRepetitions = 1;
-    } else if (repetitions === 1) {
-      newInterval = 3; // Segunda repetición exitosa: 3 días
-      newRepetitions = 2;
-    } else {
-      // Repeticiones posteriores: intervalo progresivo
-      newInterval = Math.round((currentData?.interval ?? 1) * easeFactor);
-      newRepetitions = repetitions + 1;
-    }
-  } else {
-    // Respuesta incorrecta
-    newInterval = 1; // Reiniciar a 1 día
-    newRepetitions = 0; // Reiniciar repeticiones
+    return {
+      easeFactor: 2.5,
+      interval: initialInterval,
+      repetitions: quality >= 3 ? 1 : 0,
+      nextReview: now + initialInterval * 24 * 60 * 60 * 1000,
+      reviewHistory: [{ date: now, quality, interval: initialInterval }],
+    };
   }
 
-  // Calcular próxima fecha de revisión
-  const nextReview = now + (newInterval * 24 * 60 * 60 * 1000);
+  let { easeFactor, repetitions, interval } = currentData;
 
-  // Agregar al historial
-  const reviewHistory = currentData?.reviewHistory ?? [];
-  reviewHistory.push({
-    date: now,
-    quality,
-    interval: newInterval,
-  });
+  if (quality >= 3) {
+    // --- RESPUESTA CORRECTA ---
+    if (repetitions === 0) {
+      interval = 1;
+    } else if (repetitions === 1) {
+      interval = 6; // Salto clásico de Anki (1 día -> 6 días)
+    } else {
+      interval = Math.round(interval * easeFactor);
+    }
+    repetitions += 1;
+
+    // Ajustar Ease Factor (fórmula estándar SM-2)
+    // EF' = EF + (0.1 - (5-q) * (0.08 + (5-q)*0.02))
+    easeFactor =
+      easeFactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02));
+
+    // No dejar que el factor baje de 1.3 (para evitar el "infierno de repasos")
+    if (easeFactor < 1.3) easeFactor = 1.3;
+  } else {
+    // --- RESPUESTA INCORRECTA ---
+    repetitions = 0;
+    interval = 1; // Reiniciar a 1 día
+    // Nota: En implementaciones estrictas de Anki, a veces se reduce el Ease Factor aquí,
+    // pero mantenerlo suele ser menos frustrante para el usuario.
+  }
+
+  // Calcular próxima fecha (timestamp)
+  const nextReview = now + interval * 24 * 60 * 60 * 1000;
+
+  // Mantener historial limitado a las últimas 20 revisiones para no llenar la DB
+  const reviewHistory = [
+    ...(currentData.reviewHistory || []),
+    { date: now, quality, interval },
+  ].slice(-20);
 
   return {
-    easeFactor: quality >= 3 ? easeFactor : 2.5, // Mantener o reiniciar factor de facilidad
-    interval: newInterval,
-    repetitions: newRepetitions,
+    easeFactor,
+    interval,
+    repetitions,
     nextReview,
-    reviewHistory: reviewHistory.slice(-10), // Mantener solo las últimas 10 revisiones
+    reviewHistory,
   };
 }

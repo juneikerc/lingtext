@@ -1,4 +1,4 @@
-import { getAllUnknownWords, getAllPhrases } from "~/db";
+import { getAllUnknownWords, getAllPhrases, getDailyStats } from "~/db"; // <--- IMPORTAR getDailyStats
 import type { Route } from "./+types/words";
 import { useState, Suspense, lazy } from "react";
 import type { WordEntry } from "~/types";
@@ -9,8 +9,12 @@ const UnknownWordsSection = lazy(
 );
 
 export async function clientLoader() {
-  const words = await getAllUnknownWords();
-  const phrases = await getAllPhrases();
+  // Cargamos palabras, frases y estadísticas del día en paralelo
+  const [words, phrases, dailyStats] = await Promise.all([
+    getAllUnknownWords(),
+    getAllPhrases(),
+    getDailyStats(),
+  ]);
 
   const phraseWords = phrases.map((p) => ({
     word: p.phrase,
@@ -24,6 +28,7 @@ export async function clientLoader() {
 
   return {
     words: [...words, ...phraseWords],
+    dailyStats, // <--- PASAMOS LAS ESTADÍSTICAS AL COMPONENTE
   };
 }
 
@@ -43,8 +48,8 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Words({ loaderData }: Route.ComponentProps) {
-  const wordsLoaderData = loaderData;
-  const [words, setWords] = useState<WordEntry[]>(wordsLoaderData.words);
+  const { words: initialWords, dailyStats } = loaderData;
+  const [words, setWords] = useState<WordEntry[]>(initialWords);
 
   const handleRemove = (wordLower: string) => {
     setWords((prev) => prev.filter((w) => w.wordLower !== wordLower));
@@ -52,7 +57,11 @@ export default function Words({ loaderData }: Route.ComponentProps) {
 
   return (
     <Suspense fallback={<LoadingSpinner message="Cargando vocabulario..." />}>
-      <UnknownWordsSection words={words} onRemove={handleRemove} />
+      <UnknownWordsSection
+        words={words}
+        dailyStats={dailyStats} // <--- PASAMOS EL PROP
+        onRemove={handleRemove}
+      />
     </Suspense>
   );
 }

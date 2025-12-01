@@ -1,10 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
 import type { WordEntry } from "~/types";
-import { deleteWord, getSettings, putUnknownWord, getPhrase, putPhrase, deletePhrase } from "~/db";
+import {
+  deleteWord,
+  getSettings,
+  putUnknownWord,
+  getPhrase,
+  putPhrase,
+  deletePhrase,
+  incrementNewCardsCount, // <--- IMPORTANTE: Importar la nueva función
+} from "~/db";
 import { speak } from "~/utils/tts";
-import { calculateNextReview, formatTimeUntilReview } from "~/utils/spaced-repetition";
+import {
+  calculateNextReview,
+  formatTimeUntilReview,
+} from "~/utils/spaced-repetition";
 import { tokenize, normalizeWord } from "~/utils/tokenize";
+import Card from "./reviewMode/Card";
 
 interface ReviewModeProps {
   words: WordEntry[];
@@ -13,11 +25,8 @@ interface ReviewModeProps {
   onPrev: () => void;
   onRefresh: () => void;
   totalWords: number;
-  onRetryWord: (word: WordEntry) => void; // Nueva prop para añadir palabra al final
+  onRetryWord: (word: WordEntry) => void;
 }
-
-
-
 
 export default function ReviewMode({
   words,
@@ -48,34 +57,34 @@ export default function ReviewMode({
     await speak(currentWord.word, settings.tts);
   };
 
-  const handleShowTranslation = () => {
-    setShowTranslation(true);
-  };
-
   const handleAnswer = async (remembered: boolean) => {
     if (!currentWord || processing) return;
 
     setProcessing(true);
 
     try {
+      // Calidad simplificada: 5 (perfecto) o 1 (fallo)
+      // Podrías añadir botones para "Difícil" (3) o "Fácil" (4) en el futuro
       const quality = remembered ? 5 : 1;
+
+      // Detectar si es carta NUEVA (sin datos previos)
+      const isNewCard = !currentWord.srData;
+
       const newSrData = calculateNextReview(currentWord.srData, quality);
 
       if (remembered) {
-        // Respuesta correcta: actualizar SR según sea palabra o frase
+        // --- ACIERTO ---
+
+        // Guardar en BD
         if (currentWord.isPhrase) {
-          // Actualizar la frase existente en DB (o crear si faltara)
           const existing = await getPhrase(currentWord.wordLower);
           if (existing) {
-            await putPhrase({
-              ...existing,
-              srData: newSrData,
-            });
+            await putPhrase({ ...existing, srData: newSrData });
           } else {
-            // Fallback: reconstruir parts desde el texto de la frase
+            // Reconstrucción de frase si no existía en store
             const parts = tokenize(currentWord.word)
-              .filter(t => t.isWord)
-              .map(t => t.lower || normalizeWord(t.text));
+              .filter((t) => t.isWord)
+              .map((t) => t.lower || normalizeWord(t.text));
             await putPhrase({
               phrase: currentWord.word,
               phraseLower: currentWord.wordLower,
@@ -97,41 +106,46 @@ export default function ReviewMode({
           });
         }
 
-        setSessionStats(prev => ({
+        // Incrementar contador de límites DIARIOS solo si era nueva
+        if (isNewCard) {
+          await incrementNewCardsCount();
+        }
+
+        setSessionStats((prev) => ({
           ...prev,
           correct: prev.correct + 1,
           total: prev.total + 1,
         }));
 
-        // Avanzar automáticamente después de un delay
-        setTimeout(() => {
-          if (currentIndex < words.length - 1) {
-            onNext();
-          } else {
-            onRefresh(); // Refrescar para actualizar el orden
-          }
-        }, 1000);
-      } else {
-        // Respuesta incorrecta: añadir al final de la lista para reintento en la misma sesión
-        // Solo actualizar estadísticas, no guardar en BD aún
-        setSessionStats(prev => ({
-          ...prev,
-          incorrect: prev.incorrect + 1,
-          total: prev.total + 1,
-        }));
-
-        // Añadir la palabra al final de la lista para reintento
-        onRetryWord(currentWord);
-
-        // Avanzar automáticamente después de mostrar la respuesta
+        // Avanzar
         setTimeout(() => {
           if (currentIndex < words.length - 1) {
             onNext();
           } else {
             onRefresh();
           }
-        }, 2000); // Dar tiempo para ver la respuesta correcta
+        }, 1000);
+      } else {
+        // --- FALLO ---
+        setSessionStats((prev) => ({
+          ...prev,
+          incorrect: prev.incorrect + 1,
+          total: prev.total + 1,
+        }));
+
+        // Reencolar para verla de nuevo en esta misma sesión
+        onRetryWord(currentWord);
+
+        setTimeout(() => {
+          if (currentIndex < words.length - 1) {
+            onNext();
+          } else {
+            onRefresh();
+          }
+        }, 2000);
       }
+    } catch (err) {
+      console.error("Error al guardar repaso:", err);
     } finally {
       setProcessing(false);
     }
@@ -146,32 +160,57 @@ export default function ReviewMode({
     }
     onRefresh();
 
-    if (currentIndex >= words.length - 1) {
-      setSessionStats(prev => ({ ...prev, correct: prev.correct + 1, total: prev.total + 1 }));
-    } else {
-      setSessionStats(prev => ({ ...prev, correct: prev.correct + 1, total: prev.total + 1 }));
+    setSessionStats((prev) => ({
+      ...prev,
+      correct: prev.correct + 1,
+      total: prev.total + 1,
+    }));
+
+    if (currentIndex < words.length - 1) {
       onNext();
     }
   };
 
+  // Pantalla de "Sesión Terminada"
   if (!currentWord) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-white via-purple-50/30 to-pink-50/30 dark:from-gray-950 dark:via-purple-950/10 dark:to-pink-950/10 flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-r from-green-400 to-blue-500 rounded-2xl flex items-center justify-center">
+        <div className="text-center p-8 max-w-md">
+          <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-r from-green-400 to-blue-500 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/20">
             <span className="text-4xl">🎉</span>
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-            Sesión completada
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            ¡Sesión al día!
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-8">
-            ¡Excelente trabajo! Has completado todos los repasos programados para hoy.
+          <p className="text-gray-600 dark:text-gray-400 mb-8 text-lg">
+            Has repasado todas las palabras pendientes y cumplido tu cuota de
+            nuevas palabras por hoy.
           </p>
+
+          <div className="grid grid-cols-2 gap-4 mb-8 text-left bg-white/50 dark:bg-gray-800/50 p-4 rounded-xl">
+            <div>
+              <div className="text-xs text-gray-500 uppercase font-bold tracking-wider">
+                Aciertos
+              </div>
+              <div className="text-2xl font-bold text-green-600">
+                {sessionStats.correct}
+              </div>
+            </div>
+            <div>
+              <div className="text-xs text-gray-500 uppercase font-bold tracking-wider">
+                Repasos
+              </div>
+              <div className="text-2xl font-bold text-blue-600">
+                {sessionStats.total}
+              </div>
+            </div>
+          </div>
+
           <Link
             to="/words"
-            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium rounded-xl hover:from-blue-600 hover:to-indigo-700 transition-all duration-200 shadow-lg hover:shadow-blue-500/25"
+            className="inline-flex items-center justify-center w-full px-6 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold rounded-xl hover:scale-[1.02] transition-all duration-200 shadow-xl"
           >
-            <span>📚 Volver al vocabulario</span>
+            Volver a la Biblioteca
           </Link>
         </div>
       </div>
@@ -181,181 +220,75 @@ export default function ReviewMode({
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <div className="relative">
-        {/* Elementos decorativos de fondo - más sutiles */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-24 left-1/3 h-96 w-96 rounded-full bg-gray-200/30 dark:bg-gray-800/20 blur-3xl"></div>
-          <div className="absolute -bottom-24 right-1/3 h-96 w-96 rounded-full bg-gray-300/20 dark:bg-gray-700/20 blur-3xl"></div>
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-24 left-1/3 h-96 w-96 rounded-full bg-purple-200/30 dark:bg-purple-900/20 blur-3xl"></div>
+          <div className="absolute -bottom-24 right-1/3 h-96 w-96 rounded-full bg-blue-200/30 dark:bg-blue-900/20 blur-3xl"></div>
         </div>
 
         <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-8">
-          {/* Header */}
-          <div className="mb-8">
-            <div className="flex items-center justify-between mb-6">
-              <Link
-                to="/words"
-                className="group flex items-center space-x-2 px-4 py-2 rounded-lg bg-white/90 dark:bg-gray-800/90 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium transition-all duration-200 shadow-sm hover:shadow-md"
-              >
-                <span className="text-lg group-hover:-translate-x-1 transition-transform duration-200">←</span>
-                <span>Vocabulario</span>
-              </Link>
-
-              <div className="flex items-center space-x-4">
-                <div className="text-sm text-gray-600 dark:text-gray-400">
-                  {currentIndex + 1} de {totalWords}
-                </div>
-              </div>
-            </div>
-
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center px-4 py-2 mb-4 text-sm font-medium text-gray-600 bg-gray-100/80 dark:bg-gray-800/80 dark:text-gray-400 rounded-full border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm">
-                <span className="w-2 h-2 bg-gray-500 rounded-full mr-2 animate-pulse"></span>
-                Modo Repaso Inteligente
-              </div>
-              <h1 className="text-3xl md:text-4xl font-bold mb-4">
-                <span className="bg-gradient-to-r from-gray-700 to-gray-600 dark:from-gray-200 dark:to-gray-300 bg-clip-text text-transparent">
-                  ¿Recuerdas esta palabra?
-                </span>
-              </h1>
-              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                El algoritmo de repetición espaciada optimiza tu aprendizaje
-              </p>
+          {/* Header Simplificado */}
+          <div className="flex items-center justify-between mb-8">
+            <Link
+              to="/words"
+              className="text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
+            >
+              ← Salir
+            </Link>
+            <div className="text-sm font-mono text-gray-400">
+              {currentIndex + 1} / {totalWords}
             </div>
           </div>
 
-          {/* Estadísticas de sesión */}
-          <div className="grid grid-cols-3 gap-4 mb-8">
-            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl border border-gray-200/50 dark:border-gray-700/50 shadow-sm p-4 text-center">
-              <div className="text-2xl font-bold text-green-700 dark:text-green-400">{sessionStats.correct}</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Correctas</div>
-            </div>
-            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl border border-gray-200/50 dark:border-gray-700/50 shadow-sm p-4 text-center">
-              <div className="text-2xl font-bold text-red-700 dark:text-red-400">{sessionStats.incorrect}</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Incorrectas</div>
-            </div>
-            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl border border-gray-200/50 dark:border-gray-700/50 shadow-sm p-4 text-center">
-              <div className="text-2xl font-bold text-blue-700 dark:text-blue-400">{Math.round(sessionStats.total > 0 ? (sessionStats.correct / sessionStats.total) * 100 : 0)}%</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Precisión</div>
-            </div>
-          </div>
-
-          {/* Información del algoritmo SR */}
-          {currentWord.srData && (
-            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl border border-gray-200/50 dark:border-gray-700/50 shadow-sm p-4 mb-8">
-              <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
-                <div className="flex items-center space-x-4">
-                  <span>Repeticiones: <span className="font-semibold text-gray-700 dark:text-gray-300">{currentWord.srData.repetitions}</span></span>
-                  <span>Factor: <span className="font-semibold text-gray-700 dark:text-gray-300">{currentWord.srData.easeFactor}</span></span>
-                  <span>Intervalo: <span className="font-semibold text-gray-700 dark:text-gray-300">{currentWord.srData.interval}d</span></span>
-                </div>
-                <div className="text-right">
-                  <span>Próximo repaso: <span className="font-semibold text-gray-700 dark:text-gray-300">
-                    {formatTimeUntilReview(currentWord.srData.nextReview)}
-                  </span></span>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Tarjeta de repaso */}
-          <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg overflow-hidden">
-            {/* Palabra */}
-            <div className="p-8 text-center border-b border-gray-200/50 dark:border-gray-700/50">
-              <div className="flex items-center justify-center space-x-4 mb-4">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100">
-                  {currentWord.word}
-                </h2>
-                <button
-                  onClick={playAudio}
-                  className="p-3 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200"
-                  title="Escuchar pronunciación"
-                >
-                  <span className="text-xl">🔊</span>
-                </button>
-              </div>
-
-              <div className="flex items-center justify-center space-x-4 text-sm text-gray-600 dark:text-gray-400">
-                <span className="flex items-center space-x-1">
-                  <span className="w-2 h-2 bg-gray-400 rounded-full"></span>
-                  <span>Agregada: {new Date(currentWord.addedAt).toLocaleDateString()}</span>
+          <div className="text-center mb-10">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+              Repaso Espaciado
+            </h1>
+            {/* Indicador de Nueva vs Repaso */}
+            <div className="flex justify-center">
+              {!currentWord.srData ? (
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300">
+                  ✨ NUEVA PALABRA
                 </span>
-              </div>
-            </div>
-
-            {/* Área de respuesta */}
-            <div className="p-8">
-              {showTranslation ? (
-                <div className="space-y-6">
-                  {/* Respuesta correcta */}
-                  <div className="text-center">
-                    <div className="inline-flex items-center px-6 py-2 mb-4 text-lg font-medium text-gray-700 bg-gray-100/80 dark:bg-gray-700/80 dark:text-gray-300 rounded-full border border-gray-200/50 dark:border-gray-600/50">
-                      <span className="text-xl mr-2">🇪🇸</span>
-                      <span>{currentWord.translation}</span>
-                    </div>
-                  </div>
-
-                  {/* Botones de confirmación */}
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button
-                      onClick={() => handleAnswer(true)}
-                      className="flex-1 flex items-center justify-center space-x-2 px-6 py-3 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 hover:bg-green-100 dark:hover:bg-green-800/40 border border-green-200 dark:border-green-800/50 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-sm hover:shadow-md"
-                    >
-                      <span>✅</span>
-                      <span>La recordaba</span>
-                    </button>
-                    <button
-                      onClick={() => handleAnswer(false)}
-                      disabled={processing}
-                      className="flex-1 flex items-center justify-center space-x-2 px-6 py-3 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-800/40 border border-red-200 dark:border-red-800/50 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-sm hover:shadow-md disabled:opacity-50"
-                    >
-                      <span>❌</span>
-                      <span>No la recordaba</span>
-                    </button>
-                  </div>
-                </div>
               ) : (
-                <div className="space-y-6">
-                  <div className="text-center">
-                    <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
-                      ¿Recuerdas el significado de esta palabra?
-                    </p>
-
-                    <button
-                      onClick={handleShowTranslation}
-                      className="flex items-center justify-center space-x-3 px-8 py-4 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 border border-gray-200 dark:border-gray-600 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-sm hover:shadow-md"
-                    >
-                      <span>👁️</span>
-                      <span>Mostrar traducción</span>
-                    </button>
-                  </div>
-                </div>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-orange-100 text-orange-700 dark:bg-orange-900/50 dark:text-orange-300">
+                  🔄 REPASO
+                </span>
               )}
             </div>
           </div>
 
-          {/* Navegación */}
-          <div className="flex justify-between items-center mt-8">
-            <button
-              onClick={onPrev}
-              disabled={currentIndex === 0}
-              className="flex items-center space-x-2 px-4 py-2 bg-white/90 dark:bg-gray-800/90 hover:bg-gray-100 dark:hover:bg-gray-700 disabled:bg-gray-50 dark:disabled:bg-gray-900 disabled:text-gray-400 text-gray-700 dark:text-gray-300 font-medium rounded-lg transition-all duration-200 disabled:cursor-not-allowed shadow-sm hover:shadow-md"
-            >
-              <span>←</span>
-              <span>Anterior</span>
-            </button>
-
-            <div className="text-sm text-gray-600 dark:text-gray-400">
-              Progreso: {currentIndex + 1} / {totalWords}
+          {/* Estadísticas de la palabra (Opcional: solo mostrar si es repaso) */}
+          {currentWord.srData && (
+            <div className="flex justify-center gap-6 mb-8 text-sm text-gray-500 dark:text-gray-400">
+              <div className="flex flex-col items-center">
+                <span className="font-bold text-gray-900 dark:text-white">
+                  {currentWord.srData.repetitions}
+                </span>
+                <span className="text-xs">Repeticiones</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <span className="font-bold text-gray-900 dark:text-white">
+                  {currentWord.srData.interval}d
+                </span>
+                <span className="text-xs">Intervalo</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <span className="font-bold text-gray-900 dark:text-white">
+                  {formatTimeUntilReview(currentWord.srData.nextReview)}
+                </span>
+                <span className="text-xs">Próximo</span>
+              </div>
             </div>
+          )}
 
-            <button
-              onClick={onNext}
-              disabled={currentIndex === words.length - 1}
-              className="flex items-center space-x-2 px-4 py-2 bg-white/90 dark:bg-gray-800/90 hover:bg-gray-100 dark:hover:bg-gray-700 disabled:bg-gray-50 dark:disabled:bg-gray-900 disabled:text-gray-400 text-gray-700 dark:text-gray-300 font-medium rounded-lg transition-all duration-200 disabled:cursor-not-allowed shadow-sm hover:shadow-md"
-            >
-              <span>Siguiente</span>
-              <span>→</span>
-            </button>
-          </div>
+          {/* Tarjeta Principal */}
+          <Card
+            word={currentWord}
+            showTranslation={showTranslation}
+            setShowTranslation={setShowTranslation}
+            handleAnswer={handleAnswer}
+            processing={processing}
+          />
         </div>
       </div>
     </div>

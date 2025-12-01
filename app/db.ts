@@ -1,7 +1,20 @@
-import type { AudioRef, Settings, TextItem, WordEntry, PhraseEntry } from "./types";
+import type {
+  AudioRef,
+  Settings,
+  TextItem,
+  WordEntry,
+  PhraseEntry,
+} from "./types";
 
 const DB_NAME = "ling_text_db";
-const DB_VERSION = 2; // bumped to add phrases store
+// Aumentamos la versión para crear el nuevo store 'stats'
+const DB_VERSION = 3;
+
+// Interfaz para las estadísticas diarias
+export interface DailyStats {
+  date: string; // Key: "YYYY-MM-DD"
+  newCardsStudied: number;
+}
 
 function openDB(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
@@ -24,6 +37,10 @@ function openDB(): Promise<IDBDatabase> {
       // phrases store, keyed by normalized phraseLower
       if (!db.objectStoreNames.contains("phrases")) {
         db.createObjectStore("phrases", { keyPath: "phraseLower" });
+      }
+      // NUEVO: stats store para límites diarios
+      if (!db.objectStoreNames.contains("stats")) {
+        db.createObjectStore("stats", { keyPath: "date" });
       }
     };
 
@@ -49,7 +66,7 @@ function tx(
   );
 }
 
-// Texts
+// --- TEXTS ---
 export async function addText(item: TextItem): Promise<void> {
   await tx(["texts"], "readwrite", (t) => {
     t.objectStore("texts").add(item);
@@ -96,7 +113,7 @@ export async function updateTextAudioRef(
   });
 }
 
-// Words (unknown words repository)
+// --- WORDS ---
 export async function putUnknownWord(entry: WordEntry): Promise<void> {
   const normalized: WordEntry = {
     ...entry,
@@ -142,7 +159,7 @@ export async function getAllUnknownWords(): Promise<WordEntry[]> {
   });
 }
 
-// Phrases (multi-word expressions)
+// --- PHRASES ---
 export async function putPhrase(entry: PhraseEntry): Promise<void> {
   const normalized: PhraseEntry = {
     ...entry,
@@ -187,7 +204,7 @@ export async function deletePhrase(phraseOrLower: string): Promise<void> {
   });
 }
 
-// Settings
+// --- SETTINGS ---
 const defaultSettings: Settings = {
   id: "preferences",
   tts: {
@@ -216,5 +233,56 @@ export async function getSettings(): Promise<Settings> {
 export async function saveSettings(prefs: Settings): Promise<void> {
   await tx(["settings"], "readwrite", (t) => {
     t.objectStore("settings").put(prefs);
+  });
+}
+
+// --- STATS (NUEVO) ---
+
+/**
+ * Obtiene las estadísticas del día actual.
+ * Si no existen o son de otro día, devuelve 0 contadores para hoy.
+ */
+export async function getDailyStats(): Promise<DailyStats> {
+  const db = await openDB();
+  const today = new Date().toISOString().split("T")[0]; // "YYYY-MM-DD"
+
+  return new Promise((resolve) => {
+    const req = db
+      .transaction(["stats"], "readonly")
+      .objectStore("stats")
+      .get(today);
+    req.onsuccess = () => {
+      const result = req.result as DailyStats;
+      if (result) {
+        resolve(result);
+      } else {
+        // Inicializar si no existe
+        resolve({ date: today, newCardsStudied: 0 });
+      }
+    };
+    req.onerror = () => resolve({ date: today, newCardsStudied: 0 });
+  });
+}
+
+/**
+ * Incrementa el contador de cartas nuevas estudiadas hoy.
+ */
+export async function incrementNewCardsCount(): Promise<void> {
+  const today = new Date().toISOString().split("T")[0];
+  const currentStats = await getDailyStats();
+
+  // Validación de seguridad: si la fecha en DB es vieja, reseteamos (aunque getDailyStats ya lo maneja)
+  if (currentStats.date !== today) {
+    currentStats.date = today;
+    currentStats.newCardsStudied = 0;
+  }
+
+  const updated: DailyStats = {
+    ...currentStats,
+    newCardsStudied: currentStats.newCardsStudied + 1,
+  };
+
+  await tx(["stats"], "readwrite", (t) => {
+    t.objectStore("stats").put(updated);
   });
 }
