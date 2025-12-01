@@ -20,7 +20,8 @@ export default function TechAndPrivacySection() {
             </span>
           </h2>
           <p className="text-xl md:text-2xl leading-relaxed text-gray-600 dark:text-gray-400 max-w-4xl mx-auto font-light">
-            Tecnología moderna que respeta tu privacidad y maximiza tu experiencia de aprendizaje
+            Tecnología moderna que respeta tu privacidad y maximiza tu
+            experiencia de aprendizaje
           </p>
         </div>
 
@@ -28,10 +29,29 @@ export default function TechAndPrivacySection() {
         <div className="mb-16">
           <div className="bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm rounded-3xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-8 md:p-12">
             <p className="text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-300 mb-6">
-              <span className="font-semibold text-amber-600 dark:text-amber-400">LingText</span> se construye sobre un stack moderno para ofrecer velocidad en desarrollo y estabilidad en producción. El SSR de React Router mejora la experiencia inicial de carga y la indexación; Vite aporta recarga instantánea y bundling eficiente. En el navegador, el uso de APIs nativas como IndexedDB, Web Speech y, cuando está disponible, la API de traducción de Chrome, permite disminuir la dependencia de servicios externos y mantener la latencia baja.
+              <span className="font-semibold text-amber-600 dark:text-amber-400">
+                LingText
+              </span>{" "}
+              se construye sobre un stack moderno para ofrecer velocidad en
+              desarrollo y estabilidad en producción. El SSR de React Router
+              mejora la experiencia inicial de carga y la indexación; Vite
+              aporta recarga instantánea y bundling eficiente. En el navegador,
+              usamos <span className="font-semibold">SQLite WASM</span> con
+              persistencia en OPFS, Web Speech API y, cuando está disponible, la
+              API de traducción de Chrome.
             </p>
             <p className="text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-300">
-              La filosofía es <span className="font-semibold text-orange-600 dark:text-orange-400">local‑first</span>. Tu biblioteca de textos, los archivos de audio que adjuntas y el historial de palabras se almacenan en tu dispositivo. Cuando necesitas traducción y tu navegador no ofrece una opción local, la app puede recurrir a un endpoint remoto como respaldo; este intercambio es acotado: se envía solo el término o fragmento a traducir, y nunca tus textos completos ni tu base de datos de palabras.
+              La filosofía es{" "}
+              <span className="font-semibold text-orange-600 dark:text-orange-400">
+                local‑first con propiedad de datos
+              </span>
+              . Tu biblioteca de textos, audio y vocabulario se almacenan en una
+              base de datos SQLite dentro de tu navegador. Puedes{" "}
+              <span className="font-semibold">
+                exportar el archivo .sqlite a tu PC
+              </span>{" "}
+              cuando quieras y llevarlo a otro dispositivo. La traducción remota
+              solo envía el término a traducir, nunca tus textos completos.
             </p>
           </div>
         </div>
@@ -46,7 +66,9 @@ export default function TechAndPrivacySection() {
               Arquitectura Moderna
             </h3>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              React Router 7 con SSR, Vite 6 para el toolchain, Tailwind 4 para estilos y Zustand para estado ligero. El servidor expone un endpoint de traducción que usa OpenRouter cuando es necesario.
+              React Router 7 con SSR, Vite 6 para el toolchain, Tailwind 4 para
+              estilos y Zustand para estado ligero. El servidor expone un
+              endpoint de traducción que usa OpenRouter cuando es necesario.
             </p>
             <div className="space-y-3">
               <div className="flex items-center text-sm text-green-600 dark:text-green-400">
@@ -69,23 +91,25 @@ export default function TechAndPrivacySection() {
               <span className="text-white text-xl">🔒</span>
             </div>
             <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-              Privacidad Primero
+              Tus Datos, Tu Control
             </h3>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              Datos locales por defecto. El fallback de traducción remota solo envía el texto a traducir. Controlas si habilitas un API key para usar modelos remotos.
+              Base de datos SQLite en tu navegador. Exporta/importa cuando
+              quieras. La traducción remota solo envía el término, nunca tus
+              textos completos.
             </p>
             <div className="space-y-3">
               <div className="flex items-center text-sm text-blue-600 dark:text-blue-400">
                 <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                Almacenamiento local
+                SQLite WASM + OPFS
               </div>
               <div className="flex items-center text-sm text-blue-600 dark:text-blue-400">
                 <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                Envío mínimo de datos
+                Exportar/Importar .sqlite
               </div>
               <div className="flex items-center text-sm text-blue-600 dark:text-blue-400">
                 <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                Control total del usuario
+                Portable entre dispositivos
               </div>
             </div>
           </div>
@@ -100,7 +124,10 @@ export default function TechAndPrivacySection() {
               Audio y Permisos
             </h3>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              Si adjuntas audio como archivo local, el navegador puede pedir permisos. Si estos caducan, el lector te ofrece re‑autorizar sin perder contexto. Las URLs temporales se limpian para evitar fugas de memoria.
+              Si adjuntas audio como archivo local, el navegador puede pedir
+              permisos. Si estos caducan, el lector te ofrece re‑autorizar sin
+              perder contexto. Las URLs temporales se limpian para evitar fugas
+              de memoria.
             </p>
             <div className="space-y-3">
               <div className="flex items-center text-sm text-purple-600 dark:text-purple-400">
@@ -126,7 +153,9 @@ export default function TechAndPrivacySection() {
               Rendimiento Optimizado
             </h3>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              Tokenización y popups ligeros, carga diferida donde aplica, y uso de APIs del navegador para minimizar red y mejorar la respuesta de la interfaz mientras lees.
+              Tokenización y popups ligeros, carga diferida donde aplica, y uso
+              de APIs del navegador para minimizar red y mejorar la respuesta de
+              la interfaz mientras lees.
             </p>
             <div className="space-y-3">
               <div className="flex items-center text-sm text-orange-600 dark:text-orange-400">
@@ -155,17 +184,18 @@ export default function TechAndPrivacySection() {
               Tu Privacidad es Nuestra Prioridad
             </h3>
             <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-              Construimos LingText con el compromiso de proteger tus datos y respetar tu privacidad en todo momento
+              Construimos LingText con el compromiso de proteger tus datos y
+              respetar tu privacidad en todo momento
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm">
               <span className="px-4 py-2 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded-full">
-                🔒 Sin rastreo
+                💾 SQLite local
               </span>
               <span className="px-4 py-2 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded-full">
-                📱 Datos locales
+                📤 Exportar a PC
               </span>
               <span className="px-4 py-2 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded-full">
-                🚫 Sin cookies de terceros
+                🔄 Portable
               </span>
             </div>
           </div>

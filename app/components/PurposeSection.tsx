@@ -22,7 +22,8 @@ export default function PurposeSection() {
             </span>
           </h2>
           <p className="text-xl md:text-2xl leading-relaxed text-gray-600 dark:text-gray-400 max-w-4xl mx-auto font-light">
-            La mejor forma de adquirir vocabulario durable es leer mucho, en contexto y con la menor fricción posible
+            La mejor forma de adquirir vocabulario durable es leer mucho, en
+            contexto y con la menor fricción posible
           </p>
         </div>
 
@@ -30,10 +31,29 @@ export default function PurposeSection() {
         <div className="mb-16">
           <div className="bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm rounded-3xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-8 md:p-12">
             <p className="text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-300 mb-6">
-              <span className="font-semibold text-indigo-600 dark:text-indigo-400">LingText</span> nace de una idea sencilla: la mejor forma de adquirir vocabulario durable es leer mucho, en contexto y con la menor fricción posible. La app reduce el tiempo entre encontrar una palabra desconocida y comprenderla, permitiendo que el flujo de lectura continúe sin interrupciones largas.
+              <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+                LingText
+              </span>{" "}
+              nace de una idea sencilla: la mejor forma de adquirir vocabulario
+              durable es leer mucho, en contexto y con la menor fricción
+              posible. La app reduce el tiempo entre encontrar una palabra
+              desconocida y comprenderla, permitiendo que el flujo de lectura
+              continúe sin interrupciones largas.
             </p>
             <p className="text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-300">
-              El lector integra traducción instantánea de palabras o fragmentos, pronunciación con TTS, y guardado de términos para repaso posterior. La biblioteca te permite traer tus propios textos, enlazar o adjuntar audio y organizar tu progreso. Todo con una filosofía <span className="font-semibold text-purple-600 dark:text-purple-400">local‑first</span>: tus datos permanecen en tu navegador; cuando no sea posible traducir localmente, la app puede pedir ayuda a un modelo remoto como respaldo.
+              El lector integra traducción instantánea de palabras o fragmentos,
+              pronunciación con TTS, guardado de términos y un sistema de{" "}
+              <span className="font-semibold text-purple-600 dark:text-purple-400">
+                repetición espaciada
+              </span>{" "}
+              para repaso óptimo. La biblioteca te permite traer tus propios
+              textos, enlazar o adjuntar audio y organizar tu progreso. Todo con
+              una filosofía{" "}
+              <span className="font-semibold text-purple-600 dark:text-purple-400">
+                local‑first
+              </span>
+              : tus datos se almacenan en una base de datos SQLite dentro de tu
+              navegador, y puedes exportarla a tu PC cuando quieras.
             </p>
           </div>
         </div>
@@ -48,19 +68,22 @@ export default function PurposeSection() {
               Lectura Activa
             </h3>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              Convierte cada página en una sesión de aprendizaje: clic en una palabra, traduce, escucha y añade a tu lista de repaso sin perder el hilo.
+              Convierte cada página en una sesión de aprendizaje: clic en una
+              palabra, traduce, escucha y añade a tu lista de repaso sin perder
+              el hilo.
             </p>
           </div>
 
           <div className="group bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg hover:shadow-xl hover:border-purple-300/50 dark:hover:border-purple-600/50 transition-all duration-300 p-8">
             <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-              <span className="text-white text-xl">🏠</span>
+              <span className="text-white text-xl">💾</span>
             </div>
             <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-              Local‑First
+              Tus Datos, Tu Control
             </h3>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              Textos, audio y palabras se guardan en tu navegador. La traducción remota solo se usa como respaldo cuando la opción local no está disponible.
+              Todo se guarda en SQLite dentro de tu navegador. Exporta tu base
+              de datos a tu PC cuando quieras y llévala a otro dispositivo.
             </p>
           </div>
 
@@ -69,10 +92,11 @@ export default function PurposeSection() {
               <span className="text-white text-xl">🌱</span>
             </div>
             <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-              Aprendizaje Sostenible
+              Repetición Espaciada
             </h3>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              Repite con propósito: guarda palabras desconocidas en contexto y expórtalas a CSV para practicar en Anki cuando quieras.
+              Algoritmo SM-2 integrado para repasar vocabulario en el momento
+              óptimo. También puedes exportar a CSV para Anki.
             </p>
           </div>
         </div>
@@ -84,7 +108,8 @@ export default function PurposeSection() {
               ¿Listo para comenzar?
             </h3>
             <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-              Únete a miles de estudiantes que ya están aprendiendo inglés de forma más efectiva con LingText
+              Únete a miles de estudiantes que ya están aprendiendo inglés de
+              forma más efectiva con LingText
             </p>
             <button className="px-8 py-4 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold hover:from-indigo-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-indigo-500/25">
               🚀 Comenzar Ahora
