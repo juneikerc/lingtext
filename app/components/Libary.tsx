@@ -367,113 +367,158 @@ export default function Library() {
           </p>
         </div>
 
-        {/* Backup/Restore Database Section */}
-        <div className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 rounded-2xl border border-emerald-200/50 dark:border-emerald-800/50 p-6 mb-8">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center">
-              <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center mr-4">
-                <span className="text-white text-xl">💾</span>
+        {/* Backup/Restore Database Section - Collapsible */}
+        <details className="group mb-8">
+          <summary className="cursor-pointer list-none">
+            <div className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 rounded-2xl border border-emerald-200/50 dark:border-emerald-800/50 p-4 hover:border-emerald-300 dark:hover:border-emerald-700 transition-colors">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center mr-4">
+                    <span className="text-white text-xl">💾</span>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 dark:text-gray-100">
+                      Backup de Base de Datos
+                    </h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      Guarda o restaura todos tus datos (textos, palabras,
+                      progreso)
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs px-2 py-1 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 rounded-full">
+                    .sqlite
+                  </span>
+                  <svg
+                    className="w-5 h-5 text-gray-500 transform transition-transform group-open:rotate-180"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
               </div>
-              <div>
-                <h3 className="font-bold text-gray-900 dark:text-gray-100">
-                  Tus Datos, Tu Control
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Exporta o importa tu base de datos SQLite
-                </p>
+            </div>
+          </summary>
+
+          <div className="mt-2 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl border border-gray-200/50 dark:border-gray-700/50 p-6">
+            <div className="grid sm:grid-cols-2 gap-4">
+              {/* Export */}
+              <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200/50 dark:border-blue-800/50">
+                <div className="flex items-start gap-3 mb-3">
+                  <span className="text-2xl">📤</span>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 dark:text-gray-100">
+                      Exportar Backup
+                    </h4>
+                    <p className="text-xs text-gray-600 dark:text-gray-400">
+                      Descarga tu base de datos como archivo .sqlite
+                    </p>
+                  </div>
+                </div>
+                <button
+                  onClick={handleExportDatabase}
+                  disabled={isExporting || isImporting}
+                  className="w-full flex items-center justify-center px-4 py-2.5 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+                >
+                  {isExporting ? (
+                    <>
+                      <svg
+                        className="animate-spin -ml-1 mr-2 h-4 w-4"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
+                      </svg>
+                      Exportando...
+                    </>
+                  ) : (
+                    "Guardar en PC"
+                  )}
+                </button>
+              </div>
+
+              {/* Import */}
+              <div className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-xl border border-orange-200/50 dark:border-orange-800/50">
+                <div className="flex items-start gap-3 mb-3">
+                  <span className="text-2xl">�</span>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 dark:text-gray-100">
+                      Restaurar Backup
+                    </h4>
+                    <p className="text-xs text-gray-600 dark:text-gray-400">
+                      ⚠️ Reemplaza todos los datos actuales
+                    </p>
+                  </div>
+                </div>
+                <button
+                  onClick={handleImportDatabase}
+                  disabled={isExporting || isImporting}
+                  className="w-full flex items-center justify-center px-4 py-2.5 bg-orange-500 text-white font-medium rounded-lg hover:bg-orange-600 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+                >
+                  {isImporting ? (
+                    <>
+                      <svg
+                        className="animate-spin -ml-1 mr-2 h-4 w-4"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
+                      </svg>
+                      Importando...
+                    </>
+                  ) : (
+                    "Cargar desde PC"
+                  )}
+                </button>
               </div>
             </div>
 
-            <div className="flex gap-3">
-              <button
-                onClick={handleExportDatabase}
-                disabled={isExporting || isImporting}
-                className="flex items-center px-4 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium rounded-xl hover:from-blue-600 hover:to-blue-700 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-blue-500/25"
+            {/* Message */}
+            {dbMessage && (
+              <div
+                className={`mt-4 p-3 rounded-lg text-sm ${
+                  dbMessage.type === "success"
+                    ? "bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-300"
+                    : "bg-red-100 dark:bg-red-900/30 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300"
+                }`}
               >
-                {isExporting ? (
-                  <>
-                    <svg
-                      className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      ></circle>
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      ></path>
-                    </svg>
-                    Exportando...
-                  </>
-                ) : (
-                  <>
-                    <span className="mr-2">📤</span>
-                    Exportar
-                  </>
-                )}
-              </button>
-
-              <button
-                onClick={handleImportDatabase}
-                disabled={isExporting || isImporting}
-                className="flex items-center px-4 py-2.5 bg-gradient-to-r from-purple-500 to-purple-600 text-white font-medium rounded-xl hover:from-purple-600 hover:to-purple-700 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-purple-500/25"
-              >
-                {isImporting ? (
-                  <>
-                    <svg
-                      className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      ></circle>
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      ></path>
-                    </svg>
-                    Importando...
-                  </>
-                ) : (
-                  <>
-                    <span className="mr-2">📥</span>
-                    Importar
-                  </>
-                )}
-              </button>
-            </div>
+                {dbMessage.text}
+              </div>
+            )}
           </div>
-
-          {/* Message */}
-          {dbMessage && (
-            <div
-              className={`mt-4 p-3 rounded-lg text-sm ${
-                dbMessage.type === "success"
-                  ? "bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-300"
-                  : "bg-red-100 dark:bg-red-900/30 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300"
-              }`}
-            >
-              {dbMessage.text}
-            </div>
-          )}
-        </div>
+        </details>
 
         {/* Formulario de agregar texto */}
         <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-8 mb-12">
@@ -485,22 +530,35 @@ export default function Library() {
           </h3>
 
           <div className="space-y-6">
-            <div className="grid md:grid-cols-3 gap-4">
-              <div className="md:col-span-2">
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Título del texto
+                </label>
                 <input
                   className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder-gray-500 dark:placeholder-gray-400"
-                  placeholder="Título del texto"
+                  placeholder="Ej: The Great Gatsby - Chapter 1"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </div>
-              <div className="flex gap-3">
+
+              {/* Import TXT file option */}
+              <div className="flex items-center gap-3 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200/50 dark:border-blue-800/50">
+                <div className="flex-1">
+                  <p className="text-sm font-medium text-blue-700 dark:text-blue-300">
+                    ¿Tienes un archivo .txt?
+                  </p>
+                  <p className="text-xs text-blue-600/70 dark:text-blue-400/70">
+                    Importa directamente un archivo de texto plano
+                  </p>
+                </div>
                 <button
-                  className="flex-1 px-4 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium hover:from-blue-600 hover:to-blue-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-blue-500/25"
+                  className="px-4 py-2 rounded-lg bg-blue-500 text-white text-sm font-medium hover:bg-blue-600 transition-colors"
                   onClick={() => fileInputRef.current?.click()}
                   type="button"
                 >
-                  📁 Importar
+                  � Cargar .txt
                 </button>
                 <input
                   ref={fileInputRef}

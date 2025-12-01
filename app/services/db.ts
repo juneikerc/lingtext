@@ -135,18 +135,26 @@ async function initDB(): Promise<any> {
       const sqliteModule = await import("@sqlite.org/sqlite-wasm");
       const sqlite3InitModule = sqliteModule.default;
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const sqlite3: any = await sqlite3InitModule({
+      // Build init options
+      // In production, we need to specify where to find the WASM file
+      // In development, Vite handles it automatically
+      const initOptions: Record<string, unknown> = {
         print: console.log,
         printErr: console.error,
-        // Specify the location of the WASM file for production builds
-        locateFile: (file: string) => {
-          if (file.endsWith(".wasm")) {
+      };
+
+      // Only add locateFile in production
+      if (!import.meta.env.DEV) {
+        initOptions.locateFile = (file: string) => {
+          if (file && file.endsWith(".wasm")) {
             return `/assets/${file}`;
           }
           return file;
-        },
-      });
+        };
+      }
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const sqlite3: any = await sqlite3InitModule(initOptions);
       sqlite3Instance = sqlite3;
 
       // Check if OPFS is available
@@ -736,6 +744,9 @@ export async function exportDatabase(): Promise<boolean> {
  * @returns true if import was successful, false if cancelled by user
  */
 export async function importDatabase(): Promise<boolean> {
+  // Ensure SQLite WASM is initialized first (loads the WASM file)
+  await initDB();
+
   try {
     let fileData: ArrayBuffer;
 
