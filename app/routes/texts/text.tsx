@@ -5,6 +5,7 @@ import type { AudioRef } from "~/types";
 import ReaderHeader from "~/components/reader/ReaderHeader";
 import LoadingSpinner from "~/components/LoadingSpinner";
 import ReaderErrorBoundary from "~/components/ReaderErrorBoundary";
+import ButtonLink from "~/components/ButtonLink";
 
 const Reader = lazy(() => import("~/components/Reader"));
 

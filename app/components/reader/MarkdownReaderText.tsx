@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import { normalizeWord, tokenize } from "../../utils/tokenize";
+import { Link } from "react-router";
 
 interface MarkdownReaderTextProps {
   content: string;
@@ -339,7 +340,10 @@ export default function MarkdownReaderText({
       </div>
 
       {/* Información del progreso */}
-      <div className="absolute -bottom-16 left-0 right-0 flex justify-center">
+      <Link
+        to="/words"
+        className="absolute -bottom-16 left-0 right-0 flex justify-center"
+      >
         <div className="bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full px-6 py-3 text-sm text-gray-600 dark:text-gray-400 flex items-center space-x-4">
           <div className="flex items-center space-x-2">
             <span className="w-2 h-2 bg-green-500 rounded-full"></span>
@@ -351,7 +355,7 @@ export default function MarkdownReaderText({
             <span>Palabras por aprender ({unknownSet.size})</span>
           </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }
