@@ -3,9 +3,8 @@ import type { Route } from "./+types/text";
 import { Suspense, lazy } from "react";
 import type { AudioRef } from "~/types";
 import ReaderHeader from "~/components/reader/ReaderHeader";
-import LoadingSpinner from "~/components/LoadingSpinner";
+import ReaderSkeleton from "~/components/reader/ReaderSkeleton";
 import ReaderErrorBoundary from "~/components/ReaderErrorBoundary";
-import ButtonLink from "~/components/ButtonLink";
 
 const Reader = lazy(() => import("~/components/Reader"));
 
@@ -66,7 +65,7 @@ export default function Text({ loaderData }: Route.ComponentProps) {
     <>
       <ReaderHeader title={text.title} />
       <ReaderErrorBoundary>
-        <Suspense fallback={<LoadingSpinner message="Cargando lector..." />}>
+        <Suspense fallback={<ReaderSkeleton />}>
           <Reader text={text} />
         </Suspense>
       </ReaderErrorBoundary>
