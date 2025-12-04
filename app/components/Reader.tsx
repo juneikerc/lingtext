@@ -393,7 +393,11 @@ export default function Reader({ text }: Props) {
       onMouseUp={handleMouseUp}
       onClick={(e) => {
         const t = e.target as HTMLElement;
-        if (!t.closest(`.word-token`)) clearPopups();
+        const sel = window.getSelection();
+        // No cerrar popups si hay texto seleccionado (el usuario está seleccionando)
+        if (!t.closest(`.word-token`) && (!sel || sel.isCollapsed)) {
+          clearPopups();
+        }
       }}
     >
       <AudioSection
