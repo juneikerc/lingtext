@@ -18,7 +18,7 @@ interface UnknownWordsSectionProps {
 }
 
 // Configuración del límite (debería coincidir con tu scheduler)
-const DAILY_NEW_WORD_LIMIT = 15;
+const DAILY_NEW_WORD_LIMIT = 7;
 
 export default function UnknownWordsSection({
   words,
