@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -101,12 +102,12 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/contacto"
                   className="text-gray-300 hover:text-white transition-colors duration-200"
                 >
-                  Soporte
-                </a>
+                  Contacto
+                </Link>
               </li>
               <li>
                 <a

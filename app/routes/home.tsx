@@ -4,6 +4,7 @@ import HeroSection from "~/components/HeroSection";
 import PurposeSection from "~/components/PurposeSection";
 import UsageGuideSection from "~/components/UsageGuideSection";
 import TechAndPrivacySection from "~/components/TechAndPrivacySection";
+import ContactCTA from "~/components/ContactCTA";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -31,6 +32,7 @@ export default function Home() {
       <PurposeSection />
       <UsageGuideSection />
       <TechAndPrivacySection />
+      <ContactCTA />
     </>
   );
 }

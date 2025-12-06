@@ -7,7 +7,7 @@ import {
 import type { WordEntry, PhraseEntry } from "~/types";
 
 // CONFIGURACIÓN: Aquí defines tu límite por defecto (ej. 15)
-const DEFAULT_NEW_LIMIT = 15;
+const DEFAULT_NEW_LIMIT = 7;
 
 export async function generateSessionDeck(
   limitNew: number = DEFAULT_NEW_LIMIT

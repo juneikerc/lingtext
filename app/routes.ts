@@ -5,4 +5,5 @@ export default [
   route("texts/:id", "routes/texts/text.tsx"),
   route("words", "routes/words.tsx"),
   route("review", "routes/review.tsx"),
+  route("contacto", "routes/contact.tsx"),
 ] satisfies RouteConfig;
