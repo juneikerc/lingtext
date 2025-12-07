@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import type { Route } from "./+types/root";
 import "./app.css";
 import Footer from "~/components/Footer";
+import { useExtensionSync } from "~/hooks/useExtensionSync";
 
 // Expose DB debug functions to window for console access
 function useExposeDbDebug() {
@@ -59,6 +60,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   useExposeDbDebug();
+  useExtensionSync(); // Sincronización con la extensión de Chrome
   return <Outlet />;
 }
 

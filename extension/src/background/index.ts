@@ -12,6 +12,7 @@ import {
   getSettings,
   importFromWeb,
   exportForWeb,
+  replaceAllData,
 } from "./db";
 import type { ExtensionMessage } from "@/types";
 
@@ -52,6 +53,10 @@ async function handleMessage(message: ExtensionMessage): Promise<unknown> {
 
     case "EXPORT_FOR_WEB":
       return exportForWeb();
+
+    case "REPLACE_ALL_DATA":
+      await replaceAllData(message.payload);
+      return { success: true };
 
     default:
       return { error: "Unknown message type" };

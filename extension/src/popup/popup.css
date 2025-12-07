@@ -136,6 +136,37 @@ section h2 {
   background: #2563eb;
 }
 
+.btn-primary:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.btn-secondary:hover {
+  background: #e5e7eb;
+}
+
+.sync-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.sync-buttons .btn {
+  flex: 1;
+}
+
+.sync-status {
+  font-size: 13px;
+  color: #059669;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
 /* Translator */
 .translator-section {
   background: white;

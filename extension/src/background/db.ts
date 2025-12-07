@@ -163,3 +163,20 @@ export async function exportForWeb(): Promise<{
     phrases: await getAllPhrases(),
   };
 }
+
+/**
+ * Reemplaza completamente los datos de la extensión
+ * Se usa cuando la web (fuente de verdad) envía el estado final después del merge
+ */
+export async function replaceAllData(data: {
+  words: WordEntry[];
+  phrases: PhraseEntry[];
+}): Promise<void> {
+  await chrome.storage.local.set({
+    [STORAGE_KEYS.WORDS]: data.words,
+    [STORAGE_KEYS.PHRASES]: data.phrases,
+  });
+  console.log(
+    `[LingText DB] Replaced all data: ${data.words.length} words, ${data.phrases.length} phrases`
+  );
+}

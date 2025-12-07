@@ -55,7 +55,11 @@ export type ExtensionMessage =
       type: "SYNC_FROM_WEB";
       payload: { words: WordEntry[]; phrases: PhraseEntry[] };
     }
-  | { type: "EXPORT_FOR_WEB" };
+  | { type: "EXPORT_FOR_WEB" }
+  | {
+      type: "REPLACE_ALL_DATA";
+      payload: { words: WordEntry[]; phrases: PhraseEntry[] };
+    };
 
 export interface WordPopupState {
   x: number;

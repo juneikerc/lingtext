@@ -8,6 +8,8 @@ export default function Popup() {
   const [translator, setTranslator] = useState<TRANSLATORS>(TRANSLATORS.CHROME);
   const [apiKey, setApiKey] = useState("");
   const [showApiKey, setShowApiKey] = useState(false);
+  const [syncing, setSyncing] = useState(false);
+  const [syncStatus, setSyncStatus] = useState<string | null>(null);
 
   useEffect(() => {
     loadStats();
@@ -50,6 +52,49 @@ export default function Popup() {
 
   const openLingText = () => {
     chrome.tabs.create({ url: "https://lingtext.org" });
+  };
+
+  const handleSync = async () => {
+    setSyncing(true);
+    setSyncStatus(null);
+
+    try {
+      // Buscar una pestaña de lingtext.org abierta
+      const tabs = await chrome.tabs.query({
+        url: ["https://lingtext.org/*", "http://localhost:*/*"],
+      });
+
+      if (tabs.length === 0) {
+        // No hay pestaña abierta, abrir una nueva
+        setSyncStatus("Abriendo LingText...");
+        await chrome.tabs.create({ url: "https://lingtext.org" });
+        setSyncStatus("Abre LingText y vuelve a sincronizar");
+        setSyncing(false);
+        return;
+      }
+
+      // Enviar mensaje al content script (bridge) para iniciar sync
+      const tab = tabs[0];
+      if (tab.id) {
+        await chrome.tabs.sendMessage(tab.id, { type: "TRIGGER_SYNC" });
+        setSyncStatus("Sincronizando...");
+
+        // Esperar un poco y recargar stats
+        setTimeout(async () => {
+          await loadStats();
+          const result = await chrome.storage.local.get("lastSync");
+          if (result.lastSync) {
+            setLastSync(new Date(result.lastSync).toLocaleString());
+          }
+          setSyncStatus("✓ Sincronizado");
+          setSyncing(false);
+        }, 2000);
+      }
+    } catch (error) {
+      console.error("Sync error:", error);
+      setSyncStatus("Error al sincronizar");
+      setSyncing(false);
+    }
   };
 
   return (
@@ -126,12 +171,23 @@ export default function Popup() {
         <section className="sync-section">
           <h2>Sincronización</h2>
           {lastSync && <p className="last-sync">Última sync: {lastSync}</p>}
+          {syncStatus && <p className="sync-status">{syncStatus}</p>}
+          <div className="sync-buttons">
+            <button
+              className="btn btn-primary"
+              onClick={handleSync}
+              disabled={syncing}
+            >
+              {syncing ? "Sincronizando..." : "🔄 Sincronizar"}
+            </button>
+            <button className="btn btn-secondary" onClick={openLingText}>
+              Abrir LingText
+            </button>
+          </div>
           <p className="sync-hint">
-            Abre LingText para sincronizar tu vocabulario
+            La web es la fuente de verdad. Al sincronizar, los datos se combinan
+            y la extensión recibe el estado final.
           </p>
-          <button className="btn btn-primary" onClick={openLingText}>
-            Abrir LingText
-          </button>
         </section>
 
         <section className="help-section">
