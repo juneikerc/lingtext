@@ -19,33 +19,116 @@ interface SelectionPopupState {
   translation: string;
 }
 
+// Estructura para cues del transcript
+interface TranscriptCue {
+  start: number; // segundos
+  duration: number;
+  text: string;
+}
+
 // Estado global de la extensión en YouTube
 interface YouTubeState {
   enabled: boolean;
   unknownSet: Set<string>;
   phrases: string[][];
   currentSubtitle: string;
+  displayedSubtitle: string;
+  isTransitioning: boolean;
   popup: WordPopupState | null;
   selPopup: SelectionPopupState | null;
   apiKey: string | null;
   playerRect: DOMRect | null;
+  transcript: TranscriptCue[]; // Transcript completo
+  useTranscript: boolean; // Si usamos transcript en lugar de DOM
 }
 
 // Referencia global al shadowRoot para acceder a getSelection
 let shadowRootRef: ShadowRoot | null = null;
 
+// Buffer de subtítulos para precargar
+const SUBTITLE_DELAY_MS = 100; // Delay antes de mostrar nuevo subtítulo
+
 function YouTubeReader() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const subtitleBufferRef = useRef<string>("");
+  const transitionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null
+  );
+
   const [state, setState] = useState<YouTubeState>({
     enabled: true,
     unknownSet: new Set(),
     phrases: [],
     currentSubtitle: "",
+    displayedSubtitle: "",
+    isTransitioning: false,
     popup: null,
     selPopup: null,
     apiKey: null,
     playerRect: null,
+    transcript: [],
+    useTranscript: false,
   });
+
+  // Cargar transcript del video
+  useEffect(() => {
+    loadTranscript();
+  }, []);
+
+  const loadTranscript = async () => {
+    try {
+      // Obtener el ID del video de la URL
+      const videoId = new URLSearchParams(window.location.search).get("v");
+      if (!videoId) return;
+
+      // Intentar obtener el transcript desde la página
+      // YouTube expone los datos del transcript en el HTML inicial
+      const ytInitialData = (window as any).ytInitialPlayerResponse;
+      if (
+        !ytInitialData?.captions?.playerCaptionsTracklistRenderer?.captionTracks
+      ) {
+        console.log("[LingText] No caption tracks found in initial data");
+        return;
+      }
+
+      const tracks =
+        ytInitialData.captions.playerCaptionsTracklistRenderer.captionTracks;
+      // Preferir inglés, o el primero disponible
+      const track =
+        tracks.find((t: any) => t.languageCode === "en") || tracks[0];
+      if (!track?.baseUrl) return;
+
+      // Descargar el transcript
+      const response = await fetch(track.baseUrl);
+      const xmlText = await response.text();
+
+      // Parsear XML del transcript
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(xmlText, "text/xml");
+      const textElements = doc.querySelectorAll("text");
+
+      const cues: TranscriptCue[] = Array.from(textElements).map((el) => ({
+        start: parseFloat(el.getAttribute("start") || "0"),
+        duration: parseFloat(el.getAttribute("dur") || "2"),
+        text:
+          el.textContent
+            ?.replace(/&amp;/g, "&")
+            .replace(/&#39;/g, "'")
+            .replace(/&quot;/g, '"') || "",
+      }));
+
+      if (cues.length > 0) {
+        console.log(`[LingText] Loaded ${cues.length} transcript cues`);
+        setState((prev) => ({
+          ...prev,
+          transcript: cues,
+          useTranscript: true,
+        }));
+      }
+    } catch (error) {
+      console.error("[LingText] Error loading transcript:", error);
+    }
+  };
 
   // Cargar datos iniciales desde el background
   useEffect(() => {
@@ -73,7 +156,103 @@ function YouTubeReader() {
     }
   };
 
+  // Efecto para manejar la transición suave de subtítulos
+  // Detecta si es una línea nueva o si el subtítulo está "creciendo" (autogenerado)
+  useEffect(() => {
+    if (state.currentSubtitle === state.displayedSubtitle) return;
+
+    if (!state.currentSubtitle) {
+      // Si no hay subtítulo, limpiar inmediatamente
+      setState((prev) => ({
+        ...prev,
+        displayedSubtitle: "",
+        isTransitioning: false,
+      }));
+      return;
+    }
+
+    // Detectar si el nuevo subtítulo es una extensión del anterior (autogenerado)
+    // o si es una línea completamente nueva
+    const isGrowing =
+      state.currentSubtitle.startsWith(state.displayedSubtitle) ||
+      state.displayedSubtitle.startsWith(state.currentSubtitle.slice(0, -20));
+
+    // Si está creciendo (autogenerado añadiendo palabras), actualizar inmediatamente sin transición
+    if (isGrowing && state.displayedSubtitle.length > 0) {
+      setState((prev) => ({
+        ...prev,
+        displayedSubtitle: prev.currentSubtitle,
+        isTransitioning: false,
+      }));
+      return;
+    }
+
+    // Es una línea nueva - aplicar transición suave
+    // Limpiar timeout anterior
+    if (transitionTimeoutRef.current) {
+      clearTimeout(transitionTimeoutRef.current);
+    }
+
+    // Iniciar transición de salida
+    setState((prev) => ({ ...prev, isTransitioning: true }));
+
+    // Después del delay, mostrar el nuevo subtítulo
+    transitionTimeoutRef.current = setTimeout(() => {
+      setState((prev) => ({
+        ...prev,
+        displayedSubtitle: prev.currentSubtitle,
+        isTransitioning: false,
+      }));
+    }, SUBTITLE_DELAY_MS);
+
+    return () => {
+      if (transitionTimeoutRef.current) {
+        clearTimeout(transitionTimeoutRef.current);
+      }
+    };
+  }, [state.currentSubtitle, state.displayedSubtitle]);
+
+  // Sincronizar subtítulos con el tiempo del video (cuando usamos transcript)
+  useEffect(() => {
+    if (!state.useTranscript || state.transcript.length === 0) return;
+
+    const video = document.querySelector("video");
+    if (!video) return;
+
+    let animationFrameId: number;
+    let lastCueIndex = -1;
+
+    const syncSubtitle = () => {
+      const currentTime = video.currentTime;
+
+      // Buscar el cue que corresponde al tiempo actual
+      const cueIndex = state.transcript.findIndex(
+        (cue) =>
+          currentTime >= cue.start && currentTime < cue.start + cue.duration
+      );
+
+      if (cueIndex !== -1 && cueIndex !== lastCueIndex) {
+        lastCueIndex = cueIndex;
+        const cue = state.transcript[cueIndex];
+        setState((prev) => ({ ...prev, currentSubtitle: cue.text }));
+      } else if (cueIndex === -1 && lastCueIndex !== -1) {
+        // No hay cue activo
+        lastCueIndex = -1;
+        setState((prev) => ({ ...prev, currentSubtitle: "" }));
+      }
+
+      animationFrameId = requestAnimationFrame(syncSubtitle);
+    };
+
+    syncSubtitle();
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [state.useTranscript, state.transcript]);
+
   // Observar cambios en los subtítulos de YouTube y posición del player
+  // (fallback cuando no hay transcript disponible)
   useEffect(() => {
     const updatePlayerRect = () => {
       const player = document.querySelector("#movie_player");
@@ -85,7 +264,14 @@ function YouTubeReader() {
       }
     };
 
+    // Solo observar DOM si no estamos usando transcript
     const observer = new MutationObserver(() => {
+      // Siempre actualizar rect del player
+      updatePlayerRect();
+
+      // Solo leer subtítulos del DOM si no usamos transcript
+      if (state.useTranscript) return;
+
       const captionWindow = document.querySelector(
         ".ytp-caption-window-container"
       );
@@ -97,10 +283,11 @@ function YouTubeReader() {
         .join(" ")
         .trim();
 
-      if (text && text !== state.currentSubtitle) {
+      // Solo actualizar si el texto cambió
+      if (text !== subtitleBufferRef.current) {
+        subtitleBufferRef.current = text;
         setState((prev) => ({ ...prev, currentSubtitle: text }));
       }
-      updatePlayerRect();
     });
 
     // Observar el contenedor de video
@@ -123,7 +310,7 @@ function YouTubeReader() {
       window.removeEventListener("resize", updatePlayerRect);
       window.removeEventListener("scroll", updatePlayerRect);
     };
-  }, [state.currentSubtitle]);
+  }, [state.useTranscript]);
 
   // Ocultar subtítulos nativos de YouTube
   useEffect(() => {
@@ -279,11 +466,11 @@ function YouTubeReader() {
     []
   );
 
-  if (!state.enabled || !state.currentSubtitle || !state.playerRect) {
+  if (!state.enabled || !state.displayedSubtitle || !state.playerRect) {
     return null;
   }
 
-  const { playerRect } = state;
+  const { playerRect, isTransitioning } = state;
 
   return (
     <div
@@ -301,9 +488,11 @@ function YouTubeReader() {
       onMouseUp={handleMouseUp}
     >
       {/* Overlay de subtítulos - posicionado en la parte inferior del player */}
-      <div className="lingtext-container">
+      <div
+        className={`lingtext-container ${isTransitioning ? "lingtext-transitioning" : ""}`}
+      >
         <SubtitleOverlay
-          text={state.currentSubtitle}
+          text={state.displayedSubtitle}
           unknownSet={state.unknownSet}
           phrases={state.phrases}
           onWordClick={handleWordClick}
@@ -347,6 +536,11 @@ const STYLES = `
   max-width: 85%;
   text-align: center;
   pointer-events: auto;
+  opacity: 1;
+  transition: opacity 0.15s ease-in-out;
+}
+.lingtext-container.lingtext-transitioning {
+  opacity: 0.7;
 }
 .lingtext-subtitle-overlay {
   background: rgba(0, 0, 0, 0.85);
