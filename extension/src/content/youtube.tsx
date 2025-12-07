@@ -31,6 +31,9 @@ interface YouTubeState {
   playerRect: DOMRect | null;
 }
 
+// Referencia global al shadowRoot para acceder a getSelection
+let shadowRootRef: ShadowRoot | null = null;
+
 function YouTubeReader() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [state, setState] = useState<YouTubeState>({
@@ -209,16 +212,29 @@ function YouTubeReader() {
 
   // Manejar selección de texto (frases)
   const handleMouseUp = useCallback(async () => {
-    const sel = window.getSelection();
+    // En Shadow DOM, necesitamos usar shadowRoot.getSelection() o document.getSelection()
+    // @ts-expect-error - getSelection en ShadowRoot es experimental
+    const sel = shadowRootRef?.getSelection?.() || document.getSelection();
     if (!sel || sel.isCollapsed) return;
 
-    const range = sel.getRangeAt(0);
-    const container = containerRef.current;
-    if (!container || !container.contains(range.commonAncestorContainer))
+    let range: Range;
+    try {
+      range = sel.getRangeAt(0);
+    } catch {
       return;
+    }
+
+    const container = containerRef.current;
+    if (!container) return;
 
     const text = sel.toString().trim();
     if (!text || text.length < 3) return;
+
+    // Verificar que la selección tiene al menos 2 palabras
+    const wordCount = text
+      .split(/\s+/)
+      .filter((w: string) => w.length > 0).length;
+    if (wordCount < 2) return;
 
     const rect = range.getBoundingClientRect();
     const containerRect = container.getBoundingClientRect();
@@ -232,6 +248,9 @@ function YouTubeReader() {
       popup: null,
       selPopup: { x, y, text, translation: result.translation || "..." },
     }));
+
+    // Limpiar selección
+    sel.removeAllRanges();
   }, [state.apiKey]);
 
   const handleSavePhrase = useCallback(
@@ -540,6 +559,7 @@ function init() {
 
   // Crear Shadow DOM para aislar estilos
   const shadow = container.attachShadow({ mode: "open" });
+  shadowRootRef = shadow;
 
   // Inyectar estilos inline
   const style = document.createElement("style");
