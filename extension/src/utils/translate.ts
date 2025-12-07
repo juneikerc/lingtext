@@ -3,6 +3,18 @@
  * Usa Chrome AI (Translator API) con fallback a OpenRouter
  */
 
+export enum TRANSLATORS {
+  CHROME = "chrome",
+  MEDIUM = "medium",
+  SMART = "smart",
+}
+
+export const TRANSLATOR_LABELS: Record<TRANSLATORS, string> = {
+  [TRANSLATORS.CHROME]: "⚡ Rápido | Básico",
+  [TRANSLATORS.MEDIUM]: "🧠 Inteligente | Medio",
+  [TRANSLATORS.SMART]: "🚀 Muy Inteligente",
+};
+
 export async function translateFromChrome(
   term: string
 ): Promise<{ translation: string }> {
@@ -28,7 +40,8 @@ export async function translateFromChrome(
  */
 export async function translateWithOpenRouter(
   term: string,
-  apiKey: string
+  apiKey: string,
+  model: string = "google/gemini-2.0-flash-lite-001"
 ): Promise<{ translation: string; error?: string }> {
   if (!apiKey) {
     return { translation: "", error: "NO_API_KEY" };
@@ -51,7 +64,7 @@ export async function translateWithOpenRouter(
           "X-Title": "LingText Extension",
         },
         body: JSON.stringify({
-          model: "google/gemini-2.0-flash-lite-001",
+          model,
           messages: [
             {
               role: "user",
@@ -124,22 +137,44 @@ translate this word to spanish: ${sanitizedText} (respond only with the translat
 
 /**
  * Función unificada de traducción
- * Intenta Chrome AI primero, luego OpenRouter
+ * Usa el traductor seleccionado
  */
 export async function translateTerm(
   term: string,
+  translator: TRANSLATORS = TRANSLATORS.CHROME,
   apiKey?: string
 ): Promise<{ translation: string; error?: string }> {
-  // Intentar Chrome AI primero
-  const chromeResult = await translateFromChrome(term);
-  if (chromeResult.translation) {
-    return { translation: chromeResult.translation };
+  // Si es Chrome AI
+  if (translator === TRANSLATORS.CHROME) {
+    const chromeResult = await translateFromChrome(term);
+    if (chromeResult.translation) {
+      return { translation: chromeResult.translation };
+    }
+    // Fallback a OpenRouter si Chrome AI falla
+    if (apiKey) {
+      return translateWithOpenRouter(
+        term,
+        apiKey,
+        "google/gemini-2.0-flash-lite-001"
+      );
+    }
+    return { translation: "", error: "CHROME_AI_NOT_AVAILABLE" };
   }
 
-  // Fallback a OpenRouter si hay API key
-  if (apiKey) {
-    return translateWithOpenRouter(term, apiKey);
+  // Si es Medium o Smart, usar OpenRouter con diferentes modelos
+  if (!apiKey) {
+    // Intentar Chrome AI como fallback
+    const chromeResult = await translateFromChrome(term);
+    if (chromeResult.translation) {
+      return { translation: chromeResult.translation };
+    }
+    return { translation: "", error: "NO_API_KEY" };
   }
 
-  return { translation: "", error: "NO_TRANSLATION_AVAILABLE" };
+  const model =
+    translator === TRANSLATORS.SMART
+      ? "anthropic/claude-3.5-sonnet"
+      : "google/gemini-2.0-flash-lite-001";
+
+  return translateWithOpenRouter(term, apiKey, model);
 }

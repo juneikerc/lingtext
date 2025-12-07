@@ -9,7 +9,7 @@ import SubtitleOverlay from "@/components/SubtitleOverlay";
 import WordPopup from "@/components/WordPopup";
 import SelectionPopup from "@/components/SelectionPopup";
 import type { WordEntry, PhraseEntry, WordPopupState } from "@/types";
-import { translateTerm } from "@/utils/translate";
+import { translateTerm, TRANSLATORS } from "@/utils/translate";
 import { tokenize, normalizeWord } from "@/utils/tokenize";
 
 interface SelectionPopupState {
@@ -37,6 +37,7 @@ interface YouTubeState {
   popup: WordPopupState | null;
   selPopup: SelectionPopupState | null;
   apiKey: string | null;
+  translator: TRANSLATORS;
   playerRect: DOMRect | null;
   transcript: TranscriptCue[]; // Transcript completo
   useTranscript: boolean; // Si usamos transcript en lugar de DOM
@@ -47,6 +48,24 @@ let shadowRootRef: ShadowRoot | null = null;
 
 // Buffer de subtítulos para precargar
 const SUBTITLE_DELAY_MS = 100; // Delay antes de mostrar nuevo subtítulo
+
+// Parsear XML del transcript de YouTube
+function parseTranscriptXml(xmlText: string): TranscriptCue[] {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(xmlText, "text/xml");
+  const textElements = doc.querySelectorAll("text");
+
+  return Array.from(textElements).map((el) => ({
+    start: parseFloat(el.getAttribute("start") || "0"),
+    duration: parseFloat(el.getAttribute("dur") || "2"),
+    text: (el.textContent || "")
+      .replace(/&amp;/g, "&")
+      .replace(/&#39;/g, "'")
+      .replace(/&quot;/g, '"')
+      .replace(/\n/g, " ")
+      .trim(),
+  }));
+}
 
 function YouTubeReader() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -65,68 +84,237 @@ function YouTubeReader() {
     popup: null,
     selPopup: null,
     apiKey: null,
+    translator: TRANSLATORS.CHROME,
     playerRect: null,
     transcript: [],
     useTranscript: false,
   });
 
-  // Cargar transcript del video
+  // Cargar configuración guardada (traductor y API key)
   useEffect(() => {
-    loadTranscript();
+    // Cargar inicial
+    chrome.storage.local.get(["translator", "openrouter_key"], (result) => {
+      setState((prev) => ({
+        ...prev,
+        translator: (result.translator as TRANSLATORS) || TRANSLATORS.CHROME,
+        apiKey: result.openrouter_key || null,
+      }));
+    });
+
+    // Escuchar cambios en storage para actualizar sin recargar
+    const handleStorageChange = (changes: {
+      [key: string]: chrome.storage.StorageChange;
+    }) => {
+      if (changes.translator) {
+        setState((prev) => ({
+          ...prev,
+          translator:
+            (changes.translator.newValue as TRANSLATORS) || TRANSLATORS.CHROME,
+        }));
+      }
+      if (changes.openrouter_key) {
+        setState((prev) => ({
+          ...prev,
+          apiKey: changes.openrouter_key.newValue || null,
+        }));
+      }
+    };
+
+    chrome.storage.onChanged.addListener(handleStorageChange);
+    return () => chrome.storage.onChanged.removeListener(handleStorageChange);
   }, []);
 
-  const loadTranscript = async () => {
+  // Cargar transcript del video (con retry porque puede cargar después del content script)
+  useEffect(() => {
+    let attempts = 0;
+    const maxAttempts = 5;
+
+    const tryLoadTranscript = async () => {
+      const success = await loadTranscript();
+      if (!success && attempts < maxAttempts) {
+        attempts++;
+        console.log(
+          `[LingText] Retrying transcript load (attempt ${attempts}/${maxAttempts})...`
+        );
+        setTimeout(tryLoadTranscript, 1500);
+      }
+    };
+
+    // Esperar un poco para que YouTube cargue
+    setTimeout(tryLoadTranscript, 500);
+  }, []);
+
+  const loadTranscript = async (): Promise<boolean> => {
     try {
       // Obtener el ID del video de la URL
       const videoId = new URLSearchParams(window.location.search).get("v");
-      if (!videoId) return;
+      if (!videoId) {
+        console.log("[LingText] No video ID found");
+        return false;
+      }
 
-      // Intentar obtener el transcript desde la página
-      // YouTube expone los datos del transcript en el HTML inicial
+      console.log(`[LingText] Loading transcript for video: ${videoId}`);
+
+      // Intentar múltiples fuentes para obtener el transcript
+      let captionTracks: any[] | null = null;
+      let baseUrl: string | null = null;
+
+      // Método 1: ytInitialPlayerResponse (disponible en carga inicial)
       const ytInitialData = (window as any).ytInitialPlayerResponse;
       if (
-        !ytInitialData?.captions?.playerCaptionsTracklistRenderer?.captionTracks
+        ytInitialData?.captions?.playerCaptionsTracklistRenderer?.captionTracks
       ) {
-        console.log("[LingText] No caption tracks found in initial data");
-        return;
+        captionTracks =
+          ytInitialData.captions.playerCaptionsTracklistRenderer.captionTracks;
+        console.log(
+          "[LingText] Found caption tracks in ytInitialPlayerResponse"
+        );
       }
 
-      const tracks =
-        ytInitialData.captions.playerCaptionsTracklistRenderer.captionTracks;
-      // Preferir inglés, o el primero disponible
-      const track =
-        tracks.find((t: any) => t.languageCode === "en") || tracks[0];
-      if (!track?.baseUrl) return;
+      // Método 2: Buscar en el HTML de la página (más robusto)
+      if (!captionTracks) {
+        const html = document.documentElement.innerHTML;
+        // Buscar el patrón de captionTracks en el HTML
+        const captionMatch = html.match(
+          /"captionTracks":\s*(\[[\s\S]*?\])(?=,")/
+        );
+        if (captionMatch) {
+          try {
+            captionTracks = JSON.parse(captionMatch[1]);
+            console.log("[LingText] Found caption tracks in HTML");
+          } catch (e) {
+            console.log("[LingText] Failed to parse caption tracks from HTML");
+          }
+        }
+      }
+
+      // Método 3: Buscar baseUrl directamente en el HTML
+      if (!baseUrl && !captionTracks) {
+        const html = document.documentElement.innerHTML;
+        // Buscar URLs de timedtext en el HTML
+        const urlMatch = html.match(
+          /https:\/\/www\.youtube\.com\/api\/timedtext[^"\\]+/
+        );
+        if (urlMatch) {
+          baseUrl = urlMatch[0].replace(/\\u0026/g, "&");
+          console.log("[LingText] Found timedtext URL directly in HTML");
+        }
+      }
+
+      // Si tenemos captionTracks, extraer la URL
+      if (captionTracks && captionTracks.length > 0) {
+        // Preferir inglés
+        const track =
+          captionTracks.find(
+            (t: any) => t.languageCode === "en" || t.vssId?.includes(".en")
+          ) || captionTracks[0];
+
+        if (track?.baseUrl) {
+          // Agregar fmt=json3 para obtener formato JSON con todos los datos
+          baseUrl = track.baseUrl + "&fmt=json3";
+          console.log(
+            `[LingText] Using track: ${track.languageCode || track.name?.simpleText || "unknown"}`
+          );
+        }
+      }
+
+      // Si no tenemos URL, intentar construirla
+      if (!baseUrl) {
+        console.log("[LingText] No caption URL found, trying direct API");
+        // Intentar la API directa (puede no funcionar para todos los videos)
+        const timedtextUrl = `https://www.youtube.com/api/timedtext?v=${videoId}&lang=en&fmt=srv3`;
+        try {
+          const response = await fetch(timedtextUrl);
+          if (response.ok) {
+            const xmlText = await response.text();
+            if (xmlText.includes("<text")) {
+              const cues = parseTranscriptXml(xmlText);
+              if (cues.length > 0) {
+                console.log(
+                  `[LingText] Loaded ${cues.length} transcript cues via direct API`
+                );
+                setState((prev) => ({
+                  ...prev,
+                  transcript: cues,
+                  useTranscript: true,
+                }));
+                return true;
+              }
+            }
+          }
+        } catch {}
+
+        console.log("[LingText] No caption tracks found for this video");
+        return false;
+      }
 
       // Descargar el transcript
-      const response = await fetch(track.baseUrl);
-      const xmlText = await response.text();
-
-      // Parsear XML del transcript
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(xmlText, "text/xml");
-      const textElements = doc.querySelectorAll("text");
-
-      const cues: TranscriptCue[] = Array.from(textElements).map((el) => ({
-        start: parseFloat(el.getAttribute("start") || "0"),
-        duration: parseFloat(el.getAttribute("dur") || "2"),
-        text:
-          el.textContent
-            ?.replace(/&amp;/g, "&")
-            .replace(/&#39;/g, "'")
-            .replace(/&quot;/g, '"') || "",
-      }));
-
-      if (cues.length > 0) {
-        console.log(`[LingText] Loaded ${cues.length} transcript cues`);
-        setState((prev) => ({
-          ...prev,
-          transcript: cues,
-          useTranscript: true,
-        }));
+      console.log(
+        "[LingText] Fetching transcript from:",
+        baseUrl.substring(0, 100) + "..."
+      );
+      const response = await fetch(baseUrl);
+      if (!response.ok) {
+        console.log("[LingText] Failed to fetch transcript:", response.status);
+        return false;
       }
+
+      const xmlText = await response.text();
+      console.log(
+        "[LingText] Transcript response (first 500 chars):",
+        xmlText.substring(0, 500)
+      );
+
+      const cues = parseTranscriptXml(xmlText);
+
+      if (cues.length === 0) {
+        console.log(
+          "[LingText] No cues found in transcript XML. Trying JSON format..."
+        );
+        // Intentar parsear como JSON (formato srv3)
+        try {
+          const jsonData = JSON.parse(xmlText);
+          if (jsonData.events) {
+            const jsonCues: TranscriptCue[] = jsonData.events
+              .filter((e: any) => e.segs && e.tStartMs !== undefined)
+              .map((e: any) => ({
+                start: e.tStartMs / 1000,
+                duration: (e.dDurationMs || 2000) / 1000,
+                text: e.segs
+                  .map((s: any) => s.utf8)
+                  .join("")
+                  .trim(),
+              }))
+              .filter((c: TranscriptCue) => c.text.length > 0);
+
+            if (jsonCues.length > 0) {
+              console.log(
+                `[LingText] ✓ Loaded ${jsonCues.length} transcript cues from JSON format`
+              );
+              setState((prev) => ({
+                ...prev,
+                transcript: jsonCues,
+                useTranscript: true,
+              }));
+              return true;
+            }
+          }
+        } catch {}
+        return false;
+      }
+
+      console.log(
+        `[LingText] ✓ Loaded ${cues.length} transcript cues successfully`
+      );
+      setState((prev) => ({
+        ...prev,
+        transcript: cues,
+        useTranscript: true,
+      }));
+      return true;
     } catch (error) {
       console.error("[LingText] Error loading transcript:", error);
+      return false;
     }
   };
 
@@ -350,7 +538,11 @@ function YouTubeReader() {
       }
 
       // Traducir
-      const result = await translateTerm(word, state.apiKey || undefined);
+      const result = await translateTerm(
+        word,
+        state.translator,
+        state.apiKey || undefined
+      );
       setState((prev) => ({
         ...prev,
         popup: { x, y, word, lower, translation: result.translation || "..." },
@@ -429,7 +621,11 @@ function YouTubeReader() {
     const y = rect.top - containerRect.top;
 
     // Traducir la selección
-    const result = await translateTerm(text, state.apiKey || undefined);
+    const result = await translateTerm(
+      text,
+      state.translator,
+      state.apiKey || undefined
+    );
     setState((prev) => ({
       ...prev,
       popup: null,
