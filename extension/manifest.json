@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "LingText for YouTube",
+  "version": "0.1.0",
+  "description": "Aprende inglés con subtítulos de YouTube. Sincroniza con tu vocabulario de LingText.",
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "https://lingtext.org/*",
+    "http://localhost:*/*"
+  ],
+  "background": {
+    "service_worker": "src/background/index.ts",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["src/content/youtube.tsx"],
+      "css": ["src/content/youtube.css"]
+    },
+    {
+      "matches": ["https://lingtext.org/*", "http://localhost:*/*"],
+      "js": ["src/content/bridge.ts"]
+    }
+  ],
+  "action": {
+    "default_popup": "src/popup/index.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*"],
+      "matches": ["https://www.youtube.com/*"]
+    }
+  ]
+}
