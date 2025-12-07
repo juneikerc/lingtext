@@ -16,8 +16,7 @@
   "content_scripts": [
     {
       "matches": ["https://www.youtube.com/*"],
-      "js": ["src/content/youtube.tsx"],
-      "css": ["src/content/youtube.css"]
+      "js": ["src/content/youtube.tsx"]
     },
     {
       "matches": ["https://lingtext.org/*", "http://localhost:*/*"],
@@ -25,17 +24,7 @@
     }
   ],
   "action": {
-    "default_popup": "src/popup/index.html",
-    "default_icon": {
-      "16": "icons/icon16.png",
-      "48": "icons/icon48.png",
-      "128": "icons/icon128.png"
-    }
-  },
-  "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "default_popup": "src/popup/index.html"
   },
   "web_accessible_resources": [
     {
