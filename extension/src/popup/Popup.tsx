@@ -3,7 +3,6 @@ import type { WordEntry, PhraseEntry } from "@/types";
 
 export default function Popup() {
   const [stats, setStats] = useState({ words: 0, phrases: 0 });
-  const [syncing, setSyncing] = useState(false);
   const [lastSync, setLastSync] = useState<string | null>(null);
 
   useEffect(() => {

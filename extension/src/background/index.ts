@@ -5,18 +5,15 @@
 
 import {
   getAllWords,
-  getWord,
   putWord,
   deleteWord,
   getAllPhrases,
-  getPhrase,
   putPhrase,
   getSettings,
-  getApiKey,
   importFromWeb,
   exportForWeb,
 } from "./db";
-import type { ExtensionMessage, WordEntry, PhraseEntry } from "@/types";
+import type { ExtensionMessage } from "@/types";
 
 // Escuchar mensajes de content scripts
 chrome.runtime.onMessage.addListener(

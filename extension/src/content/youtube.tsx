@@ -3,7 +3,7 @@
  * Detecta subtítulos y los reemplaza con nuestra UI interactiva
  */
 
-import React, { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { createRoot } from "react-dom/client";
 import SubtitleOverlay from "@/components/SubtitleOverlay";
 import WordPopup from "@/components/WordPopup";
@@ -37,14 +37,13 @@ function YouTubeReader() {
 
   const loadData = async () => {
     try {
-      const [words, phrases, settings] = await Promise.all([
+      const [words, phrases] = await Promise.all([
         chrome.runtime.sendMessage({ type: "GET_WORDS" }) as Promise<
           WordEntry[]
         >,
         chrome.runtime.sendMessage({ type: "GET_PHRASES" }) as Promise<
           PhraseEntry[]
         >,
-        chrome.runtime.sendMessage({ type: "GET_SETTINGS" }),
       ]);
 
       setState((prev) => ({
