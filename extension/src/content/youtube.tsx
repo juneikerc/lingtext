@@ -3,12 +3,21 @@
  * Detecta subtítulos y los reemplaza con nuestra UI interactiva
  */
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { createRoot } from "react-dom/client";
 import SubtitleOverlay from "@/components/SubtitleOverlay";
 import WordPopup from "@/components/WordPopup";
+import SelectionPopup from "@/components/SelectionPopup";
 import type { WordEntry, PhraseEntry, WordPopupState } from "@/types";
 import { translateTerm } from "@/utils/translate";
+import { tokenize, normalizeWord } from "@/utils/tokenize";
+
+interface SelectionPopupState {
+  x: number;
+  y: number;
+  text: string;
+  translation: string;
+}
 
 // Estado global de la extensión en YouTube
 interface YouTubeState {
@@ -17,17 +26,22 @@ interface YouTubeState {
   phrases: string[][];
   currentSubtitle: string;
   popup: WordPopupState | null;
+  selPopup: SelectionPopupState | null;
   apiKey: string | null;
+  playerRect: DOMRect | null;
 }
 
 function YouTubeReader() {
+  const containerRef = useRef<HTMLDivElement>(null);
   const [state, setState] = useState<YouTubeState>({
     enabled: true,
     unknownSet: new Set(),
     phrases: [],
     currentSubtitle: "",
     popup: null,
+    selPopup: null,
     apiKey: null,
+    playerRect: null,
   });
 
   // Cargar datos iniciales desde el background
@@ -56,8 +70,18 @@ function YouTubeReader() {
     }
   };
 
-  // Observar cambios en los subtítulos de YouTube
+  // Observar cambios en los subtítulos de YouTube y posición del player
   useEffect(() => {
+    const updatePlayerRect = () => {
+      const player = document.querySelector("#movie_player");
+      if (player) {
+        setState((prev) => ({
+          ...prev,
+          playerRect: player.getBoundingClientRect(),
+        }));
+      }
+    };
+
     const observer = new MutationObserver(() => {
       const captionWindow = document.querySelector(
         ".ytp-caption-window-container"
@@ -73,6 +97,7 @@ function YouTubeReader() {
       if (text && text !== state.currentSubtitle) {
         setState((prev) => ({ ...prev, currentSubtitle: text }));
       }
+      updatePlayerRect();
     });
 
     // Observar el contenedor de video
@@ -85,7 +110,16 @@ function YouTubeReader() {
       });
     }
 
-    return () => observer.disconnect();
+    // Actualizar posición en resize y scroll
+    window.addEventListener("resize", updatePlayerRect);
+    window.addEventListener("scroll", updatePlayerRect);
+    updatePlayerRect();
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", updatePlayerRect);
+      window.removeEventListener("scroll", updatePlayerRect);
+    };
   }, [state.currentSubtitle]);
 
   // Ocultar subtítulos nativos de YouTube
@@ -170,16 +204,84 @@ function YouTubeReader() {
   );
 
   const handleClosePopup = useCallback(() => {
-    setState((prev) => ({ ...prev, popup: null }));
+    setState((prev) => ({ ...prev, popup: null, selPopup: null }));
   }, []);
 
-  if (!state.enabled || !state.currentSubtitle) {
+  // Manejar selección de texto (frases)
+  const handleMouseUp = useCallback(async () => {
+    const sel = window.getSelection();
+    if (!sel || sel.isCollapsed) return;
+
+    const range = sel.getRangeAt(0);
+    const container = containerRef.current;
+    if (!container || !container.contains(range.commonAncestorContainer))
+      return;
+
+    const text = sel.toString().trim();
+    if (!text || text.length < 3) return;
+
+    const rect = range.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+    const x = rect.left + rect.width / 2 - containerRect.left;
+    const y = rect.top - containerRect.top;
+
+    // Traducir la selección
+    const result = await translateTerm(text, state.apiKey || undefined);
+    setState((prev) => ({
+      ...prev,
+      popup: null,
+      selPopup: { x, y, text, translation: result.translation || "..." },
+    }));
+  }, [state.apiKey]);
+
+  const handleSavePhrase = useCallback(
+    async (text: string, translation: string) => {
+      const parts = tokenize(text)
+        .filter((t) => t.isWord)
+        .map((t) => t.lower || normalizeWord(t.text))
+        .filter((w) => w.length > 0);
+
+      if (parts.length < 2) return;
+
+      const entry = {
+        phrase: text,
+        phraseLower: parts.join(" "),
+        translation,
+        parts,
+        addedAt: Date.now(),
+      };
+      await chrome.runtime.sendMessage({ type: "PUT_PHRASE", payload: entry });
+      setState((prev) => ({
+        ...prev,
+        phrases: [...prev.phrases, parts],
+        selPopup: null,
+      }));
+    },
+    []
+  );
+
+  if (!state.enabled || !state.currentSubtitle || !state.playerRect) {
     return null;
   }
 
+  const { playerRect } = state;
+
   return (
-    <>
-      {/* Overlay de subtítulos */}
+    <div
+      ref={containerRef}
+      className="lingtext-wrapper"
+      style={{
+        position: "fixed",
+        left: playerRect.left,
+        top: playerRect.top,
+        width: playerRect.width,
+        height: playerRect.height,
+        pointerEvents: "none",
+        zIndex: 2147483646,
+      }}
+      onMouseUp={handleMouseUp}
+    >
+      {/* Overlay de subtítulos - posicionado en la parte inferior del player */}
       <div className="lingtext-container">
         <SubtitleOverlay
           text={state.currentSubtitle}
@@ -189,7 +291,7 @@ function YouTubeReader() {
         />
       </div>
 
-      {/* Popup de palabra */}
+      {/* Popup de palabra - aparece ARRIBA del click */}
       {state.popup && (
         <WordPopup
           popup={state.popup}
@@ -200,19 +302,30 @@ function YouTubeReader() {
           onClose={handleClosePopup}
         />
       )}
-    </>
+
+      {/* Popup de selección (frases) */}
+      {state.selPopup && (
+        <SelectionPopup
+          popup={state.selPopup}
+          onSave={handleSavePhrase}
+          onClose={handleClosePopup}
+        />
+      )}
+    </div>
   );
 }
 
 // Estilos inline para el Shadow DOM
 const STYLES = `
+.lingtext-wrapper {
+  pointer-events: none;
+}
 .lingtext-container {
-  position: fixed;
-  bottom: 80px;
+  position: absolute;
+  bottom: 60px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2147483646;
-  max-width: 80%;
+  max-width: 85%;
   text-align: center;
   pointer-events: auto;
 }
@@ -252,6 +365,7 @@ const STYLES = `
   text-underline-offset: 4px;
 }
 .lingtext-popup {
+  position: absolute;
   min-width: 280px;
   max-width: 350px;
   background: white;
@@ -261,6 +375,25 @@ const STYLES = `
   overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 14px;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(-100%);
+  margin-top: -10px;
+}
+.lingtext-selection-popup {
+  position: absolute;
+  min-width: 250px;
+  max-width: 400px;
+  background: white;
+  color: #1f2937;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(-100%);
+  margin-top: -10px;
+  padding: 16px;
 }
 .lingtext-popup-header {
   display: flex;
@@ -363,6 +496,39 @@ const STYLES = `
   border: 1px solid #fcd34d;
 }
 .lingtext-btn-unknown:hover { background: #fde68a; }
+.lingtext-btn-save {
+  background: #3b82f6;
+  color: white;
+  border: 1px solid #2563eb;
+}
+.lingtext-btn-save:hover { background: #2563eb; }
+.lingtext-selection-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.lingtext-selection-text {
+  font-style: italic;
+  color: #4b5563;
+  font-size: 15px;
+  flex: 1;
+  margin-right: 8px;
+}
+.lingtext-selection-translation {
+  margin-bottom: 12px;
+}
+.lingtext-translation-content {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px;
+  white-space: pre-wrap;
+}
+.lingtext-selection-actions {
+  display: flex;
+  gap: 8px;
+}
 `;
 
 // Inicializar la extensión

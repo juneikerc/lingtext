@@ -3,7 +3,6 @@
  * Adaptado de app/components/reader/WordPopup.tsx
  */
 
-import React from "react";
 import type { WordPopupState } from "@/types";
 
 interface WordPopupProps {
@@ -39,10 +38,8 @@ export default function WordPopup({
     <div
       className="lingtext-popup"
       style={{
-        position: "fixed",
-        left: Math.max(10, popup.x - 150),
-        top: Math.max(10, popup.y + 20),
-        zIndex: 2147483647,
+        left: popup.x,
+        top: popup.y,
       }}
       onClick={(e) => e.stopPropagation()}
     >
