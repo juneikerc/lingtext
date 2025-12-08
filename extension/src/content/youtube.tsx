@@ -67,6 +67,48 @@ function parseTranscriptXml(xmlText: string): TranscriptCue[] {
   }));
 }
 
+// Fusionar cues cortos consecutivos para mejorar legibilidad
+function mergeTranscriptCues(cues: TranscriptCue[]): TranscriptCue[] {
+  if (cues.length === 0) return [];
+
+  const merged: TranscriptCue[] = [];
+  let currentCue = { ...cues[0] };
+
+  for (let i = 1; i < cues.length; i++) {
+    const nextCue = cues[i];
+
+    // Calcular gap entre fin del actual y comienzo del siguiente
+    // Nota: A veces los subs automáticos se solapan, por lo que gap puede ser negativo
+    const gap = nextCue.start - (currentCue.start + currentCue.duration);
+
+    // Criterios para fusionar:
+    // 1. Son consecutivos (gap pequeño < 0.5s) o solapados
+    // 2. La duración combinada es razonable (< 7s)
+    // 3. El texto no es excesivamente largo (< 120 caracteres)
+    // 4. El cue actual no parece terminar una frase (. ! ?) - aunque subs automáticos a veces no tienen puntuación
+
+    const isConsecutive = gap < 0.5;
+    const isShortDuration =
+      nextCue.start + nextCue.duration - currentCue.start < 8;
+    const isShortText = currentCue.text.length + nextCue.text.length < 120;
+    const hasSentenceEnd = /[.!?]$/.test(currentCue.text);
+
+    // Si cumple criterios, fusionar
+    if (isConsecutive && isShortDuration && isShortText && !hasSentenceEnd) {
+      currentCue.text += " " + nextCue.text;
+      // Extender duración hasta el final del siguiente
+      currentCue.duration = nextCue.start + nextCue.duration - currentCue.start;
+    } else {
+      // Si no, guardar el actual y empezar uno nuevo
+      merged.push(currentCue);
+      currentCue = { ...nextCue };
+    }
+  }
+
+  merged.push(currentCue);
+  return merged;
+}
+
 function YouTubeReader() {
   const containerRef = useRef<HTMLDivElement>(null);
   const subtitleBufferRef = useRef<string>("");
@@ -89,6 +131,31 @@ function YouTubeReader() {
     transcript: [],
     useTranscript: false,
   });
+
+  const [videoId, setVideoId] = useState<string | null>(null);
+
+  // Detectar cambios de URL (SPA navigation)
+  useEffect(() => {
+    const checkUrl = () => {
+      const id = new URLSearchParams(window.location.search).get("v");
+      if (id && id !== videoId) {
+        console.log(`[LingText] Video changed: ${id}`);
+        setVideoId(id);
+        // Limpiar estado anterior
+        setState((prev) => ({
+          ...prev,
+          transcript: [],
+          useTranscript: false,
+          currentSubtitle: "",
+          displayedSubtitle: "",
+        }));
+      }
+    };
+
+    checkUrl();
+    const interval = setInterval(checkUrl, 1000);
+    return () => clearInterval(interval);
+  }, [videoId]);
 
   // Cargar configuración guardada (traductor y API key)
   useEffect(() => {
@@ -124,13 +191,15 @@ function YouTubeReader() {
     return () => chrome.storage.onChanged.removeListener(handleStorageChange);
   }, []);
 
-  // Cargar transcript del video (con retry porque puede cargar después del content script)
+  // Cargar transcript cuando cambia el video
   useEffect(() => {
+    if (!videoId) return;
+
     let attempts = 0;
     const maxAttempts = 5;
 
     const tryLoadTranscript = async () => {
-      const success = await loadTranscript();
+      const success = await loadTranscript(videoId);
       if (!success && attempts < maxAttempts) {
         attempts++;
         console.log(
@@ -142,18 +211,11 @@ function YouTubeReader() {
 
     // Esperar un poco para que YouTube cargue
     setTimeout(tryLoadTranscript, 500);
-  }, []);
+  }, [videoId]);
 
-  const loadTranscript = async (): Promise<boolean> => {
+  const loadTranscript = async (currentVideoId: string): Promise<boolean> => {
     try {
-      // Obtener el ID del video de la URL
-      const videoId = new URLSearchParams(window.location.search).get("v");
-      if (!videoId) {
-        console.log("[LingText] No video ID found");
-        return false;
-      }
-
-      console.log(`[LingText] Loading transcript for video: ${videoId}`);
+      console.log(`[LingText] Loading transcript for video: ${currentVideoId}`);
 
       // Intentar múltiples fuentes para obtener el transcript
       let captionTracks: any[] | null = null;
@@ -203,17 +265,21 @@ function YouTubeReader() {
 
       // Si tenemos captionTracks, extraer la URL
       if (captionTracks && captionTracks.length > 0) {
-        // Preferir inglés
+        // Preferir inglés (manual o autogenerado)
+        // Aceptamos 'en', 'en-US', 'en-GB', etc. y también ASR
         const track =
           captionTracks.find(
-            (t: any) => t.languageCode === "en" || t.vssId?.includes(".en")
+            (t: any) =>
+              (t.languageCode && t.languageCode.startsWith("en")) ||
+              (t.vssId && t.vssId.includes(".en")) ||
+              t.kind === "asr"
           ) || captionTracks[0];
 
         if (track?.baseUrl) {
           // Agregar fmt=json3 para obtener formato JSON con todos los datos
           baseUrl = track.baseUrl + "&fmt=json3";
           console.log(
-            `[LingText] Using track: ${track.languageCode || track.name?.simpleText || "unknown"}`
+            `[LingText] Using track: ${track.languageCode || "unknown"} (${track.kind || "standard"})`
           );
         }
       }
@@ -222,7 +288,7 @@ function YouTubeReader() {
       if (!baseUrl) {
         console.log("[LingText] No caption URL found, trying direct API");
         // Intentar la API directa (puede no funcionar para todos los videos)
-        const timedtextUrl = `https://www.youtube.com/api/timedtext?v=${videoId}&lang=en&fmt=srv3`;
+        const timedtextUrl = `https://www.youtube.com/api/timedtext?v=${currentVideoId}&lang=en&fmt=srv3`;
         try {
           const response = await fetch(timedtextUrl);
           if (response.ok) {
@@ -230,12 +296,13 @@ function YouTubeReader() {
             if (xmlText.includes("<text")) {
               const cues = parseTranscriptXml(xmlText);
               if (cues.length > 0) {
+                const mergedCues = mergeTranscriptCues(cues);
                 console.log(
-                  `[LingText] Loaded ${cues.length} transcript cues via direct API`
+                  `[LingText] Loaded ${cues.length} cues (merged to ${mergedCues.length}) via direct API`
                 );
                 setState((prev) => ({
                   ...prev,
-                  transcript: cues,
+                  transcript: mergedCues,
                   useTranscript: true,
                 }));
                 return true;
@@ -288,12 +355,13 @@ function YouTubeReader() {
               .filter((c: TranscriptCue) => c.text.length > 0);
 
             if (jsonCues.length > 0) {
+              const mergedCues = mergeTranscriptCues(jsonCues);
               console.log(
-                `[LingText] ✓ Loaded ${jsonCues.length} transcript cues from JSON format`
+                `[LingText] ✓ Loaded ${jsonCues.length} cues (merged to ${mergedCues.length}) from JSON format`
               );
               setState((prev) => ({
                 ...prev,
-                transcript: jsonCues,
+                transcript: mergedCues,
                 useTranscript: true,
               }));
               return true;
@@ -303,12 +371,13 @@ function YouTubeReader() {
         return false;
       }
 
+      const mergedCues = mergeTranscriptCues(cues);
       console.log(
-        `[LingText] ✓ Loaded ${cues.length} transcript cues successfully`
+        `[LingText] ✓ Loaded ${cues.length} cues (merged to ${mergedCues.length}) successfully`
       );
       setState((prev) => ({
         ...prev,
-        transcript: cues,
+        transcript: mergedCues,
         useTranscript: true,
       }));
       return true;
@@ -729,21 +798,21 @@ const STYLES = `
   bottom: 60px;
   left: 50%;
   transform: translateX(-50%);
-  max-width: 85%;
+  width: 90%;
   text-align: center;
   pointer-events: auto;
   opacity: 1;
-  transition: opacity 0.15s ease-in-out;
+  transition: opacity 0.10s ease-in-out;
 }
 .lingtext-container.lingtext-transitioning {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 .lingtext-subtitle-overlay {
   background: rgba(0, 0, 0, 0.85);
   color: white;
-  padding: 12px 20px;
+  padding: 16px 24px;
   border-radius: 8px;
-  font-size: 22px;
+  font-size: 28px;
   line-height: 1.5;
   font-family: "YouTube Noto", Roboto, Arial, sans-serif;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
@@ -753,12 +822,12 @@ const STYLES = `
   padding: 2px 4px;
   margin: 0 1px;
   border-radius: 4px;
-  transition: all 0.15s ease;
+  transition: all 0.1s ease;
   display: inline-block;
 }
 .lingtext-word:hover {
   background: rgba(59, 130, 246, 0.5);
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 .lingtext-unknown {
   background: rgba(234, 179, 8, 0.4);
