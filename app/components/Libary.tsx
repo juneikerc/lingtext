@@ -30,6 +30,7 @@ export default function Library() {
   const [content, setContent] = useState("");
   const [inputFormat, setInputFormat] = useState<"txt" | "markdown">("txt");
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const titleInputRef = useRef<HTMLInputElement | null>(null);
 
   // Database backup/restore state
   const [isExporting, setIsExporting] = useState(false);
@@ -273,22 +274,23 @@ export default function Library() {
   // Loading skeleton
   if (isLoading) {
     return (
-      <section className="relative overflow-hidden py-12 px-4">
+      <section className="relative overflow-hidden py-12 px-4 bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
         <div className="absolute inset-0">
-          <div className="absolute top-10 left-10 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 right-10 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-10 left-10 w-32 h-32 bg-indigo-500/10 dark:bg-indigo-400/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-10 w-40 h-40 bg-sky-500/10 dark:bg-sky-400/5 rounded-full blur-3xl"></div>
         </div>
 
         <div className="relative max-w-4xl mx-auto">
           {/* Header skeleton */}
           <div className="text-center mb-12">
-            <div className="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-blue-600 bg-blue-100/80 dark:bg-blue-900/30 dark:text-blue-300 rounded-full border border-blue-200/50 dark:border-blue-800/50 backdrop-blur-sm">
-              <span className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
+            <div className="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-900 rounded-full border border-gray-200 dark:border-gray-800">
+              <span className="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>
               Cargando biblioteca...
             </div>
-            <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
-              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
-                Tus Textos
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900 dark:text-gray-100">
+              Tus{" "}
+              <span className="text-indigo-600 dark:text-indigo-400">
+                Textos
               </span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
@@ -299,28 +301,28 @@ export default function Library() {
           {/* Skeleton cards */}
           <div className="space-y-6">
             {/* Database section skeleton */}
-            <div className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 rounded-2xl border border-emerald-200/50 dark:border-emerald-800/50 p-6 animate-pulse">
+            <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6 animate-pulse">
               <div className="flex items-center">
-                <div className="w-10 h-10 bg-emerald-200 dark:bg-emerald-800 rounded-xl mr-4"></div>
+                <div className="w-10 h-10 bg-gray-200 dark:bg-gray-800 rounded-xl mr-4"></div>
                 <div className="flex-1">
-                  <div className="h-4 bg-emerald-200 dark:bg-emerald-800 rounded w-32 mb-2"></div>
-                  <div className="h-3 bg-emerald-100 dark:bg-emerald-900 rounded w-48"></div>
+                  <div className="h-4 bg-gray-200 dark:bg-gray-800 rounded w-32 mb-2"></div>
+                  <div className="h-3 bg-gray-100 dark:bg-gray-800/60 rounded w-48"></div>
                 </div>
               </div>
             </div>
 
             {/* Form skeleton */}
-            <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-8 animate-pulse">
+            <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-8 animate-pulse">
               <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-48 mb-6"></div>
               <div className="space-y-4">
                 <div className="h-12 bg-gray-100 dark:bg-gray-800 rounded-xl"></div>
                 <div className="h-32 bg-gray-100 dark:bg-gray-800 rounded-xl"></div>
-                <div className="h-12 bg-blue-200 dark:bg-blue-800 rounded-xl w-32"></div>
+                <div className="h-12 bg-gray-200 dark:bg-gray-700 rounded-xl w-32"></div>
               </div>
             </div>
 
             {/* Text cards skeleton */}
-            <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-8 animate-pulse">
+            <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-8 animate-pulse">
               <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-40 mb-6"></div>
               <div className="space-y-4">
                 {[1, 2].map((i) => (
@@ -342,24 +344,23 @@ export default function Library() {
   }
 
   return (
-    <section className="relative overflow-hidden py-12 px-4">
+    <section className="relative overflow-hidden py-12 px-4 bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
       {/* Elementos decorativos de fondo */}
       <div className="absolute inset-0">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-10 left-10 w-32 h-32 bg-indigo-500/10 dark:bg-indigo-400/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-40 h-40 bg-sky-500/10 dark:bg-sky-400/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative max-w-4xl mx-auto">
         {/* Header elegante */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-blue-600 bg-blue-100/80 dark:bg-blue-900/30 dark:text-blue-300 rounded-full border border-blue-200/50 dark:border-blue-800/50 backdrop-blur-sm">
-            <span className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
+          <div className="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-900 rounded-full border border-gray-200 dark:border-gray-800">
+            <span className="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>
             Biblioteca Personal
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
-              Tus Textos
-            </span>
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900 dark:text-gray-100">
+            Tus{" "}
+            <span className="text-indigo-600 dark:text-indigo-400">Textos</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Crea tu colección personal de textos para aprender inglés de forma
@@ -370,10 +371,10 @@ export default function Library() {
         {/* Backup/Restore Database Section - Collapsible */}
         <details className="group mb-8">
           <summary className="cursor-pointer list-none">
-            <div className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 rounded-2xl border border-emerald-200/50 dark:border-emerald-800/50 p-4 hover:border-emerald-300 dark:hover:border-emerald-700 transition-colors">
+            <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-4 hover:border-gray-300 dark:hover:border-gray-700 transition-colors">
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
-                  <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center mr-4">
+                  <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center mr-4">
                     <span className="text-white text-xl">💾</span>
                   </div>
                   <div>
@@ -387,7 +388,7 @@ export default function Library() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs px-2 py-1 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 rounded-full">
+                  <span className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full">
                     .sqlite
                   </span>
                   <svg
@@ -408,10 +409,10 @@ export default function Library() {
             </div>
           </summary>
 
-          <div className="mt-2 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl border border-gray-200/50 dark:border-gray-700/50 p-6">
+          <div className="mt-2 bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-6">
             <div className="grid sm:grid-cols-2 gap-4">
               {/* Export */}
-              <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200/50 dark:border-blue-800/50">
+              <div className="p-4 bg-gray-50 dark:bg-gray-800/60 rounded-xl border border-gray-200 dark:border-gray-700">
                 <div className="flex items-start gap-3 mb-3">
                   <span className="text-2xl">📤</span>
                   <div>
@@ -426,7 +427,7 @@ export default function Library() {
                 <button
                   onClick={handleExportDatabase}
                   disabled={isExporting || isImporting}
-                  className="w-full flex items-center justify-center px-4 py-2.5 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+                  className="w-full flex items-center justify-center px-4 py-2.5 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 disabled:bg-gray-400 dark:disabled:bg-gray-600 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
                 >
                   {isExporting ? (
                     <>
@@ -458,9 +459,9 @@ export default function Library() {
               </div>
 
               {/* Import */}
-              <div className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-xl border border-orange-200/50 dark:border-orange-800/50">
+              <div className="p-4 bg-gray-50 dark:bg-gray-800/60 rounded-xl border border-gray-200 dark:border-gray-700">
                 <div className="flex items-start gap-3 mb-3">
-                  <span className="text-2xl">�</span>
+                  <span className="text-2xl">📥</span>
                   <div>
                     <h4 className="font-semibold text-gray-900 dark:text-gray-100">
                       Restaurar Backup
@@ -473,7 +474,7 @@ export default function Library() {
                 <button
                   onClick={handleImportDatabase}
                   disabled={isExporting || isImporting}
-                  className="w-full flex items-center justify-center px-4 py-2.5 bg-orange-500 text-white font-medium rounded-lg hover:bg-orange-600 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+                  className="w-full flex items-center justify-center px-4 py-2.5 bg-amber-600 text-white font-medium rounded-lg hover:bg-amber-700 disabled:bg-gray-400 dark:disabled:bg-gray-600 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
                 >
                   {isImporting ? (
                     <>
@@ -521,9 +522,9 @@ export default function Library() {
         </details>
 
         {/* Formulario de agregar texto */}
-        <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-8 mb-12">
+        <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-8 mb-12">
           <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 flex items-center">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mr-3">
+            <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center mr-3">
               <span className="text-white text-sm">+</span>
             </div>
             Agregar Nuevo Texto
@@ -536,7 +537,8 @@ export default function Library() {
                   Título del texto
                 </label>
                 <input
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder-gray-500 dark:placeholder-gray-400"
+                  ref={titleInputRef}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 placeholder-gray-500 dark:placeholder-gray-400"
                   placeholder="Ej: The Great Gatsby - Chapter 1"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
@@ -544,21 +546,21 @@ export default function Library() {
               </div>
 
               {/* Import TXT file option */}
-              <div className="flex items-center gap-3 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200/50 dark:border-blue-800/50">
+              <div className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-800/60 rounded-xl border border-gray-200 dark:border-gray-700">
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-blue-700 dark:text-blue-300">
+                  <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     ¿Tienes un archivo .txt?
                   </p>
-                  <p className="text-xs text-blue-600/70 dark:text-blue-400/70">
+                  <p className="text-xs text-gray-600 dark:text-gray-400">
                     Importa directamente un archivo de texto plano
                   </p>
                 </div>
                 <button
-                  className="px-4 py-2 rounded-lg bg-blue-500 text-white text-sm font-medium hover:bg-blue-600 transition-colors"
+                  className="px-4 py-2 rounded-lg bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
                   onClick={() => fileInputRef.current?.click()}
                   type="button"
                 >
-                  � Cargar .txt
+                  📄 Cargar .txt
                 </button>
                 <input
                   ref={fileInputRef}
@@ -575,10 +577,10 @@ export default function Library() {
               <button
                 type="button"
                 onClick={() => setInputFormat("txt")}
-                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                   inputFormat === "txt"
-                    ? "bg-blue-500 text-white shadow-lg"
-                    : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
+                    ? "bg-indigo-600 text-white shadow-sm"
+                    : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
                 }`}
               >
                 📝 Texto Plano
@@ -586,10 +588,10 @@ export default function Library() {
               <button
                 type="button"
                 onClick={() => setInputFormat("markdown")}
-                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                   inputFormat === "markdown"
-                    ? "bg-blue-500 text-white shadow-lg"
-                    : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
+                    ? "bg-indigo-600 text-white shadow-sm"
+                    : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
                 }`}
               >
                 📄 Markdown
@@ -597,7 +599,7 @@ export default function Library() {
             </div>
 
             <textarea
-              className="w-full min-h-[140px] px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-vertical transition-all duration-200 placeholder-gray-500 dark:placeholder-gray-400 font-mono"
+              className="w-full min-h-[140px] px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-vertical transition-all duration-200 placeholder-gray-500 dark:placeholder-gray-400 font-mono"
               placeholder={
                 inputFormat === "markdown"
                   ? "Pega aquí tu texto en inglés con formato Markdown...\n\nEjemplo:\n# Título\n**negrita** *cursiva* [enlace](url)\n- lista\n> cita"
@@ -609,7 +611,7 @@ export default function Library() {
 
             <div className="flex justify-end">
               <button
-                className="px-8 py-3 rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold hover:from-green-600 hover:to-emerald-700 disabled:from-gray-400 disabled:to-gray-500 transform hover:scale-105 disabled:transform-none transition-all duration-200 shadow-lg hover:shadow-green-500/25 disabled:shadow-none disabled:cursor-not-allowed"
+                className="px-8 py-3 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 disabled:bg-gray-400 dark:disabled:bg-gray-600 disabled:cursor-not-allowed transition-colors duration-200 shadow-sm hover:shadow-md"
                 onClick={onAdd}
                 disabled={!content.trim()}
                 type="button"
@@ -626,14 +628,14 @@ export default function Library() {
             texts.map((t) => (
               <div
                 key={t.id}
-                className="group bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg hover:shadow-xl hover:border-blue-300/50 dark:hover:border-blue-600/50 transition-all duration-300 overflow-hidden"
+                className="group bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md hover:border-gray-300 dark:hover:border-gray-700 transition duration-200 overflow-hidden"
               >
                 <div className="p-6">
                   <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                     <div className="flex-1">
                       <div className="flex items-start justify-between mb-2">
                         <Link to={`/texts/${t.id}`}>
-                          <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+                          <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-200">
                             {t.title}
                           </h3>
                         </Link>
@@ -657,14 +659,14 @@ export default function Library() {
                     <div className="flex flex-wrap gap-3">
                       <Link
                         to={`/texts/${t.id}`}
-                        className="inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium hover:from-blue-600 hover:to-blue-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-blue-500/25"
+                        className="inline-flex items-center px-6 py-3 rounded-xl bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition-colors duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
                       >
                         📖 Leer Ahora
                       </Link>
 
                       <div className="flex gap-2">
                         <button
-                          className="p-3 rounded-xl bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-300 hover:bg-yellow-100 dark:hover:bg-yellow-900/40 transition-all duration-200"
+                          className="p-3 rounded-xl bg-gray-50 dark:bg-gray-800 text-indigo-700 dark:text-indigo-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
                           onClick={() => onAttachAudioUrl(t.id)}
                           title="Agregar audio desde URL"
                           type="button"
@@ -672,7 +674,7 @@ export default function Library() {
                           🔊 🔗
                         </button>
                         <button
-                          className="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 transition-all duration-200"
+                          className="p-3 rounded-xl bg-gray-50 dark:bg-gray-800 text-indigo-700 dark:text-indigo-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
                           onClick={() => onAttachAudioFile(t.id)}
                           title="Agregar archivo de audio"
                           type="button"
@@ -681,7 +683,7 @@ export default function Library() {
                         </button>
                         {t.audioRef && (
                           <button
-                            className="p-3 rounded-xl bg-gray-50 dark:bg-gray-900/20 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900/40 transition-all duration-200"
+                            className="p-3 rounded-xl bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
                             onClick={() => onClearAudio(t.id)}
                             title="Remover audio"
                             type="button"
@@ -690,7 +692,7 @@ export default function Library() {
                           </button>
                         )}
                         <button
-                          className="p-3 rounded-xl bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 hover:bg-red-100 dark:hover:bg-red-900/40 transition-all duration-200"
+                          className="p-3 rounded-xl bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 hover:bg-red-100 dark:hover:bg-red-900/40 transition-colors duration-200"
                           onClick={() => onDeleteText(t.id)}
                           title="Eliminar texto"
                           type="button"
@@ -705,7 +707,7 @@ export default function Library() {
             ))
           ) : (
             <div className="text-center py-16">
-              <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 rounded-full flex items-center justify-center">
+              <div className="w-24 h-24 mx-auto mb-6 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center">
                 <span className="text-4xl">📚</span>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
@@ -717,14 +719,8 @@ export default function Library() {
               </p>
               <div className="flex justify-center">
                 <button
-                  className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-blue-500/25"
-                  onClick={() =>
-                    (
-                      document.querySelector(
-                        'input[placeholder="Título del texto"]'
-                      ) as HTMLInputElement
-                    )?.focus()
-                  }
+                  className="px-8 py-4 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition-colors duration-200 shadow-sm hover:shadow-md"
+                  onClick={() => titleInputRef.current?.focus()}
                 >
                   ✨ Crear Primer Texto
                 </button>

@@ -1,0 +1,114 @@
+Plan: Integrar Astro para Contenido Estático en LingText
+Contexto
+LingText es una aplicación React Router 7 + Vite + Cloudflare Workers para aprender inglés mediante lectura activa. Necesitas agregar un entorno Astro para manejar contenido estático (blog, lecciones, etc.).
+
+Opciones de Arquitectura
+Hay 3 enfoques principales para integrar Astro:
+
+Opción A: Monorepo con Subdirectorio Astro (Recomendada)
+lingtext/
+├── app/                    # React Router app (actual)
+├── content-site/           # [NEW] Sitio Astro separado
+│   ├── src/
+│   │   ├── pages/
+│   │   │   ├── blog/
+│   │   │   └── lessons/
+│   │   ├── content/        # Colecciones MDX
+│   │   └── layouts/
+│   ├── astro.config.mjs
+│   └── package.json
+├── package.json            # Workspace root
+└── ...
+Ventajas:
+
+Separación clara entre app dinámica y contenido estático
+Despliegues independientes
+Ambos sitios pueden compartir estilos/assets
+Astro genera HTML estático optimizado para SEO
+Routing sugerido:
+
+lingtext.app/ → React Router (app principal)
+lingtext.app/blog/* → Astro (contenido estático)
+lingtext.app/lessons/* → Astro (lecciones)
+Opción B: Astro como Framework Principal + React Islands
+Migrar todo a Astro y usar React como "islands" para la interactividad.
+
+Desventajas:
+
+Migración significativa de código existente
+Cambio de paradigma de desarrollo
+Mayor riesgo de regresiones
+Opción C: React Router con Content Collections
+Mantener React Router y crear un sistema propio de markdown/MDX.
+
+Desventajas:
+
+Reinventar lo que Astro ya hace bien
+Sin optimizaciones de contenido estático
+Menor SEO por defecto
+Propuesta: Opción A - Monorepo
+IMPORTANT
+
+Antes de proceder, necesito saber:
+
+¿Quieres que Astro esté en el mismo dominio (ej: /blog) o en un subdominio (ej: blog.lingtext.app)?
+¿Prefieres contenido MDX (markdown interactivo) o markdown puro?
+¿Quieres que las lecciones usen el lector de LingText (React app) o sean páginas estáticas de Astro?
+Propuesta de Cambios (si eliges Opción A + mismo dominio)
+Estructura de Archivos
+[NEW] content-site/ - Proyecto Astro
+content-site/
+├── src/
+│   ├── pages/
+│   │   ├── blog/
+│   │   │   ├── index.astro          # Lista de posts
+│   │   │   └── [...slug].astro      # Post individual
+│   │   └── lessons/
+│   │       ├── index.astro          # Lista de lecciones
+│   │       └── [...slug].astro      # Lección individual
+│   ├── content/
+│   │   ├── blog/                    # Archivos .md/.mdx
+│   │   └── lessons/
+│   ├── layouts/
+│   │   └── BaseLayout.astro
+│   └── components/
+├── astro.config.mjs
+├── package.json
+└── tsconfig.json
+[MODIFY] 
+package.json
+ (raíz)
+Convertir a workspace para manejar ambos proyectos:
+
+{
+  "workspaces": [".", "content-site"],
+  "scripts": {
+    "dev": "react-router dev",
+    "dev:content": "npm run dev --workspace=content-site",
+    "build": "react-router build && npm run build --workspace=content-site",
+    "deploy": "npm run build && wrangler deploy"
+  }
+}
+Despliegue en Cloudflare
+Opción 1: Cloudflare Pages + Workers (Híbrido)
+Cloudflare Workers: React Router app (rutas dinámicas)
+Cloudflare Pages: Astro (contenido estático)
+Configurar redirects o subdominios
+Opción 2: Single Worker con Assets
+Build de Astro genera archivos estáticos
+Copiar output de Astro a build/client/blog/, build/client/lessons/
+Worker actual sirve todo
+Verificación
+Build Test
+# Verificar que ambos proyectos compilan
+npm run build
+npm run build --workspace=content-site
+Local Testing
+# Iniciar ambos en desarrollo
+npm run dev           # React Router en :5173
+npm run dev:content   # Astro en :4321
+Preguntas para el Usuario
+¿Cuál opción de arquitectura prefieres? (A, B, o C)
+¿Mismo dominio o subdominio para el contenido?
+¿Formato de contenido preferido? (MDX vs Markdown puro)
+¿Las lecciones deben integrarse con el lector de LingText?

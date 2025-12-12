@@ -174,9 +174,9 @@ export default function ReviewMode({
   // Pantalla de "Sesión Terminada"
   if (!currentWord) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-white via-purple-50/30 to-pink-50/30 dark:from-gray-950 dark:via-purple-950/10 dark:to-pink-950/10 flex items-center justify-center">
-        <div className="text-center p-8 max-w-md">
-          <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-r from-green-400 to-blue-500 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/20">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex items-center justify-center">
+        <div className="text-center p-8 max-w-md w-full bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm">
+          <div className="w-24 h-24 mx-auto mb-6 bg-indigo-100 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-2xl flex items-center justify-center shadow-sm">
             <span className="text-4xl">🎉</span>
           </div>
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
@@ -187,7 +187,7 @@ export default function ReviewMode({
             nuevas palabras por hoy.
           </p>
 
-          <div className="grid grid-cols-2 gap-4 mb-8 text-left bg-white/50 dark:bg-gray-800/50 p-4 rounded-xl">
+          <div className="grid grid-cols-2 gap-4 mb-8 text-left bg-gray-50 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700 p-4 rounded-xl">
             <div>
               <div className="text-xs text-gray-500 uppercase font-bold tracking-wider">
                 Aciertos
@@ -200,7 +200,7 @@ export default function ReviewMode({
               <div className="text-xs text-gray-500 uppercase font-bold tracking-wider">
                 Repasos
               </div>
-              <div className="text-2xl font-bold text-blue-600">
+              <div className="text-2xl font-bold text-indigo-600">
                 {sessionStats.total}
               </div>
             </div>
@@ -208,7 +208,7 @@ export default function ReviewMode({
 
           <Link
             to="/words"
-            className="inline-flex items-center justify-center w-full px-6 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold rounded-xl hover:scale-[1.02] transition-all duration-200 shadow-xl"
+            className="inline-flex items-center justify-center w-full px-6 py-4 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-colors duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 dark:focus-visible:ring-offset-gray-950"
           >
             Volver a la Biblioteca
           </Link>
@@ -218,11 +218,11 @@ export default function ReviewMode({
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       <div className="relative">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-24 left-1/3 h-96 w-96 rounded-full bg-purple-200/30 dark:bg-purple-900/20 blur-3xl"></div>
-          <div className="absolute -bottom-24 right-1/3 h-96 w-96 rounded-full bg-blue-200/30 dark:bg-blue-900/20 blur-3xl"></div>
+          <div className="absolute -top-24 left-1/3 h-96 w-96 rounded-full bg-indigo-500/10 dark:bg-indigo-400/5 blur-3xl"></div>
+          <div className="absolute -bottom-24 right-1/3 h-96 w-96 rounded-full bg-sky-500/10 dark:bg-sky-400/5 blur-3xl"></div>
         </div>
 
         <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-8">
@@ -230,7 +230,7 @@ export default function ReviewMode({
           <div className="flex items-center justify-between mb-8">
             <Link
               to="/words"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200 font-medium border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 dark:focus-visible:ring-offset-gray-950"
             >
               ← Salir
             </Link>
@@ -240,17 +240,17 @@ export default function ReviewMode({
           </div>
 
           <div className="text-center mb-10">
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
               Repaso Espaciado
             </h1>
             {/* Indicador de Nueva vs Repaso */}
             <div className="flex justify-center">
               {!currentWord.srData ? (
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-indigo-100 text-indigo-700 dark:bg-indigo-900/20 dark:text-indigo-300">
                   ✨ NUEVA PALABRA
                 </span>
               ) : (
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-orange-100 text-orange-700 dark:bg-orange-900/50 dark:text-orange-300">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700 dark:bg-amber-900/20 dark:text-amber-300">
                   🔄 REPASO
                 </span>
               )}
@@ -261,19 +261,19 @@ export default function ReviewMode({
           {currentWord.srData && (
             <div className="flex justify-center gap-6 mb-8 text-sm text-gray-500 dark:text-gray-400">
               <div className="flex flex-col items-center">
-                <span className="font-bold text-gray-900 dark:text-white">
+                <span className="font-bold text-gray-900 dark:text-gray-100">
                   {currentWord.srData.repetitions}
                 </span>
                 <span className="text-xs">Repeticiones</span>
               </div>
               <div className="flex flex-col items-center">
-                <span className="font-bold text-gray-900 dark:text-white">
+                <span className="font-bold text-gray-900 dark:text-gray-100">
                   {currentWord.srData.interval}d
                 </span>
                 <span className="text-xs">Intervalo</span>
               </div>
               <div className="flex flex-col items-center">
-                <span className="font-bold text-gray-900 dark:text-white">
+                <span className="font-bold text-gray-900 dark:text-gray-100">
                   {formatTimeUntilReview(currentWord.srData.nextReview)}
                 </span>
                 <span className="text-xs">Próximo</span>

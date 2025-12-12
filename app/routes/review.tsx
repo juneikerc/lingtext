@@ -25,29 +25,30 @@ export function meta({}: Route.MetaArgs) {
 // Skeleton component for loading state
 function ReviewSkeleton() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-purple-50/30 to-pink-50/30 dark:from-gray-950 dark:via-purple-950/10 dark:to-pink-950/10">
+    <div className="min-h-screen bg-white dark:bg-gray-950">
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-pink-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-10 w-64 h-64 bg-indigo-500/10 dark:bg-indigo-400/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-sky-500/10 dark:bg-sky-400/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative max-w-2xl mx-auto px-4 py-12">
         {/* Header skeleton */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-purple-600 bg-purple-100/80 dark:bg-purple-900/30 dark:text-purple-300 rounded-full border border-purple-200/50 dark:border-purple-800/50 backdrop-blur-sm">
-            <span className="w-2 h-2 bg-purple-500 rounded-full mr-2 animate-pulse"></span>
+          <div className="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-900 rounded-full border border-gray-200 dark:border-gray-800">
+            <span className="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>
             Preparando sesión de repaso...
           </div>
-          <h1 className="text-3xl md:text-4xl font-extrabold mb-4">
-            <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-purple-800 bg-clip-text text-transparent">
-              Repaso de Vocabulario
+          <h1 className="text-3xl md:text-4xl font-extrabold mb-4 text-gray-900 dark:text-gray-100">
+            Repaso de{" "}
+            <span className="text-indigo-600 dark:text-indigo-400">
+              Vocabulario
             </span>
           </h1>
         </div>
 
         {/* Card skeleton */}
-        <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-3xl border border-gray-200/50 dark:border-gray-700/50 shadow-2xl p-8 animate-pulse">
+        <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-8 animate-pulse">
           {/* Progress bar skeleton */}
           <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full mb-8"></div>
 
@@ -199,11 +200,15 @@ export default function Review() {
   // ============================================================
   if (words.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-white via-purple-50/30 to-pink-50/30 dark:from-gray-950 dark:via-purple-950/10 dark:to-pink-950/10 flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex items-center justify-center">
         <div className="text-center max-w-md mx-auto px-4">
           {/* ÍCONO */}
           <div
-            className={`w-24 h-24 mx-auto mb-6 rounded-2xl flex items-center justify-center shadow-lg ${limitReached ? "bg-gradient-to-r from-orange-400 to-red-500 shadow-orange-500/20" : "bg-gradient-to-r from-green-400 to-blue-500 shadow-blue-500/20"}`}
+            className={`w-24 h-24 mx-auto mb-6 rounded-2xl flex items-center justify-center border shadow-sm ${
+              limitReached
+                ? "bg-amber-100 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800"
+                : "bg-indigo-100 dark:bg-indigo-900/20 border-indigo-200 dark:border-indigo-800"
+            }`}
           >
             <span className="text-4xl">{limitReached ? "🛑" : "🎉"}</span>
           </div>
@@ -221,10 +226,10 @@ export default function Review() {
           </p>
 
           {/* TARJETA DE ESTADÍSTICAS DIARIAS */}
-          <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-6 mb-8">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6 mb-8">
             <div className="grid grid-cols-2 gap-4 divide-x divide-gray-200 dark:divide-gray-700">
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">
+                <div className="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-1">
                   {dailyStats.newCardsStudied}
                 </div>
                 <div className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400">
@@ -232,7 +237,7 @@ export default function Review() {
                 </div>
               </div>
               <div className="text-center pl-4">
-                <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-1">
+                <div className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-1">
                   {/* Aquí podrías sumar repasos si guardaras esa estadística en dailyStats también */}
                   Done
                 </div>
@@ -247,7 +252,7 @@ export default function Review() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/words"
-              className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium rounded-xl hover:from-blue-600 hover:to-indigo-700 transition-all duration-200 shadow-lg hover:shadow-blue-500/25"
+              className="inline-flex items-center justify-center px-6 py-3 bg-indigo-600 text-white font-medium rounded-xl hover:bg-indigo-700 transition-colors duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
             >
               <span>📚 Gestionar vocabulario</span>
             </Link>
@@ -255,7 +260,7 @@ export default function Review() {
             {/* Si hay límite alcanzado, sugerimos seguir leyendo */}
             <Link
               to="/"
-              className={`inline-flex items-center justify-center px-6 py-3 font-medium rounded-xl transition-all duration-200 border ${limitReached ? "bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-200 dark:border-gray-700 hover:bg-gray-50" : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200"}`}
+              className="inline-flex items-center justify-center px-6 py-3 font-medium rounded-xl bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200 border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
             >
               <span>📖 Leer textos</span>
             </Link>

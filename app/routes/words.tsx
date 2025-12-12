@@ -30,23 +30,24 @@ export function meta({}: Route.MetaArgs) {
 // Skeleton component for loading state
 function WordsSkeleton() {
   return (
-    <section className="relative overflow-hidden py-12 px-4">
+    <section className="relative overflow-hidden py-12 px-4 bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
       {/* Background decorations */}
       <div className="absolute inset-0">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-40 h-40 bg-pink-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-10 left-10 w-32 h-32 bg-indigo-500/10 dark:bg-indigo-400/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-40 h-40 bg-sky-500/10 dark:bg-sky-400/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-purple-600 bg-purple-100/80 dark:bg-purple-900/30 dark:text-purple-300 rounded-full border border-purple-200/50 dark:border-purple-800/50 backdrop-blur-sm">
-            <span className="w-2 h-2 bg-purple-500 rounded-full mr-2 animate-pulse"></span>
+          <div className="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-900 rounded-full border border-gray-200 dark:border-gray-800">
+            <span className="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>
             Cargando vocabulario...
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
-            <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-purple-800 bg-clip-text text-transparent">
-              Tu Vocabulario
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900 dark:text-gray-100">
+            Tu{" "}
+            <span className="text-indigo-600 dark:text-indigo-400">
+              Vocabulario
             </span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
@@ -59,7 +60,7 @@ function WordsSkeleton() {
           {[1, 2, 3, 4].map((i) => (
             <div
               key={i}
-              className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl border border-gray-200/50 dark:border-gray-700/50 p-4 animate-pulse"
+              className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4 animate-pulse shadow-sm"
             >
               <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-16 mx-auto mb-2"></div>
               <div className="h-3 bg-gray-100 dark:bg-gray-800 rounded w-20 mx-auto"></div>
@@ -68,7 +69,7 @@ function WordsSkeleton() {
         </div>
 
         {/* Word cards skeleton */}
-        <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-6">
+        <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6">
           <div className="space-y-4">
             {[1, 2, 3, 4, 5].map((i) => (
               <div

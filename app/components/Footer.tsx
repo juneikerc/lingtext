@@ -17,14 +17,14 @@ export default function Footer() {
   //   </svg>
   // </a>
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gray-950 text-gray-300 border-t border-gray-800">
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo y descripción */}
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
-              <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                LingText
+              <div className="text-2xl font-bold text-gray-100">
+                Ling<span className="text-indigo-400">Text</span>
               </div>
             </div>
             <p className="text-gray-300 mb-4 max-w-md">
@@ -35,7 +35,7 @@ export default function Footer() {
             <div className="flex space-x-4">
               <a
                 href="https://github.com/juneikerc/lingtext"
-                className="text-gray-400 hover:text-white transition-colors duration-200"
+                className="text-gray-400 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
                 aria-label="GitHub"
               >
                 <svg
@@ -51,12 +51,14 @@ export default function Footer() {
 
           {/* Enlaces útiles */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Producto</h3>
+            <h3 className="text-lg font-semibold text-gray-100 mb-4">
+              Producto
+            </h3>
             <ul className="space-y-2">
               <li>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-white transition-colors duration-200"
+                  className="text-gray-300 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
                 >
                   Cómo funciona
                 </a>
@@ -64,7 +66,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-white transition-colors duration-200"
+                  className="text-gray-300 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
                 >
                   Biblioteca
                 </a>
@@ -72,7 +74,7 @@ export default function Footer() {
               <li>
                 <a
                   href="/words"
-                  className="text-gray-300 hover:text-white transition-colors duration-200"
+                  className="text-gray-300 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
                 >
                   Estadísticas
                 </a>
@@ -83,12 +85,14 @@ export default function Footer() {
 
           {/* Recursos */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Recursos</h3>
+            <h3 className="text-lg font-semibold text-gray-100 mb-4">
+              Recursos
+            </h3>
             <ul className="space-y-2">
               <li>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-white transition-colors duration-200"
+                  className="text-gray-300 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
                 >
                   Guía de aprendizaje
                 </a>
@@ -96,7 +100,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-white transition-colors duration-200"
+                  className="text-gray-300 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
                 >
                   Comunidad
                 </a>
@@ -104,7 +108,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/contacto"
-                  className="text-gray-300 hover:text-white transition-colors duration-200"
+                  className="text-gray-300 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
                 >
                   Contacto
                 </Link>
@@ -112,7 +116,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-white transition-colors duration-200"
+                  className="text-gray-300 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
                 >
                   Blog
                 </a>
@@ -129,19 +133,19 @@ export default function Footer() {
           <div className="flex space-x-6 text-sm">
             <a
               href="#"
-              className="text-gray-400 hover:text-white transition-colors duration-200"
+              className="text-gray-400 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
             >
               Privacidad
             </a>
             <a
               href="#"
-              className="text-gray-400 hover:text-white transition-colors duration-200"
+              className="text-gray-400 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
             >
               Términos
             </a>
             <a
               href="#"
-              className="text-gray-400 hover:text-white transition-colors duration-200"
+              className="text-gray-400 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
             >
               Cookies
             </a>
@@ -149,10 +153,10 @@ export default function Footer() {
         </div>
 
         {/* Feature highlight */}
-        <div className="mt-8 p-4 bg-gradient-to-r from-blue-900/50 to-purple-900/50 rounded-lg border border-blue-800/50">
+        <div className="mt-8 p-4 bg-gray-900 rounded-lg border border-gray-800">
           <div className="flex items-center justify-center">
             <div className="text-center">
-              <div className="text-blue-300 font-semibold mb-1">
+              <div className="text-indigo-300 font-semibold mb-1">
                 💡 ¿Sabías?
               </div>
               <div className="text-gray-300 text-sm">
