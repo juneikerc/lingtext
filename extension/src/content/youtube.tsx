@@ -71,11 +71,76 @@ function parseTranscriptXml(xmlText: string): TranscriptCue[] {
 function mergeTranscriptCues(cues: TranscriptCue[]): TranscriptCue[] {
   if (cues.length === 0) return [];
 
-  const merged: TranscriptCue[] = [];
-  let currentCue = { ...cues[0] };
+  const sorted = [...cues].sort((a, b) => a.start - b.start);
 
-  for (let i = 1; i < cues.length; i++) {
-    const nextCue = cues[i];
+  const sampleSize = Math.min(sorted.length, 50);
+  let sampleWordCues = 0;
+  let sampleWordTotal = 0;
+  for (let i = 0; i < sampleSize; i++) {
+    const w = tokenize(sorted[i].text).filter((t) => t.isWord).length;
+    if (w > 0) {
+      sampleWordCues++;
+      sampleWordTotal += w;
+    }
+  }
+  const avgWords = sampleWordCues > 0 ? sampleWordTotal / sampleWordCues : 0;
+
+  const mergeGap = avgWords <= 3 ? 0.75 : 0.5;
+  const maxDuration = avgWords <= 3 ? 6.5 : 8;
+  const maxTextLength = avgWords <= 3 ? 90 : 120;
+  const maxWords = avgWords <= 3 ? 14 : 20;
+
+  const getWords = (text: string): string[] =>
+    tokenize(text)
+      .filter((t) => t.isWord)
+      .map((t) => t.lower || normalizeWord(t.text));
+
+  const stripLeadingWords = (text: string, count: number): string => {
+    if (count <= 0) return text;
+
+    const toks = tokenize(text);
+    let skipped = 0;
+    let out = "";
+    let started = false;
+
+    for (const tok of toks) {
+      if (!started) {
+        if (tok.isWord) {
+          skipped++;
+          if (skipped >= count) {
+            started = true;
+          }
+        }
+        continue;
+      }
+
+      out += tok.text;
+    }
+
+    return out.trimStart();
+  };
+
+  const findOverlap = (a: string[], b: string[]): number => {
+    const max = Math.min(a.length, b.length);
+    for (let k = max; k >= 1; k--) {
+      let ok = true;
+      for (let i = 0; i < k; i++) {
+        if (a[a.length - k + i] !== b[i]) {
+          ok = false;
+          break;
+        }
+      }
+      if (ok) return k;
+    }
+    return 0;
+  };
+
+  const merged: TranscriptCue[] = [];
+  let currentCue: TranscriptCue = { ...sorted[0] };
+  let currentWords = getWords(currentCue.text);
+
+  for (let i = 1; i < sorted.length; i++) {
+    const nextCue = sorted[i];
 
     // Calcular gap entre fin del actual y comienzo del siguiente
     // Nota: A veces los subs automáticos se solapan, por lo que gap puede ser negativo
@@ -87,21 +152,53 @@ function mergeTranscriptCues(cues: TranscriptCue[]): TranscriptCue[] {
     // 3. El texto no es excesivamente largo (< 120 caracteres)
     // 4. El cue actual no parece terminar una frase (. ! ?) - aunque subs automáticos a veces no tienen puntuación
 
-    const isConsecutive = gap < 0.5;
+    const isConsecutive = gap < mergeGap;
     const isShortDuration =
-      nextCue.start + nextCue.duration - currentCue.start < 8;
-    const isShortText = currentCue.text.length + nextCue.text.length < 120;
+      nextCue.start + nextCue.duration - currentCue.start < maxDuration;
     const hasSentenceEnd = /[.!?]$/.test(currentCue.text);
 
-    // Si cumple criterios, fusionar
-    if (isConsecutive && isShortDuration && isShortText && !hasSentenceEnd) {
-      currentCue.text += " " + nextCue.text;
-      // Extender duración hasta el final del siguiente
-      currentCue.duration = nextCue.start + nextCue.duration - currentCue.start;
-    } else {
-      // Si no, guardar el actual y empezar uno nuevo
+    if (!isConsecutive || !isShortDuration || hasSentenceEnd) {
       merged.push(currentCue);
       currentCue = { ...nextCue };
+      currentWords = getWords(currentCue.text);
+      continue;
+    }
+
+    const nextText = nextCue.text.trim();
+    if (!nextText) {
+      currentCue.duration = nextCue.start + nextCue.duration - currentCue.start;
+      continue;
+    }
+
+    let nextMergedText: string;
+    if (nextText === currentCue.text) {
+      nextMergedText = currentCue.text;
+    } else if (nextText.startsWith(currentCue.text)) {
+      nextMergedText = nextText;
+    } else if (currentCue.text.startsWith(nextText)) {
+      nextMergedText = nextText;
+    } else {
+      const nextWords = getWords(nextText);
+      const overlap = findOverlap(currentWords, nextWords);
+      const suffix = stripLeadingWords(nextText, overlap);
+      const sep = suffix && /^[,.;:!?)]/.test(suffix) ? "" : " ";
+      nextMergedText = `${currentCue.text}${sep}${suffix}`
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+
+    const mergedWords = getWords(nextMergedText);
+    if (
+      nextMergedText.length <= maxTextLength &&
+      mergedWords.length <= maxWords
+    ) {
+      currentCue.text = nextMergedText;
+      currentWords = mergedWords;
+      currentCue.duration = nextCue.start + nextCue.duration - currentCue.start;
+    } else {
+      merged.push(currentCue);
+      currentCue = { ...nextCue };
+      currentWords = getWords(currentCue.text);
     }
   }
 
