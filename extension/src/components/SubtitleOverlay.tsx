@@ -3,7 +3,7 @@
  * Renderiza subtítulos con palabras clickeables
  */
 
-import React from "react";
+import React, { useMemo } from "react";
 import { normalizeWord, tokenize } from "@/utils/tokenize";
 
 interface SubtitleOverlayProps {
@@ -22,6 +22,21 @@ export default function SubtitleOverlay({
   if (!text) return null;
 
   const tokens = tokenize(text);
+
+  const phrasesByFirstWord = useMemo(() => {
+    const map = new Map<string, string[][]>();
+    for (const parts of phrases) {
+      if (parts.length < 2) continue;
+      const first = parts[0];
+      const existing = map.get(first);
+      if (existing) {
+        existing.push(parts);
+      } else {
+        map.set(first, [parts]);
+      }
+    }
+    return map;
+  }, [phrases]);
 
   // Marcar tokens que pertenecen a frases guardadas
   const isPhraseToken: boolean[] = new Array(tokens.length).fill(false);
@@ -46,10 +61,12 @@ export default function SubtitleOverlay({
 
   for (let i = 0; i < tokens.length; i++) {
     if (!tokens[i].isWord) continue;
-    for (const parts of phrases) {
-      if (parts.length < 2) continue;
-      const startLow = tokens[i].lower || normalizeWord(tokens[i].text);
-      if (startLow !== parts[0]) continue;
+
+    const startLow = tokens[i].lower || normalizeWord(tokens[i].text);
+    const candidates = phrasesByFirstWord.get(startLow);
+    if (!candidates) continue;
+
+    for (const parts of candidates) {
       const matchIdxs = tryMatch(i, parts);
       if (matchIdxs) {
         for (const idx of matchIdxs) isPhraseToken[idx] = true;

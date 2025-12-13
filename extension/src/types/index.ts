@@ -46,6 +46,7 @@ export interface Settings {
 // Mensajes entre content script y background
 export type ExtensionMessage =
   | { type: "GET_WORDS" }
+  | { type: "GET_WORD"; payload: string }
   | { type: "GET_PHRASES" }
   | { type: "GET_SETTINGS" }
   | { type: "PUT_WORD"; payload: WordEntry }

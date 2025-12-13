@@ -15,7 +15,8 @@ const STORAGE_KEYS = {
   WORDS: "lingtext_words",
   PHRASES: "lingtext_phrases",
   SETTINGS: "lingtext_settings",
-  API_KEY: "lingtext_openrouter_key",
+  API_KEY: "openrouter_key",
+  LEGACY_API_KEY: "lingtext_openrouter_key",
 };
 
 // ============================================================================
@@ -112,8 +113,13 @@ export async function saveSettings(settings: Settings): Promise<void> {
 // ============================================================================
 
 export async function getApiKey(): Promise<string | null> {
-  const result = await chrome.storage.local.get(STORAGE_KEYS.API_KEY);
-  return result[STORAGE_KEYS.API_KEY] || null;
+  const result = await chrome.storage.local.get([
+    STORAGE_KEYS.API_KEY,
+    STORAGE_KEYS.LEGACY_API_KEY,
+  ]);
+  return (
+    result[STORAGE_KEYS.API_KEY] || result[STORAGE_KEYS.LEGACY_API_KEY] || null
+  );
 }
 
 export async function saveApiKey(key: string): Promise<void> {
@@ -158,9 +164,22 @@ export async function exportForWeb(): Promise<{
   words: WordEntry[];
   phrases: PhraseEntry[];
 }> {
+  const { lastSync } = await chrome.storage.local.get("lastSync");
+  const since = typeof lastSync === "number" ? lastSync : null;
+
+  const [words, phrases] = await Promise.all([getAllWords(), getAllPhrases()]);
+
+  if (since === null) {
+    return { words, phrases };
+  }
+
   return {
-    words: await getAllWords(),
-    phrases: await getAllPhrases(),
+    words: words.filter(
+      (w) => typeof w.addedAt === "number" && w.addedAt > since
+    ),
+    phrases: phrases.filter(
+      (p) => typeof p.addedAt === "number" && p.addedAt > since
+    ),
   };
 }
 

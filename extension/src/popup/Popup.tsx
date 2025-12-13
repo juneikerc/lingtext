@@ -15,7 +15,7 @@ export default function Popup() {
     loadStats();
     // Cargar configuración guardada
     chrome.storage.local.get(
-      ["lastSync", "translator", "openrouter_key"],
+      ["lastSync", "translator", "openrouter_key", "lingtext_openrouter_key"],
       (result) => {
         if (result.lastSync) {
           setLastSync(new Date(result.lastSync).toLocaleString());
@@ -23,8 +23,14 @@ export default function Popup() {
         if (result.translator) {
           setTranslator(result.translator as TRANSLATORS);
         }
-        if (result.openrouter_key) {
-          setApiKey(result.openrouter_key);
+        const apiKey = result.openrouter_key || result.lingtext_openrouter_key;
+        if (apiKey) {
+          setApiKey(apiKey);
+        }
+        if (!result.openrouter_key && result.lingtext_openrouter_key) {
+          chrome.storage.local.set({
+            openrouter_key: result.lingtext_openrouter_key,
+          });
         }
       }
     );
@@ -59,6 +65,12 @@ export default function Popup() {
     setSyncStatus(null);
 
     try {
+      const lastSyncBeforeResult = await chrome.storage.local.get("lastSync");
+      const lastSyncBefore =
+        typeof lastSyncBeforeResult.lastSync === "number"
+          ? (lastSyncBeforeResult.lastSync as number)
+          : null;
+
       // Buscar una pestaña de lingtext.org abierta
       const tabs = await chrome.tabs.query({
         url: ["https://lingtext.org/*", "http://localhost:*/*"],
@@ -79,16 +91,59 @@ export default function Popup() {
         await chrome.tabs.sendMessage(tab.id, { type: "TRIGGER_SYNC" });
         setSyncStatus("Sincronizando...");
 
-        // Esperar un poco y recargar stats
-        setTimeout(async () => {
-          await loadStats();
-          const result = await chrome.storage.local.get("lastSync");
-          if (result.lastSync) {
-            setLastSync(new Date(result.lastSync).toLocaleString());
-          }
-          setSyncStatus("✓ Sincronizado");
-          setSyncing(false);
-        }, 2000);
+        const newLastSync = await new Promise<number>((resolve, reject) => {
+          let timeoutId: ReturnType<typeof setTimeout> | null = null;
+
+          const cleanup = (
+            listener: (
+              changes: { [key: string]: chrome.storage.StorageChange },
+              areaName: string
+            ) => void
+          ) => {
+            chrome.storage.onChanged.removeListener(listener);
+            if (timeoutId) clearTimeout(timeoutId);
+          };
+
+          const listener = (
+            changes: { [key: string]: chrome.storage.StorageChange },
+            areaName: string
+          ) => {
+            if (areaName !== "local") return;
+            if (!changes.lastSync) return;
+            const next = changes.lastSync.newValue;
+            if (
+              typeof next === "number" &&
+              (lastSyncBefore === null || next > lastSyncBefore)
+            ) {
+              cleanup(listener);
+              resolve(next);
+            }
+          };
+
+          chrome.storage.onChanged.addListener(listener);
+
+          timeoutId = setTimeout(() => {
+            cleanup(listener);
+            reject(new Error("SYNC_TIMEOUT"));
+          }, 30000);
+
+          // Por si el sync terminó antes de que el listener se dispare
+          chrome.storage.local.get("lastSync").then((result) => {
+            const next = result.lastSync;
+            if (
+              typeof next === "number" &&
+              (lastSyncBefore === null || next > lastSyncBefore)
+            ) {
+              cleanup(listener);
+              resolve(next);
+            }
+          });
+        });
+
+        await loadStats();
+        setLastSync(new Date(newLastSync).toLocaleString());
+        setSyncStatus("✓ Sincronizado");
+        setSyncing(false);
       }
     } catch (error) {
       console.error("Sync error:", error);

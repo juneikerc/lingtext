@@ -5,6 +5,7 @@
 
 import {
   getAllWords,
+  getWord,
   putWord,
   deleteWord,
   getAllPhrases,
@@ -16,10 +17,50 @@ import {
 } from "./db";
 import type { ExtensionMessage } from "@/types";
 
+function isAllowedOrigin(origin: string): boolean {
+  if (!origin || origin === "null") return false;
+  try {
+    const { hostname } = new URL(origin);
+    return (
+      hostname === "localhost" ||
+      hostname === "lingtext.org" ||
+      hostname.endsWith(".lingtext.org")
+    );
+  } catch {
+    return false;
+  }
+}
+
+function isAllowedExternalSender(
+  sender: chrome.runtime.MessageSender
+): boolean {
+  const origin = (sender as { origin?: string }).origin;
+  if (origin && isAllowedOrigin(origin)) {
+    return true;
+  }
+
+  if (sender.url) {
+    try {
+      return isAllowedOrigin(new URL(sender.url).origin);
+    } catch {
+      return false;
+    }
+  }
+
+  return false;
+}
+
 // Escuchar mensajes de content scripts
 chrome.runtime.onMessage.addListener(
   (message: ExtensionMessage, _sender, sendResponse) => {
-    handleMessage(message).then(sendResponse);
+    handleMessage(message)
+      .then(sendResponse)
+      .catch((error) => {
+        console.error("[LingText Extension] Error handling message:", error);
+        sendResponse({
+          error: error instanceof Error ? error.message : String(error),
+        });
+      });
     return true; // Indica que la respuesta será asíncrona
   }
 );
@@ -28,6 +69,9 @@ async function handleMessage(message: ExtensionMessage): Promise<unknown> {
   switch (message.type) {
     case "GET_WORDS":
       return getAllWords();
+
+    case "GET_WORD":
+      return (await getWord(message.payload)) || null;
 
     case "GET_PHRASES":
       return getAllPhrases();
@@ -67,13 +111,22 @@ async function handleMessage(message: ExtensionMessage): Promise<unknown> {
 chrome.runtime.onMessageExternal.addListener(
   (message, sender, sendResponse) => {
     // Verificar que viene de lingtext.org o localhost
-    const origin = sender.origin || "";
-    if (!origin.includes("lingtext.org") && !origin.includes("localhost")) {
+    if (!isAllowedExternalSender(sender)) {
       sendResponse({ error: "Unauthorized origin" });
       return;
     }
 
-    handleMessage(message as ExtensionMessage).then(sendResponse);
+    handleMessage(message as ExtensionMessage)
+      .then(sendResponse)
+      .catch((error) => {
+        console.error(
+          "[LingText Extension] Error handling external message:",
+          error
+        );
+        sendResponse({
+          error: error instanceof Error ? error.message : String(error),
+        });
+      });
     return true;
   }
 );

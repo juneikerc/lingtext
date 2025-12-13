@@ -109,6 +109,28 @@ function mergeTranscriptCues(cues: TranscriptCue[]): TranscriptCue[] {
   return merged;
 }
 
+function findTranscriptCueIndex(cues: TranscriptCue[], time: number): number {
+  let lo = 0;
+  let hi = cues.length - 1;
+
+  while (lo <= hi) {
+    const mid = (lo + hi) >> 1;
+    const cue = cues[mid];
+    const start = cue.start;
+    const end = cue.start + cue.duration;
+
+    if (time < start) {
+      hi = mid - 1;
+    } else if (time >= end) {
+      lo = mid + 1;
+    } else {
+      return mid;
+    }
+  }
+
+  return -1;
+}
+
 function YouTubeReader() {
   const containerRef = useRef<HTMLDivElement>(null);
   const subtitleBufferRef = useRef<string>("");
@@ -160,31 +182,84 @@ function YouTubeReader() {
   // Cargar configuración guardada (traductor y API key)
   useEffect(() => {
     // Cargar inicial
-    chrome.storage.local.get(["translator", "openrouter_key"], (result) => {
-      setState((prev) => ({
-        ...prev,
-        translator: (result.translator as TRANSLATORS) || TRANSLATORS.CHROME,
-        apiKey: result.openrouter_key || null,
-      }));
-    });
+    chrome.storage.local.get(
+      ["translator", "openrouter_key", "lingtext_openrouter_key"],
+      (result) => {
+        const apiKey = result.openrouter_key || result.lingtext_openrouter_key;
+        if (!result.openrouter_key && result.lingtext_openrouter_key) {
+          chrome.storage.local.set({
+            openrouter_key: result.lingtext_openrouter_key,
+          });
+        }
+
+        setState((prev) => ({
+          ...prev,
+          translator: (result.translator as TRANSLATORS) || TRANSLATORS.CHROME,
+          apiKey: apiKey || null,
+        }));
+      }
+    );
 
     // Escuchar cambios en storage para actualizar sin recargar
-    const handleStorageChange = (changes: {
-      [key: string]: chrome.storage.StorageChange;
-    }) => {
-      if (changes.translator) {
-        setState((prev) => ({
-          ...prev,
-          translator:
-            (changes.translator.newValue as TRANSLATORS) || TRANSLATORS.CHROME,
-        }));
+    const handleStorageChange = (
+      changes: {
+        [key: string]: chrome.storage.StorageChange;
+      },
+      areaName: string
+    ) => {
+      if (areaName !== "local") return;
+
+      if (
+        changes.lingtext_openrouter_key?.newValue &&
+        !changes.openrouter_key
+      ) {
+        chrome.storage.local.set({
+          openrouter_key: changes.lingtext_openrouter_key.newValue,
+        });
       }
-      if (changes.openrouter_key) {
-        setState((prev) => ({
-          ...prev,
-          apiKey: changes.openrouter_key.newValue || null,
-        }));
-      }
+
+      setState((prev) => {
+        let next = prev;
+
+        if (changes.translator) {
+          const translator =
+            (changes.translator.newValue as TRANSLATORS) || TRANSLATORS.CHROME;
+          if (translator !== prev.translator) {
+            next = { ...next, translator };
+          }
+        }
+
+        if (changes.openrouter_key || changes.lingtext_openrouter_key) {
+          const apiKey =
+            (changes.openrouter_key?.newValue as string | undefined) ||
+            (changes.lingtext_openrouter_key?.newValue as string | undefined) ||
+            null;
+          if (apiKey !== prev.apiKey) {
+            next = { ...next, apiKey };
+          }
+        }
+
+        if (changes.lingtext_words) {
+          const words =
+            (changes.lingtext_words.newValue as WordEntry[] | undefined) || [];
+          next = {
+            ...next,
+            unknownSet: new Set(words.map((w) => w.wordLower)),
+          };
+        }
+
+        if (changes.lingtext_phrases) {
+          const phrases =
+            (changes.lingtext_phrases.newValue as PhraseEntry[] | undefined) ||
+            [];
+          next = {
+            ...next,
+            phrases: phrases.map((p) => p.parts),
+          };
+        }
+
+        return next;
+      });
     };
 
     chrome.storage.onChanged.addListener(handleStorageChange);
@@ -483,10 +558,7 @@ function YouTubeReader() {
       const currentTime = video.currentTime;
 
       // Buscar el cue que corresponde al tiempo actual
-      const cueIndex = state.transcript.findIndex(
-        (cue) =>
-          currentTime >= cue.start && currentTime < cue.start + cue.duration
-      );
+      const cueIndex = findTranscriptCueIndex(state.transcript, currentTime);
 
       if (cueIndex !== -1 && cueIndex !== lastCueIndex) {
         lastCueIndex = cueIndex;
@@ -511,14 +583,45 @@ function YouTubeReader() {
   // Observar cambios en los subtítulos de YouTube y posición del player
   // (fallback cuando no hay transcript disponible)
   useEffect(() => {
+    let rafId: number | null = null;
+    let lastRect: {
+      left: number;
+      top: number;
+      width: number;
+      height: number;
+    } | null = null;
+
     const updatePlayerRect = () => {
-      const player = document.querySelector("#movie_player");
-      if (player) {
+      if (rafId !== null) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
+        const player = document.querySelector("#movie_player");
+        if (!player) return;
+
+        const rect = player.getBoundingClientRect();
+        const nextRect = {
+          left: rect.left,
+          top: rect.top,
+          width: rect.width,
+          height: rect.height,
+        };
+
+        if (
+          lastRect &&
+          nextRect.left === lastRect.left &&
+          nextRect.top === lastRect.top &&
+          nextRect.width === lastRect.width &&
+          nextRect.height === lastRect.height
+        ) {
+          return;
+        }
+
+        lastRect = nextRect;
         setState((prev) => ({
           ...prev,
-          playerRect: player.getBoundingClientRect(),
+          playerRect: rect,
         }));
-      }
+      });
     };
 
     // Solo observar DOM si no estamos usando transcript
@@ -566,6 +669,9 @@ function YouTubeReader() {
       observer.disconnect();
       window.removeEventListener("resize", updatePlayerRect);
       window.removeEventListener("scroll", updatePlayerRect);
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
     };
   }, [state.useTranscript]);
 
@@ -593,10 +699,10 @@ function YouTubeReader() {
   const handleWordClick = useCallback(
     async (word: string, lower: string, x: number, y: number) => {
       // Buscar si ya existe la palabra
-      const words = (await chrome.runtime.sendMessage({
-        type: "GET_WORDS",
-      })) as WordEntry[];
-      const existing = words.find((w) => w.wordLower === lower);
+      const existing = (await chrome.runtime.sendMessage({
+        type: "GET_WORD",
+        payload: lower,
+      })) as WordEntry | null;
 
       if (existing) {
         setState((prev) => ({
@@ -617,7 +723,7 @@ function YouTubeReader() {
         popup: { x, y, word, lower, translation: result.translation || "..." },
       }));
     },
-    [state.apiKey]
+    [state.apiKey, state.translator]
   );
 
   const handleSpeak = useCallback((word: string) => {
@@ -703,7 +809,7 @@ function YouTubeReader() {
 
     // Limpiar selección
     sel.removeAllRanges();
-  }, [state.apiKey]);
+  }, [state.apiKey, state.translator]);
 
   const handleSavePhrase = useCallback(
     async (text: string, translation: string) => {

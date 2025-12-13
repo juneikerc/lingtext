@@ -19,13 +19,30 @@ interface SyncData {
   translator?: string;
 }
 
+function isAllowedOrigin(origin: string): boolean {
+  if (!origin || origin === "null") return false;
+  try {
+    const { hostname } = new URL(origin);
+    return (
+      hostname === "localhost" ||
+      hostname === "lingtext.org" ||
+      hostname.endsWith(".lingtext.org")
+    );
+  } catch {
+    return false;
+  }
+}
+
+const PAGE_ORIGIN = window.location.origin;
+
 // Escuchar mensajes de la web app
 window.addEventListener("message", async (event) => {
   // Verificar origen
-  if (
-    !event.origin.includes("lingtext.org") &&
-    !event.origin.includes("localhost")
-  ) {
+  if (event.source !== window) {
+    return;
+  }
+
+  if (!isAllowedOrigin(event.origin)) {
     return;
   }
 
@@ -91,13 +108,16 @@ window.addEventListener("message", async (event) => {
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message.type === "TRIGGER_SYNC") {
     // Enviar solicitud de sincronización a la web app
-    window.postMessage({ type: "LINGTEXT_EXTENSION_SYNC_REQUEST" }, "*");
+    window.postMessage(
+      { type: "LINGTEXT_EXTENSION_SYNC_REQUEST" },
+      PAGE_ORIGIN
+    );
     sendResponse({ triggered: true });
   }
   return true;
 });
 
 // Notificar a la web app que la extensión está instalada
-window.postMessage({ type: "LINGTEXT_EXTENSION_READY" }, "*");
+window.postMessage({ type: "LINGTEXT_EXTENSION_READY" }, PAGE_ORIGIN);
 
 console.log("[LingText Bridge] Content script initialized");
