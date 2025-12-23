@@ -95,8 +95,8 @@ Maneja mensajes de los content scripts:
 ```typescript
 enum TRANSLATORS {
   CHROME = "chrome", // Chrome AI (Translator API) - sin costo
-  MEDIUM = "medium", // OpenRouter: google/gemini-2.0-flash-lite-001
-  SMART = "smart", // OpenRouter: anthropic/claude-3.5-sonnet
+  MEDIUM = "medium", // OpenRouter: google/gemini-2.5-flash-lite
+  SMART = "smart", // OpenRouter: google/gemini-3-flash-preview
 }
 ```
 

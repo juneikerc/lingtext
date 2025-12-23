@@ -138,7 +138,13 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
                 </svg>
                 <p className="text-xs text-amber-700 dark:text-amber-300">
                   Necesitas configurar tu API key de OpenRouter para usar
-                  traductores con IA.{" "}
+                  traductores con IA.NO sabes como?{" "}
+                  <a
+                    href="https://github.com/juneikerc/lingtext/blob/main/open-router-key.md"
+                    target="_blank"
+                  >
+                    Aprende aquí
+                  </a>
                   <button
                     onClick={() => setShowApiKeyConfig(true)}
                     className="underline font-medium hover:text-amber-800 dark:hover:text-amber-200"

@@ -63,9 +63,9 @@ Con **$5 USD** puedes hacer aproximadamente:
 | Modelo            | Traducciones estimadas | Uso recomendado                  |
 | ----------------- | ---------------------- | -------------------------------- |
 | Gemini Flash Lite | ~50,000+               | Uso diario, traducciones rápidas |
-| Claude 3.5 Sonnet | ~2,000                 | Cuando necesites más precisión   |
+| gemini 3.0        | ~5000                  | Cuando necesites más precisión   |
 
-**Recomendación**: Usa el modelo intermedio (Gemini) para el 95% de tus traducciones. Solo cambia al modelo inteligente (Claude) cuando sientas que la traducción no tiene sentido o necesitas más contexto.
+**Recomendación**: Usa el modelo intermedio (Gemini) para el 95% de tus traducciones. Solo cambia al modelo inteligente (Gemini 3.0) cuando sientas que la traducción no tiene sentido o necesitas más contexto.
 
 ---
 
@@ -95,13 +95,13 @@ Con **$5 USD** puedes hacer aproximadamente:
 | -------------------- | ----------- | --------- | -------------------- |
 | ⚡ Chrome AI         | Instantáneo | Básica    | Gratis               |
 | 🧠 Gemini Flash Lite | Rápido      | Buena     | ~$0.00001            |
-| 🚀 Claude 3.5 Sonnet | Medio       | Excelente | ~$0.003              |
+| 🚀 Gemini 3.0 Flash  | Medio       | Excelente | ~$0.0003             |
 
 ### ¿Cuál elegir?
 
 - **Chrome AI**: Cuando solo necesitas una traducción rápida y básica
 - **Gemini Flash Lite**: Para uso diario. Traducciones con contexto a costo casi nulo
-- **Claude 3.5 Sonnet**: Para palabras difíciles, expresiones idiomáticas o cuando Gemini no te convence
+- **Gemini 3.0 Flash**: Para palabras difíciles, expresiones idiomáticas o cuando Gemini no te convence
 
 ---
 
@@ -109,7 +109,7 @@ Con **$5 USD** puedes hacer aproximadamente:
 
 1. **Configura Gemini Flash Lite como predeterminado** - Es económico y suficiente para el 95% de los casos
 
-2. **Cambia a Claude solo cuando sea necesario** - Si una traducción no tiene sentido o necesitas más ejemplos
+2. **Cambia a Gemini 3.0 flash solo cuando sea necesario** - Si una traducción no tiene sentido o necesitas más ejemplos
 
 3. **Revisa tu uso mensualmente** - En [openrouter.ai/activity](https://openrouter.ai/activity) puedes ver cuánto has gastado
 
@@ -143,6 +143,6 @@ Por ahora solo soportamos OpenRouter, que actúa como intermediario y te da acce
 2. Genera una API Key en [openrouter.ai/keys](https://openrouter.ai/keys)
 3. Agrega créditos ($5 duran meses de uso normal)
 4. Pega la key en LingText (web o extensión)
-5. Usa Gemini para uso diario, Claude para casos difíciles
+5. Usa Gemini Flash Lite para uso diario, Gemini 3.0 Flash para casos difíciles
 
 ¡Ahora estás listo para aprender inglés con traducciones inteligentes! 🚀
