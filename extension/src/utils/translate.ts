@@ -15,6 +15,17 @@ export const TRANSLATOR_LABELS: Record<TRANSLATORS, string> = {
   [TRANSLATORS.SMART]: "🚀 Muy Inteligente",
 };
 
+export function isChromeAIAvailable(): boolean {
+  const isChrome =
+    navigator.userAgent.includes("Chrome") &&
+    !navigator.userAgent.includes("Edg") &&
+    !navigator.userAgent.includes("OPR");
+
+  const hasTranslatorAPI = "Translator" in self;
+
+  return isChrome && hasTranslatorAPI;
+}
+
 export async function translateFromChrome(
   term: string
 ): Promise<{ translation: string }> {

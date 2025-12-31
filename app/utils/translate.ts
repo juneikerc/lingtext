@@ -1,6 +1,17 @@
 import { TRANSLATORS } from "../types";
 import { getOpenRouterApiKey } from "../services/db";
 
+export function isChromeAIAvailable(): boolean {
+  const isChrome =
+    navigator.userAgent.includes("Chrome") &&
+    !navigator.userAgent.includes("Edg") &&
+    !navigator.userAgent.includes("OPR");
+
+  const hasTranslatorAPI = "Translator" in self;
+
+  return isChrome && hasTranslatorAPI;
+}
+
 export async function translateFromChrome(
   term: string
 ): Promise<{ translation: string }> {

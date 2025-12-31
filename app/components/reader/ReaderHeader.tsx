@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { useTranslatorStore } from "~/context/translatorSelector";
 import { TRANSLATORS } from "~/types";
 import { getOpenRouterApiKey } from "~/services/db";
+import { isChromeAIAvailable } from "~/utils/translate";
 import ApiKeyConfig from "~/components/ApiKeyConfig";
 
 interface ReaderHeaderProps {
@@ -17,6 +18,17 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
   useEffect(() => {
     checkApiKey();
   }, []);
+
+  useEffect(() => {
+    if (selected === TRANSLATORS.CHROME && !isChromeAIAvailable()) {
+      alert(
+        "El traductor nativo de Chrome requiere:\n" +
+          "- Navegador Google Chrome de escritorio\n" +
+          "- API de traducción activada en tu navegador\n\n" +
+          "Si prefieres usar los modelos medio o avanzado desde cualquier dispositivo, puedes agregar una API Key de OpenRouter en la configuración."
+      );
+    }
+  }, [selected]);
 
   async function checkApiKey() {
     const key = await getOpenRouterApiKey();
