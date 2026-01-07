@@ -23,7 +23,9 @@ export default function AudioSection({
   const [isLoading, setIsLoading] = useState(false);
   const [audioError, setAudioError] = useState<string | null>(null);
   const [canPlayThrough, setCanPlayThrough] = useState(false);
-  const [preloadStrategy, setPreloadStrategy] = useState<'metadata' | 'none'>('metadata');
+  const [preloadStrategy, setPreloadStrategy] = useState<"metadata" | "none">(
+    "metadata"
+  );
   const [fileTooLarge, setFileTooLarge] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -33,10 +35,10 @@ export default function AudioSection({
       const sizeMB = fileSize / (1024 * 1024);
       // Para archivos muy grandes (>50MB), usar preload="none"
       if (sizeMB > 50) {
-        setPreloadStrategy('none');
+        setPreloadStrategy("none");
         setFileTooLarge(true);
       } else {
-        setPreloadStrategy('metadata');
+        setPreloadStrategy("metadata");
         setFileTooLarge(false);
       }
     }
@@ -55,8 +57,10 @@ export default function AudioSection({
     setCanPlayThrough(false);
   }, [src]);
 
-  const clamp = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v));
-  const changeRate = (delta: number) => setRate((r) => clamp(Number((r + delta).toFixed(2)), 0.5, 3));
+  const clamp = (v: number, min: number, max: number) =>
+    Math.min(max, Math.max(min, v));
+  const changeRate = (delta: number) =>
+    setRate((r) => clamp(Number((r + delta).toFixed(2)), 0.5, 3));
   const setExact = (v: number) => setRate(clamp(v, 0.5, 3));
 
   const handleAudioLoadStart = () => {
@@ -136,7 +140,8 @@ export default function AudioSection({
       if (buffered.length > 0) {
         const bufferedEnd = buffered.end(buffered.length - 1);
         const duration = audioRef.current.duration;
-        const bufferedPercentage = duration > 0 ? (bufferedEnd / duration) * 100 : 0;
+        const bufferedPercentage =
+          duration > 0 ? (bufferedEnd / duration) * 100 : 0;
       }
     }
   };
@@ -151,18 +156,25 @@ export default function AudioSection({
               <span className="text-white text-xs">🎵</span>
             </div>
             <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              Reproductor {isLocalFile && <span className="text-xs text-gray-500">(Archivo Local)</span>}
+              Reproductor{" "}
+              {isLocalFile && (
+                <span className="text-xs text-gray-500">(Archivo Local)</span>
+              )}
             </span>
             {isLoading && (
               <div className="flex items-center space-x-1">
                 <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                <span className="text-xs text-gray-600 dark:text-gray-400">Cargando...</span>
+                <span className="text-xs text-gray-600 dark:text-gray-400">
+                  Cargando...
+                </span>
               </div>
             )}
             {canPlayThrough && !isLoading && (
               <div className="flex items-center space-x-1">
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span className="text-xs text-green-600 dark:text-green-400">Listo</span>
+                <span className="text-xs text-green-600 dark:text-green-400">
+                  Listo
+                </span>
               </div>
             )}
           </div>
@@ -179,7 +191,9 @@ export default function AudioSection({
         <div className="px-4 py-3">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center space-x-3">
-              <span className="text-xs font-medium text-gray-600 dark:text-gray-400">Velocidad:</span>
+              <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
+                Velocidad:
+              </span>
               <div className="flex items-center bg-gray-100 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
                 <button
                   type="button"
@@ -205,7 +219,9 @@ export default function AudioSection({
 
             {/* Preset buttons compactos */}
             <div className="flex items-center space-x-1">
-              <span className="text-xs text-gray-600 dark:text-gray-400 hidden sm:block">Predefinidos:</span>
+              <span className="text-xs text-gray-600 dark:text-gray-400 hidden sm:block">
+                Predefinidos:
+              </span>
               <div className="flex gap-1">
                 {[0.5, 1, 1.5, 2, 2.5, 3].map((v) => (
                   <button
@@ -232,7 +248,9 @@ export default function AudioSection({
             <div className="flex items-start justify-between">
               <div className="flex items-start space-x-2">
                 <span className="text-red-500 text-sm mt-0.5">⚠️</span>
-                <p className="text-sm text-red-700 dark:text-red-300">{audioError}</p>
+                <p className="text-sm text-red-700 dark:text-red-300">
+                  {audioError}
+                </p>
               </div>
               <button
                 onClick={handleLoadAudio}
@@ -247,7 +265,7 @@ export default function AudioSection({
         {/* Audio player mejorado */}
         <div className="px-4 pb-4">
           {/* Botón de carga manual para archivos grandes */}
-          {fileTooLarge && preloadStrategy === 'none' && (
+          {fileTooLarge && preloadStrategy === "none" && (
             <div className="mb-3 p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50 rounded-lg">
               <div className="flex items-start justify-between">
                 <div className="flex items-start space-x-2">
@@ -257,7 +275,8 @@ export default function AudioSection({
                       Archivo grande detectado
                     </p>
                     <p className="text-xs text-blue-600 dark:text-blue-400">
-                      {(fileSize! / (1024 * 1024)).toFixed(1)}MB • Carga bajo demanda para mejor rendimiento
+                      {(fileSize! / (1024 * 1024)).toFixed(1)}MB • Carga bajo
+                      demanda para mejor rendimiento
                     </p>
                   </div>
                 </div>
@@ -295,7 +314,10 @@ export default function AudioSection({
               {isLocalFile ? (
                 <>💾 Archivo local • Carga optimizada para archivos grandes</>
               ) : (
-                <>💡 Para archivos grandes, usa "preload='metadata'" para una carga más eficiente</>
+                <>
+                  💡 Para archivos grandes, usa "preload='metadata'" para una
+                  carga más eficiente
+                </>
               )}
             </div>
           )}
@@ -311,8 +333,7 @@ export default function AudioSection({
               <p className="text-sm text-orange-700 dark:text-orange-300">
                 {isLocalFile
                   ? "Se necesita permiso para acceder al archivo de audio local."
-                  : "Permiso requerido para acceder al audio."
-                }
+                  : "Permiso requerido para acceder al audio."}
               </p>
               <button
                 className="mt-1 px-3 py-1 bg-orange-500 hover:bg-orange-600 text-white font-medium rounded text-sm transition-colors duration-200"

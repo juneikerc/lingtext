@@ -52,7 +52,7 @@ export async function translateFromChrome(
 export async function translateWithOpenRouter(
   term: string,
   apiKey: string,
-  model: string = "google/gemini-2.0-flash-lite-001"
+  model: string = TRANSLATORS.MEDIUM
 ): Promise<{ translation: string; error?: string }> {
   if (!apiKey) {
     return { translation: "", error: "NO_API_KEY" };
@@ -163,11 +163,7 @@ export async function translateTerm(
     }
     // Fallback a OpenRouter si Chrome AI falla
     if (apiKey) {
-      return translateWithOpenRouter(
-        term,
-        apiKey,
-        "google/gemini-2.0-flash-lite-001"
-      );
+      return translateWithOpenRouter(term, apiKey, TRANSLATORS.MEDIUM);
     }
     return { translation: "", error: "CHROME_AI_NOT_AVAILABLE" };
   }
@@ -183,9 +179,7 @@ export async function translateTerm(
   }
 
   const model =
-    translator === TRANSLATORS.SMART
-      ? "anthropic/claude-3.5-sonnet"
-      : "google/gemini-2.0-flash-lite-001";
+    translator === TRANSLATORS.SMART ? TRANSLATORS.SMART : TRANSLATORS.MEDIUM;
 
   return translateWithOpenRouter(term, apiKey, model);
 }

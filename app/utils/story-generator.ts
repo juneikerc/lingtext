@@ -1,4 +1,9 @@
-import type { StoryConfig, GeneratedStoryResult, WordEntry } from "../types";
+import {
+  type StoryConfig,
+  type GeneratedStoryResult,
+  type WordEntry,
+  TRANSLATORS,
+} from "../types";
 import { getWord } from "../services/db";
 import { getOpenRouterApiKey } from "../services/db";
 
@@ -83,7 +88,7 @@ export async function generateStory(
           "X-Title": "LingText Story Generator",
         },
         body: JSON.stringify({
-          model: "google/gemini-2.0-flash-exp",
+          model: TRANSLATORS.SMART,
           messages: [{ role: "user", content: prompt }],
           response_format: { type: "json_object" },
           max_tokens: 2000,

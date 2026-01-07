@@ -44,7 +44,8 @@ export class ErrorBoundary extends Component<Props, State> {
               Algo salió mal
             </h2>
             <p className="text-gray-600 dark:text-gray-400 mb-6">
-              Ha ocurrido un error inesperado. Por favor, intenta recargar la página.
+              Ha ocurrido un error inesperado. Por favor, intenta recargar la
+              página.
             </p>
             <div className="space-y-3">
               <button
