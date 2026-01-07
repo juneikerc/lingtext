@@ -44,15 +44,16 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
           {/* Primera fila compacta - Título y navegación */}
           <div className="flex items-center justify-between py-3">
             <div className="flex items-center space-x-3">
-              <Link
-                to="../"
+              <button
+                type="button"
+                onClick={() => window.history.back()}
                 className="group flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-blue-500 hover:text-white text-gray-700 dark:text-gray-300 font-medium transition-all duration-200"
               >
                 <span className="text-sm group-hover:-translate-x-0.5 transition-transform duration-200">
                   ←
                 </span>
                 <span className="text-sm">Volver</span>
-              </Link>
+              </button>
 
               <div className="h-5 w-px bg-gray-300 dark:bg-gray-600"></div>
 

@@ -634,7 +634,7 @@ export default function Library() {
                   <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                     <div className="flex-1">
                       <div className="flex items-start justify-between mb-2">
-                        <Link to={`/texts/${t.id}`}>
+                        <Link to={`/texts/${t.id}?source=library`}>
                           <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-200">
                             {t.title}
                           </h3>
@@ -658,7 +658,7 @@ export default function Library() {
 
                     <div className="flex flex-wrap gap-3">
                       <Link
-                        to={`/texts/${t.id}`}
+                        to={`/texts/${t.id}?source=library`}
                         className="inline-flex items-center px-6 py-3 rounded-xl bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition-colors duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
                       >
                         📖 Leer Ahora

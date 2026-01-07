@@ -100,3 +100,9 @@ export interface GeneratedStoryResult {
   content: string;
   wordCount: number;
 }
+
+export interface TextCollection {
+  title: string;
+  level: string;
+  content: string;
+}

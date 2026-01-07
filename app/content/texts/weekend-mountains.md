@@ -1,0 +1,20 @@
+---
+title: "A Weekend in the Mountains"
+level: "a1"
+---
+
+Last weekend, my family and I went to the mountains. It was very beautiful. The trees were green and the air was fresh. We stayed in a small cabin. The cabin was made of wood. It had two bedrooms, a small kitchen, and a living room. In the morning, we woke up early. The sun was shining. We walked in the forest and saw many birds. Some birds were red and some were blue. They sang beautiful songs. My father has a camera, and he took many photos of the birds and the trees.
+
+We walked for two hours. The path was easy to follow. We saw a small river. The water was very cold and clear. I put my hand in the water. It felt good. We saw some fish swimming in the river. They were small and fast. My sister wanted to catch one, but they were too quick. We sat near the river and rested. We listened to the sound of the water. It was very quiet and peaceful in the mountains. There were no cars and no noise from the city.
+
+For lunch, my father cooked on a fire. We gathered some dry wood from the ground. The fire was warm. We ate sandwiches with cheese and tomatoes. We also ate red apples. They were sweet and crunchy. After lunch, we felt very energetic. We decided to walk to the top of a small hill. From the top, we could see the whole valley. Everything looked very small from up there. We saw other cabins and a big lake far away. The sky was very blue with some white clouds.
+
+In the afternoon, we went back to our cabin. We were a bit tired but very happy. My sister and I played games. We played cards and a board game. My mother read a book. She loves reading about history. My father cleaned his camera and looked at the photos. In the evening, the temperature went down. It was a little bit cold, so we stayed inside. We talked about our favorite parts of the day. My sister liked the river, and I liked the view from the hill.
+
+At night, the sky was very dark. We went outside to look at the stars. In the city, we cannot see many stars because there are too many lights. But in the mountains, the sky is full of stars. They were very bright. My father showed us the North Star. We also saw the moon. It was big and white. We stayed outside for thirty minutes. Then we went to sleep. My bed was very comfortable. I slept very well because the air was fresh and it was very quiet.
+
+On Sunday morning, it rained a little bit. We stayed in the cabin and had a big breakfast. We had eggs, bread, and orange juice. The rain sounded nice on the wooden roof. After breakfast, the rain stopped. We went for one last walk. The forest smelled very fresh after the rain. We saw some mushrooms growing near the trees. My mother said we should not touch them because some mushrooms are dangerous. We saw a squirrel running up a tree. It had a long tail and was very cute.
+
+At 2 o'clock, it was time to go home. We packed our bags and cleaned the cabin. We put our trash in a bag to take it with us. It is important to keep the mountains clean. We said goodbye to the cabin and the forest. We got into our car. The drive home took three hours. I looked out the window and saw the mountains getting smaller and smaller. I felt a little bit sad to leave, but I was also happy to go back to my house.
+
+When we arrived home, I helped my parents. We put our clothes in the washing machine. I fed my cat. My cat was happy to see us. In the evening, I showed my father's photos to my friends on my phone. They said the mountains looked beautiful. I want to go back to the mountains again next summer. It is a great place to relax and enjoy nature. Nature is very important for us. It makes us feel calm and happy. This weekend was perfect. I will always remember the green trees, the cold river, and the bright stars. I love spending time with my family in nature. Every trip is a new adventure. We learn about plants, animals, and the world. I hope we can go on another trip soon. Maybe next time we can go to the beach. But the mountains will always be my favorite place. Good memories are the best things in life. This was a very good weekend.

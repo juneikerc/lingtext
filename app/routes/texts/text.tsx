@@ -5,10 +5,13 @@ import type { AudioRef } from "~/types";
 import ReaderHeader from "~/components/reader/ReaderHeader";
 import ReaderSkeleton from "~/components/reader/ReaderSkeleton";
 import ReaderErrorBoundary from "~/components/ReaderErrorBoundary";
+import { allTexts } from "content-collections";
+import { formatSlug } from "~/helpers/formatSlug";
+import { type TextCollection, type TextItem } from "~/types";
 
 const Reader = lazy(() => import("~/components/Reader"));
 
-export function meta({ params }: Route.MetaArgs) {
+export function meta() {
   return [
     {
       name: "robots",
@@ -17,7 +20,31 @@ export function meta({ params }: Route.MetaArgs) {
   ];
 }
 
-export async function clientLoader({ params }: Route.ClientLoaderArgs) {
+export async function clientLoader({
+  params,
+  request,
+}: Route.ClientLoaderArgs) {
+  const queryParams = new URL(request.url).searchParams;
+  if (queryParams.get("source")) {
+    if (queryParams.get("source") === "collection") {
+      const text = allTexts.find(
+        (_text: TextCollection) => formatSlug(_text.title) === params.id
+      );
+
+      if (!text) {
+        throw new Response("Not Found", { status: 404 });
+      }
+
+      return {
+        id: formatSlug(text.title),
+        title: text.title,
+        content: text.content,
+        format: "markdown",
+        createdAt: Date.now(),
+      } as TextItem;
+    }
+  }
+
   const id = params.id;
   const text = await getText(id);
 
@@ -47,15 +74,7 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     createdAt: text?.createdAt,
     audioRef: text?.audioRef,
     audioUrl,
-  } as {
-    id: string;
-    title: string;
-    content: string;
-    format: "txt" | "markdown";
-    audioRef?: AudioRef | null;
-    createdAt: number;
-    audioUrl?: string | null;
-  };
+  } as TextItem;
 }
 
 export default function Text({ loaderData }: Route.ComponentProps) {

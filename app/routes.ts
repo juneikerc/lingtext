@@ -6,4 +6,5 @@ export default [
   route("words", "routes/words.tsx"),
   route("review", "routes/review.tsx"),
   route("contacto", "routes/contact.tsx"),
+  route("levels/:level", "routes/levels/level.tsx"),
 ] satisfies RouteConfig;

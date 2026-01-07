@@ -4,6 +4,7 @@
     { "path": "./tsconfig.node.json" },
     { "path": "./tsconfig.cloudflare.json" }
   ],
+
   "compilerOptions": {
     "checkJs": true,
     "verbatimModuleSyntax": true,
