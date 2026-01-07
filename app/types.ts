@@ -76,3 +76,27 @@ export enum TRANSLATORS {
   MEDIUM = "google/gemini-2.5-flash-lite",
   SMART = "google/gemini-3-flash-preview",
 }
+
+export interface StoryConfig {
+  wordLowerList: string[];
+  textType: StoryType;
+  customTheme?: string;
+  minLength: number;
+  level: Level;
+  count: 1 | 2 | 3;
+}
+
+export type StoryType =
+  | "short-story"
+  | "article"
+  | "conversation"
+  | "blog-post"
+  | "email";
+
+export type Level = "A2" | "B1" | "B2" | "C1" | "C2";
+
+export interface GeneratedStoryResult {
+  title: string;
+  content: string;
+  wordCount: number;
+}

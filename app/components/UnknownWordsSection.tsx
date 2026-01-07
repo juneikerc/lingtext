@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { Link } from "react-router";
 import type { WordEntry } from "~/types";
 import type { DailyStats } from "~/services/db";
@@ -10,6 +10,7 @@ import {
   formatTimeUntilReview,
 } from "~/utils/spaced-repetition";
 import { isTranslationJson } from "~/helpers/isTranslationJson";
+import StoryGenerator from "./StoryGenerator";
 
 interface UnknownWordsSectionProps {
   words: WordEntry[];
@@ -19,12 +20,34 @@ interface UnknownWordsSectionProps {
 
 // Configuración del límite (debería coincidir con tu scheduler)
 const DAILY_NEW_WORD_LIMIT = 7;
+const MAX_WORDS_FOR_STORY = 20;
 
 export default function UnknownWordsSection({
   words,
   dailyStats,
   onRemove,
 }: UnknownWordsSectionProps) {
+  const [selectedWords, setSelectedWords] = useState<Set<string>>(new Set());
+  const [showStoryGenerator, setShowStoryGenerator] = useState(false);
+
+  const toggleWordSelection = (wordLower: string) => {
+    const newSelection = new Set(selectedWords);
+    if (newSelection.has(wordLower)) {
+      newSelection.delete(wordLower);
+    } else if (newSelection.size < MAX_WORDS_FOR_STORY) {
+      newSelection.add(wordLower);
+    }
+    setSelectedWords(newSelection);
+  };
+
+  const handleStoryGeneratorClose = () => {
+    setShowStoryGenerator(false);
+  };
+
+  const handleStoryGeneratorSuccess = () => {
+    setSelectedWords(new Set());
+  };
+
   // Calculamos las estadísticas "PARA HOY"
   const stats = useMemo(() => {
     const now = Date.now();
@@ -199,7 +222,30 @@ export default function UnknownWordsSection({
                 >
                   📥 Exportar CSV (Anki)
                 </button>
+                <button
+                  onClick={() => setShowStoryGenerator(true)}
+                  disabled={selectedWords.size === 0}
+                  className={`flex-1 py-3 rounded-lg text-sm font-medium shadow-sm transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 dark:focus-visible:ring-offset-gray-950 ${
+                    selectedWords.size > 0
+                      ? "bg-indigo-600 text-white hover:bg-indigo-700 shadow-md hover:shadow-lg"
+                      : "bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-600 cursor-not-allowed"
+                  }`}
+                >
+                  ✨ Generar Historia ({selectedWords.size}/
+                  {MAX_WORDS_FOR_STORY})
+                </button>
               </div>
+
+              {selectedWords.size > 0 && (
+                <div className="bg-indigo-50 dark:bg-indigo-900/10 rounded-xl border border-indigo-100 dark:border-indigo-900/30 p-4">
+                  <p className="text-sm text-indigo-800 dark:text-indigo-300">
+                    💡 <span className="font-medium">Tip:</span> Máximo 20
+                    palabras recomendado para obtener mejores textos. Si quieres
+                    usar más palabras, completa la generación actual con estas{" "}
+                    {selectedWords.size} palabras y selecciona nuevas.
+                  </p>
+                </div>
+              )}
 
               {/* Lista de palabras (Igual que antes, pero mostrando status) */}
               <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
@@ -216,65 +262,91 @@ export default function UnknownWordsSection({
                   {words.map((word) => (
                     <div
                       key={word.wordLower}
-                      className="group p-6 hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-colors duration-200"
+                      className={`group p-6 transition-colors duration-200 ${
+                        selectedWords.has(word.wordLower)
+                          ? "bg-indigo-50/50 dark:bg-indigo-900/10"
+                          : "hover:bg-gray-50 dark:hover:bg-gray-800/60"
+                      }`}
                     >
                       <div className="flex items-center justify-between">
-                        <div className="flex-1">
-                          <div className="flex items-center space-x-3 mb-2">
-                            <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100">
-                              {word.word}
-                            </h4>
-                            {/* Icono de audio ... */}
-                            <button
-                              onClick={async () => {
-                                const s = await getSettings();
-                                await speak(word.word, s.tts);
-                              }}
-                              className="text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 dark:focus-visible:ring-offset-gray-950 rounded"
-                            >
-                              🔊
-                            </button>
-                          </div>
-                          {isTranslationJson(word.translation) ? (
-                            <div className="space-y-2 mb-3">
-                              {(() => {
-                                const parsed = JSON.parse(word.translation);
-                                return Object.entries(parsed.info).map(
-                                  ([category, translations]) => (
-                                    <div key={category}>
-                                      <p className="text-sm font-semibold text-gray-600 dark:text-gray-400">
-                                        {category}
-                                      </p>
-                                      <p className="text-gray-900 dark:text-gray-100">
-                                        {(translations as string[]).join(", ")}
-                                      </p>
-                                    </div>
-                                  )
-                                );
-                              })()}
+                        <div className="flex items-center gap-3 flex-1">
+                          <input
+                            type="checkbox"
+                            checked={selectedWords.has(word.wordLower)}
+                            onChange={() => toggleWordSelection(word.wordLower)}
+                            disabled={
+                              !selectedWords.has(word.wordLower) &&
+                              selectedWords.size >= MAX_WORDS_FOR_STORY
+                            }
+                            className={`w-5 h-5 rounded border-gray-300 dark:border-gray-700 text-indigo-600 focus:ring-indigo-500 focus:ring-offset-2 transition-all ${
+                              !selectedWords.has(word.wordLower) &&
+                              selectedWords.size >= MAX_WORDS_FOR_STORY
+                                ? "opacity-50 cursor-not-allowed"
+                                : ""
+                            }`}
+                          />
+                          <div className="flex-1">
+                            <div className="flex items-center space-x-3 mb-2">
+                              <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                                {word.word}
+                              </h4>
+                              {/* Icono de audio ... */}
+                              <button
+                                onClick={async () => {
+                                  const s = await getSettings();
+                                  await speak(word.word, s.tts);
+                                }}
+                                className="text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 dark:focus-visible:ring-offset-gray-950 rounded"
+                              >
+                                🔊
+                              </button>
                             </div>
-                          ) : (
-                            <p className="text-gray-600 dark:text-gray-400 mb-3">
-                              {word.translation}
-                            </p>
-                          )}
-
-                          {/* Estado de la palabra */}
-                          <div className="flex items-center space-x-4 text-xs md:text-sm">
-                            {isWordReadyForReview(word) && word.srData ? (
-                              <span className="text-amber-600 bg-amber-50 dark:bg-amber-900/20 px-2 py-0.5 rounded">
-                                ⚠️ Repaso pendiente
-                              </span>
-                            ) : !word.srData ? (
-                              <span className="text-indigo-600 bg-indigo-50 dark:bg-indigo-900/20 px-2 py-0.5 rounded">
-                                ✨ Nueva
-                              </span>
+                            {isTranslationJson(word.translation) ? (
+                              <div className="space-y-2 mb-3">
+                                {(() => {
+                                  const parsed = JSON.parse(word.translation);
+                                  return Object.entries(parsed.info).map(
+                                    ([category, translations]) => (
+                                      <div key={category}>
+                                        <p className="text-sm font-semibold text-gray-600 dark:text-gray-400">
+                                          {category}
+                                        </p>
+                                        <p className="text-gray-900 dark:text-gray-100">
+                                          {(translations as string[]).join(
+                                            ", "
+                                          )}
+                                        </p>
+                                      </div>
+                                    )
+                                  );
+                                })()}
+                              </div>
                             ) : (
-                              <span className="text-green-600 bg-green-50 dark:bg-green-900/20 px-2 py-0.5 rounded">
-                                ✅ Aprendida (Próx:{" "}
-                                {formatTimeUntilReview(word.srData.nextReview)})
-                              </span>
+                              <p className="text-gray-600 dark:text-gray-400 mb-3">
+                                {word.translation}
+                              </p>
                             )}
+
+                            {/* Estado de la palabra */}
+                            <div className="flex items-center space-x-4 text-xs md:text-sm">
+                              {isWordReadyForReview(word) && word.srData ? (
+                                <span className="text-amber-600 bg-amber-50 dark:bg-amber-900/20 px-2 py-0.5 rounded">
+                                  ⚠️ Repaso pendiente
+                                </span>
+                              ) : !word.srData ? (
+                                <span className="text-indigo-600 bg-indigo-50 dark:bg-indigo-900/20 px-2 py-0.5 rounded">
+                                  ✨ Nueva
+                                </span>
+                              ) : (
+                                <span className="text-green-600 bg-green-50 dark:bg-green-900/20 px-2 py-0.5 rounded">
+                                  ✅ Aprendida (Próx:{" "}
+                                  {formatTimeUntilReview(
+                                    word.srData.nextReview
+                                  )}
+                                  )
+                                </span>
+                              )}
+                            </div>
                           </div>
                         </div>
 
@@ -301,6 +373,15 @@ export default function UnknownWordsSection({
           )}
         </div>
       </div>
+
+      {showStoryGenerator && (
+        <StoryGenerator
+          selectedWords={Array.from(selectedWords)}
+          words={words}
+          onClose={handleStoryGeneratorClose}
+          onSuccess={handleStoryGeneratorSuccess}
+        />
+      )}
     </div>
   );
 }
