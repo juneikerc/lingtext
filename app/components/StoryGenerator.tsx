@@ -220,19 +220,37 @@ export default function StoryGenerator({
 
           {error && (
             <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/10 rounded-xl border border-red-100 dark:border-red-900/30">
-              <p className="text-sm font-medium text-red-800 dark:text-red-300">
-                {error === "NO_API_KEY"
-                  ? "No hay API key configurada. Ve a configuración para agregar tu API key de OpenRouter."
-                  : error === "INVALID_API_KEY"
-                    ? "La API key es inválida. Verifica tu configuración."
-                    : error === "RATE_LIMITED"
-                      ? "Has alcanzado el límite de la API. Intenta más tarde."
-                      : error === "NETWORK_ERROR"
-                        ? "Error de conexión. Verifica tu internet e intenta de nuevo."
-                        : error === "API_ERROR"
-                          ? "Error en la API de OpenRouter. Intenta más tarde."
-                          : "Error desconocido. Inténtalo de nuevo."}
-              </p>
+              <div className="flex items-start gap-3">
+                <span className="text-2xl">⚠️</span>
+                <div className="flex-1">
+                  <p className="text-sm font-bold text-red-800 dark:text-red-300 mb-2">
+                    {error === "NO_API_KEY"
+                      ? "API Key no configurada"
+                      : error === "INVALID_API_KEY"
+                        ? "API Key inválida"
+                        : error === "RATE_LIMITED"
+                          ? "Límite alcanzado"
+                          : error === "NETWORK_ERROR"
+                            ? "Error de conexión"
+                            : error === "API_ERROR"
+                              ? "Error en la API"
+                              : "Error desconocido"}
+                  </p>
+                  <p className="text-sm text-red-700 dark:text-red-400">
+                    {error === "NO_API_KEY"
+                      ? "Necesitas configurar tu API key de OpenRouter para generar historias. Ve a la página de inicio y configura tu clave en la sección de API Key."
+                      : error === "INVALID_API_KEY"
+                        ? "La API key que configuraste no es válida. Por favor verifica que hayas copiado la clave correctamente."
+                        : error === "RATE_LIMITED"
+                          ? "Has superado el límite de peticiones de la API. Por favor espera unos minutos antes de intentar de nuevo."
+                          : error === "NETWORK_ERROR"
+                            ? "No se pudo conectar con el servidor. Por favor verifica tu conexión a internet y vuelve a intentarlo."
+                            : error === "API_ERROR"
+                              ? "Ocurrió un error en el servidor de OpenRouter. Por favor intenta nuevamente en unos minutos."
+                              : "Ocurrió un error inesperado. Por favor vuelve a intentarlo."}
+                  </p>
+                </div>
+              </div>
             </div>
           )}
 
@@ -305,7 +323,7 @@ export default function StoryGenerator({
                   onChange={(e) =>
                     setConfig({
                       ...config,
-                      count: parseInt(e.target.value) as 1 | 2 | 3,
+                      customTheme: e.target.value,
                     })
                   }
                   placeholder="Ej: tecnología, naturaleza, aventuras..."
@@ -391,7 +409,7 @@ export default function StoryGenerator({
                   {[1, 2, 3].map((count) => (
                     <label
                       key={count}
-                      className="relative cursor-pointer transition-all duration-200"
+                      className="relative cursor-pointer transition-all duration-200 group"
                     >
                       <input
                         type="radio"
@@ -401,16 +419,19 @@ export default function StoryGenerator({
                         onChange={(e) =>
                           setConfig({
                             ...config,
-                            count: e.target.value as unknown as 1 | 2 | 3,
+                            count: parseInt(e.target.value) as unknown as
+                              | 1
+                              | 2
+                              | 3,
                           })
                         }
-                        className="sr-only peer"
+                        className="sr-only"
                       />
                       <div
                         className={`p-3 rounded-lg border text-center transition-all duration-200 ${
                           config.count === count
-                            ? "bg-indigo-600 text-white border-indigo-600"
-                            : "bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-700 hover:border-indigo-400 dark:hover:border-indigo-400"
+                            ? "bg-indigo-600 text-white border-indigo-600 shadow-md ring-2 ring-indigo-500 ring-offset-2 dark:ring-offset-gray-900"
+                            : "bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-700 hover:border-indigo-400 dark:hover:border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/10"
                         }`}
                       >
                         <p className="font-bold text-lg">{count}</p>
