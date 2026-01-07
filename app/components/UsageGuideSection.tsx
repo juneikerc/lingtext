@@ -155,6 +155,42 @@ export default function UsageGuideSection() {
               </div>
             </div>
           </div>
+
+          <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-8">
+            <div className="flex items-start space-x-6">
+              <div className="flex-shrink-0 w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-lg">
+                5
+              </div>
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+                  ✨ Genera Historias Personalizadas
+                  <span className="ml-3 px-3 py-1 bg-indigo-100 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-medium">
+                    Práctica en Contexto
+                  </span>
+                </h3>
+                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                  Desde la sección <strong>Palabras</strong>, selecciona hasta{" "}
+                  <em className="font-semibold text-indigo-600 dark:text-indigo-400">
+                    20 palabras
+                  </em>{" "}
+                  de tu vocabulario y usa el generador para crear textos
+                  personalizados. Elige el tipo (cuento, artículo, conversación,
+                  etc.), tema personalizado y nivel CEFR (A2-C2). La IA creará
+                  textos que contengan tus palabras en <strong>bold</strong>,
+                  reforzando el aprendizaje en contexto.
+                </p>
+                <div className="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+                  <p className="text-gray-700 dark:text-gray-300 text-sm">
+                    💡 <strong>Tip:</strong> Los textos generados se guardan
+                    automáticamente en tu biblioteca y puedes leerlos con todas
+                    las funcionalidades del lector (traducción, TTS, marca de
+                    palabras). El límite de 20 palabras garantiza textos más
+                    naturales y efectivos.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Sección de ayuda adicional */}

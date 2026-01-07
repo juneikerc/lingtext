@@ -15,6 +15,7 @@ Su objetivo es ayudar a construir vocabulario en contexto, minimizando fricción
 - **Base de datos SQLite local**: todos tus datos se almacenan en SQLite WASM con persistencia en OPFS (Origin Private File System).
 - **Exportar/Importar datos**: descarga tu base de datos `.sqlite` a tu PC o impórtala desde otro dispositivo. Tus datos, tu control.
 - **Repetición espaciada**: algoritmo SM-2 integrado para repasar vocabulario de forma óptima.
+- **Generador de historias**: crea textos personalizados (cuentos, artículos, conversaciones, blogs, emails) basados en tu vocabulario seleccionado, con nivel CEFR configurable (A2-C2) y palabras destacadas en bold para reforzar el aprendizaje en contexto.
 - **Audio**: reproduce audio adjunto (URL o archivo local vía File System Access API) con control de velocidad.
 - **SSR + HMR**: renderizado en servidor con React Router v7 y DX moderna con Vite.
 
@@ -33,6 +34,7 @@ Su objetivo es ayudar a construir vocabulario en contexto, minimizando fricción
 2. Abre el lector y haz click en una palabra: verás su traducción y podrás marcarla como desconocida o escucharla.
 3. Selecciona un fragmento para traducir y guardar múltiples palabras.
 4. Ve a “Palabras” para repasar, escuchar y exportar a CSV.
+5. Genera historias personalizadas: selecciona hasta 20 palabras de tu vocabulario, elige el tipo de texto (cuento, artículo, conversación, etc.), configura el nivel (A2-C2) y la IA creará textos que contengan tus palabras seleccionadas, reforzando el aprendizaje en contexto.
 
 —
 
@@ -53,14 +55,15 @@ Su objetivo es ayudar a construir vocabulario en contexto, minimizando fricción
   - `components/`
     - `Reader.tsx`, `reader/` (UI de lectura, popups, audio)
     - `UnknownWordsSection.tsx` (listado y acciones)
+    - `StoryGenerator.tsx` (modal para generar historias personalizadas)
   - `routes/`
     - `home.tsx`, `texts/text.tsx`, `words.tsx`, `review.tsx`, `translate.tsx`
   - `services/`
     - `db.ts` (SQLite WASM con OPFS)
   - `context/translatorSelector.ts` (zustand)
-  - `utils/` (`translate.ts`, `tts.ts`, `tokenize.ts`, `anki.ts`, `fs.ts`, `scheduler.ts`, `spaced-repetition.ts`)
-- `public/` (assets y textos de ejemplo)
-- `workers/app.ts` (Cloudflare Worker con headers COOP/COEP)
+  - `utils/` (`translate.ts`, `tts.ts`, `tokenize.ts`, `anki.ts`, `fs.ts`, `scheduler.ts`, `spaced-repetition.ts`, `story-generator.ts` - lógica de generación de historias con IA)
+  - `public/` (assets y textos de ejemplo)
+  - `workers/app.ts` (Cloudflare Worker con headers COOP/COEP)
 
 —
 
@@ -86,7 +89,14 @@ Su objetivo es ayudar a construir vocabulario en contexto, minimizando fricción
    - Marca palabras como desconocidas (`putUnknownWord`) y permite TTS por palabra.
 3. **Palabras** (`app/components/UnknownWordsSection.tsx`)
    - Lista, reproduce TTS, elimina y exporta CSV (`app/utils/anki.ts`).
-4. **Repaso** (`app/routes/review.tsx`)
+   - Selecciona hasta 20 palabras y genera historias personalizadas con IA (`StoryGenerator.tsx`).
+4. **Generador de historias** (`app/components/StoryGenerator.tsx`, `app/utils/story-generator.ts`)
+   - Selecciona hasta 20 palabras de tu vocabulario.
+   - Elige tipo de texto (cuento corto, artículo, conversación, blog post, email).
+   - Configura tema personalizado (opcional) y nivel CEFR (A2-C2, default B1).
+   - Genera 1-3 textos en lote que contienen las palabras seleccionadas en **bold**.
+   - Textos se guardan en DB como markdown y se abren en el lector.
+5. **Repaso** (`app/routes/review.tsx`)
    - Sesión de repaso con algoritmo de repetición espaciada (SM-2).
    - Límite diario configurable de nuevas tarjetas.
 
@@ -185,7 +195,8 @@ docker run -e OPEN_ROUTER_API_KEY=sk-... -p 3000:3000 lingtext
 
 ## Roadmap
 
-- Listado por texto de palabras desconocidas y progreso.
+- ~~Listado por texto de palabras desconocidas y progreso~~ (implementado)
+- ~~Generación de historias personalizadas~~ (implementado)
 - Sincronización opcional (autohosted) para múltiples dispositivos.
 - Importación EPUB/PDF con extracción de texto.
 - Decks Anki por texto/tema, tarjetas cloze.
