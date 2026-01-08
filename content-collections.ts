@@ -1,6 +1,21 @@
 import { defineCollection, defineConfig } from "@content-collections/core";
 import { z } from "zod";
 
+const blogs = defineCollection({
+  name: "blogs",
+  directory: "app/content/blogs",
+  include: "**/*.md",
+  schema: z.object({
+    slug: z.string(),
+    title: z.string(),
+    mainHeading: z.string(),
+    metaDescription: z.string(),
+    content: z.string(),
+    image: z.string(),
+    tags: z.array(z.string()),
+  }),
+});
+
 const levelsTexts = defineCollection({
   name: "levelsTexts",
   directory: "app/content/levelsTexts",
@@ -27,5 +42,5 @@ const texts = defineCollection({
 });
 
 export default defineConfig({
-  collections: [texts, levelsTexts],
+  collections: [texts, levelsTexts, blogs],
 });

@@ -221,7 +221,7 @@ export default function MarkdownReaderText({
         );
       } else if (i > 0 && lines[i - 1].trim()) {
         // Empty line for spacing
-        elements.push(<div key={`space-${i}`} className="h-4" />);
+        elements.push(<div key={`space-${i}`} className="h-0" />);
       }
     }
 

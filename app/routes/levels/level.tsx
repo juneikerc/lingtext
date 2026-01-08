@@ -2,7 +2,7 @@ import type { Route } from "../+types/level";
 import { allTexts, allLevelsTexts } from "content-collections";
 import { formatSlug } from "~/helpers/formatSlug";
 import { type TextCollection } from "~/types";
-import { parseMarkdown } from "~/lib/markdownParser";
+import ProseContent from "~/components/ProseContent";
 
 export function loader({ params }: Route.LoaderArgs) {
   const level = params.level;
@@ -30,16 +30,6 @@ export function meta({ loaderData }: Route.MetaArgs) {
     },
   ];
 }
-
-// export function links(request): Route.LinksFunction {
-//   console.log(request);
-//   return [
-//     {
-//       rel: "canonical",
-//       href: `https://lingtext.org/levels/`,
-//     },
-//   ];
-// }
 
 export default function Level({ loaderData }: Route.ComponentProps) {
   const texts = loaderData.texts;
@@ -153,13 +143,7 @@ export default function Level({ loaderData }: Route.ComponentProps) {
 
       <section className="relative overflow-hidden py-16 sm:py-24 bg-white dark:bg-gray-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="prose prose-lg prose-gray dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-gray-100 prose-a:text-indigo-600 dark:prose-a:text-indigo-400">
-            <div
-              dangerouslySetInnerHTML={{
-                __html: parseMarkdown(levelText.content),
-              }}
-            />
-          </div>
+          <ProseContent content={levelText.content} />
         </div>
       </section>
     </>
