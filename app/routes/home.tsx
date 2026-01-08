@@ -1,6 +1,7 @@
 import type { Route } from "./+types/home";
 import Library from "~/components/Libary";
 import HeroSection from "~/components/HeroSection";
+import LevelSelector from "~/components/LevelSelector";
 import PurposeSection from "~/components/PurposeSection";
 import UsageGuideSection from "~/components/UsageGuideSection";
 import TechAndPrivacySection from "~/components/TechAndPrivacySection";
@@ -28,6 +29,7 @@ export default function Home() {
   return (
     <>
       <HeroSection />
+      <LevelSelector />
       <Library />
       <PurposeSection />
       <UsageGuideSection />

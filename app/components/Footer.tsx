@@ -49,6 +49,63 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* Niveles */}
+          <div>
+            <h3 className="text-lg font-semibold text-gray-100 mb-4">
+              Textos por nivel
+            </h3>
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="/levels/a1"
+                  className="text-gray-300 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
+                >
+                  Nivel A1
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/levels/a2"
+                  className="text-gray-300 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
+                >
+                  Nivel A2
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/levels/b1"
+                  className="text-gray-300 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
+                >
+                  Nivel B1
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/levels/b2"
+                  className="text-gray-300 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
+                >
+                  Nivel B2
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/levels/c1"
+                  className="text-gray-300 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
+                >
+                  Nivel C1
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/levels/c2"
+                  className="text-gray-300 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
+                >
+                  Nivel C2
+                </a>
+              </li>
+            </ul>
+          </div>
+
           {/* Enlaces útiles */}
           <div>
             <h3 className="text-lg font-semibold text-gray-100 mb-4">
