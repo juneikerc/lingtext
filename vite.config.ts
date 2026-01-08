@@ -42,7 +42,7 @@ export default defineConfig({
     tailwindcss(),
     reactRouter(),
     contentCollections(),
-    tsconfigPaths(),
+    tsconfigPaths({ projects: ["./tsconfig.vite.json"] }),
   ],
   // Required headers for SQLite WASM with SharedArrayBuffer/OPFS
   server: {
