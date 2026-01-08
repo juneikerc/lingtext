@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /cdn-cgi/
+Disallow: /assets/
 Sitemap: https://lingtext.org/sitemap.xml
