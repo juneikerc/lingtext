@@ -41,8 +41,8 @@ export default defineConfig({
     cloudflare({ viteEnvironment: { name: "ssr" } }),
     tailwindcss(),
     reactRouter(),
-    tsconfigPaths(),
     contentCollections(),
+    tsconfigPaths(),
   ],
   // Required headers for SQLite WASM with SharedArrayBuffer/OPFS
   server: {
