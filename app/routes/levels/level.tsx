@@ -3,6 +3,7 @@ import { allTexts, allLevelsTexts } from "content-collections";
 import { formatSlug } from "~/helpers/formatSlug";
 import { type TextCollection } from "~/types";
 import ProseContent from "~/components/ProseContent";
+import { Link } from "react-router";
 
 export function loader({ params }: Route.LoaderArgs) {
   const level = params.level;
@@ -106,10 +107,11 @@ export default function Level({ loaderData }: Route.ComponentProps) {
           <div className="grid gap-6">
             {texts.map((text: TextCollection) => {
               return (
-                <a
+                <Link
                   key={text.title}
-                  href={`/texts/${formatSlug(text.title)}?source=collection`}
+                  to={`/texts/${formatSlug(text.title)}?source=collection`}
                   className="group bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md hover:border-gray-300 dark:hover:border-gray-700 transition duration-200 overflow-hidden block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 dark:focus-visible:ring-offset-gray-950"
+                  rel="nofollow"
                 >
                   <div className="p-8">
                     <div className="flex items-center justify-between">
@@ -134,7 +136,7 @@ export default function Level({ loaderData }: Route.ComponentProps) {
                       </div>
                     </div>
                   </div>
-                </a>
+                </Link>
               );
             })}
           </div>
