@@ -25,6 +25,7 @@ export default function AudioSection({
     "metadata"
   );
   const [fileTooLarge, setFileTooLarge] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false); // Mobile expand/collapse
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   // Determinar estrategia de preload basada en el tamaño del archivo
@@ -132,220 +133,148 @@ export default function AudioSection({
     }
   };
 
-  const handleAudioProgress = () => {
-    if (audioRef.current) {
-      const buffered = audioRef.current.buffered;
-      if (buffered.length > 0) {
-        const bufferedEnd = buffered.end(buffered.length - 1);
-        const duration = audioRef.current.duration;
-        const bufferedPercentage =
-          duration > 0 ? (bufferedEnd / duration) * 100 : 0;
-      }
-    }
-  };
-
-  // Early return AFTER all hooks to comply with React Hooks rules
+  // Early return AFTER all hooks
   if (!show) return null;
 
   return (
-    <div className="mx-auto max-w-4xl w-full px-4 sm:px-6 lg:px-8 mb-4">
-      <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg overflow-hidden">
-        {/* Header compacto */}
-        <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 border-b border-gray-200/50 dark:border-gray-700/50 bg-gray-100/50 dark:bg-gray-700/50">
-          <div className="flex items-center space-x-2">
-            <div className="w-6 h-6 bg-gray-200 dark:bg-gray-600 rounded-lg flex items-center justify-center">
-              <span className="text-white text-xs">🎵</span>
-            </div>
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              Reproductor{" "}
-              {isLocalFile && (
-                <span className="text-xs text-gray-500">(Archivo Local)</span>
+    <div className="fixed bottom-0 left-0 right-0 z-40 p-3 sm:p-4 pointer-events-none flex justify-center">
+      <div className="w-full max-w-4xl pointer-events-auto shadow-2xl rounded-2xl overflow-hidden border border-gray-200/50 dark:border-gray-700/50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md transition-all duration-300">
+        {/* Error / Reauthorize Banner */}
+        {(audioError ||
+          showReauthorize ||
+          (fileTooLarge && preloadStrategy === "none")) && (
+          <div className="px-4 py-2 bg-gray-50 dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between gap-3 text-xs sm:text-sm">
+            <div className="flex-1 flex items-center gap-2 overflow-hidden">
+              {audioError ? (
+                <>
+                  <span className="text-red-500 shrink-0">⚠️</span>
+                  <span className="text-red-600 dark:text-red-400 truncate">
+                    {audioError}
+                  </span>
+                </>
+              ) : showReauthorize ? (
+                <>
+                  <span className="text-orange-500 shrink-0">🔒</span>
+                  <span className="text-orange-600 dark:text-orange-400 truncate">
+                    {isLocalFile
+                      ? "Permiso requerido para archivo local"
+                      : "Permiso requerido"}
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span className="text-blue-500 shrink-0">📁</span>
+                  <span className="text-blue-600 dark:text-blue-400 truncate">
+                    Archivo grande detectado
+                  </span>
+                </>
               )}
-            </span>
-            {isLoading && (
-              <div className="flex items-center space-x-1">
-                <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                <span className="text-xs text-gray-600 dark:text-gray-400">
-                  Cargando...
-                </span>
-              </div>
-            )}
-            {canPlayThrough && !isLoading && (
-              <div className="flex items-center space-x-1">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span className="text-xs text-green-600 dark:text-green-400">
-                  Listo
-                </span>
-              </div>
-            )}
-          </div>
-
-          {/* Información del archivo local */}
-          {isLocalFile && fileSize && (
-            <div className="text-xs text-gray-500 dark:text-gray-400">
-              {(fileSize / (1024 * 1024)).toFixed(1)}MB
             </div>
-          )}
-        </div>
 
-        {/* Controles compactos */}
-        <div className="px-4 py-3">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div className="flex items-center space-x-3">
-              <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
-                Velocidad:
-              </span>
-              <div className="flex items-center bg-gray-100 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <div className="shrink-0">
+              {audioError ? (
                 <button
-                  type="button"
-                  aria-label="Disminuir velocidad"
-                  className="px-2 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200"
-                  onClick={() => changeRate(-0.05)}
+                  onClick={handleLoadAudio}
+                  className="px-2 py-1 bg-red-100 hover:bg-red-200 dark:bg-red-900/40 dark:hover:bg-red-900/60 text-red-700 dark:text-red-300 rounded transition-colors"
                 >
-                  −
+                  Reintentar
                 </button>
-                <div className="px-3 py-1.5 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-900 border-l border-r border-gray-200 dark:border-gray-700 min-w-12 text-center">
-                  {rate.toFixed(2)}x
-                </div>
+              ) : showReauthorize ? (
                 <button
-                  type="button"
-                  aria-label="Aumentar velocidad"
-                  className="px-2 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200"
-                  onClick={() => changeRate(0.05)}
+                  onClick={onReauthorize}
+                  className="px-2 py-1 bg-orange-100 hover:bg-orange-200 dark:bg-orange-900/40 dark:hover:bg-orange-900/60 text-orange-700 dark:text-orange-300 rounded transition-colors"
                 >
-                  +
+                  Reautorizar
                 </button>
-              </div>
-            </div>
-
-            {/* Preset buttons compactos */}
-            <div className="flex items-center space-x-1">
-              <span className="text-xs text-gray-600 dark:text-gray-400 hidden sm:block">
-                Predefinidos:
-              </span>
-              <div className="flex gap-1">
-                {[0.5, 1, 1.5, 2, 2.5, 3].map((v) => (
-                  <button
-                    key={v}
-                    type="button"
-                    onClick={() => setExact(v)}
-                    className={`px-2 py-1 rounded text-xs font-medium border transition-colors duration-200 ${
-                      rate === v
-                        ? "border-blue-500 bg-blue-500 text-white"
-                        : "border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-                    }`}
-                  >
-                    {v}x
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Mensaje de error si existe */}
-        {audioError && (
-          <div className="mx-4 mb-3 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/50 rounded-lg">
-            <div className="flex items-start justify-between">
-              <div className="flex items-start space-x-2">
-                <span className="text-red-500 text-sm mt-0.5">⚠️</span>
-                <p className="text-sm text-red-700 dark:text-red-300">
-                  {audioError}
-                </p>
-              </div>
-              <button
-                onClick={handleLoadAudio}
-                className="px-3 py-1 bg-red-500 hover:bg-red-600 text-white font-medium rounded text-sm transition-colors duration-200 ml-3"
-              >
-                Reintentar
-              </button>
+              ) : (
+                <button
+                  onClick={handleLoadAudio}
+                  className="px-2 py-1 bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/40 dark:hover:bg-blue-900/60 text-blue-700 dark:text-blue-300 rounded transition-colors"
+                >
+                  Cargar
+                </button>
+              )}
             </div>
           </div>
         )}
 
-        {/* Audio player mejorado */}
-        <div className="px-4 pb-4">
-          {/* Botón de carga manual para archivos grandes */}
-          {fileTooLarge && preloadStrategy === "none" && (
-            <div className="mb-3 p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50 rounded-lg">
-              <div className="flex items-start justify-between">
-                <div className="flex items-start space-x-2">
-                  <span className="text-blue-500 text-sm mt-0.5">📁</span>
-                  <div>
-                    <p className="text-sm text-blue-700 dark:text-blue-300 font-medium">
-                      Archivo grande detectado
-                    </p>
-                    <p className="text-xs text-blue-600 dark:text-blue-400">
-                      {(fileSize! / (1024 * 1024)).toFixed(1)}MB • Carga bajo
-                      demanda para mejor rendimiento
-                    </p>
-                  </div>
-                </div>
-                <button
-                  onClick={handleLoadAudio}
-                  className="px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded text-sm transition-colors duration-200"
-                >
-                  Cargar Audio
-                </button>
+        {/* Main Player UI */}
+        <div className="flex flex-col sm:flex-row items-center gap-3 p-3 sm:p-4">
+          {/* Audio Controls */}
+          <div className="w-full flex-1 min-w-0">
+            <div className="flex items-center gap-3 mb-1 sm:mb-0">
+              {/* Status Indicator */}
+              <div className="shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400">
+                {isLoading ? (
+                  <div className="w-4 h-4 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+                ) : (
+                  <span className="text-sm">🎵</span>
+                )}
               </div>
-            </div>
-          )}
 
-          <audio
-            ref={audioRef}
-            className="w-full h-8 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent"
-            controls
-            src={src}
-            preload={preloadStrategy}
-            onLoadStart={handleAudioLoadStart}
-            onCanPlay={handleAudioCanPlay}
-            onCanPlayThrough={handleAudioCanPlayThrough}
-            onError={handleAudioError}
-            onStalled={handleAudioStalled}
-            onWaiting={handleAudioWaiting}
-            onPlaying={handleAudioPlaying}
-            onProgress={handleAudioProgress}
-          >
-            Tu navegador no soporta audio HTML5
-          </audio>
-
-          {/* Información adicional para archivos grandes */}
-          {src && (
-            <div className="mt-2 text-xs text-gray-500 dark:text-gray-400 text-center">
-              {isLocalFile ? (
-                <>💾 Archivo local • Carga optimizada para archivos grandes</>
-              ) : (
-                <>
-                  💡 Para archivos grandes, usa "preload='metadata'" para una
-                  carga más eficiente
-                </>
-              )}
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Mensaje de reautorización compacto */}
-      {showReauthorize && (
-        <div className="mt-2 p-3 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800/50 rounded-lg">
-          <div className="flex items-start space-x-2">
-            <span className="text-orange-500 text-sm mt-0.5">🔒</span>
-            <div className="flex-1">
-              <p className="text-sm text-orange-700 dark:text-orange-300">
-                {isLocalFile
-                  ? "Se necesita permiso para acceder al archivo de audio local."
-                  : "Permiso requerido para acceder al audio."}
-              </p>
-              <button
-                className="mt-1 px-3 py-1 bg-orange-500 hover:bg-orange-600 text-white font-medium rounded text-sm transition-colors duration-200"
-                onClick={onReauthorize}
+              {/* HTML5 Audio Player */}
+              <audio
+                ref={audioRef}
+                className="w-full h-8 sm:h-10 focus:outline-none player-custom"
+                controls
+                src={src}
+                preload={preloadStrategy}
+                onLoadStart={handleAudioLoadStart}
+                onCanPlay={handleAudioCanPlay}
+                onCanPlayThrough={handleAudioCanPlayThrough}
+                onError={handleAudioError}
+                onStalled={handleAudioStalled}
+                onWaiting={handleAudioWaiting}
+                onPlaying={handleAudioPlaying}
+                // onProgress={handleAudioProgress}
               >
-                🔓 Reautorizar
+                Tu navegador no soporta audio HTML5
+              </audio>
+            </div>
+          </div>
+
+          {/* Speed Controls (Collapsible on very small screens if needed, but flex-wrap handles it) */}
+          <div className="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-end border-t sm:border-t-0 border-gray-100 dark:border-gray-800 pt-2 sm:pt-0">
+            {/* Rate Adjuster */}
+            <div className="flex items-center bg-gray-100 dark:bg-gray-800 rounded-lg p-0.5 border border-gray-200 dark:border-gray-700">
+              <button
+                onClick={() => changeRate(-0.1)}
+                className="w-7 h-7 flex items-center justify-center rounded-md hover:bg-white dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-shadow"
+                title="Más lento"
+              >
+                -
               </button>
+              <div className="w-10 text-center text-xs font-bold text-gray-700 dark:text-gray-200">
+                {rate.toFixed(1)}x
+              </div>
+              <button
+                onClick={() => changeRate(0.1)}
+                className="w-7 h-7 flex items-center justify-center rounded-md hover:bg-white dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-shadow"
+                title="Más rápido"
+              >
+                +
+              </button>
+            </div>
+
+            {/* Presets (Hidden on very small mobile to save space) */}
+            <div className="hidden xs:flex gap-1">
+              {[1, 1.5, 2].map((v) => (
+                <button
+                  key={v}
+                  onClick={() => setExact(v)}
+                  className={`px-2 py-1 rounded-md text-xs font-medium transition-colors ${
+                    rate === v
+                      ? "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-300"
+                      : "text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800"
+                  }`}
+                >
+                  {v}x
+                </button>
+              ))}
             </div>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }

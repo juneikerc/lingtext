@@ -14,6 +14,7 @@ import { normalizeWord, tokenize } from "../utils/tokenize";
 import { speak } from "../utils/tts";
 import { translateTerm } from "../utils/translate";
 import { ensureReadPermission, pickAudioFile } from "../utils/fs";
+import { getFileHandle, saveFileHandle } from "~/services/file-handles";
 
 import AudioSection from "./reader/AudioSection";
 import ReaderText from "./reader/ReaderText";
@@ -54,23 +55,61 @@ export default function Reader({ text }: Props) {
 
   // Detectar si es archivo local y obtener información
   useEffect(() => {
-    if (text?.audioRef?.type === "file") {
-      setIsLocalFile(true);
-      // Check if fileHandle exists (it may not if restored from DB)
-      if (text.audioRef.fileHandle) {
-        // FileHandle exists - check if we have the audio URL
-        setAudioAccessError(!text.audioUrl);
+    let mounted = true;
+
+    async function loadAudio() {
+      if (text?.audioRef?.type === "file") {
+        setIsLocalFile(true);
+
+        let handle = text.audioRef.fileHandle;
+
+        // Si no tenemos el handle, intentar recuperarlo de IndexedDB
+        if (!handle) {
+          try {
+            const savedHandle = await getFileHandle(text.id);
+            if (savedHandle && mounted) {
+              handle = savedHandle;
+              // Verificar permiso
+              const hasPermission = await ensureReadPermission(handle);
+              if (hasPermission) {
+                // Obtener archivo y crear URL
+                const file = await handle.getFile();
+                const url = URL.createObjectURL(file);
+                setAudioUrl(url);
+                setFileSize(file.size);
+                setAudioAccessError(false);
+                return;
+              }
+            }
+          } catch (e) {
+            console.warn("Error restoring file handle:", e);
+          }
+        }
+
+        if (mounted) {
+          // Si llegamos aquí y tenemos el handle original (primera carga)
+          if (text.audioRef.fileHandle) {
+            setAudioAccessError(!text.audioUrl);
+          } else {
+            // Si no tenemos handle ni recuperado ni original
+            setAudioAccessError(true);
+          }
+        }
       } else {
-        // FileHandle was not persisted - user needs to reauthorize
-        // This happens when the text is restored from database
-        setAudioAccessError(true);
+        if (mounted) {
+          setIsLocalFile(false);
+          setAudioAccessError(false);
+          setFileSize(null);
+        }
       }
-    } else {
-      setIsLocalFile(false);
-      setAudioAccessError(false);
-      setFileSize(null);
     }
-  }, [text?.audioRef, text?.audioUrl]);
+
+    loadAudio();
+
+    return () => {
+      mounted = false;
+    };
+  }, [text?.audioRef, text?.audioUrl, text?.id]);
 
   // Revoke audio URL when it changes or on unmount
   useEffect(() => {
@@ -220,6 +259,9 @@ export default function Reader({ text }: Props) {
           return;
         }
         file = await newHandle.getFile();
+
+        // Save the new handle
+        await saveFileHandle(t.id, newHandle);
       }
 
       // Validar que sea un archivo de audio válido
@@ -403,7 +445,7 @@ export default function Reader({ text }: Props) {
 
   return (
     <div
-      className="relative flex flex-col flex-1 bg-gray-50 dark:bg-gray-900"
+      className="relative flex flex-col flex-1 bg-gray-50 dark:bg-gray-900 pb-32"
       ref={containerRef}
       onMouseUp={handleMouseUp}
       onClick={(e) => {
@@ -415,17 +457,6 @@ export default function Reader({ text }: Props) {
         }
       }}
     >
-      <AudioSection
-        show={!!text.audioRef}
-        src={audioUrl ?? text.audioUrl ?? undefined}
-        showReauthorize={Boolean(
-          text.audioRef?.type === "file" && audioAccessError
-        )}
-        onReauthorize={reauthorizeAudio}
-        isLocalFile={isLocalFile}
-        fileSize={fileSize}
-      />
-
       {text.format === "markdown" ? (
         <MarkdownReaderText
           content={text.content}
@@ -459,6 +490,18 @@ export default function Reader({ text }: Props) {
           onSavePhrase={onSavePhrase}
         />
       )}
+
+      {/* Audio Player Sticky Bottom */}
+      <AudioSection
+        show={!!text.audioRef}
+        src={audioUrl ?? text.audioUrl ?? undefined}
+        showReauthorize={Boolean(
+          text.audioRef?.type === "file" && audioAccessError
+        )}
+        onReauthorize={reauthorizeAudio}
+        isLocalFile={isLocalFile}
+        fileSize={fileSize}
+      />
     </div>
   );
 }

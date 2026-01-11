@@ -19,9 +19,7 @@ import {
 } from "../utils/validation";
 import { seedInitialDataOnce } from "~/utils/seed";
 
-// interface Props {
-//   libraryTexts: TextItem[];
-// }
+import { saveFileHandle, deleteFileHandle } from "~/services/file-handles";
 
 export default function Library() {
   const [texts, setTexts] = useState<TextItem[]>([]);
@@ -247,6 +245,10 @@ export default function Library() {
       // File System Access API
       const handle = await pickAudioFile();
       if (!handle) return;
+
+      // Save handle to IndexedDB
+      await saveFileHandle(textId, handle);
+
       const ref: AudioRef = {
         type: "file",
         name: handle.name,
@@ -261,6 +263,7 @@ export default function Library() {
 
   async function onClearAudio(textId: string) {
     await updateTextAudioRef(textId, null);
+    await deleteFileHandle(textId);
     await refresh();
   }
 
@@ -268,6 +271,7 @@ export default function Library() {
     if (!confirm("¿Eliminar este texto? Esta acción no se puede deshacer."))
       return;
     await deleteText(id);
+    await deleteFileHandle(id);
     await refresh();
   }
 
