@@ -13,7 +13,7 @@ import { type AudioRef } from "../types";
 import { normalizeWord, tokenize } from "../utils/tokenize";
 import { speak } from "../utils/tts";
 import { translateTerm } from "../utils/translate";
-import { ensureReadPermission } from "../utils/fs";
+import { ensureReadPermission, pickAudioFile } from "../utils/fs";
 
 import AudioSection from "./reader/AudioSection";
 import ReaderText from "./reader/ReaderText";
@@ -56,10 +56,14 @@ export default function Reader({ text }: Props) {
   useEffect(() => {
     if (text?.audioRef?.type === "file") {
       setIsLocalFile(true);
-      // Intentar obtener información del archivo sin solicitar permiso aún
+      // Check if fileHandle exists (it may not if restored from DB)
       if (text.audioRef.fileHandle) {
-        // No solicitamos el archivo aquí, solo verificamos permisos
-        setAudioAccessError(!text.audioUrl); // Solo mostrar error si no hay URL
+        // FileHandle exists - check if we have the audio URL
+        setAudioAccessError(!text.audioUrl);
+      } else {
+        // FileHandle was not persisted - user needs to reauthorize
+        // This happens when the text is restored from database
+        setAudioAccessError(true);
       }
     } else {
       setIsLocalFile(false);
@@ -193,19 +197,30 @@ export default function Reader({ text }: Props) {
         setAudioUrl(null);
       }
 
-      // Verificar y solicitar permisos
-      const hasPermission = await ensureReadPermission(t.audioRef.fileHandle);
-      if (!hasPermission) {
-        console.warn("Permiso denegado para archivo local");
-        setAudioAccessError(true);
-        alert(
-          "Permiso denegado. Vuelve a intentarlo o re-adjunta el audio desde la biblioteca."
-        );
-        return;
-      }
+      let file: File;
 
-      // Obtener el archivo
-      const file = await t.audioRef.fileHandle.getFile();
+      // Check if fileHandle exists
+      if (t.audioRef.fileHandle) {
+        // FileHandle exists - try to request permission
+        const hasPermission = await ensureReadPermission(t.audioRef.fileHandle);
+        if (!hasPermission) {
+          console.warn("Permiso denegado para archivo local");
+          setAudioAccessError(true);
+          alert(
+            "Permiso denegado. Vuelve a intentarlo o re-adjunta el audio desde la biblioteca."
+          );
+          return;
+        }
+        file = await t.audioRef.fileHandle.getFile();
+      } else {
+        // FileHandle doesn't exist (wasn't persisted) - ask user to re-select file
+        const newHandle = await pickAudioFile();
+        if (!newHandle) {
+          // User cancelled
+          return;
+        }
+        file = await newHandle.getFile();
+      }
 
       // Validar que sea un archivo de audio válido
       const fileName = file.name.toLowerCase();

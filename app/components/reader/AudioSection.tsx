@@ -17,8 +17,6 @@ export default function AudioSection({
   isLocalFile = false,
   fileSize = null,
 }: AudioSectionProps) {
-  if (!show) return null;
-
   const [rate, setRate] = useState<number>(1);
   const [isLoading, setIsLoading] = useState(false);
   const [audioError, setAudioError] = useState<string | null>(null);
@@ -145,6 +143,9 @@ export default function AudioSection({
       }
     }
   };
+
+  // Early return AFTER all hooks to comply with React Hooks rules
+  if (!show) return null;
 
   return (
     <div className="mx-auto max-w-4xl w-full px-4 sm:px-6 lg:px-8 mb-4">
