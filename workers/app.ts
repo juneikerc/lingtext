@@ -23,11 +23,14 @@ const requestHandler = createRequestHandler(
 
 /**
  * Add COOP/COEP headers required for SQLite WASM with SharedArrayBuffer/OPFS
+ * Using 'credentialless' instead of 'require-corp' to allow third-party scripts
+ * like Microsoft Clarity while maintaining SharedArrayBuffer support.
+ * Supported in Chrome 96+, Firefox 103+, Safari 15.2+
  */
 function addSecurityHeaders(response: Response): Response {
   const newHeaders = new Headers(response.headers);
   newHeaders.set("Cross-Origin-Opener-Policy", "same-origin");
-  newHeaders.set("Cross-Origin-Embedder-Policy", "require-corp");
+  newHeaders.set("Cross-Origin-Embedder-Policy", "credentialless");
   // Allow WASM files to be loaded
   newHeaders.set("Cross-Origin-Resource-Policy", "same-origin");
 
