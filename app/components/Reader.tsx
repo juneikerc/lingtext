@@ -144,6 +144,8 @@ export default function Reader({ text }: Props) {
     setPhrases(all.map((p) => p.parts));
   }, []);
 
+  const myMemoryQuotaAlertedRef = useRef(false);
+
   const onWordClick = useCallback(
     async (e: React.MouseEvent<HTMLSpanElement>) => {
       const target = e.currentTarget as HTMLSpanElement;
@@ -168,6 +170,17 @@ export default function Reader({ text }: Props) {
       }
 
       const translation = await translateTerm(word, selected);
+      if (
+        translation.error === "MYMEMORY_QUOTA_EXCEEDED" &&
+        !myMemoryQuotaAlertedRef.current
+      ) {
+        myMemoryQuotaAlertedRef.current = true;
+        alert(
+          "Se alcanzó el límite diario del traductor gratis (MyMemory).\n\n" +
+            "Sugerencia: cambia el método de traducción (Chrome si está disponible) " +
+            "o configura una API Key de OpenRouter para seguir traduciendo."
+        );
+      }
       setSelPopup(null);
       setPopup({ x, y, word, lower, translation: translation.translation });
     },
@@ -377,6 +390,18 @@ export default function Reader({ text }: Props) {
     }
 
     const translation = await translateTerm(text, selected);
+    if (
+      translation.error === "MYMEMORY_QUOTA_EXCEEDED" &&
+      !myMemoryQuotaAlertedRef.current
+    ) {
+      myMemoryQuotaAlertedRef.current = true;
+      alert(
+        "Se alcanzó el límite diario del traductor gratis (MyMemory).\n\n" +
+          "Sugerencia: cambia el método de traducción (Chrome si está disponible) " +
+          "o configura una API Key de OpenRouter para seguir traduciendo."
+      );
+    }
+
     // Guardar en cache en memoria si es frase (multi-palabra)
     if (parts.length >= 2) {
       const phraseLower = parts.join(" ");

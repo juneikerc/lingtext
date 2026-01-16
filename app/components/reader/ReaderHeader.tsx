@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router";
 import { useTranslatorStore } from "~/context/translatorSelector";
 import { TRANSLATORS } from "~/types";
@@ -14,18 +14,28 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
   const { selected, setSelected } = useTranslatorStore();
   const [showApiKeyConfig, setShowApiKeyConfig] = useState(false);
   const [hasApiKey, setHasApiKey] = useState<boolean | null>(null);
+  const prevSelectedRef = useRef<TRANSLATORS | null>(null);
 
   useEffect(() => {
     checkApiKey();
   }, []);
 
   useEffect(() => {
-    if (selected === TRANSLATORS.CHROME && !isChromeAIAvailable()) {
+    const prevSelected = prevSelectedRef.current;
+    prevSelectedRef.current = selected;
+
+    // Solo alertar cuando el usuario cambia explícitamente a Chrome
+    if (
+      prevSelected !== null &&
+      selected === TRANSLATORS.CHROME &&
+      prevSelected !== TRANSLATORS.CHROME &&
+      !isChromeAIAvailable()
+    ) {
       alert(
         "El traductor nativo de Chrome requiere:\n" +
           "- Navegador Google Chrome de escritorio\n" +
           "- API de traducción activada en tu navegador\n\n" +
-          "Si prefieres usar los modelos medio o avanzado desde cualquier dispositivo, puedes agregar una API Key de OpenRouter en la configuración."
+          "Si no cumples esos requisitos, puedes usar el traductor gratis (MyMemory) o agregar una API Key de OpenRouter para los modelos con IA."
       );
     }
   }, [selected]);
@@ -35,7 +45,9 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
     setHasApiKey(!!key);
   }
 
-  const needsApiKey = selected !== TRANSLATORS.CHROME && !hasApiKey;
+  const needsApiKey =
+    (selected === TRANSLATORS.MEDIUM || selected === TRANSLATORS.SMART) &&
+    !hasApiKey;
 
   return (
     <>
@@ -89,6 +101,9 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
                 onChange={(e) => setSelected(e.target.value as TRANSLATORS)}
               >
                 <option value={TRANSLATORS.CHROME}>⚡ Rápido | Básico</option>
+                <option value={TRANSLATORS.MYMEMORY}>
+                  🆓 Gratis (con límites) | MyMemory
+                </option>
                 <option value={TRANSLATORS.MEDIUM}>
                   🧠 Inteligente | Medio
                 </option>
@@ -100,6 +115,7 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
               {/* Información compacta del traductor seleccionado */}
               <div className="text-xs text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">
                 {selected === TRANSLATORS.CHROME && "Nativo"}
+                {selected === TRANSLATORS.MYMEMORY && "Gratis"}
                 {selected === TRANSLATORS.MEDIUM && "IA Optimizada"}
                 {selected === TRANSLATORS.SMART && "IA Avanzada"}
               </div>

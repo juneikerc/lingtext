@@ -1,6 +1,69 @@
 import { TRANSLATORS } from "../types";
 import { getOpenRouterApiKey } from "../services/db";
 
+export async function translateWithMyMemory(
+  term: string
+): Promise<{ translation: string; error?: string }> {
+  const sanitizedText = term.trim();
+  if (!sanitizedText) {
+    return { translation: "", error: "Invalid text content" };
+  }
+
+  try {
+    const url = new URL("https://api.mymemory.translated.net/get");
+    url.searchParams.set("q", sanitizedText);
+    url.searchParams.set("langpair", "en|es");
+
+    const response = await fetch(url.toString());
+
+    if (!response.ok) {
+      console.error("MyMemory API error:", response.status);
+      return { translation: "", error: "API_ERROR" };
+    }
+
+    const data = (await response.json()) as {
+      responseData?: { translatedText?: string };
+      responseStatus?: number | string;
+      responseDetails?: string;
+      quotaFinished?: boolean;
+    };
+
+    const responseStatus =
+      data.responseStatus === undefined
+        ? 200
+        : Number.parseInt(String(data.responseStatus), 10);
+
+    const responseDetails = String(data.responseDetails || "").toLowerCase();
+    const looksLikeQuotaExceeded =
+      data.quotaFinished === true ||
+      responseDetails.includes("quota") ||
+      (responseDetails.includes("limit") && responseDetails.includes("day"));
+
+    if (looksLikeQuotaExceeded) {
+      return { translation: "", error: "MYMEMORY_QUOTA_EXCEEDED" };
+    }
+
+    if (responseStatus !== 200) {
+      console.error(
+        "MyMemory API error:",
+        responseStatus,
+        data.responseDetails
+      );
+      return { translation: "", error: "API_ERROR" };
+    }
+
+    const translation = (data.responseData?.translatedText || "").trim();
+    if (!translation) {
+      return { translation: "", error: "INVALID_RESPONSE" };
+    }
+
+    return { translation };
+  } catch (error) {
+    console.error("MyMemory translation error:", error);
+    return { translation: "", error: "NETWORK_ERROR" };
+  }
+}
+
 export function isChromeAIAvailable(): boolean {
   const isChrome =
     navigator.userAgent.includes("Chrome") &&
@@ -164,9 +227,19 @@ export async function translateTerm(
     const local = await translateFromChrome(term);
     const value = (local.translation || "").trim();
     if (value && value !== "Translation failed.") return { translation: value };
+
+    const free = await translateWithMyMemory(term);
+    const freeValue = (free.translation || "").trim();
+    if (freeValue) return { translation: freeValue };
+
     // Fallback automático al modelo por defecto si Chrome no existe o falla
     return translateWithOpenRouter(term, TRANSLATORS.MEDIUM);
   }
+
+  if (selected === TRANSLATORS.MYMEMORY) {
+    return translateWithMyMemory(term);
+  }
+
   // Selección explícita de modelo remoto usando OpenRouter directamente
   return translateWithOpenRouter(term, selected);
 }

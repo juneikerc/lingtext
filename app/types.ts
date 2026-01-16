@@ -73,6 +73,7 @@ export interface Settings {
 
 export enum TRANSLATORS {
   CHROME = "chrome",
+  MYMEMORY = "mymemory",
   MEDIUM = "google/gemini-2.5-flash-lite",
   SMART = "google/gemini-3-flash-preview",
 }
