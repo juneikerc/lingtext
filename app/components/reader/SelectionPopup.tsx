@@ -13,8 +13,6 @@ export default function SelectionPopup({
   onClose,
   onSavePhrase,
 }: SelectionPopupProps) {
-  console.log(selPopup);
-
   return (
     <div
       className="absolute min-w-[320px] max-w-[400px] bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm text-gray-900 dark:text-gray-100 rounded-xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 z-30 overflow-hidden"
@@ -52,7 +50,12 @@ export default function SelectionPopup({
           <div>
             <div className="bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-lg p-3">
               <div className="text-xl font-bold text-gray-900 dark:text-gray-100 text-center">
-                {isTranslationJson(selPopup.translation) ? (
+                {selPopup.isLoading ? (
+                  <div className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                    <span className="w-4 h-4 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+                    <span>Traduciendo...</span>
+                  </div>
+                ) : isTranslationJson(selPopup.translation) ? (
                   <div className="space-y-2">
                     {(() => {
                       const parsed = JSON.parse(selPopup.translation);
@@ -80,11 +83,16 @@ export default function SelectionPopup({
             {/* Acciones para la selección */}
             <div className="mt-4 flex gap-2 justify-center">
               <button
-                className="px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-lg border border-green-200 dark:border-green-800 hover:bg-green-200/60 dark:hover:bg-green-800/50 transition-colors"
+                className={`px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-lg border border-green-200 dark:border-green-800 transition-colors ${
+                  selPopup.isLoading
+                    ? "opacity-60 cursor-not-allowed"
+                    : "hover:bg-green-200/60 dark:hover:bg-green-800/50"
+                }`}
                 onClick={() =>
                   onSavePhrase(selPopup.text, selPopup.translation)
                 }
                 title="Guardar como frase compuesta"
+                disabled={selPopup.isLoading}
               >
                 Guardar palabra compuesta | frase
               </button>

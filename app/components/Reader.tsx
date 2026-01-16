@@ -145,6 +145,7 @@ export default function Reader({ text }: Props) {
   }, []);
 
   const myMemoryQuotaAlertedRef = useRef(false);
+  const translateRequestIdRef = useRef(0);
 
   const onWordClick = useCallback(
     async (e: React.MouseEvent<HTMLSpanElement>) => {
@@ -169,7 +170,13 @@ export default function Reader({ text }: Props) {
         return;
       }
 
+      const requestId = ++translateRequestIdRef.current;
+      setSelPopup(null);
+      setPopup({ x, y, word, lower, translation: "", isLoading: true });
+
       const translation = await translateTerm(word, selected);
+      if (requestId !== translateRequestIdRef.current) return;
+
       if (
         translation.error === "MYMEMORY_QUOTA_EXCEEDED" &&
         !myMemoryQuotaAlertedRef.current
@@ -181,8 +188,15 @@ export default function Reader({ text }: Props) {
             "o configura una API Key de OpenRouter para seguir traduciendo."
         );
       }
-      setSelPopup(null);
-      setPopup({ x, y, word, lower, translation: translation.translation });
+
+      setPopup({
+        x,
+        y,
+        word,
+        lower,
+        translation: translation.translation,
+        isLoading: false,
+      });
     },
     [selected]
   );
@@ -234,6 +248,7 @@ export default function Reader({ text }: Props) {
   }, []);
 
   const clearPopups = useCallback(() => {
+    translateRequestIdRef.current += 1;
     setPopup(null);
     setSelPopup(null);
   }, []);
@@ -389,7 +404,13 @@ export default function Reader({ text }: Props) {
       } catch {}
     }
 
+    const requestId = ++translateRequestIdRef.current;
+    setPopup(null);
+    setSelPopup({ x, y, text, translation: "", isLoading: true });
+
     const translation = await translateTerm(text, selected);
+    if (requestId !== translateRequestIdRef.current) return;
+
     if (
       translation.error === "MYMEMORY_QUOTA_EXCEEDED" &&
       !myMemoryQuotaAlertedRef.current
@@ -407,8 +428,13 @@ export default function Reader({ text }: Props) {
       const phraseLower = parts.join(" ");
       phraseCacheRef.current.set(phraseLower, translation.translation);
     }
-    setPopup(null);
-    setSelPopup({ x, y, text, translation: translation.translation });
+    setSelPopup({
+      x,
+      y,
+      text,
+      translation: translation.translation,
+      isLoading: false,
+    });
   }
 
   const onSavePhrase = useCallback(

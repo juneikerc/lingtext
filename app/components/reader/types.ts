@@ -4,6 +4,7 @@ export interface WordPopupState {
   word: string;
   lower: string;
   translation: string;
+  isLoading?: boolean;
 }
 
 export interface SelectionPopupState {
@@ -11,4 +12,5 @@ export interface SelectionPopupState {
   y: number;
   text: string;
   translation: string;
+  isLoading?: boolean;
 }

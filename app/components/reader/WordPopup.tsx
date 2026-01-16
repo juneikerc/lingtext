@@ -62,7 +62,12 @@ export default function WordPopup({
             </span>
           </div>
           <div className="bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-lg p-3">
-            {isTranslationJson(popup.translation) ? (
+            {popup.isLoading ? (
+              <div className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                <span className="w-4 h-4 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+                <span>Traduciendo...</span>
+              </div>
+            ) : isTranslationJson(popup.translation) ? (
               <div className="space-y-2">
                 {(() => {
                   const parsed = JSON.parse(popup.translation);
@@ -123,18 +128,28 @@ export default function WordPopup({
           <div className="grid grid-cols-1 gap-2">
             {isUnknown ? (
               <button
-                className="w-full flex items-center justify-center space-x-2 px-4 py-3 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 hover:bg-green-100 dark:hover:bg-green-800/40 border border-green-200 dark:border-green-800/50 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-sm hover:shadow-md"
+                className={`w-full flex items-center justify-center space-x-2 px-4 py-3 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800/50 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md ${
+                  popup.isLoading
+                    ? "opacity-60 cursor-not-allowed"
+                    : "hover:bg-green-100 dark:hover:bg-green-800/40 transform hover:scale-105"
+                }`}
                 onClick={() => onMarkKnown(popup.lower)}
+                disabled={popup.isLoading}
               >
                 <span>✅</span>
                 <span>Marcar como conocida</span>
               </button>
             ) : (
               <button
-                className="w-full flex items-center justify-center space-x-2 px-4 py-3 bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-400 hover:bg-orange-100 dark:hover:bg-orange-800/40 border border-orange-200 dark:border-orange-800/50 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-sm hover:shadow-md"
+                className={`w-full flex items-center justify-center space-x-2 px-4 py-3 bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-400 border border-orange-200 dark:border-orange-800/50 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md ${
+                  popup.isLoading
+                    ? "opacity-60 cursor-not-allowed"
+                    : "hover:bg-orange-100 dark:hover:bg-orange-800/40 transform hover:scale-105"
+                }`}
                 onClick={() =>
                   onMarkUnknown(popup.lower, popup.word, popup.translation)
                 }
+                disabled={popup.isLoading}
               >
                 <span>🎓</span>
                 <span>Marcar para repasar</span>
