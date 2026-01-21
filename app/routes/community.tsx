@@ -203,7 +203,7 @@ export default function Community() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <a
-                href="#"
+                href="https://www.facebook.com/groups/1199904721807372"
                 className="px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors"
               >
                 Unirme en Facebook
@@ -212,7 +212,7 @@ export default function Community() {
                 href="#"
                 className="px-6 py-3 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-700 rounded-lg font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
               >
-                Unirme en Telegram
+                Unirme en Telegram (próximamente)
               </a>
             </div>
           </div>
