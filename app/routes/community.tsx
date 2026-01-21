@@ -63,8 +63,7 @@ export default function Community() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a
-              href="#"
-              target="_blank"
+              href="https://www.facebook.com/groups/1199904721807372"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition-all shadow-sm hover:shadow-md focus-visible:ring-2 focus-visible:ring-indigo-500"
             >
@@ -72,11 +71,10 @@ export default function Community() {
             </a>
             <a
               href="#"
-              target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-semibold border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all shadow-sm focus-visible:ring-2 focus-visible:ring-indigo-500"
             >
-              Canal de Telegram
+              Canal de Telegram (próximamente)
             </a>
           </div>
         </div>
