@@ -74,7 +74,7 @@ export default function Community() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-semibold border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all shadow-sm focus-visible:ring-2 focus-visible:ring-indigo-500"
             >
-              Canal de Telegram (próximamente)
+              Canal de Telegram (próximamente )
             </a>
           </div>
         </div>
