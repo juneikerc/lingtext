@@ -363,11 +363,11 @@ export default function Library() {
             Biblioteca Personal
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900 dark:text-gray-100">
-            Tus{" "}
+            Agrega tus propios{" "}
             <span className="text-indigo-600 dark:text-indigo-400">Textos</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Crea tu colección personal de textos para aprender inglés de forma
+            Crea tu colección personal de lecturas para aprender inglés de forma
             inmersiva
           </p>
         </div>

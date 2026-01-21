@@ -44,17 +44,11 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
           {/* Botones CTA */}
           <div className="flex flex-col sm:flex-row gap-4">
             <a
-              href="#library"
+              href="#levels"
               className="inline-flex items-center justify-center px-6 py-3 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
             >
-              Comenzar a Aprender
+              Comenzar a Leer
             </a>
-            <Link
-              to="/words"
-              className="inline-flex items-center justify-center px-6 py-3 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200 font-medium rounded-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
-            >
-              Progreso
-            </Link>
           </div>
         </div>
 

@@ -43,7 +43,10 @@ const levels = [
 
 export default function LevelSelector() {
   return (
-    <section className="relative overflow-hidden py-16 sm:py-24 bg-gray-50 dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
+    <section
+      id="levels"
+      className="relative overflow-hidden py-16 sm:py-24 bg-gray-50 dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800"
+    >
       {/* Decorative blobs */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-[10%] right-[10%] w-64 h-64 bg-indigo-500/10 dark:bg-indigo-400/5 rounded-full blur-3xl"></div>

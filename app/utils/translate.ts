@@ -144,6 +144,8 @@ Rules:
 2. Values must be arrays of strings.
 3. Only include relevant categories.
 
+some of the categories are: Noun, Verb, Adjective, Adverb, Pronoun, Preposition, Conjunction, Interjection, Phrase, Sentence.
+
 EXAMPLES:
 
 User: "run"

@@ -109,12 +109,15 @@ export default function PurposeSection() {
               ¿Listo para comenzar?
             </h3>
             <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-              Únete a miles de estudiantes que ya están aprendiendo inglés de
+              Únete a cientos de estudiantes que ya están aprendiendo inglés de
               forma más efectiva con LingText
             </p>
-            <button className="px-8 py-4 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition-colors duration-200 shadow-sm hover:shadow-md">
+            <a
+              href="#levels"
+              className="px-8 py-4 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition-colors duration-200 shadow-sm hover:shadow-md"
+            >
               🚀 Comenzar Ahora
-            </button>
+            </a>
           </div>
         </div>
       </div>

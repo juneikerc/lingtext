@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export default function UsageGuideSection() {
   return (
     <section className="relative overflow-hidden py-20 sm:py-24 bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
@@ -210,9 +212,12 @@ export default function UsageGuideSection() {
               <button className="px-8 py-4 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition-colors duration-200 shadow-sm hover:shadow-md">
                 📖 Ver Documentación
               </button>
-              <button className="px-8 py-4 rounded-xl bg-white dark:bg-gray-950 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200">
+              <Link
+                to="/comunidad"
+                className="px-8 py-4 rounded-xl bg-white dark:bg-gray-950 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
+              >
                 💬 Comunidad
-              </button>
+              </Link>
             </div>
           </div>
         </div>
