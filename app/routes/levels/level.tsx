@@ -1,5 +1,5 @@
 import type { Route } from "../+types/level";
-import { allTexts, allLevelsTexts } from "content-collections";
+import { getLevelTextByLevel, getTextsByLevel } from "~/lib/content/runtime";
 import { formatSlug } from "~/helpers/formatSlug";
 import { type TextCollection } from "~/types";
 import ProseContent from "~/components/ProseContent";
@@ -7,10 +7,11 @@ import { Link } from "react-router";
 
 export function loader({ params }: Route.LoaderArgs) {
   const level = params.level;
-  const levelText = allLevelsTexts.filter(
-    (text: any) => text.level === level
-  )[0];
-  const texts = allTexts.filter((text: TextCollection) => text.level === level);
+  const levelText = getLevelTextByLevel(level ?? "");
+  if (!levelText) {
+    throw new Response("Not Found", { status: 404 });
+  }
+  const texts = getTextsByLevel(level ?? "") as TextCollection[];
   return { levelText, texts };
 }
 
@@ -145,7 +146,7 @@ export default function Level({ loaderData }: Route.ComponentProps) {
 
       <section className="relative overflow-hidden py-16 sm:py-24 bg-white dark:bg-gray-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ProseContent content={levelText.content} />
+          <ProseContent html={levelText.html} />
         </div>
       </section>
     </>

@@ -1,5 +1,5 @@
 import type { Route } from "../+types/blogPage";
-import { allBlogs } from "content-collections";
+import { allBlogs } from "~/lib/content/runtime";
 import { Link } from "react-router";
 
 export function loader() {

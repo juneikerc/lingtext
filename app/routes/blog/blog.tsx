@@ -1,10 +1,12 @@
 import type { Route } from "../+types/blog";
-import { allBlogs } from "content-collections";
+import { getBlogBySlug } from "~/lib/content/runtime";
 import ProseContent from "~/components/ProseContent";
 
 export function loader({ params }: Route.LoaderArgs) {
-  const blog = allBlogs.filter((blog: any) => blog.slug === params.slug)[0];
-
+  const blog = getBlogBySlug(params.slug ?? "");
+  if (!blog) {
+    throw new Response("Not Found", { status: 404 });
+  }
   return { blog };
 }
 
@@ -76,7 +78,7 @@ export default function Blog({ loaderData }: Route.ComponentProps) {
 
       <section className="relative overflow-hidden py-16 sm:py-24 bg-white dark:bg-gray-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ProseContent content={blog.content} />
+          <ProseContent html={blog.html} />
         </div>
       </section>
     </>

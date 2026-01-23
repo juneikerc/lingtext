@@ -5,7 +5,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import { cloudflare } from "@cloudflare/vite-plugin";
 import path from "path";
 import fs from "fs";
-import contentCollections from "@content-collections/remix-vite";
+import contentCollections from "./app/lib/content/vite-content-plugin";
 
 // Plugin to copy SQLite WASM files to public directory
 function copySqliteWasm() {

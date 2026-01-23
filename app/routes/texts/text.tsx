@@ -5,7 +5,7 @@ import type { AudioRef } from "~/types";
 import ReaderHeader from "~/components/reader/ReaderHeader";
 import ReaderSkeleton from "~/components/reader/ReaderSkeleton";
 import ReaderErrorBoundary from "~/components/ReaderErrorBoundary";
-import { allTexts } from "content-collections";
+import { allTexts } from "~/lib/content/runtime";
 import { formatSlug } from "~/helpers/formatSlug";
 import { type TextCollection, type TextItem } from "~/types";
 
