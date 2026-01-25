@@ -89,9 +89,9 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
               <div className="w-4 h-4 bg-gradient-to-r from-purple-500 to-blue-500 rounded flex items-center justify-center">
                 <span className="text-white text-xs">🌐</span>
               </div>
-              <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
+              <strong className="text-sm font-medium text-gray-900 dark:text-gray-100">
                 Traductor:
-              </span>
+              </strong>
             </div>
 
             <div className="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-3">
@@ -102,7 +102,7 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
               >
                 <option value={TRANSLATORS.CHROME}>⚡ Rápido | Básico</option>
                 <option value={TRANSLATORS.MYMEMORY}>
-                  🆓 Gratis (con límites) | MyMemory
+                  🆓 Gratis (Poco Preciso) | MyMemory
                 </option>
                 <option value={TRANSLATORS.MEDIUM}>
                   🧠 Inteligente | Medio
