@@ -1,0 +1,2502 @@
+[
+  {
+    "phrase": "Hi! / Hello!",
+    "translation": "¡Hola!",
+    "category": "Saludos y Despedidas"
+  },
+  {
+    "phrase": "Good morning.",
+    "translation": "Buenos días.",
+    "category": "Saludos y Despedidas"
+  },
+  {
+    "phrase": "Good afternoon.",
+    "translation": "Buenas tardes.",
+    "category": "Saludos y Despedidas"
+  },
+  {
+    "phrase": "Good evening.",
+    "translation": "Buenas noches (al llegar).",
+    "category": "Saludos y Despedidas"
+  },
+  {
+    "phrase": "Good night.",
+    "translation": "Buenas noches (al despedirse).",
+    "category": "Saludos y Despedidas"
+  },
+  {
+    "phrase": "How are you?",
+    "translation": "¿Cómo estás?",
+    "category": "Saludos y Despedidas"
+  },
+  {
+    "phrase": "How’s it going?",
+    "translation": "¿Cómo te va?",
+    "category": "Saludos y Despedidas"
+  },
+  {
+    "phrase": "I’m doing well, thanks.",
+    "translation": "Me va bien, gracias.",
+    "category": "Saludos y Despedidas"
+  },
+  {
+    "phrase": "Not bad.",
+    "translation": "Nada mal.",
+    "category": "Saludos y Despedidas"
+  },
+  {
+    "phrase": "What’s up?",
+    "translation": "¿Qué pasa? / ¿Qué tal?",
+    "category": "Saludos y Despedidas"
+  },
+  {
+    "phrase": "Nice to meet you.",
+    "translation": "Gusto en conocerte.",
+    "category": "Saludos y Despedidas"
+  },
+  {
+    "phrase": "Goodbye / Bye.",
+    "translation": "Adiós.",
+    "category": "Saludos y Despedidas"
+  },
+  {
+    "phrase": "See you later.",
+    "translation": "Te veo luego.",
+    "category": "Saludos y Despedidas"
+  },
+  {
+    "phrase": "See you tomorrow.",
+    "translation": "Nos vemos mañana.",
+    "category": "Saludos y Despedidas"
+  },
+  {
+    "phrase": "Take care.",
+    "translation": "Cuídate.",
+    "category": "Saludos y Despedidas"
+  },
+  {
+    "phrase": "Please.",
+    "translation": "Por favor.",
+    "category": "Cortesía y Social"
+  },
+  {
+    "phrase": "Thank you.",
+    "translation": "Gracias.",
+    "category": "Cortesía y Social"
+  },
+  {
+    "phrase": "Thanks a lot.",
+    "translation": "Muchas gracias.",
+    "category": "Cortesía y Social"
+  },
+  {
+    "phrase": "You’re welcome.",
+    "translation": "De nada.",
+    "category": "Cortesía y Social"
+  },
+  {
+    "phrase": "No problem.",
+    "translation": "No hay problema.",
+    "category": "Cortesía y Social"
+  },
+  {
+    "phrase": "Excuse me.",
+    "translation": "Disculpe (para llamar la atención).",
+    "category": "Cortesía y Social"
+  },
+  {
+    "phrase": "Sorry.",
+    "translation": "Lo siento.",
+    "category": "Cortesía y Social"
+  },
+  {
+    "phrase": "I’m so sorry.",
+    "translation": "Lo siento mucho.",
+    "category": "Cortesía y Social"
+  },
+  {
+    "phrase": "No worries.",
+    "translation": "No te preocupes.",
+    "category": "Cortesía y Social"
+  },
+  {
+    "phrase": "Don’t worry about it.",
+    "translation": "No te preocupes por eso.",
+    "category": "Cortesía y Social"
+  },
+  {
+    "phrase": "It’s okay.",
+    "translation": "Está bien.",
+    "category": "Cortesía y Social"
+  },
+  {
+    "phrase": "After you.",
+    "translation": "Después de usted (pase usted).",
+    "category": "Cortesía y Social"
+  },
+  {
+    "phrase": "Cheers!",
+    "translation": "¡Salud! (al brindar) / Gracias (UK).",
+    "category": "Cortesía y Social"
+  },
+  {
+    "phrase": "Of course.",
+    "translation": "Por supuesto.",
+    "category": "Cortesía y Social"
+  },
+  {
+    "phrase": "Sure.",
+    "translation": "Claro.",
+    "category": "Cortesía y Social"
+  },
+  {
+    "phrase": "Maybe.",
+    "translation": "Tal vez.",
+    "category": "Cortesía y Social"
+  },
+  {
+    "phrase": "I think so.",
+    "translation": "Creo que sí.",
+    "category": "Cortesía y Social"
+  },
+  {
+    "phrase": "I don’t think so.",
+    "translation": "Creo que no.",
+    "category": "Cortesía y Social"
+  },
+  {
+    "phrase": "I hope so.",
+    "translation": "Espero que sí.",
+    "category": "Cortesía y Social"
+  },
+  {
+    "phrase": "Exactly.",
+    "translation": "Exactamente.",
+    "category": "Cortesía y Social"
+  },
+  {
+    "phrase": "I don’t understand.",
+    "translation": "No entiendo.",
+    "category": "Para cuando no entiendes"
+  },
+  {
+    "phrase": "I’m sorry, I didn’t hear you.",
+    "translation": "Lo siento, no te escuché.",
+    "category": "Para cuando no entiendes"
+  },
+  {
+    "phrase": "Can you repeat that?",
+    "translation": "¿Puedes repetir eso?",
+    "category": "Para cuando no entiendes"
+  },
+  {
+    "phrase": "Could you speak slower?",
+    "translation": "¿Podrías hablar más lento?",
+    "category": "Para cuando no entiendes"
+  },
+  {
+    "phrase": "What did you say?",
+    "translation": "¿Qué dijiste?",
+    "category": "Para cuando no entiendes"
+  },
+  {
+    "phrase": "How do you say [palabra] in English?",
+    "translation": "¿Cómo se dice [palabra] en inglés?",
+    "category": "Para cuando no entiendes"
+  },
+  {
+    "phrase": "What does this mean?",
+    "translation": "¿Qué significa esto?",
+    "category": "Para cuando no entiendes"
+  },
+  {
+    "phrase": "How do you spell that?",
+    "translation": "¿Cómo se deletrea eso?",
+    "category": "Para cuando no entiendes"
+  },
+  {
+    "phrase": "Can you write it down?",
+    "translation": "¿Puedes escribirlo?",
+    "category": "Para cuando no entiendes"
+  },
+  {
+    "phrase": "My English is not very good.",
+    "translation": "Mi inglés no es muy bueno.",
+    "category": "Para cuando no entiendes"
+  },
+  {
+    "phrase": "I’m learning English.",
+    "translation": "Estoy aprendiendo inglés.",
+    "category": "Para cuando no entiendes"
+  },
+  {
+    "phrase": "I don’t know.",
+    "translation": "No lo sé.",
+    "category": "Para cuando no entiendes"
+  },
+  {
+    "phrase": "Do you speak Spanish?",
+    "translation": "¿Hablas español?",
+    "category": "Para cuando no entiendes"
+  },
+  {
+    "phrase": "Just a moment.",
+    "translation": "Un momento.",
+    "category": "Para cuando no entiendes"
+  },
+  {
+    "phrase": "One second, please.",
+    "translation": "Un segundo, por favor.",
+    "category": "Para cuando no entiendes"
+  },
+  {
+    "phrase": "What’s your name?",
+    "translation": "¿Cómo te llamas?",
+    "category": "Información Personal"
+  },
+  {
+    "phrase": "My name is...",
+    "translation": "Mi nombre es...",
+    "category": "Información Personal"
+  },
+  {
+    "phrase": "Where are you from?",
+    "translation": "¿De dónde eres?",
+    "category": "Información Personal"
+  },
+  {
+    "phrase": "I am from [país].",
+    "translation": "Soy de [país].",
+    "category": "Información Personal"
+  },
+  {
+    "phrase": "Where do you live?",
+    "translation": "¿Dónde vives?",
+    "category": "Información Personal"
+  },
+  {
+    "phrase": "I live in...",
+    "translation": "Vivo en...",
+    "category": "Información Personal"
+  },
+  {
+    "phrase": "How old are you?",
+    "translation": "¿Cuántos años tienes?",
+    "category": "Información Personal"
+  },
+  {
+    "phrase": "What do you do?",
+    "translation": "¿A qué te dedicas?",
+    "category": "Información Personal"
+  },
+  {
+    "phrase": "I’m a student.",
+    "translation": "Soy estudiante.",
+    "category": "Información Personal"
+  },
+  {
+    "phrase": "I work at...",
+    "translation": "Trabajo en...",
+    "category": "Información Personal"
+  },
+  {
+    "phrase": "What’s your phone number?",
+    "translation": "¿Cuál es tu número de teléfono?",
+    "category": "Información Personal"
+  },
+  {
+    "phrase": "Are you on Instagram/Facebook?",
+    "translation": "¿Estás en Instagram/Facebook?",
+    "category": "Información Personal"
+  },
+  {
+    "phrase": "What do you like to do?",
+    "translation": "¿Qué te gusta hacer?",
+    "category": "Información Personal"
+  },
+  {
+    "phrase": "I like...",
+    "translation": "Me gusta...",
+    "category": "Información Personal"
+  },
+  {
+    "phrase": "I don’t like...",
+    "translation": "No me gusta...",
+    "category": "Información Personal"
+  },
+  {
+    "phrase": "Are you married?",
+    "translation": "¿Estás casado/a?",
+    "category": "Información Personal"
+  },
+  {
+    "phrase": "I’m single.",
+    "translation": "Estoy soltero/a.",
+    "category": "Información Personal"
+  },
+  {
+    "phrase": "Do you have siblings?",
+    "translation": "¿Tienes hermanos?",
+    "category": "Información Personal"
+  },
+  {
+    "phrase": "I have a dog.",
+    "translation": "Tengo un perro.",
+    "category": "Información Personal"
+  },
+  {
+    "phrase": "I’m hungry.",
+    "translation": "Tengo hambre.",
+    "category": "Información Personal"
+  },
+  {
+    "phrase": "I’m thirsty.",
+    "translation": "Tengo sed.",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "I’m tired.",
+    "translation": "Estoy cansado/a.",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "I’m bored.",
+    "translation": "Estoy aburrido/a.",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "What time is it?",
+    "translation": "¿Qué hora es?",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "Where is the bathroom?",
+    "translation": "¿Dónde está el baño?",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "How much is this?",
+    "translation": "¿Cuánto cuesta esto?",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "I’m looking for...",
+    "translation": "Estoy buscando...",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "Can you help me?",
+    "translation": "¿Me puedes ayudar?",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "I need help.",
+    "translation": "Necesito ayuda.",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "I’m lost.",
+    "translation": "Estoy perdido/a.",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "Wait!",
+    "translation": "¡Espera!",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "Let’s go.",
+    "translation": "Vámonos / Vamos.",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "Stop.",
+    "translation": "Detente / Para.",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "Look.",
+    "translation": "Mira.",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "Listen.",
+    "translation": "Escucha.",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "Hurry up!",
+    "translation": "¡Date prisa!",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "I’m coming.",
+    "translation": "Ya voy.",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "Never mind.",
+    "translation": "No importa / Olvídalo.",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "Sounds good.",
+    "translation": "Suena bien.",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "Are you sure?",
+    "translation": "¿Estás seguro/a?",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "I’m sure.",
+    "translation": "Estoy seguro/a.",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "I’m not sure.",
+    "translation": "No estoy seguro/a.",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "Good job!",
+    "translation": "¡Buen trabajo!",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "Well done.",
+    "translation": "Bien hecho.",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "Don’t give up.",
+    "translation": "No te rindas.",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "Keep it up.",
+    "translation": "Sigue así.",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "I have a question.",
+    "translation": "Tengo una pregunta.",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "I forgot.",
+    "translation": "Se me olvidó.",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "I remember.",
+    "translation": "Recuerdo.",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "Have a nice day!",
+    "translation": "¡Que tengas un buen día!",
+    "category": "Situaciones Diarias"
+  },
+  {
+    "phrase": "Where is the airport?",
+    "translation": " ¿Dónde está el aeropuerto?",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "I’d like a ticket to...",
+    "translation": "Me gustaría un boleto para...",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "One-way or round trip?",
+    "translation": "Solo ida o ida y vuelta?",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "What time does the train leave?",
+    "translation": "¿A qué hora sale el tren?",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "Is this seat taken?",
+    "translation": "¿Está ocupado este asiento?",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "Where is the bus station?",
+    "translation": "¿Dónde está la estación de autobuses?",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "Does this bus go to the city center?",
+    "translation": "¿Este bus va al centro?",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "Please tell me where to get off.",
+    "translation": "Por favor, dime dónde bajarme.",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "I need a taxi.",
+    "translation": "Necesito un taxi.",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "To this address, please.",
+    "translation": "A esta dirección, por favor.",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "How much is the fare?",
+    "translation": "¿Cuánto es la tarifa?",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "Keep the change.",
+    "translation": "Quédese con el cambio.",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "Is it far from here?",
+    "translation": "¿Está lejos de aquí?",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "Is it within walking distance?",
+    "translation": "¿Se puede llegar caminando?",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "I have a reservation.",
+    "translation": "Tengo una reservación.",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "What time is check-in?",
+    "translation": "¿A qué hora es el ingreso (al hotel)?",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "I’d like to check out.",
+    "translation": "Me gustaría dejar la habitación.",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "Where is the elevator?",
+    "translation": "¿Dónde está el ascensor?",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "Can I leave my luggage here?",
+    "translation": "¿Puedo dejar mi equipaje aquí?",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "Is there Wi-Fi here?",
+    "translation": "¿Hay Wi-Fi aquí?",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "What is the password?",
+    "translation": "¿Cuál es la contraseña?",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "The air conditioning doesn’t work.",
+    "translation": "El aire acondicionado no funciona.",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "Can I have an extra towel?",
+    "translation": "¿Me puede dar una toalla extra?",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "Where can I rent a car?",
+    "translation": "¿Dónde puedo rentar un auto?",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "I’m here on vacation.",
+    "translation": "Estoy aquí de vacaciones.",
+    "category": "Viajes y Transporte"
+  },
+  {
+    "phrase": "A table for two, please.",
+    "translation": "Una mesa para dos, por favor.",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "Can I see the menu?",
+    "translation": "¿Puedo ver el menú?",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "Are you ready to order?",
+    "translation": "¿Están listos para ordenar?",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "What do you recommend?",
+    "translation": "¿Qué recomienda?",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "What is the soup of the day?",
+    "translation": "¿Cuál es la sopa del día?",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "I’ll have the same.",
+    "translation": "Comeré lo mismo.",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "I’m allergic to...",
+    "translation": "Soy alérgico/a a...",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "Does this have meat?",
+    "translation": "¿Esto tiene carne?",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "I’m a vegetarian.",
+    "translation": "Soy vegetariano/a.",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "Water, please.",
+    "translation": "Agua, por favor.",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "Sparkling or still?",
+    "translation": "¿Con gas o sin gas?",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "Without ice.",
+    "translation": "Sin hielo.",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "Enjoy your meal!",
+    "translation": "¡Buen provecho!",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "This is delicious.",
+    "translation": "Esto está delicioso.",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "This is cold.",
+    "translation": "Esto está frío.",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "It’s too spicy.",
+    "translation": "Está demasiado picante.",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "Can I have some salt?",
+    "translation": "¿Me da un poco de sal?",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "Anything else?",
+    "translation": "¿Algo más?",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "Nothing else, thanks.",
+    "translation": "Nada más, gracias.",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "The check, please.",
+    "translation": "La cuenta, por favor.",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "Can I pay by card?",
+    "translation": "¿Puedo pagar con tarjeta?",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "Do you take cash?",
+    "translation": "¿Aceptan efectivo?",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "Is service included?",
+    "translation": "¿La propina está incluida?",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "Separate checks, please.",
+    "translation": "Cuentas separadas, por favor.",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "To go, please.",
+    "translation": "Para llevar, por favor.",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "I’d like a coffee.",
+    "translation": "Quisiera un café.",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "With sugar/milk.",
+    "translation": "Con azúcar/leche.",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "Cheers!",
+    "translation": "¡Salud!",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "I’m full.",
+    "translation": "Estoy lleno/satisfecho.",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "Where are the restrooms?",
+    "translation": "¿Dónde están los baños?",
+    "category": "En el Restaurante"
+  },
+  {
+    "phrase": "I’m just looking.",
+    "translation": "Solo estoy mirando.",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "How much does this cost?",
+    "translation": "¿Cuánto cuesta esto?",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "Do you have this in blue?",
+    "translation": "¿Tiene esto en azul?",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "Do you have a smaller size?",
+    "translation": "¿Tiene una talla más pequeña?",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "Do you have a larger size?",
+    "translation": "¿Tiene una talla más grande?",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "Where is the fitting room?",
+    "translation": "¿Dónde está el probador?",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "It doesn’t fit me.",
+    "translation": "No me queda bien.",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "It’s too expensive.",
+    "translation": "Es muy caro.",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "Is there a discount?",
+    "translation": "¿Hay algún descuento?",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "I’ll take it.",
+    "translation": "Me lo llevo.",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "Where is the cashier?",
+    "translation": "¿Dónde está el cajero?",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "Can I have a receipt?",
+    "translation": "¿Me da un recibo?",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "Can I have a bag?",
+    "translation": "¿Me da una bolsa?",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "I’d like to return this.",
+    "translation": "Me gustaría devolver esto.",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "Do you have a warranty?",
+    "translation": "¿Tienen garantía?",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "Where is the pharmacy?",
+    "translation": "¿Dónde está la farmacia?",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "I need some aspirin.",
+    "translation": "Necesito aspirinas.",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "Where is the supermarket?",
+    "translation": "¿Dónde está el supermercado?",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "Can I pay with this?",
+    "translation": "¿Puedo pagar con esto?",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "Are you open on Sundays?",
+    "translation": "¿Abren los domingos?",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "What time do you close?",
+    "translation": "¿A qué hora cierran?",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "What time do you open?",
+    "translation": "¿A qué hora abren?",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "Sold out.",
+    "translation": "Agotado.",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "Buy one get one free.",
+    "translation": "Compra uno y llévate otro gratis.",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "On sale.",
+    "translation": "En oferta.",
+    "category": "De Compras"
+  },
+  {
+    "phrase": "Excuse me, I’m lost.",
+    "translation": "Disculpe, estoy perdido/a.",
+    "category": "Direcciones"
+  },
+  {
+    "phrase": "Can you show me on the map?",
+    "translation": "¿Puede mostrármelo en el mapa?",
+    "category": "Direcciones"
+  },
+  {
+    "phrase": "Turn left.",
+    "translation": "Gire a la izquierda.",
+    "category": "Direcciones"
+  },
+  {
+    "phrase": "Turn right.",
+    "translation": "Gire a la derecha.",
+    "category": "Direcciones"
+  },
+  {
+    "phrase": "Go straight ahead.",
+    "translation": "Siga todo recto.",
+    "category": "Direcciones"
+  },
+  {
+    "phrase": "Go past the park.",
+    "translation": "Pase el parque.",
+    "category": "Direcciones"
+  },
+  {
+    "phrase": "On the corner.",
+    "translation": "En la esquina.",
+    "category": "Direcciones"
+  },
+  {
+    "phrase": "At the traffic light.",
+    "translation": "En el semáforo.",
+    "category": "Direcciones"
+  },
+  {
+    "phrase": "Behind the building.",
+    "translation": "Detrás del edificio.",
+    "category": "Direcciones"
+  },
+  {
+    "phrase": "In front of the bank.",
+    "translation": "Frente al banco.",
+    "category": "Direcciones"
+  },
+  {
+    "phrase": "Next to the museum.",
+    "translation": "Al lado del museo.",
+    "category": "Direcciones"
+  },
+  {
+    "phrase": "Across from the library.",
+    "translation": "Frente a la biblioteca (cruzando).",
+    "category": "Direcciones"
+  },
+  {
+    "phrase": "Keep going for two blocks.",
+    "translation": "Siga por dos cuadras.",
+    "category": "Direcciones"
+  },
+  {
+    "phrase": "You can’t miss it.",
+    "translation": "No tiene pérdida (no puede no verlo).",
+    "category": "Direcciones"
+  },
+  {
+    "phrase": "It’s on the left.",
+    "translation": "Está a la izquierda.",
+    "category": "Direcciones"
+  },
+  {
+    "phrase": "It’s on the right.",
+    "translation": "Está a la derecha.",
+    "category": "Direcciones"
+  },
+  {
+    "phrase": "Is there a bank nearby?",
+    "translation": "¿Hay un banco cerca?",
+    "category": "Direcciones"
+  },
+  {
+    "phrase": "How do I get to...?",
+    "translation": "¿Cómo llego a...?",
+    "category": "Direcciones"
+  },
+  {
+    "phrase": "Is it this way?",
+    "translation": "¿Es por aquí?",
+    "category": "Direcciones"
+  },
+  {
+    "phrase": "Thank you for your help!",
+    "translation": "¡Gracias por su ayuda!",
+    "category": "Direcciones"
+  },
+  {
+    "phrase": "What’s the weather like?",
+    "translation": "¿Cómo está el clima?",
+    "category": "El Tiempo y la Hora"
+  },
+  {
+    "phrase": "It’s sunny.",
+    "translation": "Está soleado.",
+    "category": "El Tiempo y la Hora"
+  },
+  {
+    "phrase": "It’s raining.",
+    "translation": "Está lloviendo.",
+    "category": "El Tiempo y la Hora"
+  },
+  {
+    "phrase": "It’s freezing.",
+    "translation": "Está helando.",
+    "category": "El Tiempo y la Hora"
+  },
+  {
+    "phrase": "It’s very hot today.",
+    "translation": "Hace mucho calor hoy.",
+    "category": "El Tiempo y la Hora"
+  },
+  {
+    "phrase": "It’s cloudy.",
+    "translation": "Está nublado.",
+    "category": "El Tiempo y la Hora"
+  },
+  {
+    "phrase": "It looks like rain.",
+    "translation": "Parece que va a llover.",
+    "category": "El Tiempo y la Hora"
+  },
+  {
+    "phrase": "It’s windy.",
+    "translation": "Hace viento.",
+    "category": "El Tiempo y la Hora"
+  },
+  {
+    "phrase": "What time shall we meet?",
+    "translation": "¿A qué hora nos vemos?",
+    "category": "El Tiempo y la Hora"
+  },
+  {
+    "phrase": "I’ll be there in ten minutes.",
+    "translation": "Estaré allí en diez minutos.",
+    "category": "El Tiempo y la Hora"
+  },
+  {
+    "phrase": "You’re early.",
+    "translation": "Llegaste temprano.",
+    "category": "El Tiempo y la Hora"
+  },
+  {
+    "phrase": "I’m late.",
+    "translation": "Llego tarde.",
+    "category": "El Tiempo y la Hora"
+  },
+  {
+    "phrase": "Sorry for being late.",
+    "translation": "Perdón por la demora.",
+    "category": "El Tiempo y la Hora"
+  },
+  {
+    "phrase": "Is it too late?",
+    "translation": "¿Es muy tarde?",
+    "category": "El Tiempo y la Hora"
+  },
+  {
+    "phrase": "It’s about time!",
+    "translation": "¡Ya era hora!",
+    "category": "El Tiempo y la Hora"
+  },
+  {
+    "phrase": "How is work going?",
+    "translation": "¿Cómo va el trabajo?",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "I’m very busy today.",
+    "translation": "Estoy muy ocupado hoy.",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "Can you help me with this?",
+    "translation": "¿Puedes ayudarme con esto?",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "I have a meeting at 3 PM.",
+    "translation": "Tengo una reunión a las 3 PM.",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "Let’s schedule a call.",
+    "translation": "Programemos una llamada.",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "I’ll send you an email.",
+    "translation": "Te enviaré un correo electrónico.",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "Did you get my message?",
+    "translation": "¿Recibiste mi mensaje?",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "I’m working on it.",
+    "translation": "Estoy trabajando en ello.",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "When is the deadline?",
+    "translation": "¿Cuándo es la fecha límite?",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "I’m on my lunch break.",
+    "translation": "Estoy en mi hora de almuerzo.",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "I’ll be back in an hour.",
+    "translation": "Volveré en una hora.",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "Could you sign here?",
+    "translation": "¿Podría firmar aquí?",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "Who is in charge here?",
+    "translation": "¿Quién está a cargo aquí?",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "I need a day off.",
+    "translation": "Necesito un día libre.",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "He’s in a meeting.",
+    "translation": "Él está en una reunión.",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "The printer is broken.",
+    "translation": "La impresora está rota.",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "I’m out of the office.",
+    "translation": "Estoy fuera de la oficina.",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "Can we talk in private?",
+    "translation": "¿Podemos hablar en privado?",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "Good luck!",
+    "translation": "¡Buena suerte!",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "Well done on the project.",
+    "translation": "Bien hecho con el proyecto.",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "I agree with you.",
+    "translation": "Estoy de acuerdo contigo.",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "I disagree.",
+    "translation": "No estoy de acuerdo.",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "That’s a good point.",
+    "translation": "Ese es un buen punto.",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "Let’s take a break.",
+    "translation": "Tomemos un descanso.",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "I’m finished.",
+    "translation": "He terminado.",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "What do you do for a living?",
+    "translation": "¿En qué trabajas?",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "I’m looking for a job.",
+    "translation": "Estoy buscando trabajo.",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "I’m self-employed.",
+    "translation": "Trabajo por cuenta propia.",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "I’ve been promoted.",
+    "translation": "Me han ascendido.",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "It’s a deal.",
+    "translation": "Trato hecho.",
+    "category": "En el Trabajo"
+  },
+  {
+    "phrase": "Hello, this is [nombre] speaking.",
+    "translation": "Hola, habla [nombre].",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "Who is calling?",
+    "translation": "¿Quién llama?",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "Can I speak to [nombre]?",
+    "translation": "¿Puedo hablar con [nombre]?",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "Hold on a moment, please.",
+    "translation": "Espere un momento, por favor.",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "The line is busy.",
+    "translation": "La línea está ocupada.",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "I can’t hear you very well.",
+    "translation": "No te escucho muy bien.",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "You’re breaking up.",
+    "translation": "Se está cortando (la voz).",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "I’ll call you back.",
+    "translation": "Te llamo de vuelta.",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "My battery is low.",
+    "translation": "Mi batería está baja.",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "I have no signal.",
+    "translation": "No tengo señal.",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "Can I borrow your charger?",
+    "translation": "¿Me prestas tu cargador?",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "I’ll text you.",
+    "translation": "Te enviaré un mensaje de texto.",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "Send me the link.",
+    "translation": "Envíame el enlace.",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "Is there a computer I can use?",
+    "translation": "¿Hay alguna computadora que pueda usar?",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "I forgot my password.",
+    "translation": "Olvidé mi contraseña.",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "The internet is slow.",
+    "translation": "El internet está lento.",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "Can you download this?",
+    "translation": "¿Puedes descargar esto?",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "It’s not working.",
+    "translation": "No está funcionando.",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "Turn it on.",
+    "translation": "Enciéndelo.",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "Turn it off.",
+    "translation": "Apágalo.",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "Turn up the volume.",
+    "translation": "Sube el volumen.",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "Turn down the volume.",
+    "translation": "Baja el volumen.",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "Press the button.",
+    "translation": "Presiona el botón.",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "Save the file.",
+    "translation": "Guarda el archivo.",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "Check your email.",
+    "translation": "Revisa tu correo.",
+    "category": "Teléfono y Tecnología"
+  },
+  {
+    "phrase": "How do you feel?",
+    "translation": "¿Cómo te sientes?",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "I don’t feel well.",
+    "translation": "No me siento bien.",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "I feel sick.",
+    "translation": "Me siento enfermo/a.",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "I have a headache.",
+    "translation": "Tengo dolor de cabeza.",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "I have a cold.",
+    "translation": "Tengo un resfriado.",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "I have a fever.",
+    "translation": "Tengo fiebre.",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "I have a cough.",
+    "translation": "Tengo tos.",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "My throat hurts.",
+    "translation": "Me duele la garganta.",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "I need to see a doctor.",
+    "translation": "Necesito ver a un médico.",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "Call an ambulance!",
+    "translation": "¡Llamen a una ambulancia!",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "It’s an emergency.",
+    "translation": "Es una emergencia.",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "Are you hurt?",
+    "translation": "¿Estás herido?",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "Where does it hurt?",
+    "translation": "¿Dónde te duele?",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "I have a stomach ache.",
+    "translation": "Tengo dolor de estómago.",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "I’m dizzy.",
+    "translation": "Estoy mareado/a.",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "I need some medicine.",
+    "translation": "Necesito algo de medicina.",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "Take a deep breath.",
+    "translation": "Respira profundo.",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "I need to rest.",
+    "translation": "Necesito descansar.",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "Get well soon!",
+    "translation": "¡Que te mejores pronto!",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "Bless you!",
+    "translation": "¡Salud! (cuando alguien estornuda).",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "Help!",
+    "translation": "¡Ayuda!",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "Call the police!",
+    "translation": "¡Llamen a la policía!",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "I’ve been robbed.",
+    "translation": "Me han robado.",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "I lost my wallet.",
+    "translation": "Perdí mi billetera.",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "I lost my passport.",
+    "translation": "Perdí mi pasaporte.",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "Watch out!",
+    "translation": "¡Cuidado!",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "Be careful.",
+    "translation": "Ten cuidado.",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "Fire!",
+    "translation": "¡Fuego!",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "Is everyone okay?",
+    "translation": "¿Están todos bien?",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "Everything is going to be fine.",
+    "translation": "Todo va a estar bien.",
+    "category": "Salud y Emergencias"
+  },
+  {
+    "phrase": "I’m happy.",
+    "translation": "Estoy feliz.",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "I’m sad.",
+    "translation": "Estoy triste.",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "I’m excited!",
+    "translation": "¡Estoy emocionado/a!",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "I’m nervous.",
+    "translation": "Estoy nervioso/a.",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "I’m angry.",
+    "translation": "Estoy enojado/a.",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "I’m worried.",
+    "translation": "Estoy preocupado/a.",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "I’m surprised.",
+    "translation": "Estoy sorprendido/a.",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "I’m embarrassed.",
+    "translation": "Estoy avergonzado/a (por algo social).",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "I’m shy.",
+    "translation": "Soy tímido/a.",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "I’m confused.",
+    "translation": "Estoy confundido/a.",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "I’m proud of you.",
+    "translation": "Estoy orgulloso/a de ti.",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "I’m scared.",
+    "translation": "Tengo miedo.",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "I feel lonely.",
+    "translation": "Me siento solo/a.",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "I’m exhausted.",
+    "translation": "Estoy agotado/a.",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "I’m annoyed.",
+    "translation": "Estoy molesto/a / irritado/a.",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "I’m calm.",
+    "translation": "Estoy tranquilo/a.",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "I’m jealous.",
+    "translation": "Tengo celos / envidia.",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "Don’t be upset.",
+    "translation": "No te disgustes / No te pongas así.",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "Cheer up!",
+    "translation": "¡Anímate!",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "Calm down.",
+    "translation": "Cálmate.",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "Are you okay?",
+    "translation": "¿Estás bien?",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "What’s wrong?",
+    "translation": "¿Qué pasa? / ¿Qué tienes?",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "Is everything alright?",
+    "translation": "¿Está todo bien?",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "I’m in a good mood.",
+    "translation": "Estoy de buen humor.",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "I’m in a bad mood.",
+    "translation": "Estoy de mal humor.",
+    "category": "Sentimientos y Estados de Ánimo"
+  },
+  {
+    "phrase": "I think that...",
+    "translation": "Pienso que...",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "In my opinion...",
+    "translation": "En mi opinión...",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "I believe so.",
+    "translation": "Creo que sí.",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "I don’t mind.",
+    "translation": "No me importa / No me molesta.",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "It doesn’t matter.",
+    "translation": "No importa.",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "It’s up to you.",
+    "translation": "Depende de ti / Tú decides.",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "I don’t care.",
+    "translation": "No me importa (más informal/brusco).",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "That’s true.",
+    "translation": "Eso es verdad.",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "That’s not true.",
+    "translation": "Eso no es verdad.",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "I love it.",
+    "translation": "Me encanta.",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "I hate it.",
+    "translation": "Lo odio.",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "It’s interesting.",
+    "translation": "Es interesante.",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "It’s boring.",
+    "translation": "Es aburrido.",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "It’s amazing!",
+    "translation": "¡Es increíble!",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "It’s awful.",
+    "translation": "Es horrible / espantoso.",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "I prefer...",
+    "translation": "Prefiero...",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "I’d rather...",
+    "translation": "Preferiría...",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "It’s worth it.",
+    "translation": "Vale la pena.",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "It’s a waste of time.",
+    "translation": "Es una pérdida de tiempo.",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "What’s your favorite...?",
+    "translation": "¿Cuál es tu... favorito/a?",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "I’m interested in...",
+    "translation": "Me interesa...",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "I’m not interested.",
+    "translation": "No me interesa.",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "That’s a great idea!",
+    "translation": "¡Esa es una gran idea!",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "I’m not sure about that.",
+    "translation": "No estoy seguro de eso.",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "You’re right.",
+    "translation": "Tienes razón.",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "You’re wrong.",
+    "translation": "Estás equivocado/a.",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "I agree completely.",
+    "translation": "Estoy totalmente de acuerdo.",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "That makes sense.",
+    "translation": "Eso tiene sentido.",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "It depends.",
+    "translation": "Depende.",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "I guess so.",
+    "translation": "Supongo que sí.",
+    "category": "Expresando Opiniones y Gustos"
+  },
+  {
+    "phrase": "He is tall.",
+    "translation": "Él es alto.",
+    "category": "Describiendo Personas"
+  },
+  {
+    "phrase": "She is short.",
+    "translation": "Ella es baja.",
+    "category": "Describiendo Personas"
+  },
+  {
+    "phrase": "They are friendly.",
+    "translation": "Ellos son amigables.",
+    "category": "Describiendo Personas"
+  },
+  {
+    "phrase": "He is very kind.",
+    "translation": "Él es muy amable.",
+    "category": "Describiendo Personas"
+  },
+  {
+    "phrase": "She is beautiful.",
+    "translation": "Ella es hermosa.",
+    "category": "Describiendo Personas"
+  },
+  {
+    "phrase": "He is handsome.",
+    "translation": "Él es guapo.",
+    "category": "Describiendo Personas"
+  },
+  {
+    "phrase": "They are funny.",
+    "translation": "Ellos son divertidos.",
+    "category": "Describiendo Personas"
+  },
+  {
+    "phrase": "He is serious.",
+    "translation": "Él es serio.",
+    "category": "Describiendo Personas"
+  },
+  {
+    "phrase": "She is smart.",
+    "translation": "Ella es inteligente.",
+    "category": "Describiendo Personas"
+  },
+  {
+    "phrase": "He is hardworking.",
+    "translation": "Él es trabajador.",
+    "category": "Describiendo Personas"
+  },
+  {
+    "phrase": "She is lazy.",
+    "translation": "Ella es perezosa.",
+    "category": "Describiendo Personas"
+  },
+  {
+    "phrase": "He is quiet.",
+    "translation": "Él es callado.",
+    "category": "Describiendo Personas"
+  },
+  {
+    "phrase": "She is outgoing.",
+    "translation": "Ella es extrovertida.",
+    "category": "Describiendo Personas"
+  },
+  {
+    "phrase": "He is young.",
+    "translation": "Él es joven.",
+    "category": "Describiendo Personas"
+  },
+  {
+    "phrase": "They are old.",
+    "translation": "Ellos son viejos.",
+    "category": "Describiendo Personas"
+  },
+  {
+    "phrase": "What does he look like?",
+    "translation": "¿Cómo es él (físicamente)?",
+    "category": "Describiendo Personas"
+  },
+  {
+    "phrase": "What is she like?",
+    "translation": "¿Cómo es ella (personalidad)?",
+    "category": "Describiendo Personas"
+  },
+  {
+    "phrase": "He has brown eyes.",
+    "translation": "Él tiene ojos cafés.",
+    "category": "Describiendo Personas"
+  },
+  {
+    "phrase": "She has long hair.",
+    "translation": "Ella tiene el cabello largo.",
+    "category": "Describiendo Personas"
+  },
+  {
+    "phrase": "He wears glasses.",
+    "translation": "Él usa lentes.",
+    "category": "Describiendo Personas"
+  },
+  {
+    "phrase": "Who is that?",
+    "translation": "¿Quién es ese/a?",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "He is my friend.",
+    "translation": "Él es mi amigo.",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "She is my coworker.",
+    "translation": "Ella es mi compañera de trabajo.",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "They are my neighbors.",
+    "translation": "Ellos son mis vecinos.",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "Do you have a boyfriend/girlfriend?",
+    "translation": "¿Tienes novio/novia?",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "We are just friends.",
+    "translation": "Solo somos amigos.",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "I’m here with my family.",
+    "translation": "Estoy aquí con mi familia.",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "How do you know him?",
+    "translation": "¿Cómo lo conoces?",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "We went to school together.",
+    "translation": "Fuimos a la escuela juntos.",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "I’ve known her for years.",
+    "translation": "La conozco hace años.",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "Would you like to go out?",
+    "translation": "¿Te gustaría salir?",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "Let’s hang out.",
+    "translation": "Vamos a pasar el rato / Salgamos.",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "Are you free tonight?",
+    "translation": "¿Estás libre esta noche?",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "I have plans.",
+    "translation": "Tengo planes.",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "I’m busy.",
+    "translation": "Estoy ocupado/a.",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "Can I bring a friend?",
+    "translation": "¿Puedo llevar a un amigo?",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "Nice to see you again.",
+    "translation": "Qué bueno verte de nuevo.",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "Keep in touch.",
+    "translation": "Mantente en contacto.",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "Call me sometime.",
+    "translation": "Llámame en algún momento.",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "Give me your number.",
+    "translation": "Dame tu número.",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "It was nice talking to you.",
+    "translation": "Fue un gusto hablar contigo.",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "I had a great time.",
+    "translation": "La pasé muy bien.",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "Tell him I said hello.",
+    "translation": "Dile que le mando saludos.",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "I’ll see you soon.",
+    "translation": "Te veré pronto.",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "Take it easy.",
+    "translation": "Tómatelo con calma / Nos vemos.",
+    "category": "Relaciones y Vida Social"
+  },
+  {
+    "phrase": "I'm home!",
+    "translation": "¡Ya estoy en casa!",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "Where are my keys?",
+    "translation": "¿Dónde están mis llaves?",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "Can you open the window?",
+    "translation": "¿Puedes abrir la ventana?",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "Close the door, please.",
+    "translation": "Cierra la puerta, por favor.",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "Is the heater on?",
+    "translation": "¿Está encendida la calefacción?",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "Turn off the lights.",
+    "translation": "Apaga las luces.",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "I need to charge my phone.",
+    "translation": "Necesito cargar mi teléfono.",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "Where is the remote control?",
+    "translation": "¿Dónde está el control remoto?",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "The Wi-Fi is down.",
+    "translation": "El Wi-Fi no funciona / se cayó.",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "I’m going to take a shower.",
+    "translation": "Voy a tomar una ducha.",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "Where is the towel?",
+    "translation": "¿Dónde está la toalla?",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "I’m going to bed.",
+    "translation": "Me voy a la cama.",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "Did you lock the door?",
+    "translation": "¿Cerraste la puerta con llave?",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "I need to wake up at 7 AM.",
+    "translation": "Necesito despertarme a las 7 AM.",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "Set the alarm.",
+    "translation": "Pon la alarma.",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "I slept like a log.",
+    "translation": "Dormí como un tronco.",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "I couldn’t sleep.",
+    "translation": "No pude dormir.",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "The house is a mess.",
+    "translation": "La casa es un desastre.",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "I’m looking for my glasses.",
+    "translation": "Estoy buscando mis lentes.",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "Can you help me clean up?",
+    "translation": "¿Me ayudas a limpiar?",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "Make your bed.",
+    "translation": "Haz tu cama.",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "I’ll be in my room.",
+    "translation": "Estaré en mi cuarto.",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "Is there any mail for me?",
+    "translation": "¿Hay correo para mí?",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "The trash is full.",
+    "translation": "La basura está llena.",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "I need to do laundry.",
+    "translation": "Necesito lavar la ropa.",
+    "category": "En Casa"
+  },
+  {
+    "phrase": "What’s for dinner?",
+    "translation": "¿Qué hay de cena?",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "I’m cooking tonight.",
+    "translation": "Yo cocino esta noche.",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "Can you set the table?",
+    "translation": "¿Puedes poner la mesa?",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "I’m hungry as a wolf.",
+    "translation": "Tengo un hambre de lobo.",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "Is it ready yet?",
+    "translation": "¿Ya está listo?",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "Be careful, it’s hot.",
+    "translation": "Ten cuidado, está caliente.",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "Pass me the salt, please.",
+    "translation": "Pásame la sal, por favor.",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "This smells good.",
+    "translation": "Esto huele bien.",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "Wash your hands.",
+    "translation": "Lávate las manos.",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "I’ll wash the dishes.",
+    "translation": "Yo lavaré los platos.",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "Do we have any milk?",
+    "translation": "¿Tenemos leche?",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "We are out of eggs.",
+    "translation": "Se nos acabaron los huevos.",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "I need to go grocery shopping.",
+    "translation": "Necesito ir a comprar víveres.",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "Put it in the fridge.",
+    "translation": "Ponlo en el refrigerador.",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "Help yourself.",
+    "translation": "Sírvete tú mismo.",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "Would you like some more?",
+    "translation": "¿Te gustaría un poco más?",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "I’m full, thank you.",
+    "translation": "Estoy satisfecho/lleno, gracias.",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "It tastes delicious.",
+    "translation": "Sabe delicioso.",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "It’s too salty.",
+    "translation": "Está demasiado salado.",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "It’s too sweet.",
+    "translation": "Está demasiado dulce.",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "Can I have a glass of water?",
+    "translation": "¿Me das un vaso de agua?",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "Heat it up in the microwave.",
+    "translation": "Caliéntalo en el microondas.",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "Where are the forks?",
+    "translation": "¿Dónde están los tenedores?",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "Clean the counter.",
+    "translation": "Limpia el mostrador/encimera.",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "Do you want tea or coffee?",
+    "translation": "¿Quieres té o café?",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "I’ll have a snack.",
+    "translation": "Tomaré un bocadillo/merienda.",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "The water is boiling.",
+    "translation": "El agua está hirviendo.",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "Slice the bread.",
+    "translation": "Rebana el pan.",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "It’s my favorite dish.",
+    "translation": "Es mi plato favorito.",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "Let’s eat out.",
+    "translation": "Comamos fuera.",
+    "category": "En la Cocina y Comida"
+  },
+  {
+    "phrase": "What do you do for fun?",
+    "translation": "¿Qué haces para divertirte?",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "I like listening to music.",
+    "translation": "Me gusta escuchar música.",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "Do you play any instruments?",
+    "translation": "¿Tocas algún instrumento?",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "I play the guitar.",
+    "translation": "Toco la guitarra.",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "I enjoy reading books.",
+    "translation": "Disfruto leer libros.",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "What kind of movies do you like?",
+    "translation": "¿Qué tipo de películas te gustan?",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "I love watching series.",
+    "translation": "Me encanta ver series.",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "Let's go to the cinema.",
+    "translation": "Vamos al cine.",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "I’m a big fan of...",
+    "translation": "Soy un gran fan de...",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "Do you like sports?",
+    "translation": "¿Te gustan los deportes?",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "I go to the gym every day.",
+    "translation": "Voy al gimnasio todos los días.",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "I like to go for a run.",
+    "translation": "Me gusta salir a correr.",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "Do you play video games?",
+    "translation": "¿Juegas videojuegos?",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "I love traveling.",
+    "translation": "Me encanta viajar.",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "I’m learning to paint.",
+    "translation": "Estoy aprendiendo a pintar.",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "I like photography.",
+    "translation": "Me gusta la fotografía.",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "What’s your hobby?",
+    "translation": "¿Cuál es tu pasatiempo?",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "I’m interested in history.",
+    "translation": "Me interesa la historia.",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "Let’s go for a walk.",
+    "translation": "Vamos a caminar.",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "I’m just relaxing.",
+    "translation": "Solo estoy descansando/relajándome.",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "Do you want to play cards?",
+    "translation": "¿Quieres jugar a las cartas?",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "I enjoy gardening.",
+    "translation": "Disfruto la jardinería.",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "I’m bored, let's do something.",
+    "translation": "Estoy aburrido, hagamos algo.",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "That’s very entertaining.",
+    "translation": "Eso es muy entretenido.",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "I’m not into sports.",
+    "translation": "No me interesan los deportes.",
+    "category": "Hobbies y Tiempo Libre"
+  },
+  {
+    "phrase": "What’s happening?",
+    "translation": "¿Qué está pasando?",
+    "category": "Preguntas Frecuentes y Misceláneas"
+  },
+  {
+    "phrase": "What’s the matter?",
+    "translation": "¿Cuál es el problema?",
+    "category": "Preguntas Frecuentes y Misceláneas"
+  },
+  {
+    "phrase": "Is there anything else?",
+    "translation": "¿Hay algo más?",
+    "category": "Preguntas Frecuentes y Misceláneas"
+  },
+  {
+    "phrase": "Are you ready?",
+    "translation": "¿Estás listo?",
+    "category": "Preguntas Frecuentes y Misceláneas"
+  },
+  {
+    "phrase": "I’m almost ready.",
+    "translation": "Casi estoy listo.",
+    "category": "Preguntas Frecuentes y Misceláneas"
+  },
+  {
+    "phrase": "Wait for me.",
+    "translation": "Espérame.",
+    "category": "Preguntas Frecuentes y Misceláneas"
+  },
+  {
+    "phrase": "I’m in a hurry.",
+    "translation": "Tengo prisa.",
+    "category": "Preguntas Frecuentes y Misceláneas"
+  },
+  {
+    "phrase": "Take your time.",
+    "translation": "Tómate tu tiempo.",
+    "category": "Preguntas Frecuentes y Misceláneas"
+  },
+  {
+    "phrase": "It’s a secret.",
+    "translation": "Es un secreto.",
+    "category": "Preguntas Frecuentes y Misceláneas"
+  },
+  {
+    "phrase": "Don’t tell anyone.",
+    "translation": "No se lo digas a nadie.",
+    "category": "Preguntas Frecuentes y Misceláneas"
+  },
+  {
+    "phrase": "Can I trust you?",
+    "translation": "¿Puedo confiar en ti?",
+    "category": "Preguntas Frecuentes y Misceláneas"
+  },
+  {
+    "phrase": "I promise.",
+    "translation": "Lo prometo.",
+    "category": "Preguntas Frecuentes y Misceláneas"
+  },
+  {
+    "phrase": "I’m serious.",
+    "translation": "Hablo en serio.",
+    "category": "Preguntas Frecuentes y Misceláneas"
+  },
+  {
+    "phrase": "Are you joking?",
+    "translation": "¿Estás bromeando?",
+    "category": "Preguntas Frecuentes y Misceláneas"
+  },
+  {
+    "phrase": "It’s just a joke.",
+    "translation": "Es solo una broma.",
+    "category": "Preguntas Frecuentes y Misceláneas"
+  },
+  {
+    "phrase": "I don’t care at all.",
+    "translation": "No me importa en lo más mínimo.",
+    "category": "Preguntas Frecuentes y Misceláneas"
+  },
+  {
+    "phrase": "That’s enough.",
+    "translation": "Eso es suficiente.",
+    "category": "Preguntas Frecuentes y Misceláneas"
+  },
+  {
+    "phrase": "It’s too much.",
+    "translation": "Es demasiado.",
+    "category": "Preguntas Frecuentes y Misceláneas"
+  },
+  {
+    "phrase": "Believe me.",
+    "translation": "Créeme.",
+    "category": "Preguntas Frecuentes y Misceláneas"
+  },
+  {
+    "phrase": "Trust me.",
+    "translation": "Confía en mí.",
+    "category": "Preguntas Frecuentes y Misceláneas"
+  }
+]

@@ -10,4 +10,5 @@ export default [
   route("blog", "routes/blog/blogPage.tsx"),
   route("blog/:slug", "routes/blog/blog.tsx"),
   route("comunidad", "routes/community.tsx"),
+  route("1000-frases-en-ingles", "routes/english-phrases.tsx"),
 ] satisfies RouteConfig;
