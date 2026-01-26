@@ -148,10 +148,10 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="#"
+                  href="/1000-frases-en-ingles"
                   className="text-gray-300 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
                 >
-                  Guía de aprendizaje
+                  1000 frases en inglés
                 </a>
               </li>
               <li>
