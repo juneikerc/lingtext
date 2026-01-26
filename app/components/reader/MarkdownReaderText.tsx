@@ -323,7 +323,7 @@ export default function MarkdownReaderText({
     <div className="relative">
       {/* Indicador de modo de lectura */}
       <div className="absolute -top-6 left-0 right-0 flex justify-center">
-        <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800/50 rounded-full px-4 py-2 text-sm text-blue-700 dark:text-blue-300 font-medium flex items-center space-x-2">
+        <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800/50 rounded-full px-4 py-2 text-sm text-blue-700 dark:text-blue-300 font-medium flex items-center space-x-2 mt-8 z-10">
           <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
           <span>Haz clic en cualquier palabra para traducirla</span>
         </div>
