@@ -51,6 +51,17 @@ export default function EnglishPhrasesPage({
     await speak(phrase, settings.tts);
   }, []);
 
+  const slugify = useCallback((value: string) => {
+    return value
+      .toLowerCase()
+      .trim()
+      .normalize("NFKD")
+      .replace(/\p{Diacritic}/gu, "")
+      .replace(/[^a-z0-9\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-");
+  }, []);
+
   const onDownloadPdf = useCallback(async () => {
     const [{ default: jsPDF }, { default: autoTable }] = await Promise.all([
       import("jspdf"),
@@ -125,98 +136,150 @@ export default function EnglishPhrasesPage({
   }, [phrasesByCategory]);
 
   return (
-    <div className="bg-white dark:bg-gray-950">
-      <section className="relative overflow-hidden py-16 sm:py-20 bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
-        <div className="mx-auto max-w-5xl px-6">
-          <div className="flex flex-col gap-6">
-            <div className="inline-flex items-center gap-3 self-start rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300">
-              <span className="h-2 w-2 rounded-full bg-indigo-500" />
-              Practica con audio
-            </div>
-            <div className="space-y-4">
-              <h1 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
-                1000 Frases Más Usadas en Inglés
-              </h1>
-              <p className="text-base text-gray-600 dark:text-gray-400 sm:text-lg">
-                Explora las frases por categoría, escucha su pronunciación y
-                despliega la traducción cuando la necesites.
-              </p>
-            </div>
-            <div>
-              <Link
-                to="/"
-                className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-6 py-3 text-gray-700 transition-colors duration-200 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus-visible:ring-offset-gray-950"
-              >
-                Volver al inicio
-              </Link>
-            </div>
-            <div>
-              <button
-                type="button"
-                onClick={onDownloadPdf}
-                className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-6 py-3 font-medium text-white shadow-sm transition-colors duration-200 hover:bg-indigo-700 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
-              >
-                Descargar 1000 frases en ingles PDF
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {phrasesByCategory.map((group, index) => {
-        const sectionClass =
-          index % 2 === 0
-            ? "relative overflow-hidden py-16 sm:py-20 bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800"
-            : "relative overflow-hidden py-16 sm:py-20 bg-gray-50 dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800";
-
-        return (
-          <section key={group.category} className={sectionClass}>
-            <div className="mx-auto max-w-5xl px-6">
-              <div className="space-y-6">
-                <div className="space-y-2">
-                  <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 sm:text-2xl">
-                    {group.category}
-                  </h2>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    {group.phrases.length} frases disponibles
+    <>
+      <div id="top" className="bg-white dark:bg-gray-950">
+        <section className="relative overflow-hidden py-16 sm:py-20 bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
+          <div className="mx-auto max-w-5xl px-6">
+            <div className="flex flex-col gap-6">
+              <div className="inline-flex items-center gap-3 self-start rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300">
+                <span className="h-2 w-2 rounded-full bg-indigo-500" />
+                Practica con audio
+              </div>
+              <div className="space-y-4">
+                <h1 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
+                  1000 Frases Más Usadas en Inglés
+                </h1>
+                <div className="space-y-4 text-base text-gray-600 dark:text-gray-400 sm:text-lg">
+                  <p>
+                    Dominar el inglés va más allá de conocer vocabulario
+                    aislado. Las frases hechas y expresiones cotidianas son la
+                    clave para comunicarte con fluidez y naturalidad en
+                    situaciones reales.
+                  </p>
+                  <p>
+                    Esta colección de{" "}
+                    <strong className="font-semibold text-gray-900 dark:text-gray-100">
+                      1000 frases esenciales
+                    </strong>{" "}
+                    está organizada por categorías temáticas para facilitar tu
+                    aprendizaje progresivo.
                   </p>
                 </div>
+              </div>
+              <div>
+                <Link
+                  to="/"
+                  className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-6 py-3 text-gray-700 transition-colors duration-200 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus-visible:ring-offset-gray-950"
+                >
+                  Volver al inicio
+                </Link>
+              </div>
+              <div>
+                <button
+                  type="button"
+                  onClick={onDownloadPdf}
+                  className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-6 py-3 font-medium text-white shadow-sm transition-colors duration-200 hover:bg-indigo-700 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
+                >
+                  Descargar 1000 frases en ingles PDF
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
 
-                <div className="space-y-4">
-                  {group.phrases.map((phrase) => (
-                    <details
-                      key={`${group.category}-${phrase.phrase}`}
-                      className="group rounded-2xl border border-gray-200 bg-white shadow-sm transition duration-200 hover:border-gray-300 hover:shadow-md dark:border-gray-800 dark:bg-gray-900 dark:hover:border-gray-700"
+        <section className="relative overflow-hidden py-12 sm:py-16 bg-gray-50 dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
+          <div className="mx-auto max-w-5xl px-6">
+            <details className="rounded-2xl border border-gray-200 bg-white shadow-sm transition duration-200 hover:border-gray-300 hover:shadow-md dark:border-gray-800 dark:bg-gray-900 dark:hover:border-gray-700">
+              <summary className="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left text-lg font-semibold text-gray-900 dark:text-gray-100 sm:text-xl">
+                Tabla de contenidos
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                  {phrasesByCategory.length} categorías
+                </span>
+              </summary>
+              <div className="border-t border-gray-200 px-5 py-4 dark:border-gray-800">
+                <div className="flex flex-wrap gap-3">
+                  {phrasesByCategory.map((group) => (
+                    <a
+                      key={`toc-${group.category}`}
+                      href={`#${slugify(group.category)}`}
+                      className="inline-flex items-center px-4 py-2 text-sm font-medium bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-800 rounded-full transition-colors duration-200 hover:bg-gray-200 dark:hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
                     >
-                      <summary className="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left">
-                        <span className="text-base font-medium text-gray-900 dark:text-gray-100">
-                          {phrase.phrase}
-                        </span>
-                        <button
-                          type="button"
-                          className="inline-flex items-center justify-center rounded-xl bg-gray-50 p-3 text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 dark:focus-visible:ring-offset-gray-950"
-                          title="Reproducir frase"
-                          aria-label={`Reproducir frase: ${phrase.phrase}`}
-                          onClick={async (event) => {
-                            event.preventDefault();
-                            event.stopPropagation();
-                            await onSpeak(phrase.phrase);
-                          }}
-                        >
-                          ▶
-                        </button>
-                      </summary>
-                      <div className="border-t border-gray-200 px-5 py-4 text-gray-600 dark:border-gray-800 dark:text-gray-400">
-                        {phrase.translation}
-                      </div>
-                    </details>
+                      {group.category}
+                    </a>
                   ))}
                 </div>
               </div>
-            </div>
-          </section>
-        );
-      })}
-    </div>
+            </details>
+          </div>
+        </section>
+
+        {phrasesByCategory.map((group, index) => {
+          const sectionClass =
+            index % 2 === 0
+              ? "relative overflow-hidden py-16 sm:py-20 bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800"
+              : "relative overflow-hidden py-16 sm:py-20 bg-gray-50 dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800";
+
+          return (
+            <section
+              key={group.category}
+              id={slugify(group.category)}
+              className={sectionClass}
+            >
+              <div className="mx-auto max-w-5xl px-6">
+                <div className="space-y-6">
+                  <div className="space-y-2">
+                    <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 sm:text-2xl">
+                      {group.category}
+                    </h2>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                      {group.phrases.length} frases disponibles
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    {group.phrases.map((phrase) => (
+                      <details
+                        key={`${group.category}-${phrase.phrase}`}
+                        className="group rounded-2xl border border-gray-200 bg-white shadow-sm transition duration-200 hover:border-gray-300 hover:shadow-md dark:border-gray-800 dark:bg-gray-900 dark:hover:border-gray-700"
+                      >
+                        <summary className="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left">
+                          <span className="text-base font-medium text-gray-900 dark:text-gray-100">
+                            {phrase.phrase}
+                          </span>
+                          <button
+                            type="button"
+                            className="inline-flex items-center justify-center rounded-xl bg-gray-50 p-3 text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 dark:focus-visible:ring-offset-gray-950"
+                            title="Reproducir frase"
+                            aria-label={`Reproducir frase: ${phrase.phrase}`}
+                            onClick={async (event) => {
+                              event.preventDefault();
+                              event.stopPropagation();
+                              await onSpeak(phrase.phrase);
+                            }}
+                          >
+                            ▶
+                          </button>
+                        </summary>
+                        <div className="border-t border-gray-200 px-5 py-4 text-gray-600 dark:border-gray-800 dark:text-gray-400">
+                          {phrase.translation}
+                        </div>
+                      </details>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </section>
+          );
+        })}
+      </div>
+      <a
+        href="#top"
+        className="fixed bottom-6 right-6 inline-flex items-center justify-center rounded-xl bg-indigo-600 p-3 text-white shadow-sm transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
+        aria-label="Volver al inicio"
+        title="Volver al inicio"
+      >
+        ↑
+      </a>
+    </>
   );
 }
