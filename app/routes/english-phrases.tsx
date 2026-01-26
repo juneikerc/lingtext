@@ -51,6 +51,79 @@ export default function EnglishPhrasesPage({
     await speak(phrase, settings.tts);
   }, []);
 
+  const onDownloadPdf = useCallback(async () => {
+    const [{ default: jsPDF }, { default: autoTable }] = await Promise.all([
+      import("jspdf"),
+      import("jspdf-autotable"),
+    ]);
+
+    const doc = new jsPDF({ unit: "pt", format: "a4" });
+    const pageWidth = doc.internal.pageSize.getWidth();
+    let cursorY = 56;
+
+    const drawWatermark = () => {
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(14);
+      doc.setTextColor(79, 70, 229);
+      doc.text("LINGTEXT.ORG", pageWidth - 40, 30, { align: "right" });
+      doc.setTextColor(17, 24, 39);
+    };
+
+    drawWatermark();
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(18);
+    doc.text("1000 Frases Mas Usadas en Ingles", 40, cursorY);
+    cursorY += 18;
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(11);
+    doc.setTextColor(75, 85, 99);
+    doc.text("Frases con traduccion al espanol.", 40, cursorY);
+    cursorY += 18;
+
+    doc.setTextColor(17, 24, 39);
+
+    phrasesByCategory.forEach((group, index) => {
+      if (index > 0) cursorY += 8;
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(13);
+      doc.text(group.category, 40, cursorY);
+      cursorY += 8;
+
+      autoTable(doc, {
+        startY: cursorY,
+        head: [["Phrase", "Traduccion"]],
+        body: group.phrases.map((item) => [item.phrase, item.translation]),
+        margin: { left: 40, right: 40 },
+        styles: { font: "helvetica", fontSize: 10, cellPadding: 6 },
+        headStyles: {
+          fillColor: [249, 250, 251],
+          textColor: [17, 24, 39],
+          fontStyle: "bold",
+        },
+        bodyStyles: { textColor: [17, 24, 39] },
+        theme: "grid",
+        didDrawPage: () => {
+          drawWatermark();
+        },
+      });
+
+      const finalY = (doc as unknown as { lastAutoTable?: { finalY: number } })
+        .lastAutoTable?.finalY;
+      cursorY = (finalY ?? cursorY) + 12;
+
+      if (cursorY > doc.internal.pageSize.getHeight() - 80) {
+        doc.addPage();
+        drawWatermark();
+        cursorY = 48;
+      }
+    });
+
+    doc.save("1000-frases-en-ingles.pdf");
+  }, [phrasesByCategory]);
+
   return (
     <div className="bg-white dark:bg-gray-950">
       <section className="relative overflow-hidden py-16 sm:py-20 bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
@@ -77,6 +150,15 @@ export default function EnglishPhrasesPage({
                 Volver al inicio
               </Link>
             </div>
+            <div>
+              <button
+                type="button"
+                onClick={onDownloadPdf}
+                className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-6 py-3 font-medium text-white shadow-sm transition-colors duration-200 hover:bg-indigo-700 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
+              >
+                Descargar 1000 frases en ingles PDF
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -92,9 +174,9 @@ export default function EnglishPhrasesPage({
             <div className="mx-auto max-w-5xl px-6">
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 sm:text-2xl">
+                  <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 sm:text-2xl">
                     {group.category}
-                  </h3>
+                  </h2>
                   <p className="text-sm text-gray-500 dark:text-gray-400">
                     {group.phrases.length} frases disponibles
                   </p>

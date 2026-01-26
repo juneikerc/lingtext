@@ -2498,5 +2498,2505 @@
     "phrase": "Trust me.",
     "translation": "Confía en mí.",
     "category": "Preguntas Frecuentes y Misceláneas"
+  },
+  {
+    "phrase": "I need to withdraw some money.",
+    "translation": "Necesito retirar algo de dinero.",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "Where is the nearest ATM?",
+    "translation": "¿Dónde está el cajero automático más cercano?",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "Can I exchange money here?",
+    "translation": "¿Puedo cambiar dinero aquí?",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "What is the exchange rate?",
+    "translation": "¿Cuál es el tipo de cambio?",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "I’m broke.",
+    "translation": "Estoy sin blanca / No tengo dinero.",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "It’s a bit pricey.",
+    "translation": "Es un poco costoso.",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "That’s a bargain!",
+    "translation": "¡Eso es una ganga!",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "Can I pay in installments?",
+    "translation": "¿Puedo pagar en cuotas?",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "I’d like to open a bank account.",
+    "translation": "Me gustaría abrir una cuenta bancaria.",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "I lost my credit card.",
+    "translation": "Perdí mi tarjeta de crédito.",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "My card was declined.",
+    "translation": "Mi tarjeta fue rechazada.",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "What is my balance?",
+    "translation": "¿Cuál es mi saldo?",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "Is there a fee?",
+    "translation": "¿Hay alguna comisión/recargo?",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "I need a loan.",
+    "translation": "Necesito un préstamo.",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "I’m saving money for...",
+    "translation": "Estoy ahorrando dinero para...",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "It’s expensive to live here.",
+    "translation": "Es caro vivir aquí.",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "I’ll pay for it.",
+    "translation": "Yo lo pagaré.",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "Let’s split the bill.",
+    "translation": "Dividamos la cuenta.",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "It’s on me.",
+    "translation": "Yo invito / Corre por mi cuenta.",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "How much do I owe you?",
+    "translation": "¿Cuánto te debo?",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "You owe me five dollars.",
+    "translation": "Me debes cinco dólares.",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "I’ll pay you back tomorrow.",
+    "translation": "Te pagaré mañana.",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "Keep your receipt.",
+    "translation": "Guarda tu recibo.",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "Is it tax-free?",
+    "translation": "¿Es libre de impuestos?",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "I can’t afford it.",
+    "translation": "No puedo permitírmelo (económicamente).",
+    "category": "Dinero y Finanzas"
+  },
+  {
+    "phrase": "What are you doing this weekend?",
+    "translation": "¿Qué harás este fin de semana?",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "I’m going to...",
+    "translation": "Voy a...",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "I’m planning to...",
+    "translation": "Planeo... / Tengo planeado...",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "I’ll think about it.",
+    "translation": "Lo pensaré.",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "I’ll let you know.",
+    "translation": "Te dejaré saber / Te aviso.",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "Are you going to be free?",
+    "translation": "¿Vas a estar libre?",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "It depends on the weather.",
+    "translation": "Depende del clima.",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "I might go.",
+    "translation": "Puede que vaya.",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "I’m looking forward to it.",
+    "translation": "Lo espero con ansias.",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "We should do that.",
+    "translation": "Deberíamos hacer eso.",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "When will it be ready?",
+    "translation": "¿Cuándo estará listo?",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "It won’t take long.",
+    "translation": "No tomará mucho tiempo.",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "Wait and see.",
+    "translation": "Espera y verás.",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "That’s not going to happen.",
+    "translation": "Eso no va a pasar.",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "I’ll be right back.",
+    "translation": "Regreso enseguida.",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "Don’t be late.",
+    "translation": "No llegues tarde.",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "I’ll meet you there.",
+    "translation": "Te veré allá.",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "What time does it start?",
+    "translation": "¿A qué hora empieza?",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "What time does it end?",
+    "translation": "¿A qué hora termina?",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "Are you coming with me?",
+    "translation": "¿Vienes conmigo?",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "I’m not sure yet.",
+    "translation": "No estoy seguro aún.",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "I’ll try my best.",
+    "translation": "Haré lo mejor que pueda.",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "That would be great.",
+    "translation": "Eso sería genial.",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "Maybe another time.",
+    "translation": "Quizás en otra ocasión.",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "Count me in.",
+    "translation": "Cuenta conmigo.",
+    "category": "Planes y Futuro"
+  },
+  {
+    "phrase": "How was your day?",
+    "translation": "¿Cómo estuvo tu día?",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "It was great.",
+    "translation": "Estuvo genial.",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "I was very busy.",
+    "translation": "Estuve muy ocupado/a.",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "What did you do yesterday?",
+    "translation": "¿Qué hiciste ayer?",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "I went to the park.",
+    "translation": "Fui al parque.",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "I saw a movie.",
+    "translation": "Vi una película.",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "I didn’t do much.",
+    "translation": "No hice mucho.",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "Did you have fun?",
+    "translation": "¿Te divertiste?",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "I had a wonderful time.",
+    "translation": "Pasé un tiempo maravilloso.",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "Where were you?",
+    "translation": "¿Dónde estaba?",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "I was at home.",
+    "translation": "Estaba en casa.",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "I’ve already done it.",
+    "translation": "Ya lo he hecho.",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "I haven’t seen him today.",
+    "translation": "No lo he visto hoy.",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "It has been a long day.",
+    "translation": "Ha sido un día largo.",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "I used to live there.",
+    "translation": "Yo solía vivir allí.",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "I forgot what I said.",
+    "translation": "Olvidé lo que dije.",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "That was a mistake.",
+    "translation": "Eso fue un error.",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "I didn’t mean to do that.",
+    "translation": "No fue mi intención hacer eso.",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "How did it happen?",
+    "translation": "¿Cómo pasó?",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "I was born in...",
+    "translation": "Nací en...",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "I grew up in...",
+    "translation": "Crecí en...",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "I studied [career].",
+    "translation": "Estudié [carrera].",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "It was a long time ago.",
+    "translation": "Fue hace mucho tiempo.",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "I just got here.",
+    "translation": "Acabo de llegar.",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "I’ve heard about that.",
+    "translation": "He oído hablar de eso.",
+    "category": "Hablando del Pasado"
+  },
+  {
+    "phrase": "Can I see your ID?",
+    "translation": "¿Puedo ver su identificación?",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "I need to fill out this form.",
+    "translation": "Necesito llenar este formulario.",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "What is your occupation?",
+    "translation": "¿Cuál es su ocupación?",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "Sign at the bottom.",
+    "translation": "Firme al final (abajo).",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "I need a copy of this.",
+    "translation": "Necesito una copia de esto.",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "Where is the post office?",
+    "translation": "¿Dónde está la oficina de correos?",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "I want to send this letter.",
+    "translation": "Quiero enviar esta carta.",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "How many stamps do I need?",
+    "translation": "¿Cuántas estampillas necesito?",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "It’s very important.",
+    "translation": "Es muy importante.",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "I’m looking for the embassy.",
+    "translation": "Estoy buscando la embajada.",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "Is this information correct?",
+    "translation": "¿Es correcta esta información?",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "I need a witness.",
+    "translation": "Necesito un testigo.",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "Do I need a visa?",
+    "translation": "¿Necesito una visa?",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "My passport expires soon.",
+    "translation": "Mi pasaporte vence pronto.",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "Can you print this for me?",
+    "translation": "¿Puede imprimir esto para mí?",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "Where can I park?",
+    "translation": "¿Dónde puedo estacionar?",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "Is parking free?",
+    "translation": "¿El estacionamiento es gratis?",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "I have a permit.",
+    "translation": "Tengo un permiso.",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "The office is closed.",
+    "translation": "La oficina está cerrada.",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "Come back tomorrow.",
+    "translation": "Vuelva mañana.",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "Wait in line, please.",
+    "translation": "Espere en la fila, por favor.",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "It’s your turn.",
+    "translation": "Es tu turno.",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "Whose turn is it?",
+    "translation": "¿De quién es el turno?",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "I have an appointment.",
+    "translation": "Tengo una cita.",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "Thank you for your patience.",
+    "translation": "Gracias por su paciencia.",
+    "category": "Trámites y Documentos"
+  },
+  {
+    "phrase": "Hold on a second.",
+    "translation": "Espera un segundo.",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "Go on, I’m listening.",
+    "translation": "Continúa, te escucho.",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "I need to find out.",
+    "translation": "Necesito averiguar/enterarme.",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "Don’t give up.",
+    "translation": "No te rindas.",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "I’ll look into it.",
+    "translation": "Lo investigaré / Lo revisaré.",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "Slow down, please.",
+    "translation": "Ve más despacio, por favor.",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "Hurry up!",
+    "translation": "¡Date prisa!",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "Come in.",
+    "translation": "Adelante / Pasa.",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "Sit down.",
+    "translation": "Siéntate.",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "Stand up.",
+    "translation": "Levántate.",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "Turn it up.",
+    "translation": "Súbelo (volumen/intensidad).",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "Turn it down.",
+    "translation": "Bájalo.",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "Put it on.",
+    "translation": "Póntelo (ropa/accesorio).",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "Take it off.",
+    "translation": "Quítatelo.",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "I’m looking for my keys.",
+    "translation": "Estoy buscando mis llaves.",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "Look out!",
+    "translation": "¡Cuidado!",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "Pick it up.",
+    "translation": "Recógelo.",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "Put it away.",
+    "translation": "Guárdalo.",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "I get along with him.",
+    "translation": "Me llevo bien con él.",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "We ran out of coffee.",
+    "translation": "Se nos acabó el café.",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "I’ll figure it out.",
+    "translation": "Lo resolveré / Ya veré cómo hacerlo.",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "Keep on trying.",
+    "translation": "Sigue intentándolo.",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "Show me.",
+    "translation": "Muéstrame.",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "Let me know.",
+    "translation": "Avísame / Déjame saber.",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "Think it over.",
+    "translation": "Piénsalo bien.",
+    "category": "Phrasal Verbs y Expresiones Comunes"
+  },
+  {
+    "phrase": "What do you mean?",
+    "translation": "¿Qué quieres decir?",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "I didn’t mean to offend you.",
+    "translation": "No quise ofenderte.",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "It was a misunderstanding.",
+    "translation": "Fue un malentendido.",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "Don’t get me wrong.",
+    "translation": "No me malinterpretes.",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "Let’s talk about it.",
+    "translation": "Hablemos de ello.",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "Listen to me.",
+    "translation": "Escúchame.",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "That’s not what I said.",
+    "translation": "Eso no fue lo que dije.",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "Can you explain that?",
+    "translation": "¿Puedes explicar eso?",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "I’m sorry, I forgot.",
+    "translation": "Lo siento, lo olvidé.",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "It’s my fault.",
+    "translation": "Es mi culpa.",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "It’s not your fault.",
+    "translation": "No es tu culpa.",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "Don’t be mad at me.",
+    "translation": "No te enojes conmigo.",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "Let’s forget about it.",
+    "translation": "Olvidémoslo.",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "I apologize.",
+    "translation": "Pido disculpas.",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "I forgive you.",
+    "translation": "Te perdono.",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "Stop arguing.",
+    "translation": "Dejen de discutir.",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "We need to find a solution.",
+    "translation": "Necesitamos encontrar una solución.",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "It’s not a big deal.",
+    "translation": "No es para tanto / No es gran cosa.",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "Are you kidding me?",
+    "translation": "¿Me estás tomando el pelo? / ¿Es broma?",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "I’m serious.",
+    "translation": "Hablo en serio.",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "Believe it or not.",
+    "translation": "Créalo o no.",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "To be honest...",
+    "translation": "Para ser honesto...",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "Anyway...",
+    "translation": "De todos modos...",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "As I was saying...",
+    "translation": "Como iba diciendo...",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "In other words...",
+    "translation": "En otras palabras...",
+    "category": "Discusiones y Malentendidos"
+  },
+  {
+    "phrase": "I’m sure about it.",
+    "translation": "Estoy seguro de eso.",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "I’m not so sure.",
+    "translation": "No estoy tan seguro.",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "I have no doubt.",
+    "translation": "No tengo ninguna duda.",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "It’s possible.",
+    "translation": "Es posible.",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "It’s impossible.",
+    "translation": "Es imposible.",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "Most likely.",
+    "translation": "Lo más probable.",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "I doubt it.",
+    "translation": "Lo dudo.",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "Maybe you’re right.",
+    "translation": "Quizás tengas razón.",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "Definitely.",
+    "translation": "Definitivamente.",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "Absolutely.",
+    "translation": "Absolutamente.",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "No way!",
+    "translation": "¡De ninguna manera! / ¡Ni hablar!",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "Of course not.",
+    "translation": "Por supuesto que no.",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "I suppose so.",
+    "translation": "Supongo que sí.",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "That sounds plausible.",
+    "translation": "Eso suena creíble/lógico.",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "It depends on...",
+    "translation": "Depende de...",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "Who knows?",
+    "translation": "¿Quién sabe?",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "It’s hard to say.",
+    "translation": "Es difícil de decir.",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "I can’t tell.",
+    "translation": "No sabría decirte.",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "Are you certain?",
+    "translation": "¿Estás cierto/seguro?",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "There is a chance.",
+    "translation": "Hay una posibilidad.",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "I bet you.",
+    "translation": "Te apuesto.",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "As far as I know.",
+    "translation": "Hasta donde yo sé.",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "Unless...",
+    "translation": "A menos que...",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "Provided that...",
+    "translation": "Siempre y cuando...",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "Regardless of that.",
+    "translation": "Independientemente de eso.",
+    "category": "Expresando Certeza y Duda"
+  },
+  {
+    "phrase": "I want...",
+    "translation": "Yo quiero...",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "I need...",
+    "translation": "Yo necesito...",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "I would like...",
+    "translation": "Me gustaría...",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "I wish...",
+    "translation": "Desearía...",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "I hope everything goes well.",
+    "translation": "Espero que todo salga bien.",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "I’m dying for a coffee.",
+    "translation": "Me muero por un café.",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "I could use some help.",
+    "translation": "Me vendría bien algo de ayuda.",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "If only I could...",
+    "translation": "Si tan solo pudiera...",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "What do you want to do?",
+    "translation": "¿Qué quieres hacer?",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "I’m looking for...",
+    "translation": "Estoy buscando...",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "I’m craving pizza.",
+    "translation": "Tengo antojo de pizza.",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "Do you need anything?",
+    "translation": "¿Necesitas algo?",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "It’s necessary.",
+    "translation": "Es necesario.",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "It’s optional.",
+    "translation": "Es opcional.",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "I have to go.",
+    "translation": "Tengo que irme.",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "I must do it.",
+    "translation": "Debo hacerlo.",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "I’d better go.",
+    "translation": "Mejor me voy.",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "Should I wait?",
+    "translation": "¿Debería esperar?",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "You ought to try it.",
+    "translation": "Deberías probarlo.",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "May I?",
+    "translation": "¿Puedo? (muy formal).",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "Can I have a look?",
+    "translation": "¿Puedo echar un vistazo?",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "I don’t want to bother you.",
+    "translation": "No quiero molestarte.",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "If you don’t mind.",
+    "translation": "Si no te importa.",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "It’s urgent.",
+    "translation": "Es urgente.",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "Take care of yourself.",
+    "translation": "Cuídate mucho.",
+    "category": "Deseos y Necesidades"
+  },
+  {
+    "phrase": "It’s better than I thought.",
+    "translation": "Es mejor de lo que pensaba.",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "It’s worse than before.",
+    "translation": "Es peor que antes.",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "The more, the better.",
+    "translation": "Cuanto más, mejor.",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "It’s the same thing.",
+    "translation": "Es lo mismo.",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "It’s different from this.",
+    "translation": "Es diferente a esto.",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "It’s not as good as...",
+    "translation": "No es tan bueno como...",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "It’s much bigger.",
+    "translation": "Es mucho más grande.",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "It’s smaller than that.",
+    "translation": "Es más pequeño que eso.",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "This one is cheaper.",
+    "translation": "Este es más barato.",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "That’s the most expensive.",
+    "translation": "Ese es el más caro.",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "I need more of this.",
+    "translation": "Necesito más de esto.",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "That’s enough.",
+    "translation": "Eso es suficiente.",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "It’s too much for me.",
+    "translation": "Es demasiado para mí.",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "There are too many people.",
+    "translation": "Hay demasiada gente.",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "A little bit more.",
+    "translation": "Un poquito más.",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "Not even a little.",
+    "translation": "Ni siquiera un poco.",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "Most of the time.",
+    "translation": "La mayoría de las veces.",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "Hardly ever.",
+    "translation": "Casi nunca.",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "At least once.",
+    "translation": "Al menos una vez.",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "Is there any left?",
+    "translation": "¿Queda algo? (de comida, tiempo, etc.)",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "There’s none left.",
+    "translation": "No queda nada.",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "It’s half price.",
+    "translation": "Está a mitad de precio.",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "Double check it.",
+    "translation": "Revísalo dos veces (asegúrate).",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "In total.",
+    "translation": "En total.",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "Approximately.",
+    "translation": "Aproximadamente.",
+    "category": "Comparaciones y Cantidades"
+  },
+  {
+    "phrase": "Happy Birthday!",
+    "translation": "¡Feliz cumpleaños!",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "Congratulations!",
+    "translation": "¡Felicidades! / ¡Enhorabuena!",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "Merry Christmas!",
+    "translation": "¡Feliz Navidad!",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "Happy New Year!",
+    "translation": "¡Feliz Año Nuevo!",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "Best wishes.",
+    "translation": "Mis mejores deseos.",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "Good luck with that.",
+    "translation": "Buena suerte con eso.",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "I’m invited to a party.",
+    "translation": "Estoy invitado a una fiesta.",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "Who else is coming?",
+    "translation": "¿Quién más vendrá?",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "What should I wear?",
+    "translation": "¿Qué debería ponerme (ropa)?",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "It’s a formal event.",
+    "translation": "Es un evento formal.",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "Feel at home.",
+    "translation": "Siéntete como en casa.",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "Thanks for inviting me.",
+    "translation": "Gracias por invitarme.",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "The party was great.",
+    "translation": "La fiesta estuvo genial.",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "Let’s have a drink.",
+    "translation": "Vamos a tomar algo.",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "I’m having a great time.",
+    "translation": "La estoy pasando muy bien.",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "Would you like to dance?",
+    "translation": "¿Te gustaría bailar?",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "It’s time to celebrate.",
+    "translation": "Es hora de celebrar.",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "Let’s make a toast.",
+    "translation": "Hagamos un brindis.",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "To your health!",
+    "translation": "¡A tu salud!",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "It was a surprise.",
+    "translation": "Fue una sorpresa.",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "When is the wedding?",
+    "translation": "¿Cuándo es la boda?",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "I’m so happy for you.",
+    "translation": "Estoy muy feliz por ti.",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "That’s wonderful news.",
+    "translation": "Esa es una noticia maravillosa.",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "Keep up the good work.",
+    "translation": "Sigue con el buen trabajo.",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "Have fun!",
+    "translation": "¡Diviértete!",
+    "category": "Eventos y Celebraciones"
+  },
+  {
+    "phrase": "It was an accident.",
+    "translation": "Fue un accidente.",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "I’ve never seen that.",
+    "translation": "Nunca he visto eso.",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "It happens all the time.",
+    "translation": "Pasa todo el tiempo.",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "It was a coincidence.",
+    "translation": "Fue una coincidencia.",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "I had a dream about you.",
+    "translation": "Tuve un sueño contigo.",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "It’s a long story.",
+    "translation": "Es una larga historia.",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "I’ve changed my mind.",
+    "translation": "He cambiado de opinión.",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "That reminds me...",
+    "translation": "Eso me recuerda...",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "I don’t remember exactly.",
+    "translation": "No recuerdo exactamente.",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "I have a feeling that...",
+    "translation": "Tengo el presentimiento de que...",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "It’s hard to believe.",
+    "translation": "Es difícil de creer.",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "That was embarrassing.",
+    "translation": "Eso fue vergonzoso.",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "It was scary.",
+    "translation": "Fue aterrador.",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "I’m so relieved.",
+    "translation": "Estoy tan aliviado/a.",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "It’s a nightmare.",
+    "translation": "Es una pesadilla.",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "Everything went wrong.",
+    "translation": "Todo salió mal.",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "It went better than expected.",
+    "translation": "Salió mejor de lo esperado.",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "I learned my lesson.",
+    "translation": "Aprendí mi lección.",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "It’s a dream come true.",
+    "translation": "Es un sueño hecho realidad.",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "I’m used to it.",
+    "translation": "Estoy acostumbrado/a a ello.",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "I’ll never forget it.",
+    "translation": "Nunca lo olvidaré.",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "What a relief!",
+    "translation": "¡Qué alivio!",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "It’s a small world.",
+    "translation": "El mundo es un pañuelo (es un mundo pequeño).",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "In the end...",
+    "translation": "Al final...",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "Believe it or not.",
+    "translation": "Créalo o no.",
+    "category": "Describiendo Experiencias"
+  },
+  {
+    "phrase": "Is it safe around here?",
+    "translation": "¿Es seguro por aquí?",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "It’s very crowded.",
+    "translation": "Está muy lleno de gente.",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "I’m looking for a park.",
+    "translation": "Estoy buscando un parque.",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "Where can I find a map?",
+    "translation": "¿Dónde puedo encontrar un mapa?",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "The street is blocked.",
+    "translation": "La calle está bloqueada.",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "Follow me.",
+    "translation": "Sígueme.",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "Let’s cross the street.",
+    "translation": "Crucemos la calle.",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "Be careful with the traffic.",
+    "translation": "Ten cuidado con el tráfico.",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "It’s just around the corner.",
+    "translation": "Está justo a la vuelta de la esquina.",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "I need to buy a ticket.",
+    "translation": "Necesito comprar un boleto.",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "Where is the entrance?",
+    "translation": "¿Dónde está la entrada?",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "Where is the exit?",
+    "translation": "¿Dónde está la salida?",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "Is it open to the public?",
+    "translation": "¿Está abierto al público?",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "There’s a long queue.",
+    "translation": "Hay una larga fila.",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "Can I take a photo?",
+    "translation": "¿Puedo tomar una foto?",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "No smoking allowed.",
+    "translation": "No se permite fumar.",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "No entry.",
+    "translation": "Prohibida la entrada.",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "Watch your step.",
+    "translation": "Tenga cuidado donde pisa.",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "Keep off the grass.",
+    "translation": "No pise el césped.",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "It’s a quiet neighborhood.",
+    "translation": "Es un vecindario tranquilo.",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "I love the atmosphere here.",
+    "translation": "Me encanta el ambiente aquí.",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "The view is amazing.",
+    "translation": "La vista es increíble.",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "It’s worth a visit.",
+    "translation": "Vale la pena visitarlo.",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "I’m just passing through.",
+    "translation": "Solo estoy de paso.",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "What a beautiful place!",
+    "translation": "¡Qué lugar tan hermoso!",
+    "category": "Frases para la Calle y el Entorno"
+  },
+  {
+    "phrase": "Break a leg!",
+    "translation": "¡Buena suerte! (especialmente antes de una actuación).",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "It’s a piece of cake.",
+    "translation": "Es pan comido / Es muy fácil.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "Under the weather.",
+    "translation": "Sentirse un poco enfermo o decaído.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "Call it a day.",
+    "translation": "Dar el día por terminado / Dejar de trabajar por hoy.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "Better late than never.",
+    "translation": "Más vale tarde que nunca.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "Once in a blue moon.",
+    "translation": "Muy de vez en cuando / Casi nunca.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "The best of both worlds.",
+    "translation": "Lo mejor de dos mundos.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "Don’t beat around the bush.",
+    "translation": "No te andes con rodeos.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "Cut to the chase.",
+    "translation": "Ir al grano.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "Hit the nail on the head.",
+    "translation": "Diste en el clavo.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "Keep an eye on...",
+    "translation": "Vigila / Échale un ojo a...",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "Make a long story short.",
+    "translation": "Para resumir / En pocas palabras.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "Miss the boat.",
+    "translation": "Perder la oportunidad.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "No pain, no gain.",
+    "translation": "Sin esfuerzo no hay recompensa.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "On the ball.",
+    "translation": "Estar alerta / Estar muy atento.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "Pull someone’s leg.",
+    "translation": "Tomarle el pelo a alguien.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "So far, so good.",
+    "translation": "Hasta ahora, todo bien.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "Speak of the devil.",
+    "translation": "Hablando del rey de Roma...",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "The last straw.",
+    "translation": "La gota que colmó el vaso.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "Through thick and thin.",
+    "translation": "En las buenas y en las malas.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "Your guess is as good as mine.",
+    "translation": "No tengo idea (sé lo mismo que tú).",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "Break the ice.",
+    "translation": "Romper el hielo.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "Cost an arm and a leg.",
+    "translation": "Costar un ojo de la cara.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "Let the cat out of the bag.",
+    "translation": "Revelar un secreto sin querer.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "Piece of mind.",
+    "translation": "Tranquilidad / Paz mental.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "Barking up the wrong tree.",
+    "translation": "Estar equivocado de medio a medio / Buscar en el lugar equivocado.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "Back to the drawing board.",
+    "translation": "Volver a empezar de cero.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "In the heat of the moment.",
+    "translation": "En el fragor del momento.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "Wrap your head around something.",
+    "translation": "Entender algo complejo.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "Spill the beans.",
+    "translation": "Contar un secreto.",
+    "category": "Modismos y Expresiones Idiomáticas"
+  },
+  {
+    "phrase": "I’m taking a course.",
+    "translation": "Estoy haciendo un curso.",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "I need to study.",
+    "translation": "Necesito estudiar.",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "Can you explain this again?",
+    "translation": "¿Puedes explicar esto de nuevo?",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "I’m preparing for an exam.",
+    "translation": "Me estoy preparando para un examen.",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "I passed the test!",
+    "translation": "¡Pasé el examen!",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "I failed the exam.",
+    "translation": "Reprobé el examen.",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "It’s a difficult subject.",
+    "translation": "Es una materia difícil.",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "I’m doing my homework.",
+    "translation": "Estoy haciendo mi tarea.",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "Where is the library?",
+    "translation": "¿Dónde está la biblioteca?",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "I need to borrow a book.",
+    "translation": "Necesito pedir prestado un libro.",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "What’s the answer?",
+    "translation": "¿Cuál es la respuesta?",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "I’m major in...",
+    "translation": "Mi especialidad universitaria es...",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "I graduated last year.",
+    "translation": "Me gradué el año pasado.",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "Learn by heart.",
+    "translation": "Aprender de memoria.",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "Could you give me some feedback?",
+    "translation": "¿Podrías darme tu opinión/retroalimentación?",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "Practice makes perfect.",
+    "translation": "La práctica hace al maestro.",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "I made a mistake.",
+    "translation": "Cometí un error.",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "Please correct me if I’m wrong.",
+    "translation": "Por favor, corrígeme si me equivoco.",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "I’m getting better.",
+    "translation": "Estoy mejorando.",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "Take notes.",
+    "translation": "Toma notas.",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "Turn in your assignment.",
+    "translation": "Entrega tu trabajo/tarea.",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "What’s the meaning of this word?",
+    "translation": "¿Cuál es el significado de esta palabra?",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "Look it up in the dictionary.",
+    "translation": "Búscalo en el diccionario.",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "Pay attention.",
+    "translation": "Presta atención.",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "I’m self-taught.",
+    "translation": "Soy autodidacta.",
+    "category": "Educación y Aprendizaje"
+  },
+  {
+    "phrase": "You can do it!",
+    "translation": "¡Tú puedes hacerlo!",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "Keep going!",
+    "translation": "¡Sigue adelante!",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "Don’t give up!",
+    "translation": "¡No te rindas!",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "Believe in yourself.",
+    "translation": "Cree en ti mismo.",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "Anything is possible.",
+    "translation": "Todo es posible.",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "Stay positive.",
+    "translation": "Mantente positivo.",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "Dream big.",
+    "translation": "Sueña en grande.",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "It’s never too late.",
+    "translation": "Nunca es demasiado tarde.",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "Go for it!",
+    "translation": "¡Ve por ello! / ¡Hazlo!",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "Take a chance.",
+    "translation": "Arriésgate.",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "Everything will be okay.",
+    "translation": "Todo estará bien.",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "One step at a time.",
+    "translation": "Un paso a la vez.",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "Don’t be afraid of mistakes.",
+    "translation": "No tengas miedo a los errores.",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "Success takes time.",
+    "translation": "El éxito toma tiempo.",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "Focus on your goals.",
+    "translation": "Enfócate en tus metas.",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "You’re doing great.",
+    "translation": "Lo estás haciendo genial.",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "I’m proud of you.",
+    "translation": "Estoy orgulloso de ti.",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "That’s the spirit!",
+    "translation": "¡Esa es la actitud!",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "Make it happen.",
+    "translation": "Haz que suceda.",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "Just do it.",
+    "translation": "Solo hazlo.",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "You have potential.",
+    "translation": "Tienes potencial.",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "Stay focused.",
+    "translation": "Mantente enfocado.",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "Hard work pays off.",
+    "translation": "El trabajo duro rinde frutos.",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "Be yourself.",
+    "translation": "Sé tú mismo.",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "Never lose hope.",
+    "translation": "Nunca pierdas la esperanza.",
+    "category": "Motivación y Ánimo"
+  },
+  {
+    "phrase": "What do you mean by that?",
+    "translation": "¿Qué quieres decir con eso?",
+    "category": "Preguntas para Profundizar"
+  },
+  {
+    "phrase": "How does that work?",
+    "translation": "¿Cómo funciona eso?",
+    "category": "Preguntas para Profundizar"
+  },
+  {
+    "phrase": "Why do you think so?",
+    "translation": "¿Por qué piensas eso?",
+    "category": "Preguntas para Profundizar"
+  },
+  {
+    "phrase": "What’s the reason?",
+    "translation": "¿Cuál es la razón?",
+    "category": "Preguntas para Profundizar"
+  },
+  {
+    "phrase": "Could you be more specific?",
+    "translation": "¿Podrías ser más específico?",
+    "category": "Preguntas para Profundizar"
+  },
+  {
+    "phrase": "What’s your point?",
+    "translation": "¿Cuál es tu punto? (A qué quieres llegar).",
+    "category": "Preguntas para Profundizar"
+  },
+  {
+    "phrase": "How do you feel about this?",
+    "translation": "¿Qué piensas/sientes sobre esto?",
+    "category": "Preguntas para Profundizar"
+  },
+  {
+    "phrase": "What are the pros and cons?",
+    "translation": "¿Cuáles son los pros y los contras?",
+    "category": "Preguntas para Profundizar"
+  },
+  {
+    "phrase": "Is there any difference?",
+    "translation": "¿Hay alguna diferencia?",
+    "category": "Preguntas para Profundizar"
+  },
+  {
+    "phrase": "Can you give me an example?",
+    "translation": "¿Puedes darme un ejemplo?",
+    "category": "Preguntas para Profundizar"
+  },
+  {
+    "phrase": "What are the options?",
+    "translation": "¿Cuáles son las opciones?",
+    "category": "Preguntas para Profundizar"
+  },
+  {
+    "phrase": "How long does it take?",
+    "translation": "¿Cuánto tiempo toma?",
+    "category": "Preguntas para Profundizar"
+  },
+  {
+    "phrase": "What’s the catch?",
+    "translation": "¿Cuál es la trampa?",
+    "category": "Preguntas para Profundizar"
+  },
+  {
+    "phrase": "Are you for real?",
+    "translation": "¿Hablas en serio? / ¿Es de verdad?",
+    "category": "Preguntas para Profundizar"
+  },
+  {
+    "phrase": "What’s the worst that could happen?",
+    "translation": "¿Qué es lo peor que podría pasar?",
+    "category": "Preguntas para Profundizar"
+  },
+  {
+    "phrase": "Does that make sense to you?",
+    "translation": "¿Tiene sentido eso para ti?",
+    "category": "Preguntas para Profundizar"
+  },
+  {
+    "phrase": "Can you imagine that?",
+    "translation": "¿Puedes imaginar eso?",
+    "category": "Preguntas para Profundizar"
+  },
+  {
+    "phrase": "What if...?",
+    "translation": "¿Qué tal si...? / ¿Y si...?",
+    "category": "Preguntas para Profundizar"
+  },
+  {
+    "phrase": "Is it worth it?",
+    "translation": "¿Vale la pena?",
+    "category": "Preguntas para Profundizar"
+  },
+  {
+    "phrase": "What’s next?",
+    "translation": "¿Qué sigue?",
+    "category": "Preguntas para Profundizar"
+  },
+  {
+    "phrase": "Actions speak louder than words.",
+    "translation": "Las acciones hablan más que las palabras.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "Better safe than sorry.",
+    "translation": "Más vale prevenir que lamentar.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "Don't judge a book by its cover.",
+    "translation": "No juzgues un libro por su portada.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "Every cloud has a silver lining.",
+    "translation": "No hay mal que por bien no venga.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "Knowledge is power.",
+    "translation": "El conocimiento es poder.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "Time is money.",
+    "translation": "El tiempo es dinero.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "Where there’s a will, there’s a way.",
+    "translation": "Querer es poder.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "Birds of a feather flock together.",
+    "translation": "Dios los cría y ellos se juntan.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "Good things come to those who wait.",
+    "translation": "Lo bueno le llega a quien sabe esperar.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "The early bird catches the worm.",
+    "translation": "Al que madruga, Dios lo ayuda.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "Easy come, easy go.",
+    "translation": "Lo que fácil viene, fácil se va.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "Honesty is the best policy.",
+    "translation": "La honestidad es la mejor política.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "Practice what you preach.",
+    "translation": "Predica con el ejemplo.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "Rome wasn't built in a day.",
+    "translation": "Roma no se construyó en un día.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "Better late than never.",
+    "translation": "Más vale tarde que nunca.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "Beauty is in the eye of the beholder.",
+    "translation": "La belleza está en los ojos del que mira.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "A friend in need is a friend indeed.",
+    "translation": "En las malas se conocen a los amigos.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "Keep your friends close and your enemies closer.",
+    "translation": "Ten cerca a tus amigos, pero más cerca a tus enemigos.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "Don't put all your eggs in one basket.",
+    "translation": "No te lo juegues todo a una sola carta.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "Fortune favors the bold.",
+    "translation": "La fortuna favorece a los valientes.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "Out of sight, out of mind.",
+    "translation": "Ojos que no ven, corazón que no siente.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "The grass is always greener on the other side.",
+    "translation": "El césped siempre es más verde al otro lado.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "All's well that ends well.",
+    "translation": "Bien está lo que bien acaba.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "When in Rome, do as the Romans do.",
+    "translation": "Donde fueres, haz lo que vieres.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "You can't have your cake and eat it too.",
+    "translation": "No se puede tener todo en la vida.",
+    "category": "Proverbios y Sabiduría Popular"
+  },
+  {
+    "phrase": "On the other hand...",
+    "translation": "Por otro lado...",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "Having said that...",
+    "translation": "Dicho esto...",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "Taking everything into account.",
+    "translation": "Teniendo todo en cuenta.",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "In the long run.",
+    "translation": "A largo plazo.",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "In the short term.",
+    "translation": "A corto plazo.",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "Actually...",
+    "translation": "De hecho... / En realidad...",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "Supposedly...",
+    "translation": "Supuestamente...",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "Essentially...",
+    "translation": "Esencialmente...",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "In terms of...",
+    "translation": "En términos de...",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "The bottom line is...",
+    "translation": "El punto clave es... / La conclusión es...",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "Broadly speaking.",
+    "translation": "En términos generales.",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "To some extent.",
+    "translation": "Hasta cierto punto.",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "It’s a win-win situation.",
+    "translation": "Es una situación en la que todos ganan.",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "That’s out of the question.",
+    "translation": "Eso está fuera de discusión (imposible).",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "Let's agree to disagree.",
+    "translation": "Aceptemos que no estamos de acuerdo.",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "From my point of view.",
+    "translation": "Desde mi punto de vista.",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "I’m inclined to think that...",
+    "translation": "Me inclino a pensar que...",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "Let’s look at the big picture.",
+    "translation": "Veamos el panorama general.",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "It’s a double-edged sword.",
+    "translation": "Es un arma de doble filo.",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "For the time being.",
+    "translation": "Por el momento.",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "In light of recent events.",
+    "translation": "A la luz de los hechos recientes.",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "That’s easier said than done.",
+    "translation": "Eso es más fácil decirlo que hacerlo.",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "It goes without saying.",
+    "translation": "Sobra decir que... / Ni que decir tiene.",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "Regardless of the outcome.",
+    "translation": "Independientemente del resultado.",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "At the end of the day.",
+    "translation": "Al fin y al cabo.",
+    "category": "Frases Avanzadas para Debatir"
+  },
+  {
+    "phrase": "Long story short.",
+    "translation": "Resumiendo.",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "I’ll keep that in mind.",
+    "translation": "Lo tendré en cuenta.",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "You’ve outdone yourself.",
+    "translation": "Te has superado a ti mismo.",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "Don't take it personally.",
+    "translation": "No te lo tomes personal.",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "I'm at your disposal.",
+    "translation": "Estoy a tu disposición.",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "It’s a matter of time.",
+    "translation": "Es cuestión de tiempo.",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "I’m in your debt.",
+    "translation": "Estoy en deuda contigo.",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "Don't jump to conclusions.",
+    "translation": "No saques conclusiones precipitadas.",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "Let’s get down to business.",
+    "translation": "Vayamos al grano / a lo que nos ocupa.",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "I'm all ears.",
+    "translation": "Soy todo oídos.",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "It's not worth the trouble.",
+    "translation": "No vale la pena la molestia.",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "I'll sleep on it.",
+    "translation": "Lo consultaré con la almohada.",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "Just for the record.",
+    "translation": "Para que conste.",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "Don't push your luck.",
+    "translation": "No tientes a la suerte.",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "It’s a small price to pay.",
+    "translation": "Es un precio pequeño que pagar.",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "I’m under a lot of pressure.",
+    "translation": "Estoy bajo mucha presión.",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "You’re on the right track.",
+    "translation": "Vas por buen camino.",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "It was a spur-of-the-moment decision.",
+    "translation": "Fue una decisión de último momento.",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "I have mixed feelings about it.",
+    "translation": "Tengo sentimientos encontrados al respecto.",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "Don’t hold your breath.",
+    "translation": "No te hagas ilusiones (no esperes sentado).",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "That’s a relief.",
+    "translation": "Eso es un alivio.",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "What a small world!",
+    "translation": "¡Qué mundo tan pequeño!",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "It’s high time.",
+    "translation": "Ya va siendo hora.",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "In the blink of an eye.",
+    "translation": "En un abrir y cerrar de ojos.",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "The sky is the limit.",
+    "translation": "El cielo es el límite.",
+    "category": "Expresiones para Situaciones Específicas"
+  },
+  {
+    "phrase": "It’s been a pleasure.",
+    "translation": "Ha sido un placer.",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "I must be going.",
+    "translation": "Debo irme.",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "Don't be a stranger.",
+    "translation": "No te pierdas (mantente en contacto).",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "I’ve had a wonderful time.",
+    "translation": "Me lo he pasado de maravilla.",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "I’ll catch you later.",
+    "translation": "Te veo luego.",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "Have a safe trip.",
+    "translation": "Ten un viaje seguro.",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "Say hello to your family.",
+    "translation": "Saluda a tu familia de mi parte.",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "Thanks for everything.",
+    "translation": "Gracias por todo.",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "I really enjoyed our talk.",
+    "translation": "Realmente disfruté nuestra charla.",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "Let’s do this again soon.",
+    "translation": "Hagamos esto de nuevo pronto.",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "I’m looking forward to seeing you again.",
+    "translation": "Espero volver a verte pronto.",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "Take care and stay in touch.",
+    "translation": "Cuídate y mantente en contacto.",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "It was nice meeting you.",
+    "translation": "Fue un gusto conocerte.",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "I wish you all the best.",
+    "translation": "Te deseo todo lo mejor.",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "Good luck with your project.",
+    "translation": "Buena suerte con tu proyecto.",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "Until next time.",
+    "translation": "Hasta la próxima.",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "Peace out.",
+    "translation": "Adiós / Paz (informal).",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "I’m off.",
+    "translation": "Me voy.",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "Keep me posted.",
+    "translation": "Manténme informado.",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "It’s time to say goodbye.",
+    "translation": "Es hora de decir adiós.",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "Hope to see you soon.",
+    "translation": "Espero verte pronto.",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "God bless you.",
+    "translation": "Dios te bendiga.",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "Take it easy.",
+    "translation": "Tómalo con calma / Nos vemos.",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "You made my day.",
+    "translation": "Me alegraste el día.",
+    "category": "Despedidas y Cierre Final"
+  },
+  {
+    "phrase": "We finally did it!",
+    "translation": "¡Finalmente lo logramos!",
+    "category": "Despedidas y Cierre Final"
   }
 ]
