@@ -53,6 +53,8 @@ export default function Reader({ text }: Props) {
   const [fileSize, setFileSize] = useState<number | null>(null);
   const phraseCacheRef = useRef<Map<string, string>>(new Map());
 
+  console.log(text.audioUrl);
+
   // Detectar si es archivo local y obtener información
   useEffect(() => {
     let mounted = true;
@@ -367,18 +369,6 @@ export default function Reader({ text }: Props) {
     if (!text) return;
     const rect = range.getBoundingClientRect();
     const { x, y } = relativePos(rect.left + rect.width / 2, rect.top);
-    // collect word lowers
-    // const words = Array.from(text.matchAll(/[A-Za-z]+(?:'[A-Za-z]+)?/g))
-    //   .map((m) => normalizeWord(m[0]))
-    //   .filter(Boolean);
-
-    // const lowers = Array.from(new Set(words));
-    // const translations: Array<{ word: string; translation: string }> = [];
-    // for (const w of lowers) {
-    //   const orig = w; // use lower as key; for display we can use w
-    //   const t = await translateTerm(orig, selected);
-    //   translations.push({ word: orig, translation: t.translation });
-    // }
 
     // Intentar usar cache de frases: primero en DB, luego en memoria
     const parts = tokenize(text)
@@ -468,32 +458,6 @@ export default function Reader({ text }: Props) {
     []
   );
 
-  // async function saveSelectionUnknowns() {
-  //   if (!selPopup) return;
-  //   const settings = await getSettings();
-  //   for (const lower of selPopup.lowers) {
-  //     const existing = await getWord(lower);
-  //     if (existing) continue;
-  //     const t = await translateTerm(lower, selected);
-  //     await putUnknownWord({
-  //       word: lower,
-  //       wordLower: lower,
-  //       translation: t.translation,
-  //       status: "unknown",
-  //       addedAt: Date.now(),
-  //       voice: {
-  //         name: settings.tts.voiceName,
-  //         lang: settings.tts.lang,
-  //         rate: settings.tts.rate,
-  //         pitch: settings.tts.pitch,
-  //         volume: settings.tts.volume,
-  //       },
-  //     });
-  //   }
-  //   await refreshUnknowns();
-  //   setSelPopup(null);
-  // }
-
   return (
     <div
       className="relative flex flex-col flex-1 bg-gray-50 dark:bg-gray-900 pb-32"
@@ -544,7 +508,7 @@ export default function Reader({ text }: Props) {
 
       {/* Audio Player Sticky Bottom */}
       <AudioSection
-        show={!!text.audioRef}
+        show={!!text.audioRef || !!text.audioUrl}
         src={audioUrl ?? text.audioUrl ?? undefined}
         showReauthorize={Boolean(
           text.audioRef?.type === "file" && audioAccessError

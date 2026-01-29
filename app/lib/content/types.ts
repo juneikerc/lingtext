@@ -30,6 +30,7 @@ export interface TextEntry extends BaseEntry {
   collection: "texts";
   title: string;
   level: string;
+  sound?: string;
 }
 
 export type AnyContentEntry = BlogEntry | LevelTextEntry | TextEntry;

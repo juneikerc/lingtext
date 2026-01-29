@@ -106,4 +106,5 @@ export interface TextCollection {
   title: string;
   level: string;
   content: string;
+  sound?: string;
 }

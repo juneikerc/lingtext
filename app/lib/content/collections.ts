@@ -37,6 +37,7 @@ export const collectionDefinitions = [
     schema: z.object({
       title: z.string(),
       level: z.enum(["a1", "a2", "b1", "b2", "c1", "c2"]),
+      sound: z.string().optional(),
     }),
   },
 ] satisfies Array<CollectionDefinition<unknown>>;

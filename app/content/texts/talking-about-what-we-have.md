@@ -1,6 +1,7 @@
 ---
 title: "Talking About What We Have (Practice Chat)"
 level: "a2"
+sound: "https://images.lingtext.org/talk-3.wav"
 ---
 
 **Emma:** Hi Tom, do you have a minute?
