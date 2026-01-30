@@ -4,7 +4,7 @@ import {
   type WordEntry,
   TRANSLATORS,
 } from "../types";
-import { getWord } from "../services/db";
+import { getPhrase, getWord } from "../services/db";
 import { getOpenRouterApiKey } from "../services/db";
 
 const TEXT_TYPE_LABELS: Record<StoryConfig["textType"], string> = {
@@ -67,7 +67,26 @@ export async function generateStory(
     throw new Error("NO_API_KEY");
   }
 
-  const words = await Promise.all(config.wordLowerList.map((w) => getWord(w)));
+  const words = await Promise.all(
+    config.wordLowerList.map(async (wordLower) => {
+      const word = await getWord(wordLower);
+      if (word) return word;
+
+      const phrase = await getPhrase(wordLower);
+      if (!phrase) return undefined;
+
+      return {
+        word: phrase.phrase,
+        wordLower: phrase.phraseLower,
+        translation: phrase.translation,
+        status: "unknown" as const,
+        addedAt: phrase.addedAt,
+        srData: phrase.srData,
+        isPhrase: true,
+      } satisfies WordEntry;
+    })
+  );
+
   const validWords = words.filter((w): w is WordEntry => w !== undefined);
 
   if (validWords.length === 0) {
