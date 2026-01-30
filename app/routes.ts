@@ -11,4 +11,5 @@ export default [
   route("blog/:slug", "routes/blog/blog.tsx"),
   route("comunidad", "routes/community.tsx"),
   route("1000-frases-en-ingles", "routes/english-phrases.tsx"),
+  route("tutor-escritura", "routes/writing-tutor.tsx"),
 ] satisfies RouteConfig;
