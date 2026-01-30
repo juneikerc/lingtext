@@ -14,10 +14,34 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
   const { selected, setSelected } = useTranslatorStore();
   const [showApiKeyConfig, setShowApiKeyConfig] = useState(false);
   const [hasApiKey, setHasApiKey] = useState<boolean | null>(null);
+  const [isHidden, setIsHidden] = useState(false);
   const prevSelectedRef = useRef<TRANSLATORS | null>(null);
+  const lastScrollYRef = useRef(0);
 
   useEffect(() => {
     checkApiKey();
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      const prevY = lastScrollYRef.current;
+      const delta = currentY - prevY;
+
+      if (Math.abs(delta) < 6) return;
+
+      if (currentY > 80 && delta > 0) {
+        setIsHidden(true);
+      } else if (delta < 0) {
+        setIsHidden(false);
+      }
+
+      lastScrollYRef.current = currentY;
+    };
+
+    lastScrollYRef.current = window.scrollY;
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -51,10 +75,14 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
 
   return (
     <>
-      <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200/50 dark:border-gray-700/50 sticky top-0 z-20">
+      <div
+        className={`bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200/50 dark:border-gray-700/50 sticky top-0 z-20 transition-transform duration-200 ${
+          isHidden ? "-translate-y-full" : "translate-y-0"
+        }`}
+      >
         <div className="mx-auto max-w-6xl w-full px-4 sm:px-6 lg:px-8">
           {/* Primera fila compacta - Título y navegación */}
-          <div className="flex items-center justify-between py-3 min-w-0">
+          <div className="flex items-center justify-between py-2 sm:py-3 min-w-0">
             <div className="flex items-center space-x-3 min-w-0">
               <button
                 type="button"

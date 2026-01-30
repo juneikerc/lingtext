@@ -40,6 +40,13 @@ export default function SelectionPopup({
             <span className="font-semibold text-gray-700 dark:text-gray-300">
               Texto seleccionado
             </span>
+            <button
+              className="ml-auto p-1.5 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors duration-200"
+              onClick={onClose}
+              title="Cerrar"
+            >
+              <span className="text-sm">✕</span>
+            </button>
           </div>
           <div className="bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-lg p-3">
             <p className="text-gray-900 dark:text-gray-100 font-medium italic text-center">

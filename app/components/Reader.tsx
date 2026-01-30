@@ -495,6 +495,7 @@ export default function Reader({ text }: Props) {
           onSpeak={onSpeak}
           onMarkKnown={markKnown}
           onMarkUnknown={markUnknown}
+          onClose={() => setPopup(null)}
         />
       )}
 

@@ -8,6 +8,7 @@ interface WordPopupProps {
   onSpeak: (word: string, e: React.MouseEvent) => void;
   onMarkKnown: (lower: string) => void;
   onMarkUnknown: (lower: string, original: string, translation: string) => void;
+  onClose: () => void;
 }
 
 export default function WordPopup({
@@ -16,6 +17,7 @@ export default function WordPopup({
   onSpeak,
   onMarkKnown,
   onMarkUnknown,
+  onClose,
 }: WordPopupProps) {
   const viewportWidth =
     typeof window !== "undefined" ? window.innerWidth : 1200;
@@ -55,6 +57,13 @@ export default function WordPopup({
             title="Escuchar pronunciación"
           >
             <span className="text-xl">🔊</span>
+          </button>
+          <button
+            className="ml-1 p-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors duration-200"
+            onClick={onClose}
+            title="Cerrar"
+          >
+            <span className="text-lg">✕</span>
           </button>
         </div>
       </div>
