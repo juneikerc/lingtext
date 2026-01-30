@@ -137,7 +137,7 @@ export default function AudioSection({
   if (!show) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 p-3 sm:p-4 pointer-events-none flex justify-center">
+    <div className="fixed bottom-0 left-0 right-0 z-40 px-3 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] sm:p-4 pointer-events-none flex justify-center">
       <div className="w-full max-w-4xl pointer-events-auto shadow-2xl rounded-2xl overflow-hidden border border-gray-200/50 dark:border-gray-700/50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md transition-all duration-300">
         {/* Error / Reauthorize Banner */}
         {(audioError ||
@@ -234,7 +234,7 @@ export default function AudioSection({
           </div>
 
           {/* Speed Controls (Collapsible on very small screens if needed, but flex-wrap handles it) */}
-          <div className="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-end border-t sm:border-t-0 border-gray-100 dark:border-gray-800 pt-2 sm:pt-0">
+          <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto justify-between sm:justify-end border-t sm:border-t-0 border-gray-100 dark:border-gray-800 pt-2 sm:pt-0">
             {/* Rate Adjuster */}
             <div className="flex items-center bg-gray-100 dark:bg-gray-800 rounded-lg p-0.5 border border-gray-200 dark:border-gray-700">
               <button
@@ -257,7 +257,7 @@ export default function AudioSection({
             </div>
 
             {/* Presets (Hidden on very small mobile to save space) */}
-            <div className="hidden xs:flex gap-1">
+            <div className="hidden sm:flex gap-1">
               {[1, 1.5, 2].map((v) => (
                 <button
                   key={v}

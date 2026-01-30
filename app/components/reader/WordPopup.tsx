@@ -17,12 +17,22 @@ export default function WordPopup({
   onMarkKnown,
   onMarkUnknown,
 }: WordPopupProps) {
+  const viewportWidth =
+    typeof window !== "undefined" ? window.innerWidth : 1200;
+  const popupWidth = Math.min(320, Math.max(260, viewportWidth - 24));
+  const left = Math.min(
+    Math.max(12, popup.x - popupWidth / 2),
+    viewportWidth - popupWidth - 12
+  );
+  const top = Math.max(12, popup.y - 80);
+
   return (
     <div
-      className="absolute min-w-[280px] max-w-[320px] bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm text-gray-900 dark:text-gray-100 rounded-xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 z-30 overflow-hidden"
+      className="absolute w-full bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm text-gray-900 dark:text-gray-100 rounded-xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 z-30 overflow-hidden max-h-[70vh] overflow-y-auto"
       style={{
-        left: Math.max(6, popup.x - 140),
-        top: Math.max(6, popup.y - 80),
+        left,
+        top,
+        width: popupWidth,
       }}
     >
       {/* Header con la palabra */}

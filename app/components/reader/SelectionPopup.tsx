@@ -13,12 +13,22 @@ export default function SelectionPopup({
   onClose,
   onSavePhrase,
 }: SelectionPopupProps) {
+  const viewportWidth =
+    typeof window !== "undefined" ? window.innerWidth : 1200;
+  const popupWidth = Math.min(400, Math.max(280, viewportWidth - 24));
+  const left = Math.min(
+    Math.max(12, selPopup.x - popupWidth / 2),
+    viewportWidth - popupWidth - 12
+  );
+  const top = Math.max(12, selPopup.y - 100);
+
   return (
     <div
-      className="absolute min-w-[320px] max-w-[400px] bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm text-gray-900 dark:text-gray-100 rounded-xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 z-30 overflow-hidden"
+      className="absolute w-full bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm text-gray-900 dark:text-gray-100 rounded-xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 z-30 overflow-hidden max-h-[70vh] overflow-y-auto"
       style={{
-        left: Math.max(6, selPopup.x - 160),
-        top: Math.max(6, selPopup.y - 100),
+        left,
+        top,
+        width: popupWidth,
       }}
     >
       <div className="p-4">

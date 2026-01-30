@@ -460,7 +460,7 @@ export default function Reader({ text }: Props) {
 
   return (
     <div
-      className="relative flex flex-col flex-1 bg-gray-50 dark:bg-gray-900 pb-32"
+      className="relative flex flex-col flex-1 bg-gray-50 dark:bg-gray-900 pb-40 sm:pb-32"
       ref={containerRef}
       onMouseUp={handleMouseUp}
       onClick={(e) => {

@@ -54,12 +54,12 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
       <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200/50 dark:border-gray-700/50 sticky top-0 z-20">
         <div className="mx-auto max-w-6xl w-full px-4 sm:px-6 lg:px-8">
           {/* Primera fila compacta - Título y navegación */}
-          <div className="flex items-center justify-between py-3">
-            <div className="flex items-center space-x-3">
+          <div className="flex items-center justify-between py-3 min-w-0">
+            <div className="flex items-center space-x-3 min-w-0">
               <button
                 type="button"
                 onClick={() => window.history.back()}
-                className="group flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-blue-500 hover:text-white text-gray-700 dark:text-gray-300 font-medium transition-all duration-200"
+                className="group shrink-0 flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-blue-500 hover:text-white text-gray-700 dark:text-gray-300 font-medium transition-all duration-200"
               >
                 <span className="text-sm group-hover:-translate-x-0.5 transition-transform duration-200">
                   ←
@@ -69,8 +69,8 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
 
               <div className="h-5 w-px bg-gray-300 dark:bg-gray-600"></div>
 
-              <div className="flex-1">
-                <h1 className="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100 truncate max-w-sm">
+              <div className="flex-1 min-w-0">
+                <h1 className="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100 truncate w-full">
                   {title || "Sin título"}
                 </h1>
               </div>
