@@ -1,26 +1,27 @@
 /**
- * Bridge Content Script
- * Se inyecta en lingtext.org/localhost para sincronizar datos
- * entre la web app y la extensión
- *
- * Flujo de sincronización (Web como fuente de verdad):
- * 1. Extensión envía sus datos a la web
- * 2. Web hace merge (newer wins) y guarda
- * 3. Web devuelve estado completo + API key
- * 4. Extensión reemplaza su caché con los datos de la web
+ * Bridge content script for lingtext.org/localhost pages.
+ * Keeps the existing web postMessage protocol and maps it to LT2 runtime messages.
  */
 
-import type { WordEntry, PhraseEntry } from "@/types";
+import type {
+  PhraseEntry,
+  SyncPayload,
+  TRANSLATORS,
+  WordEntry,
+} from "@/types";
 
-interface SyncData {
+interface SyncCompletePayload {
   words: WordEntry[];
   phrases: PhraseEntry[];
   apiKey?: string;
-  translator?: string;
+  translator?: TRANSLATORS;
 }
 
 function isAllowedOrigin(origin: string): boolean {
-  if (!origin || origin === "null") return false;
+  if (!origin || origin === "null") {
+    return false;
+  }
+
   try {
     const { hostname } = new URL(origin);
     return (
@@ -33,91 +34,113 @@ function isAllowedOrigin(origin: string): boolean {
   }
 }
 
-const PAGE_ORIGIN = window.location.origin;
-
-// Escuchar mensajes de la web app
 window.addEventListener("message", async (event) => {
-  // Verificar origen
-  if (event.source !== window) {
-    return;
-  }
-
-  if (!isAllowedOrigin(event.origin)) {
+  if (event.source !== window || !isAllowedOrigin(event.origin)) {
     return;
   }
 
   const { type, payload } = event.data || {};
 
-  switch (type) {
-    case "LINGTEXT_SYNC_REQUEST": {
-      // La web app solicita los datos de la extensión para hacer merge
-      const data = await chrome.runtime.sendMessage({ type: "EXPORT_FOR_WEB" });
-      window.postMessage(
-        { type: "LINGTEXT_SYNC_RESPONSE", payload: data },
-        event.origin
-      );
-      break;
-    }
+  try {
+    switch (type) {
+      case "LINGTEXT_SYNC_REQUEST": {
+        const data = (await chrome.runtime.sendMessage({
+          type: "LT2_EXPORT_SYNC",
+        })) as SyncPayload;
 
-    case "LINGTEXT_SYNC_COMPLETE": {
-      // La web app envía el estado final después del merge
-      // La extensión reemplaza completamente su caché
-      const { words, phrases, apiKey, translator } = payload as SyncData;
-
-      await chrome.runtime.sendMessage({
-        type: "REPLACE_ALL_DATA",
-        payload: { words, phrases },
-      });
-
-      // Guardar API key y traductor si vienen de la web
-      if (apiKey) {
-        await chrome.storage.local.set({ openrouter_key: apiKey });
-      }
-      if (translator) {
-        await chrome.storage.local.set({ translator });
+        window.postMessage(
+          { type: "LINGTEXT_SYNC_RESPONSE", payload: data },
+          event.origin
+        );
+        break;
       }
 
-      // Guardar timestamp de última sincronización
-      await chrome.storage.local.set({ lastSync: Date.now() });
+      case "LINGTEXT_SYNC_COMPLETE": {
+        const data = payload as SyncCompletePayload;
 
-      window.postMessage(
-        { type: "LINGTEXT_EXTENSION_SYNCED", payload: { success: true } },
-        event.origin
-      );
-      console.log("[LingText Bridge] Sync complete - data replaced from web");
-      break;
-    }
+        await chrome.runtime.sendMessage({
+          type: "LT2_IMPORT_SYNC",
+          payload: {
+            words: data.words || [],
+            phrases: data.phrases || [],
+          },
+        });
 
-    // Legacy: mantener compatibilidad con el flujo anterior
-    case "LINGTEXT_IMPORT_TO_EXTENSION": {
-      const { words, phrases } = payload as SyncData;
-      await chrome.runtime.sendMessage({
-        type: "SYNC_FROM_WEB",
-        payload: { words, phrases },
-      });
-      window.postMessage(
-        { type: "LINGTEXT_IMPORT_COMPLETE", payload: { success: true } },
-        event.origin
-      );
-      break;
+        const settingsPatch: {
+          apiKey?: string;
+          translator?: TRANSLATORS;
+        } = {};
+
+        if (typeof data.apiKey === "string") {
+          settingsPatch.apiKey = data.apiKey;
+        }
+
+        if (data.translator) {
+          settingsPatch.translator = data.translator;
+        }
+
+        if (Object.keys(settingsPatch).length > 0) {
+          await chrome.runtime.sendMessage({
+            type: "LT2_SET_SETTINGS",
+            payload: settingsPatch,
+          });
+        }
+
+        window.postMessage(
+          { type: "LINGTEXT_EXTENSION_SYNCED", payload: { success: true } },
+          event.origin
+        );
+        break;
+      }
+
+      // Legacy compatibility from old web flow.
+      case "LINGTEXT_IMPORT_TO_EXTENSION": {
+        const data = payload as SyncPayload;
+        await chrome.runtime.sendMessage({
+          type: "LT2_IMPORT_SYNC",
+          payload: {
+            words: data.words || [],
+            phrases: data.phrases || [],
+          },
+        });
+
+        window.postMessage(
+          { type: "LINGTEXT_IMPORT_COMPLETE", payload: { success: true } },
+          event.origin
+        );
+        break;
+      }
+
+      default:
+        break;
     }
+  } catch (error) {
+    console.error("[LingText Bridge] Message handling failed:", error);
+    window.postMessage(
+      {
+        type: "LINGTEXT_EXTENSION_SYNCED",
+        payload: {
+          success: false,
+          error: error instanceof Error ? error.message : String(error),
+        },
+      },
+      event.origin
+    );
   }
 });
 
-// Escuchar mensajes del popup para iniciar sincronización manual
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
-  if (message.type === "TRIGGER_SYNC") {
-    // Enviar solicitud de sincronización a la web app
-    window.postMessage(
-      { type: "LINGTEXT_EXTENSION_SYNC_REQUEST" },
-      PAGE_ORIGIN
-    );
-    sendResponse({ triggered: true });
+  if (message.type !== "TRIGGER_SYNC") {
+    return true;
   }
+
+  window.postMessage(
+    { type: "LINGTEXT_EXTENSION_SYNC_REQUEST" },
+    window.location.origin
+  );
+  sendResponse({ triggered: true });
+
   return true;
 });
 
-// Notificar a la web app que la extensión está instalada
-window.postMessage({ type: "LINGTEXT_EXTENSION_READY" }, PAGE_ORIGIN);
-
-console.log("[LingText Bridge] Content script initialized");
+window.postMessage({ type: "LINGTEXT_EXTENSION_READY" }, window.location.origin);

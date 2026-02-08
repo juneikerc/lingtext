@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "LingText for YouTube",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Aprende inglés con subtítulos de YouTube. Sincroniza con tu vocabulario de LingText.",
   "permissions": ["storage", "activeTab"],
   "host_permissions": [

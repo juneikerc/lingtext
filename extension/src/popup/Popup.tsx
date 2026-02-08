@@ -1,59 +1,52 @@
-import { useState, useEffect } from "react";
-import type { WordEntry, PhraseEntry } from "@/types";
-import { TRANSLATORS, TRANSLATOR_LABELS } from "@/utils/translate";
+import { useEffect, useState } from "react";
+
+import type { ExtensionSettings, PhraseEntry, WordEntry } from "@/types";
+import { TRANSLATORS } from "@/types";
+import { TRANSLATOR_LABELS } from "@/utils/translate";
+
+const defaultSettings: ExtensionSettings = {
+  translator: TRANSLATORS.CHROME,
+  apiKey: "",
+  captionLanguage: "en",
+  hideNativeCc: true,
+};
 
 export default function Popup() {
   const [stats, setStats] = useState({ words: 0, phrases: 0 });
   const [lastSync, setLastSync] = useState<string | null>(null);
-  const [translator, setTranslator] = useState<TRANSLATORS>(TRANSLATORS.CHROME);
-  const [apiKey, setApiKey] = useState("");
+  const [settings, setSettings] = useState<ExtensionSettings>(defaultSettings);
   const [showApiKey, setShowApiKey] = useState(false);
   const [syncing, setSyncing] = useState(false);
   const [syncStatus, setSyncStatus] = useState<string | null>(null);
 
   useEffect(() => {
-    loadStats();
-    // Cargar configuración guardada
-    chrome.storage.local.get(
-      ["lastSync", "translator", "openrouter_key", "lingtext_openrouter_key"],
-      (result) => {
-        if (result.lastSync) {
-          setLastSync(new Date(result.lastSync).toLocaleString());
-        }
-        if (result.translator) {
-          setTranslator(result.translator as TRANSLATORS);
-        }
-        const apiKey = result.openrouter_key || result.lingtext_openrouter_key;
-        if (apiKey) {
-          setApiKey(apiKey);
-        }
-        if (!result.openrouter_key && result.lingtext_openrouter_key) {
-          chrome.storage.local.set({
-            openrouter_key: result.lingtext_openrouter_key,
-          });
-        }
-      }
-    );
+    loadAll().catch((error) => {
+      console.error("[LingText Popup] Failed to load initial data:", error);
+    });
   }, []);
 
-  const handleTranslatorChange = (value: TRANSLATORS) => {
-    setTranslator(value);
-    chrome.storage.local.set({ translator: value });
-  };
+  const loadAll = async () => {
+    const [words, phrases, currentSettings, syncInfo] = await Promise.all([
+      chrome.runtime.sendMessage({ type: "LT2_GET_WORDS" }) as Promise<WordEntry[]>,
+      chrome.runtime.sendMessage({ type: "LT2_GET_PHRASES" }) as Promise<PhraseEntry[]>,
+      chrome.runtime.sendMessage({ type: "LT2_GET_SETTINGS" }) as Promise<ExtensionSettings>,
+      chrome.storage.local.get("lt2_last_sync"),
+    ]);
 
-  const handleApiKeyChange = (value: string) => {
-    setApiKey(value);
-    chrome.storage.local.set({ openrouter_key: value });
-  };
-
-  const loadStats = async () => {
-    const words = (await chrome.runtime.sendMessage({
-      type: "GET_WORDS",
-    })) as WordEntry[];
-    const phrases = (await chrome.runtime.sendMessage({
-      type: "GET_PHRASES",
-    })) as PhraseEntry[];
     setStats({ words: words.length, phrases: phrases.length });
+    setSettings({ ...defaultSettings, ...currentSettings, captionLanguage: "en" });
+
+    const syncTs = syncInfo.lt2_last_sync as number | undefined;
+    setLastSync(syncTs ? new Date(syncTs).toLocaleString() : null);
+  };
+
+  const updateSettings = async (patch: Partial<ExtensionSettings>) => {
+    const next = (await chrome.runtime.sendMessage({
+      type: "LT2_SET_SETTINGS",
+      payload: patch,
+    })) as ExtensionSettings;
+
+    setSettings({ ...defaultSettings, ...next, captionLanguage: "en" });
   };
 
   const openLingText = () => {
@@ -65,19 +58,17 @@ export default function Popup() {
     setSyncStatus(null);
 
     try {
-      const lastSyncBeforeResult = await chrome.storage.local.get("lastSync");
-      const lastSyncBefore =
-        typeof lastSyncBeforeResult.lastSync === "number"
-          ? (lastSyncBeforeResult.lastSync as number)
-          : null;
+      const beforeResult = await chrome.storage.local.get("lt2_last_sync");
+      const before =
+        typeof beforeResult.lt2_last_sync === "number"
+          ? (beforeResult.lt2_last_sync as number)
+          : 0;
 
-      // Buscar una pestaña de lingtext.org abierta
       const tabs = await chrome.tabs.query({
         url: ["https://lingtext.org/*", "http://localhost:*/*"],
       });
 
-      if (tabs.length === 0) {
-        // No hay pestaña abierta, abrir una nueva
+      if (tabs.length === 0 || !tabs[0].id) {
         setSyncStatus("Abriendo LingText...");
         await chrome.tabs.create({ url: "https://lingtext.org" });
         setSyncStatus("Abre LingText y vuelve a sincronizar");
@@ -85,68 +76,61 @@ export default function Popup() {
         return;
       }
 
-      // Enviar mensaje al content script (bridge) para iniciar sync
-      const tab = tabs[0];
-      if (tab.id) {
-        await chrome.tabs.sendMessage(tab.id, { type: "TRIGGER_SYNC" });
-        setSyncStatus("Sincronizando...");
+      await chrome.tabs.sendMessage(tabs[0].id, { type: "TRIGGER_SYNC" });
+      setSyncStatus("Sincronizando...");
 
-        const newLastSync = await new Promise<number>((resolve, reject) => {
-          let timeoutId: ReturnType<typeof setTimeout> | null = null;
+      const updatedTs = await new Promise<number>((resolve, reject) => {
+        let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
-          const cleanup = (
-            listener: (
-              changes: { [key: string]: chrome.storage.StorageChange },
-              areaName: string
-            ) => void
-          ) => {
-            chrome.storage.onChanged.removeListener(listener);
-            if (timeoutId) clearTimeout(timeoutId);
-          };
-
-          const listener = (
+        const cleanup = (
+          listener: (
             changes: { [key: string]: chrome.storage.StorageChange },
             areaName: string
-          ) => {
-            if (areaName !== "local") return;
-            if (!changes.lastSync) return;
-            const next = changes.lastSync.newValue;
-            if (
-              typeof next === "number" &&
-              (lastSyncBefore === null || next > lastSyncBefore)
-            ) {
-              cleanup(listener);
-              resolve(next);
-            }
-          };
+          ) => void
+        ) => {
+          chrome.storage.onChanged.removeListener(listener);
+          if (timeoutId) {
+            clearTimeout(timeoutId);
+          }
+        };
 
-          chrome.storage.onChanged.addListener(listener);
+        const listener = (
+          changes: { [key: string]: chrome.storage.StorageChange },
+          areaName: string
+        ) => {
+          if (areaName !== "local" || !changes.lt2_last_sync) {
+            return;
+          }
 
-          timeoutId = setTimeout(() => {
+          const ts = changes.lt2_last_sync.newValue;
+          if (typeof ts === "number" && ts > before) {
             cleanup(listener);
-            reject(new Error("SYNC_TIMEOUT"));
-          }, 30000);
+            resolve(ts);
+          }
+        };
 
-          // Por si el sync terminó antes de que el listener se dispare
-          chrome.storage.local.get("lastSync").then((result) => {
-            const next = result.lastSync;
-            if (
-              typeof next === "number" &&
-              (lastSyncBefore === null || next > lastSyncBefore)
-            ) {
-              cleanup(listener);
-              resolve(next);
-            }
-          });
+        chrome.storage.onChanged.addListener(listener);
+
+        timeoutId = setTimeout(() => {
+          cleanup(listener);
+          reject(new Error("SYNC_TIMEOUT"));
+        }, 30000);
+
+        chrome.storage.local.get("lt2_last_sync").then((result) => {
+          const ts = result.lt2_last_sync;
+          if (typeof ts === "number" && ts > before) {
+            cleanup(listener);
+            resolve(ts);
+          }
         });
+      });
 
-        await loadStats();
-        setLastSync(new Date(newLastSync).toLocaleString());
-        setSyncStatus("✓ Sincronizado");
-        setSyncing(false);
-      }
+      await loadAll();
+      setLastSync(new Date(updatedTs).toLocaleString());
+      setSyncStatus("✓ Sincronizado");
+      setSyncing(false);
     } catch (error) {
-      console.error("Sync error:", error);
+      console.error("[LingText Popup] Sync failed:", error);
       setSyncStatus("Error al sincronizar");
       setSyncing(false);
     }
@@ -159,7 +143,7 @@ export default function Popup() {
           <span className="logo-icon">📚</span>
           <span className="logo-text">LingText</span>
         </div>
-        <span className="version">v0.1.0</span>
+        <span className="version">v0.2.0</span>
       </header>
 
       <main className="popup-body">
@@ -181,9 +165,9 @@ export default function Popup() {
           <h2>Traductor</h2>
           <select
             className="translator-select"
-            value={translator}
-            onChange={(e) =>
-              handleTranslatorChange(e.target.value as TRANSLATORS)
+            value={settings.translator}
+            onChange={(event) =>
+              updateSettings({ translator: event.target.value as TRANSLATORS })
             }
           >
             {Object.entries(TRANSLATOR_LABELS).map(([key, label]) => (
@@ -193,13 +177,13 @@ export default function Popup() {
             ))}
           </select>
 
-          {translator !== TRANSLATORS.CHROME && (
+          {settings.translator !== TRANSLATORS.CHROME && (
             <div className="api-key-section">
               <label className="api-key-label">
                 OpenRouter API Key
                 <button
                   className="toggle-visibility"
-                  onClick={() => setShowApiKey(!showApiKey)}
+                  onClick={() => setShowApiKey((prev) => !prev)}
                 >
                   {showApiKey ? "🙈" : "👁️"}
                 </button>
@@ -208,8 +192,8 @@ export default function Popup() {
                 type={showApiKey ? "text" : "password"}
                 className="api-key-input"
                 placeholder="sk-or-..."
-                value={apiKey}
-                onChange={(e) => handleApiKeyChange(e.target.value)}
+                value={settings.apiKey}
+                onChange={(event) => updateSettings({ apiKey: event.target.value })}
               />
               <a
                 href="https://openrouter.ai/keys"
@@ -228,11 +212,7 @@ export default function Popup() {
           {lastSync && <p className="last-sync">Última sync: {lastSync}</p>}
           {syncStatus && <p className="sync-status">{syncStatus}</p>}
           <div className="sync-buttons">
-            <button
-              className="btn btn-primary"
-              onClick={handleSync}
-              disabled={syncing}
-            >
+            <button className="btn btn-primary" onClick={handleSync} disabled={syncing}>
               {syncing ? "Sincronizando..." : "🔄 Sincronizar"}
             </button>
             <button className="btn btn-secondary" onClick={openLingText}>
@@ -240,17 +220,17 @@ export default function Popup() {
             </button>
           </div>
           <p className="sync-hint">
-            La web es la fuente de verdad. Al sincronizar, los datos se combinan
-            y la extensión recibe el estado final.
+            La web es la fuente de verdad. Al sincronizar, la extensión se
+            actualiza con el estado final.
           </p>
         </section>
 
         <section className="help-section">
           <h2>Cómo usar</h2>
           <ol>
-            <li>Activa los subtítulos en YouTube</li>
-            <li>Haz clic en cualquier palabra para traducirla</li>
-            <li>Marca palabras como conocidas o por aprender</li>
+            <li>Activa los subtítulos en inglés en YouTube</li>
+            <li>Haz clic en palabras para traducirlas</li>
+            <li>Guarda palabras y frases para repasarlas</li>
           </ol>
         </section>
       </main>
