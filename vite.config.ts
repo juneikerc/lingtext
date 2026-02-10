@@ -35,29 +35,59 @@ function copySqliteWasm() {
   };
 }
 
+function shouldUseCrossOriginIsolation(pathname: string): boolean {
+  return !(
+    pathname === "/aprender-ingles-con-canciones" ||
+    pathname.startsWith("/aprender-ingles-con-canciones/")
+  );
+}
+
+function conditionalIsolationHeaders() {
+  const applyHeaders = (
+    urlPath: string,
+    res: import("http").ServerResponse
+  ) => {
+    if (shouldUseCrossOriginIsolation(urlPath)) {
+      res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+      res.setHeader("Cross-Origin-Embedder-Policy", "credentialless");
+      return;
+    }
+
+    res.removeHeader("Cross-Origin-Opener-Policy");
+    res.removeHeader("Cross-Origin-Embedder-Policy");
+  };
+
+  return {
+    name: "conditional-isolation-headers",
+    configureServer(server: import("vite").ViteDevServer) {
+      server.middlewares.use((req, res, next) => {
+        const url = req.url || "/";
+        const pathname = url.split("?")[0];
+        applyHeaders(pathname, res);
+        next();
+      });
+    },
+    configurePreviewServer(server: import("vite").PreviewServer) {
+      server.middlewares.use((req, res, next) => {
+        const url = req.url || "/";
+        const pathname = url.split("?")[0];
+        applyHeaders(pathname, res);
+        next();
+      });
+    },
+  };
+}
+
 export default defineConfig({
   plugins: [
     copySqliteWasm(),
+    conditionalIsolationHeaders(),
     cloudflare({ viteEnvironment: { name: "ssr" } }),
     tailwindcss(),
     reactRouter(),
     contentCollections(),
     tsconfigPaths({ projects: ["./tsconfig.vite.json"] }),
   ],
-  // Required headers for SQLite WASM with SharedArrayBuffer/OPFS
-  // Using 'credentialless' to allow third-party scripts (Clarity, etc.)
-  server: {
-    headers: {
-      "Cross-Origin-Opener-Policy": "same-origin",
-      "Cross-Origin-Embedder-Policy": "credentialless",
-    },
-  },
-  preview: {
-    headers: {
-      "Cross-Origin-Opener-Policy": "same-origin",
-      "Cross-Origin-Embedder-Policy": "credentialless",
-    },
-  },
   // Optimize SQLite WASM dependencies - exclude from pre-bundling
   optimizeDeps: {
     exclude: ["@sqlite.org/sqlite-wasm"],
