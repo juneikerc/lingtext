@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback, useMemo } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import {
   getAllUnknownWords,
   getWord,
@@ -40,6 +40,15 @@ interface Props {
 
 // Types moved to ./reader/types
 
+function normalizeReaderSelectionText(rawText: string): string {
+  return rawText
+    .replaceAll("Clic para traducir", "")
+    .replace(/\u00a0/g, " ")
+    .replace(/[\u200b-\u200d\ufeff]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 export default function Reader({ text }: Props) {
   const { selected } = useTranslatorStore();
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -52,8 +61,6 @@ export default function Reader({ text }: Props) {
   const [isLocalFile, setIsLocalFile] = useState(false);
   const [fileSize, setFileSize] = useState<number | null>(null);
   const phraseCacheRef = useRef<Map<string, string>>(new Map());
-
-  console.log(text.audioUrl);
 
   // Detectar si es archivo local y obtener información
   useEffect(() => {
@@ -359,12 +366,12 @@ export default function Reader({ text }: Props) {
   async function handleMouseUp() {
     const sel = window.getSelection();
 
-    if (!sel || sel.isCollapsed) return;
+    if (!sel || sel.isCollapsed || sel.rangeCount === 0) return;
     const range = sel.getRangeAt(0);
     const parent = containerRef.current;
     if (!parent || !parent.contains(range.commonAncestorContainer)) return;
 
-    const text = sel.toString().trim().replaceAll("Clic para traducir", "");
+    const text = normalizeReaderSelectionText(sel.toString());
 
     if (!text) return;
     const rect = range.getBoundingClientRect();
@@ -429,7 +436,8 @@ export default function Reader({ text }: Props) {
 
   const onSavePhrase = useCallback(
     async (text: string, translation: string) => {
-      const parts = tokenize(text)
+      const normalizedText = normalizeReaderSelectionText(text);
+      const parts = tokenize(normalizedText)
         .filter((t) => t.isWord)
         .map((t) => t.lower || normalizeWord(t.text))
         .filter((w) => w.length > 0);
@@ -443,7 +451,7 @@ export default function Reader({ text }: Props) {
 
       const phraseLower = parts.join(" ");
       await putPhrase({
-        phrase: text,
+        phrase: normalizedText,
         phraseLower,
         translation,
         parts,
