@@ -12,4 +12,6 @@ export default [
   route("comunidad", "routes/community.tsx"),
   route("1000-frases-en-ingles", "routes/english-phrases.tsx"),
   route("tutor-escritura", "routes/writing-tutor.tsx"),
+  route("aprender-ingles-con-canciones", "routes/songs/songs.tsx"),
+  route("aprender-ingles-con-canciones/:id", "routes/songs/song.tsx"),
 ] satisfies RouteConfig;

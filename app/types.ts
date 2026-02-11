@@ -15,6 +15,19 @@ export interface TextItem {
   audioRef?: AudioRef | null;
 }
 
+export type SongProvider = "youtube" | "spotify";
+
+export interface SongItem {
+  id: string;
+  title: string;
+  lyrics: string;
+  provider: SongProvider;
+  sourceUrl: string;
+  embedUrl: string;
+  createdAt: number;
+  updatedAt: number;
+}
+
 export interface VoiceParams {
   name?: string;
   lang?: string;

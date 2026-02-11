@@ -56,7 +56,11 @@ export default function ReaderWordTokens({
       {tokens.map((t, tokenIndex) => {
         const tokenKey = keyPrefix ? `${keyPrefix}-${tokenIndex}` : tokenIndex;
         if (!t.isWord) {
-          return <span key={tokenKey}>{t.text}</span>;
+          return (
+            <span key={tokenKey} className="whitespace-pre-wrap">
+              {t.text}
+            </span>
+          );
         }
         const low = t.lower || normalizeWord(t.text);
         const isUnknown = unknownSet.has(low);

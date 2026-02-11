@@ -118,6 +118,20 @@ function createTables(database: any): void {
     )
   `);
 
+  // Songs table
+  database.exec(`
+    CREATE TABLE IF NOT EXISTS songs (
+      id TEXT PRIMARY KEY,
+      title TEXT NOT NULL,
+      lyrics TEXT NOT NULL,
+      provider TEXT NOT NULL,
+      source_url TEXT NOT NULL,
+      embed_url TEXT NOT NULL,
+      created_at INTEGER NOT NULL,
+      updated_at INTEGER NOT NULL
+    )
+  `);
+
   // Words table
   database.exec(`
     CREATE TABLE IF NOT EXISTS words (
