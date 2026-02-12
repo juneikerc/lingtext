@@ -84,6 +84,29 @@ export async function deleteText(id: string): Promise<void> {
   scheduleSave();
 }
 
+export async function updateText(item: TextItem): Promise<void> {
+  const database = await getDB();
+  const audioRefJson = item.audioRef
+    ? JSON.stringify(serializeAudioRef(item.audioRef))
+    : null;
+
+  database.exec(
+    `UPDATE texts
+     SET title = ?, content = ?, format = ?, audio_ref = ?
+     WHERE id = ?`,
+    {
+      bind: [
+        item.title,
+        item.content,
+        item.format || "txt",
+        audioRefJson,
+        item.id,
+      ],
+    }
+  );
+  scheduleSave();
+}
+
 export async function updateTextAudioRef(
   id: string,
   audioRef: AudioRef | null
