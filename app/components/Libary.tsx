@@ -427,6 +427,34 @@ export default function Library() {
     }
   }
 
+  function closeAudioMenu(textId: string) {
+    const menu = document.getElementById(`audio-menu-${textId}`);
+    if (menu instanceof HTMLDetailsElement) {
+      menu.open = false;
+    }
+  }
+
+  async function onAudioMenuAction(
+    textId: string,
+    action: "file" | "url" | "clear"
+  ) {
+    try {
+      if (action === "file") {
+        await onAttachAudioFile(textId);
+        return;
+      }
+
+      if (action === "url") {
+        await onAttachAudioUrl(textId);
+        return;
+      }
+
+      await onClearAudio(textId);
+    } finally {
+      closeAudioMenu(textId);
+    }
+  }
+
   async function onClearAudio(textId: string) {
     await updateTextAudioRef(textId, null);
     await deleteFileHandle(textId);
@@ -847,7 +875,10 @@ export default function Library() {
                   ) : null}
 
                   <div className="mt-5 pt-4 border-t border-gray-200 dark:border-gray-800 flex flex-wrap items-center justify-end gap-2">
-                    <details className="relative group/audio">
+                    <details
+                      id={`audio-menu-${t.id}`}
+                      className="relative group/audio"
+                    >
                       <summary className="list-none cursor-pointer inline-flex items-center px-4 py-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950">
                         <VolumeIcon className="w-4 h-4 mr-1.5" aria-hidden="true" />
                         Agregar audio
@@ -860,14 +891,14 @@ export default function Library() {
                       <div className="absolute right-0 mt-2 w-52 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-lg p-1.5 z-20">
                         <button
                           className="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
-                          onClick={() => onAttachAudioFile(t.id)}
+                          onClick={() => void onAudioMenuAction(t.id, "file")}
                           type="button"
                         >
                           Desde archivo
                         </button>
                         <button
                           className="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
-                          onClick={() => onAttachAudioUrl(t.id)}
+                          onClick={() => void onAudioMenuAction(t.id, "url")}
                           type="button"
                         >
                           Desde URL
@@ -875,7 +906,7 @@ export default function Library() {
                         {t.audioRef ? (
                           <button
                             className="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 inline-flex items-center"
-                            onClick={() => onClearAudio(t.id)}
+                            onClick={() => void onAudioMenuAction(t.id, "clear")}
                             type="button"
                           >
                             <XCircleIcon
