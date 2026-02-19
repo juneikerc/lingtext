@@ -1,6 +1,6 @@
 ---
 title: "The Life of Tom (long)"
-level: "A1"
+level: "a1"
 ---
 
 ### Chapter 1: Hello! This is Me
