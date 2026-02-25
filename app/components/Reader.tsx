@@ -40,13 +40,26 @@ interface Props {
 
 // Types moved to ./reader/types
 
+const READER_COPY_HINTS = ["Clic para traducir"] as const;
+
+function stripReaderCopyHints(rawText: string): string {
+  return READER_COPY_HINTS.reduce((text, hint) => {
+    return text.replaceAll(hint, "");
+  }, rawText);
+}
+
 function normalizeReaderSelectionText(rawText: string): string {
-  return rawText
-    .replaceAll("Clic para traducir", "")
+  return stripReaderCopyHints(rawText)
     .replace(/\u00a0/g, " ")
     .replace(/[\u200b-\u200d\ufeff]/g, "")
     .replace(/\s+/g, " ")
     .trim();
+}
+
+function sanitizeReaderCopiedText(rawText: string): string {
+  return stripReaderCopyHints(rawText)
+    .replace(/\u00a0/g, " ")
+    .replace(/[\u200b-\u200d\ufeff]/g, "");
 }
 
 export default function Reader({ text }: Props) {
@@ -466,11 +479,28 @@ export default function Reader({ text }: Props) {
     []
   );
 
+  const onCopy = useCallback((e: React.ClipboardEvent<HTMLDivElement>) => {
+    const sel = window.getSelection();
+    const parent = containerRef.current;
+
+    if (!sel || sel.isCollapsed || sel.rangeCount === 0 || !parent) return;
+
+    const range = sel.getRangeAt(0);
+    if (!parent.contains(range.commonAncestorContainer)) return;
+
+    const copiedText = sanitizeReaderCopiedText(sel.toString());
+    if (!copiedText || !e.clipboardData) return;
+
+    e.clipboardData.setData("text/plain", copiedText);
+    e.preventDefault();
+  }, []);
+
   return (
     <div
       className="relative flex flex-col flex-1 bg-gray-50 dark:bg-gray-900 pb-40 sm:pb-32"
       ref={containerRef}
       onMouseUp={handleMouseUp}
+      onCopy={onCopy}
       onClick={(e) => {
         const t = e.target as HTMLElement;
         const sel = window.getSelection();
