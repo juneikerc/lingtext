@@ -41,6 +41,7 @@ interface Props {
 // Types moved to ./reader/types
 
 const READER_COPY_HINTS = ["Clic para traducir"] as const;
+const MAX_SELECTION_TRANSLATE_WORDS = 20;
 
 function stripReaderCopyHints(rawText: string): string {
   return READER_COPY_HINTS.reduce((text, hint) => {
@@ -395,6 +396,13 @@ export default function Reader({ text }: Props) {
       .filter((t) => t.isWord)
       .map((t) => t.lower || normalizeWord(t.text))
       .filter((w) => w.length > 0);
+
+    if (parts.length > MAX_SELECTION_TRANSLATE_WORDS) {
+      translateRequestIdRef.current += 1;
+      setPopup(null);
+      setSelPopup(null);
+      return;
+    }
 
     if (parts.length >= 2) {
       const phraseLower = parts.join(" ");
