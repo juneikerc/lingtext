@@ -11,6 +11,7 @@ export default [
   route("blog/:slug", "routes/blog/blog.tsx"),
   route("comunidad", "routes/community.tsx"),
   route("1000-frases-en-ingles", "routes/english-phrases.tsx"),
+  route("500-palabras-en-ingles", "routes/english-words-500.tsx"),
   route("tutor-escritura", "routes/writing-tutor.tsx"),
   route("aprender-ingles-con-canciones", "routes/songs/songs.tsx"),
   route("aprender-ingles-con-canciones/:id", "routes/songs/song.tsx"),
