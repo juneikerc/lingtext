@@ -1,5 +1,5 @@
 import type { Route } from "./+types/english-words-500";
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import { Link } from "react-router";
 import data from "~/data/1000-words.json";
 import { getSettings } from "~/services/db/settings";
@@ -112,14 +112,8 @@ function WordCard({
   onSpeakWord: (word: string) => Promise<void>;
   onSpeakSentence: (sentence: string) => Promise<void>;
 }) {
-  const [showMeaning, setShowMeaning] = useState(false);
-  const [showSentence, setShowSentence] = useState(false);
-  const [showTranslation, setShowTranslation] = useState(false);
-
   const hasSentence = Boolean(item.exampleSentence);
   const wordTranslation = getPrimaryWordTranslation(item.definition);
-  const hasMeaning = Boolean(item.definition || wordTranslation);
-  const hasTranslation = Boolean(item.translation);
 
   return (
     <article className="rounded-2xl border border-gray-200 bg-white shadow-sm transition duration-200 hover:border-gray-300 hover:shadow-md dark:border-gray-800 dark:bg-gray-900 dark:hover:border-gray-700">
@@ -148,93 +142,52 @@ function WordCard({
       </header>
 
       <div className="border-t border-gray-200 px-5 py-4 dark:border-gray-800">
-        <div className="flex flex-wrap gap-3">
-          <button
-            type="button"
-            className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus-visible:ring-offset-gray-950"
-            disabled={!hasMeaning}
-            onClick={() => setShowMeaning((prev) => !prev)}
-          >
-            {showMeaning
-              ? "Ocultar significado / traducción"
-              : "Mostrar significado / traducción"}
-          </button>
-
-          <button
-            type="button"
-            className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus-visible:ring-offset-gray-950"
-            disabled={!hasSentence}
-            onClick={() => {
-              setShowSentence((prev) => {
-                const next = !prev;
-                if (!next) setShowTranslation(false);
-                return next;
-              });
-            }}
-          >
-            {showSentence ? "Ocultar oración" : "Mostrar oración"}
-          </button>
-        </div>
+        <details className="rounded-xl border border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800/40">
+          <summary className="cursor-pointer list-none px-4 py-3 text-sm font-medium text-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:text-gray-200 dark:focus-visible:ring-offset-gray-900">
+            Significado / traducción de la palabra
+          </summary>
+          <div className="border-t border-gray-200 px-4 py-3 dark:border-gray-700">
+            <p className="text-gray-700 dark:text-gray-300">
+              {wordTranslation || "Traducción no disponible"}
+            </p>
+            <p className="mt-3 whitespace-pre-line text-sm text-gray-600 dark:text-gray-400">
+              {item.definition || "Significado no disponible"}
+            </p>
+          </div>
+        </details>
       </div>
 
-      {showMeaning && (
-        <div className="border-t border-gray-200 bg-gray-50 px-5 py-4 dark:border-gray-800 dark:bg-gray-800/40">
-          <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
-            Significado / traducción de la palabra
-          </p>
-          <p className="mt-2 text-gray-700 dark:text-gray-300">
-            {wordTranslation || "Traducción no disponible"}
-          </p>
-          <p className="mt-3 whitespace-pre-line text-sm text-gray-600 dark:text-gray-400">
-            {item.definition || "Significado no disponible"}
-          </p>
-        </div>
-      )}
-
-      {showSentence && (
-        <div className="border-t border-indigo-100 bg-indigo-50/60 px-5 py-4 dark:border-indigo-900/40 dark:bg-indigo-950/20">
-          <p className="mb-3 text-sm font-medium text-indigo-800 dark:text-indigo-300">
-            Oración de ejemplo
-          </p>
-          <div className="flex flex-wrap items-start justify-between gap-3">
-            <p className="text-base text-gray-900 dark:text-gray-100">
-              {item.exampleSentence || "Oración no disponible"}
-            </p>
+      <div className="border-t border-indigo-100 bg-indigo-50/60 px-5 py-4 dark:border-indigo-900/40 dark:bg-indigo-950/20">
+        <details className="rounded-xl border border-indigo-200 bg-white/80 dark:border-indigo-900/40 dark:bg-gray-900/50">
+          <summary className="flex cursor-pointer list-none items-start justify-between gap-3 px-4 py-3">
+            <div className="space-y-2">
+              <p className="text-base text-gray-900 dark:text-gray-100">
+                {item.exampleSentence || "Oración no disponible"}
+              </p>
+            </div>
             <button
               type="button"
               className="inline-flex items-center justify-center rounded-lg bg-gray-50 px-3 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 dark:focus-visible:ring-offset-gray-950"
               title="Reproducir oración"
               aria-label={`Reproducir oración: ${item.exampleSentence}`}
               disabled={!hasSentence}
-              onClick={async () => {
+              onClick={async (event) => {
+                event.preventDefault();
+                event.stopPropagation();
                 if (!item.exampleSentence) return;
                 await onSpeakSentence(item.exampleSentence);
               }}
             >
-              ▶ Oración
+              ▶
             </button>
-          </div>
-
-          <div className="mt-4">
-            <button
-              type="button"
-              className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus-visible:ring-offset-gray-950"
-              disabled={!hasTranslation}
-              onClick={() => setShowTranslation((prev) => !prev)}
-            >
-              {showTranslation
-                ? "Ocultar traducción"
-                : "Mostrar traducción de la oración"}
-            </button>
-          </div>
-
-          {showTranslation && (
-            <p className="mt-4 rounded-xl bg-white px-4 py-3 text-gray-700 dark:bg-gray-800 dark:text-gray-300">
+          </summary>
+          <div className="border-t border-indigo-100 px-4 py-3 dark:border-indigo-900/40">
+            <p className="mt-2 rounded-lg bg-white px-3 py-2 text-gray-700 dark:bg-gray-800 dark:text-gray-300">
               {item.translation || "Traducción no disponible"}
             </p>
-          )}
-        </div>
-      )}
+          </div>
+        </details>
+      </div>
     </article>
   );
 }
