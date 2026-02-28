@@ -94,33 +94,31 @@ export default function LanguageIslandDetailPage({
           sentences.map((sentence, index) => (
             <article
               key={`${island.id}-sentence-${index}`}
-              className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900"
+              className="rounded-2xl border border-gray-200 bg-white p-3 shadow-sm dark:border-gray-800 dark:bg-gray-900"
             >
-              <header className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 sm:text-base">
-                  Oración {index + 1}
-                </h3>
-
+              <div className="flex items-start gap-2 sm:gap-3">
+                <div className="min-w-0 flex-1">
+                  <Reader
+                    text={{
+                      id: `${island.id}-sentence-${index}`,
+                      title: `${island.title} - oración ${index + 1}`,
+                      content: sentence,
+                      format: "txt",
+                    }}
+                    variant="compact"
+                    showAudioSection={false}
+                  />
+                </div>
                 <button
                   type="button"
                   onClick={() => void onSpeakSentence(sentence)}
-                  className="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900"
+                  className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-600 text-lg text-white transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900"
                   aria-label={`Reproducir oración ${index + 1}`}
+                  title={`Audio oración ${index + 1}`}
                 >
-                  Reproducir audio
+                  🔊
                 </button>
-              </header>
-
-              <Reader
-                text={{
-                  id: `${island.id}-sentence-${index}`,
-                  title: `${island.title} - oración ${index + 1}`,
-                  content: sentence,
-                  format: "txt",
-                }}
-                variant="compact"
-                showAudioSection={false}
-              />
+              </div>
             </article>
           ))
         ) : (
