@@ -15,6 +15,8 @@ interface ReaderTextProps {
   // Lista de frases guardadas, cada una como lista de partes en lower
   phrases: string[][];
   onWordClick: (e: React.MouseEvent<HTMLSpanElement>) => void;
+  showChrome?: boolean;
+  compact?: boolean;
 }
 
 export default function ReaderText({
@@ -22,6 +24,8 @@ export default function ReaderText({
   unknownSet,
   phrases,
   onWordClick,
+  showChrome = true,
+  compact = false,
 }: ReaderTextProps) {
   // Guard against undefined content
   if (!content) {
@@ -30,11 +34,10 @@ export default function ReaderText({
 
   return (
     <div className="relative">
-      {/* Indicador de modo de lectura */}
-      <ReaderModeIndicator />
+      {showChrome ? <ReaderModeIndicator /> : null}
 
       {/* Área de texto principal */}
-      <ReaderContentShell>
+      <ReaderContentShell compact={compact}>
         {content.split("\n\n").map((paragraph, paragraphIndex) => (
           <p
             key={paragraphIndex}
@@ -51,9 +54,10 @@ export default function ReaderText({
         ))}
       </ReaderContentShell>
 
-      {/* Información del progreso */}
-      <ReaderProgressFooter unknownCount={unknownSet.size} />
-      <ReaderHelpFloatingLink />
+      {showChrome ? (
+        <ReaderProgressFooter unknownCount={unknownSet.size} />
+      ) : null}
+      {showChrome ? <ReaderHelpFloatingLink /> : null}
     </div>
   );
 }

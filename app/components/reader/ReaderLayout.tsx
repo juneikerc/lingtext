@@ -28,24 +28,29 @@ export function ReaderModeIndicator() {
 interface ReaderContentShellProps {
   children: React.ReactNode;
   contentClassName?: string;
+  compact?: boolean;
 }
 
 export function ReaderContentShell({
   children,
   contentClassName = "",
+  compact = false,
 }: ReaderContentShellProps) {
   const contentClasses = [
-    "bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-8 md:p-12",
+    compact
+      ? "bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4 sm:p-5"
+      : "bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-8 md:p-12",
     contentClassName,
   ]
     .filter(Boolean)
     .join(" ");
 
+  const wrapperClasses = compact
+    ? "mx-auto w-full py-2 leading-relaxed text-base sm:text-lg select-text"
+    : "mx-auto max-w-4xl px-6 sm:px-8 lg:px-12 py-8 leading-relaxed text-lg sm:text-xl select-text bg-gradient-to-b from-transparent via-white/50 to-transparent";
+
   return (
-    <div
-      id="reader-text"
-      className="mx-auto max-w-4xl px-6 sm:px-8 lg:px-12 py-8 leading-relaxed text-lg sm:text-xl select-text bg-gradient-to-b from-transparent via-white/50 to-transparent"
-    >
+    <div id="reader-text" className={wrapperClasses}>
       <div className={contentClasses}>{children}</div>
     </div>
   );

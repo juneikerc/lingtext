@@ -28,6 +28,14 @@ export interface SongItem {
   updatedAt: number;
 }
 
+export interface LanguageIslandItem {
+  id: string;
+  title: string;
+  sentencesText: string;
+  createdAt: number;
+  updatedAt: number;
+}
+
 export interface VoiceParams {
   name?: string;
   lang?: string;

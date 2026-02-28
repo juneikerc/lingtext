@@ -36,6 +36,8 @@ interface Props {
     audioRef?: AudioRef | null;
     audioUrl?: string | null;
   };
+  variant?: "default" | "compact";
+  showAudioSection?: boolean;
 }
 
 // Types moved to ./reader/types
@@ -63,8 +65,13 @@ function sanitizeReaderCopiedText(rawText: string): string {
     .replace(/[\u200b-\u200d\ufeff]/g, "");
 }
 
-export default function Reader({ text }: Props) {
+export default function Reader({
+  text,
+  variant = "default",
+  showAudioSection = true,
+}: Props) {
   const { selected } = useTranslatorStore();
+  const isCompact = variant === "compact";
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [unknownSet, setUnknownSet] = useState<Set<string>>(new Set());
   const [phrases, setPhrases] = useState<string[][]>([]);
@@ -505,7 +512,11 @@ export default function Reader({ text }: Props) {
 
   return (
     <div
-      className="relative flex flex-col flex-1 bg-gray-50 dark:bg-gray-900 pb-40 sm:pb-32"
+      className={
+        isCompact
+          ? "relative flex flex-col bg-transparent pb-2"
+          : "relative flex flex-col flex-1 bg-gray-50 dark:bg-gray-900 pb-40 sm:pb-32"
+      }
       ref={containerRef}
       onMouseUp={handleMouseUp}
       onCopy={onCopy}
@@ -524,6 +535,8 @@ export default function Reader({ text }: Props) {
           unknownSet={unknownSet}
           phrases={phrases}
           onWordClick={onWordClick}
+          showChrome={!isCompact}
+          compact={isCompact}
         />
       ) : (
         <ReaderText
@@ -531,6 +544,8 @@ export default function Reader({ text }: Props) {
           unknownSet={unknownSet}
           phrases={phrases}
           onWordClick={onWordClick}
+          showChrome={!isCompact}
+          compact={isCompact}
         />
       )}
 
@@ -553,17 +568,18 @@ export default function Reader({ text }: Props) {
         />
       )}
 
-      {/* Audio Player Sticky Bottom */}
-      <AudioSection
-        show={!!text.audioRef || !!text.audioUrl}
-        src={audioUrl ?? text.audioUrl ?? undefined}
-        showReauthorize={Boolean(
-          text.audioRef?.type === "file" && audioAccessError
-        )}
-        onReauthorize={reauthorizeAudio}
-        isLocalFile={isLocalFile}
-        fileSize={fileSize}
-      />
+      {showAudioSection ? (
+        <AudioSection
+          show={!!text.audioRef || !!text.audioUrl}
+          src={audioUrl ?? text.audioUrl ?? undefined}
+          showReauthorize={Boolean(
+            text.audioRef?.type === "file" && audioAccessError
+          )}
+          onReauthorize={reauthorizeAudio}
+          isLocalFile={isLocalFile}
+          fileSize={fileSize}
+        />
+      ) : null}
     </div>
   );
 }

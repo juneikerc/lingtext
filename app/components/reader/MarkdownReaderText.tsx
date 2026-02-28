@@ -14,6 +14,8 @@ interface MarkdownReaderTextProps {
   unknownSet: Set<string>;
   phrases: string[][];
   onWordClick: (e: React.MouseEvent<HTMLSpanElement>) => void;
+  showChrome?: boolean;
+  compact?: boolean;
 }
 
 export default function MarkdownReaderText({
@@ -21,6 +23,8 @@ export default function MarkdownReaderText({
   unknownSet,
   phrases,
   onWordClick,
+  showChrome = true,
+  compact = false,
 }: MarkdownReaderTextProps) {
   // Guard against undefined content
   if (!content) {
@@ -280,17 +284,20 @@ export default function MarkdownReaderText({
 
   return (
     <div className="relative">
-      {/* Indicador de modo de lectura */}
-      <ReaderModeIndicator />
+      {showChrome ? <ReaderModeIndicator /> : null}
 
       {/* Área de texto principal */}
-      <ReaderContentShell contentClassName="prose prose-lg dark:prose-invert max-w-none">
+      <ReaderContentShell
+        compact={compact}
+        contentClassName="prose prose-lg dark:prose-invert max-w-none"
+      >
         {parsedContent}
       </ReaderContentShell>
 
-      {/* Información del progreso */}
-      <ReaderProgressFooter unknownCount={unknownSet.size} />
-      <ReaderHelpFloatingLink />
+      {showChrome ? (
+        <ReaderProgressFooter unknownCount={unknownSet.size} />
+      ) : null}
+      {showChrome ? <ReaderHelpFloatingLink /> : null}
     </div>
   );
 }

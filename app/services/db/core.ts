@@ -132,6 +132,17 @@ function createTables(database: any): void {
     )
   `);
 
+  // Language islands table
+  database.exec(`
+    CREATE TABLE IF NOT EXISTS language_islands (
+      id TEXT PRIMARY KEY,
+      title TEXT NOT NULL,
+      sentences_text TEXT NOT NULL,
+      created_at INTEGER NOT NULL,
+      updated_at INTEGER NOT NULL
+    )
+  `);
+
   // Words table
   database.exec(`
     CREATE TABLE IF NOT EXISTS words (

@@ -14,4 +14,9 @@ export default [
   route("500-palabras-en-ingles", "routes/english-words-500.tsx"),
   route("aprender-ingles-con-canciones", "routes/songs/songs.tsx"),
   route("aprender-ingles-con-canciones/:id", "routes/songs/song.tsx"),
+  route("aprender-con-language-island", "routes/language-island/islands.tsx"),
+  route(
+    "aprender-con-language-island/:id",
+    "routes/language-island/island.tsx"
+  ),
 ] satisfies RouteConfig;
