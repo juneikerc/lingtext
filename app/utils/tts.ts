@@ -9,7 +9,7 @@ function getVoicesNow(): SpeechSynthesisVoice[] {
 }
 
 export function waitForVoices(
-  timeoutMs = 1500
+  timeoutMs = 800
 ): Promise<SpeechSynthesisVoice[]> {
   const existing = getVoicesNow();
   if (existing.length) return Promise.resolve(existing);
