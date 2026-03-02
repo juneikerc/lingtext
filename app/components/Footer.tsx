@@ -230,6 +230,25 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Versión en alemán */}
+        <div className="mt-8 p-4 bg-gray-900 rounded-lg border border-gray-800">
+          <h3 className="text-gray-100 font-semibold mb-2">
+            LingText para hablantes de alemán
+          </h3>
+          <p className="text-gray-300 text-sm mb-3">
+            ¿Hablas alemán y quieres aprender inglés a través de la lectura?
+            Visita nuestra versión dedicada para germanoparlantes.
+          </p>
+          <a
+            href="http://lingtext.de/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex text-indigo-300 hover:text-indigo-200 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
+          >
+            Ir a lingtext.de
+          </a>
+        </div>
+
         {/* Feature highlight */}
         <div className="mt-8 p-4 bg-gray-900 rounded-lg border border-gray-800">
           <div className="flex items-center justify-center">
