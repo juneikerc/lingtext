@@ -13,6 +13,7 @@ import { type AudioRef } from "../types";
 import { normalizeWord, tokenize } from "../utils/tokenize";
 import { speak } from "../utils/tts";
 import { translateTerm } from "../utils/translate";
+import { getLocalWordMeaning } from "../utils/local-word-bank";
 import { ensureReadPermission, pickAudioFile } from "../utils/fs";
 import { getFileHandle, saveFileHandle } from "~/services/file-handles";
 
@@ -197,6 +198,13 @@ export default function Reader({
 
       if (existing) {
         setPopup({ x, y, word, lower, translation: existing.translation });
+        return;
+      }
+
+      const localMeaning = getLocalWordMeaning(lower);
+      if (localMeaning) {
+        setSelPopup(null);
+        setPopup({ x, y, word, lower, translation: localMeaning });
         return;
       }
 
