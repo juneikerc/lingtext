@@ -9,8 +9,6 @@ Last weekend, my best friend Lucas and I **decided** to go on an adventure. We *
 
 We **packed** our bags quickly. I **put** some warm clothes, a map, and my camera in my backpack. Lucas **brought** a lot of food because he is always hungry. We **left** the house at 9:00 AM and **drove** for three hours. During the trip, we **listened** to our favorite music and **talked** about our plans for the summer.
 
-> **Quick check:** Where did they go last weekend? Did they travel by train or by car?
-
 ### Arriving at the Cabin
 
 When we **arrived** at the cabin, we **were** very surprised. It **was** much smaller than the photos on the website, but it **looked** very cozy. The cabin **sat** next to a beautiful blue lake. We **unlocked** the door and **carried** our suitcases inside.
@@ -52,18 +50,3 @@ On the way home, we **stopped** at a small cafe. I **ordered** a big breakfast w
 "Yes, I **loved** it," he **said**. "But next time, I **will** check the electricity and I **will** bring the map myself!"
 
 We **arrived** home at 4:00 PM. I **was** exhausted, so I **lay** on my bed and **slept** for two hours. It **was** a simple weekend, but it **was** one of the best trips of my life. I **learned** that you don't need a lot of money or technology to be happy. You only need a good friend and a bit of nature.
-
----
-
-### Grammar Review: Key Verbs Used
-
-| Present | Past Simple | Type      |
-| ------- | ----------- | --------- |
-| Go      | **Went**    | Irregular |
-| Have    | **Had**     | Irregular |
-| See     | **Saw**     | Irregular |
-| Walk    | **Walked**  | Regular   |
-| Look    | **Looked**  | Regular   |
-| Drink   | **Drank**   | Irregular |
-| Find    | **Found**   | Irregular |
-| Want    | **Wanted**  | Regular   |

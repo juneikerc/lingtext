@@ -9,6 +9,7 @@ import { allTexts } from "~/lib/content/runtime";
 import { formatSlug } from "~/helpers/formatSlug";
 import { type TextCollection, type TextItem } from "~/types";
 import { formatAudioRef } from "~/utils/format-audio-ref";
+import { markTextAsVisited } from "~/utils/visited-texts";
 
 const Reader = lazy(() => import("~/components/Reader"));
 
@@ -64,6 +65,12 @@ export async function clientLoader({
 export default function Text({ loaderData }: Route.ComponentProps) {
   const text = loaderData;
   const [showWelcomeModal, setShowWelcomeModal] = useState(false);
+
+  useEffect(() => {
+    if (!text.id) return;
+
+    markTextAsVisited(text.id);
+  }, [text.id]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
