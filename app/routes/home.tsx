@@ -1,5 +1,5 @@
 import type { Route } from "./+types/home";
-import Library from "~/components/Libary";
+import LibraryCTA from "~/components/LibraryCTA";
 import HeroSection from "~/components/HeroSection";
 import LevelSelector from "~/components/LevelSelector";
 import PurposeSection from "~/components/PurposeSection";
@@ -30,7 +30,7 @@ export default function Home() {
     <>
       <HeroSection />
       <LevelSelector />
-      <Library />
+      <LibraryCTA />
       <PurposeSection />
       <UsageGuideSection />
       <TechAndPrivacySection />

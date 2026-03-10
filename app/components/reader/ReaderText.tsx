@@ -1,6 +1,5 @@
 import React from "react";
-
-import {
+import LibraryBanner, {
   ReaderContentShell,
   ReaderEmptyState,
   ReaderHelpFloatingLink,
@@ -53,6 +52,8 @@ export default function ReaderText({
           </p>
         ))}
       </ReaderContentShell>
+
+      {showChrome ? <LibraryBanner /> : null}
 
       {showChrome ? (
         <ReaderProgressFooter unknownCount={unknownSet.size} />

@@ -19,4 +19,5 @@ export default [
     "aprender-con-language-island/:id",
     "routes/language-island/island.tsx"
   ),
+  route("my-library", "routes/my-library.tsx"),
 ] satisfies RouteConfig;

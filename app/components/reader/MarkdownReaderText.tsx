@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 
-import {
+import LibraryBanner, {
   ReaderContentShell,
   ReaderEmptyState,
   ReaderHelpFloatingLink,
@@ -293,6 +293,8 @@ export default function MarkdownReaderText({
       >
         {parsedContent}
       </ReaderContentShell>
+
+      {showChrome ? <LibraryBanner /> : null}
 
       {showChrome ? (
         <ReaderProgressFooter unknownCount={unknownSet.size} />
