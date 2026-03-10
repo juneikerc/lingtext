@@ -11,3 +11,6 @@
 a-prompt.txt
 # Local notes
 premium.txt
+
+# TypeScript build info
+*.tsbuildinfo
