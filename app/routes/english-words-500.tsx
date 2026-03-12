@@ -61,10 +61,6 @@ export function loader(): Word500Group[] {
     }))
     .sort((a, b) => a.index - b.index);
 
-  // first500.slice(31,40).forEach((item) => {
-  //   console.log(item.word);
-  // });
-
   const groups: Word500Group[] = [];
 
   for (let start = 0; start < first500.length; start += PAGE_SIZE) {
