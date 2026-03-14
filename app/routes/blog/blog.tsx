@@ -1,4 +1,4 @@
-import type { Route } from "../+types/blog";
+import type { Route } from "./+types/blog";
 import { getBlogBySlug } from "~/lib/content/runtime";
 import ProseContent from "~/components/ProseContent";
 

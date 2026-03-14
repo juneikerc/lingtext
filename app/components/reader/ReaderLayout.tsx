@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router";
 
+import { useReaderPreferences } from "./ReaderPreferencesContext";
+import { getReaderAppearanceStyles } from "./preferences";
+
 export function ReaderEmptyState() {
   return (
     <div className="mx-auto max-w-4xl px-6 py-8">
@@ -35,22 +38,34 @@ export function ReaderContentShell({
   contentClassName = "",
   compact = false,
 }: ReaderContentShellProps) {
+  const { preferences } = useReaderPreferences();
+  const appearanceStyles = getReaderAppearanceStyles(preferences, compact);
   const contentClasses = [
     compact
-      ? "bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4 sm:p-5"
-      : "bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-8 md:p-12",
+      ? "reader-surface rounded-xl border p-4 sm:p-5"
+      : "reader-surface rounded-2xl border shadow-xl p-8 md:p-12",
     contentClassName,
   ]
     .filter(Boolean)
     .join(" ");
 
   const wrapperClasses = compact
-    ? "mx-auto w-full py-2 leading-relaxed text-base sm:text-lg select-text"
-    : "mx-auto max-w-4xl px-6 sm:px-8 lg:px-12 py-8 leading-relaxed text-lg sm:text-xl select-text bg-gradient-to-b from-transparent via-white/50 to-transparent";
+    ? "mx-auto w-full py-2 select-text"
+    : "mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 select-text";
 
   return (
     <div id="reader-text" className={wrapperClasses}>
-      <div className={contentClasses}>{children}</div>
+      <div
+        className="mx-auto w-full"
+        style={{
+          ...appearanceStyles,
+          maxWidth: compact ? "100%" : "var(--reader-content-max-width)",
+        }}
+      >
+        <div className={contentClasses} style={appearanceStyles}>
+          {children}
+        </div>
+      </div>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import type { Route } from "./+types/text";
 import { Suspense, lazy, useEffect, useState } from "react";
 import type { AudioRef } from "~/types";
 import ReaderHeader from "~/components/reader/ReaderHeader";
+import { ReaderPreferencesProvider } from "~/components/reader/ReaderPreferencesContext";
 import ReaderSkeleton from "~/components/reader/ReaderSkeleton";
 import ReaderErrorBoundary from "~/components/ReaderErrorBoundary";
 import { allTexts } from "~/lib/content/runtime";
@@ -90,7 +91,7 @@ export default function Text({ loaderData }: Route.ComponentProps) {
   };
 
   return (
-    <>
+    <ReaderPreferencesProvider>
       {showWelcomeModal ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6">
           <div
@@ -152,6 +153,6 @@ export default function Text({ loaderData }: Route.ComponentProps) {
           <Reader text={text} />
         </Suspense>
       </ReaderErrorBoundary>
-    </>
+    </ReaderPreferencesProvider>
   );
 }

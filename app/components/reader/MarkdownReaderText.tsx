@@ -289,7 +289,7 @@ export default function MarkdownReaderText({
       {/* Área de texto principal */}
       <ReaderContentShell
         compact={compact}
-        contentClassName="prose prose-lg dark:prose-invert max-w-none"
+        contentClassName="reader-prose prose prose-lg max-w-none"
       >
         {parsedContent}
       </ReaderContentShell>

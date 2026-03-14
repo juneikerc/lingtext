@@ -90,6 +90,24 @@ export interface Settings {
   tts: Required<Pick<VoiceParams, "lang" | "rate" | "pitch" | "volume">> & {
     voiceName?: string;
   };
+  reader: ReaderPreferences;
+}
+
+export type ReaderTheme = "light" | "sepia" | "dark-soft";
+export type ReaderContentWidth = "narrow" | "normal" | "wide";
+export type ReaderFontFamily = "sans" | "serif";
+export type ReaderLineHeight = "compact" | "relaxed";
+export type ReaderLetterSpacing = "normal" | "spacious";
+export type ReaderPreset = "compact" | "comfortable" | "focus" | "custom";
+
+export interface ReaderPreferences {
+  theme: ReaderTheme;
+  fontSize: number;
+  contentWidth: ReaderContentWidth;
+  fontFamily: ReaderFontFamily;
+  lineHeight: ReaderLineHeight;
+  letterSpacing: ReaderLetterSpacing;
+  preset: ReaderPreset;
 }
 
 export enum TRANSLATORS {

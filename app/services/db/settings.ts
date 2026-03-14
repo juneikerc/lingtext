@@ -1,5 +1,6 @@
 import type { Settings } from "../../types";
 import { getDB, scheduleSave } from "./core";
+import { resolveReaderPreferences } from "~/components/reader/preferences";
 
 /**
  * SETTINGS CRUD
@@ -16,6 +17,7 @@ const defaultSettings: Settings = {
     volume: 1,
     voiceName: undefined,
   },
+  reader: resolveReaderPreferences(),
 };
 
 export async function getSettings(): Promise<Settings> {
@@ -28,7 +30,16 @@ export async function getSettings(): Promise<Settings> {
   if (rows.length === 0) return defaultSettings;
 
   try {
-    return JSON.parse(rows[0].value) as Settings;
+    const parsed = JSON.parse(rows[0].value) as Partial<Settings>;
+    return {
+      ...defaultSettings,
+      ...parsed,
+      tts: {
+        ...defaultSettings.tts,
+        ...parsed.tts,
+      },
+      reader: resolveReaderPreferences(parsed.reader),
+    };
   } catch {
     return defaultSettings;
   }

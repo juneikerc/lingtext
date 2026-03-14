@@ -15,3 +15,76 @@ body {
     color-scheme: dark;
   }
 }
+
+.reader-surface {
+  background-color: var(--reader-surface-bg);
+  border-color: var(--reader-border-color);
+  color: var(--reader-text-color);
+  font-family: var(--reader-font-family);
+  font-size: var(--reader-font-size);
+  letter-spacing: var(--reader-letter-spacing);
+  line-height: var(--reader-line-height);
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+}
+
+.reader-surface p,
+.reader-surface li,
+.reader-surface h1,
+.reader-surface h2,
+.reader-surface h3,
+.reader-surface h4,
+.reader-surface h5,
+.reader-surface h6,
+.reader-surface strong,
+.reader-surface em,
+.reader-surface blockquote {
+  color: inherit;
+}
+
+.reader-surface a {
+  color: var(--reader-link-color);
+}
+
+.reader-surface hr {
+  border-color: var(--reader-border-color);
+}
+
+.reader-surface code,
+.reader-surface pre {
+  background-color: var(--reader-muted-bg);
+  color: inherit;
+}
+
+.reader-surface blockquote {
+  background-color: var(--reader-quote-bg);
+  border-color: var(--reader-accent-color);
+  border-radius: 0.75rem;
+  padding-block: 0.75rem;
+  padding-right: 1rem;
+}
+
+.reader-prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *))::before,
+.reader-prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *))::after {
+  content: none;
+}
+
+.reader-token-hover:hover {
+  background-color: var(--reader-token-hover-bg);
+  color: var(--reader-token-hover-color);
+}
+
+.word-token[data-phrase-part="true"] {
+  text-decoration-color: var(--reader-accent-color);
+}
+
+.reader-copy-tooltip {
+  background-color: var(--reader-tooltip-bg);
+  color: var(--reader-tooltip-text);
+}
+
+.reader-copy-tooltip-arrow {
+  border-top-color: var(--reader-tooltip-bg);
+}

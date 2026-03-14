@@ -27,6 +27,8 @@ import type {
   SelectionPopupState as SelPopupState,
 } from "./reader/types";
 import { useTranslatorStore } from "~/context/translatorSelector";
+import { useReaderPreferences } from "./reader/ReaderPreferencesContext";
+import { getReaderAppearanceStyles } from "./reader/preferences";
 
 interface Props {
   text: {
@@ -72,7 +74,9 @@ export default function Reader({
   showAudioSection = true,
 }: Props) {
   const { selected } = useTranslatorStore();
+  const { preferences } = useReaderPreferences();
   const isCompact = variant === "compact";
+  const appearanceStyles = getReaderAppearanceStyles(preferences, isCompact);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [unknownSet, setUnknownSet] = useState<Set<string>>(new Set());
   const [phrases, setPhrases] = useState<string[][]>([]);
@@ -523,7 +527,12 @@ export default function Reader({
       className={
         isCompact
           ? "relative flex flex-col bg-transparent pb-2"
-          : "relative flex flex-col flex-1 bg-gray-50 dark:bg-gray-900 pb-40 sm:pb-32"
+          : "relative flex flex-col flex-1 pb-40 sm:pb-32 transition-colors duration-200"
+      }
+      style={
+        isCompact
+          ? undefined
+          : { backgroundColor: "var(--reader-page-bg)", ...appearanceStyles }
       }
       ref={containerRef}
       onMouseUp={handleMouseUp}

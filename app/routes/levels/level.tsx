@@ -1,4 +1,4 @@
-import type { Route } from "../+types/level";
+import type { Route } from "./+types/level";
 import { getLevelTextByLevel, getTextsByLevel } from "~/lib/content/runtime";
 import { formatSlug } from "~/helpers/formatSlug";
 import { type TextCollection } from "~/types";

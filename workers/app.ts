@@ -2,9 +2,7 @@ import { createRequestHandler } from "react-router";
 
 // Extend Env type to include ASSETS binding
 interface ExtendedEnv extends Env {
-  ASSETS?: {
-    fetch: (request: Request) => Promise<Response>;
-  };
+  ASSETS: Env["ASSETS"];
 }
 
 declare module "react-router" {

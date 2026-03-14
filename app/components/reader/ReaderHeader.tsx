@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router";
 import { useTranslatorStore } from "~/context/translatorSelector";
 import { TRANSLATORS } from "~/types";
 import { getOpenRouterApiKey } from "~/services/db";
 import { isChromeAIAvailable } from "~/utils/translate";
 import ApiKeyConfig from "~/components/ApiKeyConfig";
+import ReaderPreferencesPanel from "~/components/reader/ReaderPreferencesPanel";
 
 interface ReaderHeaderProps {
   title: string;
@@ -13,6 +13,7 @@ interface ReaderHeaderProps {
 export default function ReaderHeader({ title }: ReaderHeaderProps) {
   const { selected, setSelected } = useTranslatorStore();
   const [showApiKeyConfig, setShowApiKeyConfig] = useState(false);
+  const [showPreferences, setShowPreferences] = useState(false);
   const [hasApiKey, setHasApiKey] = useState<boolean | null>(null);
   const [isHidden, setIsHidden] = useState(false);
   const prevSelectedRef = useRef<TRANSLATORS | null>(null);
@@ -23,6 +24,19 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
   }, []);
 
   useEffect(() => {
+    if (!showPreferences) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setShowPreferences(false);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [showPreferences]);
+
+  useEffect(() => {
     const handleScroll = () => {
       const currentY = window.scrollY;
       const prevY = lastScrollYRef.current;
@@ -30,7 +44,9 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
 
       if (Math.abs(delta) < 6) return;
 
-      if (currentY > 80 && delta > 0) {
+      if (showPreferences) {
+        setIsHidden(false);
+      } else if (currentY > 80 && delta > 0) {
         setIsHidden(true);
       } else if (delta < 0) {
         setIsHidden(false);
@@ -42,7 +58,7 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
     lastScrollYRef.current = window.scrollY;
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [showPreferences]);
 
   useEffect(() => {
     const prevSelected = prevSelectedRef.current;
@@ -112,68 +128,120 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
           </div>
 
           {/* Segunda fila compacta - Selector de traductor */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-t border-gray-200/50 dark:border-gray-700/50 pt-2">
-            <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 bg-gradient-to-r from-purple-500 to-blue-500 rounded flex items-center justify-center">
-                <span className="text-white text-xs">🌐</span>
-              </div>
-              <strong className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                Traductor:
-              </strong>
-            </div>
-
-            <div className="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-3">
-              <select
-                className="px-3 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm font-medium"
-                value={selected}
-                onChange={(e) => setSelected(e.target.value as TRANSLATORS)}
-              >
-                <option value={TRANSLATORS.CHROME}>⚡ Rápido | Básico</option>
-                <option value={TRANSLATORS.MYMEMORY}>
-                  🆓 Gratis (Poco Preciso) | MyMemory
-                </option>
-                <option value={TRANSLATORS.MEDIUM}>
-                  🧠 Inteligente | Medio
-                </option>
-                <option value={TRANSLATORS.SMART}>
-                  🚀 Muy Inteligente + costoso
-                </option>
-              </select>
-
-              {/* Información compacta del traductor seleccionado */}
-              <div className="text-xs text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">
-                {selected === TRANSLATORS.CHROME && "Nativo"}
-                {selected === TRANSLATORS.MYMEMORY && "Gratis"}
-                {selected === TRANSLATORS.MEDIUM && "IA Optimizada"}
-                {selected === TRANSLATORS.SMART && "IA Avanzada"}
+          <div className="flex flex-col gap-3 pb-3 border-t border-gray-200/50 dark:border-gray-700/50 pt-2">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div className="flex items-center space-x-2">
+                <div className="w-4 h-4 bg-gradient-to-r from-purple-500 to-blue-500 rounded flex items-center justify-center">
+                  <span className="text-white text-xs">🌐</span>
+                </div>
+                <strong className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                  Traductor:
+                </strong>
               </div>
 
-              {/* Botón de configuración de API Key */}
-              <button
-                onClick={() => setShowApiKeyConfig(true)}
-                className={`flex items-center space-x-1 px-2 py-1 rounded text-xs font-medium transition-colors ${
-                  needsApiKey
-                    ? "bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 hover:bg-amber-200 dark:hover:bg-amber-900/50"
-                    : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700"
-                }`}
-                title="Configurar API Key"
-              >
-                <svg
-                  className="w-3.5 h-3.5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+              <div className="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-3">
+                <select
+                  className="px-3 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm font-medium"
+                  value={selected}
+                  onChange={(e) => setSelected(e.target.value as TRANSLATORS)}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"
-                  />
-                </svg>
-                {needsApiKey && <span>API Key</span>}
-              </button>
+                  <option value={TRANSLATORS.CHROME}>⚡ Rápido | Básico</option>
+                  <option value={TRANSLATORS.MYMEMORY}>
+                    🆓 Gratis (Poco Preciso) | MyMemory
+                  </option>
+                  <option value={TRANSLATORS.MEDIUM}>
+                    🧠 Inteligente | Medio
+                  </option>
+                  <option value={TRANSLATORS.SMART}>
+                    🚀 Muy Inteligente + costoso
+                  </option>
+                </select>
+
+                {/* Información compacta del traductor seleccionado */}
+                <div className="text-xs text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">
+                  {selected === TRANSLATORS.CHROME && "Nativo"}
+                  {selected === TRANSLATORS.MYMEMORY && "Gratis"}
+                  {selected === TRANSLATORS.MEDIUM && "IA Optimizada"}
+                  {selected === TRANSLATORS.SMART && "IA Avanzada"}
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setShowPreferences((current) => !current)}
+                  className={`inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-xs font-semibold shadow-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900 ${
+                    showPreferences
+                      ? "border-indigo-600 bg-indigo-600 text-white dark:border-indigo-400 dark:bg-indigo-500"
+                      : "border-indigo-200 bg-indigo-50 text-indigo-700 hover:border-indigo-300 hover:bg-indigo-100 dark:border-indigo-900/60 dark:bg-indigo-950/40 dark:text-indigo-300 dark:hover:border-indigo-800 dark:hover:bg-indigo-950/70"
+                  }`}
+                  aria-expanded={showPreferences}
+                  aria-controls="reader-preferences-panel"
+                  title={
+                    showPreferences
+                      ? "Cerrar preferencias de lectura"
+                      : "Abrir preferencias de lectura"
+                  }
+                >
+                  <span className="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-white/70 text-[11px] font-bold text-indigo-700 dark:bg-gray-900/60 dark:text-indigo-200">
+                    Aa
+                  </span>
+                  <span>
+                    {showPreferences
+                      ? "Cerrar preferencias"
+                      : "Personalizar lectura"}
+                  </span>
+                  <svg
+                    className={`h-3.5 w-3.5 transition-transform duration-200 ${
+                      showPreferences ? "rotate-180" : "rotate-0"
+                    }`}
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="m5 7.5 5 5 5-5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                    />
+                  </svg>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setShowApiKeyConfig(true)}
+                  className={`flex items-center space-x-1 px-2 py-1 rounded text-xs font-medium transition-colors ${
+                    needsApiKey
+                      ? "bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 hover:bg-amber-200 dark:hover:bg-amber-900/50"
+                      : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700"
+                  }`}
+                  title="Configurar API Key"
+                >
+                  <svg
+                    className="w-3.5 h-3.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"
+                    />
+                  </svg>
+                  {needsApiKey && <span>API Key</span>}
+                </button>
+              </div>
             </div>
+
+            {showPreferences ? (
+              <div id="reader-preferences-panel">
+                <ReaderPreferencesPanel
+                  onClose={() => setShowPreferences(false)}
+                />
+              </div>
+            ) : null}
           </div>
 
           {/* Aviso si falta API Key */}

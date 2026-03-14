@@ -72,8 +72,8 @@ export default function ReaderWordTokens({
             className={`word-token relative inline-block px-1 py-0.5 mx-0.5 rounded-lg cursor-pointer transition-all duration-200 group ${
               isUnknown
                 ? "bg-yellow-200 dark:bg-yellow-700/40 text-yellow-900 dark:text-yellow-100 font-semibold shadow-lg border border-yellow-300 dark:border-yellow-600"
-                : "hover:bg-blue-100 dark:hover:bg-blue-800/50 hover:text-blue-900 dark:hover:text-blue-100 hover:shadow-md"
-            } ${isPhrasePart ? "underline decoration-green-500 decoration-2 underline-offset-4" : ""}`}
+                : "reader-token-hover hover:shadow-md"
+            } ${isPhrasePart ? "underline decoration-2 underline-offset-4" : ""}`}
             data-lower={low}
             data-word={t.text}
             data-phrase-part={isPhrasePart ? "true" : undefined}
@@ -83,10 +83,10 @@ export default function ReaderWordTokens({
             {!isUnknown && (
               <span
                 aria-hidden="true"
-                className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none select-none whitespace-nowrap z-10"
+                className="reader-copy-tooltip absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none select-none whitespace-nowrap z-10"
               >
                 Clic para traducir
-                <span className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-800"></span>
+                <span className="reader-copy-tooltip-arrow absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent"></span>
               </span>
             )}
             {isUnknown && (
