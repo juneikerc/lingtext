@@ -53,6 +53,15 @@ export async function getAllPhrases(): Promise<PhraseEntry[]> {
   }));
 }
 
+export async function getAllPhraseParts(): Promise<string[][]> {
+  const database = await getDB();
+  const rows: Array<{ parts: string }> = database.selectObjects(
+    "SELECT parts FROM phrases ORDER BY added_at DESC"
+  );
+
+  return rows.map((row) => JSON.parse(row.parts) as string[]);
+}
+
 export async function getPhrase(
   phraseOrLower: string
 ): Promise<PhraseEntry | undefined> {

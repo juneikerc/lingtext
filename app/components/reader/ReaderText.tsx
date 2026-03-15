@@ -1,4 +1,7 @@
-import React from "react";
+import React, { memo, useMemo } from "react";
+
+import type { ReaderPhraseIndex } from "./ReaderLexiconContext";
+
 import LibraryBanner, {
   ReaderContentShell,
   ReaderEmptyState,
@@ -11,17 +14,16 @@ import ReaderWordTokens from "./ReaderWordTokens";
 interface ReaderTextProps {
   content: string;
   unknownSet: Set<string>;
-  // Lista de frases guardadas, cada una como lista de partes en lower
-  phrases: string[][];
+  phraseIndex: ReaderPhraseIndex;
   onWordClick: (e: React.MouseEvent<HTMLSpanElement>) => void;
   showChrome?: boolean;
   compact?: boolean;
 }
 
-export default function ReaderText({
+function ReaderText({
   content,
   unknownSet,
-  phrases,
+  phraseIndex,
   onWordClick,
   showChrome = true,
   compact = false,
@@ -31,13 +33,15 @@ export default function ReaderText({
     return <ReaderEmptyState />;
   }
 
+  const paragraphs = useMemo(() => content.split("\n\n"), [content]);
+
   return (
     <div className="relative">
       {showChrome ? <ReaderModeIndicator /> : null}
 
       {/* Área de texto principal */}
       <ReaderContentShell compact={compact}>
-        {content.split("\n\n").map((paragraph, paragraphIndex) => (
+        {paragraphs.map((paragraph, paragraphIndex) => (
           <p
             key={paragraphIndex}
             className={`mb-10 last:mb-0 ${paragraph.trim() === "" ? "h-6" : ""}`}
@@ -45,7 +49,7 @@ export default function ReaderText({
             <ReaderWordTokens
               text={paragraph}
               unknownSet={unknownSet}
-              phrases={phrases}
+              phraseIndex={phraseIndex}
               onWordClick={onWordClick}
               keyPrefix={`p-${paragraphIndex}`}
             />
@@ -62,3 +66,9 @@ export default function ReaderText({
     </div>
   );
 }
+
+const MemoizedReaderText = memo(ReaderText);
+
+MemoizedReaderText.displayName = "ReaderText";
+
+export default MemoizedReaderText;

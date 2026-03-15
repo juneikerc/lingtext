@@ -93,3 +93,12 @@ export async function getAllUnknownWords(): Promise<WordEntry[]> {
       : undefined,
   }));
 }
+
+export async function getAllUnknownWordLowers(): Promise<string[]> {
+  const database = await getDB();
+  const rows: Array<{ word_lower: string }> = database.selectObjects(
+    "SELECT word_lower FROM words ORDER BY added_at DESC"
+  );
+
+  return rows.map((row) => row.word_lower);
+}

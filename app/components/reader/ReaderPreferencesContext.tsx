@@ -31,6 +31,7 @@ interface ReaderPreferencesContextValue {
 
 const ReaderPreferencesContext =
   createContext<ReaderPreferencesContextValue | null>(null);
+const PREFERENCE_SAVE_DEBOUNCE_MS = 250;
 
 async function persistReaderPreferences(
   settingsRef: MutableRefObject<Settings | null>,
@@ -56,6 +57,8 @@ export function ReaderPreferencesProvider({
   );
   const [isReady, setIsReady] = useState(false);
   const settingsRef = useRef<Settings | null>(null);
+  const pendingPreferencesRef = useRef<ReaderPreferences | null>(null);
+  const saveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     let mounted = true;
@@ -83,13 +86,51 @@ export function ReaderPreferencesProvider({
     };
   }, []);
 
+  const flushPendingSave = useCallback(async () => {
+    const pendingPreferences = pendingPreferencesRef.current;
+    pendingPreferencesRef.current = null;
+
+    if (!pendingPreferences) {
+      return;
+    }
+
+    await persistReaderPreferences(settingsRef, pendingPreferences);
+  }, []);
+
+  const schedulePersist = useCallback(
+    (nextPreferences: ReaderPreferences) => {
+      pendingPreferencesRef.current = nextPreferences;
+
+      if (saveTimerRef.current) {
+        clearTimeout(saveTimerRef.current);
+      }
+
+      saveTimerRef.current = setTimeout(() => {
+        saveTimerRef.current = null;
+        void flushPendingSave();
+      }, PREFERENCE_SAVE_DEBOUNCE_MS);
+    },
+    [flushPendingSave]
+  );
+
+  useEffect(() => {
+    return () => {
+      if (saveTimerRef.current) {
+        clearTimeout(saveTimerRef.current);
+        saveTimerRef.current = null;
+      }
+
+      void flushPendingSave();
+    };
+  }, [flushPendingSave]);
+
   const applyPreset = useCallback(
     (preset: Exclude<ReaderPreset, "custom">) => {
       const nextPreferences = getPresetPreferences(preset);
       setPreferences(nextPreferences);
-      void persistReaderPreferences(settingsRef, nextPreferences);
+      schedulePersist(nextPreferences);
     },
-    []
+    [schedulePersist]
   );
 
   const updatePreference = useCallback(
@@ -110,18 +151,18 @@ export function ReaderPreferencesProvider({
                 preset: "custom",
               });
 
-        void persistReaderPreferences(settingsRef, nextPreferences);
+        schedulePersist(nextPreferences);
         return nextPreferences;
       });
     },
-    []
+    [schedulePersist]
   );
 
   const resetPreferences = useCallback(() => {
     const nextPreferences = DEFAULT_READER_PREFERENCES;
     setPreferences(nextPreferences);
-    void persistReaderPreferences(settingsRef, nextPreferences);
-  }, []);
+    schedulePersist(nextPreferences);
+  }, [schedulePersist]);
 
   const contextValue = useMemo<ReaderPreferencesContextValue>(
     () => ({

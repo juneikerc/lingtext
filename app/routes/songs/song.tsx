@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import type { Route } from "./+types/song";
 import Reader from "~/components/Reader";
 import ReaderHeader from "~/components/reader/ReaderHeader";
+import { ReaderLexiconProvider } from "~/components/reader/ReaderLexiconContext";
 import { ReaderPreferencesProvider } from "~/components/reader/ReaderPreferencesContext";
 import { getSong } from "~/services/db";
 import { parseSongEmbed } from "~/utils/song-embed";
@@ -294,108 +295,112 @@ export default function SongPage({ loaderData }: Route.ComponentProps) {
 
   return (
     <ReaderPreferencesProvider>
-      <main className="min-h-screen bg-gray-50 dark:bg-gray-950">
-        <ReaderHeader title={song.title} />
+      <ReaderLexiconProvider>
+        <main className="min-h-screen bg-gray-50 dark:bg-gray-950">
+          <ReaderHeader title={song.title} />
 
-        <section className="mx-auto mt-6 w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900">
-            {canRenderEmbed ? (
-              <div
-                ref={playerRootRef}
-                className={
-                  isSpotify
-                    ? "relative h-[352px] w-full"
-                    : "relative aspect-video w-full"
-                }
-              >
+          <section className="mx-auto mt-6 w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+              {canRenderEmbed ? (
                 <div
+                  ref={playerRootRef}
                   className={
-                    showFloatingPlayer
-                      ? isSpotify
-                        ? "fixed bottom-3 left-3 right-3 z-40 h-[180px] overflow-hidden rounded-xl border border-gray-200 bg-black shadow-2xl dark:border-gray-700 sm:left-auto sm:right-6 sm:h-[220px] sm:w-[430px]"
-                        : "fixed bottom-3 left-3 right-3 z-40 aspect-video overflow-hidden rounded-xl border border-gray-200 bg-black shadow-2xl dark:border-gray-700 sm:left-auto sm:right-6 sm:w-[430px]"
-                      : "relative h-full w-full overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800"
+                    isSpotify
+                      ? "relative h-[352px] w-full"
+                      : "relative aspect-video w-full"
                   }
                 >
-                  {showFloatingPlayer && (
-                    <button
-                      type="button"
-                      onClick={() => setIsMiniPlayerHidden(true)}
-                      className="absolute right-2 top-2 z-10 rounded-lg border border-gray-300 bg-white/95 px-2 py-1 text-xs font-medium text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:border-gray-700 dark:bg-gray-900/90 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus-visible:ring-offset-gray-900"
-                      aria-label="Ocultar mini reproductor"
-                    >
-                      Ocultar
-                    </button>
-                  )}
-                  <iframe
-                    id={provider === "youtube" ? youtubeIframeId : undefined}
-                    src={iframeSrc}
-                    title={`${song.title} embed`}
-                    className="h-full w-full"
-                    loading="lazy"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allow={
-                      isSpotify
-                        ? "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        : "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  <div
+                    className={
+                      showFloatingPlayer
+                        ? isSpotify
+                          ? "fixed bottom-3 left-3 right-3 z-40 h-[180px] overflow-hidden rounded-xl border border-gray-200 bg-black shadow-2xl dark:border-gray-700 sm:left-auto sm:right-6 sm:h-[220px] sm:w-[430px]"
+                          : "fixed bottom-3 left-3 right-3 z-40 aspect-video overflow-hidden rounded-xl border border-gray-200 bg-black shadow-2xl dark:border-gray-700 sm:left-auto sm:right-6 sm:w-[430px]"
+                        : "relative h-full w-full overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800"
                     }
-                    allowFullScreen={!isSpotify}
-                  />
+                  >
+                    {showFloatingPlayer && (
+                      <button
+                        type="button"
+                        onClick={() => setIsMiniPlayerHidden(true)}
+                        className="absolute right-2 top-2 z-10 rounded-lg border border-gray-300 bg-white/95 px-2 py-1 text-xs font-medium text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:border-gray-700 dark:bg-gray-900/90 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus-visible:ring-offset-gray-900"
+                        aria-label="Ocultar mini reproductor"
+                      >
+                        Ocultar
+                      </button>
+                    )}
+                    <iframe
+                      id={provider === "youtube" ? youtubeIframeId : undefined}
+                      src={iframeSrc}
+                      title={`${song.title} embed`}
+                      className="h-full w-full"
+                      loading="lazy"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allow={
+                        isSpotify
+                          ? "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                          : "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      }
+                      allowFullScreen={!isSpotify}
+                    />
+                  </div>
                 </div>
-              </div>
-            ) : (
-              <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700 dark:border-amber-900/60 dark:bg-amber-900/20 dark:text-amber-300">
-                No pudimos generar el embebido para este enlace. Prueba editar la
-                canción con una URL válida de YouTube o Spotify.
-              </div>
-            )}
-            <p className="mt-3 text-xs text-gray-600 dark:text-gray-400">
-              Fuente original:{" "}
-              <a
-                href={song.sourceUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="text-indigo-600 underline underline-offset-2 transition-colors duration-200 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
-              >
-                {song.sourceUrl}
-              </a>
-            </p>
-            <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-              Si aparece el mensaje{" "}
-              <span className="font-semibold">“refused to connect”</span>, ese
-              contenido tiene el embebido bloqueado por el proveedor (por ejemplo,
-              algunos videos con copyright). En ese caso usa otro enlace o abre la
-              fuente original.
-            </p>
-            <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-              {provider === "youtube"
-                ? "Atajos de teclado globales: J (-5s), K (play/pausa), L (+5s)."
-                : "Atajos de teclado globales disponibles solo para videos de YouTube."}
-            </p>
-          </div>
-        </section>
+              ) : (
+                <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700 dark:border-amber-900/60 dark:bg-amber-900/20 dark:text-amber-300">
+                  No pudimos generar el embebido para este enlace. Prueba editar la
+                  canción con una URL válida de YouTube o Spotify.
+                </div>
+              )}
+              <p className="mt-3 text-xs text-gray-600 dark:text-gray-400">
+                Fuente original:{" "}
+                <a
+                  href={song.sourceUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-indigo-600 underline underline-offset-2 transition-colors duration-200 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
+                >
+                  {song.sourceUrl}
+                </a>
+              </p>
+              <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                Si aparece el mensaje{" "}
+                <span className="font-semibold">“refused to connect”</span>, ese
+                contenido tiene el embebido bloqueado por el proveedor (por ejemplo,
+                algunos videos con copyright). En ese caso usa otro enlace o abre la
+                fuente original.
+              </p>
+              <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                {provider === "youtube"
+                  ? "Atajos de teclado globales: J (-5s), K (play/pausa), L (+5s)."
+                  : "Atajos de teclado globales disponibles solo para videos de YouTube."}
+              </p>
+            </div>
+          </section>
 
-        {showMiniPlayerRestore && (
-          <button
-            type="button"
-            onClick={() => setIsMiniPlayerHidden(false)}
-            className="fixed bottom-3 right-3 z-40 rounded-xl border border-gray-300 bg-white/95 px-3 py-2 text-xs font-semibold text-gray-700 shadow-lg transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:border-gray-700 dark:bg-gray-900/95 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus-visible:ring-offset-gray-900"
+          {showMiniPlayerRestore && (
+            <button
+              type="button"
+              onClick={() => setIsMiniPlayerHidden(false)}
+              className="fixed bottom-3 right-3 z-40 rounded-xl border border-gray-300 bg-white/95 px-3 py-2 text-xs font-semibold text-gray-700 shadow-lg transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:border-gray-700 dark:bg-gray-900/95 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus-visible:ring-offset-gray-900"
+            >
+              Mostrar reproductor
+            </button>
+          )}
+
+          <section
+            className={showFloatingPlayer ? "mt-6 pb-36 sm:pb-24" : "mt-6"}
           >
-            Mostrar reproductor
-          </button>
-        )}
-
-        <section className={showFloatingPlayer ? "mt-6 pb-36 sm:pb-24" : "mt-6"}>
-          <Reader
-            text={{
-              id: song.id,
-              title: song.title,
-              content: song.lyrics,
-              format: "txt",
-            }}
-          />
-        </section>
-      </main>
+            <Reader
+              text={{
+                id: song.id,
+                title: song.title,
+                content: song.lyrics,
+                format: "txt",
+              }}
+            />
+          </section>
+        </main>
+      </ReaderLexiconProvider>
     </ReaderPreferencesProvider>
   );
 }

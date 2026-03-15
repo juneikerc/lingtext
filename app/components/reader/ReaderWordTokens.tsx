@@ -1,55 +1,72 @@
-import React from "react";
+import React, { memo, useMemo } from "react";
 
 import { normalizeWord, tokenize } from "../../utils/tokenize";
+import type { ReaderPhraseIndex } from "./ReaderLexiconContext";
 
 interface ReaderWordTokensProps {
   text: string;
   unknownSet: Set<string>;
-  phrases: string[][];
+  phraseIndex: ReaderPhraseIndex;
   onWordClick: (e: React.MouseEvent<HTMLSpanElement>) => void;
   keyPrefix?: string;
 }
 
-export default function ReaderWordTokens({
+function ReaderWordTokens({
   text,
   unknownSet,
-  phrases,
+  phraseIndex,
   onWordClick,
   keyPrefix,
 }: ReaderWordTokensProps) {
-  const tokens = tokenize(text);
-  const isPhraseToken: boolean[] = new Array(tokens.length).fill(false);
+  const tokens = useMemo(() => tokenize(text), [text]);
 
-  const tryMatch = (startIdx: number, parts: string[]): number[] | null => {
-    const indices: number[] = [];
-    let p = 0;
-    let j = startIdx;
-    while (j < tokens.length && p < parts.length) {
-      if (!tokens[j].isWord) {
-        j++;
-        continue;
-      }
-      const low = tokens[j].lower || normalizeWord(tokens[j].text);
-      if (low !== parts[p]) return null;
-      indices.push(j);
-      p++;
-      j++;
-    }
-    return p === parts.length ? indices : null;
-  };
+  const isPhraseToken = useMemo(() => {
+    const phraseFlags: boolean[] = new Array(tokens.length).fill(false);
 
-  for (let i = 0; i < tokens.length; i++) {
-    if (!tokens[i].isWord) continue;
-    for (const parts of phrases) {
-      if (parts.length < 2) continue;
-      const startLow = tokens[i].lower || normalizeWord(tokens[i].text);
-      if (startLow !== parts[0]) continue;
-      const matchIdxs = tryMatch(i, parts);
-      if (matchIdxs) {
-        for (const idx of matchIdxs) isPhraseToken[idx] = true;
+    const tryMatch = (startIdx: number, parts: string[]): number[] | null => {
+      const indices: number[] = [];
+      let partIndex = 0;
+      let tokenIndex = startIdx;
+
+      while (tokenIndex < tokens.length && partIndex < parts.length) {
+        if (!tokens[tokenIndex].isWord) {
+          tokenIndex++;
+          continue;
+        }
+
+        const lower = tokens[tokenIndex].lower || normalizeWord(tokens[tokenIndex].text);
+        if (lower !== parts[partIndex]) {
+          return null;
+        }
+
+        indices.push(tokenIndex);
+        partIndex++;
+        tokenIndex++;
+      }
+
+      return partIndex === parts.length ? indices : null;
+    };
+
+    for (let tokenIndex = 0; tokenIndex < tokens.length; tokenIndex++) {
+      if (!tokens[tokenIndex].isWord) continue;
+
+      const startLower =
+        tokens[tokenIndex].lower || normalizeWord(tokens[tokenIndex].text);
+      const candidates = phraseIndex.get(startLower);
+      if (!candidates || candidates.length === 0) continue;
+
+      for (const parts of candidates) {
+        const matchIndices = tryMatch(tokenIndex, parts);
+        if (!matchIndices) continue;
+
+        for (const matchIndex of matchIndices) {
+          phraseFlags[matchIndex] = true;
+        }
       }
     }
-  }
+
+    return phraseFlags;
+  }, [phraseIndex, tokens]);
 
   return (
     <>
@@ -98,3 +115,9 @@ export default function ReaderWordTokens({
     </>
   );
 }
+
+const MemoizedReaderWordTokens = memo(ReaderWordTokens);
+
+MemoizedReaderWordTokens.displayName = "ReaderWordTokens";
+
+export default MemoizedReaderWordTokens;

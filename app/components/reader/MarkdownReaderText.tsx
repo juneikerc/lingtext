@@ -1,4 +1,6 @@
-import React, { useMemo } from "react";
+import React, { memo, useMemo } from "react";
+
+import type { ReaderPhraseIndex } from "./ReaderLexiconContext";
 
 import LibraryBanner, {
   ReaderContentShell,
@@ -12,16 +14,16 @@ import ReaderWordTokens from "./ReaderWordTokens";
 interface MarkdownReaderTextProps {
   content: string;
   unknownSet: Set<string>;
-  phrases: string[][];
+  phraseIndex: ReaderPhraseIndex;
   onWordClick: (e: React.MouseEvent<HTMLSpanElement>) => void;
   showChrome?: boolean;
   compact?: boolean;
 }
 
-export default function MarkdownReaderText({
+function MarkdownReaderText({
   content,
   unknownSet,
-  phrases,
+  phraseIndex,
   onWordClick,
   showChrome = true,
   compact = false,
@@ -191,7 +193,7 @@ export default function MarkdownReaderText({
               <ReaderWordTokens
                 text={boldMatch[1]}
                 unknownSet={unknownSet}
-                phrases={phrases}
+                phraseIndex={phraseIndex}
                 onWordClick={onWordClick}
                 keyPrefix={tokenKey}
               />
@@ -211,7 +213,7 @@ export default function MarkdownReaderText({
               <ReaderWordTokens
                 text={italicMatch[1]}
                 unknownSet={unknownSet}
-                phrases={phrases}
+                phraseIndex={phraseIndex}
                 onWordClick={onWordClick}
                 keyPrefix={tokenKey}
               />
@@ -237,7 +239,7 @@ export default function MarkdownReaderText({
               <ReaderWordTokens
                 text={linkMatch[1]}
                 unknownSet={unknownSet}
-                phrases={phrases}
+                phraseIndex={phraseIndex}
                 onWordClick={onWordClick}
                 keyPrefix={tokenKey}
               />
@@ -262,7 +264,7 @@ export default function MarkdownReaderText({
                 key={tokenKey}
                 text={chunk}
                 unknownSet={unknownSet}
-                phrases={phrases}
+                phraseIndex={phraseIndex}
                 onWordClick={onWordClick}
                 keyPrefix={tokenKey}
               />
@@ -280,7 +282,7 @@ export default function MarkdownReaderText({
     }
 
     return elements;
-  }, [content, phrases, unknownSet, onWordClick]);
+  }, [content, phraseIndex, unknownSet, onWordClick]);
 
   return (
     <div className="relative">
@@ -303,3 +305,9 @@ export default function MarkdownReaderText({
     </div>
   );
 }
+
+const MemoizedMarkdownReaderText = memo(MarkdownReaderText);
+
+MemoizedMarkdownReaderText.displayName = "MarkdownReaderText";
+
+export default MemoizedMarkdownReaderText;

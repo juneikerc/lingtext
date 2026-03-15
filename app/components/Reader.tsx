@@ -1,12 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import {
-  getAllUnknownWords,
   getWord,
-  putUnknownWord,
-  deleteWord,
   getSettings,
-  getAllPhrases,
-  putPhrase,
   getPhrase,
 } from "../services/db";
 import { type AudioRef } from "../types";
@@ -26,6 +21,7 @@ import type {
   WordPopupState as PopupState,
   SelectionPopupState as SelPopupState,
 } from "./reader/types";
+import { useReaderLexicon } from "./reader/ReaderLexiconContext";
 import { useTranslatorStore } from "~/context/translatorSelector";
 import { useReaderPreferences } from "./reader/ReaderPreferencesContext";
 import { getReaderAppearanceStyles } from "./reader/preferences";
@@ -75,11 +71,11 @@ export default function Reader({
 }: Props) {
   const { selected } = useTranslatorStore();
   const { preferences } = useReaderPreferences();
+  const { markKnownWord, markUnknownWord, phraseIndex, savePhraseEntry, unknownSet } =
+    useReaderLexicon();
   const isCompact = variant === "compact";
   const appearanceStyles = getReaderAppearanceStyles(preferences, isCompact);
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [unknownSet, setUnknownSet] = useState<Set<string>>(new Set());
-  const [phrases, setPhrases] = useState<string[][]>([]);
   const [popup, setPopup] = useState<PopupState | null>(null);
   const [selPopup, setSelPopup] = useState<SelPopupState | null>(null);
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
@@ -163,22 +159,6 @@ export default function Reader({
     };
   }, [text.audioUrl]);
 
-  // load unknown words
-  useEffect(() => {
-    refreshUnknowns();
-    refreshPhrases();
-  }, []);
-
-  const refreshUnknowns = useCallback(async () => {
-    const all = await getAllUnknownWords();
-    setUnknownSet(new Set(all.map((w) => w.wordLower)));
-  }, []);
-
-  const refreshPhrases = useCallback(async () => {
-    const all = await getAllPhrases();
-    setPhrases(all.map((p) => p.parts));
-  }, []);
-
   const myMemoryQuotaAlertedRef = useRef(false);
   const translateRequestIdRef = useRef(0);
 
@@ -252,36 +232,16 @@ export default function Reader({
 
   const markUnknown = useCallback(
     async (lower: string, original: string, translation: string) => {
-      const settings = await getSettings();
-      await putUnknownWord({
-        word: original,
-        wordLower: lower,
-        translation: translation,
-        status: "unknown",
-        addedAt: Date.now(),
-        voice: {
-          name: settings.tts.voiceName,
-          lang: settings.tts.lang,
-          rate: settings.tts.rate,
-          pitch: settings.tts.pitch,
-          volume: settings.tts.volume,
-        },
-      });
-      setUnknownSet((prev) => new Set(prev).add(lower));
+      await markUnknownWord(lower, original, translation);
       setPopup(null);
     },
-    []
+    [markUnknownWord]
   );
 
   const markKnown = useCallback(async (lower: string) => {
-    await deleteWord(lower);
-    setUnknownSet((prev) => {
-      const n = new Set(prev);
-      n.delete(lower);
-      return n;
-    });
+    await markKnownWord(lower);
     setPopup(null);
-  }, []);
+  }, [markKnownWord]);
 
   const onSpeak = useCallback(async (word: string, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -489,21 +449,10 @@ export default function Reader({
         return;
       }
 
-      const phraseLower = parts.join(" ");
-      await putPhrase({
-        phrase: normalizedText,
-        phraseLower,
-        translation,
-        parts,
-        addedAt: Date.now(),
-      });
-
-      // Actualizar lista local de frases para subrayado inmediato
-      setPhrases((prev) => [...prev, parts]);
-
+      await savePhraseEntry(normalizedText, translation, parts);
       setSelPopup(null);
     },
-    []
+    [savePhraseEntry]
   );
 
   const onCopy = useCallback((e: React.ClipboardEvent<HTMLDivElement>) => {
@@ -550,7 +499,7 @@ export default function Reader({
         <MarkdownReaderText
           content={text.content}
           unknownSet={unknownSet}
-          phrases={phrases}
+          phraseIndex={phraseIndex}
           onWordClick={onWordClick}
           showChrome={!isCompact}
           compact={isCompact}
@@ -559,7 +508,7 @@ export default function Reader({
         <ReaderText
           content={text.content}
           unknownSet={unknownSet}
-          phrases={phrases}
+          phraseIndex={phraseIndex}
           onWordClick={onWordClick}
           showChrome={!isCompact}
           compact={isCompact}
