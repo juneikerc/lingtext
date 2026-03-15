@@ -1,6 +1,7 @@
 import React from "react";
 import type { WordPopupState } from "./types";
 import { isTranslationJson } from "~/helpers/isTranslationJson";
+import { useReaderPreferences } from "./ReaderPreferencesContext";
 
 interface WordPopupProps {
   popup: WordPopupState;
@@ -19,6 +20,9 @@ export default function WordPopup({
   onMarkUnknown,
   onClose,
 }: WordPopupProps) {
+  const { preferences } = useReaderPreferences();
+  const isDark = preferences.theme === "dark-soft";
+
   const viewportWidth =
     typeof window !== "undefined" ? window.innerWidth : 1200;
   const popupWidth = Math.min(320, Math.max(260, viewportWidth - 24));
@@ -30,36 +34,45 @@ export default function WordPopup({
 
   return (
     <div
-      className="absolute w-full bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm text-gray-900 dark:text-gray-100 rounded-xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 z-30 overflow-hidden max-h-[70vh] overflow-y-auto"
+      className="absolute w-full backdrop-blur-sm rounded-xl shadow-lg border z-30 overflow-hidden max-h-[70vh] overflow-y-auto"
       style={{
         left,
         top,
         width: popupWidth,
+        backgroundColor: "var(--reader-surface-bg)",
+        color: "var(--reader-text-color)",
+        borderColor: "var(--reader-border-color)",
       }}
     >
       {/* Header con la palabra */}
-      <div className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 p-4">
+      <div
+        className="p-4"
+        style={{ backgroundColor: "var(--reader-muted-bg)" }}
+      >
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-gray-200 dark:bg-gray-600 rounded-lg flex items-center justify-center">
+            <div
+              className="w-8 h-8 rounded-lg flex items-center justify-center"
+              style={{ backgroundColor: "var(--reader-border-color)" }}
+            >
               <span className="text-sm">📖</span>
             </div>
             <div>
               <h3 className="font-bold text-lg">{popup.word}</h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
+              <p className="text-sm" style={{ opacity: 0.6 }}>
                 Palabra seleccionada
               </p>
             </div>
           </div>
           <button
-            className="p-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors duration-200"
+            className="p-2 rounded-lg transition-colors duration-200 hover:opacity-80"
             onClick={(e) => onSpeak(popup.word, e)}
             title="Escuchar pronunciación"
           >
             <span className="text-xl">🔊</span>
           </button>
           <button
-            className="ml-1 p-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors duration-200"
+            className="ml-1 p-2 rounded-lg transition-colors duration-200 hover:opacity-80"
             onClick={onClose}
             title="Cerrar"
           >
@@ -73,17 +86,35 @@ export default function WordPopup({
         {/* Traducción */}
         <div className="mb-4">
           <div className="flex items-center space-x-2 mb-2">
-            <div className="w-5 h-5 bg-gray-200 dark:bg-gray-600 rounded-lg flex items-center justify-center">
-              <span className="text-white text-xs">🇪🇸</span>
+            <div
+              className="w-5 h-5 rounded-lg flex items-center justify-center"
+              style={{ backgroundColor: "var(--reader-border-color)" }}
+            >
+              <span className="text-xs">🇪🇸</span>
             </div>
-            <span className="font-semibold text-gray-700 dark:text-gray-300">
+            <span className="font-semibold" style={{ opacity: 0.7 }}>
               Traducción
             </span>
           </div>
-          <div className="bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-lg p-3">
+          <div
+            className="rounded-lg p-3 border"
+            style={{
+              backgroundColor: "var(--reader-muted-bg)",
+              borderColor: "var(--reader-border-color)",
+            }}
+          >
             {popup.isLoading ? (
-              <div className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                <span className="w-4 h-4 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+              <div
+                className="flex items-center justify-center gap-2 text-sm"
+                style={{ opacity: 0.6 }}
+              >
+                <span
+                  className="w-4 h-4 border-2 rounded-full animate-spin"
+                  style={{
+                    borderColor: "var(--reader-accent-color)",
+                    borderTopColor: "transparent",
+                  }}
+                />
                 <span>Traduciendo...</span>
               </div>
             ) : isTranslationJson(popup.translation) ? (
@@ -93,21 +124,20 @@ export default function WordPopup({
                   return Object.entries(parsed.info).map(
                     ([category, translations]) => (
                       <div key={category}>
-                        <p className="text-sm font-semibold text-gray-600 dark:text-gray-400">
+                        <p
+                          className="text-sm font-semibold"
+                          style={{ opacity: 0.6 }}
+                        >
                           {category}
                         </p>
-                        <p className="text-gray-900 dark:text-gray-100">
-                          {(translations as string[]).join(", ")}
-                        </p>
+                        <p>{(translations as string[]).join(", ")}</p>
                       </div>
                     )
                   );
                 })()}
               </div>
             ) : (
-              <span className="text-xl font-bold text-gray-900 dark:text-gray-100">
-                {popup.translation}
-              </span>
+              <span className="text-xl font-bold">{popup.translation}</span>
             )}
           </div>
         </div>
@@ -115,18 +145,25 @@ export default function WordPopup({
         {/* Estado de la palabra */}
         <div className="mb-4">
           <div className="flex items-center space-x-2 mb-2">
-            <div className="w-5 h-5 bg-gray-200 dark:bg-gray-600 rounded-lg flex items-center justify-center">
-              <span className="text-white text-xs">🎯</span>
+            <div
+              className="w-5 h-5 rounded-lg flex items-center justify-center"
+              style={{ backgroundColor: "var(--reader-border-color)" }}
+            >
+              <span className="text-xs">🎯</span>
             </div>
-            <span className="font-semibold text-gray-700 dark:text-gray-300">
+            <span className="font-semibold" style={{ opacity: 0.7 }}>
               Estado
             </span>
           </div>
           <div
-            className={`inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium ${
+            className={`inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium border ${
               isUnknown
-                ? "bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-400 border border-orange-200 dark:border-orange-800/50"
-                : "bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800/50"
+                ? isDark
+                  ? "bg-orange-900/20 text-orange-400 border-orange-800/50"
+                  : "bg-orange-50 text-orange-700 border-orange-200"
+                : isDark
+                  ? "bg-green-900/20 text-green-400 border-green-800/50"
+                  : "bg-green-50 text-green-700 border-green-200"
             }`}
           >
             <span
@@ -140,17 +177,23 @@ export default function WordPopup({
 
         {/* Acciones */}
         <div className="space-y-2">
-          <div className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+          <div className="text-sm font-medium mb-3" style={{ opacity: 0.7 }}>
             Acciones rápidas:
           </div>
 
           <div className="grid grid-cols-1 gap-2">
             {isUnknown ? (
               <button
-                className={`w-full flex items-center justify-center space-x-2 px-4 py-3 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800/50 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md ${
+                className={`w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-lg transition-all duration-200 shadow-sm border ${
+                  isDark
+                    ? "bg-green-900/20 text-green-400 border-green-800/50"
+                    : "bg-green-50 text-green-700 border-green-200"
+                } ${
                   popup.isLoading
                     ? "opacity-60 cursor-not-allowed"
-                    : "hover:bg-green-100 dark:hover:bg-green-800/40 transform hover:scale-105"
+                    : isDark
+                      ? "hover:bg-green-800/40 hover:shadow-md"
+                      : "hover:bg-green-100 hover:shadow-md"
                 }`}
                 onClick={() => onMarkKnown(popup.lower)}
                 disabled={popup.isLoading}
@@ -160,10 +203,16 @@ export default function WordPopup({
               </button>
             ) : (
               <button
-                className={`w-full flex items-center justify-center space-x-2 px-4 py-3 bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-400 border border-orange-200 dark:border-orange-800/50 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md ${
+                className={`w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-lg transition-all duration-200 shadow-sm border ${
+                  isDark
+                    ? "bg-orange-900/20 text-orange-400 border-orange-800/50"
+                    : "bg-orange-50 text-orange-700 border-orange-200"
+                } ${
                   popup.isLoading
                     ? "opacity-60 cursor-not-allowed"
-                    : "hover:bg-orange-100 dark:hover:bg-orange-800/40 transform hover:scale-105"
+                    : isDark
+                      ? "hover:bg-orange-800/40 hover:shadow-md"
+                      : "hover:bg-orange-100 hover:shadow-md"
                 }`}
                 onClick={() =>
                   onMarkUnknown(popup.lower, popup.word, popup.translation)
@@ -176,7 +225,11 @@ export default function WordPopup({
             )}
 
             <button
-              className="w-full flex items-center justify-center space-x-2 px-4 py-3 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 border border-gray-200 dark:border-gray-600 rounded-lg transition-all duration-200"
+              className="w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-lg transition-all duration-200 border"
+              style={{
+                backgroundColor: "var(--reader-muted-bg)",
+                borderColor: "var(--reader-border-color)",
+              }}
               onClick={(e) => onSpeak(popup.word, e)}
             >
               <span>🔊</span>

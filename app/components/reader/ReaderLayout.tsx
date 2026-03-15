@@ -7,19 +7,33 @@ import { getReaderAppearanceStyles } from "./preferences";
 export function ReaderEmptyState() {
   return (
     <div className="mx-auto max-w-4xl px-6 py-8">
-      <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-8 text-center">
-        <p className="text-gray-500 dark:text-gray-400">
-          No hay contenido para mostrar
-        </p>
+      <div
+        className="backdrop-blur-sm rounded-2xl border shadow-xl p-8 text-center"
+        style={{
+          backgroundColor: "var(--reader-surface-bg)",
+          borderColor: "var(--reader-border-color)",
+          color: "var(--reader-text-color)",
+        }}
+      >
+        <p style={{ opacity: 0.6 }}>No hay contenido para mostrar</p>
       </div>
     </div>
   );
 }
 
 export function ReaderModeIndicator() {
+  const { preferences } = useReaderPreferences();
+  const isDark = preferences.theme === "dark-soft";
+
   return (
     <div className="absolute -top-6 left-0 right-0 flex justify-center">
-      <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800/50 rounded-full px-4 py-2 text-sm text-blue-700 dark:text-blue-300 font-medium flex items-center space-x-2 mt-8 z-10">
+      <div
+        className={`rounded-full px-4 py-2 text-sm font-medium flex items-center space-x-2 mt-8 z-10 border ${
+          isDark
+            ? "bg-blue-950/20 border-blue-800/50 text-blue-300"
+            : "bg-blue-50 border-blue-200 text-blue-700"
+        }`}
+      >
         <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
         <span>Haz clic en cualquier palabra para traducirla</span>
       </div>
@@ -82,12 +96,22 @@ export function ReaderProgressFooter({
       to="/words"
       className="absolute -bottom-16 left-0 right-0 flex justify-center"
     >
-      <div className="bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full px-6 py-3 text-sm text-gray-600 dark:text-gray-400 flex items-center space-x-4">
+      <div
+        className="rounded-full px-6 py-3 text-sm flex items-center space-x-4 border"
+        style={{
+          backgroundColor: "var(--reader-muted-bg)",
+          borderColor: "var(--reader-border-color)",
+          color: "var(--reader-text-color)",
+        }}
+      >
         <div className="flex items-center space-x-2">
           <span className="w-2 h-2 bg-green-500 rounded-full"></span>
           <span>Palabras conocidas</span>
         </div>
-        <div className="w-px h-4 bg-gray-300 dark:bg-gray-600"></div>
+        <div
+          className="w-px h-4"
+          style={{ backgroundColor: "var(--reader-border-color)" }}
+        ></div>
         <div className="flex items-center space-x-2">
           <span className="w-2 h-2 bg-yellow-500 rounded-full"></span>
           <span>Palabras por aprender ({unknownCount})</span>
@@ -130,15 +154,26 @@ export function ReaderHelpFloatingLink() {
 }
 
 export default function LibraryBanner() {
+  const { preferences } = useReaderPreferences();
+  const isDark = preferences.theme === "dark-soft";
+
   return (
     <div className="mx-auto max-w-4xl px-6 sm:px-8 lg:px-12 mt-12 mb-4">
       <Link
         to="/my-library"
-        className="group block rounded-2xl border border-indigo-200 dark:border-indigo-800/60 bg-indigo-50/80 dark:bg-indigo-950/30 px-6 py-5 transition-colors duration-200 hover:border-indigo-300 dark:hover:border-indigo-700 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
+        className={`group block rounded-2xl border px-6 py-5 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 ${
+          isDark
+            ? "border-indigo-800/60 bg-indigo-950/30 hover:border-indigo-700 hover:bg-indigo-950/50 focus-visible:ring-offset-gray-950"
+            : "border-indigo-200 bg-indigo-50/80 hover:border-indigo-300 hover:bg-indigo-50 focus-visible:ring-offset-white"
+        }`}
       >
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-3 min-w-0">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-600 dark:bg-indigo-500">
+            <span
+              className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${
+                isDark ? "bg-indigo-500" : "bg-indigo-600"
+              }`}
+            >
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -155,17 +190,31 @@ export default function LibraryBanner() {
               </svg>
             </span>
             <div>
-              <p className="text-sm font-semibold text-indigo-700 dark:text-indigo-300">
+              <p
+                className={`text-sm font-semibold ${
+                  isDark ? "text-indigo-300" : "text-indigo-700"
+                }`}
+              >
                 Sube tus propios textos y sigue aprendiendo
               </p>
-              <p className="text-xs text-indigo-600/70 dark:text-indigo-400/70 mt-0.5">
+              <p
+                className={`text-xs mt-0.5 ${
+                  isDark ? "text-indigo-400/70" : "text-indigo-600/70"
+                }`}
+              >
                 Agrega articulos, libros o cualquier texto en ingles a tu
                 biblioteca personal
               </p>
             </div>
           </div>
 
-          <span className="shrink-0 inline-flex items-center rounded-lg bg-indigo-600 dark:bg-indigo-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors duration-200 group-hover:bg-indigo-700 dark:group-hover:bg-indigo-400">
+          <span
+            className={`shrink-0 inline-flex items-center rounded-lg px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors duration-200 ${
+              isDark
+                ? "bg-indigo-500 group-hover:bg-indigo-400"
+                : "bg-indigo-600 group-hover:bg-indigo-700"
+            }`}
+          >
             Ir a Mi Biblioteca
             <svg
               viewBox="0 0 24 24"
