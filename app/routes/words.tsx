@@ -1,12 +1,15 @@
 import {
+  DEFAULT_NEW_CARDS_PER_DAY,
   getAllUnknownWords,
   getAllPhrases,
   getDailyStats,
+  getSettings,
+  saveSettings,
   type DailyStats,
 } from "~/services/db";
 import type { Route } from "./+types/words";
 import { useState, useEffect, Suspense, lazy } from "react";
-import type { WordEntry } from "~/types";
+import type { Settings, WordEntry } from "~/types";
 
 const UnknownWordsSection = lazy(
   () => import("~/components/UnknownWordsSection")
@@ -96,6 +99,7 @@ function WordsSkeleton() {
 export default function Words() {
   const [words, setWords] = useState<WordEntry[]>([]);
   const [dailyStats, setDailyStats] = useState<DailyStats | null>(null);
+  const [settings, setSettings] = useState<Settings | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -103,10 +107,11 @@ export default function Words() {
 
     async function loadData() {
       try {
-        const [wordsData, phrases, stats] = await Promise.all([
+        const [wordsData, phrases, stats, loadedSettings] = await Promise.all([
           getAllUnknownWords(),
           getAllPhrases(),
           getDailyStats(),
+          getSettings(),
         ]);
 
         if (!mounted) return;
@@ -121,8 +126,11 @@ export default function Words() {
           isPhrase: true,
         }));
 
-        setWords([...wordsData, ...phraseWords]);
+        setWords(
+          [...wordsData, ...phraseWords].sort((a, b) => b.addedAt - a.addedAt)
+        );
         setDailyStats(stats);
+        setSettings(loadedSettings);
       } catch (error) {
         console.error("[Words] Failed to load data:", error);
       } finally {
@@ -143,6 +151,25 @@ export default function Words() {
     setWords((prev) => prev.filter((w) => w.wordLower !== wordLower));
   };
 
+  const handleRemoveMany = (wordLowers: string[]) => {
+    const lowerSet = new Set(wordLowers);
+    setWords((prev) => prev.filter((word) => !lowerSet.has(word.wordLower)));
+  };
+
+  const handleNewCardsLimitChange = async (newCardsPerDay: number) => {
+    const baseSettings = settings ?? (await getSettings());
+    const nextSettings: Settings = {
+      ...baseSettings,
+      review: {
+        ...baseSettings.review,
+        newCardsPerDay,
+      },
+    };
+
+    setSettings(nextSettings);
+    await saveSettings(nextSettings);
+  };
+
   if (isLoading) {
     return <WordsSkeleton />;
   }
@@ -152,13 +179,18 @@ export default function Words() {
     date: new Date().toISOString().split("T")[0],
     newCardsStudied: 0,
   };
+  const newCardsPerDay =
+    settings?.review.newCardsPerDay ?? DEFAULT_NEW_CARDS_PER_DAY;
 
   return (
     <Suspense fallback={<WordsSkeleton />}>
       <UnknownWordsSection
         words={words}
         dailyStats={stats}
+        newCardsPerDay={newCardsPerDay}
+        onNewCardsPerDayChange={handleNewCardsLimitChange}
         onRemove={handleRemove}
+        onRemoveMany={handleRemoveMany}
       />
     </Suspense>
   );

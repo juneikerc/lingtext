@@ -91,6 +91,11 @@ export interface Settings {
     voiceName?: string;
   };
   reader: ReaderPreferences;
+  review: ReviewPreferences;
+}
+
+export interface ReviewPreferences {
+  newCardsPerDay: number;
 }
 
 export type ReaderTheme = "light" | "sepia" | "dark-soft";

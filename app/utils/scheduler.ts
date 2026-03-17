@@ -2,12 +2,11 @@ import {
   getAllUnknownWords,
   getAllPhrases,
   getDailyStats,
+  getSettings,
   type DailyStats,
 } from "~/services/db";
 import type { WordEntry } from "~/types";
-
-// CONFIGURACIÓN: Aquí defines tu límite por defecto (ej. 15)
-const DEFAULT_NEW_LIMIT = 7;
+import { DEFAULT_NEW_CARDS_PER_DAY } from "~/services/db/settings";
 
 export type SessionDeckMode = "all" | "phrases" | "new" | "due";
 
@@ -40,7 +39,7 @@ function buildDeckForMode(
 
 export async function generateSessionDeck(
   mode: SessionDeckMode = "all",
-  limitNew: number = DEFAULT_NEW_LIMIT
+  limitNew?: number
 ): Promise<{
   deck: WordEntry[];
   stats: DailyStats;
@@ -48,11 +47,16 @@ export async function generateSessionDeck(
   counts: SessionDeckCounts;
 }> {
   // 1. Cargar todo el contenido y las estadísticas
-  const [words, phrases, dailyStats] = await Promise.all([
+  const [words, phrases, dailyStats, settings] = await Promise.all([
     getAllUnknownWords(),
     getAllPhrases(),
     getDailyStats(),
+    getSettings(),
   ]);
+  const effectiveNewLimit = Math.max(
+    0,
+    limitNew ?? settings.review.newCardsPerDay ?? DEFAULT_NEW_CARDS_PER_DAY
+  );
 
   // Unificar palabras y frases
   const phraseItems: WordEntry[] = phrases.map((phrase) => ({
@@ -85,7 +89,7 @@ export async function generateSessionDeck(
   const newCardsDoneToday = dailyStats.newCardsStudied;
 
   // Calcular cupo restante (Ej: 15 límite - 5 hechas = 10 restantes)
-  const remainingSlots = Math.max(0, limitNew - newCardsDoneToday);
+  const remainingSlots = Math.max(0, effectiveNewLimit - newCardsDoneToday);
 
   // Tomar solo las necesarias del montón de nuevas
   const newItemsToStudy = newItems.slice(0, remainingSlots);

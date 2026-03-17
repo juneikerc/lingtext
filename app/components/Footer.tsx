@@ -127,7 +127,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="/#levels"
+                  href="/my-library"
                   className="text-gray-300 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
                 >
                   Construye tú Biblioteca

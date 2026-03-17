@@ -2,6 +2,8 @@ import type { Settings } from "../../types";
 import { getDB, scheduleSave } from "./core";
 import { resolveReaderPreferences } from "~/components/reader/preferences";
 
+export const DEFAULT_NEW_CARDS_PER_DAY = 7;
+
 /**
  * SETTINGS CRUD
  */
@@ -18,6 +20,9 @@ const defaultSettings: Settings = {
     voiceName: undefined,
   },
   reader: resolveReaderPreferences(),
+  review: {
+    newCardsPerDay: DEFAULT_NEW_CARDS_PER_DAY,
+  },
 };
 
 export async function getSettings(): Promise<Settings> {
@@ -39,6 +44,10 @@ export async function getSettings(): Promise<Settings> {
         ...parsed.tts,
       },
       reader: resolveReaderPreferences(parsed.reader),
+      review: {
+        ...defaultSettings.review,
+        ...parsed.review,
+      },
     };
   } catch {
     return defaultSettings;
