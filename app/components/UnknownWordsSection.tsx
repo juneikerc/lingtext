@@ -134,6 +134,7 @@ export default function UnknownWordsSection({
   const [isBulkProcessing, setIsBulkProcessing] = useState(false);
   const [newCardsInput, setNewCardsInput] = useState(String(newCardsPerDay));
   const [isSavingNewCardsLimit, setIsSavingNewCardsLimit] = useState(false);
+  const [showAlphaWarning, setShowAlphaWarning] = useState(true);
   const deferredSearchQuery = useDeferredValue(
     searchQuery.trim().toLowerCase()
   );
@@ -445,6 +446,40 @@ export default function UnknownWordsSection({
               quieras trabajar.
             </p>
           </div>
+
+          {showAlphaWarning && (
+            <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50 p-5 dark:border-amber-800 dark:bg-amber-900/20">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 text-2xl">⚠️</div>
+                <div className="flex-1">
+                  <h3 className="mb-2 text-lg font-bold text-amber-900 dark:text-amber-200">
+                    Funcionalidad en fase Alfa
+                  </h3>
+                  <p className="mb-3 text-amber-800 dark:text-amber-300">
+                    Esta seccion te permite gestionar todo tu vocabulario
+                    guardado: ver estadisticas de repaso, filtrar por tipo
+                    (nuevas, vencidas, frases), ordenar, buscar, y realizar
+                    acciones masivas como exportar o eliminar.
+                  </p>
+                  <p className="text-sm font-medium text-amber-700 dark:text-amber-400">
+                    🚧 Advertencia: Todas las funciones estan en desarrollo
+                    activo. El comportamiento puede ser inestable, los datos
+                    pueden no persistir correctamente entre versiones, y la
+                    interfaz esta sujeta a cambios significativos. Usa con
+                    precaucion.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setShowAlphaWarning(false)}
+                  className="flex-shrink-0 rounded-lg p-2 text-amber-700 transition-colors duration-200 hover:bg-amber-100 dark:text-amber-300 dark:hover:bg-amber-900/30"
+                  aria-label="Cerrar advertencia"
+                >
+                  <span className="text-xl">✕</span>
+                </button>
+              </div>
+            </div>
+          )}
 
           {words.length === 0 ? (
             <div className="rounded-2xl border border-gray-200 bg-white p-12 text-center shadow-sm dark:border-gray-800 dark:bg-gray-900">
