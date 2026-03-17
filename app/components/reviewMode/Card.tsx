@@ -1,25 +1,43 @@
 import { useEffect } from "react";
 import { getSettings } from "~/services/db";
 import type { WordEntry } from "~/types";
+import type { ReviewGrade } from "~/utils/spaced-repetition";
 import { speak } from "~/utils/tts";
 import { isTranslationJson } from "~/helpers/isTranslationJson";
+
 interface CardProps {
   word: WordEntry;
   showTranslation: boolean;
   setShowTranslation: (showTranslation: boolean) => void;
-  handleAnswer: (remembered: boolean) => void;
+  handleAnswer: (grade: ReviewGrade) => void;
+  answerOptions: Array<{
+    id: ReviewGrade;
+    label: string;
+    shortLabel: string;
+    quality: number;
+    intervalLabel: string;
+  }>;
   processing: boolean;
 }
+
+const BUTTON_STYLES: Record<ReviewGrade, string> = {
+  again:
+    "bg-red-50 text-red-700 border-red-200 hover:bg-red-100 dark:bg-red-900/20 dark:text-red-300 dark:border-red-800/50 dark:hover:bg-red-800/30",
+  hard: "bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100 dark:bg-amber-900/20 dark:text-amber-300 dark:border-amber-800/50 dark:hover:bg-amber-800/30",
+  good: "bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100 dark:bg-emerald-900/20 dark:text-emerald-300 dark:border-emerald-800/50 dark:hover:bg-emerald-800/30",
+  easy: "bg-sky-50 text-sky-700 border-sky-200 hover:bg-sky-100 dark:bg-sky-900/20 dark:text-sky-300 dark:border-sky-800/50 dark:hover:bg-sky-800/30",
+};
 
 export default function Card({
   word,
   showTranslation,
   setShowTranslation,
   handleAnswer,
+  answerOptions,
   processing,
 }: CardProps) {
   useEffect(() => {
-    playAudio();
+    void playAudio();
   }, [word]);
 
   const playAudio = async () => {
@@ -29,16 +47,15 @@ export default function Card({
   };
 
   return (
-    <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
-      {/* Palabra */}
-      <div className="p-8 text-center border-b border-gray-200 dark:border-gray-800">
-        <div className="flex items-center justify-center space-x-4 mb-4">
+    <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900">
+      <div className="border-b border-gray-200 p-8 text-center dark:border-gray-800">
+        <div className="mb-4 flex items-center justify-center space-x-4">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100">
             {word.word}
           </h2>
           <button
-            onClick={playAudio}
-            className="p-3 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900"
+            onClick={() => void playAudio()}
+            className="rounded-lg bg-gray-100 p-3 text-gray-600 transition-colors duration-200 hover:bg-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus-visible:ring-offset-gray-900"
             title="Escuchar pronunciación"
           >
             <span className="text-xl">🔊</span>
@@ -53,13 +70,11 @@ export default function Card({
         </div>
       </div>
 
-      {/* Área de respuesta */}
       <div className="p-8">
         {showTranslation ? (
           <div className="space-y-6">
-            {/* Respuesta correcta */}
             <div className="text-center">
-              <div className="inline-flex items-center px-6 py-2 mb-4 text-lg font-medium text-gray-700 bg-gray-100 dark:bg-gray-800 dark:text-gray-300 rounded-full border border-gray-200 dark:border-gray-700">
+              <div className="inline-flex max-w-full items-center px-6 py-3 text-lg font-medium text-gray-700 bg-gray-100 dark:bg-gray-800 dark:text-gray-300 rounded-2xl border border-gray-200 dark:border-gray-700">
                 {isTranslationJson(word.translation) ? (
                   <div className="space-y-2">
                     {(() => {
@@ -84,23 +99,24 @@ export default function Card({
               </div>
             </div>
 
-            {/* Botones de confirmación */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={() => handleAnswer(true)}
-                className="flex-1 flex items-center justify-center space-x-2 px-6 py-3 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 hover:bg-green-100 dark:hover:bg-green-800/30 border border-green-200 dark:border-green-800/50 rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900"
-              >
-                <span>✅</span>
-                <span>La recordaba</span>
-              </button>
-              <button
-                onClick={() => handleAnswer(false)}
-                disabled={processing}
-                className="flex-1 flex items-center justify-center space-x-2 px-6 py-3 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 hover:bg-red-100 dark:hover:bg-red-800/30 border border-red-200 dark:border-red-800/50 rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900"
-              >
-                <span>❌</span>
-                <span>No la recordaba</span>
-              </button>
+            <div className="grid gap-3 md:grid-cols-4">
+              {answerOptions.map((option, index) => (
+                <button
+                  key={option.id}
+                  onClick={() => void handleAnswer(option.id)}
+                  disabled={processing}
+                  className={`rounded-xl border px-4 py-4 text-left transition-colors duration-200 shadow-sm hover:shadow-md disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900 ${BUTTON_STYLES[option.id]}`}
+                >
+                  <div className="mb-1 text-xs font-semibold uppercase tracking-wider opacity-75">
+                    {index + 1}
+                  </div>
+                  <div className="font-semibold">{option.label}</div>
+                  <div className="text-sm opacity-80">{option.shortLabel}</div>
+                  <div className="mt-2 text-sm font-medium">
+                    {option.intervalLabel}
+                  </div>
+                </button>
+              ))}
             </div>
           </div>
         ) : (
@@ -111,7 +127,7 @@ export default function Card({
                 className="flex items-center justify-center space-x-3 px-8 py-4 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900"
               >
                 <span>👁️</span>
-                <span>Show Translation</span>
+                <span>Mostrar respuesta</span>
               </button>
             </div>
           </div>

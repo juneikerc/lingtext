@@ -1,9 +1,13 @@
-import { generateSessionDeck } from "~/utils/scheduler";
+import {
+  generateSessionDeck,
+  type SessionDeckCounts,
+  type SessionDeckMode,
+} from "~/utils/scheduler";
 import type { Route } from "./+types/review";
 import { useState, useEffect, Suspense, lazy } from "react";
 import type { WordEntry } from "~/types";
 import { type DailyStats } from "~/services/db";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 
 const ReviewMode = lazy(() => import("~/components/ReviewMode"));
 
@@ -97,13 +101,90 @@ interface ReviewData {
   selectedWord: string | null;
   limitReached: boolean;
   dailyStats: DailyStats;
+  counts: SessionDeckCounts;
+}
+
+const REVIEW_FILTERS: Array<{
+  mode: SessionDeckMode;
+  label: string;
+  emptyLabel: string;
+}> = [
+  { mode: "all", label: "Todo", emptyLabel: "No hay tarjetas para este modo" },
+  {
+    mode: "phrases",
+    label: "Solo frases",
+    emptyLabel: "No hay frases para repasar ahora",
+  },
+  {
+    mode: "new",
+    label: "Solo nuevas",
+    emptyLabel: "No quedan tarjetas nuevas disponibles",
+  },
+  {
+    mode: "due",
+    label: "Solo vencidas",
+    emptyLabel: "No hay repasos vencidos ahora mismo",
+  },
+];
+
+function isSessionDeckMode(value: string | null): value is SessionDeckMode {
+  return (
+    value === "all" || value === "phrases" || value === "new" || value === "due"
+  );
+}
+
+function ReviewFilters({
+  activeMode,
+  counts,
+  onChange,
+}: {
+  activeMode: SessionDeckMode;
+  counts: SessionDeckCounts;
+  onChange: (mode: SessionDeckMode) => void;
+}) {
+  return (
+    <div className="mb-8 flex flex-wrap justify-center gap-3">
+      {REVIEW_FILTERS.map((filter) => {
+        const isActive = filter.mode === activeMode;
+
+        return (
+          <button
+            key={filter.mode}
+            type="button"
+            onClick={() => onChange(filter.mode)}
+            className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950 ${
+              isActive
+                ? "border-indigo-600 bg-indigo-600 text-white dark:border-indigo-500 dark:bg-indigo-500"
+                : "border-gray-300 bg-white text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
+            }`}
+          >
+            <span>{filter.label}</span>
+            <span
+              className={`rounded-full px-2 py-0.5 text-xs ${
+                isActive
+                  ? "bg-white/20 text-white"
+                  : "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300"
+              }`}
+            >
+              {counts[filter.mode]}
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  );
 }
 
 export default function Review() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [data, setData] = useState<ReviewData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [words, setWords] = useState<WordEntry[]>([]);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const searchMode = searchParams.get("mode");
+  const activeMode: SessionDeckMode = isSessionDeckMode(searchMode)
+    ? searchMode
+    : "all";
 
   // Load data on mount
   useEffect(() => {
@@ -111,7 +192,8 @@ export default function Review() {
 
     async function loadData() {
       try {
-        const { deck, limitReached, stats } = await generateSessionDeck();
+        const { deck, limitReached, stats, counts } =
+          await generateSessionDeck(activeMode);
 
         if (!mounted) return;
 
@@ -135,8 +217,10 @@ export default function Review() {
           selectedWord,
           limitReached,
           dailyStats: stats,
+          counts,
         });
         setWords(formattedDeck);
+        setCurrentWordIndex(0);
       } catch (error) {
         console.error("[Review] Failed to load data:", error);
       } finally {
@@ -151,7 +235,7 @@ export default function Review() {
     return () => {
       mounted = false;
     };
-  }, []);
+  }, [activeMode]);
 
   // Handle selected word from URL
   useEffect(() => {
@@ -165,6 +249,21 @@ export default function Review() {
 
   const refreshWords = async () => {
     window.location.reload();
+  };
+
+  const handleModeChange = (mode: SessionDeckMode) => {
+    setSearchParams((current) => {
+      const next = new URLSearchParams(current);
+
+      if (mode === "all") {
+        next.delete("mode");
+      } else {
+        next.set("mode", mode);
+      }
+
+      next.delete("word");
+      return next;
+    });
   };
 
   const nextWord = () => {
@@ -194,6 +293,15 @@ export default function Review() {
     newCardsStudied: 0,
   };
   const limitReached = data?.limitReached ?? false;
+  const counts = data?.counts ?? {
+    all: 0,
+    phrases: 0,
+    new: 0,
+    due: 0,
+  };
+  const activeFilter = REVIEW_FILTERS.find(
+    (filter) => filter.mode === activeMode
+  );
 
   // ============================================================
   // ESTADO: SIN PALABRAS (Dos variantes: Fin real o Límite)
@@ -202,6 +310,12 @@ export default function Review() {
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex items-center justify-center">
         <div className="text-center max-w-md mx-auto px-4">
+          <ReviewFilters
+            activeMode={activeMode}
+            counts={counts}
+            onChange={handleModeChange}
+          />
+
           {/* ÍCONO */}
           <div
             className={`w-24 h-24 mx-auto mb-6 rounded-2xl flex items-center justify-center border shadow-sm ${
@@ -220,9 +334,11 @@ export default function Review() {
 
           {/* DESCRIPCIÓN */}
           <p className="text-gray-600 dark:text-gray-400 mb-8">
-            {limitReached
-              ? `Has estudiado ${dailyStats.newCardsStudied} palabras nuevas hoy. Es importante descansar para asimilar lo aprendido.`
-              : "No hay más repasos pendientes por ahora. Has hecho un excelente trabajo manteniendo tu rutina."}
+            {counts[activeMode] === 0 && activeMode !== "all"
+              ? activeFilter?.emptyLabel
+              : limitReached
+                ? `Has estudiado ${dailyStats.newCardsStudied} palabras nuevas hoy. Es importante descansar para asimilar lo aprendido.`
+                : "No hay más repasos pendientes por ahora. Has hecho un excelente trabajo manteniendo tu rutina."}
           </p>
 
           {/* TARJETA DE ESTADÍSTICAS DIARIAS */}
@@ -274,6 +390,9 @@ export default function Review() {
     <Suspense fallback={<ReviewSkeleton />}>
       <ReviewMode
         words={words}
+        activeMode={activeMode}
+        counts={counts}
+        onModeChange={handleModeChange}
         currentIndex={currentWordIndex}
         onNext={nextWord}
         onPrev={prevWord}

@@ -4,17 +4,48 @@ import {
   getDailyStats,
   type DailyStats,
 } from "~/services/db";
-import type { WordEntry, PhraseEntry } from "~/types";
+import type { WordEntry } from "~/types";
 
 // CONFIGURACIÓN: Aquí defines tu límite por defecto (ej. 15)
 const DEFAULT_NEW_LIMIT = 7;
 
+export type SessionDeckMode = "all" | "phrases" | "new" | "due";
+
+export interface SessionDeckCounts {
+  all: number;
+  phrases: number;
+  new: number;
+  due: number;
+}
+
+function buildDeckForMode(
+  mode: SessionDeckMode,
+  reviewsDue: WordEntry[],
+  newItemsToStudy: WordEntry[]
+): WordEntry[] {
+  if (mode === "phrases") {
+    return [...reviewsDue, ...newItemsToStudy].filter((item) => item.isPhrase);
+  }
+
+  if (mode === "new") {
+    return newItemsToStudy;
+  }
+
+  if (mode === "due") {
+    return reviewsDue;
+  }
+
+  return [...reviewsDue, ...newItemsToStudy];
+}
+
 export async function generateSessionDeck(
+  mode: SessionDeckMode = "all",
   limitNew: number = DEFAULT_NEW_LIMIT
 ): Promise<{
   deck: WordEntry[];
   stats: DailyStats;
   limitReached: boolean;
+  counts: SessionDeckCounts;
 }> {
   // 1. Cargar todo el contenido y las estadísticas
   const [words, phrases, dailyStats] = await Promise.all([
@@ -24,7 +55,16 @@ export async function generateSessionDeck(
   ]);
 
   // Unificar palabras y frases
-  const allItems = [...words, ...phrases] as WordEntry[];
+  const phraseItems: WordEntry[] = phrases.map((phrase) => ({
+    word: phrase.phrase,
+    wordLower: phrase.phraseLower,
+    translation: phrase.translation,
+    status: "unknown",
+    addedAt: phrase.addedAt,
+    srData: phrase.srData,
+    isPhrase: true,
+  }));
+  const allItems = [...words, ...phraseItems];
   const now = Date.now();
 
   // ---------------------------------------------------------
@@ -55,7 +95,14 @@ export async function generateSessionDeck(
   // ---------------------------------------------------------
 
   // Opción 1: Estilo Clásico (Primero repasos, luego nuevas)
-  const deck = [...reviewsDue, ...newItemsToStudy];
+  const deck = buildDeckForMode(mode, reviewsDue, newItemsToStudy);
+
+  const counts: SessionDeckCounts = {
+    all: buildDeckForMode("all", reviewsDue, newItemsToStudy).length,
+    phrases: buildDeckForMode("phrases", reviewsDue, newItemsToStudy).length,
+    new: buildDeckForMode("new", reviewsDue, newItemsToStudy).length,
+    due: buildDeckForMode("due", reviewsDue, newItemsToStudy).length,
+  };
 
   /* Opción 2: Mezclado (Si prefieres que salgan salpicadas)
    const deck = [...reviewsDue, ...newItemsToStudy].sort(() => Math.random() - 0.5);
@@ -64,6 +111,7 @@ export async function generateSessionDeck(
   return {
     deck,
     stats: dailyStats,
+    counts,
     // True si hay más palabras nuevas disponibles pero el límite diario nos detuvo
     limitReached: remainingSlots === 0 && newItems.length > 0,
   };

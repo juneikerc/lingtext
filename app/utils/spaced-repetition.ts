@@ -1,5 +1,21 @@
 import type { WordEntry, SpacedRepetitionData } from "~/types";
 
+export type ReviewGrade = "again" | "hard" | "good" | "easy";
+
+export interface ReviewGradeOption {
+  id: ReviewGrade;
+  label: string;
+  shortLabel: string;
+  quality: number;
+}
+
+export const REVIEW_GRADE_OPTIONS: ReviewGradeOption[] = [
+  { id: "again", label: "Again", shortLabel: "Otra vez", quality: 1 },
+  { id: "hard", label: "Hard", shortLabel: "Difícil", quality: 3 },
+  { id: "good", label: "Good", shortLabel: "Bien", quality: 4 },
+  { id: "easy", label: "Easy", shortLabel: "Fácil", quality: 5 },
+];
+
 /**
  * Determina si una palabra está lista para repaso
  * Si no tiene datos (es nueva), se considera lista.
@@ -32,6 +48,30 @@ export function formatTimeUntilReview(nextReview: number): string {
   }
 }
 
+export function formatReviewInterval(intervalInDays: number): string {
+  if (intervalInDays < 1) {
+    const totalMinutes = Math.max(1, Math.round(intervalInDays * 24 * 60));
+
+    if (totalMinutes >= 60) {
+      const hours = Math.round(totalMinutes / 60);
+      return `${hours} h`;
+    }
+
+    return `${totalMinutes} min`;
+  }
+
+  if (intervalInDays < 30) {
+    return `${Math.round(intervalInDays)} d`;
+  }
+
+  const months = intervalInDays / 30;
+  if (months < 12) {
+    return `${Math.round(months)} m`;
+  }
+
+  return `${Math.round(months / 12)} a`;
+}
+
 /**
  * Calcula estadísticas de palabras listas para repaso.
  * Útil para mostrar contadores en el UI.
@@ -59,9 +99,13 @@ export function calculateNextReview(
 
   // Valores por defecto si es una palabra nueva
   if (!currentData) {
-    // Si la calidad es baja (<3), programamos para muy pronto (ej. 1 hora o 1 día)
-    // Si es alta, empezamos con 1 día.
-    const initialInterval = quality >= 3 ? 1 : 0.04; // 0.04 días ~= 1 hora
+    let initialInterval = 1;
+
+    if (quality < 3) {
+      initialInterval = 10 / (24 * 60);
+    } else if (quality === 5) {
+      initialInterval = 4;
+    }
 
     return {
       easeFactor: 2.5,
@@ -74,8 +118,19 @@ export function calculateNextReview(
 
   let { easeFactor, repetitions, interval } = currentData;
 
-  if (quality >= 3) {
-    // --- RESPUESTA CORRECTA ---
+  if (quality < 3) {
+    repetitions = 0;
+    interval = 10 / (24 * 60);
+    easeFactor = Math.max(1.3, easeFactor - 0.2);
+  } else if (quality === 3) {
+    if (repetitions <= 1) {
+      interval = Math.max(2, Math.round(interval * 1.2));
+    } else {
+      interval = Math.max(interval + 1, Math.round(interval * 1.2));
+    }
+    repetitions += 1;
+    easeFactor = Math.max(1.3, easeFactor - 0.15);
+  } else if (quality === 4) {
     if (repetitions === 0) {
       interval = 1;
     } else if (repetitions === 1) {
@@ -84,21 +139,21 @@ export function calculateNextReview(
       interval = Math.round(interval * easeFactor);
     }
     repetitions += 1;
-
-    // Ajustar Ease Factor (fórmula estándar SM-2)
-    // EF' = EF + (0.1 - (5-q) * (0.08 + (5-q)*0.02))
     easeFactor =
       easeFactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02));
-
-    // No dejar que el factor baje de 1.3 (para evitar el "infierno de repasos")
-    if (easeFactor < 1.3) easeFactor = 1.3;
   } else {
-    // --- RESPUESTA INCORRECTA ---
-    repetitions = 0;
-    interval = 1; // Reiniciar a 1 día
-    // Nota: En implementaciones estrictas de Anki, a veces se reduce el Ease Factor aquí,
-    // pero mantenerlo suele ser menos frustrante para el usuario.
+    if (repetitions === 0) {
+      interval = 4;
+    } else if (repetitions === 1) {
+      interval = 8;
+    } else {
+      interval = Math.round(interval * easeFactor * 1.3);
+    }
+    repetitions += 1;
+    easeFactor += 0.15;
   }
+
+  if (easeFactor < 1.3) easeFactor = 1.3;
 
   // Calcular próxima fecha (timestamp)
   const nextReview = now + interval * 24 * 60 * 60 * 1000;
