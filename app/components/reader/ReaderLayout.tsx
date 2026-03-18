@@ -57,7 +57,7 @@ export function ReaderContentShell({
   const contentClasses = [
     compact
       ? "reader-surface rounded-xl border p-4 sm:p-5"
-      : "reader-surface rounded-2xl border shadow-xl p-8 md:p-12",
+      : "reader-surface rounded-2xl border shadow-xl p-4 sm:p-6 md:p-8 lg:p-12",
     contentClassName,
   ]
     .filter(Boolean)
@@ -65,7 +65,7 @@ export function ReaderContentShell({
 
   const wrapperClasses = compact
     ? "mx-auto w-full py-2 select-text"
-    : "mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 select-text";
+    : "mx-auto w-full px-2 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 md:py-8 select-text";
 
   return (
     <div id="reader-text" className={wrapperClasses}>
@@ -158,16 +158,16 @@ export default function LibraryBanner() {
   const isDark = preferences.theme === "dark-soft";
 
   return (
-    <div className="mx-auto max-w-4xl px-6 sm:px-8 lg:px-12 mt-12 mb-4">
+    <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-8 sm:mt-12 mb-4">
       <Link
         to="/my-library"
-        className={`group block rounded-2xl border px-6 py-5 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 ${
+        className={`group block rounded-2xl border px-4 sm:px-6 py-4 sm:py-5 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 ${
           isDark
             ? "border-indigo-800/60 bg-indigo-950/30 hover:border-indigo-700 hover:bg-indigo-950/50 focus-visible:ring-offset-gray-950"
             : "border-indigo-200 bg-indigo-50/80 hover:border-indigo-300 hover:bg-indigo-50 focus-visible:ring-offset-white"
         }`}
       >
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="flex items-center gap-3 min-w-0">
             <span
               className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${
@@ -189,7 +189,7 @@ export default function LibraryBanner() {
                 />
               </svg>
             </span>
-            <div>
+            <div className="min-w-0">
               <p
                 className={`text-sm font-semibold ${
                   isDark ? "text-indigo-300" : "text-indigo-700"
@@ -209,7 +209,7 @@ export default function LibraryBanner() {
           </div>
 
           <span
-            className={`shrink-0 inline-flex items-center rounded-lg px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors duration-200 ${
+            className={`shrink-0 inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors duration-200 ${
               isDark
                 ? "bg-indigo-500 group-hover:bg-indigo-400"
                 : "bg-indigo-600 group-hover:bg-indigo-700"
