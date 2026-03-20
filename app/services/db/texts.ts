@@ -13,8 +13,8 @@ export async function addText(item: TextItem): Promise<void> {
     : null;
 
   database.exec(
-    `INSERT OR REPLACE INTO texts (id, title, content, format, created_at, audio_ref)
-     VALUES (?, ?, ?, ?, ?, ?)`,
+    `INSERT OR REPLACE INTO texts (id, title, content, format, created_at, audio_ref, folder_id)
+     VALUES (?, ?, ?, ?, ?, ?, ?)`,
     {
       bind: [
         item.id,
@@ -23,6 +23,7 @@ export async function addText(item: TextItem): Promise<void> {
         item.format || "txt",
         item.createdAt,
         audioRefJson,
+        item.folderId ?? null,
       ],
     }
   );
@@ -38,6 +39,7 @@ export async function getAllTexts(): Promise<TextItem[]> {
     format: string;
     created_at: number;
     audio_ref: string | null;
+    folder_id: string | null;
   }> = database.selectObjects("SELECT * FROM texts ORDER BY created_at DESC");
 
   return rows.map((row) => ({
@@ -49,6 +51,7 @@ export async function getAllTexts(): Promise<TextItem[]> {
     audioRef: row.audio_ref
       ? deserializeAudioRef(JSON.parse(row.audio_ref))
       : null,
+    folderId: row.folder_id ?? null,
   }));
 }
 
@@ -61,6 +64,7 @@ export async function getText(id: string): Promise<TextItem | undefined> {
     format: string;
     created_at: number;
     audio_ref: string | null;
+    folder_id: string | null;
   }> = database.selectObjects("SELECT * FROM texts WHERE id = ?", [id]);
 
   if (rows.length === 0) return undefined;
@@ -75,6 +79,7 @@ export async function getText(id: string): Promise<TextItem | undefined> {
     audioRef: row.audio_ref
       ? deserializeAudioRef(JSON.parse(row.audio_ref))
       : null,
+    folderId: row.folder_id ?? null,
   };
 }
 
@@ -92,7 +97,7 @@ export async function updateText(item: TextItem): Promise<void> {
 
   database.exec(
     `UPDATE texts
-     SET title = ?, content = ?, format = ?, audio_ref = ?
+     SET title = ?, content = ?, format = ?, audio_ref = ?, folder_id = ?
      WHERE id = ?`,
     {
       bind: [
@@ -100,6 +105,7 @@ export async function updateText(item: TextItem): Promise<void> {
         item.content,
         item.format || "txt",
         audioRefJson,
+        item.folderId ?? null,
         item.id,
       ],
     }
@@ -117,6 +123,17 @@ export async function updateTextAudioRef(
     : null;
   database.exec("UPDATE texts SET audio_ref = ? WHERE id = ?", {
     bind: [audioRefJson, id],
+  });
+  scheduleSave();
+}
+
+export async function moveTextToFolder(
+  textId: string,
+  folderId: string | null
+): Promise<void> {
+  const database = await getDB();
+  database.exec("UPDATE texts SET folder_id = ? WHERE id = ?", {
+    bind: [folderId, textId],
   });
   scheduleSave();
 }

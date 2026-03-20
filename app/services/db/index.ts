@@ -9,3 +9,4 @@ export * from "./audio-ref";
 export * from "./songs";
 export * from "./language-islands";
 export * from "./types";
+export * from "./folders";

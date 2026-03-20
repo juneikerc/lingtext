@@ -6,6 +6,26 @@ export type AudioRef =
       fileHandle: FileSystemFileHandle;
     };
 
+export const FOLDER_COLORS = [
+  "#6366f1", // indigo
+  "#ef4444", // red
+  "#22c55e", // green
+  "#eab308", // yellow
+  "#f97316", // orange
+  "#ec4899", // pink
+  "#06b6d4", // cyan
+  "#a855f7", // purple
+] as const;
+
+export type FolderColor = (typeof FOLDER_COLORS)[number];
+
+export interface Folder {
+  id: string;
+  name: string;
+  color: string;
+  createdAt: number;
+}
+
 export interface TextItem {
   id: string;
   title: string;
@@ -13,6 +33,7 @@ export interface TextItem {
   format?: "txt" | "markdown"; // Formato del contenido
   createdAt: number;
   audioRef?: AudioRef | null;
+  folderId?: string | null;
 }
 
 export type SongProvider = "youtube" | "spotify";

@@ -176,6 +176,23 @@ function createTables(database: any): void {
     )
   `);
 
+  // Folders table
+  database.exec(`
+    CREATE TABLE IF NOT EXISTS folders (
+      id TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      color TEXT NOT NULL,
+      created_at INTEGER NOT NULL
+    )
+  `);
+
+  // Add folder_id column to texts if it doesn't exist (migration)
+  try {
+    database.exec("ALTER TABLE texts ADD COLUMN folder_id TEXT");
+  } catch {
+    // Column already exists
+  }
+
   console.log("[DB] Tables created/verified");
 }
 
