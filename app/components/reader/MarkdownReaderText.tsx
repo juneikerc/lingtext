@@ -11,6 +11,57 @@ import LibraryBanner, {
 } from "./ReaderLayout";
 import ReaderWordTokens from "./ReaderWordTokens";
 
+interface MarkdownImageMatch {
+  alt: string;
+  src: string;
+}
+
+function parseMarkdownImage(markdown: string): MarkdownImageMatch | null {
+  const match = markdown.match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)$/);
+
+  if (!match) {
+    return null;
+  }
+
+  return {
+    alt: match[1],
+    src: match[2],
+  };
+}
+
+function renderMarkdownImage(
+  image: MarkdownImageMatch,
+  key: string
+): React.ReactNode {
+  return (
+    <figure key={key} className="my-6 overflow-hidden rounded-2xl">
+      <img
+        src={image.src}
+        alt={image.alt}
+        loading="lazy"
+        decoding="async"
+        className="block w-full max-w-full rounded-2xl border border-gray-200 bg-gray-50 object-contain shadow-sm dark:border-gray-700 dark:bg-gray-900"
+      />
+    </figure>
+  );
+}
+
+function renderInlineMarkdownImage(
+  image: MarkdownImageMatch,
+  key: string
+): React.ReactNode {
+  return (
+    <img
+      key={key}
+      src={image.src}
+      alt={image.alt}
+      loading="lazy"
+      decoding="async"
+      className="my-4 inline-block max-w-full rounded-2xl border border-gray-200 bg-gray-50 align-middle shadow-sm dark:border-gray-700 dark:bg-gray-900"
+    />
+  );
+}
+
 interface MarkdownReaderTextProps {
   content: string;
   unknownSet: Set<string>;
@@ -91,6 +142,12 @@ function MarkdownReaderText({
           listItems = [];
           inList = false;
         }
+        continue;
+      }
+
+      const standaloneImage = parseMarkdownImage(line.trim());
+      if (standaloneImage) {
+        elements.push(renderMarkdownImage(standaloneImage, `image-${i}`));
         continue;
       }
 
@@ -225,6 +282,25 @@ function MarkdownReaderText({
         }
 
         // Links
+        const imageMatch = remaining.match(
+          /^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)/
+        );
+        if (imageMatch) {
+          parts.push(
+            renderInlineMarkdownImage(
+              {
+                alt: imageMatch[1],
+                src: imageMatch[2],
+              },
+              `inline-image-${keyCounter++}`
+            )
+          );
+          remaining = remaining.substring(imageMatch[0].length);
+          matched = true;
+          continue;
+        }
+
+        // Links
         const linkMatch = remaining.match(/^\[([^\]]+)\]\(([^)]+)\)/);
         if (linkMatch) {
           const tokenKey = `link-${keyCounter++}`;
@@ -252,7 +328,7 @@ function MarkdownReaderText({
 
         // Regular text until next markdown element
         if (!matched) {
-          const nextSpecial = remaining.search(/`|\*\*|\*|\[/);
+          const nextSpecial = remaining.search(/!\[|`|\*\*|\*|\[/);
           const chunk =
             nextSpecial === -1
               ? remaining

@@ -58,6 +58,16 @@ body {
   color: inherit;
 }
 
+.reader-surface figure {
+  margin-block: 1.5rem;
+}
+
+.reader-surface img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
 .reader-surface blockquote {
   background-color: var(--reader-quote-bg);
   border-color: var(--reader-accent-color);
@@ -66,8 +76,14 @@ body {
   padding-right: 1rem;
 }
 
-.reader-prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *))::before,
-.reader-prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *))::after {
+.reader-prose
+  :where(code):not(
+    :where([class~="not-prose"], [class~="not-prose"] *)
+  )::before,
+.reader-prose
+  :where(code):not(
+    :where([class~="not-prose"], [class~="not-prose"] *)
+  )::after {
   content: none;
 }
 

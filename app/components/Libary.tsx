@@ -25,6 +25,7 @@ import {
   sanitizeTextContent,
 } from "../utils/validation";
 import { seedInitialDataOnce } from "~/utils/seed";
+import { importHtmlFromUrl } from "~/utils/url-import";
 
 import { saveFileHandle, deleteFileHandle } from "~/services/file-handles";
 
@@ -192,6 +193,35 @@ interface TextCardProps {
   onAudioMenuAction: (textId: string, action: "file" | "url" | "clear") => void;
 }
 
+function normalizeImportedTitle(rawTitle: string, sourceUrl: string): string {
+  const cleanedTitle = rawTitle
+    .replace(/[<>"'&]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 200);
+
+  if (cleanedTitle && validateTitle(cleanedTitle).isValid) {
+    return cleanedTitle;
+  }
+
+  try {
+    const hostnameTitle = new URL(sourceUrl).hostname
+      .replace(/^www\./, "")
+      .replace(/[<>"'&]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, 200);
+
+    if (hostnameTitle && validateTitle(hostnameTitle).isValid) {
+      return hostnameTitle;
+    }
+  } catch {
+    // Ignore URL parsing issues and fall back to a generic title.
+  }
+
+  return "Texto importado desde URL";
+}
+
 function TextCard({
   text: t,
   folders,
@@ -333,6 +363,12 @@ export default function Library() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [inputFormat, setInputFormat] = useState<"txt" | "markdown">("txt");
+  const [importUrl, setImportUrl] = useState("");
+  const [isImportingUrl, setIsImportingUrl] = useState(false);
+  const [urlImportMessage, setUrlImportMessage] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
   const [editingTextId, setEditingTextId] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const titleInputRef = useRef<HTMLInputElement | null>(null);
@@ -460,6 +496,8 @@ export default function Library() {
     setTitle("");
     setContent("");
     setInputFormat("txt");
+    setImportUrl("");
+    setUrlImportMessage(null);
     setEditingTextId(null);
     setSelectedFolderId(null);
   }
@@ -469,6 +507,8 @@ export default function Library() {
     setTitle(text.title);
     setContent(text.content);
     setInputFormat(text.format || "txt");
+    setImportUrl("");
+    setUrlImportMessage(null);
     setSelectedFolderId(text.folderId ?? null);
     document
       .getElementById("library-text-form")
@@ -547,6 +587,8 @@ export default function Library() {
     if (!file) return;
 
     try {
+      setUrlImportMessage(null);
+
       // Validate file type and size
       const fileValidation = validateFileType(file);
       if (!fileValidation.isValid) {
@@ -591,6 +633,8 @@ export default function Library() {
       const sanitizedContent = sanitizeTextContent(text);
       setTitle(filename);
       setContent(sanitizedContent);
+      setInputFormat("txt");
+      setImportUrl("");
       e.target.value = "";
     } catch (error) {
       console.error("Error importing file:", error);
@@ -598,6 +642,76 @@ export default function Library() {
         "Error al importar el archivo. Verifica que sea un archivo de texto válido."
       );
       e.target.value = "";
+    }
+  }
+
+  async function onImportUrl() {
+    const rawUrl = importUrl.trim();
+    if (!rawUrl) {
+      setUrlImportMessage({
+        type: "error",
+        text: "Pega una URL antes de intentar la importacion.",
+      });
+      return;
+    }
+
+    setIsImportingUrl(true);
+    setUrlImportMessage(null);
+
+    try {
+      const result = await importHtmlFromUrl(rawUrl, {
+        allowServerFallback: false,
+      });
+
+      if (!result.ok) {
+        setUrlImportMessage({
+          type: "error",
+          text: result.message,
+        });
+        return;
+      }
+
+      const sanitizedMarkdown = sanitizeTextContent(result.markdown);
+      const contentValidation = validateTextContent(
+        sanitizedMarkdown,
+        result.sourceUrl
+      );
+
+      if (!contentValidation.isValid) {
+        setUrlImportMessage({
+          type: "error",
+          text: `No se pudo importar el contenido: ${contentValidation.error}`,
+        });
+        return;
+      }
+
+      const importedTitle = normalizeImportedTitle(
+        result.title,
+        result.sourceUrl
+      );
+      setTitle(importedTitle);
+      setContent(sanitizedMarkdown);
+      setInputFormat("markdown");
+      setImportUrl(result.sourceUrl);
+
+      const warningsText = contentValidation.warnings?.length
+        ? ` Revisa el resultado antes de guardarlo: ${contentValidation.warnings.join(" ")}`
+        : "";
+
+      setUrlImportMessage({
+        type: "success",
+        text: `Pagina importada como markdown. Ahora puedes revisarla y guardarla.${warningsText}`,
+      });
+
+      window.setTimeout(() => titleInputRef.current?.focus(), 50);
+    } catch (error) {
+      console.error("[Library] Error importing URL:", error);
+      setUrlImportMessage({
+        type: "error",
+        text: "Ocurrio un error inesperado al importar la URL.",
+      });
+    } finally {
+      setIsImportingUrl(false);
     }
   }
 
@@ -1054,30 +1168,84 @@ export default function Library() {
                 </div>
               )}
 
-              {/* Import TXT file option */}
-              <div className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-800/60 rounded-xl border border-gray-200 dark:border-gray-700">
-                <div className="flex-1">
-                  <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                    ¿Tienes un archivo .txt?
-                  </p>
-                  <p className="text-xs text-gray-600 dark:text-gray-400">
-                    Importa directamente un archivo de texto plano
-                  </p>
+              <div className="space-y-3">
+                {/* Import TXT file option */}
+                <div className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-800/60 rounded-xl border border-gray-200 dark:border-gray-700">
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                      ¿Tienes un archivo .txt?
+                    </p>
+                    <p className="text-xs text-gray-600 dark:text-gray-400">
+                      Importa directamente un archivo de texto plano
+                    </p>
+                  </div>
+                  <button
+                    className="px-4 py-2 rounded-lg bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
+                    onClick={() => fileInputRef.current?.click()}
+                    type="button"
+                  >
+                    📄 Cargar .txt
+                  </button>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept=".txt,text/plain"
+                    style={{ display: "none" }}
+                    onChange={onImportTxt}
+                  />
                 </div>
-                <button
-                  className="px-4 py-2 rounded-lg bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
-                  onClick={() => fileInputRef.current?.click()}
-                  type="button"
-                >
-                  📄 Cargar .txt
-                </button>
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  accept=".txt,text/plain"
-                  style={{ display: "none" }}
-                  onChange={onImportTxt}
-                />
+
+                <div className="p-4 bg-gray-50 dark:bg-gray-800/60 rounded-xl border border-gray-200 dark:border-gray-700 space-y-3">
+                  <div>
+                    <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                      Importar desde una URL
+                    </p>
+                    <p className="text-xs text-gray-600 dark:text-gray-400">
+                      Intentamos leer la pagina directamente desde tu navegador
+                      y convertirla a markdown. Si el sitio bloquea CORS, te lo
+                      avisaremos.
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-2">
+                    <input
+                      className="flex-1 px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 placeholder-gray-500 dark:placeholder-gray-400"
+                      placeholder="https://example.com/article"
+                      value={importUrl}
+                      onChange={(e) => setImportUrl(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                          void onImportUrl();
+                        }
+                      }}
+                      inputMode="url"
+                      autoCapitalize="none"
+                      autoCorrect="off"
+                      spellCheck={false}
+                    />
+                    <button
+                      className="px-4 py-2.5 rounded-lg bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950 disabled:opacity-60 disabled:cursor-not-allowed"
+                      onClick={() => void onImportUrl()}
+                      disabled={isImportingUrl || !importUrl.trim()}
+                      type="button"
+                    >
+                      {isImportingUrl ? "Importando..." : "🌐 Importar URL"}
+                    </button>
+                  </div>
+
+                  {urlImportMessage ? (
+                    <div
+                      className={`rounded-lg border px-3 py-2 text-sm ${
+                        urlImportMessage.type === "success"
+                          ? "bg-green-100 dark:bg-green-900/30 border-green-200 dark:border-green-800 text-green-700 dark:text-green-300"
+                          : "bg-amber-100 dark:bg-amber-900/30 border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300"
+                      }`}
+                    >
+                      {urlImportMessage.text}
+                    </div>
+                  ) : null}
+                </div>
               </div>
             </div>
 
