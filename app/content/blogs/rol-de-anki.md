@@ -1,7 +1,7 @@
 ---
 slug: "rol-de-anki-ingles"
 title: "Rol de Anki en el aprendizaje de inglés: Mejora tu vocabulario y fluidez"
-mainHeading: "Rol de Anki en el aprendizaje de inglés: Mejora tu vocabulario y fluidez"
+mainHeading: "¿Cuál es el rol de Anki en el aprendizaje de inglés?"
 metaDescription: "Anki es una aplicación muy utilizada para aprender inglés mediante tarjetas de repaso. Su enfoque en la repetición espaciada ayuda a mejorar la retención de vocabulario y frases importantes."
 image: "https://images.lingtext.org/rol-de-anki-en-el-aprendizaje-de-ingles.png"
 tags: ["Anki", "Repetición Espaciada", "Vocabulario","Estrategias"]

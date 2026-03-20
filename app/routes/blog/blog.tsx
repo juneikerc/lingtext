@@ -12,6 +12,8 @@ export function loader({ params }: Route.LoaderArgs) {
 
 export function meta({ loaderData }: Route.MetaArgs) {
   const { blog } = loaderData;
+  const url = `https://lingtext.org/blog/${blog.slug}`;
+
   return [
     {
       title: blog.title,
@@ -23,7 +25,49 @@ export function meta({ loaderData }: Route.MetaArgs) {
     {
       tagName: "link",
       rel: "canonical",
-      href: `https://lingtext.org/blog/${blog.slug}`,
+      href: url,
+    },
+    // Open Graph
+    {
+      property: "og:title",
+      content: blog.title,
+    },
+    {
+      property: "og:description",
+      content: blog.metaDescription,
+    },
+    {
+      property: "og:type",
+      content: "article",
+    },
+    {
+      property: "og:url",
+      content: url,
+    },
+    {
+      property: "og:image",
+      content: blog.image,
+    },
+    {
+      property: "og:site_name",
+      content: "LingText",
+    },
+    // Twitter Card
+    {
+      name: "twitter:card",
+      content: "summary_large_image",
+    },
+    {
+      name: "twitter:title",
+      content: blog.title,
+    },
+    {
+      name: "twitter:description",
+      content: blog.metaDescription,
+    },
+    {
+      name: "twitter:image",
+      content: blog.image,
     },
   ];
 }
