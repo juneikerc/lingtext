@@ -72,6 +72,33 @@ function HeadphonesIcon(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
+function GlobeIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...props}>
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.8"
+      />
+      <path
+        d="M2 12h20"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.8"
+      />
+      <path
+        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.8"
+      />
+    </svg>
+  );
+}
+
 const features = [
   {
     icon: DocumentPlusIcon,
@@ -84,6 +111,12 @@ const features = [
     title: "Importa Archivos",
     description:
       "Importa archivos .txt directamente desde tu dispositivo y comienza a leer en segundos.",
+  },
+  {
+    icon: GlobeIcon,
+    title: "Importa desde la Web",
+    description:
+      "Extrae contenido de páginas web compatibles y añádelo directamente a tu biblioteca.",
   },
   {
     icon: HeadphonesIcon,
@@ -122,7 +155,7 @@ export default function LibraryCTA() {
         </div>
 
         {/* Features grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {features.map((feature) => (
             <div
               key={feature.title}
