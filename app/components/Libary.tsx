@@ -1318,7 +1318,7 @@ export default function Library() {
               <div key={group.folder?.id ?? "uncategorized"}>
                 {/* Folder header */}
                 {group.folder ? (
-                  <details className="group/folder" open>
+                  <details className="group/folder">
                     <summary className="cursor-pointer list-none">
                       <div className="flex items-center gap-3 mb-3 p-3 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-colors">
                         <span
@@ -1350,7 +1350,7 @@ export default function Library() {
                     </div>
                   </details>
                 ) : group.texts.length > 0 ? (
-                  <details className="group/folder" open>
+                  <details className="group/folder">
                     <summary className="cursor-pointer list-none">
                       <div className="flex items-center gap-3 mb-3 p-3 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-colors">
                         <FolderIcon className="w-5 h-5 text-gray-400" />
