@@ -106,6 +106,31 @@ export default function LevelSelector() {
             </Link>
           ))}
         </div>
+
+        <div className="mt-16 text-center">
+          <p className="mb-4 text-base text-gray-600 dark:text-gray-400">
+            Explora lecturas para todos los niveles
+          </p>
+          <Link
+            to="/textos-en-ingles"
+            className="inline-flex items-center justify-center rounded-full bg-indigo-600 px-8 py-3 text-base font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 dark:hover:bg-indigo-500 dark:focus-visible:ring-offset-gray-950"
+          >
+            Ver  Textos en inglés
+            <svg
+              className="ml-2 h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </Link>
+        </div>
       </div>
     </section>
   );

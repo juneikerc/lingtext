@@ -141,11 +141,10 @@ export default function Level({ loaderData }: Route.ComponentProps) {
                 <Link
                   key={text.title}
                   to={`/texts/${textId}?source=collection`}
-                  className={`group rounded-2xl border shadow-sm transition duration-200 overflow-hidden block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 dark:focus-visible:ring-offset-gray-950 ${
-                    isVisited
+                  className={`group rounded-2xl border shadow-sm transition duration-200 overflow-hidden block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 dark:focus-visible:ring-offset-gray-950 ${isVisited
                       ? "bg-indigo-50/50 dark:bg-indigo-950/20 border-indigo-200 dark:border-indigo-800 hover:shadow-md hover:border-indigo-300 dark:hover:border-indigo-700"
                       : "bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800 hover:shadow-md hover:border-gray-300 dark:hover:border-gray-700"
-                  }`}
+                    }`}
                   rel="nofollow"
                 >
                   <div className="p-8">
@@ -218,6 +217,38 @@ export default function Level({ loaderData }: Route.ComponentProps) {
                 </Link>
               );
             })}
+          </div>
+
+          <div className="mt-10 rounded-2xl border border-indigo-100 bg-indigo-50/60 p-6 dark:border-indigo-900/40 dark:bg-indigo-950/20">
+            <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p className="text-sm font-semibold text-indigo-700 dark:text-indigo-300">
+                  ¿Quieres más?
+                </p>
+                <p className="mt-1 text-base text-gray-700 dark:text-gray-300">
+                  Dale un vistazo a lecturas en otros niveles
+                </p>
+              </div>
+              <Link
+                to="/textos-en-ingles"
+                className="shrink-0 inline-flex items-center justify-center rounded-full bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 dark:hover:bg-indigo-500 dark:focus-visible:ring-offset-gray-950"
+              >
+                Explorar mas lecturas en inglés
+                <svg
+                  className="ml-2 h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

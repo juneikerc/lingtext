@@ -7,6 +7,7 @@ export default [
   route("review", "routes/review.tsx"),
   route("contacto", "routes/contact.tsx"),
   route("levels/:level", "routes/levels/level.tsx"),
+  route("textos-en-ingles", "routes/english-texts.tsx"),
   route("blog", "routes/blog/blogPage.tsx"),
   route("blog/:slug", "routes/blog/blog.tsx"),
   route("comunidad", "routes/community.tsx"),
