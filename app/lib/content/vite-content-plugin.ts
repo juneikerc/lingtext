@@ -14,6 +14,7 @@ type ContentMap = Record<CollectionName, unknown[]>;
 
 const createEmptyContentMap = (): ContentMap => ({
   blogs: [],
+  legalPages: [],
   levelsTexts: [],
   texts: [],
 });
@@ -92,6 +93,7 @@ async function buildContent(root: string) {
 
   const moduleCode = [
     `export const allBlogs = ${JSON.stringify(contentMap.blogs)};`,
+    `export const allLegalPages = ${JSON.stringify(contentMap.legalPages)};`,
     `export const allLevelsTexts = ${JSON.stringify(contentMap.levelsTexts)};`,
     `export const allTexts = ${JSON.stringify(contentMap.texts)};`,
   ].join("\n");

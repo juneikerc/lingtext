@@ -1,4 +1,4 @@
-export type CollectionName = "blogs" | "levelsTexts" | "texts";
+export type CollectionName = "blogs" | "legalPages" | "levelsTexts" | "texts";
 
 export interface BaseEntry {
   id: string;
@@ -26,6 +26,14 @@ export interface LevelTextEntry extends BaseEntry {
   level: string;
 }
 
+export interface LegalPageEntry extends BaseEntry {
+  collection: "legalPages";
+  slug: string;
+  title: string;
+  mainHeading: string;
+  metaDescription: string;
+}
+
 export interface TextEntry extends BaseEntry {
   collection: "texts";
   title: string;
@@ -33,4 +41,8 @@ export interface TextEntry extends BaseEntry {
   sound?: string;
 }
 
-export type AnyContentEntry = BlogEntry | LevelTextEntry | TextEntry;
+export type AnyContentEntry =
+  | BlogEntry
+  | LegalPageEntry
+  | LevelTextEntry
+  | TextEntry;

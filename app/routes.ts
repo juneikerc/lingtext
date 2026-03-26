@@ -10,6 +10,7 @@ export default [
   route("textos-en-ingles", "routes/english-texts.tsx"),
   route("blog", "routes/blog/blogPage.tsx"),
   route("blog/:slug", "routes/blog/blog.tsx"),
+  route("legal/:slug", "routes/legal/legal-page.tsx"),
   route("comunidad", "routes/community.tsx"),
   route("1000-frases-en-ingles", "routes/english-phrases.tsx"),
   route("500-palabras-en-ingles", "routes/english-words-500.tsx"),

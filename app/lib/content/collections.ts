@@ -21,6 +21,16 @@ export const collectionDefinitions = [
     }),
   },
   {
+    name: "legalPages",
+    directory: "app/content/legal",
+    schema: z.object({
+      slug: z.string(),
+      title: z.string(),
+      mainHeading: z.string(),
+      metaDescription: z.string(),
+    }),
+  },
+  {
     name: "levelsTexts",
     directory: "app/content/levelsTexts",
     schema: z.object({

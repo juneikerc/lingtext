@@ -1,4 +1,4 @@
-import type { Route } from "./+types/textos-en-ingles";
+import type { Route } from "./+types/english-texts";
 import { Link } from "react-router";
 import TextsByLevelSelector, {
   type LevelTextsCard,

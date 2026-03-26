@@ -208,25 +208,31 @@ export default function Footer() {
           <div className="text-gray-400 text-sm mb-4 md:mb-0">
             © {currentYear} LingText. Todos los derechos reservados.
           </div>
-          <div className="flex space-x-6 text-sm">
-            <a
-              href="#"
+          <div className="flex flex-wrap items-center justify-center gap-4 text-sm md:justify-end md:gap-6">
+            <Link
+              to="/legal/politica-de-privacidad"
               className="text-gray-400 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
             >
               Privacidad
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/legal/terminos-y-condiciones"
               className="text-gray-400 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
             >
               Términos
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/legal/politica-de-cookies"
               className="text-gray-400 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
             >
               Cookies
-            </a>
+            </Link>
+            <Link
+              to="/legal/aviso-legal"
+              className="text-gray-400 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
+            >
+              Aviso legal
+            </Link>
           </div>
         </div>
 

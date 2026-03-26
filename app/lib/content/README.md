@@ -15,6 +15,7 @@ virtual module.
 ## Current collections
 
 - `blogs` -> `app/content/blogs/**/*.{md,mdx}`
+- `legalPages` -> `app/content/legal/**/*.{md,mdx}`
 - `levelsTexts` -> `app/content/levelsTexts/**/*.{md,mdx}`
 - `texts` -> `app/content/texts/**/*.{md,mdx}`
 
@@ -39,8 +40,9 @@ export function loader({ params }) {
 
 Available exports:
 
-- `allBlogs`, `allLevelsTexts`, `allTexts`
+- `allBlogs`, `allLegalPages`, `allLevelsTexts`, `allTexts`
 - `getBlogBySlug(slug)`
+- `getLegalPageBySlug(slug)`
 - `getLevelTextByLevel(level)`
 - `getTextsByLevel(level)`
 
