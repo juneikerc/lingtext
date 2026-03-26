@@ -69,11 +69,11 @@ export function loader() {
   return { levelCards };
 }
 
-export function meta({}: Route.MetaArgs) {
+export function meta({ }: Route.MetaArgs) {
   return [
     {
       title:
-        "Textos en ingles para leer | Lecturas por nivel A1, A2, B1, B2, C1 y C2",
+        "Textos en ingles para leer | Lecturas para todos los niveles",
     },
     {
       name: "description",
