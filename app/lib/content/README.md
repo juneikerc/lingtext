@@ -1,16 +1,20 @@
-# Content Collections (SSR-safe)
+# Content Collections
 
-This folder contains the custom content collections system used by LingText.
-It replaces `@content-collections` and works in SSR and production without
-filesystem access at runtime. Content is compiled at build time into a Vite
-virtual module.
+This folder contains LingText's custom content collections system. Content is
+compiled at build time into Vite virtual modules so the app does not depend on
+filesystem access at runtime.
 
 ## Overview
 
 - Source files live in `app/content/**` as `.md` or `.mdx`.
 - Frontmatter is validated with Zod per collection.
 - Markdown/MDX is compiled to HTML at build time.
-- Runtime uses `virtual:content` (no fs access) via `app/lib/content/runtime.ts`.
+- The runtime exposes two layers:
+  - lightweight manifests for indexes and lookups
+  - per-entry lazy modules for full `content` + `html`
+
+That split matters because route indexes should not ship the raw body of every
+article or text to the client.
 
 ## Current collections
 
@@ -26,116 +30,73 @@ Schemas are defined in `app/lib/content/collections.ts`.
 Use the helpers in `app/lib/content/runtime.ts` instead of importing the
 virtual module directly.
 
-Example:
+### Manifest helpers
 
-```ts
-import { getBlogBySlug } from "~/lib/content/runtime";
+- `allBlogManifests`
+- `allLegalPageManifests`
+- `allLevelTextManifests`
+- `allTextManifests`
+- `getTextsByLevel(level)`
+- `getBlogManifestBySlug(slug)`
+- `getLegalPageManifestBySlug(slug)`
+- `getLevelTextManifestByLevel(level)`
 
-export function loader({ params }) {
-  const blog = getBlogBySlug(params.slug ?? "");
-  if (!blog) throw new Response("Not Found", { status: 404 });
-  return { blog };
-}
-```
+Manifest entries contain only collection metadata, never raw markdown or HTML.
 
-Available exports:
+### Detail helpers
 
-- `allBlogs`, `allLegalPages`, `allLevelsTexts`, `allTexts`
 - `getBlogBySlug(slug)`
 - `getLegalPageBySlug(slug)`
 - `getLevelTextByLevel(level)`
-- `getTextsByLevel(level)`
+- `getTextBySlug(slug)`
 
-Each entry contains:
-
-- `content`: raw markdown/MDX content (string)
-- `html`: precompiled HTML (string)
-- plus frontmatter fields for the collection
+These helpers are async because they lazy-load a single content entry.
 
 ## Rendering
 
-- For static pages (blog/levels), render the HTML directly:
+- For blog/legal/level detail pages, load one entry and render `html` with
+  `ProseContent`.
+- For the interactive reader, load one text entry and pass `content` to
+  `Reader` with `format: "markdown"`.
+- For listings and level selectors, use manifests only.
 
-```tsx
-<ProseContent html={entry.html} />
-```
+## Virtual module shape
 
-- For the Reader (interactive tokenization), use the raw `content` and
-  set `format: "markdown"` as before.
+`virtual:content` now exports manifest arrays plus loader records. The loader
+records point to `virtual:content-entry/<collection>/<id>` modules, which are
+split by entry.
+
+This keeps route bundles smaller:
+
+- index pages consume manifests only
+- detail pages fetch one entry on demand
+- the text reader no longer imports the entire `texts` collection
 
 ## MDX rules
 
-- MDX is supported, but JSX components and expressions are **not** allowed.
-- Treat MDX as Markdown-only syntax; JSX tags will error at build time.
+- MDX is supported, but JSX components and expressions are not allowed.
+- Treat MDX as Markdown-only syntax; JSX tags will fail the build.
 
 ## Adding a new collection
 
-1. Create the content folder
+1. Create `app/content/<collectionName>/`.
+2. Add the schema and directory to `app/lib/content/collections.ts`.
+3. Extend `CollectionName` and add both manifest/detail types in
+   `app/lib/content/types.ts`.
+4. Update `app/lib/content/virtual.d.ts` with manifest arrays and loader
+   records for the new collection.
+5. Update `app/lib/content/vite-content-plugin.ts` so the manifest module and
+   per-entry virtual modules include the new collection.
+6. Add runtime helpers in `app/lib/content/runtime.ts`.
 
-```
-app/content/<collectionName>/
-```
+## Hot reload
 
-2. Add a schema and directory in `app/lib/content/collections.ts`
-
-```ts
-{
-  name: "guides",
-  directory: "app/content/guides",
-  schema: z.object({
-    slug: z.string(),
-    title: z.string(),
-    description: z.string(),
-  }),
-}
-```
-
-3. Update types in `app/lib/content/types.ts`
-
-- Extend `CollectionName` with the new name.
-- Add a new entry interface (e.g., `GuideEntry`).
-- Add the new entry type to `AnyContentEntry`.
-
-4. Update the virtual module typing
-
-Add the new export in `app/lib/content/virtual.d.ts`:
-
-```ts
-export const allGuides: GuideEntry[];
-```
-
-5. Update the virtual module build output
-
-Add the export in `app/lib/content/vite-content-plugin.ts`:
-
-```ts
-const moduleCode = [
-  "export const allBlogs = ...",
-  "export const allGuides = ...",
-].join("\n");
-```
-
-6. Update runtime helpers
-
-Add a helper in `app/lib/content/runtime.ts` (and export the new `allGuides`).
-
-7. Add route usage
-
-Use the new helper in loaders or route components and render either `html`
-or `content` depending on the UI.
-
-## Frontmatter rules
-
-- Blog entries must include `slug` in frontmatter.
-- Missing or invalid frontmatter fails the build with a clear error.
-
-## Hot reload (dev)
-
-- In dev (`npm run dev`), content changes trigger a full reload.
-- If you add/remove files, Vite picks up the change automatically.
+- In dev, content changes trigger a full reload.
+- Adding or removing files is handled by the Vite plugin rebuild.
 
 ## Troubleshooting
 
-- Build error about MDX JSX: remove JSX tags and keep Markdown-only syntax.
-- Missing frontmatter: verify required fields in `collections.ts`.
-- Changes not reflected: restart dev server to flush caches.
+- MDX JSX error: remove JSX tags and keep Markdown-only syntax.
+- Frontmatter error: verify required fields in `collections.ts`.
+- Unexpected bundle growth: check that the route consumes manifests instead of
+  full entry helpers where possible.

@@ -5,6 +5,7 @@ import TextsByLevelSelector, {
 } from "~/components/TextsByLevelSelector";
 import { formatSlug } from "~/helpers/formatSlug";
 import { getTextsByLevel } from "~/lib/content/runtime";
+import type { TextManifestEntry } from "~/lib/content/types";
 
 const levels = [
   {
@@ -58,7 +59,7 @@ export function loader() {
     return {
       ...level,
       totalTexts: texts.length,
-      texts: texts.slice(0, 3).map((text) => ({
+      texts: texts.slice(0, 3).map((text: TextManifestEntry) => ({
         title: text.title,
         slug: formatSlug(text.title),
         hasAudio: Boolean(text.sound),

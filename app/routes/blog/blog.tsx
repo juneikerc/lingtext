@@ -2,8 +2,8 @@ import type { Route } from "./+types/blog";
 import { getBlogBySlug } from "~/lib/content/runtime";
 import ProseContent from "~/components/ProseContent";
 
-export function loader({ params }: Route.LoaderArgs) {
-  const blog = getBlogBySlug(params.slug ?? "");
+export async function loader({ params }: Route.LoaderArgs) {
+  const blog = await getBlogBySlug(params.slug ?? "");
   if (!blog) {
     throw new Response("Not Found", { status: 404 });
   }

@@ -3,8 +3,8 @@ import type { Route } from "./+types/legal-page";
 import ProseContent from "~/components/ProseContent";
 import { getLegalPageBySlug } from "~/lib/content/runtime";
 
-export function loader({ params }: Route.LoaderArgs) {
-  const legalPage = getLegalPageBySlug(params.slug ?? "");
+export async function loader({ params }: Route.LoaderArgs) {
+  const legalPage = await getLegalPageBySlug(params.slug ?? "");
 
   if (!legalPage) {
     throw new Response("Not Found", { status: 404 });

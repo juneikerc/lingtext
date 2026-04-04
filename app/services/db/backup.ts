@@ -1,11 +1,14 @@
 import {
   getDB,
+  getExpectedSchemaVersion,
   initDB,
   sqlite3Instance,
   DB_NAME,
   isPersistent,
   setDB,
+  saveToOPFS,
 } from "./core";
+import { migrateDatabase } from "./migrations";
 import type { FilePickerOptions } from "./types";
 
 /**
@@ -52,7 +55,6 @@ export async function exportDatabase(): Promise<boolean> {
       await writable.write(data.buffer);
       await writable.close();
 
-      console.log("[DB] Database exported successfully");
       return true;
     } else {
       // Fallback: download via blob
@@ -69,10 +71,9 @@ export async function exportDatabase(): Promise<boolean> {
     }
   } catch (error) {
     if ((error as Error).name === "AbortError") {
-      console.log("[DB] Export cancelled by user");
       return false; // User cancelled
     }
-    console.error("[DB] Export failed:", error);
+    console.error("[DB] Error: no se pudo exportar la base de datos:", error);
     throw error;
   }
 }
@@ -144,7 +145,6 @@ export async function importDatabase(): Promise<boolean> {
       const opfsVfs = sqlite3Instance.oo1.OpfsDb;
       if (opfsVfs) {
         setDB(new opfsVfs(DB_NAME));
-        console.log("[DB] Database imported and reopened via OPFS");
       } else {
         // Fallback to in-memory with deserialization
         const newDb = new sqlite3Instance.oo1.DB(":memory:");
@@ -161,20 +161,24 @@ export async function importDatabase(): Promise<boolean> {
         if (rc !== 0) {
           throw new Error(`sqlite3_deserialize failed with code ${rc}`);
         }
-        console.log("[DB] Database imported via deserialize (fallback)");
       }
     } else {
       throw new Error("SQLite instance not available");
     }
 
-    console.log("[DB] Database imported successfully");
+    const importedDb = await getDB();
+    const migrationResult = migrateDatabase(importedDb);
+
+    if (isPersistent && migrationResult.appliedVersions.length > 0) {
+      await saveToOPFS();
+    }
+
     return true;
   } catch (error) {
     if ((error as Error).name === "AbortError") {
-      console.log("[DB] Import cancelled by user");
       return false; // User cancelled
     }
-    console.error("[DB] Import failed:", error);
+    console.error("[DB] Error: no se pudo importar la base de datos:", error);
     throw error;
   }
 }
@@ -202,6 +206,8 @@ export async function getDatabaseInfo(): Promise<{
   tablesExist: boolean;
   textCount: number;
   wordCount: number;
+  schemaVersion: number;
+  expectedSchemaVersion: number;
 }> {
   const database = await getDB();
 
@@ -226,13 +232,16 @@ export async function getDatabaseInfo(): Promise<{
   let tablesExist = false;
   let textCount = 0;
   let wordCount = 0;
+  let schemaVersion = 0;
 
   try {
     const texts = database.selectObjects("SELECT COUNT(*) as count FROM texts");
     const words = database.selectObjects("SELECT COUNT(*) as count FROM words");
+    const versions = database.selectObjects("PRAGMA user_version");
     tablesExist = true;
     textCount = texts[0]?.count || 0;
     wordCount = words[0]?.count || 0;
+    schemaVersion = versions[0]?.user_version || 0;
   } catch {
     tablesExist = false;
   }
@@ -245,6 +254,8 @@ export async function getDatabaseInfo(): Promise<{
     tablesExist,
     textCount,
     wordCount,
+    schemaVersion,
+    expectedSchemaVersion: getExpectedSchemaVersion(),
   };
 }
 
@@ -260,7 +271,7 @@ export async function listOPFSFiles(): Promise<string[]> {
       files.push(name);
     }
   } catch (error) {
-    console.error("[DB] Failed to list OPFS files:", error);
+    console.error("[DB] Error: no se pudieron listar los archivos de OPFS:", error);
   }
   return files;
 }
@@ -269,7 +280,5 @@ export async function listOPFSFiles(): Promise<string[]> {
  * Force save to OPFS (for debugging)
  */
 export async function forceSave(): Promise<void> {
-  const { saveToOPFS } = await import("./core");
-  console.log("[DB] Force saving to OPFS...");
   await saveToOPFS();
 }

@@ -1,11 +1,11 @@
 import type { Route } from "./+types/level";
 import { getLevelTextByLevel, getTextsByLevel } from "~/lib/content/runtime";
 import { formatSlug } from "~/helpers/formatSlug";
-import { type TextCollection } from "~/types";
 import ProseContent from "~/components/ProseContent";
 import { Link } from "react-router";
 import { useEffect, useState } from "react";
 import { getVisitedTextIds } from "~/utils/visited-texts";
+import type { TextManifestEntry } from "~/lib/content/types";
 
 function setsAreEqual(left: Set<string>, right: Set<string>) {
   if (left.size !== right.size) {
@@ -21,13 +21,13 @@ function setsAreEqual(left: Set<string>, right: Set<string>) {
   return true;
 }
 
-export function loader({ params }: Route.LoaderArgs) {
+export async function loader({ params }: Route.LoaderArgs) {
   const level = params.level;
-  const levelText = getLevelTextByLevel(level ?? "");
+  const levelText = await getLevelTextByLevel(level ?? "");
   if (!levelText) {
     throw new Response("Not Found", { status: 404 });
   }
-  const texts = getTextsByLevel(level ?? "") as TextCollection[];
+  const texts = getTextsByLevel(level ?? "");
   return { levelText, texts };
 }
 
@@ -133,7 +133,7 @@ export default function Level({ loaderData }: Route.ComponentProps) {
           </div>
 
           <div className="grid gap-6">
-            {texts.map((text: TextCollection) => {
+            {texts.map((text: TextManifestEntry) => {
               const textId = formatSlug(text.title);
               const isVisited = visitedTextIds.has(textId);
 

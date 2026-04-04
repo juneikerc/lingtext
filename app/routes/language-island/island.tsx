@@ -1,7 +1,6 @@
-import { useCallback, useMemo } from "react";
+import { Suspense, lazy, useCallback, useMemo } from "react";
 import { Link } from "react-router";
 
-import Reader from "~/components/Reader";
 import ReaderHeader from "~/components/reader/ReaderHeader";
 import { ReaderLexiconProvider } from "~/components/reader/ReaderLexiconContext";
 import { ReaderPreferencesProvider } from "~/components/reader/ReaderPreferencesContext";
@@ -10,6 +9,8 @@ import { splitIslandSentences } from "~/utils/language-island";
 import { speak } from "~/utils/tts";
 
 import type { Route } from "./+types/island";
+
+const Reader = lazy(() => import("~/components/Reader"));
 
 export function meta({ loaderData }: Route.MetaArgs) {
   if (!loaderData?.island) {
@@ -94,42 +95,58 @@ export default function LanguageIslandDetailPage({
           </section>
 
           <section className="mx-auto mt-4 w-full max-w-6xl space-y-4 px-4 pb-10 sm:px-6 lg:px-8">
-            {sentences.length > 0 ? (
-              sentences.map((sentence, index) => (
-                <article
-                  key={`${island.id}-sentence-${index}`}
-                  className="rounded-2xl border border-gray-200 bg-white p-3 shadow-sm dark:border-gray-800 dark:bg-gray-900"
-                >
-                  <div className="flex items-start gap-2 sm:gap-3">
-                    <div className="min-w-0 flex-1">
-                      <Reader
-                        text={{
-                          id: `${island.id}-sentence-${index}`,
-                          title: `${island.title} - oración ${index + 1}`,
-                          content: sentence,
-                          format: "txt",
-                        }}
-                        variant="compact"
-                        showAudioSection={false}
-                      />
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => void onSpeakSentence(sentence)}
-                      className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-600 text-lg text-white transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900"
-                      aria-label={`Reproducir oración ${index + 1}`}
-                      title={`Audio oración ${index + 1}`}
+            <Suspense
+              fallback={
+                <div className="space-y-4">
+                  {sentences.slice(0, 3).map((_, index) => (
+                    <div
+                      key={`island-skeleton-${index}`}
+                      className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900"
                     >
-                      🔊
-                    </button>
-                  </div>
-                </article>
-              ))
-            ) : (
-              <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700 dark:border-amber-900/60 dark:bg-amber-900/20 dark:text-amber-300">
-                Esta isla no tiene oraciones válidas para mostrar.
-              </div>
-            )}
+                      <div className="h-4 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-800" />
+                      <div className="mt-3 h-4 w-[88%] animate-pulse rounded bg-gray-200 dark:bg-gray-800" />
+                    </div>
+                  ))}
+                </div>
+              }
+            >
+              {sentences.length > 0 ? (
+                sentences.map((sentence, index) => (
+                  <article
+                    key={`${island.id}-sentence-${index}`}
+                    className="rounded-2xl border border-gray-200 bg-white p-3 shadow-sm dark:border-gray-800 dark:bg-gray-900"
+                  >
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <div className="min-w-0 flex-1">
+                        <Reader
+                          text={{
+                            id: `${island.id}-sentence-${index}`,
+                            title: `${island.title} - oración ${index + 1}`,
+                            content: sentence,
+                            format: "txt",
+                          }}
+                          variant="compact"
+                          showAudioSection={false}
+                        />
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => void onSpeakSentence(sentence)}
+                        className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-600 text-lg text-white transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900"
+                        aria-label={`Reproducir oración ${index + 1}`}
+                        title={`Audio oración ${index + 1}`}
+                      >
+                        🔊
+                      </button>
+                    </div>
+                  </article>
+                ))
+              ) : (
+                <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700 dark:border-amber-900/60 dark:bg-amber-900/20 dark:text-amber-300">
+                  Esta isla no tiene oraciones válidas para mostrar.
+                </div>
+              )}
+            </Suspense>
           </section>
         </main>
       </ReaderLexiconProvider>

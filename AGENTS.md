@@ -25,10 +25,10 @@ interactive reading and YouTube subtitles, backed by SQLite WASM + OPFS.
 
 ### Tests (single test guidance)
 
-- There are no automated tests configured yet.
-- Manual verification is required in the browser.
-- If you add tests, prefer Vitest for unit logic and Playwright for E2E.
-- Example single-test runs (only after adding these tools): `npx vitest path/to.test.ts -t "test name"`; `npx playwright test path/to.spec.ts -g "test name"`
+- Unit tests use Vitest: `npm run test`
+- Manual verification in the browser is still required for interactive reader and extension flows.
+- Prefer Vitest for unit logic and Playwright for future E2E coverage.
+- Example single-test runs: `npx vitest path/to.test.ts -t "test name"`; `npx playwright test path/to.spec.ts -g "test name"`
 
 ---
 
@@ -82,6 +82,7 @@ interactive reading and YouTube subtitles, backed by SQLite WASM + OPFS.
 
 - Access DB through `getDB()` to ensure `initDB()` has completed.
 - Persist via `saveToOPFS()`; use `scheduleSave()` for debounced writes (500ms).
+- Schema changes must go through explicit migrations in `app/services/db/migrations.ts`; do not add ad hoc `ALTER TABLE` statements inside bootstrap code.
 - Extension runs SQLite in a background service worker.
 
 ### Translation system
@@ -101,6 +102,13 @@ interactive reading and YouTube subtitles, backed by SQLite WASM + OPFS.
 ### Extension bridge sync
 
 - Web app and extension sync via `window.postMessage`; see `extension/src/content/bridge.ts` and `app/hooks/useExtensionSync.ts`.
+- Sync payloads are versioned and merged by field clock via `shared/sync.ts`.
+
+### Content collections
+
+- Use `app/lib/content/runtime.ts` helpers instead of importing content collections directly.
+- Index/list routes should consume manifests only; detail routes should lazy-load a single entry.
+- Avoid pulling raw `content`/`html` into route modules unless the page actually renders that entry.
 
 ---
 
@@ -138,9 +146,8 @@ interactive reading and YouTube subtitles, backed by SQLite WASM + OPFS.
 
 ## Agent Best Practices
 
-- Check `createTables` in `app/services/db/core.ts` before modifying DB flows.
+- Check `app/services/db/migrations.ts` before modifying DB schema or persistence flows.
 - Keep tokenization logic identical between app and extension.
 - COEP/COOP headers are required for SQLite WASM.
 - Prefer Zustand stores or DB helpers over prop drilling.
 - Update this file when introducing major architectural changes.
-- If you add new test tooling, update the commands above.

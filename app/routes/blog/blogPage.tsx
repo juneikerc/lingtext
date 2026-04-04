@@ -1,9 +1,10 @@
 import type { Route } from "./+types/blogPage";
-import { allBlogs } from "~/lib/content/runtime";
 import { Link } from "react-router";
+import { allBlogManifests } from "~/lib/content/runtime";
+import type { BlogManifestEntry } from "~/lib/content/types";
 
 export function loader() {
-  return allBlogs;
+  return allBlogManifests;
 }
 
 export function meta() {
@@ -73,8 +74,8 @@ export default function Blog({ loaderData }: Route.ComponentProps) {
       {/* Articles Grid */}
       <section className="py-16 sm:py-20 bg-gray-50 dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {blogs.map((blog: any) => (
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {blogs.map((blog: BlogManifestEntry) => (
               <article
                 key={blog.slug}
                 className="group relative flex flex-col bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md hover:border-gray-300 dark:hover:border-gray-700 transition duration-200"

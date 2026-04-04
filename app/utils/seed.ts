@@ -31,7 +31,6 @@ export async function seedInitialDataOnce(): Promise<void> {
         return; // Data exists, no need to seed
       }
       // Data was lost, clear the flag and re-seed
-      console.log("[Seed] Data was lost, re-seeding...");
       localStorage.removeItem(SEED_KEY);
     }
 

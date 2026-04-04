@@ -1,18 +1,40 @@
-import path from "node:path";
 import fs from "node:fs/promises";
+import path from "node:path";
+
 import matter from "gray-matter";
 import type { Plugin } from "vite";
+
+import { collectionDefinitions } from "./collections";
 import { compileMarkdown } from "./markdown";
 import { compileMdx } from "./mdx";
-import { collectionDefinitions } from "./collections";
-import type { CollectionName } from "./types";
+import type {
+  AnyContentEntry,
+  AnyContentManifestEntry,
+  CollectionName,
+} from "./types";
 
 const virtualId = "virtual:content";
 const resolvedVirtualId = "\0virtual:content";
+const entryVirtualPrefix = "virtual:content-entry/";
+const resolvedEntryVirtualPrefix = "\0virtual:content-entry/";
 
-type ContentMap = Record<CollectionName, unknown[]>;
+type ContentMap = Record<CollectionName, AnyContentEntry[]>;
+type ManifestMap = Record<CollectionName, AnyContentManifestEntry[]>;
+
+interface CachedContentModule {
+  entryMap: Record<string, AnyContentEntry>;
+  manifestCode: string;
+  watchedFiles: string[];
+}
 
 const createEmptyContentMap = (): ContentMap => ({
+  blogs: [],
+  legalPages: [],
+  levelsTexts: [],
+  texts: [],
+});
+
+const createEmptyManifestMap = (): ManifestMap => ({
   blogs: [],
   legalPages: [],
   levelsTexts: [],
@@ -29,6 +51,38 @@ const normalizeId = (filePath: string, baseDir: string) => {
 
 const isWithinDirs = (file: string, dirs: string[]) =>
   dirs.some((dir) => file.startsWith(dir));
+
+const toEntryKey = (collection: CollectionName, id: string) =>
+  `${collection}:${id}`;
+
+const stripContentPayload = (
+  entry: AnyContentEntry
+): AnyContentManifestEntry => {
+  const manifest = { ...entry } as Partial<AnyContentEntry>;
+  delete manifest.content;
+  delete manifest.html;
+  return manifest as AnyContentManifestEntry;
+};
+
+const parseEntryRequest = (id: string) => {
+  const normalizedId = id.startsWith(resolvedEntryVirtualPrefix)
+    ? id.slice(resolvedEntryVirtualPrefix.length)
+    : id.slice(entryVirtualPrefix.length);
+  const separatorIndex = normalizedId.indexOf("/");
+
+  if (separatorIndex === -1) {
+    return null;
+  }
+
+  const collection = normalizedId.slice(0, separatorIndex) as CollectionName;
+  const entryId = normalizedId.slice(separatorIndex + 1);
+
+  if (!collection || !entryId) {
+    return null;
+  }
+
+  return { collection, entryId };
+};
 
 async function walkDir(dir: string): Promise<string[]> {
   const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -51,9 +105,46 @@ async function walkDir(dir: string): Promise<string[]> {
   return files;
 }
 
-async function buildContent(root: string) {
+function buildManifestModule(
+  manifestMap: ManifestMap,
+  contentMap: ContentMap
+): string {
+  const buildLoaderRecord = (collection: CollectionName) => {
+    const entries = contentMap[collection]
+      .map((entry) => {
+        const requestId = `${entryVirtualPrefix}${collection}/${entry.id}`;
+        return `${JSON.stringify(entry.id)}: () => import(${JSON.stringify(
+          requestId
+        )})`;
+      })
+      .join(",\n");
+
+    return `{
+${entries}
+}`;
+  };
+
+  return [
+    `export const blogManifests = ${JSON.stringify(manifestMap.blogs)};`,
+    `export const legalPageManifests = ${JSON.stringify(
+      manifestMap.legalPages
+    )};`,
+    `export const levelTextManifests = ${JSON.stringify(
+      manifestMap.levelsTexts
+    )};`,
+    `export const textManifests = ${JSON.stringify(manifestMap.texts)};`,
+    `export const blogLoaders = ${buildLoaderRecord("blogs")};`,
+    `export const legalPageLoaders = ${buildLoaderRecord("legalPages")};`,
+    `export const levelTextLoaders = ${buildLoaderRecord("levelsTexts")};`,
+    `export const textLoaders = ${buildLoaderRecord("texts")};`,
+  ].join("\n");
+}
+
+async function buildContent(root: string): Promise<CachedContentModule> {
   const contentMap = createEmptyContentMap();
+  const manifestMap = createEmptyManifestMap();
   const watchedFiles: string[] = [];
+  const entryMap: Record<string, AnyContentEntry> = {};
 
   for (const definition of collectionDefinitions) {
     const directory = path.resolve(root, definition.directory);
@@ -84,26 +175,24 @@ async function buildContent(root: string) {
         ...parsed.data,
         content,
         html,
-      };
+      } as AnyContentEntry;
 
       contentMap[definition.name].push(entry);
+      manifestMap[definition.name].push(stripContentPayload(entry));
+      entryMap[toEntryKey(definition.name, entry.id)] = entry;
       watchedFiles.push(file);
     }
   }
 
-  const moduleCode = [
-    `export const allBlogs = ${JSON.stringify(contentMap.blogs)};`,
-    `export const allLegalPages = ${JSON.stringify(contentMap.legalPages)};`,
-    `export const allLevelsTexts = ${JSON.stringify(contentMap.levelsTexts)};`,
-    `export const allTexts = ${JSON.stringify(contentMap.texts)};`,
-  ].join("\n");
-
-  return { moduleCode, watchedFiles };
+  return {
+    entryMap,
+    manifestCode: buildManifestModule(manifestMap, contentMap),
+    watchedFiles,
+  };
 }
 
 export default function contentCollections(): Plugin {
-  let cachedModule: { moduleCode: string; watchedFiles: string[] } | null =
-    null;
+  let cachedModule: CachedContentModule | null = null;
   let rootDir = process.cwd();
   let rootDirs = collectionDefinitions.map((definition) =>
     path.resolve(rootDir, definition.directory)
@@ -126,13 +215,36 @@ export default function contentCollections(): Plugin {
       if (id === virtualId) {
         return resolvedVirtualId;
       }
+      if (id.startsWith(entryVirtualPrefix)) {
+        return `${resolvedEntryVirtualPrefix}${id.slice(entryVirtualPrefix.length)}`;
+      }
       return undefined;
     },
     async load(id) {
-      if (id !== resolvedVirtualId) return undefined;
-      const { moduleCode, watchedFiles } = cachedModule ?? (await rebuild());
-      watchedFiles.forEach((file) => this.addWatchFile(file));
-      return moduleCode;
+      const cached = cachedModule ?? (await rebuild());
+
+      if (id === resolvedVirtualId) {
+        cached.watchedFiles.forEach((file) => this.addWatchFile(file));
+        return cached.manifestCode;
+      }
+
+      if (!id.startsWith(resolvedEntryVirtualPrefix)) {
+        return undefined;
+      }
+
+      const request = parseEntryRequest(id);
+      if (!request) {
+        return undefined;
+      }
+
+      const entry = cached.entryMap[toEntryKey(request.collection, request.entryId)];
+      if (!entry) {
+        throw new Error(
+          `[content] Missing entry for ${request.collection}/${request.entryId}`
+        );
+      }
+
+      return `export const entry = ${JSON.stringify(entry)};`;
     },
     configureServer(viteServer) {
       rootDirs.forEach((dir) => viteServer.watcher.add(dir));
@@ -142,10 +254,18 @@ export default function contentCollections(): Plugin {
       if (!isWithinDirs(ctx.file, rootDirs)) return [];
 
       await rebuild();
-      const module = ctx.server.moduleGraph.getModuleById(resolvedVirtualId);
-      if (module) {
-        ctx.server.moduleGraph.invalidateModule(module);
+
+      const manifestModule = ctx.server.moduleGraph.getModuleById(resolvedVirtualId);
+      if (manifestModule) {
+        ctx.server.moduleGraph.invalidateModule(manifestModule);
       }
+
+      for (const module of ctx.server.moduleGraph.idToModuleMap.values()) {
+        if (module.id?.startsWith(resolvedEntryVirtualPrefix)) {
+          ctx.server.moduleGraph.invalidateModule(module);
+        }
+      }
+
       ctx.server.ws.send({ type: "full-reload" });
       return [];
     },

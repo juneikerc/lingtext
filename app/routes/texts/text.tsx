@@ -7,9 +7,8 @@ import { ReaderLexiconProvider } from "~/components/reader/ReaderLexiconContext"
 import { ReaderPreferencesProvider } from "~/components/reader/ReaderPreferencesContext";
 import ReaderSkeleton from "~/components/reader/ReaderSkeleton";
 import ReaderErrorBoundary from "~/components/ReaderErrorBoundary";
-import { allTexts } from "~/lib/content/runtime";
-import { formatSlug } from "~/helpers/formatSlug";
-import { type TextCollection, type TextItem } from "~/types";
+import { getTextBySlug } from "~/lib/content/runtime";
+import { type TextItem } from "~/types";
 import { formatAudioRef } from "~/utils/format-audio-ref";
 import { markTextAsVisited } from "~/utils/visited-texts";
 
@@ -31,12 +30,15 @@ export async function clientLoader({
   const queryParams = new URL(request.url).searchParams;
   if (queryParams.get("source")) {
     if (queryParams.get("source") === "collection") {
-      const text = allTexts.find(
-        (_text: TextCollection) => formatSlug(_text.title) === params.id
-      );
+      const text = await getTextBySlug(params.id);
+      if (!text) {
+        throw new Response("Not Found", { status: 404 });
+      }
+
+      document.title = text.title;
 
       return {
-        id: formatSlug(text.title),
+        id: params.id,
         title: text.title,
         content: text.content,
         format: "markdown",
@@ -48,18 +50,21 @@ export async function clientLoader({
 
   const id = params.id;
   const text = await getText(id);
+  if (!text) {
+    throw new Response("Not Found", { status: 404 });
+  }
 
-  document.title = text?.title || "Sin título";
+  document.title = text.title || "Sin título";
 
-  const audioUrl = await formatAudioRef(text?.audioRef as AudioRef | null);
+  const audioUrl = await formatAudioRef(text.audioRef as AudioRef | null);
 
   return {
-    id: text?.id,
-    title: text?.title,
-    content: text?.content,
-    format: text?.format || "txt",
-    createdAt: text?.createdAt,
-    audioRef: text?.audioRef,
+    id: text.id,
+    title: text.title,
+    content: text.content,
+    format: text.format || "txt",
+    createdAt: text.createdAt,
+    audioRef: text.audioRef,
     audioUrl,
   } as TextItem;
 }

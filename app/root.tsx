@@ -13,13 +13,16 @@ import "./app.css";
 import Footer from "~/components/Footer";
 import { useExtensionSync } from "~/hooks/useExtensionSync";
 
-// Expose DB debug functions to window for console access
 function useExposeDbDebug() {
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      import("~/services/db").then((db) => {
-        // @ts-expect-error - Adding to window for debugging
-        window.dbDebug = {
+    if (typeof window === "undefined" || !import.meta.env.DEV) return;
+
+    let cancelled = false;
+
+    void import("~/services/db").then((db) => {
+      if (cancelled) return;
+      Object.assign(window as Window & { dbDebug?: unknown }, {
+        dbDebug: {
           getDatabaseInfo: db.getDatabaseInfo,
           listOPFSFiles: db.listOPFSFiles,
           forceSave: db.forceSave,
@@ -27,10 +30,16 @@ function useExposeDbDebug() {
           importDatabase: db.importDatabase,
           getAllTexts: db.getAllTexts,
           getAllUnknownWords: db.getAllUnknownWords,
-        };
-        console.log("[Debug] DB functions available at window.dbDebug");
+        },
       });
-    }
+    });
+
+    return () => {
+      cancelled = true;
+      if ("dbDebug" in window) {
+        delete (window as Window & { dbDebug?: unknown }).dbDebug;
+      }
+    };
   }, []);
 }
 

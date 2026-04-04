@@ -4,7 +4,7 @@
  * Flujo:
  * 1. La extensión envía LINGTEXT_EXTENSION_SYNC_REQUEST o LINGTEXT_SYNC_REQUEST
  * 2. La web obtiene los datos de la extensión
- * 3. La web hace merge (newer wins) con sus datos locales
+ * 3. La web fusiona por campo con reloj/versionado sus datos locales
  * 4. La web guarda el resultado y lo envía de vuelta a la extensión
  * 5. La extensión reemplaza su caché con el estado final
  */
@@ -33,11 +33,6 @@ export function useExtensionSync() {
   const selectedTranslator = useTranslatorStore((state) => state.selected);
 
   const handleSync = useCallback(async (extensionData: ExtensionSyncData) => {
-    console.log("[ExtensionSync] Starting sync with extension data:", {
-      words: extensionData.words.length,
-      phrases: extensionData.phrases.length,
-    });
-
     try {
       // Obtener datos actuales de la web
       const webWords = await getAllUnknownWords();
@@ -68,11 +63,6 @@ export function useExtensionSync() {
       for (const phrase of mergedPhrases) {
         await putPhrase(phrase);
       }
-
-      console.log("[ExtensionSync] Merge complete:", {
-        words: mergedWords.length,
-        phrases: mergedPhrases.length,
-      });
 
       // Enviar estado final a la extensión
       window.postMessage(
@@ -108,7 +98,6 @@ export function useExtensionSync() {
 
       switch (type) {
         case "LINGTEXT_EXTENSION_READY":
-          console.log("[ExtensionSync] Extension detected");
           break;
 
         case "LINGTEXT_EXTENSION_SYNC_REQUEST":
@@ -128,7 +117,6 @@ export function useExtensionSync() {
           break;
 
         case "LINGTEXT_EXTENSION_SYNCED":
-          console.log("[ExtensionSync] Extension confirmed sync complete");
           break;
       }
     };

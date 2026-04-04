@@ -1,13 +1,16 @@
 export type CollectionName = "blogs" | "legalPages" | "levelsTexts" | "texts";
 
-export interface BaseEntry {
-  id: string;
-  collection: CollectionName;
+export interface ContentPayload {
   content: string;
   html: string;
 }
 
-export interface BlogEntry extends BaseEntry {
+export interface BaseEntryManifest {
+  id: string;
+  collection: CollectionName;
+}
+
+export interface BlogManifestEntry extends BaseEntryManifest {
   collection: "blogs";
   slug: string;
   title: string;
@@ -17,7 +20,7 @@ export interface BlogEntry extends BaseEntry {
   tags: string[];
 }
 
-export interface LevelTextEntry extends BaseEntry {
+export interface LevelTextManifestEntry extends BaseEntryManifest {
   collection: "levelsTexts";
   title: string;
   mainHeading: string;
@@ -26,7 +29,7 @@ export interface LevelTextEntry extends BaseEntry {
   level: string;
 }
 
-export interface LegalPageEntry extends BaseEntry {
+export interface LegalPageManifestEntry extends BaseEntryManifest {
   collection: "legalPages";
   slug: string;
   title: string;
@@ -34,12 +37,26 @@ export interface LegalPageEntry extends BaseEntry {
   metaDescription: string;
 }
 
-export interface TextEntry extends BaseEntry {
+export interface TextManifestEntry extends BaseEntryManifest {
   collection: "texts";
   title: string;
   level: string;
   sound?: string;
 }
+
+export type BlogEntry = BlogManifestEntry & ContentPayload;
+
+export type LevelTextEntry = LevelTextManifestEntry & ContentPayload;
+
+export type LegalPageEntry = LegalPageManifestEntry & ContentPayload;
+
+export type TextEntry = TextManifestEntry & ContentPayload;
+
+export type AnyContentManifestEntry =
+  | BlogManifestEntry
+  | LegalPageManifestEntry
+  | LevelTextManifestEntry
+  | TextManifestEntry;
 
 export type AnyContentEntry =
   | BlogEntry

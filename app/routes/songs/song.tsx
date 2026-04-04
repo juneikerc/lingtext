@@ -1,7 +1,6 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Suspense, lazy, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router";
 import type { Route } from "./+types/song";
-import Reader from "~/components/Reader";
 import ReaderHeader from "~/components/reader/ReaderHeader";
 import { ReaderLexiconProvider } from "~/components/reader/ReaderLexiconContext";
 import { ReaderPreferencesProvider } from "~/components/reader/ReaderPreferencesContext";
@@ -43,6 +42,7 @@ declare global {
 }
 
 const YOUTUBE_API_SRC = "https://www.youtube.com/iframe_api";
+const Reader = lazy(() => import("~/components/Reader"));
 
 function isEditableElement(target: EventTarget | null): boolean {
   if (!(target instanceof HTMLElement)) return false;
@@ -390,14 +390,29 @@ export default function SongPage({ loaderData }: Route.ComponentProps) {
           <section
             className={showFloatingPlayer ? "mt-6 pb-36 sm:pb-24" : "mt-6"}
           >
-            <Reader
-              text={{
-                id: song.id,
-                title: song.title,
-                content: song.lyrics,
-                format: "txt",
-              }}
-            />
+            <Suspense
+              fallback={
+                <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+                  <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                    <div className="h-5 w-40 animate-pulse rounded bg-gray-200 dark:bg-gray-800" />
+                    <div className="mt-4 space-y-3">
+                      <div className="h-4 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-800" />
+                      <div className="h-4 w-[92%] animate-pulse rounded bg-gray-200 dark:bg-gray-800" />
+                      <div className="h-4 w-[88%] animate-pulse rounded bg-gray-200 dark:bg-gray-800" />
+                    </div>
+                  </div>
+                </div>
+              }
+            >
+              <Reader
+                text={{
+                  id: song.id,
+                  title: song.title,
+                  content: song.lyrics,
+                  format: "txt",
+                }}
+              />
+            </Suspense>
           </section>
         </main>
       </ReaderLexiconProvider>
