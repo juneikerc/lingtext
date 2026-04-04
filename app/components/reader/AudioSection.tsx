@@ -20,12 +20,10 @@ export default function AudioSection({
   const [rate, setRate] = useState<number>(1);
   const [isLoading, setIsLoading] = useState(false);
   const [audioError, setAudioError] = useState<string | null>(null);
-  const [canPlayThrough, setCanPlayThrough] = useState(false);
   const [preloadStrategy, setPreloadStrategy] = useState<"metadata" | "none">(
     "metadata"
   );
   const [fileTooLarge, setFileTooLarge] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false); // Mobile expand/collapse
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   // Determinar estrategia de preload basada en el tamaño del archivo
@@ -53,7 +51,6 @@ export default function AudioSection({
   useEffect(() => {
     setAudioError(null);
     setIsLoading(false);
-    setCanPlayThrough(false);
   }, [src]);
 
   const clamp = (v: number, min: number, max: number) =>
@@ -69,12 +66,10 @@ export default function AudioSection({
 
   const handleAudioCanPlay = () => {
     setIsLoading(false);
-    setCanPlayThrough(true);
   };
 
   const handleAudioCanPlayThrough = () => {
     setIsLoading(false);
-    setCanPlayThrough(true);
   };
 
   const handleAudioError = (e: React.SyntheticEvent<HTMLAudioElement>) => {

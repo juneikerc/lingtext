@@ -9,7 +9,7 @@ Su objetivo es ayudar a construir vocabulario en contexto, minimizando fricción
 ## Características principales
 
 - **Lectura centrada en el aprendizaje**: biblioteca de textos locales o por URL, con soporte de audio adjunto y formato Markdown.
-- **Traducción instantánea**: usa la API de Traducción local de Chrome si está disponible; si no, hace fallback automático a un endpoint remoto basado en OpenRouter (requiere clave).
+- **Traducción instantánea**: usa la API de Traducción local de Chrome si está disponible; si no, puede usar OpenRouter directamente desde el cliente con una API key configurada por el usuario.
 - **TTS (Text‑to‑Speech)**: pronuncia palabras al instante con la Web Speech API y configura voz, idioma y velocidad.
 - **Gestión de vocabulario**: marca palabras y frases como "desconocidas", guárdalas con repetición espaciada integrada.
 - **Base de datos SQLite local**: todos tus datos se almacenan en SQLite WASM con persistencia en OPFS (Origin Private File System).
@@ -23,7 +23,7 @@ Su objetivo es ayudar a construir vocabulario en contexto, minimizando fricción
 
 - **Autoestudio guiado**: pensado para estudiantes autodidactas que quieren leer y construir vocabulario con mínimo contexto técnico.
 - **Local‑first con propiedad de datos**: todos los textos, audio y palabras se guardan en SQLite dentro de tu navegador (OPFS). Puedes exportar tu base de datos completa como archivo `.sqlite` y llevarla a otro dispositivo.
-- **Privacidad por defecto**: la traducción remota solo envía la palabra o selección al servidor cuando se usa el fallback. Nunca se envían tus textos completos ni tu vocabulario.
+- **Privacidad por defecto**: la traducción remota solo envía la palabra o selección directamente a OpenRouter cuando eliges un modelo remoto. Nunca se envían tus textos completos ni tu vocabulario.
 - **Bajo coste**: aprovecha capacidades locales (Chrome Translator, TTS, SQLite WASM) y solo usa modelos remotos cuando es necesario.
 
 —
@@ -44,7 +44,7 @@ Su objetivo es ayudar a construir vocabulario en contexto, minimizando fricción
 - **Estado global**: `zustand` (`app/context/translatorSelector.ts`).
 - **Base de datos**: SQLite WASM (`@sqlite.org/sqlite-wasm`) con persistencia en OPFS (`app/services/db.ts`).
 - **TTS**: Web Speech API (`app/utils/tts.ts`).
-- **Traducción**: Chrome Translator local si existe (`app/utils/translate.ts`) y endpoint remoto con OpenRouter (`app/routes/translate.tsx`).
+- **Traducción**: Chrome Translator local si existe (`app/utils/translate.ts`) y OpenRouter directo desde el cliente con clave almacenada localmente (`app/services/db/settings.ts`).
 - **Backup/Restore**: File System Access API para exportar/importar archivos `.sqlite`.
 
 —
@@ -53,15 +53,17 @@ Su objetivo es ayudar a construir vocabulario en contexto, minimizando fricción
 
 - `app/`
   - `components/`
-    - `Reader.tsx`, `reader/` (UI de lectura, popups, audio)
-    - `UnknownWordsSection.tsx` (listado y acciones)
+    - `Reader.tsx`, `reader/` (UI de lectura, popups, audio y hooks de interacción)
+    - `UnknownWordsSection.tsx`, `study-library/` (listado, acciones y hooks de biblioteca de estudio)
     - `StoryGenerator.tsx` (modal para generar historias personalizadas)
+    - `library/` (gestión de textos, backup, carpetas y tarjetas)
   - `routes/`
-    - `home.tsx`, `texts/text.tsx`, `words.tsx`, `review.tsx`, `translate.tsx`
+    - `home.tsx`, `texts/text.tsx`, `words.tsx`, `review.tsx`
   - `services/`
-    - `db.ts` (SQLite WASM con OPFS)
+    - `db/` (SQLite WASM con OPFS)
   - `context/translatorSelector.ts` (zustand)
-  - `utils/` (`translate.ts`, `tts.ts`, `tokenize.ts`, `anki.ts`, `fs.ts`, `scheduler.ts`, `spaced-repetition.ts`, `story-generator.ts` - lógica de generación de historias con IA)
+  - `utils/` (`translate.ts`, `tts.ts`, `anki.ts`, `fs.ts`, `scheduler.ts`, `spaced-repetition.ts`, `story-generator.ts` - lógica de generación de historias con IA)
+  - `shared/` (tipos, tokenización, traducción y contratos de sync compartidos con la extensión)
   - `public/` (assets y textos de ejemplo)
   - `workers/app.ts` (Cloudflare Worker con headers COOP/COEP)
 
@@ -73,10 +75,6 @@ Su objetivo es ayudar a construir vocabulario en contexto, minimizando fricción
 - `/texts/:id` → `app/routes/texts/text.tsx`: lector, audio y popups de traducción.
 - `/words` → listado de palabras desconocidas con estadísticas de repaso.
 - `/review` → sesión de repaso con repetición espaciada.
-- `/translate/:text` → endpoint JSON para traducción remota.
-
-—
-
 ## Flujo funcional
 
 1. **Biblioteca** (`app/components/Libary.tsx`)
@@ -85,7 +83,7 @@ Su objetivo es ayudar a construir vocabulario en contexto, minimizando fricción
    - Exporta/importa tu base de datos completa como archivo `.sqlite`.
 2. **Lector** (`app/components/Reader.tsx`)
    - Tokeniza texto y permite click/selección.
-   - `WordPopup` y `SelectionPopup` traducen usando `translateTerm()` con fallback automático.
+   - `WordPopup` y `SelectionPopup` traducen usando `translateTerm()` con Chrome local, MyMemory o OpenRouter según el método elegido.
    - Marca palabras como desconocidas (`putUnknownWord`) y permite TTS por palabra.
 3. **Palabras** (`app/components/UnknownWordsSection.tsx`)
    - Lista, reproduce TTS, elimina y exporta CSV (`app/utils/anki.ts`).
@@ -109,17 +107,18 @@ Base de datos SQLite almacenada en OPFS del navegador (`lingtext.sqlite3`):
 - Tabla `texts` (`id`, `title`, `content`, `format`, `created_at`, `audio_ref`).
 - Tabla `words` (`word_lower`, `word`, `translation`, `status`, `added_at`, `voice`, `sr_data`).
 - Tabla `phrases` (`phrase_lower`, `phrase`, `translation`, `parts`, `added_at`, `sr_data`).
-- Tabla `settings` (`key`, `value` - preferencias TTS y otras).
+- Tabla `settings` (`key`, `value` - preferencias TTS, método de traducción y API key local).
 - Tabla `stats` (`date`, `new_cards_studied` - estadísticas diarias).
 
 —
 
-## Traducción: local y remota (fallback)
+## Traducción: local y remota
 
 - **Local (Chrome)**: `translateFromChrome(term)` usa la API `Translator` si existe.
-- **Remota (OpenRouter)**: `translateRemote(term, model)` consulta `/translate/:term`.
-- **Unificación**: `translateTerm(term, selected)` prioriza Chrome y cae a remoto si no hay resultado válido — sin bloquear la UI.
-- **Clave API**: define `OPEN_ROUTER_API_KEY` en el entorno del servidor para habilitar el endpoint remoto en desarrollo y producción.
+- **Remota (MyMemory)**: `translateWithMyMemory(term)` sirve como opción gratuita limitada.
+- **Remota (OpenRouter)**: `translateWithOpenRouter(term, model)` llama directo a `https://openrouter.ai/api/v1/chat/completions` desde el cliente.
+- **Unificación**: `translateTerm(term, selected)` usa el método escogido en la UI y aplica fallbacks cuando corresponde.
+- **Clave API**: la API key de OpenRouter se configura en la app y se guarda en SQLite/OPFS dentro del navegador del usuario. La app no usa actualmente un endpoint `/translate` ni requiere `OPEN_ROUTER_API_KEY` en el servidor para traducir.
 
 —
 
@@ -134,7 +133,7 @@ Base de datos SQLite almacenada en OPFS del navegador (`lingtext.sqlite3`):
 
 ## Instalación y ejecución
 
-Requisitos: Node 20+ y un navegador moderno. Para usar traducción remota, necesitarás una clave de OpenRouter.
+Requisitos: Node 20+ y un navegador moderno. Para usar OpenRouter, necesitarás una clave que configuras dentro de la app.
 
 1. Instalar dependencias
 
@@ -149,27 +148,25 @@ npm run dev
 # http://localhost:5173
 ```
 
-3. Producción
+3. Preview local de producción
 
 ```bash
-# Requiere variable: OPEN_ROUTER_API_KEY
 npm run build
-npm run start
-# Servirá ./build/server/index.js
+npm run preview
 ```
 
-4. Docker
+4. Deploy en Cloudflare Workers
 
 ```bash
-docker build -t lingtext .
-docker run -e OPEN_ROUTER_API_KEY=sk-... -p 3000:3000 lingtext
+npm run deploy
 ```
 
 —
 
 ## Variables de entorno
 
-- `OPEN_ROUTER_API_KEY`: clave para `app/routes/translate.tsx`. Solo se usa en el servidor (SSR).
+- No necesitas definir `OPEN_ROUTER_API_KEY` para la traducción actual de la app.
+- `wrangler.json` y `worker-configuration.d.ts` pueden seguir declarando secretos de Worker para otros flujos o despliegues futuros, pero la traducción interactiva del lector no depende de ellos hoy.
 
 —
 
@@ -187,7 +184,7 @@ docker run -e OPEN_ROUTER_API_KEY=sk-... -p 3000:3000 lingtext
   - Usa Chrome/Edge en `localhost` o sitio HTTPS (requisito de File System Access API).
   - Si ves “Reautorizar audio”, pulsa y concede permiso. Si falla, re‑adjunta el archivo desde la biblioteca.
 - **La traducción devuelve vacío**
-  - Verifica `OPEN_ROUTER_API_KEY` y conectividad. Chrome Translator puede no estar disponible en tu navegador; se hará fallback, pero sin API key el resultado será vacío.
+  - Verifica que tu API key de OpenRouter esté guardada en la configuración de la app y que haya conectividad. Chrome Translator puede no estar disponible en tu navegador; en ese caso usa MyMemory o un modelo remoto configurado.
 - **No aparece la opción de Chrome Translator**
   - La API `Translator` es experimental y solo está en algunas versiones de Chrome. Usa los modelos remotos.
 
@@ -214,12 +211,6 @@ docker run -e OPEN_ROUTER_API_KEY=sk-... -p 3000:3000 lingtext
 ## Licencia
 
 Por definir. Si te interesa un esquema específico (MIT/BSD-3/Apache-2.0), abre un issue.
-
-—
-
-## Nota
-
-`package.json` tiene `"name": ""`. Puedes cambiarlo a `"lingtext"` u otro nombre antes de publicar.
 
 —
 

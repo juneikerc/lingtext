@@ -15,7 +15,7 @@ const UnknownWordsSection = lazy(
   () => import("~/components/UnknownWordsSection")
 );
 
-export function meta({}: Route.MetaArgs) {
+export function meta(_args: Route.MetaArgs) {
   return [
     { title: "Gestión de vocabulario | LingText" },
     {

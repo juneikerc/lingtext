@@ -28,12 +28,11 @@ function ReaderText({
   showChrome = true,
   compact = false,
 }: ReaderTextProps) {
-  // Guard against undefined content
+  const paragraphs = useMemo(() => content.split("\n\n"), [content]);
+
   if (!content) {
     return <ReaderEmptyState />;
   }
-
-  const paragraphs = useMemo(() => content.split("\n\n"), [content]);
 
   return (
     <div className="relative">

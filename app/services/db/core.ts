@@ -193,6 +193,30 @@ function createTables(database: any): void {
     // Column already exists
   }
 
+  try {
+    database.exec("ALTER TABLE words ADD COLUMN updated_at INTEGER");
+  } catch {
+    // Column already exists
+  }
+
+  try {
+    database.exec("ALTER TABLE words ADD COLUMN sync_meta TEXT");
+  } catch {
+    // Column already exists
+  }
+
+  try {
+    database.exec("ALTER TABLE phrases ADD COLUMN updated_at INTEGER");
+  } catch {
+    // Column already exists
+  }
+
+  try {
+    database.exec("ALTER TABLE phrases ADD COLUMN sync_meta TEXT");
+  } catch {
+    // Column already exists
+  }
+
   console.log("[DB] Tables created/verified");
 }
 

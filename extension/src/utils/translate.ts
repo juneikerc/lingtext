@@ -2,24 +2,26 @@
  * Translation helpers for the extension.
  */
 
-import { TRANSLATORS } from "@/types";
+import {
+  buildOpenRouterWordPrompt,
+  cleanTranslationResponse,
+  isChromeAIAvailable,
+  sanitizeTranslationInput,
+  TRANSLATOR_LABELS as BASE_TRANSLATOR_LABELS,
+  TRANSLATORS,
+} from "@shared/translation";
+import type { Translator } from "@/types";
 
-export { TRANSLATORS };
-
-export const TRANSLATOR_LABELS: Record<TRANSLATORS, string> = {
-  [TRANSLATORS.CHROME]: "⚡ Rápido | Básico",
-  [TRANSLATORS.MEDIUM]: "🧠 Inteligente | Medio",
-  [TRANSLATORS.SMART]: "🚀 Muy Inteligente",
+export const TRANSLATOR_LABELS: Record<
+  TRANSLATORS.CHROME | TRANSLATORS.MEDIUM | TRANSLATORS.SMART,
+  string
+> = {
+  [TRANSLATORS.CHROME]: BASE_TRANSLATOR_LABELS[TRANSLATORS.CHROME],
+  [TRANSLATORS.MEDIUM]: BASE_TRANSLATOR_LABELS[TRANSLATORS.MEDIUM],
+  [TRANSLATORS.SMART]: BASE_TRANSLATOR_LABELS[TRANSLATORS.SMART],
 };
 
-export function isChromeAIAvailable(): boolean {
-  const isChrome =
-    navigator.userAgent.includes("Chrome") &&
-    !navigator.userAgent.includes("Edg") &&
-    !navigator.userAgent.includes("OPR");
-
-  return isChrome && "Translator" in self;
-}
+export { isChromeAIAvailable, TRANSLATORS };
 
 export async function translateFromChrome(
   term: string
@@ -45,13 +47,13 @@ export async function translateFromChrome(
 export async function translateWithOpenRouter(
   term: string,
   apiKey: string,
-  model: TRANSLATORS = TRANSLATORS.MEDIUM
+  model: Translator = TRANSLATORS.MEDIUM
 ): Promise<{ translation: string; error?: string }> {
   if (!apiKey) {
     return { translation: "", error: "NO_API_KEY" };
   }
 
-  const sanitizedText = term.trim().replace(/[<>"'&]/g, "");
+  const sanitizedText = sanitizeTranslationInput(term);
   if (!sanitizedText) {
     return { translation: "", error: "INVALID_TEXT" };
   }
@@ -70,7 +72,7 @@ export async function translateWithOpenRouter(
         messages: [
           {
             role: "user",
-            content: `You are a machine that outputs strict JSON. You receive an English word and output its Spanish translations grouped by grammatical category as a list of strings.\nRules:\n1. Use only valid JSON.\n2. Values must be arrays of strings.\n3. Only include relevant categories.\n\ntranslate this word to spanish: ${sanitizedText} (respond only with the translation no additional text)`,
+            content: buildOpenRouterWordPrompt(sanitizedText),
           },
         ],
         max_tokens: 100,
@@ -98,7 +100,7 @@ export async function translateWithOpenRouter(
     }
 
     return {
-      translation: translation.replaceAll("```", "").replace("json", "").trim(),
+      translation: cleanTranslationResponse(translation),
     };
   } catch (error) {
     console.error("[LingText] OpenRouter translation error:", error);
@@ -108,7 +110,7 @@ export async function translateWithOpenRouter(
 
 export async function translateTerm(
   term: string,
-  translator: TRANSLATORS,
+  translator: Translator,
   apiKey?: string
 ): Promise<{ translation: string; error?: string }> {
   if (translator === TRANSLATORS.CHROME) {

@@ -95,6 +95,7 @@ export default defineConfig({
   // Force browser entry point for SQLite WASM in all environments
   resolve: {
     alias: {
+      "@shared": path.resolve(__dirname, "shared"),
       "@sqlite.org/sqlite-wasm": path.resolve(
         __dirname,
         "node_modules/@sqlite.org/sqlite-wasm/index.mjs"

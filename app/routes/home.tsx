@@ -7,7 +7,7 @@ import UsageGuideSection from "~/components/UsageGuideSection";
 import TechAndPrivacySection from "~/components/TechAndPrivacySection";
 import ContactCTA from "~/components/ContactCTA";
 
-export function meta({}: Route.MetaArgs) {
+export function meta(_args: Route.MetaArgs) {
   return [
     { title: "Alternativa gratuita a LingQ | LingText" },
     {

@@ -4,7 +4,7 @@ import LanguageIslandsManualManager from "~/components/language-islands/Language
 
 import type { Route } from "./+types/islands";
 
-export function meta({}: Route.MetaArgs) {
+export function meta(_args: Route.MetaArgs) {
   return [
     {
       title:

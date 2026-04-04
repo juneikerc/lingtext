@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import type { Route } from "./+types/songs";
 import SongsManualManager from "~/components/songs/SongsManualManager";
 
-export function meta({}: Route.MetaArgs) {
+export function meta(_args: Route.MetaArgs) {
   return [
     {
       title:

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useTranslatorStore } from "~/context/translatorSelector";
-import { TRANSLATORS } from "~/types";
+import { TRANSLATORS, type Translator } from "~/types";
 import { getOpenRouterApiKey } from "~/services/db";
 import { isChromeAIAvailable } from "~/utils/translate";
 import ApiKeyConfig from "~/components/ApiKeyConfig";
@@ -16,7 +16,7 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
   const [showPreferences, setShowPreferences] = useState(false);
   const [hasApiKey, setHasApiKey] = useState<boolean | null>(null);
   const [isHidden, setIsHidden] = useState(false);
-  const prevSelectedRef = useRef<TRANSLATORS | null>(null);
+  const prevSelectedRef = useRef<Translator | null>(null);
   const lastScrollYRef = useRef(0);
 
   useEffect(() => {
@@ -143,7 +143,7 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
                 <select
                   className="px-3 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm font-medium"
                   value={selected}
-                  onChange={(e) => setSelected(e.target.value as TRANSLATORS)}
+                  onChange={(e) => setSelected(e.target.value as Translator)}
                 >
                   <option value={TRANSLATORS.CHROME}>⚡ Rápido | Básico</option>
                   <option value={TRANSLATORS.MYMEMORY}>

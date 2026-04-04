@@ -1,5 +1,14 @@
-import { TRANSLATORS } from "../types";
+import {
+  buildOpenRouterWordPrompt,
+  cleanTranslationResponse,
+  isChromeAIAvailable,
+  sanitizeTranslationInput,
+  TRANSLATORS,
+} from "@shared/translation";
 import { getOpenRouterApiKey } from "../services/db";
+import type { Translator } from "../types";
+
+export { isChromeAIAvailable };
 
 export async function translateWithMyMemory(
   term: string
@@ -64,17 +73,6 @@ export async function translateWithMyMemory(
   }
 }
 
-export function isChromeAIAvailable(): boolean {
-  const isChrome =
-    navigator.userAgent.includes("Chrome") &&
-    !navigator.userAgent.includes("Edg") &&
-    !navigator.userAgent.includes("OPR");
-
-  const hasTranslatorAPI = "Translator" in self;
-
-  return isChrome && hasTranslatorAPI;
-}
-
 export async function translateFromChrome(
   term: string
 ): Promise<{ translation: string }> {
@@ -117,7 +115,7 @@ export async function translateWithOpenRouter(
     };
   }
 
-  const sanitizedText = term.trim().replace(/[<>"'&]/g, "");
+  const sanitizedText = sanitizeTranslationInput(term);
   if (!sanitizedText) {
     return { translation: "", error: "Invalid text content" };
   }
@@ -138,48 +136,7 @@ export async function translateWithOpenRouter(
           messages: [
             {
               role: "user",
-              content: `You are a machine that outputs strict JSON. You receive an English word and output its Spanish translations grouped by grammatical category as a list of strings.
-Rules:
-1. Use only valid JSON.
-2. Values must be arrays of strings.
-3. Only include relevant categories.
-
-some of the categories are: Noun, Verb, Adjective, Adverb, Pronoun, Preposition, Conjunction, Interjection, Phrase, Sentence.
-
-EXAMPLES:
-
-User: "run"
-Assistant:
-{
-  "word": "run",
-  "info": {
-    "Verb": ["correr", "ejecutar", "administrar"],
-    "Noun": ["carrera", "recorrido", "racha"]
-  }
-}
-
-User: "fast"
-Assistant:
-{
-  "word": "fast",
-  "info": {
-    "Adjective": ["rápido", "veloz", "adelantado"],
-    "Adverb": ["rápidamente"],
-    "Noun": ["ayuno"],
-    "Verb": ["ayunar"]
-  }
-}
-
-User: "beautiful"
-Assistant:
-{
-  "word": "beautiful",
-  "info": {
-    "Adjective": ["hermoso", "bello", "bonito"]
-  }
-}
-          
-translate this word to spanish: ${sanitizedText} (respond only with the translation no additional text)`,
+              content: buildOpenRouterWordPrompt(sanitizedText),
             },
           ],
           max_tokens: 100,
@@ -204,7 +161,6 @@ translate this word to spanish: ${sanitizedText} (respond only with the translat
     const data = (await response.json()) as {
       choices?: Array<{ message?: { content?: string } }>;
     };
-    console.log(data);
     const translation = data.choices?.[0]?.message?.content?.trim();
 
     if (!translation) {
@@ -212,7 +168,7 @@ translate this word to spanish: ${sanitizedText} (respond only with the translat
     }
 
     return {
-      translation: translation.replaceAll("```", "").replace("json", "").trim(),
+      translation: cleanTranslationResponse(translation),
     };
   } catch (error) {
     console.error("OpenRouter translation error:", error);
@@ -223,7 +179,7 @@ translate this word to spanish: ${sanitizedText} (respond only with the translat
 // Unificado: según "selected" usa Chrome si está disponible; si no, usa OpenRouter con la API key del usuario.
 export async function translateTerm(
   term: string,
-  selected: TRANSLATORS
+  selected: Translator
 ): Promise<{ translation: string; error?: string }> {
   if (selected === TRANSLATORS.CHROME) {
     const local = await translateFromChrome(term);

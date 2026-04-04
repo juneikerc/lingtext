@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 
-import type { ExtensionSettings, PhraseEntry, WordEntry } from "@/types";
+import type {
+  ExtensionSettings,
+  PhraseEntry,
+  Translator,
+  WordEntry,
+} from "@/types";
 import { TRANSLATORS } from "@/types";
 import { TRANSLATOR_LABELS } from "@/utils/translate";
 
@@ -167,7 +172,7 @@ export default function Popup() {
             className="translator-select"
             value={settings.translator}
             onChange={(event) =>
-              updateSettings({ translator: event.target.value as TRANSLATORS })
+              updateSettings({ translator: event.target.value as Translator })
             }
           >
             {Object.entries(TRANSLATOR_LABELS).map(([key, label]) => (

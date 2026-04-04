@@ -2,30 +2,23 @@
  * Shared extension types for LingText Chrome extension (v2)
  */
 
-export enum TRANSLATORS {
-  CHROME = "chrome",
-  MEDIUM = "google/gemini-2.5-flash-lite",
-  SMART = "google/gemini-3-flash-preview",
-}
+import type {
+  PhraseEntry as SharedPhraseEntry,
+  SyncEnvelope,
+  Translator as SharedTranslator,
+  WordEntry as SharedWordEntry,
+} from "@shared/vocabulary";
+import { TRANSLATORS as SharedTranslators } from "@shared/vocabulary";
 
-export interface WordEntry {
-  word: string;
-  wordLower: string;
-  translation: string;
-  status: "unknown";
-  addedAt: number;
-}
+export { SharedTranslators as TRANSLATORS };
+export type Translator = SharedTranslator;
 
-export interface PhraseEntry {
-  phrase: string;
-  phraseLower: string;
-  translation: string;
-  parts: string[];
-  addedAt: number;
-}
+export type WordEntry = SharedWordEntry;
+
+export type PhraseEntry = SharedPhraseEntry;
 
 export interface ExtensionSettings {
-  translator: TRANSLATORS;
+  translator: Translator;
   apiKey: string;
   captionLanguage: "en";
   hideNativeCc: boolean;
@@ -46,9 +39,12 @@ export interface SubtitleCue {
 }
 
 export interface SyncPayload {
+  schemaVersion?: number;
   words: WordEntry[];
   phrases: PhraseEntry[];
 }
+
+export type VersionedSyncPayload = SyncPayload | SyncEnvelope;
 
 export type ExtensionMessage =
   | { type: "LT2_GET_WORDS" }

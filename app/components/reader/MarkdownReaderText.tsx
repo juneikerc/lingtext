@@ -79,17 +79,11 @@ function MarkdownReaderText({
   showChrome = true,
   compact = false,
 }: MarkdownReaderTextProps) {
-  // Guard against undefined content
-  if (!content) {
-    return <ReaderEmptyState />;
-  }
-
   const parsedContent = useMemo(() => {
     const lines = content.split("\n");
     const elements: React.ReactNode[] = [];
     let inCodeBlock = false;
     let codeContent = "";
-    let inList = false;
     let listItems: string[] = [];
 
     for (let i = 0; i < lines.length; i++) {
@@ -123,7 +117,6 @@ function MarkdownReaderText({
       if (line.match(/^[-*+]\s+/)) {
         const listItem = line.replace(/^[-*+]\s+/, "");
         listItems.push(listItem);
-        inList = true;
 
         // Check if next line is not a list item
         if (i === lines.length - 1 || !lines[i + 1].match(/^[-*+]\s+/)) {
@@ -140,7 +133,6 @@ function MarkdownReaderText({
             </ul>
           );
           listItems = [];
-          inList = false;
         }
         continue;
       }
@@ -359,6 +351,10 @@ function MarkdownReaderText({
 
     return elements;
   }, [content, phraseIndex, unknownSet, onWordClick]);
+
+  if (!content) {
+    return <ReaderEmptyState />;
+  }
 
   return (
     <div className="relative">

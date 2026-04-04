@@ -11,7 +11,7 @@ import { Link, useSearchParams } from "react-router";
 
 const ReviewMode = lazy(() => import("~/components/ReviewMode"));
 
-export function meta({}: Route.MetaArgs) {
+export function meta(_args: Route.MetaArgs) {
   return [
     { title: "Repaso de vocabulario | LingText" },
     {

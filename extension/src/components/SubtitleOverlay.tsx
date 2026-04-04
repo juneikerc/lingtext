@@ -19,8 +19,6 @@ export default function SubtitleOverlay({
   phrases,
   onWordClick,
 }: SubtitleOverlayProps) {
-  if (!text) return null;
-
   const tokens = tokenize(text);
 
   const phrasesByFirstWord = useMemo(() => {
@@ -37,6 +35,8 @@ export default function SubtitleOverlay({
     }
     return map;
   }, [phrases]);
+
+  if (!text) return null;
 
   // Marcar tokens que pertenecen a frases guardadas
   const isPhraseToken: boolean[] = new Array(tokens.length).fill(false);

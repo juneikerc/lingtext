@@ -1,14 +1,14 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { TRANSLATORS } from "../types";
+import { TRANSLATORS, type Translator } from "../types";
 import { isChromeAIAvailable } from "../utils/translate";
 
 interface TranslatorSelectorState {
-  selected: TRANSLATORS;
-  setSelected: (selected: TRANSLATORS) => void;
+  selected: Translator;
+  setSelected: (selected: Translator) => void;
 }
 
-function getDefaultTranslator(): TRANSLATORS {
+function getDefaultTranslator(): Translator {
   if (typeof window === "undefined") return TRANSLATORS.CHROME;
   return isChromeAIAvailable() ? TRANSLATORS.CHROME : TRANSLATORS.MYMEMORY;
 }

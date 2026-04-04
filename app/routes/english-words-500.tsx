@@ -29,7 +29,7 @@ type Word500Group = {
 const PAGE_SIZE = 50;
 const TOTAL_WORDS = 500;
 
-export function meta({}: Route.MetaArgs) {
+export function meta(_args: Route.MetaArgs) {
   return [
     {
       title: "500 palabras más usadas en inglés | audio, oración y significado",

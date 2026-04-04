@@ -741,7 +741,7 @@ function normalizeInlineWhitespace(value: string): string {
 }
 
 function escapeMarkdownText(value: string): string {
-  return value.replace(/[\[\]]/g, "\\$&");
+  return value.replace(/[[\]]/g, "\\$&");
 }
 
 function escapeInlineCode(value: string): string {

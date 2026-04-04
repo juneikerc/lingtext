@@ -5,16 +5,19 @@
 
 import type {
   PhraseEntry,
-  SyncPayload,
-  TRANSLATORS,
+  Translator,
+  VersionedSyncPayload,
   WordEntry,
 } from "@/types";
 
 interface SyncCompletePayload {
+  schemaVersion?: number;
+  source?: "web" | "extension";
+  exportedAt?: number;
   words: WordEntry[];
   phrases: PhraseEntry[];
   apiKey?: string;
-  translator?: TRANSLATORS;
+  translator?: Translator;
 }
 
 function isAllowedOrigin(origin: string): boolean {
@@ -46,7 +49,7 @@ window.addEventListener("message", async (event) => {
       case "LINGTEXT_SYNC_REQUEST": {
         const data = (await chrome.runtime.sendMessage({
           type: "LT2_EXPORT_SYNC",
-        })) as SyncPayload;
+        })) as VersionedSyncPayload;
 
         window.postMessage(
           { type: "LINGTEXT_SYNC_RESPONSE", payload: data },
@@ -60,15 +63,12 @@ window.addEventListener("message", async (event) => {
 
         await chrome.runtime.sendMessage({
           type: "LT2_IMPORT_SYNC",
-          payload: {
-            words: data.words || [],
-            phrases: data.phrases || [],
-          },
+          payload: data,
         });
 
         const settingsPatch: {
           apiKey?: string;
-          translator?: TRANSLATORS;
+          translator?: Translator;
         } = {};
 
         if (typeof data.apiKey === "string") {
@@ -95,13 +95,10 @@ window.addEventListener("message", async (event) => {
 
       // Legacy compatibility from old web flow.
       case "LINGTEXT_IMPORT_TO_EXTENSION": {
-        const data = payload as SyncPayload;
+        const data = payload as VersionedSyncPayload;
         await chrome.runtime.sendMessage({
           type: "LT2_IMPORT_SYNC",
-          payload: {
-            words: data.words || [],
-            phrases: data.phrases || [],
-          },
+          payload: data,
         });
 
         window.postMessage(

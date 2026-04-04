@@ -38,7 +38,7 @@ export interface ValidationResult {
 
 export function validateTextContent(
   content: string,
-  filename?: string
+  _filename?: string
 ): ValidationResult {
   const warnings: string[] = [];
 
@@ -142,7 +142,7 @@ export function validateTitle(title: string): ValidationResult {
 
   // Check for suspicious characters
 
-  const suspiciousChars = /[<>\"'&]/;
+  const suspiciousChars = /[<>"'&]/;
 
   if (suspiciousChars.test(trimmedTitle)) {
     return {
@@ -168,12 +168,15 @@ export function validateTitle(title: string): ValidationResult {
    */
 
 export function sanitizeTextContent(content: string): string {
+  const withoutControlChars = Array.from(content)
+    .filter((character) => {
+      const code = character.charCodeAt(0);
+      return code === 9 || code === 10 || code === 13 || (code >= 32 && code !== 127);
+    })
+    .join("");
+
   return (
-    content
-
-      // Remove null bytes and other control characters
-
-      .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "")
+    withoutControlChars
 
       // Normalize line breaks
 
@@ -193,7 +196,7 @@ export function sanitizeTextContent(content: string): string {
 
 export function validateFileType(
   file: File,
-  allowedTypes: string[] = ["text/plain"]
+  _allowedTypes: string[] = ["text/plain"]
 ): ValidationResult {
   const warnings: string[] = [];
 

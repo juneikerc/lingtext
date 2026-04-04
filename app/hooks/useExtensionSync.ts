@@ -10,6 +10,7 @@
  */
 
 import { useEffect, useCallback } from "react";
+import { createSyncEnvelope, mergeSyncEnvelopes } from "@shared/sync";
 import {
   getAllUnknownWords,
   getAllPhrases,
@@ -17,14 +18,20 @@ import {
   putPhrase,
   getOpenRouterApiKey,
 } from "~/services/db";
+import { useTranslatorStore } from "~/context/translatorSelector";
 import type { WordEntry, PhraseEntry } from "~/types";
 
 interface ExtensionSyncData {
+  schemaVersion?: number;
+  source?: "web" | "extension";
+  exportedAt?: number;
   words: WordEntry[];
   phrases: PhraseEntry[];
 }
 
 export function useExtensionSync() {
+  const selectedTranslator = useTranslatorStore((state) => state.selected);
+
   const handleSync = useCallback(async (extensionData: ExtensionSyncData) => {
     console.log("[ExtensionSync] Starting sync with extension data:", {
       words: extensionData.words.length,
@@ -36,40 +43,23 @@ export function useExtensionSync() {
       const webWords = await getAllUnknownWords();
       const webPhrases = await getAllPhrases();
       const apiKey = await getOpenRouterApiKey();
-
-      // Merge strategy: newer wins (basado en addedAt)
-      const wordMap = new Map<string, WordEntry>();
-
-      // Primero agregar palabras de la web
-      for (const word of webWords) {
-        wordMap.set(word.wordLower, word);
-      }
-
-      // Luego agregar/actualizar con palabras de la extensión (si son más nuevas)
-      for (const word of extensionData.words) {
-        const existing = wordMap.get(word.wordLower);
-        if (!existing || word.addedAt > existing.addedAt) {
-          wordMap.set(word.wordLower, word);
-        }
-      }
-
-      const phraseMap = new Map<string, PhraseEntry>();
-
-      // Primero agregar frases de la web
-      for (const phrase of webPhrases) {
-        phraseMap.set(phrase.phraseLower, phrase);
-      }
-
-      // Luego agregar/actualizar con frases de la extensión (si son más nuevas)
-      for (const phrase of extensionData.phrases) {
-        const existing = phraseMap.get(phrase.phraseLower);
-        if (!existing || phrase.addedAt > existing.addedAt) {
-          phraseMap.set(phrase.phraseLower, phrase);
-        }
-      }
-
-      const mergedWords = Array.from(wordMap.values());
-      const mergedPhrases = Array.from(phraseMap.values());
+      const currentEnvelope = createSyncEnvelope("web", webWords, webPhrases);
+      const incomingEnvelope =
+        extensionData.source === "extension"
+          ? {
+              schemaVersion: extensionData.schemaVersion ?? 2,
+              source: "extension" as const,
+              exportedAt: extensionData.exportedAt ?? Date.now(),
+              words: extensionData.words,
+              phrases: extensionData.phrases,
+            }
+          : createSyncEnvelope(
+              "extension",
+              extensionData.words,
+              extensionData.phrases
+            );
+      const { words: mergedWords, phrases: mergedPhrases } =
+        mergeSyncEnvelopes(currentEnvelope, incomingEnvelope);
 
       // Guardar en la base de datos de la web
       for (const word of mergedWords) {
@@ -89,17 +79,17 @@ export function useExtensionSync() {
         {
           type: "LINGTEXT_SYNC_COMPLETE",
           payload: {
-            words: mergedWords,
-            phrases: mergedPhrases,
+            ...createSyncEnvelope("web", mergedWords, mergedPhrases),
             apiKey: apiKey || undefined,
+            translator: selectedTranslator,
           },
         },
-        "*"
+        window.location.origin
       );
     } catch (error) {
       console.error("[ExtensionSync] Error during sync:", error);
     }
-  }, []);
+  }, [selectedTranslator]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -124,7 +114,10 @@ export function useExtensionSync() {
         case "LINGTEXT_EXTENSION_SYNC_REQUEST":
           // La extensión solicita sincronización (desde el popup)
           // Primero pedimos los datos de la extensión
-          window.postMessage({ type: "LINGTEXT_SYNC_REQUEST" }, "*");
+          window.postMessage(
+            { type: "LINGTEXT_SYNC_REQUEST" },
+            window.location.origin
+          );
           break;
 
         case "LINGTEXT_SYNC_RESPONSE":
@@ -143,7 +136,10 @@ export function useExtensionSync() {
     window.addEventListener("message", handleMessage);
 
     // Notificar que la web está lista para sincronizar
-    window.postMessage({ type: "LINGTEXT_WEB_READY" }, "*");
+    window.postMessage(
+      { type: "LINGTEXT_WEB_READY" },
+      window.location.origin
+    );
 
     return () => {
       window.removeEventListener("message", handleMessage);

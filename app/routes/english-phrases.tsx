@@ -5,7 +5,7 @@ import data from "~/data/phrases.json";
 import { getSettings } from "~/services/db/settings";
 import { speak } from "~/utils/tts";
 
-export function meta({}: Route.MetaArgs) {
+export function meta(_args: Route.MetaArgs) {
   return [
     { title: "1000 frases mas usadas en ingles | + sonido y traducción" },
     {

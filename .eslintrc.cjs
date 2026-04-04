@@ -6,8 +6,8 @@ module.exports = {
     node: true,
   },
   extends: [
-    "@eslint/js/recommended",
-    "@typescript-eslint/recommended",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",
@@ -22,23 +22,25 @@ module.exports = {
   },
   plugins: ["@typescript-eslint", "react", "react-hooks", "jsx-a11y"],
   rules: {
-    // React
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
-
-    // TypeScript
     "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-explicit-any": "warn",
-
-    // General
     "no-console": ["warn", { allow: ["warn", "error"] }],
     "prefer-const": "error",
     "no-var": "error",
-
-    // Accessibility
-    "jsx-a11y/anchor-is-valid": "off", // React Router handles this
+    "no-empty-pattern": "warn",
+    "react/no-unescaped-entities": "warn",
+    "react/jsx-no-target-blank": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/label-has-associated-control": "warn",
+    "jsx-a11y/no-autofocus": "warn",
+    "jsx-a11y/click-events-have-key-events": "warn",
+    "jsx-a11y/no-static-element-interactions": "warn",
+    "jsx-a11y/media-has-caption": "warn",
   },
   settings: {
     react: {
@@ -47,8 +49,11 @@ module.exports = {
   },
   ignorePatterns: [
     "build/",
+    "coverage/",
     "node_modules/",
     ".react-router/",
     "worker-configuration.d.ts",
+    "extension/dist/",
+    "analyze-*.js",
   ],
 };

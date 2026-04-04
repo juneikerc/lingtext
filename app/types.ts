@@ -1,3 +1,12 @@
+import type {
+  PhraseEntry as SharedPhraseEntry,
+  SpacedRepetitionData as SharedSpacedRepetitionData,
+  Translator as SharedTranslator,
+  VoiceParams as SharedVoiceParams,
+  WordEntry as SharedWordEntry,
+} from "@shared/vocabulary";
+import { TRANSLATORS as SharedTranslators } from "@shared/vocabulary";
+
 export type AudioRef =
   | { type: "url"; url: string }
   | {
@@ -57,54 +66,13 @@ export interface LanguageIslandItem {
   updatedAt: number;
 }
 
-export interface VoiceParams {
-  name?: string;
-  lang?: string;
-  rate?: number;
-  pitch?: number;
-  volume?: number;
-}
+export type VoiceParams = SharedVoiceParams;
 
-export interface SpacedRepetitionData {
-  easeFactor: number; // Factor de facilidad (por defecto 2.5)
-  interval: number; // Intervalo actual en días
-  repetitions: number; // Número de repeticiones exitosas
-  nextReview: number; // Timestamp del próximo repaso
-  reviewHistory: Array<{
-    date: number; // Timestamp de la revisión
-    quality: number; // Calidad de la respuesta (0-5, donde 5 es perfecta)
-    interval: number; // Intervalo usado en esa revisión
-  }>;
-}
+export type SpacedRepetitionData = SharedSpacedRepetitionData;
 
-export interface WordEntry {
-  word: string;
-  wordLower: string;
-  translation: string;
-  status: "unknown";
-  addedAt: number;
-  voice?: VoiceParams;
-  // Datos del algoritmo de repetición espaciada
-  srData?: SpacedRepetitionData;
-  // Flag opcional para indicar que este item representa una frase en el UI de repaso
-  isPhrase?: boolean;
-}
+export type WordEntry = SharedWordEntry;
 
-// Nueva entidad para frases compuestas
-export interface PhraseEntry {
-  // Frase original tal como la seleccionó el usuario
-  phrase: string;
-  // Clave normalizada en minúsculas sin puntuación, separada por espacios
-  phraseLower: string;
-  // Traducción de la frase
-  translation: string;
-  // Partes (palabras) normalizadas que componen la frase, en orden
-  parts: string[];
-  // Fecha en la que se añadió
-  addedAt: number;
-  // Datos del algoritmo de repetición espaciada para frases
-  srData?: SpacedRepetitionData;
-}
+export type PhraseEntry = SharedPhraseEntry;
 
 export interface Settings {
   id: "preferences";
@@ -136,12 +104,8 @@ export interface ReaderPreferences {
   preset: ReaderPreset;
 }
 
-export enum TRANSLATORS {
-  CHROME = "chrome",
-  MYMEMORY = "mymemory",
-  MEDIUM = "google/gemini-2.5-flash-lite",
-  SMART = "google/gemini-3-flash-preview",
-}
+export { SharedTranslators as TRANSLATORS };
+export type Translator = SharedTranslator;
 
 export interface StoryConfig {
   wordLowerList: string[];
