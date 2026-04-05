@@ -94,7 +94,7 @@ function getSqliteInitOptions() {
   };
 }
 
-function deserializeDatabase(
+export function deserializeDatabaseBytes(
   sqlite3: typeof sqlite3Instance,
   bytes: Uint8Array
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -145,7 +145,7 @@ async function openDatabase(sqlite3: typeof sqlite3Instance) {
   }
 
   try {
-    return deserializeDatabase(sqlite3, new Uint8Array(existingData));
+    return deserializeDatabaseBytes(sqlite3, new Uint8Array(existingData));
   } catch (loadError) {
     console.warn(
       "[DB] No se pudo restaurar la base de datos existente; se usará una nueva instancia.",

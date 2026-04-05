@@ -1,15 +1,51 @@
 import {
+  deserializeDatabaseBytes,
+  DB_NAME,
   getDB,
   getExpectedSchemaVersion,
   initDB,
   sqlite3Instance,
-  DB_NAME,
   isPersistent,
   setDB,
   saveToOPFS,
 } from "./core";
 import { migrateDatabase } from "./migrations";
 import type { FilePickerOptions } from "./types";
+
+const SQLITE_HEADER = "SQLite format 3\u0000";
+const LINGTEXT_BACKUP_TABLES = [
+  "settings",
+  "texts",
+  "words",
+  "phrases",
+  "stats",
+  "folders",
+  "songs",
+  "language_islands",
+] as const;
+
+function hasSqliteHeader(fileData: ArrayBuffer): boolean {
+  if (fileData.byteLength < SQLITE_HEADER.length) {
+    return false;
+  }
+
+  const header = new TextDecoder("utf-8").decode(
+    new Uint8Array(fileData.slice(0, SQLITE_HEADER.length))
+  );
+  return header === SQLITE_HEADER;
+}
+
+function isLikelyLingTextBackup(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  database: any
+): boolean {
+  const rows: Array<{ name: string }> = database.selectObjects(
+    "SELECT name FROM sqlite_master WHERE type = 'table'"
+  );
+  const tables = new Set(rows.map((row) => row.name));
+
+  return LINGTEXT_BACKUP_TABLES.some((table) => tables.has(table));
+}
 
 /**
  * DATABASE BACKUP / RESTORE (File System Access API)
@@ -85,6 +121,8 @@ export async function exportDatabase(): Promise<boolean> {
 export async function importDatabase(): Promise<boolean> {
   // Ensure SQLite WASM is initialized first (loads the WASM file)
   await initDB();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let importedDb: any | null = null;
 
   try {
     let fileData: ArrayBuffer;
@@ -126,50 +164,46 @@ export async function importDatabase(): Promise<boolean> {
       });
     }
 
+    if (!hasSqliteHeader(fileData)) {
+      throw new Error(
+        "El archivo seleccionado no es una base de datos SQLite válida."
+      );
+    }
+
+    if (!sqlite3Instance) {
+      throw new Error("SQLite instance not available");
+    }
+
+    importedDb = deserializeDatabaseBytes(
+      sqlite3Instance,
+      new Uint8Array(fileData)
+    );
+
+    try {
+      importedDb.selectObjects("SELECT name FROM sqlite_master LIMIT 1");
+    } catch (error) {
+      importedDb.close();
+      throw error;
+    }
+
+    if (!isLikelyLingTextBackup(importedDb)) {
+      importedDb.close();
+      throw new Error(
+        "El archivo es SQLite, pero no parece ser un backup de LingText."
+      );
+    }
+
+    migrateDatabase(importedDb);
+
     // Close current database connection
     const currentDB = await getDB();
     if (currentDB) {
       currentDB.close();
-      setDB(null);
     }
+    setDB(importedDb);
+    importedDb = null;
 
-    // Write to OPFS
-    const opfsRoot = await navigator.storage.getDirectory();
-    const fileHandle = await opfsRoot.getFileHandle(DB_NAME, { create: true });
-    const writable = await fileHandle.createWritable();
-    await writable.write(fileData);
-    await writable.close();
-
-    // Reopen database from OPFS using existing sqlite3Instance
-    if (sqlite3Instance) {
-      const opfsVfs = sqlite3Instance.oo1.OpfsDb;
-      if (opfsVfs) {
-        setDB(new opfsVfs(DB_NAME));
-      } else {
-        // Fallback to in-memory with deserialization
-        const newDb = new sqlite3Instance.oo1.DB(":memory:");
-        setDB(newDb);
-        const data = new Uint8Array(fileData);
-        const rc = sqlite3Instance.capi.sqlite3_deserialize(
-          newDb.pointer,
-          "main",
-          data,
-          data.byteLength,
-          data.byteLength,
-          0
-        );
-        if (rc !== 0) {
-          throw new Error(`sqlite3_deserialize failed with code ${rc}`);
-        }
-      }
-    } else {
-      throw new Error("SQLite instance not available");
-    }
-
-    const importedDb = await getDB();
-    const migrationResult = migrateDatabase(importedDb);
-
-    if (isPersistent && migrationResult.appliedVersions.length > 0) {
+    if (isPersistent) {
       await saveToOPFS();
     }
 
@@ -178,8 +212,16 @@ export async function importDatabase(): Promise<boolean> {
     if ((error as Error).name === "AbortError") {
       return false; // User cancelled
     }
+
+    const message =
+      error instanceof Error && error.message.includes("SQLITE_NOTADB")
+        ? "El archivo seleccionado no es una base de datos SQLite válida."
+        : (error as Error).message;
+
+    importedDb?.close?.();
+
     console.error("[DB] Error: no se pudo importar la base de datos:", error);
-    throw error;
+    throw new Error(message);
   }
 }
 
