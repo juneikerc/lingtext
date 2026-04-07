@@ -9,12 +9,14 @@ interface SelectionPopupProps {
     text: string;
     translation: string;
   };
+  onSpeak: (text: string) => void;
   onSave: (text: string, translation: string) => void;
   onClose: () => void;
 }
 
 export default function SelectionPopup({
   popup,
+  onSpeak,
   onSave,
   onClose,
 }: SelectionPopupProps) {
@@ -47,9 +49,18 @@ export default function SelectionPopup({
       {/* Header */}
       <div className="lingtext-selection-header">
         <span className="lingtext-selection-text">"{popup.text}"</span>
-        <button className="lingtext-popup-close" onClick={onClose}>
-          ✕
-        </button>
+        <div className="lingtext-header-actions">
+          <button
+            className="lingtext-popup-speak"
+            onClick={() => onSpeak(popup.text)}
+            title="Escuchar"
+          >
+            🔊
+          </button>
+          <button className="lingtext-popup-close" onClick={onClose}>
+            ✕
+          </button>
+        </div>
       </div>
 
       {/* Traducción */}
@@ -65,6 +76,12 @@ export default function SelectionPopup({
           onClick={() => onSave(popup.text, popup.translation)}
         >
           💾 Guardar frase
+        </button>
+        <button
+          className="lingtext-btn lingtext-btn-speak"
+          onClick={() => onSpeak(popup.text)}
+        >
+          🔊 Escuchar
         </button>
       </div>
     </div>

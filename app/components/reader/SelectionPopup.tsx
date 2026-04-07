@@ -4,12 +4,14 @@ import { isTranslationJson } from "~/helpers/isTranslationJson";
 
 interface SelectionPopupProps {
   selPopup: SelectionPopupState;
+  onSpeak: (text: string, e: React.MouseEvent) => void;
   onClose: () => void;
   onSavePhrase: (text: string, translation: string) => void;
 }
 
 export default function SelectionPopup({
   selPopup,
+  onSpeak,
   onClose,
   onSavePhrase,
 }: SelectionPopupProps) {
@@ -55,25 +57,52 @@ export default function SelectionPopup({
             Texto seleccionado
           </span>
         </div>
-        <button
-          className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors duration-200"
-          onClick={onClose}
-          title="Cerrar"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            className="w-4 h-4"
+        <div className="flex items-center gap-1 shrink-0">
+          <button
+            className="p-2 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors duration-200"
+            onClick={(e) => onSpeak(selPopup.text, e)}
+            title="Escuchar"
           >
-            <path
-              d="M18 6 6 18M6 6l12 12"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              className="w-4 h-4"
+            >
+              <polygon
+                points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M15.54 8.46a5 5 0 0 1 0 7.07"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+          <button
+            className="p-2 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors duration-200"
+            onClick={onClose}
+            title="Cerrar"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              className="w-4 h-4"
+            >
+              <path
+                d="M18 6 6 18M6 6l12 12"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Texto seleccionado */}
@@ -124,9 +153,9 @@ export default function SelectionPopup({
       </div>
 
       {/* Acciones */}
-      <div className="flex gap-2 px-4 pb-4 bg-white/95 border-t border-gray-100 pt-3">
+      <div className="px-4 pb-4 bg-white/95 border-t border-gray-100 pt-3 space-y-2">
         <button
-          className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 border bg-green-50 text-green-700 border-green-200 ${
+          className={`w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 border bg-green-50 text-green-700 border-green-200 ${
             selPopup.isLoading
               ? "opacity-60 cursor-not-allowed"
               : "hover:bg-green-100 hover:shadow-sm"
@@ -149,11 +178,31 @@ export default function SelectionPopup({
           </svg>
           Guardar frase
         </button>
+
         <button
-          className="px-4 py-2.5 rounded-xl text-sm font-medium text-gray-600 border border-gray-200 hover:bg-gray-50 transition-colors duration-200"
-          onClick={onClose}
+          className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-gray-600 border border-gray-200 hover:bg-gray-50 transition-colors duration-200"
+          onClick={(e) => onSpeak(selPopup.text, e)}
         >
-          Cerrar
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            className="w-4 h-4"
+          >
+            <polygon
+              points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M19.07 4.93a10 10 0 0 1 0 14.14"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          Escuchar
         </button>
       </div>
     </div>

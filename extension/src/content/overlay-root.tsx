@@ -17,7 +17,11 @@ import { normalizeWord, tokenize } from "@/utils/tokenize";
 import { loadEnglishTranscript } from "./caption-track-loader";
 import { stabilizeCues } from "./cue-stabilizer";
 import { setNativeCcHidden } from "./native-cc";
-import { getCurrentVideoId, watchPlayerRect, watchVideoId } from "./player-observer";
+import {
+  getCurrentVideoId,
+  watchPlayerRect,
+  watchVideoId,
+} from "./player-observer";
 import { findCueIndexAtTime } from "./subtitle-engine";
 
 interface OverlayRootProps {
@@ -42,7 +46,9 @@ const defaultSettings: ExtensionSettings = {
 
 export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const transitionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const transitionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null
+  );
 
   const [videoId, setVideoId] = useState<string | null>(getCurrentVideoId());
   const [playerRect, setPlayerRect] = useState<DOMRect | null>(null);
@@ -59,7 +65,8 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   const [popup, setPopup] = useState<WordPopupState | null>(null);
-  const [selectionPopup, setSelectionPopup] = useState<SelectionPopupState | null>(null);
+  const [selectionPopup, setSelectionPopup] =
+    useState<SelectionPopupState | null>(null);
 
   useEffect(() => {
     const stopWatchingVideoId = watchVideoId((nextVideoId) => {
@@ -86,14 +93,24 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
     const loadInitial = async () => {
       try {
         const [words, phrasesResult, settingsResult] = await Promise.all([
-          chrome.runtime.sendMessage({ type: "LT2_GET_WORDS" }) as Promise<WordEntry[]>,
-          chrome.runtime.sendMessage({ type: "LT2_GET_PHRASES" }) as Promise<PhraseEntry[]>,
-          chrome.runtime.sendMessage({ type: "LT2_GET_SETTINGS" }) as Promise<ExtensionSettings>,
+          chrome.runtime.sendMessage({ type: "LT2_GET_WORDS" }) as Promise<
+            WordEntry[]
+          >,
+          chrome.runtime.sendMessage({ type: "LT2_GET_PHRASES" }) as Promise<
+            PhraseEntry[]
+          >,
+          chrome.runtime.sendMessage({
+            type: "LT2_GET_SETTINGS",
+          }) as Promise<ExtensionSettings>,
         ]);
 
         setUnknownSet(new Set(words.map((word) => word.wordLower)));
         setPhrases(phrasesResult.map((phrase) => phrase.parts));
-        setSettings({ ...defaultSettings, ...settingsResult, captionLanguage: "en" });
+        setSettings({
+          ...defaultSettings,
+          ...settingsResult,
+          captionLanguage: "en",
+        });
       } catch (error) {
         console.error("[LingText] Failed to load extension data:", error);
       }
@@ -112,7 +129,8 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
       }
 
       if (changes.lt2_words) {
-        const words = (changes.lt2_words.newValue as WordEntry[] | undefined) || [];
+        const words =
+          (changes.lt2_words.newValue as WordEntry[] | undefined) || [];
         setUnknownSet(new Set(words.map((word) => word.wordLower)));
       }
 
@@ -365,7 +383,10 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
   }, []);
 
   const handleMarkKnown = useCallback(async (lower: string) => {
-    await chrome.runtime.sendMessage({ type: "LT2_DELETE_WORD", payload: lower });
+    await chrome.runtime.sendMessage({
+      type: "LT2_DELETE_WORD",
+      payload: lower,
+    });
 
     setUnknownSet((prev) => {
       const next = new Set(prev);
@@ -386,7 +407,10 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
         addedAt: Date.now(),
       };
 
-      await chrome.runtime.sendMessage({ type: "LT2_PUT_WORD", payload: entry });
+      await chrome.runtime.sendMessage({
+        type: "LT2_PUT_WORD",
+        payload: entry,
+      });
 
       setUnknownSet((prev) => {
         const next = new Set(prev);
@@ -457,28 +481,34 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
     selection.removeAllRanges();
   }, [settings.apiKey, settings.translator, shadowRoot]);
 
-  const handleSavePhrase = useCallback(async (text: string, translation: string) => {
-    const parts = tokenize(text)
-      .filter((token) => token.isWord)
-      .map((token) => token.lower || normalizeWord(token.text))
-      .filter(Boolean);
+  const handleSavePhrase = useCallback(
+    async (text: string, translation: string) => {
+      const parts = tokenize(text)
+        .filter((token) => token.isWord)
+        .map((token) => token.lower || normalizeWord(token.text))
+        .filter(Boolean);
 
-    if (parts.length < 2) {
-      return;
-    }
+      if (parts.length < 2) {
+        return;
+      }
 
-    const entry: PhraseEntry = {
-      phrase: text,
-      phraseLower: parts.join(" "),
-      translation,
-      parts,
-      addedAt: Date.now(),
-    };
+      const entry: PhraseEntry = {
+        phrase: text,
+        phraseLower: parts.join(" "),
+        translation,
+        parts,
+        addedAt: Date.now(),
+      };
 
-    await chrome.runtime.sendMessage({ type: "LT2_PUT_PHRASE", payload: entry });
-    setPhrases((prev) => [...prev, parts]);
-    setSelectionPopup(null);
-  }, []);
+      await chrome.runtime.sendMessage({
+        type: "LT2_PUT_PHRASE",
+        payload: entry,
+      });
+      setPhrases((prev) => [...prev, parts]);
+      setSelectionPopup(null);
+    },
+    []
+  );
 
   if (window.location.pathname !== "/watch") {
     return null;
@@ -503,7 +533,9 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
       }}
       onMouseUp={handleMouseUp}
     >
-      <div className={`lingtext-container ${isTransitioning ? "lingtext-transitioning" : ""}`}>
+      <div
+        className={`lingtext-container ${isTransitioning ? "lingtext-transitioning" : ""}`}
+      >
         <SubtitleOverlay
           text={displayedSubtitle}
           unknownSet={unknownSet}
@@ -526,6 +558,7 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
       {selectionPopup && (
         <SelectionPopup
           popup={selectionPopup}
+          onSpeak={handleSpeak}
           onSave={handleSavePhrase}
           onClose={closePopups}
         />

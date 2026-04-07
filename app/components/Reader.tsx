@@ -34,13 +34,23 @@ export default function Reader({
 }: Props) {
   const { selected } = useTranslatorStore();
   const { preferences } = useReaderPreferences();
-  const { markKnownWord, markUnknownWord, phraseIndex, savePhraseEntry, unknownSet } =
-    useReaderLexicon();
+  const {
+    markKnownWord,
+    markUnknownWord,
+    phraseIndex,
+    savePhraseEntry,
+    unknownSet,
+  } = useReaderLexicon();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const isCompact = variant === "compact";
   const appearanceStyles = getReaderAppearanceStyles(preferences, isCompact);
-  const { audioUrl, audioAccessError, isLocalFile, fileSize, reauthorizeAudio } =
-    useReaderAudio(text);
+  const {
+    audioUrl,
+    audioAccessError,
+    isLocalFile,
+    fileSize,
+    reauthorizeAudio,
+  } = useReaderAudio(text);
   const {
     popup,
     selPopup,
@@ -101,7 +111,10 @@ export default function Reader({
       onClick={(event) => {
         const target = event.target as HTMLElement;
         const selection = window.getSelection();
-        if (!target.closest(".word-token") && (!selection || selection.isCollapsed)) {
+        if (
+          !target.closest(".word-token") &&
+          (!selection || selection.isCollapsed)
+        ) {
           clearPopups();
         }
       }}
@@ -122,6 +135,7 @@ export default function Reader({
       {selPopup ? (
         <SelectionPopup
           selPopup={selPopup}
+          onSpeak={onSpeak}
           onClose={() => setSelPopup(null)}
           onSavePhrase={onSavePhrase}
         />
