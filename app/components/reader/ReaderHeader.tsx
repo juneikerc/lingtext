@@ -103,11 +103,21 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
               <button
                 type="button"
                 onClick={() => window.history.back()}
-                className="group shrink-0 flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-blue-500 hover:text-white text-gray-700 font-medium transition-all duration-200"
+                className="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-[#0F9EDA] hover:text-white text-gray-700 font-medium transition-all duration-200"
               >
-                <span className="text-sm group-hover:-translate-x-0.5 transition-transform duration-200">
-                  ←
-                </span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform duration-200"
+                >
+                  <path
+                    d="m15 18-6-6 6-6"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
                 <span className="text-sm">Volver</span>
               </button>
 
@@ -121,8 +131,8 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
             </div>
 
             {/* Indicador de estado compacto */}
-            <div className="hidden sm:flex items-center space-x-1 px-2 py-1 bg-green-100 text-green-700 rounded-md text-xs font-medium">
-              <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+            <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 bg-[#0F9EDA]/10 text-[#0F9EDA] rounded-lg text-xs font-medium">
+              <div className="w-1.5 h-1.5 bg-[#0F9EDA] rounded-full animate-pulse"></div>
               <span>Listo</span>
             </div>
           </div>
@@ -130,9 +140,21 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
           {/* Segunda fila compacta - Selector de traductor */}
           <div className="flex flex-col gap-3 pb-3 border-t border-gray-200/50 pt-2">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-              <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 bg-gradient-to-r from-purple-500 to-blue-500 rounded flex items-center justify-center">
-                  <span className="text-white text-xs">🌐</span>
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-5 bg-[#0F9EDA]/10 rounded-lg flex items-center justify-center">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    className="w-3 h-3 text-[#0F9EDA]"
+                  >
+                    <circle cx="12" cy="12" r="10" strokeWidth="2" />
+                    <path d="M2 12h20" strokeWidth="2" />
+                    <path
+                      d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                      strokeWidth="2"
+                    />
+                  </svg>
                 </div>
                 <strong className="text-sm font-medium text-gray-900">
                   Traductor:
@@ -141,7 +163,7 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
 
               <div className="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-3">
                 <select
-                  className="px-3 py-1.5 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm font-medium"
+                  className="px-3 py-1.5 rounded-lg border border-gray-200 bg-white text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#0F9EDA] focus:border-[#0F9EDA] transition-all duration-200 text-sm font-medium"
                   value={selected}
                   onChange={(e) => setSelected(e.target.value as Translator)}
                 >
@@ -168,10 +190,10 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
                 <button
                   type="button"
                   onClick={() => setShowPreferences((current) => !current)}
-                  className={`inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-xs font-semibold shadow-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
+                  className={`inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-xs font-semibold shadow-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
                     showPreferences
-                      ? "border-indigo-600 bg-indigo-600 text-white"
-                      : "border-indigo-200 bg-indigo-50 text-indigo-700 hover:border-indigo-300 hover:bg-indigo-100"
+                      ? "border-[#0F9EDA] bg-[#0F9EDA] text-white"
+                      : "border-[#0F9EDA]/20 bg-[#0F9EDA]/5 text-[#0F9EDA] hover:border-[#0F9EDA]/40 hover:bg-[#0F9EDA]/10"
                   }`}
                   aria-expanded={showPreferences}
                   aria-controls="reader-preferences-panel"
@@ -181,7 +203,13 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
                       : "Abrir preferencias de lectura"
                   }
                 >
-                  <span className="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-white/70 text-[11px] font-bold text-indigo-700">
+                  <span
+                    className={`inline-flex h-6 w-6 items-center justify-center rounded-lg text-[11px] font-bold ${
+                      showPreferences
+                        ? "bg-white/20 text-white"
+                        : "bg-white text-[#0F9EDA]"
+                    }`}
+                  >
                     Aa
                   </span>
                   <span>

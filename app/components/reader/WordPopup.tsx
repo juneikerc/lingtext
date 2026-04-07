@@ -30,7 +30,7 @@ export default function WordPopup({
 
   return (
     <div
-      className="absolute w-full backdrop-blur-sm rounded-xl shadow-lg border z-30 overflow-hidden max-h-[70vh] overflow-y-auto"
+      className="absolute w-full backdrop-blur-md rounded-2xl shadow-xl border z-30 overflow-hidden"
       style={{
         left,
         top,
@@ -40,183 +40,247 @@ export default function WordPopup({
         borderColor: "var(--reader-border-color)",
       }}
     >
-      {/* Header con la palabra */}
+      {/* Header */}
       <div
-        className="p-4"
-        style={{ backgroundColor: "var(--reader-muted-bg)" }}
+        className="flex items-center justify-between px-4 py-3 border-b"
+        style={{
+          borderColor: "var(--reader-border-color)",
+          backgroundColor: "var(--reader-muted-bg)",
+        }}
       >
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center"
-              style={{ backgroundColor: "var(--reader-border-color)" }}
-            >
-              <span className="text-sm">📖</span>
-            </div>
-            <div>
-              <h3 className="font-bold text-lg">{popup.word}</h3>
-              <p className="text-sm" style={{ opacity: 0.6 }}>
-                Palabra seleccionada
-              </p>
-            </div>
-          </div>
-          <button
-            className="p-2 rounded-lg transition-colors duration-200 hover:opacity-80"
-            onClick={(e) => onSpeak(popup.word, e)}
-            title="Escuchar pronunciación"
+        <div className="flex items-center gap-3 min-w-0">
+          <div
+            className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
+            style={{
+              backgroundColor: "var(--reader-accent-color)",
+              opacity: 0.12,
+            }}
           >
-            <span className="text-xl">🔊</span>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              className="w-4 h-4"
+              style={{ color: "var(--reader-accent-color)" }}
+            >
+              <path
+                d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+          <div className="min-w-0">
+            <h3 className="font-bold text-base truncate">{popup.word}</h3>
+            <p className="text-[11px] opacity-50">Palabra seleccionada</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-1 shrink-0">
+          <button
+            className="p-2 rounded-lg transition-colors duration-200 hover:opacity-70"
+            onClick={(e) => onSpeak(popup.word, e)}
+            title="Escuchar"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              className="w-4 h-4"
+            >
+              <polygon
+                points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M15.54 8.46a5 5 0 0 1 0 7.07"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </button>
           <button
-            className="ml-1 p-2 rounded-lg transition-colors duration-200 hover:opacity-80"
+            className="p-2 rounded-lg transition-colors duration-200 hover:opacity-70"
             onClick={onClose}
             title="Cerrar"
           >
-            <span className="text-lg">✕</span>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              className="w-4 h-4"
+            >
+              <path
+                d="M18 6 6 18M6 6l12 12"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </button>
         </div>
       </div>
 
-      {/* Contenido principal */}
-      <div className="p-4">
-        {/* Traducción */}
-        <div className="mb-4">
-          <div className="flex items-center space-x-2 mb-2">
-            <div
-              className="w-5 h-5 rounded-lg flex items-center justify-center"
-              style={{ backgroundColor: "var(--reader-border-color)" }}
-            >
-              <span className="text-xs">🇪🇸</span>
+      {/* Traducción */}
+      <div className="px-4 pt-3 pb-2">
+        <div
+          className="rounded-xl p-3 border"
+          style={{
+            backgroundColor: "var(--reader-muted-bg)",
+            borderColor: "var(--reader-border-color)",
+          }}
+        >
+          {popup.isLoading ? (
+            <div className="flex items-center justify-center gap-2 py-1">
+              <span
+                className="w-4 h-4 border-2 rounded-full animate-spin"
+                style={{
+                  borderColor: "var(--reader-accent-color)",
+                  borderTopColor: "transparent",
+                }}
+              />
+              <span className="text-sm opacity-60">Traduciendo...</span>
             </div>
-            <span className="font-semibold" style={{ opacity: 0.7 }}>
-              Traducción
-            </span>
-          </div>
-          <div
-            className="rounded-lg p-3 border"
-            style={{
-              backgroundColor: "var(--reader-muted-bg)",
-              borderColor: "var(--reader-border-color)",
-            }}
-          >
-            {popup.isLoading ? (
-              <div
-                className="flex items-center justify-center gap-2 text-sm"
-                style={{ opacity: 0.6 }}
-              >
-                <span
-                  className="w-4 h-4 border-2 rounded-full animate-spin"
-                  style={{
-                    borderColor: "var(--reader-accent-color)",
-                    borderTopColor: "transparent",
-                  }}
-                />
-                <span>Traduciendo...</span>
-              </div>
-            ) : isTranslationJson(popup.translation) ? (
-              <div className="space-y-2">
-                {(() => {
-                  const parsed = JSON.parse(popup.translation);
-                  return Object.entries(parsed.info).map(
-                    ([category, translations]) => (
-                      <div key={category}>
-                        <p
-                          className="text-sm font-semibold"
-                          style={{ opacity: 0.6 }}
-                        >
-                          {category}
-                        </p>
-                        <p>{(translations as string[]).join(", ")}</p>
-                      </div>
-                    )
-                  );
-                })()}
-              </div>
-            ) : (
-              <span className="text-xl font-bold">{popup.translation}</span>
-            )}
-          </div>
+          ) : isTranslationJson(popup.translation) ? (
+            <div className="space-y-2">
+              {(() => {
+                const parsed = JSON.parse(popup.translation);
+                return Object.entries(parsed.info).map(
+                  ([category, translations]) => (
+                    <div key={category}>
+                      <p className="text-[11px] font-semibold uppercase tracking-wide opacity-50">
+                        {category}
+                      </p>
+                      <p className="text-sm">
+                        {(translations as string[]).join(", ")}
+                      </p>
+                    </div>
+                  )
+                );
+              })()}
+            </div>
+          ) : (
+            <span className="text-lg font-bold">{popup.translation}</span>
+          )}
         </div>
+      </div>
 
-        {/* Estado de la palabra */}
-        <div className="mb-4">
-          <div className="flex items-center space-x-2 mb-2">
-            <div
-              className="w-5 h-5 rounded-lg flex items-center justify-center"
-              style={{ backgroundColor: "var(--reader-border-color)" }}
-            >
-              <span className="text-xs">🎯</span>
-            </div>
-            <span className="font-semibold" style={{ opacity: 0.7 }}>
-              Estado
-            </span>
-          </div>
-          <div
-            className={`inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium border ${
-              isUnknown
-                ? "bg-orange-50 text-orange-700 border-orange-200"
-                : "bg-green-50 text-green-700 border-green-200"
+      {/* Estado */}
+      <div className="px-4 py-2">
+        <div
+          className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium border ${
+            isUnknown
+              ? "bg-orange-50 text-orange-700 border-orange-200"
+              : "bg-green-50 text-green-700 border-green-200"
+          }`}
+        >
+          <span
+            className={`w-1.5 h-1.5 rounded-full ${isUnknown ? "bg-orange-500" : "bg-green-500"}`}
+          />
+          {isUnknown ? "Por aprender" : "Conocida"}
+        </div>
+      </div>
+
+      {/* Acciones */}
+      <div className="px-4 pb-4 pt-1 space-y-2">
+        {isUnknown ? (
+          <button
+            className={`w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 border bg-green-50 text-green-700 border-green-200 ${
+              popup.isLoading
+                ? "opacity-60 cursor-not-allowed"
+                : "hover:bg-green-100 hover:shadow-sm"
             }`}
+            onClick={() => onMarkKnown(popup.lower)}
+            disabled={popup.isLoading}
           >
-            <span
-              className={`w-2 h-2 rounded-full mr-2 ${
-                isUnknown ? "bg-orange-500" : "bg-green-500"
-              }`}
-            ></span>
-            {isUnknown ? "Por aprender" : "Conocida"}
-          </div>
-        </div>
-
-        {/* Acciones */}
-        <div className="space-y-2">
-          <div className="text-sm font-medium mb-3" style={{ opacity: 0.7 }}>
-            Acciones rápidas:
-          </div>
-
-          <div className="grid grid-cols-1 gap-2">
-            {isUnknown ? (
-              <button
-                className={`w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-lg transition-all duration-200 shadow-sm border bg-green-50 text-green-700 border-green-200 ${
-                  popup.isLoading
-                    ? "opacity-60 cursor-not-allowed"
-                    : "hover:bg-green-100 hover:shadow-md"
-                }`}
-                onClick={() => onMarkKnown(popup.lower)}
-                disabled={popup.isLoading}
-              >
-                <span>✅</span>
-                <span>Marcar como conocida</span>
-              </button>
-            ) : (
-              <button
-                className={`w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-lg transition-all duration-200 shadow-sm border bg-orange-50 text-orange-700 border-orange-200 ${
-                  popup.isLoading
-                    ? "opacity-60 cursor-not-allowed"
-                    : "hover:bg-orange-100 hover:shadow-md"
-                }`}
-                onClick={() =>
-                  onMarkUnknown(popup.lower, popup.word, popup.translation)
-                }
-                disabled={popup.isLoading}
-              >
-                <span>🎓</span>
-                <span>Marcar para repasar</span>
-              </button>
-            )}
-
-            <button
-              className="w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-lg transition-all duration-200 border"
-              style={{
-                backgroundColor: "var(--reader-muted-bg)",
-                borderColor: "var(--reader-border-color)",
-              }}
-              onClick={(e) => onSpeak(popup.word, e)}
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              className="w-4 h-4"
             >
-              <span>🔊</span>
-              <span>Escuchar de nuevo</span>
-            </button>
-          </div>
-        </div>
+              <polyline
+                points="20 6 9 17 4 12"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            Marcar como conocida
+          </button>
+        ) : (
+          <button
+            className={`w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 border bg-orange-50 text-orange-700 border-orange-200 ${
+              popup.isLoading
+                ? "opacity-60 cursor-not-allowed"
+                : "hover:bg-orange-100 hover:shadow-sm"
+            }`}
+            onClick={() =>
+              onMarkUnknown(popup.lower, popup.word, popup.translation)
+            }
+            disabled={popup.isLoading}
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              className="w-4 h-4"
+            >
+              <path
+                d="M12 20h9"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            Marcar para repasar
+          </button>
+        )}
+
+        <button
+          className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 border hover:shadow-sm"
+          style={{
+            backgroundColor: "var(--reader-muted-bg)",
+            borderColor: "var(--reader-border-color)",
+          }}
+          onClick={(e) => onSpeak(popup.word, e)}
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            className="w-4 h-4"
+          >
+            <polygon
+              points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M19.07 4.93a10 10 0 0 1 0 14.14"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          Escuchar de nuevo
+        </button>
       </div>
     </div>
   );

@@ -89,8 +89,8 @@ function ReaderWordTokens({
             key={tokenKey}
             className={`word-token relative inline-block px-1 py-0.5 mx-0.5 rounded-lg cursor-pointer transition-all duration-200 group ${
               isUnknown
-                ? "bg-yellow-200 text-yellow-900 font-semibold shadow-lg border border-yellow-300"
-                : "reader-token-hover hover:shadow-md"
+                ? "bg-yellow-200 text-yellow-900 font-semibold shadow-sm border border-yellow-300"
+                : "reader-token-hover hover:shadow-sm"
             } ${isPhrasePart ? "underline decoration-2 underline-offset-4" : ""}`}
             data-lower={low}
             data-word={t.text}
@@ -101,14 +101,14 @@ function ReaderWordTokens({
             {!isUnknown && (
               <span
                 aria-hidden="true"
-                className="reader-copy-tooltip absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none select-none whitespace-nowrap z-10"
+                className="reader-copy-tooltip absolute -top-8 left-1/2 -translate-x-1/2 text-[10px] px-2.5 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none select-none whitespace-nowrap z-10 group-hover:-top-7"
               >
                 Clic para traducir
-                <span className="reader-copy-tooltip-arrow absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent"></span>
+                <span className="reader-copy-tooltip-arrow absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent"></span>
               </span>
             )}
             {isUnknown && (
-              <span className="absolute -top-2 -right-1 w-3 h-3 bg-yellow-500 rounded-full border-2 animate-pulse border-white"></span>
+              <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-yellow-500 rounded-full border-2 border-white animate-pulse"></span>
             )}
           </span>
         );

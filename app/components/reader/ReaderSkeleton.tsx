@@ -24,8 +24,8 @@ export default function ReaderSkeleton() {
       {/* Indicador de carga centrado */}
       <div className="absolute inset-0 flex items-center justify-center bg-gray-50/50">
         <div className="text-center">
-          <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-          <p className="text-sm text-gray-600">
+          <div className="w-8 h-8 border-[3px] border-[#0F9EDA]/20 border-t-[#0F9EDA] rounded-full animate-spin mx-auto mb-3" />
+          <p className="text-sm text-gray-500 font-medium">
             Cargando lector...
           </p>
         </div>

@@ -9,9 +9,9 @@ import {
 } from "./preferences";
 
 function optionButtonClass(isActive: boolean) {
-  return `rounded-lg border px-3 py-2 text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
+  return `rounded-lg border px-3 py-2 text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
     isActive
-      ? "border-indigo-500 bg-indigo-600 text-white"
+      ? "border-[#0F9EDA] bg-[#0F9EDA] text-white"
       : "border-gray-200 bg-white text-gray-700 hover:bg-gray-50"
   }`;
 }
@@ -21,8 +21,13 @@ export default function ReaderPreferencesPanel({
 }: {
   onClose: () => void;
 }) {
-  const { preferences, isReady, applyPreset, updatePreference, resetPreferences } =
-    useReaderPreferences();
+  const {
+    preferences,
+    isReady,
+    applyPreset,
+    updatePreference,
+    resetPreferences,
+  } = useReaderPreferences();
 
   return (
     <div className="rounded-2xl border border-gray-200 bg-gray-50/90 p-4 shadow-sm">
@@ -39,7 +44,7 @@ export default function ReaderPreferencesPanel({
           <button
             type="button"
             onClick={resetPreferences}
-            className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-xs font-semibold text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+            className="inline-flex items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-xs font-semibold text-gray-700 transition-colors duration-200 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             disabled={!isReady}
           >
             Restablecer
@@ -47,7 +52,7 @@ export default function ReaderPreferencesPanel({
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex items-center justify-center gap-1 rounded-lg bg-indigo-600 px-3 py-2 text-xs font-semibold text-white transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+            className="inline-flex items-center justify-center gap-1 rounded-lg bg-[#0F9EDA] px-3 py-2 text-xs font-semibold text-white transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
           >
             <span aria-hidden="true">✕</span>
             <span>Cerrar panel</span>
@@ -91,7 +96,10 @@ export default function ReaderPreferencesPanel({
               type="button"
               className={optionButtonClass(false)}
               onClick={() =>
-                updatePreference("fontSize", Math.max(15, preferences.fontSize - 1))
+                updatePreference(
+                  "fontSize",
+                  Math.max(15, preferences.fontSize - 1)
+                )
               }
               aria-label="Reducir tamano de letra"
               disabled={!isReady}
@@ -107,7 +115,7 @@ export default function ReaderPreferencesPanel({
               onChange={(event) =>
                 updatePreference("fontSize", Number(event.target.value))
               }
-              className="h-2 w-full cursor-pointer accent-indigo-600"
+              className="h-2 w-full cursor-pointer accent-[#0F9EDA]"
               aria-label="Tamano de letra"
               disabled={!isReady}
             />
@@ -115,7 +123,10 @@ export default function ReaderPreferencesPanel({
               type="button"
               className={optionButtonClass(false)}
               onClick={() =>
-                updatePreference("fontSize", Math.min(24, preferences.fontSize + 1))
+                updatePreference(
+                  "fontSize",
+                  Math.min(24, preferences.fontSize + 1)
+                )
               }
               aria-label="Aumentar tamano de letra"
               disabled={!isReady}
@@ -137,7 +148,9 @@ export default function ReaderPreferencesPanel({
               <button
                 key={option.value}
                 type="button"
-                className={optionButtonClass(preferences.theme === option.value)}
+                className={optionButtonClass(
+                  preferences.theme === option.value
+                )}
                 onClick={() => updatePreference("theme", option.value)}
                 disabled={!isReady}
               >

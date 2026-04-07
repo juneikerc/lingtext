@@ -142,14 +142,51 @@ export default function AudioSection({
             <div className="flex-1 flex items-center gap-2 overflow-hidden">
               {audioError ? (
                 <>
-                  <span className="text-red-500 shrink-0">⚠️</span>
-                  <span className="text-red-600 truncate">
-                    {audioError}
-                  </span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    className="w-4 h-4 text-red-500 shrink-0"
+                  >
+                    <circle cx="12" cy="12" r="10" strokeWidth="2" />
+                    <line
+                      x1="15"
+                      y1="9"
+                      x2="9"
+                      y2="15"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                    <line
+                      x1="9"
+                      y1="9"
+                      x2="15"
+                      y2="15"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                  <span className="text-red-600 truncate">{audioError}</span>
                 </>
               ) : showReauthorize ? (
                 <>
-                  <span className="text-orange-500 shrink-0">🔒</span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    className="w-4 h-4 text-orange-500 shrink-0"
+                  >
+                    <rect
+                      x="3"
+                      y="11"
+                      width="18"
+                      height="11"
+                      rx="2"
+                      ry="2"
+                      strokeWidth="2"
+                    />
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4" strokeWidth="2" />
+                  </svg>
                   <span className="text-orange-600 truncate">
                     {isLocalFile
                       ? "Permiso requerido para archivo local"
@@ -158,7 +195,25 @@ export default function AudioSection({
                 </>
               ) : (
                 <>
-                  <span className="text-blue-500 shrink-0">📁</span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    className="w-4 h-4 text-blue-500 shrink-0"
+                  >
+                    <path
+                      d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <polyline
+                      points="13 2 13 9 20 9"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                   <span className="text-blue-600 truncate">
                     Archivo grande detectado
                   </span>
@@ -199,11 +254,29 @@ export default function AudioSection({
           <div className="w-full flex-1 min-w-0">
             <div className="flex items-center gap-3 mb-1 sm:mb-0">
               {/* Status Indicator */}
-              <div className="shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 text-gray-500">
+              <div className="shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-[#0F9EDA]/10 text-[#0F9EDA]">
                 {isLoading ? (
-                  <div className="w-4 h-4 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+                  <div className="w-4 h-4 border-2 border-[#0F9EDA] border-t-transparent rounded-full animate-spin"></div>
                 ) : (
-                  <span className="text-sm">🎵</span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    className="w-4 h-4"
+                  >
+                    <polygon
+                      points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M15.54 8.46a5 5 0 0 1 0 7.07"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 )}
               </div>
 
@@ -257,9 +330,9 @@ export default function AudioSection({
                 <button
                   key={v}
                   onClick={() => setExact(v)}
-                  className={`px-2 py-1 rounded-md text-xs font-medium transition-colors ${
+                  className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors ${
                     rate === v
-                      ? "bg-indigo-100 text-indigo-700"
+                      ? "bg-[#0F9EDA]/10 text-[#0F9EDA]"
                       : "text-gray-500 hover:bg-gray-100"
                   }`}
                 >
