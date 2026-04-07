@@ -94,17 +94,17 @@ export default function LanguageIslandsPage() {
     <main className="min-h-screen bg-white">
       <section className="relative overflow-hidden border-b border-gray-200 bg-white px-4 py-16 md:py-24">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute left-[12%] top-[18%] h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl"></div>
-          <div className="absolute bottom-[15%] right-[10%] h-72 w-72 rounded-full bg-sky-500/10 blur-3xl"></div>
+          <div className="absolute left-[12%] top-[18%] h-72 w-72 rounded-full bg-[#0F9EDA]/10 blur-3xl"></div>
+          <div className="absolute bottom-[15%] right-[10%] h-72 w-72 rounded-full bg-[#0F9EDA]/5 blur-3xl"></div>
         </div>
 
         <div className="relative mx-auto max-w-5xl text-center">
           <div className="mb-6 inline-flex items-center rounded-full border border-gray-200 bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700">
-            <span className="mr-2 h-2 w-2 rounded-full bg-indigo-500"></span>
+            <span className="mr-2 h-2 w-2 rounded-full bg-[#0F9EDA]"></span>
             Método por micro-contextos
           </div>
 
-          <h1 className="text-4xl font-extrabold leading-tight text-gray-900 md:text-5xl lg:text-6xl">
+          <h1 className="text-4xl font-bold leading-tight text-gray-900 md:text-5xl lg:text-6xl">
             Language Island: estudia inglés oración por oración
           </h1>
 
@@ -123,13 +123,13 @@ export default function LanguageIslandsPage() {
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href="#agregar-isla-manual"
-              className="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               Crear mi primera isla
             </a>
             <a
               href="#faq-language-island"
-              className="inline-flex items-center justify-center rounded-xl border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              className="inline-flex items-center justify-center rounded-xl border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               Ver preguntas frecuentes
             </a>
@@ -142,7 +142,7 @@ export default function LanguageIslandsPage() {
       <section className="relative overflow-hidden border-b border-gray-200 bg-gray-50 py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-6">
           <header className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-wide text-indigo-600">
+            <p className="text-sm font-semibold uppercase tracking-wide text-[#0F9EDA]">
               Cómo usar Language Island
             </p>
             <h2 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
@@ -175,7 +175,7 @@ export default function LanguageIslandsPage() {
       <section className="relative overflow-hidden border-b border-gray-200 bg-white py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-6">
           <header className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-wide text-indigo-600">
+            <p className="text-sm font-semibold uppercase tracking-wide text-[#0F9EDA]">
               Ventajas clave
             </p>
             <h2 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
@@ -204,7 +204,7 @@ export default function LanguageIslandsPage() {
       <section className="relative overflow-hidden border-b border-gray-200 bg-gray-50 py-16 sm:py-20">
         <div className="mx-auto max-w-5xl px-6">
           <header className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-wide text-indigo-600">
+            <p className="text-sm font-semibold uppercase tracking-wide text-[#0F9EDA]">
               Estrategia de estudio
             </p>
             <h2 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
@@ -234,7 +234,7 @@ export default function LanguageIslandsPage() {
           <div className="mt-8">
             <Link
               to="/aprender-ingles-con-canciones"
-              className="inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              className="inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               También quiero practicar con canciones
             </Link>
@@ -248,7 +248,7 @@ export default function LanguageIslandsPage() {
       >
         <div className="mx-auto max-w-5xl px-6">
           <header className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-wide text-indigo-600">
+            <p className="text-sm font-semibold uppercase tracking-wide text-[#0F9EDA]">
               FAQ
             </p>
             <h2 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">

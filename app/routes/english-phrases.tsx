@@ -142,7 +142,7 @@ export default function EnglishPhrasesPage({
           <div className="mx-auto max-w-5xl px-6">
             <div className="flex flex-col gap-6">
               <div className="inline-flex items-center gap-3 self-start rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700">
-                <span className="h-2 w-2 rounded-full bg-indigo-500" />
+                <span className="h-2 w-2 rounded-full bg-[#0F9EDA]" />
                 Practica con audio
               </div>
               <div className="space-y-4">
@@ -169,7 +169,7 @@ export default function EnglishPhrasesPage({
               <div>
                 <Link
                   to="/"
-                  className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-6 py-3 text-gray-700 transition-colors duration-200 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                  className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-6 py-3 text-gray-700 transition-colors duration-200 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 >
                   Volver al inicio
                 </Link>
@@ -178,7 +178,7 @@ export default function EnglishPhrasesPage({
                 <button
                   type="button"
                   onClick={onDownloadPdf}
-                  className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-6 py-3 font-medium text-white shadow-sm transition-colors duration-200 hover:bg-indigo-700 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                  className="inline-flex items-center justify-center rounded-lg bg-[#0F9EDA] px-6 py-3 font-medium text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 >
                   Descargar 1000 frases en ingles PDF
                 </button>
@@ -202,7 +202,7 @@ export default function EnglishPhrasesPage({
                     <a
                       key={`toc-${group.category}`}
                       href={`#${slugify(group.category)}`}
-                      className="inline-flex items-center px-4 py-2 text-sm font-medium bg-gray-100 text-gray-700 border border-gray-200 rounded-full transition-colors duration-200 hover:bg-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                      className="inline-flex items-center px-4 py-2 text-sm font-medium bg-gray-100 text-gray-700 border border-gray-200 rounded-full transition-colors duration-200 hover:bg-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                     >
                       {group.category}
                     </a>
@@ -248,7 +248,7 @@ export default function EnglishPhrasesPage({
                           </span>
                           <button
                             type="button"
-                            className="inline-flex items-center justify-center rounded-xl bg-gray-50 p-3 text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                            className="inline-flex items-center justify-center rounded-xl bg-gray-50 p-3 text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                             title="Reproducir frase"
                             aria-label={`Reproducir frase: ${phrase.phrase}`}
                             onClick={async (event) => {
@@ -257,7 +257,7 @@ export default function EnglishPhrasesPage({
                               await onSpeak(phrase.phrase);
                             }}
                           >
-                            ▶
+                            <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><polygon points="5 3 19 12 5 21 5 3" /></svg>
                           </button>
                         </summary>
                         <div className="border-t border-gray-200 px-5 py-4 text-gray-600">
@@ -274,7 +274,7 @@ export default function EnglishPhrasesPage({
       </div>
       <a
         href="#top"
-        className="fixed bottom-6 right-6 inline-flex items-center justify-center rounded-xl bg-indigo-600 p-3 text-white shadow-sm transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+        className="fixed bottom-6 right-6 inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] p-3 text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
         aria-label="Volver al inicio"
         title="Volver al inicio"
       >

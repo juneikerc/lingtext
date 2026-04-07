@@ -92,17 +92,17 @@ export default function SongsPage() {
     <main className="min-h-screen bg-white">
       <section className="relative overflow-hidden py-16 px-4 md:py-24 bg-white border-b border-gray-200">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-[18%] left-[12%] w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-[15%] right-[10%] w-72 h-72 bg-sky-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-[18%] left-[12%] w-72 h-72 bg-[#0F9EDA]/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-[15%] right-[10%] w-72 h-72 bg-[#0F9EDA]/5 rounded-full blur-3xl"></div>
         </div>
 
         <div className="relative max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-gray-700 bg-gray-100 rounded-full border border-gray-200">
-            <span className="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>
+          <div className="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-gray-700 bg-gray-50 rounded-full border border-gray-200">
+            <span className="w-2 h-2 bg-[#0F9EDA] rounded-full mr-2"></span>
             Método práctico con música
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
             Aprender inglés con canciones: letras, contexto y práctica real
           </h1>
 
@@ -122,13 +122,13 @@ export default function SongsPage() {
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               href="#agregar-cancion-manual"
-              className="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               Agregar mi primera canción
             </a>
             <a
               href="#faq-canciones"
-              className="inline-flex items-center justify-center rounded-xl border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              className="inline-flex items-center justify-center rounded-xl border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               Resolver dudas comunes
             </a>
@@ -141,7 +141,7 @@ export default function SongsPage() {
       <section className="relative overflow-hidden py-16 sm:py-20 bg-gray-50 border-b border-gray-200">
         <div className="mx-auto max-w-6xl px-6">
           <header className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-wide text-indigo-600">
+            <p className="text-sm font-semibold uppercase tracking-wide text-[#0F9EDA]">
               Cómo usar la herramienta
             </p>
             <h2 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
@@ -174,7 +174,7 @@ export default function SongsPage() {
       <section className="relative overflow-hidden py-16 sm:py-20 bg-white border-b border-gray-200">
         <div className="mx-auto max-w-6xl px-6">
           <header className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-wide text-indigo-600">
+            <p className="text-sm font-semibold uppercase tracking-wide text-[#0F9EDA]">
               Ventajas clave
             </p>
             <h2 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
@@ -203,7 +203,7 @@ export default function SongsPage() {
       <section className="relative overflow-hidden py-16 sm:py-20 bg-gray-50 border-b border-gray-200">
         <div className="mx-auto max-w-5xl px-6">
           <header className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-wide text-indigo-600">
+            <p className="text-sm font-semibold uppercase tracking-wide text-[#0F9EDA]">
               Recomendaciones prácticas
             </p>
             <h2 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
@@ -238,7 +238,7 @@ export default function SongsPage() {
       >
         <div className="mx-auto max-w-5xl px-6">
           <header className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-wide text-indigo-600">
+            <p className="text-sm font-semibold uppercase tracking-wide text-[#0F9EDA]">
               FAQ
             </p>
             <h2 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
@@ -276,13 +276,13 @@ export default function SongsPage() {
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               href="#agregar-cancion-manual"
-              className="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               Comenzar ahora
             </a>
             <Link
               to="/"
-              className="inline-flex items-center justify-center rounded-xl border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              className="inline-flex items-center justify-center rounded-xl border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               Volver al inicio
             </Link>

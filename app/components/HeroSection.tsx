@@ -121,7 +121,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
               </div>
               <div className="flex-1 mx-3 h-5 rounded-md bg-gray-100 flex items-center px-3">
                 <span className="text-[10px] text-gray-400">
-                  lingtext.app/read
+                  lingtext.org/texts/....
                 </span>
               </div>
             </div>
@@ -193,7 +193,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
                 <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
               </svg>
             }
-            label="Audio integrado"
+            label="Audio"
             position="top-4 -right-3 lg:-right-8"
             delay={0}
           />
@@ -240,7 +240,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
                 <path d="M14 18h6"></path>
               </svg>
             }
-            label="Traducción AI"
+            label="Traducción"
             position="bottom-24 -right-3 lg:-right-10"
             delay={2}
           />

@@ -66,21 +66,21 @@ export default function Level({ loaderData }: Route.ComponentProps) {
 
   return (
     <>
+      {/* Hero */}
       <section className="relative overflow-hidden py-16 sm:py-24 bg-white border-b border-gray-200">
-        {/* Decorative blobs */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-[10%] left-[10%] w-64 h-64 bg-[#0F9EDA]/5]/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-[10%] right-[10%] w-64 h-64 bg-sky-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-[10%] left-[10%] w-64 h-64 bg-[#0F9EDA]/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-[10%] right-[10%] w-64 h-64 bg-[#0F9EDA]/5 rounded-full blur-3xl"></div>
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="mb-8">
-            <a
-              href="/"
-              className="inline-flex items-center text-sm font-medium text-gray-600 hover:text-[#0F9EDA]] transition-colors duration-200"
+            <Link
+              to="/"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-[#0F9EDA] transition-colors duration-200"
             >
               <svg
-                className="w-4 h-4 mr-2"
+                className="w-4 h-4"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -89,18 +89,19 @@ export default function Level({ loaderData }: Route.ComponentProps) {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                  d="m15 18-6-6 6-6"
                 />
               </svg>
               Volver al inicio
-            </a>
+            </Link>
           </nav>
 
-          <div className="inline-flex items-center px-3 py-1.5 mb-6 text-xs font-semibold uppercase tracking-wider text-[#0F9EDA]] bg-[#0F9EDA]/5]/10 rounded-full border border-[#0F9EDA]/20]/30">
+          <div className="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-[#0F9EDA] bg-[#0F9EDA]/10 rounded-full border border-[#0F9EDA]/20">
+            <span className="w-2 h-2 bg-[#0F9EDA] rounded-full mr-2.5"></span>
             Nivel {levelText.level}
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight tracking-tight">
             {levelText.mainHeading}
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed max-w-3xl">
@@ -109,12 +110,13 @@ export default function Level({ loaderData }: Route.ComponentProps) {
         </div>
       </section>
 
+      {/* Textos */}
       <section className="relative overflow-hidden py-16 sm:py-24 bg-gray-50 border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-10">
-            <div className="w-10 h-10 bg-[#0F9EDA] rounded-xl flex items-center justify-center shadow-sm">
+            <div className="w-10 h-10 bg-[#0F9EDA]/10 rounded-xl flex items-center justify-center border border-[#0F9EDA]/20">
               <svg
-                className="w-6 h-6 text-white"
+                className="w-5 h-5 text-[#0F9EDA]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -127,12 +129,12 @@ export default function Level({ loaderData }: Route.ComponentProps) {
                 />
               </svg>
             </div>
-            <h2 className="text-3xl font-bold text-gray-900">
+            <h2 className="text-3xl font-bold text-gray-900 tracking-tight">
               Textos de este nivel
             </h2>
           </div>
 
-          <div className="grid gap-6">
+          <div className="grid gap-4">
             {texts.map((text: TextManifestEntry) => {
               const textId = formatSlug(text.title);
               const isVisited = visitedTextIds.has(textId);
@@ -141,23 +143,23 @@ export default function Level({ loaderData }: Route.ComponentProps) {
                 <Link
                   key={text.title}
                   to={`/texts/${textId}?source=collection`}
-                  className={`group rounded-2xl border shadow-sm transition duration-200 overflow-hidden block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 ${
+                  className={`group rounded-2xl border shadow-sm transition-all duration-200 overflow-hidden block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 ${
                     isVisited
-                      ? "bg-[#0F9EDA]/5]/10 border-[#0F9EDA]/20]/30 hover:shadow-md hover:border-[#0F9EDA]/30]/40"
-                      : "bg-white border-gray-200 hover:shadow-md hover:border-gray-300"
+                      ? "bg-[#0F9EDA]/5 border-[#0F9EDA]/20 hover:shadow-md hover:border-[#0F9EDA]/30"
+                      : "bg-white border-gray-200 hover:shadow-md hover:border-[#0F9EDA]/30"
                   }`}
                   rel="nofollow"
                 >
-                  <div className="p-8">
+                  <div className="p-6 sm:p-8">
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                      <div className="flex items-center gap-3">
-                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#0F9EDA]] transition-colors duration-200">
+                      <div className="flex items-center gap-3 min-w-0">
+                        <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#0F9EDA] transition-colors duration-200 truncate">
                           {text.title}
                         </h3>
                         {isVisited ? (
-                          <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700">
+                          <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 shrink-0">
                             <svg
-                              className="w-4 h-4"
+                              className="w-3.5 h-3.5"
                               fill="none"
                               viewBox="0 0 24 24"
                               stroke="currentColor"
@@ -173,31 +175,31 @@ export default function Level({ loaderData }: Route.ComponentProps) {
                           </span>
                         ) : null}
                         {text.sound ? (
-                          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#0F9EDA]/20]/30 bg-[#0F9EDA]/5]/10 px-2.5 py-1 text-xs font-semibold text-[#0A7AAB]]">
+                          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 px-2.5 py-1 text-xs font-semibold text-[#0F9EDA] shrink-0">
                             <svg
-                              className="w-4 h-4"
+                              className="w-3.5 h-3.5"
                               fill="none"
                               viewBox="0 0 24 24"
                               stroke="currentColor"
                             >
-                              <path
+                              <polygon
+                                points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                                 strokeWidth={2}
-                                d="M11 5L6 9H3v6h3l5 4V5z"
                               />
                               <path
+                                d="M15.54 8.46a5 5 0 0 1 0 7.07"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                                 strokeWidth={2}
-                                d="M15.5 8.5a5 5 0 010 7"
                               />
                             </svg>
                             Audio
                           </span>
                         ) : null}
                       </div>
-                      <span className="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#0F9EDA] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors duration-200 group-hover:bg-[#0D8EC4]]">
+                      <span className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-[#0F9EDA] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors duration-200 group-hover:bg-[#0D8EC4] shrink-0">
                         {isVisited ? "Volver a leer" : "Leer ahora"}
                         <svg
                           className="w-4 h-4"
@@ -220,21 +222,22 @@ export default function Level({ loaderData }: Route.ComponentProps) {
             })}
           </div>
 
-          <div className="mt-10 rounded-2xl border border-[#0F9EDA]/20 bg-[#0F9EDA]/5 p-6]/30]/10">
+          {/* CTA otros niveles */}
+          <div className="mt-10 rounded-2xl border border-[#0F9EDA]/15 bg-[#0F9EDA]/5 p-6">
             <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <p className="text-sm font-semibold text-[#0A7AAB]]">
+                <p className="text-sm font-semibold text-[#0F9EDA]">
                   ¿Quieres más?
                 </p>
                 <p className="mt-1 text-base text-gray-700">
-                  Dale un vistazo a lecturas en otros niveles
+                  Dale un vistazo a lecturas en otros niveles.
                 </p>
               </div>
               <Link
                 to="/textos-en-ingles"
-                className="shrink-0 inline-flex items-center justify-center rounded-full bg-[#0F9EDA] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50]"
+                className="shrink-0 inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50"
               >
-                Explorar mas lecturas en inglés
+                Explorar más lecturas
                 <svg
                   className="ml-2 h-4 w-4"
                   fill="none"
@@ -254,6 +257,7 @@ export default function Level({ loaderData }: Route.ComponentProps) {
         </div>
       </section>
 
+      {/* Contenido SEO */}
       <section className="relative overflow-hidden py-16 sm:py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <ProseContent html={levelText.html} />
