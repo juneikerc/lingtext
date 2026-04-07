@@ -5,12 +5,14 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
 } from "react-router";
 import { useEffect } from "react";
 
 import type { Route } from "./+types/root";
 import "./app.css";
 import Footer from "~/components/Footer";
+import Header from "~/components/Header";
 import { useExtensionSync } from "~/hooks/useExtensionSync";
 
 function useExposeDbDebug() {
@@ -80,8 +82,20 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   useExposeDbDebug();
-  useExtensionSync(); // Sincronización con la extensión de Chrome
-  return <Outlet />;
+  useExtensionSync();
+
+  const location = useLocation();
+  const isReaderPage =
+    /^\/texts\/[^/]+$/.test(location.pathname) ||
+    /^\/aprender-ingles-con-canciones\/[^/]+$/.test(location.pathname) ||
+    /^\/aprender-con-language-island\/[^/]+$/.test(location.pathname);
+
+  return (
+    <>
+      {!isReaderPage && <Header />}
+      <Outlet />
+    </>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
