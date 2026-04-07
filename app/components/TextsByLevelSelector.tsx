@@ -48,12 +48,7 @@ export default function TextsByLevelSelector({
               {level.description}
             </p>
           </div>
-
-          <div className="mt-6 rounded-2xl border border-indigo-100 bg-indigo-50/60 p-5 dark:border-indigo-900/40 dark:bg-indigo-950/20">
-            <p className="mb-4 text-sm font-semibold text-gray-900 dark:text-gray-100">
-              3 textos recomendados para empezar
-            </p>
-            <div className="space-y-3">
+            <div className="space-y-3 mt-6">
               {level.texts.map((text) => (
                 <Link
                   key={`${level.id}-${text.slug}`}
@@ -85,14 +80,10 @@ export default function TextsByLevelSelector({
                 </Link>
               ))}
             </div>
-          </div>
+          
 
           <div className="mt-auto pt-6">
-            <div className="rounded-2xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-800 dark:bg-gray-950/60">
-              <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                Siguiente paso
-              </p>
-
+            
               <Link
                 to={`/levels/${level.id}`}
                 className="mt-4 inline-flex w-full items-center justify-between rounded-xl border border-indigo-200 bg-indigo-50 px-4 py-3 text-sm font-semibold text-indigo-700 transition duration-200 hover:border-indigo-300 hover:bg-indigo-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 dark:border-indigo-900/50 dark:bg-indigo-950/40 dark:text-indigo-300 dark:hover:border-indigo-800 dark:hover:bg-indigo-950/70 dark:focus-visible:ring-offset-gray-900"
@@ -112,7 +103,7 @@ export default function TextsByLevelSelector({
                   />
                 </svg>
               </Link>
-            </div>
+            
           </div>
         </article>
       ))}

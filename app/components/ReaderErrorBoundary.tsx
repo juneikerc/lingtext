@@ -30,7 +30,7 @@ export default function ReaderErrorBoundary({
             Reintentar
           </button>
           <Link
-            to="/"
+            to="/my-library"
             className="block w-full px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg transition-colors"
           >
             Volver a la biblioteca

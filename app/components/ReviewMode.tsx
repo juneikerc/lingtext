@@ -267,7 +267,7 @@ export default function ReviewMode({
             to="/words"
             className="inline-flex items-center justify-center w-full px-6 py-4 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-colors duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 dark:focus-visible:ring-offset-gray-950"
           >
-            Volver a la Biblioteca
+            Volver
           </Link>
         </div>
       </div>

@@ -284,7 +284,7 @@ export default function Contact() {
                 <path d="m12 19-7-7 7-7"></path>
                 <path d="M19 12H5"></path>
               </svg>
-              Volver a la biblioteca
+              Ir a inicio
             </Link>
           </div>
         </div>
