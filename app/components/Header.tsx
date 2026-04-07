@@ -115,9 +115,15 @@ export default function Header() {
           {/* Logo */}
           <Link
             to="/"
-            className="text-xl font-bold text-gray-900 transition-colors duration-200 hover:text-[#0F9EDA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded"
+            className="flex items-center gap-2 transition-opacity duration-200 hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded"
           >
-            Ling<span className="text-[#0F9EDA]">Text</span>
+            <img
+              src="/logo-header.png"
+              alt="LingText"
+              className="h-16 w-auto"
+              width={62}
+              height={32}
+            />
           </Link>
 
           {/* Desktop nav */}

@@ -23,9 +23,13 @@ export default function Footer() {
           {/* Logo y descripción */}
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
-              <div className="text-2xl font-bold text-gray-100">
-                Ling<span className="text-[#0F9EDA]">Text</span>
-              </div>
+              <img
+                src="/logo-footer.png"
+                alt="LingText"
+                className="h-14 w-auto"
+                width={134}
+                height={69}
+              />
             </div>
             <p className="text-gray-300 mb-4 max-w-md leading-relaxed">
               La alternativa gratuita y moderna a LingQ. Aprende inglés leyendo
