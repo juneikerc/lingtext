@@ -1,6 +1,5 @@
 import type { Route } from "./+types/my-library";
 import Library from "~/components/Libary";
-import { Link } from "react-router";
 
 export function meta(_args: Route.MetaArgs) {
   return [
@@ -25,35 +24,5 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export default function MyLibrary() {
-  return (
-    <>
-      {/* Navegación de regreso */}
-      <div className="bg-white border-b border-gray-200 px-4 py-3">
-        <div className="max-w-4xl mx-auto">
-          <Link
-            to="/"
-            className="inline-flex items-center text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-md px-2 py-1"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              className="w-4 h-4 mr-1.5"
-              aria-hidden="true"
-            >
-              <path
-                d="m15 18-6-6 6-6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-            </svg>
-            Volver al inicio
-          </Link>
-        </div>
-      </div>
-
-      <Library />
-    </>
-  );
+  return <Library />;
 }
