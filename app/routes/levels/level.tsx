@@ -66,18 +66,18 @@ export default function Level({ loaderData }: Route.ComponentProps) {
 
   return (
     <>
-      <section className="relative overflow-hidden py-16 sm:py-24 bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-white border-b border-gray-200">
         {/* Decorative blobs */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-[10%] left-[10%] w-64 h-64 bg-indigo-500/10 dark:bg-indigo-400/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-[10%] right-[10%] w-64 h-64 bg-sky-500/10 dark:bg-sky-400/5 rounded-full blur-3xl"></div>
+          <div className="absolute top-[10%] left-[10%] w-64 h-64 bg-[#0F9EDA]/5]/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-[10%] right-[10%] w-64 h-64 bg-sky-500/10 rounded-full blur-3xl"></div>
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="mb-8">
             <a
               href="/"
-              className="inline-flex items-center text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200"
+              className="inline-flex items-center text-sm font-medium text-gray-600 hover:text-[#0F9EDA]] transition-colors duration-200"
             >
               <svg
                 className="w-4 h-4 mr-2"
@@ -96,23 +96,23 @@ export default function Level({ loaderData }: Route.ComponentProps) {
             </a>
           </nav>
 
-          <div className="inline-flex items-center px-3 py-1.5 mb-6 text-xs font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 rounded-full border border-indigo-100 dark:border-indigo-800">
+          <div className="inline-flex items-center px-3 py-1.5 mb-6 text-xs font-semibold uppercase tracking-wider text-[#0F9EDA]] bg-[#0F9EDA]/5]/10 rounded-full border border-[#0F9EDA]/20]/30">
             Nivel {levelText.level}
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-gray-100 mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
             {levelText.mainHeading}
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl">
+          <p className="text-xl text-gray-600 leading-relaxed max-w-3xl">
             {levelText.intro}
           </p>
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-16 sm:py-24 bg-gray-50 dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-gray-50 border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-10">
-            <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-sm">
+            <div className="w-10 h-10 bg-[#0F9EDA] rounded-xl flex items-center justify-center shadow-sm">
               <svg
                 className="w-6 h-6 text-white"
                 fill="none"
@@ -127,7 +127,7 @@ export default function Level({ loaderData }: Route.ComponentProps) {
                 />
               </svg>
             </div>
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+            <h2 className="text-3xl font-bold text-gray-900">
               Textos de este nivel
             </h2>
           </div>
@@ -141,20 +141,21 @@ export default function Level({ loaderData }: Route.ComponentProps) {
                 <Link
                   key={text.title}
                   to={`/texts/${textId}?source=collection`}
-                  className={`group rounded-2xl border shadow-sm transition duration-200 overflow-hidden block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 dark:focus-visible:ring-offset-gray-950 ${isVisited
-                      ? "bg-indigo-50/50 dark:bg-indigo-950/20 border-indigo-200 dark:border-indigo-800 hover:shadow-md hover:border-indigo-300 dark:hover:border-indigo-700"
-                      : "bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800 hover:shadow-md hover:border-gray-300 dark:hover:border-gray-700"
-                    }`}
+                  className={`group rounded-2xl border shadow-sm transition duration-200 overflow-hidden block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 ${
+                    isVisited
+                      ? "bg-[#0F9EDA]/5]/10 border-[#0F9EDA]/20]/30 hover:shadow-md hover:border-[#0F9EDA]/30]/40"
+                      : "bg-white border-gray-200 hover:shadow-md hover:border-gray-300"
+                  }`}
                   rel="nofollow"
                 >
                   <div className="p-8">
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                       <div className="flex items-center gap-3">
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-200">
+                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#0F9EDA]] transition-colors duration-200">
                           {text.title}
                         </h3>
                         {isVisited ? (
-                          <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/30 px-2.5 py-1 text-xs font-semibold text-emerald-700 dark:text-emerald-300">
+                          <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700">
                             <svg
                               className="w-4 h-4"
                               fill="none"
@@ -172,7 +173,7 @@ export default function Level({ loaderData }: Route.ComponentProps) {
                           </span>
                         ) : null}
                         {text.sound ? (
-                          <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200 dark:border-indigo-800 bg-indigo-50 dark:bg-indigo-900/30 px-2.5 py-1 text-xs font-semibold text-indigo-700 dark:text-indigo-300">
+                          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#0F9EDA]/20]/30 bg-[#0F9EDA]/5]/10 px-2.5 py-1 text-xs font-semibold text-[#0A7AAB]]">
                             <svg
                               className="w-4 h-4"
                               fill="none"
@@ -196,7 +197,7 @@ export default function Level({ loaderData }: Route.ComponentProps) {
                           </span>
                         ) : null}
                       </div>
-                      <span className="inline-flex items-center justify-center gap-1.5 rounded-full bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors duration-200 group-hover:bg-indigo-700 dark:group-hover:bg-indigo-500">
+                      <span className="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#0F9EDA] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors duration-200 group-hover:bg-[#0D8EC4]]">
                         {isVisited ? "Volver a leer" : "Leer ahora"}
                         <svg
                           className="w-4 h-4"
@@ -219,19 +220,19 @@ export default function Level({ loaderData }: Route.ComponentProps) {
             })}
           </div>
 
-          <div className="mt-10 rounded-2xl border border-indigo-100 bg-indigo-50/60 p-6 dark:border-indigo-900/40 dark:bg-indigo-950/20">
+          <div className="mt-10 rounded-2xl border border-[#0F9EDA]/20 bg-[#0F9EDA]/5 p-6]/30]/10">
             <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <p className="text-sm font-semibold text-indigo-700 dark:text-indigo-300">
+                <p className="text-sm font-semibold text-[#0A7AAB]]">
                   ¿Quieres más?
                 </p>
-                <p className="mt-1 text-base text-gray-700 dark:text-gray-300">
+                <p className="mt-1 text-base text-gray-700">
                   Dale un vistazo a lecturas en otros niveles
                 </p>
               </div>
               <Link
                 to="/textos-en-ingles"
-                className="shrink-0 inline-flex items-center justify-center rounded-full bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 dark:hover:bg-indigo-500 dark:focus-visible:ring-offset-gray-950"
+                className="shrink-0 inline-flex items-center justify-center rounded-full bg-[#0F9EDA] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50]"
               >
                 Explorar mas lecturas en inglés
                 <svg
@@ -253,7 +254,7 @@ export default function Level({ loaderData }: Route.ComponentProps) {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-16 sm:py-24 bg-white dark:bg-gray-950">
+      <section className="relative overflow-hidden py-16 sm:py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <ProseContent html={levelText.html} />
         </div>

@@ -47,15 +47,15 @@ export function LibraryFolderManager({
   return (
     <div className="mb-8">
       <div className="mb-4 flex items-center justify-between">
-        <h3 className="flex items-center text-xl font-bold text-gray-900 dark:text-gray-100">
-          <div className="mr-3 flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600">
+        <h3 className="flex items-center text-xl font-bold text-gray-900">
+          <div className="mr-3 flex h-8 w-8 items-center justify-center rounded-lg bg-[#0F9EDA]">
             <FolderIcon className="h-4 w-4 text-white" aria-hidden="true" />
           </div>
           Carpetas
         </h3>
         {!isCreatingFolder ? (
           <button
-            className="inline-flex items-center rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
+            className="inline-flex items-center rounded-lg bg-[#0F9EDA] px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             onClick={() => onCreateModeChange(true)}
             type="button"
           >
@@ -66,10 +66,10 @@ export function LibraryFolderManager({
       </div>
 
       {isCreatingFolder ? (
-        <div className="mb-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+        <div className="mb-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
           <div className="flex flex-col gap-3 sm:flex-row">
             <input
-              className="flex-1 rounded-lg border border-gray-300 bg-gray-50 px-4 py-2.5 text-gray-900 transition-all duration-200 placeholder-gray-500 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
+              className="flex-1 rounded-lg border border-gray-300 bg-gray-50 px-4 py-2.5 text-gray-900 transition-all duration-200 placeholder-gray-500 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#0F9EDA]"
               placeholder="Nombre de la carpeta..."
               value={newFolderName}
               onChange={(event) => onNewFolderNameChange(event.target.value)}
@@ -85,7 +85,7 @@ export function LibraryFolderManager({
                   type="button"
                   className={`h-7 w-7 rounded-full transition-all duration-200 ${
                     newFolderColor === color
-                      ? "scale-110 ring-2 ring-gray-400 ring-offset-2 dark:ring-offset-gray-900"
+                      ? "scale-110 ring-2 ring-gray-400 ring-offset-2"
                       : "hover:scale-110"
                   }`}
                   style={{ backgroundColor: color }}
@@ -97,14 +97,14 @@ export function LibraryFolderManager({
           </div>
           <div className="mt-3 flex justify-end gap-2">
             <button
-              className="rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+              className="rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-200"
               onClick={() => onCreateModeChange(false)}
               type="button"
             >
               Cancelar
             </button>
             <button
-              className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-400"
+              className="rounded-lg bg-[#0F9EDA] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#0D8EC4] disabled:cursor-not-allowed disabled:bg-gray-400"
               onClick={onCreateFolder}
               disabled={!newFolderName.trim()}
               type="button"
@@ -120,11 +120,13 @@ export function LibraryFolderManager({
           {folders.map((folder) => (
             <div key={folder.id}>
               {editingFolderId === folder.id ? (
-                <div className="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white p-2 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                <div className="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white p-2 shadow-sm">
                   <input
-                    className="w-36 rounded-lg border border-gray-300 bg-gray-50 px-3 py-1.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
+                    className="w-36 rounded-lg border border-gray-300 bg-gray-50 px-3 py-1.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#0F9EDA]"
                     value={editFolderName}
-                    onChange={(event) => onEditFolderNameChange(event.target.value)}
+                    onChange={(event) =>
+                      onEditFolderNameChange(event.target.value)
+                    }
                     onKeyDown={(event) => {
                       if (event.key === "Enter") onUpdateFolder(folder.id);
                       if (event.key === "Escape") onEditingFolderChange(null);
@@ -136,7 +138,9 @@ export function LibraryFolderManager({
                         key={color}
                         type="button"
                         className={`h-5 w-5 rounded-full transition-all ${
-                          editFolderColor === color ? "ring-2 ring-gray-400 ring-offset-1" : ""
+                          editFolderColor === color
+                            ? "ring-2 ring-gray-400 ring-offset-1"
+                            : ""
                         }`}
                         style={{ backgroundColor: color }}
                         onClick={() => onEditFolderColorChange(color)}
@@ -144,14 +148,14 @@ export function LibraryFolderManager({
                     ))}
                   </div>
                   <button
-                    className="text-xs font-medium text-indigo-600 hover:underline dark:text-indigo-400"
+                    className="text-xs font-medium text-[#0F9EDA] hover:underline]"
                     onClick={() => onUpdateFolder(folder.id)}
                     type="button"
                   >
                     Guardar
                   </button>
                   <button
-                    className="text-xs text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+                    className="text-xs text-gray-500 hover:text-gray-700"
                     onClick={() => onEditingFolderChange(null)}
                     type="button"
                   >
@@ -172,7 +176,9 @@ export function LibraryFolderManager({
                   />
                   {folder.name}
                   <span className="text-xs opacity-60">
-                    ({texts.filter((text) => text.folderId === folder.id).length})
+                    (
+                    {texts.filter((text) => text.folderId === folder.id).length}
+                    )
                   </span>
                   <button
                     className="ml-1 opacity-50 transition-opacity hover:opacity-100"
@@ -196,7 +202,7 @@ export function LibraryFolderManager({
           ))}
         </div>
       ) : !isCreatingFolder ? (
-        <p className="text-sm text-gray-500 dark:text-gray-400">
+        <p className="text-sm text-gray-500">
           Crea carpetas para organizar tus textos por temas o niveles.
         </p>
       ) : null}

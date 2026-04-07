@@ -1,222 +1,163 @@
 import { Link } from "react-router";
 
+const steps = [
+  {
+    number: 1,
+    emoji: "\uD83D\uDCDA",
+    title: "Crea tu Biblioteca",
+    badge: "Paso inicial",
+    description:
+      "Desde la portada, añade un nuevo texto: elige un título y pega contenido o importa un fichero <code>.txt</code>. Si dispones de audio del texto, puedes adjuntarlo por URL o como archivo local para practicar lectura y escucha al mismo tiempo.",
+    tip: {
+      label: "Tip",
+      text: "Comienza con textos que te interesen realmente. La motivación es clave para el aprendizaje efectivo.",
+    },
+  },
+  {
+    number: 2,
+    emoji: "\uD83D\uDCD6",
+    title: "Lee con Traducción y TTS",
+    badge: "Lectura activa",
+    description:
+      "Abre el lector y haz clic en cualquier palabra para ver su traducción al instante. También puedes seleccionar una frase completa para traducirla en bloque. Pulsa el icono de sonido para escuchar la pronunciación (TTS) y ajusta la voz o la velocidad en los ajustes de la app.",
+    tip: {
+      label: "Objetivo",
+      text: "Convertir cada página en una sesión de aprendizaje activa sin interrumpir el flujo de lectura.",
+    },
+  },
+  {
+    number: 3,
+    emoji: "\uD83D\uDCBE",
+    title: "Guarda y Repasa Palabras",
+    badge: "Vocabulario",
+    description:
+      "Cuando una palabra sea nueva para ti, márcala como <em>desconocida</em>. Quedará guardada en SQLite junto con su traducción y datos de repetición espaciada. Ve a <strong>/review</strong> para repasar con el algoritmo SM-2, o exporta a CSV para Anki.",
+    tip: {
+      label: "Repetición espaciada",
+      text: "El algoritmo SM-2 calcula el momento óptimo para repasar cada palabra.",
+    },
+  },
+  {
+    number: 4,
+    emoji: "\uD83D\uDCBE",
+    title: "Exporta tus Datos",
+    badge: "Backup",
+    description:
+      "Desde la biblioteca, usa los botones <em>Exportar</em> e <em>Importar</em> para guardar tu base de datos SQLite en tu PC o restaurarla desde otro dispositivo. Tus datos son tuyos.",
+    tip: {
+      label: "Privacidad",
+      text: "Todo se guarda localmente. El archivo .sqlite es portable y estándar.",
+    },
+  },
+  {
+    number: 5,
+    emoji: "\u2728",
+    title: "Genera Historias Personalizadas",
+    badge: "Práctica en Contexto",
+    badgePrimary: true,
+    description:
+      "Desde la sección <strong>Palabras</strong>, selecciona hasta <em>20 palabras</em> de tu vocabulario y usa el generador para crear textos personalizados. Elige el tipo (cuento, artículo, conversación, etc.), tema personalizado y nivel CEFR (A2-C2). La IA creará textos que contengan tus palabras en <strong>bold</strong>, reforzando el aprendizaje en contexto.",
+    tip: {
+      label: "Tip",
+      text: "Los textos generados se guardan automáticamente en tu biblioteca y puedes leerlos con todas las funcionalidades del lector (traducción, TTS, marca de palabras).",
+    },
+  },
+];
+
 export default function UsageGuideSection() {
   return (
-    <section className="relative overflow-hidden py-20 sm:py-24 bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
+    <section className="relative overflow-hidden py-20 sm:py-24 bg-white border-b border-gray-200">
       {/* Elementos decorativos de fondo */}
-      <div className="absolute inset-0">
-        <div className="absolute -top-24 left-1/3 h-96 w-96 rounded-full bg-indigo-500/10 dark:bg-indigo-400/5 blur-3xl"></div>
-        <div className="absolute -bottom-24 right-1/3 h-96 w-96 rounded-full bg-sky-500/10 dark:bg-sky-400/5 blur-3xl"></div>
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-24 left-1/3 h-96 w-96 rounded-full bg-[#0F9EDA]/5 blur-3xl"></div>
+        <div className="absolute -bottom-24 right-1/3 h-96 w-96 rounded-full bg-[#0F9EDA]/5 blur-3xl"></div>
       </div>
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        {/* Header elegante */}
+        {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-900 rounded-full border border-gray-200 dark:border-gray-800">
-            <span className="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>
+          <div className="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-gray-700 bg-gray-50 rounded-full border border-gray-200">
+            <span className="w-2 h-2 bg-[#0F9EDA] rounded-full mr-2.5"></span>
             Guía de Uso
           </div>
-          <h2 className="text-4xl md:text-6xl font-extrabold mb-6 text-gray-900 dark:text-gray-100">
-            Comienza en{" "}
-            <span className="text-indigo-600 dark:text-indigo-400">
-              Minutos
-            </span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 tracking-tight">
+            Comienza en <span className="text-[#0F9EDA]">Minutos</span>
           </h2>
-          <p className="text-xl md:text-2xl leading-relaxed text-gray-600 dark:text-gray-400 max-w-4xl mx-auto font-light">
+          <p className="text-xl leading-relaxed text-gray-600 max-w-3xl mx-auto">
             LingText está diseñado para que aprendas en flujo. Sigue estos pasos
-            y estarás aprendiendo inglés de inmediato
+            y estarás aprendiendo inglés de inmediato.
           </p>
         </div>
 
-        {/* Pasos de la guía */}
-        <div className="space-y-8">
-          <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-8">
-            <div className="flex items-start space-x-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-lg">
-                1
-              </div>
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
-                  📚 Crea tu Biblioteca
-                  <span className="ml-3 px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium">
-                    Paso inicial
-                  </span>
-                </h3>
-                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                  Desde la portada, añade un nuevo texto: elige un título y pega
-                  contenido o importa un fichero{" "}
-                  <code className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-sm font-mono">
-                    .txt
-                  </code>
-                  . Si dispones de audio del texto, puedes adjuntarlo por URL o
-                  como archivo local para practicar lectura y escucha al mismo
-                  tiempo.
-                </p>
-                <div className="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
-                  <p className="text-gray-700 dark:text-gray-300 text-sm">
-                    💡 <strong>Tip:</strong> Comienza con textos que te
-                    interesen realmente. La motivación es clave para el
-                    aprendizaje efectivo.
-                  </p>
+        {/* Pasos */}
+        <div className="space-y-6">
+          {steps.map((step) => (
+            <div
+              key={step.number}
+              className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-200 p-8"
+            >
+              <div className="flex items-start gap-6">
+                <div className="flex-shrink-0 w-12 h-12 bg-[#0F9EDA]/10 rounded-xl flex items-center justify-center text-[#0F9EDA] font-bold text-lg border border-[#0F9EDA]/20">
+                  {step.number}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center flex-wrap gap-2">
+                    <span>
+                      {step.emoji} {step.title}
+                    </span>
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-medium ${
+                        step.badgePrimary
+                          ? "bg-[#0F9EDA]/10 text-[#0F9EDA] border border-[#0F9EDA]/20"
+                          : "bg-gray-100 text-gray-600"
+                      }`}
+                    >
+                      {step.badge}
+                    </span>
+                  </h3>
+                  <p
+                    className="text-base text-gray-700 leading-relaxed mb-4"
+                    dangerouslySetInnerHTML={{ __html: step.description }}
+                  />
+                  <div className="bg-[#0F9EDA]/5 rounded-xl p-4 border border-[#0F9EDA]/10">
+                    <p className="text-sm text-gray-700">
+                      <span className="font-semibold text-[#0F9EDA]">
+                        {step.tip.label}:
+                      </span>{" "}
+                      {step.tip.text}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-8">
-            <div className="flex items-start space-x-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-lg">
-                2
-              </div>
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
-                  📖 Lee con Traducción y TTS
-                  <span className="ml-3 px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium">
-                    Lectura activa
-                  </span>
-                </h3>
-                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                  Abre el lector y haz clic en cualquier palabra para ver su
-                  traducción al instante. También puedes seleccionar una frase
-                  completa para traducirla en bloque. Pulsa el icono de sonido
-                  para escuchar la pronunciación (TTS) y ajusta la voz o la
-                  velocidad en los ajustes de la app.
-                </p>
-                <div className="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
-                  <p className="text-gray-700 dark:text-gray-300 text-sm">
-                    🎯 <strong>Objetivo:</strong> Convertir cada página en una
-                    sesión de aprendizaje activa sin interrumpir el flujo de
-                    lectura.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-8">
-            <div className="flex items-start space-x-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-lg">
-                3
-              </div>
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
-                  💾 Guarda y Repasa Palabras
-                  <span className="ml-3 px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium">
-                    Vocabulario
-                  </span>
-                </h3>
-                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                  Cuando una palabra sea nueva para ti, márcala como{" "}
-                  <em className="font-semibold text-indigo-600 dark:text-indigo-400">
-                    desconocida
-                  </em>
-                  . Quedará guardada en SQLite junto con su traducción y datos
-                  de repetición espaciada. Ve a <strong>/review</strong> para
-                  repasar con el algoritmo SM-2, o exporta a CSV para Anki.
-                </p>
-                <div className="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
-                  <p className="text-gray-700 dark:text-gray-300 text-sm">
-                    🔄 <strong>Repetición espaciada:</strong> El algoritmo SM-2
-                    calcula el momento óptimo para repasar cada palabra.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-8">
-            <div className="flex items-start space-x-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-lg">
-                4
-              </div>
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
-                  💾 Exporta tus Datos
-                  <span className="ml-3 px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium">
-                    Backup
-                  </span>
-                </h3>
-                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                  Desde la biblioteca, usa los botones{" "}
-                  <em className="font-semibold text-indigo-600 dark:text-indigo-400">
-                    Exportar
-                  </em>{" "}
-                  e{" "}
-                  <em className="font-semibold text-indigo-600 dark:text-indigo-400">
-                    Importar
-                  </em>{" "}
-                  para guardar tu base de datos SQLite en tu PC o restaurarla
-                  desde otro dispositivo. Tus datos son tuyos.
-                </p>
-                <div className="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
-                  <p className="text-gray-700 dark:text-gray-300 text-sm">
-                    🔒 <strong>Privacidad:</strong> Todo se guarda localmente.
-                    El archivo .sqlite es portable y estándar.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-8">
-            <div className="flex items-start space-x-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-lg">
-                5
-              </div>
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
-                  ✨ Genera Historias Personalizadas
-                  <span className="ml-3 px-3 py-1 bg-indigo-100 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-medium">
-                    Práctica en Contexto
-                  </span>
-                </h3>
-                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                  Desde la sección <strong>Palabras</strong>, selecciona hasta{" "}
-                  <em className="font-semibold text-indigo-600 dark:text-indigo-400">
-                    20 palabras
-                  </em>{" "}
-                  de tu vocabulario y usa el generador para crear textos
-                  personalizados. Elige el tipo (cuento, artículo, conversación,
-                  etc.), tema personalizado y nivel CEFR (A2-C2). La IA creará
-                  textos que contengan tus palabras en <strong>bold</strong>,
-                  reforzando el aprendizaje en contexto.
-                </p>
-                <div className="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
-                  <p className="text-gray-700 dark:text-gray-300 text-sm">
-                    💡 <strong>Tip:</strong> Los textos generados se guardan
-                    automáticamente en tu biblioteca y puedes leerlos con todas
-                    las funcionalidades del lector (traducción, TTS, marca de
-                    palabras). El límite de 20 palabras garantiza textos más
-                    naturales y efectivos.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
 
-        {/* Sección de ayuda adicional */}
+        {/* CTA de ayuda */}
         <div className="text-center mt-16">
-          <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-8 shadow-sm">
-            <div className="w-16 h-16 mx-auto mb-6 bg-indigo-600 rounded-2xl flex items-center justify-center">
-              <span className="text-white text-2xl">❓</span>
+          <div className="bg-gray-50 rounded-2xl border border-gray-200 p-8 sm:p-12">
+            <div className="w-14 h-14 mx-auto mb-6 bg-[#0F9EDA]/10 rounded-2xl flex items-center justify-center border border-[#0F9EDA]/20">
+              <span className="text-[#0F9EDA] text-2xl">?</span>
             </div>
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
               ¿Necesitas Ayuda?
             </h3>
-            <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
+            <p className="text-base text-gray-600 mb-8 max-w-xl mx-auto">
               Explora la documentación completa o únete a nuestra comunidad de
-              estudiantes de inglés
+              estudiantes de inglés.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition-colors duration-200 shadow-sm hover:shadow-md">
-                📖 Ver Documentación
-              </button>
               <Link
                 to="/comunidad"
-                className="px-8 py-4 rounded-xl bg-white dark:bg-gray-950 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-[#0F9EDA] text-white font-semibold hover:bg-[#0D8EC4] transition-colors duration-200 shadow-sm hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50"
               >
-                💬 Comunidad
+                Comunidad
+              </Link>
+              <Link
+                to="/contacto"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white border border-gray-200 text-gray-700 font-semibold hover:border-[#0F9EDA] hover:text-[#0F9EDA] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50"
+              >
+                Contacto
               </Link>
             </div>
           </div>

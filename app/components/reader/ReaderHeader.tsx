@@ -92,7 +92,7 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
   return (
     <>
       <div
-        className={`bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200/50 dark:border-gray-700/50 sticky top-0 z-20 transition-transform duration-200 ${
+        className={`bg-white/95 backdrop-blur-sm border-b border-gray-200/50 sticky top-0 z-20 transition-transform duration-200 ${
           isHidden ? "-translate-y-full" : "translate-y-0"
         }`}
       >
@@ -103,7 +103,7 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
               <button
                 type="button"
                 onClick={() => window.history.back()}
-                className="group shrink-0 flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-blue-500 hover:text-white text-gray-700 dark:text-gray-300 font-medium transition-all duration-200"
+                className="group shrink-0 flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-blue-500 hover:text-white text-gray-700 font-medium transition-all duration-200"
               >
                 <span className="text-sm group-hover:-translate-x-0.5 transition-transform duration-200">
                   ←
@@ -111,37 +111,37 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
                 <span className="text-sm">Volver</span>
               </button>
 
-              <div className="h-5 w-px bg-gray-300 dark:bg-gray-600"></div>
+              <div className="h-5 w-px bg-gray-300"></div>
 
               <div className="flex-1 min-w-0">
-                <h1 className="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100 truncate w-full">
+                <h1 className="text-lg md:text-xl font-bold text-gray-900 truncate w-full">
                   {title || "Sin título"}
                 </h1>
               </div>
             </div>
 
             {/* Indicador de estado compacto */}
-            <div className="hidden sm:flex items-center space-x-1 px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-md text-xs font-medium">
+            <div className="hidden sm:flex items-center space-x-1 px-2 py-1 bg-green-100 text-green-700 rounded-md text-xs font-medium">
               <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
               <span>Listo</span>
             </div>
           </div>
 
           {/* Segunda fila compacta - Selector de traductor */}
-          <div className="flex flex-col gap-3 pb-3 border-t border-gray-200/50 dark:border-gray-700/50 pt-2">
+          <div className="flex flex-col gap-3 pb-3 border-t border-gray-200/50 pt-2">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div className="flex items-center space-x-2">
                 <div className="w-4 h-4 bg-gradient-to-r from-purple-500 to-blue-500 rounded flex items-center justify-center">
                   <span className="text-white text-xs">🌐</span>
                 </div>
-                <strong className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                <strong className="text-sm font-medium text-gray-900">
                   Traductor:
                 </strong>
               </div>
 
               <div className="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-3">
                 <select
-                  className="px-3 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm font-medium"
+                  className="px-3 py-1.5 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm font-medium"
                   value={selected}
                   onChange={(e) => setSelected(e.target.value as Translator)}
                 >
@@ -158,7 +158,7 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
                 </select>
 
                 {/* Información compacta del traductor seleccionado */}
-                <div className="text-xs text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">
+                <div className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded">
                   {selected === TRANSLATORS.CHROME && "Nativo"}
                   {selected === TRANSLATORS.MYMEMORY && "Gratis"}
                   {selected === TRANSLATORS.MEDIUM && "IA Optimizada"}
@@ -168,10 +168,10 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
                 <button
                   type="button"
                   onClick={() => setShowPreferences((current) => !current)}
-                  className={`inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-xs font-semibold shadow-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900 ${
+                  className={`inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-xs font-semibold shadow-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
                     showPreferences
-                      ? "border-indigo-600 bg-indigo-600 text-white dark:border-indigo-400 dark:bg-indigo-500"
-                      : "border-indigo-200 bg-indigo-50 text-indigo-700 hover:border-indigo-300 hover:bg-indigo-100 dark:border-indigo-900/60 dark:bg-indigo-950/40 dark:text-indigo-300 dark:hover:border-indigo-800 dark:hover:bg-indigo-950/70"
+                      ? "border-indigo-600 bg-indigo-600 text-white"
+                      : "border-indigo-200 bg-indigo-50 text-indigo-700 hover:border-indigo-300 hover:bg-indigo-100"
                   }`}
                   aria-expanded={showPreferences}
                   aria-controls="reader-preferences-panel"
@@ -181,7 +181,7 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
                       : "Abrir preferencias de lectura"
                   }
                 >
-                  <span className="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-white/70 text-[11px] font-bold text-indigo-700 dark:bg-gray-900/60 dark:text-indigo-200">
+                  <span className="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-white/70 text-[11px] font-bold text-indigo-700">
                     Aa
                   </span>
                   <span>
@@ -212,8 +212,8 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
                   onClick={() => setShowApiKeyConfig(true)}
                   className={`flex items-center space-x-1 px-2 py-1 rounded text-xs font-medium transition-colors ${
                     needsApiKey
-                      ? "bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 hover:bg-amber-200 dark:hover:bg-amber-900/50"
-                      : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700"
+                      ? "bg-amber-100 text-amber-700 hover:bg-amber-200"
+                      : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                   }`}
                   title="Configurar API Key"
                 >
@@ -247,11 +247,11 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
           {/* Aviso si falta API Key */}
           {needsApiKey && (
             <div className="pb-4">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 bg-amber-50 dark:bg-amber-900/20 border-2 border-amber-200 dark:border-amber-800 rounded-xl shadow-sm gap-4">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 bg-amber-50 border-2 border-amber-200 rounded-xl shadow-sm gap-4">
                 <div className="flex items-center space-x-3">
-                  <div className="bg-amber-100 dark:bg-amber-900/50 p-2 rounded-full">
+                  <div className="bg-amber-100 p-2 rounded-full">
                     <svg
-                      className="w-5 h-5 text-amber-600 dark:text-amber-400"
+                      className="w-5 h-5 text-amber-600"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -265,10 +265,10 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-amber-900 dark:text-amber-100">
+                    <h4 className="text-sm font-bold text-amber-900">
                       Configuración requerida
                     </h4>
-                    <p className="text-xs text-amber-700 dark:text-amber-300 mt-0.5">
+                    <p className="text-xs text-amber-700 mt-0.5">
                       Para usar traductores con IA avanzada, necesitas una clave
                       de OpenRouter.
                     </p>
@@ -280,13 +280,13 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
                     href="https://github.com/juneikerc/lingtext/blob/main/open-router-key.md"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 sm:flex-none text-center px-4 py-2 text-xs font-bold text-white bg-amber-600 hover:bg-amber-700 dark:bg-amber-700 dark:hover:bg-amber-600 rounded-lg transition-colors shadow-sm"
+                    className="flex-1 sm:flex-none text-center px-4 py-2 text-xs font-bold text-white bg-amber-600 hover:bg-amber-700 rounded-lg transition-colors shadow-sm"
                   >
                     ¿Cómo obtenerla? (Tutorial)
                   </a>
                   <button
                     onClick={() => setShowApiKeyConfig(true)}
-                    className="flex-1 sm:flex-none px-4 py-2 text-xs font-bold text-amber-700 dark:text-amber-300 bg-amber-100 dark:bg-amber-900/50 hover:bg-amber-200 dark:hover:bg-amber-900/80 rounded-lg transition-colors border border-amber-200 dark:border-amber-800"
+                    className="flex-1 sm:flex-none px-4 py-2 text-xs font-bold text-amber-700 bg-amber-100 hover:bg-amber-200 rounded-lg transition-colors border border-amber-200"
                   >
                     Configurar ahora
                   </button>

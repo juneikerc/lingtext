@@ -2,7 +2,6 @@ import React, { memo, useMemo } from "react";
 
 import { normalizeWord, tokenize } from "../../utils/tokenize";
 import type { ReaderPhraseIndex } from "./ReaderLexiconContext";
-import { useReaderPreferences } from "./ReaderPreferencesContext";
 
 interface ReaderWordTokensProps {
   text: string;
@@ -19,8 +18,6 @@ function ReaderWordTokens({
   onWordClick,
   keyPrefix,
 }: ReaderWordTokensProps) {
-  const { preferences } = useReaderPreferences();
-  const isDark = preferences.theme === "dark-soft";
   const tokens = useMemo(() => tokenize(text), [text]);
 
   const isPhraseToken = useMemo(() => {
@@ -92,9 +89,7 @@ function ReaderWordTokens({
             key={tokenKey}
             className={`word-token relative inline-block px-1 py-0.5 mx-0.5 rounded-lg cursor-pointer transition-all duration-200 group ${
               isUnknown
-                ? isDark
-                  ? "bg-yellow-700/40 text-yellow-100 font-semibold shadow-lg border border-yellow-600"
-                  : "bg-yellow-200 text-yellow-900 font-semibold shadow-lg border border-yellow-300"
+                ? "bg-yellow-200 text-yellow-900 font-semibold shadow-lg border border-yellow-300"
                 : "reader-token-hover hover:shadow-md"
             } ${isPhrasePart ? "underline decoration-2 underline-offset-4" : ""}`}
             data-lower={low}
@@ -113,11 +108,7 @@ function ReaderWordTokens({
               </span>
             )}
             {isUnknown && (
-              <span
-                className={`absolute -top-2 -right-1 w-3 h-3 bg-yellow-500 rounded-full border-2 animate-pulse ${
-                  isDark ? "border-gray-900" : "border-white"
-                }`}
-              ></span>
+              <span className="absolute -top-2 -right-1 w-3 h-3 bg-yellow-500 rounded-full border-2 animate-pulse border-white"></span>
             )}
           </span>
         );

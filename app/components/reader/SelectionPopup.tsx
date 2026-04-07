@@ -24,7 +24,7 @@ export default function SelectionPopup({
 
   return (
     <div
-      className="absolute w-full bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm text-gray-900 dark:text-gray-100 rounded-xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 z-30 overflow-hidden max-h-[70vh] overflow-y-auto"
+      className="absolute w-full bg-white/95 backdrop-blur-sm text-gray-900 rounded-xl shadow-lg border border-gray-200/50 z-30 overflow-hidden max-h-[70vh] overflow-y-auto"
       style={{
         left,
         top,
@@ -34,22 +34,22 @@ export default function SelectionPopup({
       <div className="p-4">
         <div className="mb-4">
           <div className="flex items-center space-x-2 mb-2">
-            <div className="w-5 h-5 bg-gray-200 dark:bg-gray-600 rounded-lg flex items-center justify-center">
+            <div className="w-5 h-5 bg-gray-200 rounded-lg flex items-center justify-center">
               <span className="text-white text-xs">📝</span>
             </div>
-            <span className="font-semibold text-gray-700 dark:text-gray-300">
+            <span className="font-semibold text-gray-700">
               Texto seleccionado
             </span>
             <button
-              className="ml-auto p-1.5 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors duration-200"
+              className="ml-auto p-1.5 hover:bg-gray-200 rounded-lg transition-colors duration-200"
               onClick={onClose}
               title="Cerrar"
             >
               <span className="text-sm">✕</span>
             </button>
           </div>
-          <div className="bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-lg p-3">
-            <p className="text-gray-900 dark:text-gray-100 font-medium italic text-center">
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
+            <p className="text-gray-900 font-medium italic text-center">
               "
               {selPopup.text.length > 100
                 ? selPopup.text.substring(0, 100) + "..."
@@ -59,16 +59,16 @@ export default function SelectionPopup({
           </div>
         </div>
       </div>
-      <div className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 p-4 border-t border-gray-200 dark:border-gray-600">
+      <div className="bg-gray-100 text-gray-900 p-4 border-t border-gray-200">
         <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 bg-gray-200 dark:bg-gray-600 rounded-lg flex items-center justify-center">
+          <div className="w-8 h-8 bg-gray-200 rounded-lg flex items-center justify-center">
             <span className="text-sm">💭</span>
           </div>
           <div>
-            <div className="bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-lg p-3">
-              <div className="text-xl font-bold text-gray-900 dark:text-gray-100 text-center">
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
+              <div className="text-xl font-bold text-gray-900 text-center">
                 {selPopup.isLoading ? (
-                  <div className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                  <div className="flex items-center justify-center gap-2 text-sm text-gray-600">
                     <span className="w-4 h-4 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
                     <span>Traduciendo...</span>
                   </div>
@@ -79,10 +79,10 @@ export default function SelectionPopup({
                       return Object.entries(parsed.info).map(
                         ([category, translations]) => (
                           <div key={category}>
-                            <p className="text-sm font-semibold text-gray-600 dark:text-gray-400">
+                            <p className="text-sm font-semibold text-gray-600">
                               {category}
                             </p>
-                            <p className="text-gray-900 dark:text-gray-100">
+                            <p className="text-gray-900">
                               {(translations as string[]).join(", ")}
                             </p>
                           </div>
@@ -91,7 +91,7 @@ export default function SelectionPopup({
                     })()}
                   </div>
                 ) : (
-                  <span className="text-xl font-bold text-gray-900 dark:text-gray-100">
+                  <span className="text-xl font-bold text-gray-900">
                     {selPopup.translation}
                   </span>
                 )}
@@ -100,10 +100,10 @@ export default function SelectionPopup({
             {/* Acciones para la selección */}
             <div className="mt-4 flex gap-2 justify-center">
               <button
-                className={`px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-lg border border-green-200 dark:border-green-800 transition-colors ${
+                className={`px-4 py-2 bg-green-100 text-green-700 rounded-lg border border-green-200 transition-colors ${
                   selPopup.isLoading
                     ? "opacity-60 cursor-not-allowed"
-                    : "hover:bg-green-200/60 dark:hover:bg-green-800/50"
+                    : "hover:bg-green-200/60"
                 }`}
                 onClick={() =>
                   onSavePhrase(selPopup.text, selPopup.translation)
@@ -114,7 +114,7 @@ export default function SelectionPopup({
                 Guardar palabra compuesta | frase
               </button>
               <button
-                className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg border border-gray-200 hover:bg-gray-200 transition-colors"
                 onClick={onClose}
                 title="Cerrar"
               >

@@ -10,10 +10,10 @@ import { TRANSLATORS as SharedTranslators } from "@shared/vocabulary";
 export type AudioRef =
   | { type: "url"; url: string }
   | {
-    type: "file";
-    name: string; // persisted using FileSystem Access API handle
-    fileHandle: FileSystemFileHandle;
-  };
+      type: "file";
+      name: string; // persisted using FileSystem Access API handle
+      fileHandle: FileSystemFileHandle;
+    };
 
 export const FOLDER_COLORS = [
   "#6366f1", // indigo
@@ -87,7 +87,7 @@ export interface ReviewPreferences {
   newCardsPerDay: number;
 }
 
-export type ReaderTheme = "light" | "sepia" | "dark-soft";
+export type ReaderTheme = "light" | "sepia";
 export type ReaderContentWidth = "narrow" | "normal" | "wide";
 export type ReaderFontFamily = "sans" | "serif";
 export type ReaderLineHeight = "compact" | "relaxed";

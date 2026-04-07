@@ -73,14 +73,14 @@ export default function ApiKeyConfig({ onClose }: ApiKeyConfigProps) {
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-md w-full p-6 space-y-4">
+      <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">
+          <h2 className="text-xl font-bold text-gray-900">
             Configurar OpenRouter
           </h2>
           <button
             onClick={onClose}
-            className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+            className="p-1 hover:bg-gray-100 rounded-lg transition-colors"
           >
             <svg
               className="w-5 h-5 text-gray-500"
@@ -98,7 +98,7 @@ export default function ApiKeyConfig({ onClose }: ApiKeyConfigProps) {
           </button>
         </div>
 
-        <p className="text-sm text-gray-600 dark:text-gray-400">
+        <p className="text-sm text-gray-600">
           Para usar los traductores con IA necesitas tu propia API key de{" "}
           <a
             href="https://openrouter.ai/keys"
@@ -112,7 +112,7 @@ export default function ApiKeyConfig({ onClose }: ApiKeyConfigProps) {
         </p>
 
         <div className="space-y-2">
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          <label className="block text-sm font-medium text-gray-700">
             API Key
           </label>
           <div className="relative">
@@ -121,12 +121,12 @@ export default function ApiKeyConfig({ onClose }: ApiKeyConfigProps) {
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
               placeholder="sk-or-v1-..."
-              className="w-full px-3 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
             <button
               type="button"
               onClick={() => setShowKey(!showKey)}
-              className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+              className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-gray-500 hover:text-gray-700"
             >
               {showKey ? (
                 <svg
@@ -168,7 +168,7 @@ export default function ApiKeyConfig({ onClose }: ApiKeyConfigProps) {
         </div>
 
         {error && (
-          <div className="p-3 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-lg text-sm">
+          <div className="p-3 bg-red-100 text-red-700 rounded-lg text-sm">
             {error}
           </div>
         )}
@@ -177,7 +177,7 @@ export default function ApiKeyConfig({ onClose }: ApiKeyConfigProps) {
           {hasKey && (
             <button
               onClick={handleDelete}
-              className="px-4 py-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors text-sm font-medium"
+              className="px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors text-sm font-medium"
             >
               Eliminar
             </button>
@@ -185,7 +185,7 @@ export default function ApiKeyConfig({ onClose }: ApiKeyConfigProps) {
           <div className="flex space-x-2 ml-auto">
             <button
               onClick={onClose}
-              className="px-4 py-2 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors text-sm font-medium"
+              className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors text-sm font-medium"
             >
               Cancelar
             </button>
@@ -199,8 +199,8 @@ export default function ApiKeyConfig({ onClose }: ApiKeyConfigProps) {
           </div>
         </div>
 
-        <div className="pt-2 border-t border-gray-200 dark:border-gray-700">
-          <p className="text-xs text-gray-500 dark:text-gray-400">
+        <div className="pt-2 border-t border-gray-200">
+          <p className="text-xs text-gray-500">
             Tu API key se guarda localmente en tu navegador y nunca se envía a
             nuestros servidores.
           </p>

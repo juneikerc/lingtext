@@ -18,23 +18,23 @@ export function LibraryBackupPanel({
   return (
     <details className="group mb-8">
       <summary className="list-none cursor-pointer">
-        <div className="rounded-2xl border border-gray-200 bg-gray-50 p-4 transition-colors hover:border-gray-300 dark:border-gray-800 dark:bg-gray-900 dark:hover:border-gray-700">
+        <div className="rounded-2xl border border-gray-200 bg-gray-50 p-4 transition-colors hover:border-gray-300">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              <div className="mr-4 flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600">
+              <div className="mr-4 flex h-10 w-10 items-center justify-center rounded-xl bg-[#0F9EDA]">
                 <span className="text-xl text-white">💾</span>
               </div>
               <div>
-                <h3 className="font-bold text-gray-900 dark:text-gray-100">
+                <h3 className="font-bold text-gray-900">
                   Backup de Base de Datos
                 </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-sm text-gray-600">
                   Guarda o restaura todos tus datos (textos, palabras, progreso)
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <span className="rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-700 dark:bg-gray-800 dark:text-gray-300">
+              <span className="rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-700">
                 .sqlite
               </span>
               <svg
@@ -55,16 +55,16 @@ export function LibraryBackupPanel({
         </div>
       </summary>
 
-      <div className="mt-2 rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+      <div className="mt-2 rounded-xl border border-gray-200 bg-white p-6">
         <div className="grid gap-4 sm:grid-cols-2">
-          <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60">
+          <div className="rounded-xl border border-gray-200 bg-gray-50 p-4">
             <div className="mb-3 flex items-start gap-3">
               <span className="text-2xl">📤</span>
               <div>
-                <h4 className="font-semibold text-gray-900 dark:text-gray-100">
+                <h4 className="font-semibold text-gray-900">
                   Exportar Backup
                 </h4>
-                <p className="text-xs text-gray-600 dark:text-gray-400">
+                <p className="text-xs text-gray-600">
                   Descarga tu base de datos como archivo .sqlite
                 </p>
               </div>
@@ -72,20 +72,20 @@ export function LibraryBackupPanel({
             <button
               onClick={onExportDatabase}
               disabled={isExporting || isImporting}
-              className="flex w-full items-center justify-center rounded-lg bg-indigo-600 px-4 py-2.5 font-medium text-white transition-colors hover:bg-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:disabled:bg-gray-600 dark:focus-visible:ring-offset-gray-950"
+              className="flex w-full items-center justify-center rounded-lg bg-[#0F9EDA] px-4 py-2.5 font-medium text-white transition-colors hover:bg-[#0D8EC4] disabled:cursor-not-allowed disabled:bg-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               {isExporting ? "Exportando..." : "Guardar en PC"}
             </button>
           </div>
 
-          <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60">
+          <div className="rounded-xl border border-gray-200 bg-gray-50 p-4">
             <div className="mb-3 flex items-start gap-3">
               <span className="text-2xl">📥</span>
               <div>
-                <h4 className="font-semibold text-gray-900 dark:text-gray-100">
+                <h4 className="font-semibold text-gray-900">
                   Restaurar Backup
                 </h4>
-                <p className="text-xs text-gray-600 dark:text-gray-400">
+                <p className="text-xs text-gray-600">
                   ⚠️ Reemplaza todos los datos actuales
                 </p>
               </div>
@@ -93,7 +93,7 @@ export function LibraryBackupPanel({
             <button
               onClick={onImportDatabase}
               disabled={isExporting || isImporting}
-              className="flex w-full items-center justify-center rounded-lg bg-amber-600 px-4 py-2.5 font-medium text-white transition-colors hover:bg-amber-700 disabled:cursor-not-allowed disabled:bg-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:disabled:bg-gray-600 dark:focus-visible:ring-offset-gray-950"
+              className="flex w-full items-center justify-center rounded-lg bg-amber-600 px-4 py-2.5 font-medium text-white transition-colors hover:bg-amber-700 disabled:cursor-not-allowed disabled:bg-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               {isImporting ? "Importando..." : "Cargar desde PC"}
             </button>
@@ -104,8 +104,8 @@ export function LibraryBackupPanel({
           <div
             className={`mt-4 rounded-lg border p-3 text-sm ${
               dbMessage.type === "success"
-                ? "border-green-200 bg-green-100 text-green-700 dark:border-green-800 dark:bg-green-900/30 dark:text-green-300"
-                : "border-red-200 bg-red-100 text-red-700 dark:border-red-800 dark:bg-red-900/30 dark:text-red-300"
+                ? "border-green-200 bg-green-100 text-green-700"
+                : "border-red-200 bg-red-100 text-red-700"
             }`}
           >
             {dbMessage.text}

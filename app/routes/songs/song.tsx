@@ -274,17 +274,17 @@ export default function SongPage({ loaderData }: Route.ComponentProps) {
 
   if (!song) {
     return (
-      <main className="min-h-screen bg-gray-50 px-4 py-12 dark:bg-gray-950">
-        <div className="mx-auto max-w-2xl rounded-2xl border border-gray-200 bg-white p-6 text-center shadow-sm dark:border-gray-800 dark:bg-gray-900">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+      <main className="min-h-screen bg-gray-50 px-4 py-12">
+        <div className="mx-auto max-w-2xl rounded-2xl border border-gray-200 bg-white p-6 text-center shadow-sm">
+          <h1 className="text-2xl font-bold text-gray-900">
             Canción no encontrada
           </h1>
-          <p className="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          <p className="mt-3 text-sm text-gray-600">
             Esta canción no existe o fue eliminada.
           </p>
           <Link
             to="/aprender-ingles-con-canciones"
-            className="mt-6 inline-flex items-center justify-center rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900"
+            className="mt-6 inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-4 py-2 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
           >
             Volver a canciones
           </Link>
@@ -296,11 +296,11 @@ export default function SongPage({ loaderData }: Route.ComponentProps) {
   return (
     <ReaderPreferencesProvider>
       <ReaderLexiconProvider>
-        <main className="min-h-screen bg-gray-50 dark:bg-gray-950">
+        <main className="min-h-screen bg-gray-50">
           <ReaderHeader title={song.title} />
 
           <section className="mx-auto mt-6 w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+            <div className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
               {canRenderEmbed ? (
                 <div
                   ref={playerRootRef}
@@ -314,16 +314,16 @@ export default function SongPage({ loaderData }: Route.ComponentProps) {
                     className={
                       showFloatingPlayer
                         ? isSpotify
-                          ? "fixed bottom-3 left-3 right-3 z-40 h-[180px] overflow-hidden rounded-xl border border-gray-200 bg-black shadow-2xl dark:border-gray-700 sm:left-auto sm:right-6 sm:h-[220px] sm:w-[430px]"
-                          : "fixed bottom-3 left-3 right-3 z-40 aspect-video overflow-hidden rounded-xl border border-gray-200 bg-black shadow-2xl dark:border-gray-700 sm:left-auto sm:right-6 sm:w-[430px]"
-                        : "relative h-full w-full overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800"
+                          ? "fixed bottom-3 left-3 right-3 z-40 h-[180px] overflow-hidden rounded-xl border border-gray-200 bg-black shadow-2xl sm:left-auto sm:right-6 sm:h-[220px] sm:w-[430px]"
+                          : "fixed bottom-3 left-3 right-3 z-40 aspect-video overflow-hidden rounded-xl border border-gray-200 bg-black shadow-2xl sm:left-auto sm:right-6 sm:w-[430px]"
+                        : "relative h-full w-full overflow-hidden rounded-xl border border-gray-200"
                     }
                   >
                     {showFloatingPlayer && (
                       <button
                         type="button"
                         onClick={() => setIsMiniPlayerHidden(true)}
-                        className="absolute right-2 top-2 z-10 rounded-lg border border-gray-300 bg-white/95 px-2 py-1 text-xs font-medium text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:border-gray-700 dark:bg-gray-900/90 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus-visible:ring-offset-gray-900"
+                        className="absolute right-2 top-2 z-10 rounded-lg border border-gray-300 bg-white/95 px-2 py-1 text-xs font-medium text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
                         aria-label="Ocultar mini reproductor"
                       >
                         Ocultar
@@ -346,30 +346,30 @@ export default function SongPage({ loaderData }: Route.ComponentProps) {
                   </div>
                 </div>
               ) : (
-                <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700 dark:border-amber-900/60 dark:bg-amber-900/20 dark:text-amber-300">
-                  No pudimos generar el embebido para este enlace. Prueba editar la
-                  canción con una URL válida de YouTube o Spotify.
+                <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700">
+                  No pudimos generar el embebido para este enlace. Prueba editar
+                  la canción con una URL válida de YouTube o Spotify.
                 </div>
               )}
-              <p className="mt-3 text-xs text-gray-600 dark:text-gray-400">
+              <p className="mt-3 text-xs text-gray-600">
                 Fuente original:{" "}
                 <a
                   href={song.sourceUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-indigo-600 underline underline-offset-2 transition-colors duration-200 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
+                  className="text-[#0F9EDA] underline underline-offset-2 transition-colors duration-200 hover:text-[#0D8EC4]]]"
                 >
                   {song.sourceUrl}
                 </a>
               </p>
-              <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+              <p className="mt-2 text-xs text-gray-500">
                 Si aparece el mensaje{" "}
                 <span className="font-semibold">“refused to connect”</span>, ese
-                contenido tiene el embebido bloqueado por el proveedor (por ejemplo,
-                algunos videos con copyright). En ese caso usa otro enlace o abre la
-                fuente original.
+                contenido tiene el embebido bloqueado por el proveedor (por
+                ejemplo, algunos videos con copyright). En ese caso usa otro
+                enlace o abre la fuente original.
               </p>
-              <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+              <p className="mt-2 text-xs text-gray-500">
                 {provider === "youtube"
                   ? "Atajos de teclado globales: J (-5s), K (play/pausa), L (+5s)."
                   : "Atajos de teclado globales disponibles solo para videos de YouTube."}
@@ -381,7 +381,7 @@ export default function SongPage({ loaderData }: Route.ComponentProps) {
             <button
               type="button"
               onClick={() => setIsMiniPlayerHidden(false)}
-              className="fixed bottom-3 right-3 z-40 rounded-xl border border-gray-300 bg-white/95 px-3 py-2 text-xs font-semibold text-gray-700 shadow-lg transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:border-gray-700 dark:bg-gray-900/95 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus-visible:ring-offset-gray-900"
+              className="fixed bottom-3 right-3 z-40 rounded-xl border border-gray-300 bg-white/95 px-3 py-2 text-xs font-semibold text-gray-700 shadow-lg transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
             >
               Mostrar reproductor
             </button>
@@ -393,12 +393,12 @@ export default function SongPage({ loaderData }: Route.ComponentProps) {
             <Suspense
               fallback={
                 <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-                  <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
-                    <div className="h-5 w-40 animate-pulse rounded bg-gray-200 dark:bg-gray-800" />
+                  <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+                    <div className="h-5 w-40 animate-pulse rounded bg-gray-200" />
                     <div className="mt-4 space-y-3">
-                      <div className="h-4 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-800" />
-                      <div className="h-4 w-[92%] animate-pulse rounded bg-gray-200 dark:bg-gray-800" />
-                      <div className="h-4 w-[88%] animate-pulse rounded bg-gray-200 dark:bg-gray-800" />
+                      <div className="h-4 w-full animate-pulse rounded bg-gray-200" />
+                      <div className="h-4 w-[92%] animate-pulse rounded bg-gray-200" />
+                      <div className="h-4 w-[88%] animate-pulse rounded bg-gray-200" />
                     </div>
                   </div>
                 </div>

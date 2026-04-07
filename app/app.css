@@ -5,17 +5,51 @@
   --font-sans:
     "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  /* Primary Color: Ocean Blue #0F9EDA */
+  --color-primary-50: #e6f7fd;
+  --color-primary-100: #c0ebfa;
+  --color-primary-200: #96ddf6;
+  --color-primary-300: #6bcff2;
+  --color-primary-400: #3ac2ed;
+  --color-primary-500: #0f9eda;
+  --color-primary-600: #0d8ec4;
+  --color-primary-700: #0a7aab;
+  --color-primary-800: #086692;
+  --color-primary-900: #054d6e;
 }
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
-
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
+  @apply bg-white;
 }
 
+/* Primary color utilities */
+.bg-primary {
+  background-color: var(--color-primary-500);
+}
+
+.bg-primary-hover:hover {
+  background-color: var(--color-primary-600);
+}
+
+.text-primary {
+  color: var(--color-primary-500);
+}
+
+.text-primary-dark {
+  color: var(--color-primary-400);
+}
+
+.border-primary {
+  border-color: var(--color-primary-500);
+}
+
+.ring-primary {
+  --tw-ring-color: var(--color-primary-500);
+}
+
+/* Reader surface with CSS variables */
 .reader-surface {
   background-color: var(--reader-surface-bg);
   border-color: var(--reader-border-color);
@@ -103,4 +137,79 @@ body {
 
 .reader-copy-tooltip-arrow {
   border-top-color: var(--reader-tooltip-bg);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(15, 158, 218, 0.2);
+  color: inherit;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-400);
+}
+
+/* Hero animations */
+@keyframes heroWordPulse {
+  0%,
+  100% {
+    color: #0f9eda;
+  }
+  50% {
+    color: #0a7aab;
+    border-bottom-color: #0f9eda;
+  }
+}
+
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes progressGrow {
+  0% {
+    width: 0%;
+  }
+  80% {
+    width: 100%;
+  }
+  100% {
+    width: 100%;
+  }
 }

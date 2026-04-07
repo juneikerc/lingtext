@@ -96,17 +96,17 @@ export default function TextosEnInglesPage({
 
   return (
     <>
-      <section className="relative overflow-hidden border-b border-gray-200 bg-white py-16 dark:border-gray-800 dark:bg-gray-950 sm:py-24">
+      <section className="relative overflow-hidden border-b border-gray-200 bg-white py-16 sm:py-24">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute left-[10%] top-[10%] h-64 w-64 rounded-full bg-indigo-500/10 blur-3xl dark:bg-indigo-400/5" />
-          <div className="absolute bottom-[10%] right-[10%] h-64 w-64 rounded-full bg-sky-500/10 blur-3xl dark:bg-sky-400/5" />
+          <div className="absolute left-[10%] top-[10%] h-64 w-64 rounded-full bg-indigo-500/10 blur-3xl" />
+          <div className="absolute bottom-[10%] right-[10%] h-64 w-64 rounded-full bg-sky-500/10 blur-3xl" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <nav className="mb-8">
             <Link
               to="/"
-              className="inline-flex items-center text-sm font-medium text-gray-600 transition-colors duration-200 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400"
+              className="inline-flex items-center text-sm font-medium text-gray-600 transition-colors duration-200 hover:text-indigo-600"
             >
               <svg
                 className="mr-2 h-4 w-4"
@@ -125,18 +125,18 @@ export default function TextosEnInglesPage({
             </Link>
           </nav>
 
-          <div className="mb-6 inline-flex items-center rounded-full border border-indigo-100 bg-indigo-50 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-indigo-600 dark:border-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-400">
+          <div className="mb-6 inline-flex items-center rounded-full border border-indigo-100 bg-indigo-50 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-indigo-600">
             Lecturas para todos los niveles
           </div>
 
-          <h1 className="mb-6 text-4xl font-extrabold leading-tight text-gray-900 dark:text-gray-100 sm:text-5xl lg:text-6xl">
+          <h1 className="mb-6 text-4xl font-extrabold leading-tight text-gray-900 sm:text-5xl lg:text-6xl">
             Textos en ingles para leer y practicar segun tu nivel
           </h1>
 
-          <div className="max-w-3xl space-y-4 text-lg leading-relaxed text-gray-600 dark:text-gray-400 sm:text-xl">
+          <div className="max-w-3xl space-y-4 text-lg leading-relaxed text-gray-600 sm:text-xl">
             <p>
               Si buscas{" "}
-              <strong className="text-gray-900 dark:text-gray-100">
+              <strong className="text-gray-900">
                 textos en ingles
               </strong>{" "}
               para mejorar tu lectura, aqui encuentras opciones organizadas por
@@ -152,13 +152,13 @@ export default function TextosEnInglesPage({
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="#textos-por-nivel"
-              className="inline-flex items-center justify-center rounded-full bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:hover:bg-indigo-500 dark:focus-visible:ring-offset-gray-950"
+              className="inline-flex items-center justify-center rounded-full bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               Ver textos por nivel
             </a>
             <Link
               to="/levels/a1"
-              className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white px-6 py-3 text-sm font-semibold text-gray-700 transition-colors duration-200 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus-visible:ring-offset-gray-950"
+              className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white px-6 py-3 text-sm font-semibold text-gray-700 transition-colors duration-200 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               Empezar con A1
             </Link>
@@ -168,7 +168,7 @@ export default function TextosEnInglesPage({
 
       <section
         id="textos-por-nivel"
-        className="relative overflow-hidden border-b border-gray-200 bg-gray-50 py-16 dark:border-gray-800 dark:bg-gray-950 sm:py-24"
+        className="relative overflow-hidden border-b border-gray-200 bg-gray-50 py-16 sm:py-24"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 flex items-center gap-3">
@@ -188,10 +188,10 @@ export default function TextosEnInglesPage({
               </svg>
             </div>
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+              <h2 className="text-3xl font-bold text-gray-900">
                 Textos en ingles organizados por nivel
               </h2>
-              <p className="mt-2 text-base text-gray-600 dark:text-gray-400">
+              <p className="mt-2 text-base text-gray-600">
                 Elige tu nivel y empieza con 3 lecturas recomendadas antes de
                 pasar al listado completo.
               </p>
@@ -202,10 +202,10 @@ export default function TextosEnInglesPage({
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-white py-16 dark:bg-gray-950 sm:py-24">
+      <section className="relative overflow-hidden bg-white py-16 sm:py-24">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="prose prose-lg max-w-none text-gray-600 dark:prose-invert dark:text-gray-400">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+          <div className="prose prose-lg max-w-none text-gray-600">
+            <h2 className="text-3xl font-bold text-gray-900">
               Como aprovechar mejor estos textos en ingles
             </h2>
             <p>

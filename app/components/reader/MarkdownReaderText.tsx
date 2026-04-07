@@ -40,7 +40,7 @@ function renderMarkdownImage(
         alt={image.alt}
         loading="lazy"
         decoding="async"
-        className="block w-full max-w-full rounded-2xl border border-gray-200 bg-gray-50 object-contain shadow-sm dark:border-gray-700 dark:bg-gray-900"
+        className="block w-full max-w-full rounded-2xl border border-gray-200 bg-gray-50 object-contain shadow-sm"
       />
     </figure>
   );
@@ -57,7 +57,7 @@ function renderInlineMarkdownImage(
       alt={image.alt}
       loading="lazy"
       decoding="async"
-      className="my-4 inline-block max-w-full rounded-2xl border border-gray-200 bg-gray-50 align-middle shadow-sm dark:border-gray-700 dark:bg-gray-900"
+      className="my-4 inline-block max-w-full rounded-2xl border border-gray-200 bg-gray-50 align-middle shadow-sm"
     />
   );
 }
@@ -95,7 +95,7 @@ function MarkdownReaderText({
           elements.push(
             <pre
               key={`code-${i}`}
-              className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4 overflow-x-auto"
+              className="bg-gray-100 p-4 rounded-lg my-4 overflow-x-auto"
             >
               <code className="text-sm font-mono">{codeContent.trim()}</code>
             </pre>
@@ -176,7 +176,7 @@ function MarkdownReaderText({
         elements.push(
           <blockquote
             key={`quote-${i}`}
-            className="border-l-4 border-blue-500 pl-4 my-4 italic text-gray-700 dark:text-gray-300"
+            className="border-l-4 border-blue-500 pl-4 my-4 italic text-gray-700"
           >
             {renderInlineMarkdown(quoteText)}
           </blockquote>
@@ -189,7 +189,7 @@ function MarkdownReaderText({
         elements.push(
           <hr
             key={`hr-${i}`}
-            className="my-6 border-gray-300 dark:border-gray-600"
+            className="my-6 border-gray-300"
           />
         );
         continue;
@@ -223,7 +223,7 @@ function MarkdownReaderText({
           parts.push(
             <code
               key={`inline-code-${keyCounter++}`}
-              className="bg-gray-200 dark:bg-gray-700 px-1 py-0.5 rounded text-sm font-mono"
+              className="bg-gray-200 px-1 py-0.5 rounded text-sm font-mono"
             >
               {codeMatch[1]}
             </code>
@@ -302,7 +302,7 @@ function MarkdownReaderText({
               href={linkMatch[2]}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300"
+              className="text-blue-600 underline hover:text-blue-800"
             >
               <ReaderWordTokens
                 text={linkMatch[1]}

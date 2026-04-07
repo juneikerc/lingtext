@@ -28,7 +28,7 @@ type ReaderThemeTokens = {
 const FONT_SIZE_MIN = 15;
 const FONT_SIZE_MAX = 24;
 
-const READER_THEME_VALUES: ReaderTheme[] = ["light", "sepia", "dark-soft"];
+const READER_THEME_VALUES: ReaderTheme[] = ["light", "sepia"];
 const READER_WIDTH_VALUES: ReaderContentWidth[] = ["narrow", "normal", "wide"];
 const READER_FONT_VALUES: ReaderFontFamily[] = ["sans", "serif"];
 const READER_LINE_HEIGHT_VALUES: ReaderLineHeight[] = ["compact", "relaxed"];
@@ -79,20 +79,6 @@ const THEME_TOKENS: Record<ReaderTheme, ReaderThemeTokens> = {
     tooltipBg: "#5b4631",
     tooltipText: "#fff7ed",
   },
-  "dark-soft": {
-    pageBg: "#111827",
-    surfaceBg: "#1f2937",
-    borderColor: "#374151",
-    textColor: "#f3f4f6",
-    mutedBg: "#111827",
-    quoteBg: "#172033",
-    linkColor: "#93c5fd",
-    accentColor: "#60a5fa",
-    tokenHoverBg: "#1e3a5f",
-    tokenHoverColor: "#eff6ff",
-    tooltipBg: "#0f172a",
-    tooltipText: "#f8fafc",
-  },
 };
 
 const PRESET_MAP: Record<Exclude<ReaderPreset, "custom">, ReaderPreferences> = {
@@ -134,7 +120,6 @@ export const READER_THEME_OPTIONS: Array<{
 }> = [
   { value: "light", label: "Claro" },
   { value: "sepia", label: "Sepia" },
-  { value: "dark-soft", label: "Noche suave" },
 ];
 
 export const READER_WIDTH_OPTIONS: Array<{
@@ -183,7 +168,10 @@ function clampFontSize(value: number): number {
   return Math.min(FONT_SIZE_MAX, Math.max(FONT_SIZE_MIN, Math.round(value)));
 }
 
-function isAllowedValue<T extends string>(value: unknown, options: T[]): value is T {
+function isAllowedValue<T extends string>(
+  value: unknown,
+  options: T[]
+): value is T {
   return typeof value === "string" && options.includes(value as T);
 }
 
@@ -204,9 +192,7 @@ export function resolveReaderPreferences(
     ? preferences.preset
     : DEFAULT_READER_PREFERENCES.preset;
 
-  const base = PRESET_MAP[
-    basePreset as Exclude<ReaderPreset, "custom">
-  ];
+  const base = PRESET_MAP[basePreset as Exclude<ReaderPreset, "custom">];
 
   return {
     theme: isAllowedValue(preferences?.theme, READER_THEME_VALUES)

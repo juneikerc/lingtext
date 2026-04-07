@@ -22,19 +22,10 @@ export function ReaderEmptyState() {
 }
 
 export function ReaderModeIndicator() {
-  const { preferences } = useReaderPreferences();
-  const isDark = preferences.theme === "dark-soft";
-
   return (
     <div className="absolute -top-6 left-0 right-0 flex justify-center">
-      <div
-        className={`rounded-full px-4 py-2 text-sm font-medium flex items-center space-x-2 mt-8 z-10 border ${
-          isDark
-            ? "bg-blue-950/20 border-blue-800/50 text-blue-300"
-            : "bg-blue-50 border-blue-200 text-blue-700"
-        }`}
-      >
-        <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+      <div className="rounded-full px-4 py-2 text-sm font-medium flex items-center space-x-2 mt-8 z-10 border bg-[#0F9EDA]/10 border-[#0F9EDA]/20 text-[#0A7AAB]">
+        <div className="w-2 h-2 bg-[#0F9EDA] rounded-full animate-pulse"></div>
         <span>Haz clic en cualquier palabra para traducirla</span>
       </div>
     </div>
@@ -135,14 +126,14 @@ export function ReaderHelpFloatingLink() {
           href="https://www.facebook.com/groups/1199904721807372/"
           target="_blank"
           rel="noopener noreferrer"
-          className="block rounded-2xl bg-indigo-600 px-4 py-3 text-sm font-semibold text-white shadow-lg transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:bg-indigo-500 dark:text-indigo-50 dark:hover:bg-indigo-400 dark:focus-visible:ring-offset-gray-900 animate-pulse motion-reduce:animate-none"
+          className="block rounded-2xl bg-[#0F9EDA] px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-[#0F9EDA]/25 transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white animate-pulse motion-reduce:animate-none"
           aria-label="Abrir grupo de Facebook para preguntas"
         >
           ¿Tienes dudas? Pregunta en nuestro grupo de Facebook →
         </a>
         <button
           type="button"
-          className="absolute -top-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full bg-white text-gray-600 shadow-md transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus-visible:ring-offset-gray-900"
+          className="absolute -top-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full bg-white text-gray-600 shadow-md transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
           aria-label="Ocultar ayuda"
           onClick={() => setIsVisible(false)}
         >
@@ -154,26 +145,15 @@ export function ReaderHelpFloatingLink() {
 }
 
 export default function LibraryBanner() {
-  const { preferences } = useReaderPreferences();
-  const isDark = preferences.theme === "dark-soft";
-
   return (
     <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-8 sm:mt-12 mb-4">
       <Link
         to="/my-library"
-        className={`group block rounded-2xl border px-4 sm:px-6 py-4 sm:py-5 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 ${
-          isDark
-            ? "border-indigo-800/60 bg-indigo-950/30 hover:border-indigo-700 hover:bg-indigo-950/50 focus-visible:ring-offset-gray-950"
-            : "border-indigo-200 bg-indigo-50/80 hover:border-indigo-300 hover:bg-indigo-50 focus-visible:ring-offset-white"
-        }`}
+        className="group block rounded-2xl border px-4 sm:px-6 py-4 sm:py-5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 border-[#0F9EDA]/20 bg-[#0F9EDA]/5 hover:border-[#0F9EDA]/40 hover:bg-[#0F9EDA]/10 focus-visible:ring-offset-white"
       >
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="flex items-center gap-3 min-w-0">
-            <span
-              className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${
-                isDark ? "bg-indigo-500" : "bg-indigo-600"
-              }`}
-            >
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#0F9EDA]">
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -190,31 +170,17 @@ export default function LibraryBanner() {
               </svg>
             </span>
             <div className="min-w-0">
-              <p
-                className={`text-sm font-semibold ${
-                  isDark ? "text-indigo-300" : "text-indigo-700"
-                }`}
-              >
+              <p className="text-sm font-semibold text-[#0A7AAB]">
                 Sube tus propios textos y sigue aprendiendo
               </p>
-              <p
-                className={`text-xs mt-0.5 ${
-                  isDark ? "text-indigo-400/70" : "text-indigo-600/70"
-                }`}
-              >
+              <p className="text-xs mt-0.5 text-[#0F9EDA]/70">
                 Agrega articulos, libros o cualquier texto en ingles a tu
                 biblioteca personal
               </p>
             </div>
           </div>
 
-          <span
-            className={`shrink-0 inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors duration-200 ${
-              isDark
-                ? "bg-indigo-500 group-hover:bg-indigo-400"
-                : "bg-indigo-600 group-hover:bg-indigo-700"
-            }`}
-          >
+          <span className="shrink-0 inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-200 bg-[#0F9EDA] group-hover:bg-[#0D8EC4]">
             Ir a Mi Biblioteca
             <svg
               viewBox="0 0 24 24"

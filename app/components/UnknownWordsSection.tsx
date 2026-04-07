@@ -47,11 +47,11 @@ export default function UnknownWordsSection(props: UnknownWordsSectionProps) {
   } = useStudyLibrary(props);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
+    <div className="min-h-screen bg-gray-50">
       <div className="relative">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-24 left-1/3 h-96 w-96 rounded-full bg-indigo-500/10 dark:bg-indigo-400/5 blur-3xl"></div>
-          <div className="absolute -bottom-24 right-1/3 h-96 w-96 rounded-full bg-sky-500/10 dark:bg-sky-400/5 blur-3xl"></div>
+          <div className="absolute -top-24 left-1/3 h-96 w-96 rounded-full bg-indigo-500/10 blur-3xl"></div>
+          <div className="absolute -bottom-24 right-1/3 h-96 w-96 rounded-full bg-sky-500/10 blur-3xl"></div>
         </div>
 
         <div className="relative mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">

@@ -136,15 +136,15 @@ export default function StoryGenerator({
   if (generatedTexts.length > 0) {
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-        <div className="w-full max-w-md bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden">
+        <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden">
           <div className="p-6">
-            <div className="flex items-center justify-center w-16 h-16 bg-green-100 dark:bg-green-900/20 rounded-full mx-auto mb-4">
+            <div className="flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mx-auto mb-4">
               <span className="text-3xl">✅</span>
             </div>
-            <h3 className="text-2xl font-bold text-center text-gray-900 dark:text-gray-100 mb-2">
+            <h3 className="text-2xl font-bold text-center text-gray-900 mb-2">
               ¡Historias Generadas!
             </h3>
-            <p className="text-center text-gray-600 dark:text-gray-400 mb-6">
+            <p className="text-center text-gray-600 mb-6">
               Se han generado {generatedTexts.length} texto(s) correctamente
             </p>
             <div className="space-y-2 mb-6">
@@ -152,15 +152,15 @@ export default function StoryGenerator({
                 <button
                   key={id}
                   onClick={() => handleViewText(id)}
-                  className="w-full flex items-center justify-between p-4 rounded-xl bg-indigo-50 dark:bg-indigo-900/10 border border-indigo-100 dark:border-indigo-900/30 hover:bg-indigo-100 dark:hover:bg-indigo-900/20 transition-colors duration-200 text-left"
+                  className="w-full flex items-center justify-between p-4 rounded-xl bg-indigo-50 border border-indigo-100 hover:bg-indigo-100 transition-colors duration-200 text-left"
                 >
                   <div className="flex items-center gap-3">
                     <span className="text-lg">📖</span>
-                    <span className="font-medium text-gray-900 dark:text-gray-100">
+                    <span className="font-medium text-gray-900">
                       Historia {index + 1}
                     </span>
                   </div>
-                  <span className="text-indigo-600 dark:text-indigo-400">
+                  <span className="text-indigo-600">
                     →
                   </span>
                 </button>
@@ -169,7 +169,7 @@ export default function StoryGenerator({
             <div className="flex gap-3">
               <button
                 onClick={handleReset}
-                className="flex-1 px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+                className="flex-1 px-4 py-3 rounded-lg bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 transition-colors duration-200"
               >
                 Generar más
               </button>
@@ -188,29 +188,29 @@ export default function StoryGenerator({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-      <div className="w-full max-w-md bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden max-h-[90vh] overflow-y-auto">
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden max-h-[90vh] overflow-y-auto">
         <div className="p-6">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+            <h3 className="text-2xl font-bold text-gray-900">
               ✨ Generar Historia
             </h3>
             <button
               onClick={onClose}
-              className="p-2 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+              className="p-2 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors duration-200"
             >
               ✕
             </button>
           </div>
 
-          <div className="mb-6 p-4 bg-indigo-50 dark:bg-indigo-900/10 rounded-xl border border-indigo-100 dark:border-indigo-900/30">
-            <p className="text-sm font-medium text-indigo-800 dark:text-indigo-300 mb-2">
+          <div className="mb-6 p-4 bg-indigo-50 rounded-xl border border-indigo-100">
+            <p className="text-sm font-medium text-indigo-800 mb-2">
               Palabras seleccionadas ({selectedWords.length}):
             </p>
             <div className="flex flex-wrap gap-1">
               {selectedWordEntries.map((w) => (
                 <span
                   key={w.wordLower}
-                  className="inline-flex items-center px-2 py-1 rounded bg-white dark:bg-gray-900 text-sm text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-gray-700"
+                  className="inline-flex items-center px-2 py-1 rounded bg-white text-sm text-gray-700 border border-gray-200"
                 >
                   {w.word}
                 </span>
@@ -219,11 +219,11 @@ export default function StoryGenerator({
           </div>
 
           {error && (
-            <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/10 rounded-xl border border-red-100 dark:border-red-900/30">
+            <div className="mb-6 p-4 bg-red-50 rounded-xl border border-red-100">
               <div className="flex items-start gap-3">
                 <span className="text-2xl">⚠️</span>
                 <div className="flex-1">
-                  <p className="text-sm font-bold text-red-800 dark:text-red-300 mb-2">
+                  <p className="text-sm font-bold text-red-800 mb-2">
                     {error === "NO_API_KEY"
                       ? "API Key no configurada"
                       : error === "INVALID_API_KEY"
@@ -236,7 +236,7 @@ export default function StoryGenerator({
                               ? "Error en la API"
                               : "Error desconocido"}
                   </p>
-                  <p className="text-sm text-red-700 dark:text-red-400">
+                  <p className="text-sm text-red-700">
                     {error === "NO_API_KEY"
                       ? "Necesitas configurar tu API key de OpenRouter para generar historias. Ve a la página de inicio y configura tu clave en la sección de API Key."
                       : error === "INVALID_API_KEY"
@@ -255,21 +255,21 @@ export default function StoryGenerator({
           )}
 
           {isGenerating && (
-            <div className="mb-6 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
+            <div className="mb-6 p-6 bg-gray-50 rounded-xl border border-gray-200 text-center">
               <div className="mb-4">
-                <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-indigo-600 dark:bg-indigo-400 transition-all duration-300"
+                    className="h-full bg-indigo-600 transition-all duration-300"
                     style={{
                       width: `${(progress.current / progress.total) * 100}%`,
                     }}
                   ></div>
                 </div>
               </div>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
+              <p className="text-gray-600 text-sm">
                 Generando texto {progress.current} de {progress.total}...
               </p>
-              <p className="text-gray-500 dark:text-gray-500 text-xs mt-1">
+              <p className="text-gray-500 text-xs mt-1">
                 Esto puede tardar unos segundos
               </p>
             </div>
@@ -278,14 +278,14 @@ export default function StoryGenerator({
           {!isGenerating && (
             <div className="space-y-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+                <label className="block text-sm font-medium text-gray-700 mb-3">
                   Tipo de texto
                 </label>
                 <div className="space-y-2">
                   {TEXT_TYPE_OPTIONS.map((option) => (
                     <label
                       key={option.value}
-                      className="flex items-start gap-3 p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer transition-colors duration-200"
+                      className="flex items-start gap-3 p-3 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-colors duration-200"
                     >
                       <input
                         type="radio"
@@ -301,10 +301,10 @@ export default function StoryGenerator({
                         className="mt-1 w-4 h-4 text-indigo-600 focus:ring-indigo-500"
                       />
                       <div>
-                        <p className="font-medium text-gray-900 dark:text-gray-100">
+                        <p className="font-medium text-gray-900">
                           {option.label}
                         </p>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                        <p className="text-sm text-gray-600">
                           {option.description}
                         </p>
                       </div>
@@ -314,7 +314,7 @@ export default function StoryGenerator({
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
                   Tema (opcional)
                 </label>
                 <input
@@ -327,15 +327,15 @@ export default function StoryGenerator({
                     })
                   }
                   placeholder="Ej: tecnología, naturaleza, aventuras..."
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors duration-200"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors duration-200"
                 />
-                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                <p className="text-xs text-gray-500 mt-1">
                   Si no especificas, la IA decidirá el tema
                 </p>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
                   Longitud mínima (palabras)
                 </label>
                 <input
@@ -350,15 +350,15 @@ export default function StoryGenerator({
                       minLength: parseInt(e.target.value) || 400,
                     })
                   }
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors duration-200"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors duration-200"
                 />
-                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                <p className="text-xs text-gray-500 mt-1">
                   Recomendado: 400-800 palabras
                 </p>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+                <label className="block text-sm font-medium text-gray-700 mb-3">
                   Nivel
                 </label>
                 <div className="grid grid-cols-5 gap-2">
@@ -388,7 +388,7 @@ export default function StoryGenerator({
                         className={`p-3 rounded-lg border text-center transition-all duration-200 ${
                           config.level === option.value
                             ? "bg-indigo-600 text-white border-indigo-600"
-                            : "bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-700 hover:border-indigo-400 dark:hover:border-indigo-400"
+                            : "bg-white text-gray-700 border-gray-300 hover:border-indigo-400"
                         }`}
                       >
                         <p className="font-bold text-sm">{option.label}</p>
@@ -402,7 +402,7 @@ export default function StoryGenerator({
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+                <label className="block text-sm font-medium text-gray-700 mb-3">
                   Número de textos
                 </label>
                 <div className="grid grid-cols-3 gap-2">
@@ -430,8 +430,8 @@ export default function StoryGenerator({
                       <div
                         className={`p-3 rounded-lg border text-center transition-all duration-200 ${
                           config.count === count
-                            ? "bg-indigo-600 text-white border-indigo-600 shadow-md ring-2 ring-indigo-500 ring-offset-2 dark:ring-offset-gray-900"
-                            : "bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-700 hover:border-indigo-400 dark:hover:border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/10"
+                            ? "bg-indigo-600 text-white border-indigo-600 shadow-md ring-2 ring-indigo-500 ring-offset-2"
+                            : "bg-white text-gray-700 border-gray-300 hover:border-indigo-400 hover:bg-indigo-50"
                         }`}
                       >
                         <p className="font-bold text-lg">{count}</p>
@@ -444,7 +444,7 @@ export default function StoryGenerator({
               <div className="flex gap-3 pt-4">
                 <button
                   onClick={onClose}
-                  className="flex-1 px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+                  className="flex-1 px-4 py-3 rounded-lg bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 transition-colors duration-200"
                 >
                   Cancelar
                 </button>

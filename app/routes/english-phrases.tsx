@@ -137,19 +137,19 @@ export default function EnglishPhrasesPage({
 
   return (
     <>
-      <div id="top" className="bg-white dark:bg-gray-950">
-        <section className="relative overflow-hidden py-16 sm:py-20 bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
+      <div id="top" className="bg-white">
+        <section className="relative overflow-hidden py-16 sm:py-20 bg-white border-b border-gray-200">
           <div className="mx-auto max-w-5xl px-6">
             <div className="flex flex-col gap-6">
-              <div className="inline-flex items-center gap-3 self-start rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300">
+              <div className="inline-flex items-center gap-3 self-start rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700">
                 <span className="h-2 w-2 rounded-full bg-indigo-500" />
                 Practica con audio
               </div>
               <div className="space-y-4">
-                <h1 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
+                <h1 className="text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
                   1000 Frases Más Usadas en Inglés
                 </h1>
-                <div className="space-y-4 text-base text-gray-600 dark:text-gray-400 sm:text-lg">
+                <div className="space-y-4 text-base text-gray-600 sm:text-lg">
                   <p>
                     Dominar el inglés va más allá de conocer vocabulario
                     aislado. Las frases hechas y expresiones cotidianas son la
@@ -158,7 +158,7 @@ export default function EnglishPhrasesPage({
                   </p>
                   <p>
                     Esta colección de{" "}
-                    <strong className="font-semibold text-gray-900 dark:text-gray-100">
+                    <strong className="font-semibold text-gray-900">
                       1000 frases esenciales
                     </strong>{" "}
                     está organizada por categorías temáticas para facilitar tu
@@ -169,7 +169,7 @@ export default function EnglishPhrasesPage({
               <div>
                 <Link
                   to="/"
-                  className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-6 py-3 text-gray-700 transition-colors duration-200 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus-visible:ring-offset-gray-950"
+                  className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-6 py-3 text-gray-700 transition-colors duration-200 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 >
                   Volver al inicio
                 </Link>
@@ -178,7 +178,7 @@ export default function EnglishPhrasesPage({
                 <button
                   type="button"
                   onClick={onDownloadPdf}
-                  className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-6 py-3 font-medium text-white shadow-sm transition-colors duration-200 hover:bg-indigo-700 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
+                  className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-6 py-3 font-medium text-white shadow-sm transition-colors duration-200 hover:bg-indigo-700 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 >
                   Descargar 1000 frases en ingles PDF
                 </button>
@@ -187,22 +187,22 @@ export default function EnglishPhrasesPage({
           </div>
         </section>
 
-        <section className="relative overflow-hidden py-12 sm:py-16 bg-gray-50 dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
+        <section className="relative overflow-hidden py-12 sm:py-16 bg-gray-50 border-b border-gray-200">
           <div className="mx-auto max-w-5xl px-6">
-            <details className="rounded-2xl border border-gray-200 bg-white shadow-sm transition duration-200 hover:border-gray-300 hover:shadow-md dark:border-gray-800 dark:bg-gray-900 dark:hover:border-gray-700">
-              <summary className="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left text-lg font-semibold text-gray-900 dark:text-gray-100 sm:text-xl">
+            <details className="rounded-2xl border border-gray-200 bg-white shadow-sm transition duration-200 hover:border-gray-300 hover:shadow-md">
+              <summary className="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left text-lg font-semibold text-gray-900 sm:text-xl">
                 Tabla de contenidos
-                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                <span className="text-sm font-medium text-gray-500">
                   {phrasesByCategory.length} categorías
                 </span>
               </summary>
-              <div className="border-t border-gray-200 px-5 py-4 dark:border-gray-800">
+              <div className="border-t border-gray-200 px-5 py-4">
                 <div className="flex flex-wrap gap-3">
                   {phrasesByCategory.map((group) => (
                     <a
                       key={`toc-${group.category}`}
                       href={`#${slugify(group.category)}`}
-                      className="inline-flex items-center px-4 py-2 text-sm font-medium bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-800 rounded-full transition-colors duration-200 hover:bg-gray-200 dark:hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
+                      className="inline-flex items-center px-4 py-2 text-sm font-medium bg-gray-100 text-gray-700 border border-gray-200 rounded-full transition-colors duration-200 hover:bg-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                     >
                       {group.category}
                     </a>
@@ -216,8 +216,8 @@ export default function EnglishPhrasesPage({
         {phrasesByCategory.map((group, index) => {
           const sectionClass =
             index % 2 === 0
-              ? "relative overflow-hidden py-16 sm:py-20 bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800"
-              : "relative overflow-hidden py-16 sm:py-20 bg-gray-50 dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800";
+              ? "relative overflow-hidden py-16 sm:py-20 bg-white border-b border-gray-200"
+              : "relative overflow-hidden py-16 sm:py-20 bg-gray-50 border-b border-gray-200";
 
           return (
             <section
@@ -228,10 +228,10 @@ export default function EnglishPhrasesPage({
               <div className="mx-auto max-w-5xl px-6">
                 <div className="space-y-6">
                   <div className="space-y-2">
-                    <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 sm:text-2xl">
+                    <h2 className="text-xl font-semibold text-gray-900 sm:text-2xl">
                       {group.category}
                     </h2>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <p className="text-sm text-gray-500">
                       {group.phrases.length} frases disponibles
                     </p>
                   </div>
@@ -240,15 +240,15 @@ export default function EnglishPhrasesPage({
                     {group.phrases.map((phrase) => (
                       <details
                         key={`${group.category}-${phrase.phrase}`}
-                        className="group rounded-2xl border border-gray-200 bg-white shadow-sm transition duration-200 hover:border-gray-300 hover:shadow-md dark:border-gray-800 dark:bg-gray-900 dark:hover:border-gray-700"
+                        className="group rounded-2xl border border-gray-200 bg-white shadow-sm transition duration-200 hover:border-gray-300 hover:shadow-md"
                       >
                         <summary className="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left">
-                          <span className="text-base font-medium text-gray-900 dark:text-gray-100">
+                          <span className="text-base font-medium text-gray-900">
                             {phrase.phrase}
                           </span>
                           <button
                             type="button"
-                            className="inline-flex items-center justify-center rounded-xl bg-gray-50 p-3 text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 dark:focus-visible:ring-offset-gray-950"
+                            className="inline-flex items-center justify-center rounded-xl bg-gray-50 p-3 text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                             title="Reproducir frase"
                             aria-label={`Reproducir frase: ${phrase.phrase}`}
                             onClick={async (event) => {
@@ -260,7 +260,7 @@ export default function EnglishPhrasesPage({
                             ▶
                           </button>
                         </summary>
-                        <div className="border-t border-gray-200 px-5 py-4 text-gray-600 dark:border-gray-800 dark:text-gray-400">
+                        <div className="border-t border-gray-200 px-5 py-4 text-gray-600">
                           {phrase.translation}
                         </div>
                       </details>
@@ -274,7 +274,7 @@ export default function EnglishPhrasesPage({
       </div>
       <a
         href="#top"
-        className="fixed bottom-6 right-6 inline-flex items-center justify-center rounded-xl bg-indigo-600 p-3 text-white shadow-sm transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
+        className="fixed bottom-6 right-6 inline-flex items-center justify-center rounded-xl bg-indigo-600 p-3 text-white shadow-sm transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
         aria-label="Volver al inicio"
         title="Volver al inicio"
       >

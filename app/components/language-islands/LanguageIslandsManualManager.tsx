@@ -179,30 +179,30 @@ export default function LanguageIslandsManualManager() {
   return (
     <section
       id="agregar-isla-manual"
-      className="relative overflow-hidden border-b border-gray-200 bg-white px-4 py-12 dark:border-gray-800 dark:bg-gray-950"
+      className="relative overflow-hidden border-b border-gray-200 bg-white px-4 py-12"
     >
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute left-10 top-10 h-32 w-32 rounded-full bg-indigo-500/10 blur-3xl dark:bg-indigo-400/5"></div>
-        <div className="absolute bottom-10 right-10 h-40 w-40 rounded-full bg-sky-500/10 blur-3xl dark:bg-sky-400/5"></div>
+        <div className="absolute left-10 top-10 h-32 w-32 rounded-full bg-indigo-500/10 blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 h-40 w-40 rounded-full bg-sky-500/10 blur-3xl"></div>
       </div>
 
       <div className="relative mx-auto max-w-5xl">
         <div className="mb-10 text-center">
-          <div className="mb-6 inline-flex items-center rounded-full border border-gray-200 bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300">
+          <div className="mb-6 inline-flex items-center rounded-full border border-gray-200 bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700">
             <span className="mr-2 h-2 w-2 rounded-full bg-indigo-500"></span>
             Biblioteca de Islas
           </div>
-          <h2 className="mb-3 text-3xl font-extrabold text-gray-900 dark:text-gray-100 md:text-4xl">
+          <h2 className="mb-3 text-3xl font-extrabold text-gray-900 md:text-4xl">
             Agrega tus language islands y estudia por oraciones
           </h2>
-          <p className="mx-auto max-w-3xl text-base text-gray-600 dark:text-gray-400 md:text-lg">
+          <p className="mx-auto max-w-3xl text-base text-gray-600 md:text-lg">
             Crea islas con una oración por línea para practicar traducción en
             contexto, reforzar estructuras y trabajar pronunciación con TTS.
           </p>
         </div>
 
-        <div className="mb-10 rounded-2xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-800 dark:bg-gray-900">
-          <h3 className="mb-6 flex items-center text-2xl font-bold text-gray-900 dark:text-gray-100">
+        <div className="mb-10 rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+          <h3 className="mb-6 flex items-center text-2xl font-bold text-gray-900">
             <div className="mr-3 flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600">
               <span className="text-sm text-white">+</span>
             </div>
@@ -211,7 +211,7 @@ export default function LanguageIslandsManualManager() {
 
           <form className="space-y-5" onSubmit={onSubmit}>
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label className="mb-2 block text-sm font-medium text-gray-700">
                 Título de la isla
               </label>
               <input
@@ -220,13 +220,13 @@ export default function LanguageIslandsManualManager() {
                 onChange={(event) =>
                   setForm((prev) => ({ ...prev, title: event.target.value }))
                 }
-                className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-gray-900 transition-colors duration-200 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
+                className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-gray-900 transition-colors duration-200 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 placeholder="Ej: Isla de conversaciones cotidianas"
               />
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label className="mb-2 block text-sm font-medium text-gray-700">
                 Oraciones (una por línea)
               </label>
               <textarea
@@ -237,25 +237,25 @@ export default function LanguageIslandsManualManager() {
                     sentencesText: event.target.value,
                   }))
                 }
-                className="min-h-[220px] w-full resize-vertical rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-gray-900 transition-colors duration-200 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
+                className="min-h-[220px] w-full resize-vertical rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-gray-900 transition-colors duration-200 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 placeholder={
                   "I wake up at 6 AM every day.\nI make coffee before work.\nI review English for 20 minutes."
                 }
               />
-              <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+              <p className="mt-2 text-xs text-gray-500">
                 Consejo: cada línea se mostrará como una oración individual en
                 la ruta de estudio.
               </p>
             </div>
 
             {error ? (
-              <p className="rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700 dark:border-red-900/60 dark:bg-red-900/20 dark:text-red-300">
+              <p className="rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
                 {error}
               </p>
             ) : null}
 
             {success ? (
-              <p className="rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-900/20 dark:text-emerald-300">
+              <p className="rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-700">
                 {success}
               </p>
             ) : null}
@@ -265,7 +265,7 @@ export default function LanguageIslandsManualManager() {
                 <button
                   type="button"
                   onClick={resetFormState}
-                  className="rounded-xl bg-gray-100 px-5 py-3 font-semibold text-gray-700 transition-colors duration-200 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+                  className="rounded-xl bg-gray-100 px-5 py-3 font-semibold text-gray-700 transition-colors duration-200 hover:bg-gray-200"
                 >
                   Cancelar edición
                 </button>
@@ -274,7 +274,7 @@ export default function LanguageIslandsManualManager() {
               <button
                 type="submit"
                 disabled={isSaving}
-                className="rounded-xl bg-indigo-600 px-6 py-3 font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-indigo-700 hover:shadow-md disabled:cursor-not-allowed disabled:bg-gray-400 dark:disabled:bg-gray-600"
+                className="rounded-xl bg-indigo-600 px-6 py-3 font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-indigo-700 hover:shadow-md disabled:cursor-not-allowed disabled:bg-gray-400"
               >
                 {isSaving
                   ? "Guardando..."
@@ -288,20 +288,20 @@ export default function LanguageIslandsManualManager() {
 
         <div className="space-y-4" id="islas-guardadas">
           <div className="flex items-center justify-between gap-3">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+            <h3 className="text-2xl font-bold text-gray-900">
               Islas guardadas
             </h3>
-            <span className="rounded-full border border-gray-200 bg-gray-100 px-3 py-1 text-sm text-gray-500 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400">
+            <span className="rounded-full border border-gray-200 bg-gray-100 px-3 py-1 text-sm text-gray-500">
               {islands.length} total
             </span>
           </div>
 
           {isLoading ? (
-            <div className="animate-pulse rounded-2xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-800 dark:bg-gray-900">
-              <div className="mb-4 h-5 w-48 rounded bg-gray-200 dark:bg-gray-700"></div>
+            <div className="animate-pulse rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+              <div className="mb-4 h-5 w-48 rounded bg-gray-200"></div>
               <div className="space-y-3">
-                <div className="h-20 rounded-xl bg-gray-100 dark:bg-gray-800"></div>
-                <div className="h-20 rounded-xl bg-gray-100 dark:bg-gray-800"></div>
+                <div className="h-20 rounded-xl bg-gray-100"></div>
+                <div className="h-20 rounded-xl bg-gray-100"></div>
               </div>
             </div>
           ) : islands.length > 0 ? (
@@ -312,27 +312,27 @@ export default function LanguageIslandsManualManager() {
               return (
                 <article
                   key={island.id}
-                  className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition duration-200 hover:border-gray-300 hover:shadow-md dark:border-gray-800 dark:bg-gray-900 dark:hover:border-gray-700"
+                  className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition duration-200 hover:border-gray-300 hover:shadow-md"
                 >
                   <div className="p-6">
                     <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-center">
                       <div className="flex-1">
                         <div className="mb-2 flex items-start justify-between">
-                          <h4 className="text-xl font-bold text-gray-900 transition-colors duration-200 group-hover:text-indigo-600 dark:text-gray-100 dark:group-hover:text-indigo-400">
+                          <h4 className="text-xl font-bold text-gray-900 transition-colors duration-200 group-hover:text-indigo-600">
                             {island.title}
                           </h4>
-                          <div className="rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-500 dark:bg-gray-800 dark:text-gray-400">
+                          <div className="rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-500">
                             {new Date(island.updatedAt).toLocaleDateString(
                               "es-ES"
                             )}
                           </div>
                         </div>
 
-                        <p className="mb-3 line-clamp-2 text-sm text-gray-600 dark:text-gray-400">
+                        <p className="mb-3 line-clamp-2 text-sm text-gray-600">
                           {preview}
                         </p>
 
-                        <span className="inline-flex items-center rounded-full bg-indigo-50 px-3 py-1 text-xs text-indigo-700 dark:bg-indigo-900/20 dark:text-indigo-300">
+                        <span className="inline-flex items-center rounded-full bg-indigo-50 px-3 py-1 text-xs text-indigo-700">
                           {sentences.length} oraciones
                         </span>
                       </div>
@@ -341,21 +341,21 @@ export default function LanguageIslandsManualManager() {
                         <Link
                           to={`/aprender-con-language-island/${island.id}`}
                           reloadDocument
-                          className="inline-flex items-center rounded-xl bg-indigo-600 px-5 py-3 font-medium text-white shadow-sm transition-colors duration-200 hover:bg-indigo-700 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
+                          className="inline-flex items-center rounded-xl bg-indigo-600 px-5 py-3 font-medium text-white shadow-sm transition-colors duration-200 hover:bg-indigo-700 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                         >
                           Abrir isla
                         </Link>
                         <button
                           type="button"
                           onClick={() => startEdit(island)}
-                          className="rounded-xl bg-gray-100 px-4 py-3 font-medium text-gray-700 transition-colors duration-200 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+                          className="rounded-xl bg-gray-100 px-4 py-3 font-medium text-gray-700 transition-colors duration-200 hover:bg-gray-200"
                         >
                           Editar
                         </button>
                         <button
                           type="button"
                           onClick={() => void onDelete(island.id)}
-                          className="rounded-xl bg-red-50 px-4 py-3 font-medium text-red-700 transition-colors duration-200 hover:bg-red-100 dark:bg-red-900/20 dark:text-red-300 dark:hover:bg-red-900/40"
+                          className="rounded-xl bg-red-50 px-4 py-3 font-medium text-red-700 transition-colors duration-200 hover:bg-red-100"
                         >
                           Eliminar
                         </button>
@@ -366,11 +366,11 @@ export default function LanguageIslandsManualManager() {
               );
             })
           ) : (
-            <div className="rounded-2xl border border-gray-200 bg-white py-16 text-center shadow-sm dark:border-gray-800 dark:bg-gray-900">
-              <h4 className="mb-3 text-2xl font-bold text-gray-900 dark:text-gray-100">
+            <div className="rounded-2xl border border-gray-200 bg-white py-16 text-center shadow-sm">
+              <h4 className="mb-3 text-2xl font-bold text-gray-900">
                 Aún no tienes islas
               </h4>
-              <p className="mx-auto max-w-xl text-gray-600 dark:text-gray-400">
+              <p className="mx-auto max-w-xl text-gray-600">
                 Agrega una isla con tus oraciones favoritas para empezar a
                 estudiar con traducción contextual.
               </p>

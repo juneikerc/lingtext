@@ -105,38 +105,38 @@ export default function Text({ loaderData }: Route.ComponentProps) {
               className="absolute inset-0 bg-gray-950/60 backdrop-blur-sm"
               onClick={handleCloseModal}
             />
-            <div className="relative w-full max-w-lg rounded-2xl bg-white p-6 text-gray-900 shadow-2xl dark:bg-gray-900 dark:text-gray-100">
+            <div className="relative w-full max-w-lg rounded-2xl bg-white p-6 text-gray-900 shadow-2xl">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400">
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gray-500">
                     Nota importante
                   </p>
-                  <h2 className="mt-2 text-2xl font-semibold text-gray-900 dark:text-gray-100">
+                  <h2 className="mt-2 text-2xl font-semibold text-gray-900">
                     Mejor experiencia en desktop
                   </h2>
                 </div>
                 <button
                   type="button"
-                  className="rounded-full p-2 text-gray-500 transition-colors duration-200 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
+                  className="rounded-full p-2 text-gray-500 transition-colors duration-200 hover:text-gray-900"
                   onClick={handleCloseModal}
                   aria-label="Cerrar"
                 >
                   <span aria-hidden="true">✕</span>
                 </button>
               </div>
-              <div className="mt-4 space-y-4 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+              <div className="mt-4 space-y-4 text-sm leading-relaxed text-gray-700">
                 <p>
-                  LingText funciona en cualquier dispositivo y navegador, pero la
-                  mejor experiencia se obtiene en desktop/PC usando Chrome.
+                  LingText funciona en cualquier dispositivo y navegador, pero
+                  la mejor experiencia se obtiene en desktop/PC usando Chrome.
                 </p>
                 <p>
-                  Si tienes preguntas o quieres compartir feedback, puedes unirte
-                  a la comunidad en nuestro grupo de Facebook.
+                  Si tienes preguntas o quieres compartir feedback, puedes
+                  unirte a la comunidad en nuestro grupo de Facebook.
                 </p>
               </div>
               <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
                 <a
-                  className="inline-flex items-center justify-center rounded-full border border-indigo-600 px-4 py-2 text-sm font-semibold text-indigo-600 transition-colors duration-200 hover:bg-indigo-600 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2 dark:border-indigo-500 dark:text-indigo-400 dark:hover:bg-indigo-500 dark:hover:text-white"
+                  className="inline-flex items-center justify-center rounded-full border border-[#0F9EDA] px-4 py-2 text-sm font-semibold text-[#0F9EDA] transition-colors duration-200 hover:bg-[#0F9EDA] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2]]]"
                   href="https://www.facebook.com/groups/1199904721807372"
                   target="_blank"
                   rel="noreferrer"
@@ -145,7 +145,7 @@ export default function Text({ loaderData }: Route.ComponentProps) {
                 </a>
                 <button
                   type="button"
-                  className="inline-flex items-center justify-center rounded-full bg-indigo-600 px-4 py-2 text-sm font-semibold text-white transition-colors duration-200 hover:bg-indigo-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2"
+                  className="inline-flex items-center justify-center rounded-full bg-[#0F9EDA] px-4 py-2 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2"
                   onClick={handleCloseModal}
                 >
                   Entendido

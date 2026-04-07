@@ -29,44 +29,44 @@ export function meta(_args: Route.MetaArgs) {
 // Skeleton component for loading state
 function ReviewSkeleton() {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950">
+    <div className="min-h-screen bg-white">
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-indigo-500/10 dark:bg-indigo-400/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-sky-500/10 dark:bg-sky-400/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-10 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-sky-500/10 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative max-w-2xl mx-auto px-4 py-12">
         {/* Header skeleton */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-900 rounded-full border border-gray-200 dark:border-gray-800">
+          <div className="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-gray-700 bg-gray-100 rounded-full border border-gray-200">
             <span className="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>
             Preparando sesión de repaso...
           </div>
-          <h1 className="text-3xl md:text-4xl font-extrabold mb-4 text-gray-900 dark:text-gray-100">
+          <h1 className="text-3xl md:text-4xl font-extrabold mb-4 text-gray-900">
             Repaso de{" "}
-            <span className="text-indigo-600 dark:text-indigo-400">
+            <span className="text-indigo-600">
               Vocabulario
             </span>
           </h1>
         </div>
 
         {/* Card skeleton */}
-        <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-8 animate-pulse">
+        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-8 animate-pulse">
           {/* Progress bar skeleton */}
-          <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full mb-8"></div>
+          <div className="h-2 bg-gray-200 rounded-full mb-8"></div>
 
           {/* Word skeleton */}
           <div className="text-center mb-8">
-            <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded-xl w-48 mx-auto mb-4"></div>
-            <div className="h-6 bg-gray-100 dark:bg-gray-800 rounded-lg w-64 mx-auto"></div>
+            <div className="h-10 bg-gray-200 rounded-xl w-48 mx-auto mb-4"></div>
+            <div className="h-6 bg-gray-100 rounded-lg w-64 mx-auto"></div>
           </div>
 
           {/* Buttons skeleton */}
           <div className="flex justify-center gap-4 mb-6">
-            <div className="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-xl"></div>
-            <div className="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-xl"></div>
-            <div className="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-xl"></div>
+            <div className="w-12 h-12 bg-gray-200 rounded-xl"></div>
+            <div className="w-12 h-12 bg-gray-200 rounded-xl"></div>
+            <div className="w-12 h-12 bg-gray-200 rounded-xl"></div>
           </div>
 
           {/* Rating buttons skeleton */}
@@ -74,7 +74,7 @@ function ReviewSkeleton() {
             {[1, 2, 3, 4].map((i) => (
               <div
                 key={i}
-                className="h-14 bg-gray-200 dark:bg-gray-700 rounded-xl"
+                className="h-14 bg-gray-200 rounded-xl"
               ></div>
             ))}
           </div>
@@ -83,12 +83,12 @@ function ReviewSkeleton() {
         {/* Stats skeleton */}
         <div className="mt-6 flex justify-center gap-8">
           <div className="text-center animate-pulse">
-            <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-8 mx-auto mb-1"></div>
-            <div className="h-3 bg-gray-100 dark:bg-gray-800 rounded w-16"></div>
+            <div className="h-6 bg-gray-200 rounded w-8 mx-auto mb-1"></div>
+            <div className="h-3 bg-gray-100 rounded w-16"></div>
           </div>
           <div className="text-center animate-pulse">
-            <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-8 mx-auto mb-1"></div>
-            <div className="h-3 bg-gray-100 dark:bg-gray-800 rounded w-16"></div>
+            <div className="h-6 bg-gray-200 rounded w-8 mx-auto mb-1"></div>
+            <div className="h-3 bg-gray-100 rounded w-16"></div>
           </div>
         </div>
       </div>
@@ -152,10 +152,10 @@ function ReviewFilters({
             key={filter.mode}
             type="button"
             onClick={() => onChange(filter.mode)}
-            className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950 ${
+            className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
               isActive
-                ? "border-indigo-600 bg-indigo-600 text-white dark:border-indigo-500 dark:bg-indigo-500"
-                : "border-gray-300 bg-white text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
+                ? "border-indigo-600 bg-indigo-600 text-white"
+                : "border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
             }`}
           >
             <span>{filter.label}</span>
@@ -163,7 +163,7 @@ function ReviewFilters({
               className={`rounded-full px-2 py-0.5 text-xs ${
                 isActive
                   ? "bg-white/20 text-white"
-                  : "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                  : "bg-gray-100 text-gray-600"
               }`}
             >
               {counts[filter.mode]}
@@ -308,7 +308,7 @@ export default function Review() {
   // ============================================================
   if (words.length === 0) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center max-w-md mx-auto px-4">
           <ReviewFilters
             activeMode={activeMode}
@@ -320,20 +320,20 @@ export default function Review() {
           <div
             className={`w-24 h-24 mx-auto mb-6 rounded-2xl flex items-center justify-center border shadow-sm ${
               limitReached
-                ? "bg-amber-100 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800"
-                : "bg-indigo-100 dark:bg-indigo-900/20 border-indigo-200 dark:border-indigo-800"
+                ? "bg-amber-100 border-amber-200"
+                : "bg-indigo-100 border-indigo-200"
             }`}
           >
             <span className="text-4xl">{limitReached ? "🛑" : "🎉"}</span>
           </div>
 
           {/* TÍTULO */}
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
             {limitReached ? "Límite diario alcanzado" : "¡Todo al día!"}
           </h2>
 
           {/* DESCRIPCIÓN */}
-          <p className="text-gray-600 dark:text-gray-400 mb-8">
+          <p className="text-gray-600 mb-8">
             {counts[activeMode] === 0 && activeMode !== "all"
               ? activeFilter?.emptyLabel
               : limitReached
@@ -342,22 +342,22 @@ export default function Review() {
           </p>
 
           {/* TARJETA DE ESTADÍSTICAS DIARIAS */}
-          <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6 mb-8">
-            <div className="grid grid-cols-2 gap-4 divide-x divide-gray-200 dark:divide-gray-700">
+          <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 mb-8">
+            <div className="grid grid-cols-2 gap-4 divide-x divide-gray-200">
               <div className="text-center">
-                <div className="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-1">
+                <div className="text-3xl font-bold text-indigo-600 mb-1">
                   {dailyStats.newCardsStudied}
                 </div>
-                <div className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                <div className="text-xs uppercase tracking-wider text-gray-500">
                   Nuevas Hoy
                 </div>
               </div>
               <div className="text-center pl-4">
-                <div className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-1">
+                <div className="text-3xl font-bold text-gray-900 mb-1">
                   {/* Aquí podrías sumar repasos si guardaras esa estadística en dailyStats también */}
                   Done
                 </div>
-                <div className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                <div className="text-xs uppercase tracking-wider text-gray-500">
                   Estado
                 </div>
               </div>
@@ -368,7 +368,7 @@ export default function Review() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/words"
-              className="inline-flex items-center justify-center px-6 py-3 bg-indigo-600 text-white font-medium rounded-xl hover:bg-indigo-700 transition-colors duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
+              className="inline-flex items-center justify-center px-6 py-3 bg-indigo-600 text-white font-medium rounded-xl hover:bg-indigo-700 transition-colors duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               <span>📚 Gestionar vocabulario</span>
             </Link>
@@ -376,7 +376,7 @@ export default function Review() {
             {/* Si hay límite alcanzado, sugerimos seguir leyendo */}
             <Link
               to="/"
-              className="inline-flex items-center justify-center px-6 py-3 font-medium rounded-xl bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200 border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
+              className="inline-flex items-center justify-center px-6 py-3 font-medium rounded-xl bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               <span>📖 Leer textos</span>
             </Link>

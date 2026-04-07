@@ -9,10 +9,10 @@ import {
 } from "./preferences";
 
 function optionButtonClass(isActive: boolean) {
-  return `rounded-lg border px-3 py-2 text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900 ${
+  return `rounded-lg border px-3 py-2 text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
     isActive
-      ? "border-indigo-500 bg-indigo-600 text-white dark:border-indigo-400 dark:bg-indigo-500"
-      : "border-gray-200 bg-white text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+      ? "border-indigo-500 bg-indigo-600 text-white"
+      : "border-gray-200 bg-white text-gray-700 hover:bg-gray-50"
   }`;
 }
 
@@ -25,13 +25,13 @@ export default function ReaderPreferencesPanel({
     useReaderPreferences();
 
   return (
-    <div className="rounded-2xl border border-gray-200 bg-gray-50/90 p-4 shadow-sm dark:border-gray-800 dark:bg-gray-950/40">
+    <div className="rounded-2xl border border-gray-200 bg-gray-50/90 p-4 shadow-sm">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+          <h3 className="text-sm font-semibold text-gray-900">
             Preferencias de lectura
           </h3>
-          <p className="mt-1 text-xs text-gray-600 dark:text-gray-400">
+          <p className="mt-1 text-xs text-gray-600">
             Ajusta el fondo, la tipografia y el ancho del lector.
           </p>
         </div>
@@ -39,7 +39,7 @@ export default function ReaderPreferencesPanel({
           <button
             type="button"
             onClick={resetPreferences}
-            className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-xs font-semibold text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus-visible:ring-offset-gray-900"
+            className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-xs font-semibold text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             disabled={!isReady}
           >
             Restablecer
@@ -47,7 +47,7 @@ export default function ReaderPreferencesPanel({
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex items-center justify-center gap-1 rounded-lg bg-indigo-600 px-3 py-2 text-xs font-semibold text-white transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:focus-visible:ring-offset-gray-900"
+            className="inline-flex items-center justify-center gap-1 rounded-lg bg-indigo-600 px-3 py-2 text-xs font-semibold text-white transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
           >
             <span aria-hidden="true">✕</span>
             <span>Cerrar panel</span>
@@ -57,11 +57,11 @@ export default function ReaderPreferencesPanel({
 
       <div className="mt-4">
         <div className="flex items-center justify-between gap-3">
-          <span className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+          <span className="text-xs font-semibold uppercase tracking-wide text-gray-500">
             Presets
           </span>
           {preferences.preset === "custom" ? (
-            <span className="rounded-full bg-gray-200 px-2.5 py-1 text-[11px] font-semibold text-gray-700 dark:bg-gray-800 dark:text-gray-300">
+            <span className="rounded-full bg-gray-200 px-2.5 py-1 text-[11px] font-semibold text-gray-700">
               Personalizado
             </span>
           ) : null}
@@ -83,7 +83,7 @@ export default function ReaderPreferencesPanel({
 
       <div className="mt-5 grid gap-4 lg:grid-cols-2">
         <section>
-          <label className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+          <label className="text-xs font-semibold uppercase tracking-wide text-gray-500">
             Tamano de letra
           </label>
           <div className="mt-2 flex items-center gap-3">
@@ -122,14 +122,14 @@ export default function ReaderPreferencesPanel({
             >
               A+
             </button>
-            <span className="min-w-12 text-right text-sm font-semibold text-gray-700 dark:text-gray-200">
+            <span className="min-w-12 text-right text-sm font-semibold text-gray-700">
               {preferences.fontSize}px
             </span>
           </div>
         </section>
 
         <section>
-          <span className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+          <span className="text-xs font-semibold uppercase tracking-wide text-gray-500">
             Fondo
           </span>
           <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-3">
@@ -148,7 +148,7 @@ export default function ReaderPreferencesPanel({
         </section>
 
         <section>
-          <span className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+          <span className="text-xs font-semibold uppercase tracking-wide text-gray-500">
             Ancho de lectura
           </span>
           <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-3">
@@ -169,7 +169,7 @@ export default function ReaderPreferencesPanel({
         </section>
 
         <section>
-          <span className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+          <span className="text-xs font-semibold uppercase tracking-wide text-gray-500">
             Tipografia
           </span>
           <div className="mt-2 grid grid-cols-2 gap-2">
@@ -190,7 +190,7 @@ export default function ReaderPreferencesPanel({
         </section>
 
         <section>
-          <span className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+          <span className="text-xs font-semibold uppercase tracking-wide text-gray-500">
             Altura de linea
           </span>
           <div className="mt-2 grid grid-cols-2 gap-2">
@@ -211,7 +211,7 @@ export default function ReaderPreferencesPanel({
         </section>
 
         <section>
-          <span className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+          <span className="text-xs font-semibold uppercase tracking-wide text-gray-500">
             Espaciado
           </span>
           <div className="mt-2 grid grid-cols-2 gap-2">

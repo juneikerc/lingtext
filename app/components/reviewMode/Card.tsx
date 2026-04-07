@@ -22,10 +22,10 @@ interface CardProps {
 
 const BUTTON_STYLES: Record<ReviewGrade, string> = {
   again:
-    "bg-red-50 text-red-700 border-red-200 hover:bg-red-100 dark:bg-red-900/20 dark:text-red-300 dark:border-red-800/50 dark:hover:bg-red-800/30",
-  hard: "bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100 dark:bg-amber-900/20 dark:text-amber-300 dark:border-amber-800/50 dark:hover:bg-amber-800/30",
-  good: "bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100 dark:bg-emerald-900/20 dark:text-emerald-300 dark:border-emerald-800/50 dark:hover:bg-emerald-800/30",
-  easy: "bg-sky-50 text-sky-700 border-sky-200 hover:bg-sky-100 dark:bg-sky-900/20 dark:text-sky-300 dark:border-sky-800/50 dark:hover:bg-sky-800/30",
+    "bg-red-50 text-red-700 border-red-200 hover:bg-red-100",
+  hard: "bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100",
+  good: "bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100",
+  easy: "bg-sky-50 text-sky-700 border-sky-200 hover:bg-sky-100",
 };
 
 export default function Card({
@@ -47,22 +47,22 @@ export default function Card({
   };
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900">
-      <div className="border-b border-gray-200 p-8 text-center dark:border-gray-800">
+    <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+      <div className="border-b border-gray-200 p-8 text-center">
         <div className="mb-4 flex items-center justify-center space-x-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
             {word.word}
           </h2>
           <button
             onClick={() => void playAudio()}
-            className="rounded-lg bg-gray-100 p-3 text-gray-600 transition-colors duration-200 hover:bg-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus-visible:ring-offset-gray-900"
+            className="rounded-lg bg-gray-100 p-3 text-gray-600 transition-colors duration-200 hover:bg-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             title="Escuchar pronunciación"
           >
             <span className="text-xl">🔊</span>
           </button>
         </div>
 
-        <div className="flex items-center justify-center space-x-4 text-sm text-gray-600 dark:text-gray-400">
+        <div className="flex items-center justify-center space-x-4 text-sm text-gray-600">
           <span className="flex items-center space-x-1">
             <span className="w-2 h-2 bg-gray-400 rounded-full"></span>
             <span>Agregada: {new Date(word.addedAt).toLocaleDateString()}</span>
@@ -74,7 +74,7 @@ export default function Card({
         {showTranslation ? (
           <div className="space-y-6">
             <div className="text-center">
-              <div className="inline-flex max-w-full items-center px-6 py-3 text-lg font-medium text-gray-700 bg-gray-100 dark:bg-gray-800 dark:text-gray-300 rounded-2xl border border-gray-200 dark:border-gray-700">
+              <div className="inline-flex max-w-full items-center px-6 py-3 text-lg font-medium text-gray-700 bg-gray-100 rounded-2xl border border-gray-200">
                 {isTranslationJson(word.translation) ? (
                   <div className="space-y-2">
                     {(() => {
@@ -82,10 +82,10 @@ export default function Card({
                       return Object.entries(parsed.info).map(
                         ([category, translations]) => (
                           <div key={category}>
-                            <p className="text-sm font-semibold text-gray-600 dark:text-gray-400">
+                            <p className="text-sm font-semibold text-gray-600">
                               {category}
                             </p>
-                            <p className="text-gray-900 dark:text-gray-100">
+                            <p className="text-gray-900">
                               {(translations as string[]).join(", ")}
                             </p>
                           </div>
@@ -105,7 +105,7 @@ export default function Card({
                   key={option.id}
                   onClick={() => void handleAnswer(option.id)}
                   disabled={processing}
-                  className={`rounded-xl border px-4 py-4 text-left transition-colors duration-200 shadow-sm hover:shadow-md disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900 ${BUTTON_STYLES[option.id]}`}
+                  className={`rounded-xl border px-4 py-4 text-left transition-colors duration-200 shadow-sm hover:shadow-md disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${BUTTON_STYLES[option.id]}`}
                 >
                   <div className="mb-1 text-xs font-semibold uppercase tracking-wider opacity-75">
                     {index + 1}
@@ -124,7 +124,7 @@ export default function Card({
             <div className="text-center">
               <button
                 onClick={() => setShowTranslation(true)}
-                className="flex items-center justify-center space-x-3 px-8 py-4 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900"
+                className="flex items-center justify-center space-x-3 px-8 py-4 bg-white text-gray-700 hover:bg-gray-50 border border-gray-300 rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               >
                 <span>👁️</span>
                 <span>Mostrar respuesta</span>

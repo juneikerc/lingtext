@@ -231,20 +231,20 @@ export default function ReviewMode({
 
   if (!currentWord) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex items-center justify-center">
-        <div className="text-center p-8 max-w-md w-full bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm">
-          <div className="w-24 h-24 mx-auto mb-6 bg-indigo-100 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-2xl flex items-center justify-center shadow-sm">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center p-8 max-w-md w-full bg-white rounded-2xl border border-gray-200 shadow-sm">
+          <div className="w-24 h-24 mx-auto mb-6 bg-[#0F9EDA]/5]/10 border border-[#0F9EDA]/20]/30 rounded-2xl flex items-center justify-center shadow-sm">
             <span className="text-4xl">🎉</span>
           </div>
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
             ¡Sesión al día!
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-8 text-lg">
+          <p className="text-gray-600 mb-8 text-lg">
             Terminaste la cola actual y dejaste registradas las nuevas
             prioridades de repaso.
           </p>
 
-          <div className="grid grid-cols-2 gap-4 mb-8 text-left bg-gray-50 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700 p-4 rounded-xl">
+          <div className="grid grid-cols-2 gap-4 mb-8 text-left bg-gray-50 border border-gray-200 p-4 rounded-xl">
             <div>
               <div className="text-xs text-gray-500 uppercase font-bold tracking-wider">
                 Again
@@ -257,7 +257,7 @@ export default function ReviewMode({
               <div className="text-xs text-gray-500 uppercase font-bold tracking-wider">
                 Good + Easy
               </div>
-              <div className="text-2xl font-bold text-indigo-600">
+              <div className="text-2xl font-bold text-[#0F9EDA]">
                 {sessionStats.good + sessionStats.easy}
               </div>
             </div>
@@ -265,7 +265,7 @@ export default function ReviewMode({
 
           <Link
             to="/words"
-            className="inline-flex items-center justify-center w-full px-6 py-4 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-colors duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 dark:focus-visible:ring-offset-gray-950"
+            className="inline-flex items-center justify-center w-full px-6 py-4 bg-[#0F9EDA] text-white font-bold rounded-xl hover:bg-[#0D8EC4] transition-colors duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50"
           >
             Volver
           </Link>
@@ -275,18 +275,18 @@ export default function ReviewMode({
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
+    <div className="min-h-screen bg-gray-50">
       <div className="relative">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-24 left-1/3 h-96 w-96 rounded-full bg-indigo-500/10 dark:bg-indigo-400/5 blur-3xl"></div>
-          <div className="absolute -bottom-24 right-1/3 h-96 w-96 rounded-full bg-sky-500/10 dark:bg-sky-400/5 blur-3xl"></div>
+          <div className="absolute -top-24 left-1/3 h-96 w-96 rounded-full bg-[#0F9EDA]/5]/10 blur-3xl"></div>
+          <div className="absolute -bottom-24 right-1/3 h-96 w-96 rounded-full bg-sky-500/10 blur-3xl"></div>
         </div>
 
         <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center justify-between mb-8">
             <Link
               to="/words"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200 font-medium border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 dark:focus-visible:ring-offset-gray-950"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white text-gray-700 font-medium border border-gray-300 hover:bg-gray-50 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50"
             >
               ← Salir
             </Link>
@@ -304,10 +304,10 @@ export default function ReviewMode({
                   key={filter.mode}
                   type="button"
                   onClick={() => onModeChange(filter.mode)}
-                  className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 dark:focus-visible:ring-offset-gray-950 ${
+                  className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 ${
                     isActive
-                      ? "border-indigo-600 bg-indigo-600 text-white dark:border-indigo-500 dark:bg-indigo-500"
-                      : "border-gray-300 bg-white text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
+                      ? "border-[#0F9EDA] bg-[#0F9EDA] text-white]]"
+                      : "border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
                   }`}
                 >
                   <span>{filter.label}</span>
@@ -315,7 +315,7 @@ export default function ReviewMode({
                     className={`rounded-full px-2 py-0.5 text-xs ${
                       isActive
                         ? "bg-white/20 text-white"
-                        : "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                        : "bg-gray-100 text-gray-600"
                     }`}
                   >
                     {counts[filter.mode]}
@@ -326,21 +326,21 @@ export default function ReviewMode({
           </div>
 
           <div className="text-center mb-10">
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
               Review 2.0
             </h1>
             <div className="flex flex-wrap items-center justify-center gap-3">
               {!currentWord.srData ? (
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-indigo-100 text-indigo-700 dark:bg-indigo-900/20 dark:text-indigo-300">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-[#0F9EDA]/5 text-[#0A7AAB]]/10]">
                   ✨ NUEVA TARJETA
                 </span>
               ) : (
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700 dark:bg-amber-900/20 dark:text-amber-300">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700">
                   🔄 VENCIDA
                 </span>
               )}
               {currentWord.isPhrase && (
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-sky-100 text-sky-700 dark:bg-sky-900/20 dark:text-sky-300">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-sky-100 text-sky-700">
                   💬 FRASE
                 </span>
               )}
@@ -348,28 +348,28 @@ export default function ReviewMode({
           </div>
 
           {currentWord.srData && (
-            <div className="mb-8 grid grid-cols-3 gap-4 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+            <div className="mb-8 grid grid-cols-3 gap-4 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
               <div className="text-center">
-                <div className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                <div className="text-xs uppercase tracking-wider text-gray-500">
                   Repeticiones
                 </div>
-                <div className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                <div className="text-lg font-bold text-gray-900">
                   {currentWord.srData.repetitions}
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                <div className="text-xs uppercase tracking-wider text-gray-500">
                   Intervalo actual
                 </div>
-                <div className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                <div className="text-lg font-bold text-gray-900">
                   {formatReviewInterval(currentWord.srData.interval)}
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                <div className="text-xs uppercase tracking-wider text-gray-500">
                   Próximo repaso
                 </div>
-                <div className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                <div className="text-lg font-bold text-gray-900">
                   {formatTimeUntilReview(currentWord.srData.nextReview)}
                 </div>
               </div>
@@ -385,7 +385,7 @@ export default function ReviewMode({
             processing={processing}
           />
 
-          <div className="mt-6 flex flex-wrap items-center justify-between gap-4 text-sm text-gray-500 dark:text-gray-400">
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-4 text-sm text-gray-500">
             <div className="flex items-center gap-4">
               <span>1 Again</span>
               <span>2 Hard</span>
@@ -396,7 +396,7 @@ export default function ReviewMode({
               <button
                 type="button"
                 onClick={() => void removeCurrentPhrase()}
-                className="rounded-lg border border-gray-300 px-3 py-2 text-gray-600 transition-colors duration-200 hover:bg-gray-100 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
+                className="rounded-lg border border-gray-300 px-3 py-2 text-gray-600 transition-colors duration-200 hover:bg-gray-100"
               >
                 Eliminar frase
               </button>

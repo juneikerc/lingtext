@@ -1,7 +1,6 @@
 import React from "react";
 import type { WordPopupState } from "./types";
 import { isTranslationJson } from "~/helpers/isTranslationJson";
-import { useReaderPreferences } from "./ReaderPreferencesContext";
 
 interface WordPopupProps {
   popup: WordPopupState;
@@ -20,9 +19,6 @@ export default function WordPopup({
   onMarkUnknown,
   onClose,
 }: WordPopupProps) {
-  const { preferences } = useReaderPreferences();
-  const isDark = preferences.theme === "dark-soft";
-
   const viewportWidth =
     typeof window !== "undefined" ? window.innerWidth : 1200;
   const popupWidth = Math.min(320, Math.max(260, viewportWidth - 24));
@@ -158,12 +154,8 @@ export default function WordPopup({
           <div
             className={`inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium border ${
               isUnknown
-                ? isDark
-                  ? "bg-orange-900/20 text-orange-400 border-orange-800/50"
-                  : "bg-orange-50 text-orange-700 border-orange-200"
-                : isDark
-                  ? "bg-green-900/20 text-green-400 border-green-800/50"
-                  : "bg-green-50 text-green-700 border-green-200"
+                ? "bg-orange-50 text-orange-700 border-orange-200"
+                : "bg-green-50 text-green-700 border-green-200"
             }`}
           >
             <span
@@ -184,16 +176,10 @@ export default function WordPopup({
           <div className="grid grid-cols-1 gap-2">
             {isUnknown ? (
               <button
-                className={`w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-lg transition-all duration-200 shadow-sm border ${
-                  isDark
-                    ? "bg-green-900/20 text-green-400 border-green-800/50"
-                    : "bg-green-50 text-green-700 border-green-200"
-                } ${
+                className={`w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-lg transition-all duration-200 shadow-sm border bg-green-50 text-green-700 border-green-200 ${
                   popup.isLoading
                     ? "opacity-60 cursor-not-allowed"
-                    : isDark
-                      ? "hover:bg-green-800/40 hover:shadow-md"
-                      : "hover:bg-green-100 hover:shadow-md"
+                    : "hover:bg-green-100 hover:shadow-md"
                 }`}
                 onClick={() => onMarkKnown(popup.lower)}
                 disabled={popup.isLoading}
@@ -203,16 +189,10 @@ export default function WordPopup({
               </button>
             ) : (
               <button
-                className={`w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-lg transition-all duration-200 shadow-sm border ${
-                  isDark
-                    ? "bg-orange-900/20 text-orange-400 border-orange-800/50"
-                    : "bg-orange-50 text-orange-700 border-orange-200"
-                } ${
+                className={`w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-lg transition-all duration-200 shadow-sm border bg-orange-50 text-orange-700 border-orange-200 ${
                   popup.isLoading
                     ? "opacity-60 cursor-not-allowed"
-                    : isDark
-                      ? "hover:bg-orange-800/40 hover:shadow-md"
-                      : "hover:bg-orange-100 hover:shadow-md"
+                    : "hover:bg-orange-100 hover:shadow-md"
                 }`}
                 onClick={() =>
                   onMarkUnknown(popup.lower, popup.word, popup.translation)

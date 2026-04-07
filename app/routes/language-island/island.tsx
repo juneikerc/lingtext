@@ -54,17 +54,17 @@ export default function LanguageIslandDetailPage({
 
   if (!island) {
     return (
-      <main className="min-h-screen bg-gray-50 px-4 py-12 dark:bg-gray-950">
-        <div className="mx-auto max-w-2xl rounded-2xl border border-gray-200 bg-white p-6 text-center shadow-sm dark:border-gray-800 dark:bg-gray-900">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+      <main className="min-h-screen bg-gray-50 px-4 py-12">
+        <div className="mx-auto max-w-2xl rounded-2xl border border-gray-200 bg-white p-6 text-center shadow-sm">
+          <h1 className="text-2xl font-bold text-gray-900">
             Isla no encontrada
           </h1>
-          <p className="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          <p className="mt-3 text-sm text-gray-600">
             Esta isla no existe o fue eliminada.
           </p>
           <Link
             to="/aprender-con-language-island"
-            className="mt-6 inline-flex items-center justify-center rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900"
+            className="mt-6 inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-4 py-2 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
           >
             Volver a language island
           </Link>
@@ -76,19 +76,19 @@ export default function LanguageIslandDetailPage({
   return (
     <ReaderPreferencesProvider>
       <ReaderLexiconProvider>
-        <main className="min-h-screen bg-gray-50 dark:bg-gray-950">
+        <main className="min-h-screen bg-gray-50">
           <ReaderHeader title={island.title} />
 
           <section className="mx-auto mt-6 w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900 sm:p-6">
-              <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 sm:text-xl">
+            <div className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:p-6">
+              <h2 className="text-lg font-bold text-gray-900 sm:text-xl">
                 Práctica por oraciones
               </h2>
-              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                Haz clic en palabras para traducir in-line. Cada oración tiene su
-                botón de audio para practicar pronunciación y ritmo.
+              <p className="mt-2 text-sm text-gray-600">
+                Haz clic en palabras para traducir in-line. Cada oración tiene
+                su botón de audio para practicar pronunciación y ritmo.
               </p>
-              <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+              <p className="mt-2 text-xs text-gray-500">
                 Total de oraciones: {sentences.length}
               </p>
             </div>
@@ -101,10 +101,10 @@ export default function LanguageIslandDetailPage({
                   {sentences.slice(0, 3).map((_, index) => (
                     <div
                       key={`island-skeleton-${index}`}
-                      className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900"
+                      className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm"
                     >
-                      <div className="h-4 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-800" />
-                      <div className="mt-3 h-4 w-[88%] animate-pulse rounded bg-gray-200 dark:bg-gray-800" />
+                      <div className="h-4 w-full animate-pulse rounded bg-gray-200" />
+                      <div className="mt-3 h-4 w-[88%] animate-pulse rounded bg-gray-200" />
                     </div>
                   ))}
                 </div>
@@ -114,7 +114,7 @@ export default function LanguageIslandDetailPage({
                 sentences.map((sentence, index) => (
                   <article
                     key={`${island.id}-sentence-${index}`}
-                    className="rounded-2xl border border-gray-200 bg-white p-3 shadow-sm dark:border-gray-800 dark:bg-gray-900"
+                    className="rounded-2xl border border-gray-200 bg-white p-3 shadow-sm"
                   >
                     <div className="flex items-start gap-2 sm:gap-3">
                       <div className="min-w-0 flex-1">
@@ -132,7 +132,7 @@ export default function LanguageIslandDetailPage({
                       <button
                         type="button"
                         onClick={() => void onSpeakSentence(sentence)}
-                        className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-600 text-lg text-white transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900"
+                        className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#0F9EDA] text-lg text-white transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                         aria-label={`Reproducir oración ${index + 1}`}
                         title={`Audio oración ${index + 1}`}
                       >
@@ -142,7 +142,7 @@ export default function LanguageIslandDetailPage({
                   </article>
                 ))
               ) : (
-                <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700 dark:border-amber-900/60 dark:bg-amber-900/20 dark:text-amber-300">
+                <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700">
                   Esta isla no tiene oraciones válidas para mostrar.
                 </div>
               )}
