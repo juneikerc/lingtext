@@ -103,92 +103,15 @@ function getPrimaryWordTranslation(definition: string): string {
     .trim();
 }
 
-function WordCard({
-  item,
-  onSpeakWord,
-  onSpeakSentence,
-}: {
-  item: Word500Item;
-  onSpeakWord: (word: string) => Promise<void>;
-  onSpeakSentence: (sentence: string) => Promise<void>;
-}) {
-  const hasSentence = Boolean(item.exampleSentence);
-  const wordTranslation = getPrimaryWordTranslation(item.definition);
-
+function PlayIcon({ className }: { className?: string }) {
   return (
-    <article className="rounded-2xl border border-gray-200 bg-white shadow-sm transition duration-200 hover:border-gray-300 hover:shadow-md">
-      <header className="flex items-center justify-between gap-4 px-5 py-4">
-        <div>
-          <p className="text-xs font-medium uppercase tracking-wide text-gray-500">
-            #{item.index}
-          </p>
-          <h3 className="text-lg font-semibold text-gray-900 sm:text-xl">
-            {item.word || "Palabra no disponible"}
-          </h3>
-        </div>
-        <button
-          type="button"
-          className="inline-flex items-center justify-center rounded-xl bg-gray-50 p-3 text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50"
-          title="Reproducir palabra"
-          aria-label={`Reproducir palabra: ${item.word}`}
-          disabled={!item.word}
-          onClick={async () => {
-            if (!item.word) return;
-            await onSpeakWord(item.word);
-          }}
-        >
-          <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><polygon points="5 3 19 12 5 21 5 3" /></svg>
-        </button>
-      </header>
-
-      <div className="border-t border-gray-200 px-5 py-4">
-        <details className="rounded-xl border border-gray-200 bg-gray-50">
-          <summary className="cursor-pointer list-none px-4 py-3 text-sm font-medium text-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white">
-            Significado / traducción de la palabra
-          </summary>
-          <div className="border-t border-gray-200 px-4 py-3">
-            <p className="text-gray-700">
-              {wordTranslation || "Traducción no disponible"}
-            </p>
-            <p className="mt-3 whitespace-pre-line text-sm text-gray-600">
-              {item.definition || "Significado no disponible"}
-            </p>
-          </div>
-        </details>
-      </div>
-
-      <div className="border-t border-[#0F9EDA]/20 bg-[#0F9EDA]/5/60 px-5 py-4">
-        <details className="rounded-xl border border-[#0F9EDA]/20 bg-white/80">
-          <summary className="flex cursor-pointer list-none items-start justify-between gap-3 px-4 py-3">
-            <div className="space-y-2">
-              <p className="text-base text-gray-900">
-                {item.exampleSentence || "Oración no disponible"}
-              </p>
-            </div>
-            <button
-              type="button"
-              className="inline-flex items-center justify-center rounded-lg bg-gray-50 px-3 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50"
-              title="Reproducir oración"
-              aria-label={`Reproducir oración: ${item.exampleSentence}`}
-              disabled={!hasSentence}
-              onClick={async (event) => {
-                event.preventDefault();
-                event.stopPropagation();
-                if (!item.exampleSentence) return;
-                await onSpeakSentence(item.exampleSentence);
-              }}
-            >
-              <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><polygon points="5 3 19 12 5 21 5 3" /></svg>
-            </button>
-          </summary>
-          <div className="border-t border-[#0F9EDA]/20 px-4 py-3">
-            <p className="mt-2 rounded-lg bg-white px-3 py-2 text-gray-700">
-              {item.translation || "Traducción no disponible"}
-            </p>
-          </div>
-        </details>
-      </div>
-    </article>
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className ?? "h-4 w-4"}
+    >
+      <polygon points="5 3 19 12 5 21 5 3" />
+    </svg>
   );
 }
 
@@ -288,7 +211,7 @@ export default function EnglishWords500Page({
     <>
       <div id="top" className="bg-white">
         <section className="relative overflow-hidden border-b border-gray-200 bg-white py-16 sm:py-20">
-          <div className="mx-auto max-w-5xl px-6">
+          <div className="mx-auto max-w-6xl px-6">
             <div className="flex flex-col gap-6">
               <div className="inline-flex items-center gap-3 self-start rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700">
                 <span className="h-2 w-2 rounded-full bg-[#0F9EDA]" />
@@ -340,7 +263,7 @@ export default function EnglishWords500Page({
         </section>
 
         <section className="relative overflow-hidden border-b border-gray-200 bg-gray-50 py-12 sm:py-16">
-          <div className="mx-auto max-w-5xl px-6">
+          <div className="mx-auto max-w-6xl px-6">
             <details className="rounded-2xl border border-gray-200 bg-white shadow-sm transition duration-200 hover:border-gray-300 hover:shadow-md">
               <summary className="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left text-lg font-semibold text-gray-900 sm:text-xl">
                 Tabla de contenidos
@@ -365,44 +288,110 @@ export default function EnglishWords500Page({
           </div>
         </section>
 
-        {wordsByGroup.map((group, index) => {
-          const sectionClass =
-            index % 2 === 0
-              ? "relative overflow-hidden border-b border-gray-200 bg-white py-16 sm:py-20"
-              : "relative overflow-hidden border-b border-gray-200 bg-gray-50 py-16 sm:py-20";
-
-          return (
-            <section
-              key={group.title}
-              id={slugify(group.title)}
-              className={sectionClass}
-            >
-              <div className="mx-auto max-w-5xl px-6">
-                <div className="space-y-6">
-                  <div className="space-y-2">
-                    <h2 className="text-xl font-semibold text-gray-900 sm:text-2xl">
-                      {group.title}
-                    </h2>
-                    <p className="text-sm text-gray-500">
-                      {group.words.length} palabras disponibles
-                    </p>
-                  </div>
-
-                  <div className="space-y-4">
-                    {group.words.map((item) => (
-                      <WordCard
-                        key={item.index}
-                        item={item}
-                        onSpeakWord={onSpeak}
-                        onSpeakSentence={onSpeak}
-                      />
-                    ))}
-                  </div>
-                </div>
+        {wordsByGroup.map((group) => (
+          <section
+            key={group.title}
+            id={slugify(group.title)}
+            className="relative overflow-hidden border-b border-gray-200 bg-white py-12 sm:py-16"
+          >
+            <div className="mx-auto max-w-6xl px-6">
+              <div className="mb-6 flex items-baseline justify-between">
+                <h2 className="text-xl font-semibold text-gray-900 sm:text-2xl">
+                  {group.title}
+                </h2>
+                <span className="text-sm text-gray-500">
+                  {group.words.length} palabras
+                </span>
               </div>
-            </section>
-          );
-        })}
+
+              <div className="overflow-x-auto rounded-xl border border-gray-200">
+                <table className="w-full min-w-[720px] text-left text-sm">
+                  <thead>
+                    <tr className="border-b border-gray-200 bg-gray-50 text-xs font-medium uppercase tracking-wider text-gray-500">
+                      <th className="w-12 px-4 py-3 text-center">#</th>
+                      <th className="px-4 py-3">Palabra</th>
+                      <th className="px-4 py-3">Traducción</th>
+                      <th className="px-4 py-3">Significado</th>
+                      <th className="px-4 py-3">Oración</th>
+                      <th className="w-20 px-4 py-3 text-center">Audio</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    {group.words.map((item) => {
+                      const wordTranslation = getPrimaryWordTranslation(
+                        item.definition
+                      );
+
+                      return (
+                        <tr
+                          key={item.index}
+                          className="transition-colors duration-150 hover:bg-[#0F9EDA]/5"
+                        >
+                          <td className="px-4 py-3 text-center text-xs text-gray-400">
+                            {item.index}
+                          </td>
+                          <td className="px-4 py-3">
+                            <span className="font-semibold text-gray-900">
+                              {item.word || "—"}
+                            </span>
+                          </td>
+                          <td className="px-4 py-3 text-gray-700">
+                            {wordTranslation || "—"}
+                          </td>
+                          <td className="max-w-xs px-4 py-3">
+                            <p className="line-clamp-2 text-gray-600">
+                              {item.definition || "—"}
+                            </p>
+                          </td>
+                          <td className="max-w-xs px-4 py-3">
+                            <p className="line-clamp-2 text-gray-700">
+                              {item.exampleSentence || "—"}
+                            </p>
+                            {item.translation && (
+                              <p className="mt-1 line-clamp-1 text-xs text-gray-500">
+                                {item.translation}
+                              </p>
+                            )}
+                          </td>
+                          <td className="px-4 py-3">
+                            <div className="flex items-center justify-center gap-1">
+                              <button
+                                type="button"
+                                className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-gray-400 transition-colors duration-200 hover:bg-[#0F9EDA]/10 hover:text-[#0F9EDA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-30"
+                                title="Reproducir palabra"
+                                aria-label={`Reproducir palabra: ${item.word}`}
+                                disabled={!item.word}
+                                onClick={async () => {
+                                  if (!item.word) return;
+                                  await onSpeak(item.word);
+                                }}
+                              >
+                                <PlayIcon className="h-3.5 w-3.5" />
+                              </button>
+                              <button
+                                type="button"
+                                className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-gray-400 transition-colors duration-200 hover:bg-[#0F9EDA]/10 hover:text-[#0F9EDA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-30"
+                                title="Reproducir oración"
+                                aria-label={`Reproducir oración: ${item.exampleSentence}`}
+                                disabled={!item.exampleSentence}
+                                onClick={async () => {
+                                  if (!item.exampleSentence) return;
+                                  await onSpeak(item.exampleSentence);
+                                }}
+                              >
+                                <PlayIcon className="h-3 w-3" />
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        ))}
       </div>
 
       <a

@@ -138,8 +138,8 @@ export default function EnglishPhrasesPage({
   return (
     <>
       <div id="top" className="bg-white">
-        <section className="relative overflow-hidden py-16 sm:py-20 bg-white border-b border-gray-200">
-          <div className="mx-auto max-w-5xl px-6">
+        <section className="relative overflow-hidden border-b border-gray-200 bg-white py-16 sm:py-20">
+          <div className="mx-auto max-w-6xl px-6">
             <div className="flex flex-col gap-6">
               <div className="inline-flex items-center gap-3 self-start rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700">
                 <span className="h-2 w-2 rounded-full bg-[#0F9EDA]" />
@@ -166,29 +166,27 @@ export default function EnglishPhrasesPage({
                   </p>
                 </div>
               </div>
-              <div>
+              <div className="flex flex-wrap gap-3">
                 <Link
                   to="/"
                   className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-6 py-3 text-gray-700 transition-colors duration-200 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 >
                   Volver al inicio
                 </Link>
-              </div>
-              <div>
                 <button
                   type="button"
                   onClick={onDownloadPdf}
                   className="inline-flex items-center justify-center rounded-lg bg-[#0F9EDA] px-6 py-3 font-medium text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 >
-                  Descargar 1000 frases en ingles PDF
+                  Descargar 1000 frases en inglés PDF
                 </button>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="relative overflow-hidden py-12 sm:py-16 bg-gray-50 border-b border-gray-200">
-          <div className="mx-auto max-w-5xl px-6">
+        <section className="relative overflow-hidden border-b border-gray-200 bg-gray-50 py-12 sm:py-16">
+          <div className="mx-auto max-w-6xl px-6">
             <details className="rounded-2xl border border-gray-200 bg-white shadow-sm transition duration-200 hover:border-gray-300 hover:shadow-md">
               <summary className="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left text-lg font-semibold text-gray-900 sm:text-xl">
                 Tabla de contenidos
@@ -202,7 +200,7 @@ export default function EnglishPhrasesPage({
                     <a
                       key={`toc-${group.category}`}
                       href={`#${slugify(group.category)}`}
-                      className="inline-flex items-center px-4 py-2 text-sm font-medium bg-gray-100 text-gray-700 border border-gray-200 rounded-full transition-colors duration-200 hover:bg-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                      className="inline-flex items-center rounded-full border border-gray-200 bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 hover:bg-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                     >
                       {group.category}
                     </a>
@@ -213,64 +211,59 @@ export default function EnglishPhrasesPage({
           </div>
         </section>
 
-        {phrasesByCategory.map((group, index) => {
-          const sectionClass =
-            index % 2 === 0
-              ? "relative overflow-hidden py-16 sm:py-20 bg-white border-b border-gray-200"
-              : "relative overflow-hidden py-16 sm:py-20 bg-gray-50 border-b border-gray-200";
-
-          return (
-            <section
-              key={group.category}
-              id={slugify(group.category)}
-              className={sectionClass}
-            >
-              <div className="mx-auto max-w-5xl px-6">
-                <div className="space-y-6">
-                  <div className="space-y-2">
-                    <h2 className="text-xl font-semibold text-gray-900 sm:text-2xl">
-                      {group.category}
-                    </h2>
-                    <p className="text-sm text-gray-500">
-                      {group.phrases.length} frases disponibles
-                    </p>
-                  </div>
-
-                  <div className="space-y-4">
-                    {group.phrases.map((phrase) => (
-                      <details
-                        key={`${group.category}-${phrase.phrase}`}
-                        className="group rounded-2xl border border-gray-200 bg-white shadow-sm transition duration-200 hover:border-gray-300 hover:shadow-md"
-                      >
-                        <summary className="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left">
-                          <span className="text-base font-medium text-gray-900">
-                            {phrase.phrase}
-                          </span>
-                          <button
-                            type="button"
-                            className="inline-flex items-center justify-center rounded-xl bg-gray-50 p-3 text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-                            title="Reproducir frase"
-                            aria-label={`Reproducir frase: ${phrase.phrase}`}
-                            onClick={async (event) => {
-                              event.preventDefault();
-                              event.stopPropagation();
-                              await onSpeak(phrase.phrase);
-                            }}
-                          >
-                            <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><polygon points="5 3 19 12 5 21 5 3" /></svg>
-                          </button>
-                        </summary>
-                        <div className="border-t border-gray-200 px-5 py-4 text-gray-600">
-                          {phrase.translation}
-                        </div>
-                      </details>
-                    ))}
-                  </div>
-                </div>
+        {phrasesByCategory.map((group) => (
+          <section
+            key={group.category}
+            id={slugify(group.category)}
+            className="relative overflow-hidden border-b border-gray-200 bg-white py-12 sm:py-16"
+          >
+            <div className="mx-auto max-w-6xl px-6">
+              <div className="mb-6 flex items-baseline justify-between">
+                <h2 className="text-xl font-semibold text-gray-900 sm:text-2xl">
+                  {group.category}
+                </h2>
+                <span className="text-sm text-gray-500">
+                  {group.phrases.length} frases
+                </span>
               </div>
-            </section>
-          );
-        })}
+
+              <div className="divide-y divide-gray-100 rounded-xl border border-gray-200">
+                {group.phrases.map((phrase) => (
+                  <div
+                    key={`${group.category}-${phrase.phrase}`}
+                    className="group flex items-center gap-4 px-5 py-4 transition-colors duration-150 hover:bg-[#0F9EDA]/5 sm:gap-6"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-base font-medium text-gray-900">
+                        {phrase.phrase}
+                      </p>
+                      <p className="mt-1 text-sm text-gray-500">
+                        {phrase.translation}
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      className="shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-lg text-gray-400 transition-colors duration-200 hover:bg-[#0F9EDA]/10 hover:text-[#0F9EDA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                      title="Reproducir frase"
+                      aria-label={`Reproducir frase: ${phrase.phrase}`}
+                      onClick={async () => {
+                        await onSpeak(phrase.phrase);
+                      }}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        className="h-4 w-4"
+                      >
+                        <polygon points="5 3 19 12 5 21 5 3" />
+                      </svg>
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        ))}
       </div>
       <a
         href="#top"
