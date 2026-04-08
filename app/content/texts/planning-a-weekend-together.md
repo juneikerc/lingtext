@@ -1,6 +1,7 @@
 ---
 title: "Planning a Weekend Together (Friendly Chat)"
 level: "a2"
+date: "2026-04-01"
 ---
 
 **Laura:** Hi Mark, how are you today?

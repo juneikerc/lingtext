@@ -1,6 +1,7 @@
 ---
 title: "The Challenges of Urbanization"
 level: "c1"
+date: "2026-04-01"
 ---
 
 Urbanization is an ongoing global phenomenon that presents both opportunities and complex dilemmas for modern society. As the world's population increasingly clusters in metropolitan areas, the dynamics of human civilization are being fundamentally rewritten. This shift, driven by the search for better economic prospects, education, and healthcare, has turned cities into the primary engines of global growth. However, as more people migrate to cities, urban centers must grapple with the immense strain on infrastructure, public services, and the social fabric.

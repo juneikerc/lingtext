@@ -1,6 +1,7 @@
 ---
 title: "The Photographer's Forgotten Quarter"
 level: "b2"
+date: "2026-04-01"
 ---
 
 # The Photographer's Forgotten Quarter

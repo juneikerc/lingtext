@@ -1,6 +1,7 @@
 ---
 title: "A day of small changes"
 level: "a2"
+date: "2026-04-01"
 ---
 
 On Monday morning, Sofia woke **up** early because she wanted to start her day in a different way. Usually, she stayed in bed for ten more minutes, but that day she decided to get up quickly, open the window, and look outside. The street was quiet, and she could **see** the first people going to work. The sky was blue, and the air was fresh. Sofia smiled and thought, “Today I **can** do things better.”

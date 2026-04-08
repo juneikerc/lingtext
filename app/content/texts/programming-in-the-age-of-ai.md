@@ -1,6 +1,7 @@
 ---
 title: "Programming in the Age of AI (Professional Discussion)"
 level: "b2"
+date: "2026-04-01"
 ---
 
 **Alex:** It’s interesting how much programming has changed in the last few years. Sometimes I feel that what we learned at university is no longer enough.

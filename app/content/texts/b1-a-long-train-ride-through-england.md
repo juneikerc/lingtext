@@ -1,6 +1,7 @@
 ---
 title: "A Long Train Ride Through England"
 level: "b1"
+date: "2026-04-01"
 ---
 
 # A Long Train Ride Through England

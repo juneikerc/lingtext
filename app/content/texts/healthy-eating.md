@@ -1,6 +1,7 @@
 ---
 title: "The Importance of Healthy Eating"
 level: "b1"
+date: "2026-04-01"
 ---
 
 Maintaining a healthy diet is essential for our physical and mental well-being in the modern world. Many people believe that eating healthy means only eating vegetables or following strict, restrictive diets, but it is actually about balance, variety, and making sustainable choices. A good diet includes a wide variety of foods from all the major food groups, such as fruits, vegetables, lean proteins, healthy fats, and whole grains. For instance, instead of drinking sugary soda, you can choose water, herbal teas, or natural fruit juices without added sugars.

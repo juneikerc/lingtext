@@ -1,6 +1,7 @@
 ---
 title: "A Weekend in the Mountains"
 level: "a1"
+date: "2026-04-01"
 ---
 
 Last weekend, my family and I went to the mountains. It was very beautiful. The trees were green and the air was fresh. We stayed in a small cabin. The cabin was made of wood. It had two bedrooms, a small kitchen, and a living room. In the morning, we woke up early. The sun was shining. We walked in the forest and saw many birds. Some birds were red and some were blue. They sang beautiful songs. My father has a camera, and he took many photos of the birds and the trees.

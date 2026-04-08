@@ -1,6 +1,7 @@
 ---
 title: "Cooking My Favorite Meal"
 level: "a2"
+date: "2026-04-01"
 ---
 
 I love cooking for my friends and family. It is one of my favorite hobbies because it allows me to be creative and make people happy at the same time. My favorite dish to make is pasta with a special homemade tomato sauce. This is a recipe that my grandmother taught me when I was a child, and I have practiced it many times since then.

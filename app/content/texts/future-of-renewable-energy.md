@@ -1,6 +1,7 @@
 ---
 title: "The Future of Renewable Energy"
 level: "b2"
+date: "2026-04-01"
 ---
 
 As the global community faces the increasingly urgent challenge of climate change, the transition from fossil fuels to renewable energy sources has become a central focus of international policy and technological innovation. The reliance on coal, oil, and natural gas has powered industrial growth for centuries, but at a significant cost to the environment, primarily through the emission of greenhouse gases. To mitigate the most severe impacts of global warming, a fundamental shift in how we produce and consume energy is required. This text explores the current state of renewable energy, the technological advancements driving its growth, and the challenges that remain in achieving a sustainable energy future.

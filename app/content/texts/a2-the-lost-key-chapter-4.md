@@ -1,6 +1,7 @@
 ---
 title: "The Lost Key - Chapter 4"
 level: "a2"
+date: "2026-04-01"
 ---
 
 # The Lost Key - Chapter 4: A Helpful Stranger

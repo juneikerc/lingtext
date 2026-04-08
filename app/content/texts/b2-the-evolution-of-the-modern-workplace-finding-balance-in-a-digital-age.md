@@ -1,6 +1,7 @@
 ---
 title: "The Evolution of the Modern Workplace: Finding Balance in a Digital Age"
 level: "b2"
+date: "2026-04-01"
 ---
 
 # The Evolution of the Modern Workplace: Finding Balance in a Digital Age

@@ -1,6 +1,7 @@
 ---
 title: "A Trip to London"
 level: "a2"
+date: "2026-04-01"
 ---
 
 Last summer, I went to London with my best friend, Sarah. We had been planning this trip for over a year, and we were very excited when the day finally arrived. We stayed there for five wonderful days. London is a very big, busy, and interesting city with so much history and culture to explore.

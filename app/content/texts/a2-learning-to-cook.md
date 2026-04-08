@@ -1,6 +1,7 @@
 ---
 title: "Learning to Cook"
 level: "a2"
+date: "2026-04-01"
 ---
 
 # Learning to Cook

@@ -1,6 +1,7 @@
 ---
 title: "The Philosophy of Artificial Intelligence"
 level: "c2"
+date: "2026-04-01"
 ---
 
 The advent of Artificial Intelligence (AI) has reignited profound philosophical debates regarding the nature of consciousness, the definition of intelligence, and the future of human identity. As machines become increasingly capable of performing tasks that once required human cognition—such as natural language processing, creative expression, and complex decision-making—we are forced to confront the fundamental question of whether a machine can ever truly "understand" or if it is merely simulating comprehension through sophisticated statistical patterns and massive data processing.

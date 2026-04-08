@@ -1,6 +1,7 @@
 ---
 title: "A Weekend to Remember: The Cabin in the Woods"
 level: "a2"
+date: "2026-04-01"
 ---
 
 # A Weekend to Remember: The Cabin in the Woods

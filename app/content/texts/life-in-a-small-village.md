@@ -1,6 +1,7 @@
 ---
 title: "Life in a Small Village"
 level: "a1"
+date: "2026-04-01"
 ---
 
 I live in a small village. My village is in the countryside. It is a very quiet and beautiful place. There are many trees and flowers everywhere. The air is fresh and clean. In my village, everyone knows each other. When I walk down the street, I say hello to my neighbors. They are very friendly and kind. We help each other when someone has a problem.

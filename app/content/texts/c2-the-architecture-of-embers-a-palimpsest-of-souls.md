@@ -1,6 +1,7 @@
 ---
 title: "The Architecture of Embers: A Palimpsest of Souls"
 level: "c2"
+date: "2026-04-01"
 ---
 
 # The Architecture of Embers: A Palimpsest of Souls

@@ -1,6 +1,7 @@
 ---
 title: "My First Day at School"
 level: "a1"
+date: "2026-04-01"
 ---
 
 # My First Day at School

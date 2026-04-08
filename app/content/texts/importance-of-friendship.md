@@ -1,6 +1,7 @@
 ---
 title: "The Importance of Friendship"
 level: "b1"
+date: "2026-04-01"
 ---
 
 Friendship is one of the most valuable aspects of human life. It is a relationship that provides support, joy, and a sense of belonging. While family is often our first connection to the world, friends are the family we choose for ourselves. In this text, we will explore why friendship is so important and how it impacts our mental and emotional well-being.

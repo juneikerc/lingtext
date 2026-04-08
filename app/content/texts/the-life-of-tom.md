@@ -1,6 +1,7 @@
 ---
 title: "The Life of Tom (long)"
 level: "a1"
+date: "2026-04-01"
 ---
 
 ### Chapter 1: Hello! This is Me

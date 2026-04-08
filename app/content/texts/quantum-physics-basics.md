@@ -1,6 +1,7 @@
 ---
 title: "The Basics of Quantum Physics"
 level: "c2"
+date: "2026-04-01"
 ---
 
 Quantum physics, or quantum mechanics, represents one of the most significant shifts in human understanding of the physical world. Emerging in the early 20th century, it challenged the classical Newtonian view of the universe, which had held sway for centuries. While classical physics is excellent at describing the motion of planets and the behavior of everyday objects, it fails spectacularly when applied to the subatomic realm. In the world of atoms and subatomic particles, the rules of reality are fundamentally different, often defying our common sense and intuition. This text provides an overview of the core principles of quantum physics, the historical context of its development, and its profound implications for our understanding of reality.

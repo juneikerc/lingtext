@@ -1,6 +1,7 @@
 ---
 title: "The Space Friend"
 level: "a2"
+date: "2026-04-01"
 sound: "https://images.lingtext.org/the-space-friend.mp3"
 ---
 

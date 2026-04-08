@@ -1,6 +1,7 @@
 ---
 title: "The Journey of a Lifetime: How Travel Has Changed Me"
 level: "b1"
+date: "2026-04-01"
 ---
 
 # The Journey of a Lifetime: How Travel Has Changed Me

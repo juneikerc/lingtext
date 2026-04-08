@@ -1,6 +1,7 @@
 ---
 title: "The Ontology of Shadows: A Treatise on Impermanence and Being"
 level: "c2"
+date: "2026-04-01"
 ---
 
 # The Ontology of Shadows: A Treatise on Impermanence and Being

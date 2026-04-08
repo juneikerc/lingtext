@@ -1,6 +1,7 @@
 ---
 title: "The Impact of Technology on Society"
 level: "b2"
+date: "2026-04-01"
 ---
 
 In recent decades, technology has fundamentally transformed the way we live, work, and communicate. The digital revolution, characterized by the rapid advancement of the internet, mobile devices, and artificial intelligence, has reshaped the global landscape in ways that were once considered the domain of science fiction. The internet, in particular, has made information accessible to almost everyone, regardless of their location. This democratization of knowledge has empowered individuals, revolutionized industries, and created entirely new sectors of the economy.

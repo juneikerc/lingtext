@@ -1,6 +1,7 @@
 ---
 title: "Talking About What We Have (Practice Chat)"
 level: "a2"
+date: "2026-04-01"
 sound: "https://images.lingtext.org/talk-3.wav"
 ---
 

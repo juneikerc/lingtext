@@ -41,6 +41,7 @@ export interface TextManifestEntry extends BaseEntryManifest {
   collection: "texts";
   title: string;
   level: string;
+  date: string;
   sound?: string;
 }
 

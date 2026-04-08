@@ -1,6 +1,7 @@
 ---
 title: "Planning a Small Trip"
 level: "a2"
+date: "2026-04-01"
 ---
 
 # Planning a Small Trip

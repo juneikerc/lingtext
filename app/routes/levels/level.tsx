@@ -27,7 +27,18 @@ export async function loader({ params }: Route.LoaderArgs) {
   if (!levelText) {
     throw new Response("Not Found", { status: 404 });
   }
-  const texts = getTextsByLevel(level ?? "");
+  const texts = [...getTextsByLevel(level ?? "")].sort((left, right) => {
+    const dateCompare = right.date.localeCompare(left.date);
+
+    if (dateCompare !== 0) {
+      return dateCompare;
+    }
+
+    return left.title.localeCompare(right.title, undefined, {
+      sensitivity: "base",
+    });
+  });
+
   return { levelText, texts };
 }
 

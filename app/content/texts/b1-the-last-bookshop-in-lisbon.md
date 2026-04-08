@@ -1,6 +1,7 @@
 ---
 title: "The Last Bookshop in Lisbon"
 level: "b1"
+date: "2026-04-01"
 ---
 
 # The Last Bookshop in Lisbon

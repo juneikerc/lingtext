@@ -1,6 +1,7 @@
 ---
 title: "My Daily Routine"
 level: "a1"
+date: "2026-04-01"
 ---
 
 Every day, I wake up at 7 o'clock. I wash my face and brush my teeth. Then, I have breakfast with my family. I usually eat bread and drink orange juice. My father drinks coffee, and my mother drinks tea. We talk about our day. At 8 o'clock, I go to school. I like my teachers and my friends. We study English and math. I have many friends at school. My best friend is Sam. We play together.

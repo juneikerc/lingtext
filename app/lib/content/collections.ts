@@ -47,6 +47,7 @@ export const collectionDefinitions = [
     schema: z.object({
       title: z.string(),
       level: z.enum(["a1", "a2", "b1", "b2", "c1", "c2"]),
+      date: z.string(),
       sound: z.string().optional(),
     }),
   },

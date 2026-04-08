@@ -1,6 +1,7 @@
 ---
 title: "The Power of Learning and Practice in Building Success"
 level: "b2"
+date: "2026-04-01"
 ---
 
 # The Power of Learning and Practice in Building Success

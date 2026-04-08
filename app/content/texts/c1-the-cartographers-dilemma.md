@@ -1,6 +1,7 @@
 ---
 title: "The Cartographer's Dilemma"
 level: "c1"
+date: "2026-04-01"
 ---
 
 # The Cartographer's Dilemma

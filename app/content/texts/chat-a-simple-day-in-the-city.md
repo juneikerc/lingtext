@@ -1,6 +1,7 @@
 ---
 title: "A Simple Day in the City (CHAT)"
 level: "a1"
+date: "2026-04-01"
 sound: "https://images.lingtext.org/talk.wav"
 ---
 

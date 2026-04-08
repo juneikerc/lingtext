@@ -1,6 +1,7 @@
 ---
 title: " Why Learn English in 2026? "
 level: "c1"
+date: "2026-04-01"
 ---
 
 ### Language, Intelligence, and the Human Advantage in the Age of AI

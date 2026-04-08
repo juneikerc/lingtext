@@ -1,6 +1,7 @@
 ---
 title: "The Old Lighthouse Keeper - Chapter 1"
 level: "b1"
+date: "2026-04-01"
 ---
 
 # The Old Lighthouse Keeper - Chapter 1: An Unexpected Letter

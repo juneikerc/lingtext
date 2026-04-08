@@ -1,6 +1,7 @@
 ---
 title: "Money Talks and Hard Choices (An Informal Financial Chat)"
 level: "c1"
+date: "2026-04-01"
 ---
 
 **Chris:** I’m really glad we finally got around to meeting like this. Every time we talk, we end up drifting into money topics anyway.

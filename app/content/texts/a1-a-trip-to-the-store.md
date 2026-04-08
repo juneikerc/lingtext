@@ -1,6 +1,7 @@
 ---
 title: "A trip to the store"
 level: "a1"
+date: "2026-04-01"
 ---
 
 Hello! My name is Anna. I live with my mother, my father, and my little brother. We have a small house in a nice town. We are a happy family, and we like to do things together.

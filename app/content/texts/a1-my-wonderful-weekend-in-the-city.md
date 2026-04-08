@@ -1,6 +1,7 @@
 ---
 title: "My Wonderful Weekend in the City"
 level: "a1"
+date: "2026-04-01"
 ---
 
 # My Wonderful Weekend in the City

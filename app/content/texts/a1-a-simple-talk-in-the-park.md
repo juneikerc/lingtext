@@ -1,6 +1,7 @@
 ---
 title: "A simple talk in the park (chat)"
 level: "a1"
+date: "2026-04-01"
 ---
 
 Anna and Mark are friends. It is morning. They are in a park **today**. The sun is warm. The sky is blue. Anna has a small bag. Mark has a **glass** bottle of water in his hand. They sit on a bench and talk **about** their day, their families, and their **life**.

@@ -1,6 +1,7 @@
 ---
 title: "The Psychology of Motivation"
 level: "c1"
+date: "2026-04-01"
 ---
 
 Motivation is the driving force behind human behavior, a complex psychological construct that dictates why we initiate, continue, or terminate specific actions. Understanding the underlying mechanisms of motivation is not only a fundamental quest of psychological research but also a practical necessity for individuals seeking to achieve their goals and for organizations aiming to enhance productivity and engagement. This text delves into the various theories of motivation, the distinction between intrinsic and extrinsic drivers, and the neurological basis for our desires and actions.

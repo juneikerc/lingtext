@@ -1,6 +1,7 @@
 ---
 title: "A Day at the Beach"
 level: "a1"
+date: "2026-04-01"
 ---
 
 Maria and her brother Pedro go to the beach **today**. It is very hot **outside**. The sun is big and yellow in the sky. Maria wears a blue hat. Pedro has a red towel.

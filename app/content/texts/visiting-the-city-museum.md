@@ -1,6 +1,7 @@
 ---
 title: "Visiting the City Museum"
 level: "a2"
+date: "2026-04-01"
 ---
 
 Last Saturday, I decided to visit the big city museum with my younger brother, Leo. We had heard many interesting things about it from our friends at school. The museum is located in a very beautiful old building in the center of the city. It has many tall columns and a large marble staircase at the entrance. We arrived there at ten o'clock in the morning, just as the doors were opening.

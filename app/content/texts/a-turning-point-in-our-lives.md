@@ -1,6 +1,7 @@
 ---
 title: "A Turning Point in Our Lives (Reflective Conversation)"
 level: "b1"
+date: "2026-04-01"
 sound: "https://images.lingtext.org/talk-2.wav"
 ---
 

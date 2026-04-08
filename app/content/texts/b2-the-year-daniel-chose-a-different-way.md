@@ -1,6 +1,7 @@
 ---
 title: "The Year Daniel Chose a Different Way"
 level: "b2"
+date: "2026-04-01"
 ---
 
 Daniel was the kind of **guy** who could **speak** to almost anyone. He worked in a small bookstore near the train station, and every day he would **call** customers by name if he could **remember** them. Some people came to buy novels, some came to ask for travel guides, and some only wanted to talk. Daniel did not mind. He believed that every person had a story, and every **thing** in life became more interesting when someone shared it honestly.

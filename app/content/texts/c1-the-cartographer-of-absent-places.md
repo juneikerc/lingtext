@@ -1,6 +1,7 @@
 ---
 title: "The Cartographer of Absent Places"
 level: "c1"
+date: "2026-04-01"
 ---
 
 # The Cartographer of Absent Places

@@ -1,6 +1,7 @@
 ---
 title: "A Spring Choice at the Little Shop"
 level: "b1"
+date: "2026-04-01"
 ---
 
 Mia could not **believe** how warm the air felt on the first day of **spring**. After a long, gray **season** of rain and cold mornings, the town looked brighter and more alive. Small flowers began to open in front gardens, and people spent more time outside. For Mia, spring always brought hope. It was the best time to **move** forward, make a new **choice**, and try something different.

@@ -1,6 +1,7 @@
 ---
 title: "The Small Light in My Room"
 level: "a1"
+date: "2026-04-01"
 ---
 
 # The Small Light in My Room

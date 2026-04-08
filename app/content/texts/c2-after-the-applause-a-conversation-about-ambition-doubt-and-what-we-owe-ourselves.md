@@ -1,6 +1,7 @@
 ---
 title: "(CHAT) After the Applause: A Conversation About Ambition, Doubt, and What We Owe Ourselves"
 level: "c2"
+date: "2026-04-01"
 ---
 
 Clara: You vanished the second the talk ended. One moment you were shaking hands like a seasoned diplomat, the next you were gone—like a magician who’s decided the trick is over.
