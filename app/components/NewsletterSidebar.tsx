@@ -4,15 +4,15 @@ interface NewsletterSidebarProps {
 
 export default function NewsletterSidebar({ onClose }: NewsletterSidebarProps) {
   return (
-    <aside className="hidden lg:flex flex-col fixed right-0 top-0 bottom-0 w-80 z-40 border-l border-gray-200 bg-white shadow-lg">
-      <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
+    <aside className="hidden lg:flex flex-col fixed right-0 top-0 bottom-0 w-80 z-40 border-l border-gray-200 bg-white shadow-lg overflow-y-auto">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 sticky top-0 bg-white z-10">
         <span className="text-xs font-semibold uppercase tracking-widest text-gray-500">
           Newsletter
         </span>
         <button
           type="button"
           onClick={onClose}
-          className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-gray-600 bg-gray-100 transition-colors duration-200 hover:bg-gray-200 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2"
+          className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-white bg-red-500 transition-colors duration-200 hover:bg-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
           aria-label="Cerrar sidebar"
         >
           <svg
@@ -34,59 +34,40 @@ export default function NewsletterSidebar({ onClose }: NewsletterSidebarProps) {
       </div>
 
       <div className="flex flex-col gap-4 p-5">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0F9EDA]/10 border border-[#0F9EDA]/20">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            className="h-5 w-5 text-[#0F9EDA]"
-            aria-hidden="true"
-          >
-            <rect x="2" y="4" width="20" height="16" rx="2" strokeWidth="2" />
-            <path
-              d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-
-        <div>
+        <div className="rounded-2xl border border-[#0F9EDA]/20 bg-[#0F9EDA]/5 p-5">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0F9EDA]/10 border border-[#0F9EDA]/20 mb-4">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              className="h-5 w-5 text-[#0F9EDA]"
+              aria-hidden="true"
+            >
+              <rect x="2" y="4" width="20" height="16" rx="2" strokeWidth="2" />
+              <path
+                d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
           <h3 className="text-base font-bold text-gray-900">Mantente al día</h3>
           <p className="mt-1 text-sm leading-relaxed text-gray-600">
             Recibe consejos de aprendizaje, nuevas funcionalidades y textos
             curados directamente en tu correo.
           </p>
+          <a
+            href="https://lingtext.kit.com/247af6aeca"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex w-full items-center justify-center rounded-xl bg-[#0F9EDA] px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2"
+          >
+            Suscribirme al newsletter
+          </a>
         </div>
 
-        <form
-          onSubmit={(e) => e.preventDefault()}
-          className="flex flex-col gap-3"
-        >
-          <input
-            type="text"
-            placeholder="Tu nombre"
-            className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-[#0F9EDA] focus:ring-2 focus:ring-[#0F9EDA]/20 transition-all duration-200 focus-visible:outline-none"
-          />
-          <input
-            type="email"
-            placeholder="Tu correo electrónico"
-            className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-[#0F9EDA] focus:ring-2 focus:ring-[#0F9EDA]/20 transition-all duration-200 focus-visible:outline-none"
-          />
-          <button
-            type="submit"
-            className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2"
-          >
-            Suscribirme
-          </button>
-        </form>
-
-        <p className="text-[11px] leading-relaxed text-gray-400">
-          No spam. Puedes cancelar tu suscripción en cualquier momento.
-        </p>
-
-        <div className="border-t border-gray-100 pt-4 mt-1">
+        <div className="border-t border-gray-100 pt-4">
           <p className="text-xs font-semibold text-gray-900 mb-3">
             ¿Tienes dudas? Únete a la comunidad
           </p>
@@ -108,7 +89,7 @@ export default function NewsletterSidebar({ onClose }: NewsletterSidebarProps) {
               Grupo de Facebook
             </a>
             <a
-              href="https://www.facebook.com/lingtextapp"
+              href="https://www.facebook.com/profile.php?id=61579571713917"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 rounded-xl border border-[#1877F2]/20 bg-[#1877F2]/5 px-3 py-2.5 text-sm font-medium text-[#1877F2] transition-colors duration-200 hover:bg-[#1877F2]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1877F2] focus-visible:ring-offset-2"
