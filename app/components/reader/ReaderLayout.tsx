@@ -85,7 +85,7 @@ export function ReaderProgressFooter({
   return (
     <Link
       to="/words"
-      className="absolute -bottom-16 left-0 right-0 flex justify-center"
+      className="flex justify-center"
     >
       <div
         className="rounded-full px-6 py-3 text-sm flex items-center space-x-4 border"
