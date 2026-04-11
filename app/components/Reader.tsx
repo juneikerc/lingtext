@@ -2,10 +2,13 @@ import { useRef } from "react";
 
 import type { AudioRef } from "../types";
 import { useTranslatorStore } from "~/context/translatorSelector";
+import { useReadingProgress } from "~/hooks/useReadingProgress";
 
 import AudioSection from "./reader/AudioSection";
 import MarkdownReaderText from "./reader/MarkdownReaderText";
 import ReaderText from "./reader/ReaderText";
+import ReadingProgressBar from "./reader/ReadingProgressBar";
+import ReadingShareCard from "./reader/ReadingShareCard";
 import SelectionPopup from "./reader/SelectionPopup";
 import WordPopup from "./reader/WordPopup";
 import { useReaderLexicon } from "./reader/ReaderLexiconContext";
@@ -44,6 +47,10 @@ export default function Reader({
   const containerRef = useRef<HTMLDivElement | null>(null);
   const isCompact = variant === "compact";
   const appearanceStyles = getReaderAppearanceStyles(preferences, isCompact);
+  const { progress, hasReachedThreshold } = useReadingProgress({
+    containerRef,
+    threshold: 95,
+  });
   const {
     audioUrl,
     audioAccessError,
@@ -119,7 +126,11 @@ export default function Reader({
         }
       }}
     >
+      {!isCompact && <ReadingProgressBar progress={progress} show />}
+
       {readerContent}
+
+
 
       {popup ? (
         <WordPopup
@@ -151,6 +162,13 @@ export default function Reader({
           onReauthorize={reauthorizeAudio}
           isLocalFile={isLocalFile}
           fileSize={fileSize}
+        />
+      ) : null}
+
+      {hasReachedThreshold && !isCompact ? (
+        <ReadingShareCard
+          visible={hasReachedThreshold}
+          textTitle={text.title}
         />
       ) : null}
     </div>

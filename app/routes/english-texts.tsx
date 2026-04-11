@@ -71,19 +71,32 @@ export function loader() {
 }
 
 export function meta(_args: Route.MetaArgs) {
+  const title = "Textos en inglés para leer | Lecturas para todos los niveles";
+  const description =
+    "Encuentra textos en inglés para leer según tu nivel. Explora lecturas A1, A2, B1, B2, C1 y C2 con ejemplos reales y acceso directo a cada nivel.";
+  const url = "https://lingtext.org/textos-en-ingles";
+
   return [
+    { title },
+    { name: "description", content: description },
+    { tagName: "link", rel: "canonical", href: url },
+    // Open Graph
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: url },
+    { property: "og:site_name", content: "LingText" },
     {
-      title: "Textos en inglés para leer | Lecturas para todos los niveles",
+      property: "og:image",
+      content: "https://lingtext.org/textos-en-ingles-image.png",
     },
+    // Twitter Card
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
     {
-      name: "description",
-      content:
-        "Encuentra textos en inglés para leer según tu nivel. Explora lecturas A1, A2, B1, B2, C1 y C2 con ejemplos reales y acceso directo a cada nivel.",
-    },
-    {
-      tagName: "link",
-      rel: "canonical",
-      href: "https://lingtext.org/textos-en-ingles",
+      name: "twitter:image",
+      content: "https://lingtext.org/textos-en-ingles-image.png",
     },
   ];
 }
