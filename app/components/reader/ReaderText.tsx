@@ -5,7 +5,6 @@ import type { ReaderPhraseIndex } from "./ReaderLexiconContext";
 import LibraryBanner, {
   ReaderContentShell,
   ReaderEmptyState,
-  ReaderHelpFloatingLink,
   ReaderModeIndicator,
   ReaderProgressFooter,
 } from "./ReaderLayout";
@@ -61,7 +60,6 @@ function ReaderText({
       {showChrome ? (
         <ReaderProgressFooter unknownCount={unknownSet.size} />
       ) : null}
-      {showChrome ? <ReaderHelpFloatingLink /> : null}
     </div>
   );
 }

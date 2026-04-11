@@ -11,6 +11,7 @@ import { getTextBySlug } from "~/lib/content/runtime";
 import { type TextItem } from "~/types";
 import { formatAudioRef } from "~/utils/format-audio-ref";
 import { markTextAsVisited } from "~/utils/visited-texts";
+import NewsletterSidebar from "~/components/NewsletterSidebar";
 
 const Reader = lazy(() => import("~/components/Reader"));
 
@@ -72,6 +73,7 @@ export async function clientLoader({
 export default function Text({ loaderData }: Route.ComponentProps) {
   const text = loaderData;
   const [showWelcomeModal, setShowWelcomeModal] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   useEffect(() => {
     if (!text.id) return;
@@ -160,6 +162,34 @@ export default function Text({ loaderData }: Route.ComponentProps) {
             <Reader text={text} />
           </Suspense>
         </ReaderErrorBoundary>
+        {sidebarOpen ? (
+          <NewsletterSidebar onClose={() => setSidebarOpen(false)} />
+        ) : null}
+        {!sidebarOpen ? (
+          <button
+            type="button"
+            onClick={() => setSidebarOpen(true)}
+            className="hidden lg:flex fixed right-4 bottom-4 z-30 items-center gap-2 rounded-full bg-[#0F9EDA] px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#0F9EDA]/30 transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2"
+            aria-label="Mostrar newsletter"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              className="h-4 w-4"
+              aria-hidden="true"
+            >
+              <rect x="2" y="4" width="20" height="16" rx="2" strokeWidth="2" />
+              <path
+                d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            Newsletter
+          </button>
+        ) : null}
       </ReaderLexiconProvider>
     </ReaderPreferencesProvider>
   );

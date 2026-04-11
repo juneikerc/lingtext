@@ -5,7 +5,6 @@ import type { ReaderPhraseIndex } from "./ReaderLexiconContext";
 import LibraryBanner, {
   ReaderContentShell,
   ReaderEmptyState,
-  ReaderHelpFloatingLink,
   ReaderModeIndicator,
   ReaderProgressFooter,
 } from "./ReaderLayout";
@@ -186,12 +185,7 @@ function MarkdownReaderText({
 
       // Horizontal rule
       if (line.match(/^---+$|^\*\*\*+$|^___+$/)) {
-        elements.push(
-          <hr
-            key={`hr-${i}`}
-            className="my-6 border-gray-300"
-          />
-        );
+        elements.push(<hr key={`hr-${i}`} className="my-6 border-gray-300" />);
         continue;
       }
 
@@ -373,7 +367,6 @@ function MarkdownReaderText({
       {showChrome ? (
         <ReaderProgressFooter unknownCount={unknownSet.size} />
       ) : null}
-      {showChrome ? <ReaderHelpFloatingLink /> : null}
     </div>
   );
 }

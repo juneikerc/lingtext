@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router";
 
 import { useReaderPreferences } from "./ReaderPreferencesContext";
@@ -83,10 +83,7 @@ export function ReaderProgressFooter({
   unknownCount,
 }: ReaderProgressFooterProps) {
   return (
-    <Link
-      to="/words"
-      className="flex justify-center"
-    >
+    <Link to="/words" className="flex justify-center">
       <div
         className="rounded-full px-6 py-3 text-sm flex items-center space-x-4 border"
         style={{
@@ -109,38 +106,6 @@ export function ReaderProgressFooter({
         </div>
       </div>
     </Link>
-  );
-}
-
-export function ReaderHelpFloatingLink() {
-  const [isVisible, setIsVisible] = useState(true);
-
-  if (!isVisible) {
-    return null;
-  }
-
-  return (
-    <div className="fixed bottom-6 right-6 z-20 max-w-[18rem]">
-      <div className="relative">
-        <a
-          href="https://www.facebook.com/groups/1199904721807372/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block rounded-2xl bg-[#E53E3E] px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-[#E53E3E]/50 transition-all duration-200 hover:bg-[#C53030] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E53E3E] focus-visible:ring-offset-2 focus-visible:ring-offset-white animate-pulse [animation-duration:3s] motion-reduce:animate-none"
-          aria-label="Abrir grupo de Facebook para preguntas"
-        >
-          ¿Tienes dudas? Pregunta en nuestro grupo de Facebook →
-        </a>
-        <button
-          type="button"
-          className="absolute -top-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full bg-white text-gray-600 shadow-md transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E53E3E] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-          aria-label="Ocultar ayuda"
-          onClick={() => setIsVisible(false)}
-        >
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-    </div>
   );
 }
 
