@@ -83,7 +83,7 @@ El uso del input comprensible en el aprendizaje de idiomas se traduce en estrate
 
 #### Lectura como herramienta de adquisición
 
-Leer textos que se alineen con el nivel del estudiante es fundamental. La exposición a narrativas interesantes y variadas proporciona contexto. Fomentar la lectura de cuentos, artículos o novelas simplificadas resulta beneficioso. Esto permite a los estudiantes inferir significados y estructuras gramaticales de manera natural, enriqueciendo su vocabulario y comprensión de frases complejas de forma indirecta.
+[Leer textos que se alineen con el nivel del estudiante](/textos-en-ingles) es fundamental. La exposición a narrativas interesantes y variadas proporciona contexto. Fomentar la lectura de cuentos, artículos o novelas simplificadas resulta beneficioso. Esto permite a los estudiantes inferir significados y estructuras gramaticales de manera natural, enriqueciendo su vocabulario y comprensión de frases complejas de forma indirecta.
 
 #### Escucha activa y experiencias auditivas
 
@@ -125,9 +125,10 @@ El input comprensible tiene un rol significativo en la evolución de las habilid
 
 El vocabulario y las estructuras gramaticales son elementos fundamentales en el aprendizaje de un nuevo idioma. La exposición a un input comprensible permite a los aprendices reconocer palabras y frases en contextos significativos. Esta exposición ayuda a consolidar la memoria lexical y a comprender las reglas gramaticales de manera natural. Algunas de las estrategias que favorecen este proceso incluyen:
 
-- Leer textos adaptados a su nivel de competencia.
+- Leer textos adaptados a su nivel de competencia. [ver lecturas en ingles aqui](/textos-en-ingles)
 - Escuchar conversaciones o relatos que utilicen un lenguaje cercano al nivel del estudiante.
 - Participar en actividades donde se combine el uso del vocabulario nuevo con su aplicación práctica.
+- Usar [flashcards de anki](/blog/rol-de-anki-ingles) para familiarizarse con vocabulario de alta frecuencia de una manera más rápida.
 
 De esta forma, los estudiantes no solo aprenden palabras aisladas, sino que logran enlazarlas dentro de estructuras más complejas, facilitando su uso en diferentes contextos comunicativos.
 
@@ -187,45 +188,47 @@ La motivación juega un rol fundamental en la capacidad de un aprendiz para bene
 
 Un ambiente de aprendizaje positivo y estimulante es crucial. La disponibilidad de recursos variados, tales como libros, materiales multimedia y acceso a hablantes nativos, puede facilitar una mejor asimilación del idioma. La falta de estos recursos puede limitar el éxito del método implementado.
 
-## El input comprensible en el contexto del aprendizaje del español como segunda lengua
+## El input comprensible en el contexto del aprendizaje del inglés como segunda lengua
 
-El enfoque del input comprensible es crucial en el aprendizaje del español, especialmente para hablantes de otros idiomas. Facilita la adquisición efectiva y natural del idioma al exponer a los estudiantes a contenido que pueden entender y que contiene elementos avanzados.
+El enfoque del input comprensible es fundamental en el aprendizaje del inglés, especialmente para quienes lo estudian como segunda lengua. Permite una adquisición más natural y efectiva del idioma al exponer al estudiante a contenidos que puede entender, pero que al mismo tiempo incluyen estructuras y vocabulario ligeramente más avanzados.
 
-### Caracteristicas del español para aprendices extranjeros
+### Características del inglés que influyen en el aprendizaje
 
-El español presenta varios aspectos que pueden ser retadores para los aprendices. Estos incluyen:
+El inglés presenta varios aspectos que pueden resultar desafiantes para los estudiantes. Entre ellos destacan:
 
-- La diversidad de acentos y dialectos, que pueden afectar la pronunciación y la comprensión auditiva.
-- La conjugación verbal, que presenta numerosos tiempos y formas que se deben dominar.
-- Los géneros gramaticales, donde un mismo sustantivo puede cambiar de significado y uso según su género.
+- La gran variedad de acentos y formas de pronunciación, que pueden dificultar la comprensión auditiva.
+- La diferencia entre la escritura y la pronunciación, muy frecuente en inglés.
+- El uso de expresiones idiomáticas, phrasal verbs y estructuras que no siempre se traducen de forma literal.
 
-Comprender estas características es esencial para adaptar el input comprensible, asegurando que los estudiantes encuentren material relevante y comprensible.
+Tener en cuenta estas características es clave para adaptar el input comprensible y ofrecer materiales que sean retadores, pero accesibles.
 
-### Adaptación del input comprensible para hispanohablantes
+### Cómo adaptar el input comprensible para estudiantes de inglés
 
-Para que los hispanohablantes apprendices puedan beneficiarse del input comprensible, es necesario considerar su nivel actual de dominio del idioma. Esto implica:
+Para que el input comprensible sea realmente útil, es importante partir del nivel actual del estudiante. Esto implica:
 
-- Ofrecer materiales ajustados a su competencia lingüística, así como también textos que aunque sean un poco más complejos, sigan siendo comprensibles.
-- Utilizar contextos cotidianos y situaciones de la vida real, facilitando así la conexión entre el nuevo vocabulario y su uso práctico.
+- Ofrecer materiales acordes a su competencia lingüística, incorporando poco a poco vocabulario y estructuras nuevas que sigan siendo comprensibles por contexto.
+- Priorizar situaciones cotidianas y temas cercanos a sus intereses, para facilitar la asociación entre el idioma y su uso real.
 
-### Herramientas y actividades para facilitar la adquisición del español
+De este modo, el aprendizaje se vuelve más significativo y sostenible en el tiempo.
 
-Diversas herramientas y actividades pueden potenciar el aprendizaje del español a través del input comprensible. Este tipo de recursos fomentan la exposición constante al idioma en contextos significativos.
+### Herramientas y actividades para facilitar la adquisición del inglés
 
-#### Lectura y escucha en contextos cotidianos
+Existen múltiples recursos que pueden potenciar la adquisición del inglés a través del input comprensible. Lo más importante es favorecer una exposición constante al idioma en contextos relevantes.
 
-La lectura y la escucha son actividades esenciales en la adquisición del español. Proporcionar acceso a:
+#### Lectura y escucha en contextos reales
 
-- Cuentos, artículos y blogs en español que aborden temas de interés para el estudiante.
-- Podcasts y programas de radio que ofrezcan diálogos naturales y expresiones coloquiales.
+La lectura y la escucha son dos pilares en la adquisición del inglés. Resulta útil ofrecer acceso a:
 
-Estas prácticas ofrecen ejemplos reales del idioma y promueven la comprensión auditiva.
+- Historias, artículos, newsletters o blogs en inglés sobre temas que interesen al estudiante.
+- Podcasts, entrevistas y videos con lenguaje natural, adaptados a su nivel.
 
-#### Uso de medios audiovisuales y tecnologías interactivas
+Estas prácticas ayudan a desarrollar la comprensión global del idioma y a familiarizarse con vocabulario y expresiones de uso frecuente.
 
-Integrar medios audiovisuales en el proceso de aprendizaje puede ser altamente efectivo. Esto incluye:
+#### Uso de recursos audiovisuales y herramientas interactivas
 
-- Videos educativos que expongan a los estudiantes a diferentes contextos y vocabularios.
-- Aplicaciones interactivas que ofrezcan ejercicios de vocabulario y gramática de manera dinámico.
+Los materiales audiovisuales también cumplen un papel clave en el aprendizaje del inglés. Por ejemplo:
 
-A través de estas herramientas, el aprendizaje del español se vuelve más atractivo y accesible, facilitando así su adquisición.
+- Videos, series o canales educativos que presenten el idioma en contextos visuales que faciliten la comprensión.
+- Aplicaciones y plataformas interactivas que permitan reforzar vocabulario, estructuras y comprensión de forma dinámica.
+
+Gracias a estos recursos, el aprendizaje del inglés puede ser más cercano, motivador y efectivo, favoreciendo una adquisición progresiva y natural del idioma.

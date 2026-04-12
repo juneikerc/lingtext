@@ -56,9 +56,9 @@ Crear un ambiente de apoyo es crucial. Se pueden introducir sesiones cortas de l
 
 Finalmente, cumplir con metas de comprensión a corto plazo es vital. Establecer objetivos claros, como identificar las ideas principales y los detalles relevantes de un párrafo, puede mantener a los estudiantes enfocados en su progreso. Las estrategias de lectura intensiva deben adaptarse a las necesidades del grupo, garantizando así un aprendizaje efectivo y significativo.
 
-## Estrategias efectivas para la lectura extensiva en español como lengua extranjera
+## Estrategias efectivas para la lectura extensiva en inglés como lengua extranjera
 
-Fomentar la lectura extensiva en el aprendizaje del español como lengua extranjera es fundamental para mejorar la fluidez y la comprensión del idioma. Una variedad de estrategias puede ser implementada para maximizar el aprendizaje.
+Fomentar la lectura extensiva en el aprendizaje del inglés como lengua extranjera es fundamental para mejorar la fluidez y la comprensión del idioma. Una variedad de estrategias puede ser implementada para maximizar el aprendizaje.
 
 - **Selección de textos apropiados:** Elegir materiales que sean interesantes y estén adecuados al nivel del aprendiz es esencial. Esto puede incluir novelas, cuentos, artículos y otros recursos que capten la atención del estudiante.
 - **Creación de un ambiente cómodo:** La lectura en un entorno relajado y sin distracciones ayuda a que los estudiantes se concentren mejor en el contenido. Esto incluye asegurar un espacio donde se sientan a gusto y motivados.
@@ -66,9 +66,9 @@ Fomentar la lectura extensiva en el aprendizaje del español como lengua extranj
 - **Incorporación de discusiones:** Al finalizar la lectura, establecer espacios para discutir el contenido puede enriquecer el aprendizaje. Estas conversaciones facilitan la práctica oral y ayudan a reforzar el vocabulario nuevo.
 - **Utilización de registros de lectura:** Mantener un diario o registro donde los estudiantes anoten sus impresiones y reflexiones sobre lo leído es una herramienta útil. Esto no solo ayuda a la retención del vocabulario, sino que también permite medir su avance.
 
-Implementar estas estrategias no solo contribuye a un aprendizaje más efectivo del español, sino que también promueve el placer por la lectura. Al elegir textos que realmente interesen a los estudiantes y al facilitar un espacio adecuado para la lectura, se logra que el proceso de aprendizaje sea más eficaz y agradable.
+Implementar estas estrategias no solo contribuye a un aprendizaje más efectivo del inglés, sino que también promueve el placer por la lectura. Al elegir textos que realmente interesen a los estudiantes y al facilitar un espacio adecuado para la lectura, se logra que el proceso de aprendizaje sea más eficaz y agradable.
 
-Por último, es fundamental que los educadores motiven a los alumnos a elegir sus propios textos, pues esto incrementa el compromiso y la conexión emocional con la lectura, generando un ambiente de aprendizaje más positivo.
+Por último, es fundamental que los educadores motiven a los alumnos a elegir sus propios [textos en inglés](/textos-en-ingles), pues esto incrementa el compromiso y la conexión emocional con la lectura, generando un ambiente de aprendizaje más positivo.
 
 ## Integración práctica de la lectura intensiva y extensiva en el aprendizaje
 
