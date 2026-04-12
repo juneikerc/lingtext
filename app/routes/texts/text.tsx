@@ -157,14 +157,19 @@ export default function Text({ loaderData }: Route.ComponentProps) {
           </div>
         ) : null}
         <ReaderHeader title={text.title} />
-        <ReaderErrorBoundary>
-          <Suspense fallback={<ReaderSkeleton />}>
-            <Reader text={text} />
-          </Suspense>
-        </ReaderErrorBoundary>
-        {sidebarOpen ? (
-          <NewsletterSidebar onClose={() => setSidebarOpen(false)} />
-        ) : null}
+        <div className="lg:flex lg:items-start">
+          <div className="min-w-0 flex-1">
+            <ReaderErrorBoundary>
+              <Suspense fallback={<ReaderSkeleton />}>
+                <Reader text={text} />
+              </Suspense>
+            </ReaderErrorBoundary>
+          </div>
+          {sidebarOpen ? (
+            <NewsletterSidebar onClose={() => setSidebarOpen(false)} />
+          ) : null}
+        </div>
+
         {!sidebarOpen ? (
           <button
             type="button"

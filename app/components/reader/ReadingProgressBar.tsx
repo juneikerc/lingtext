@@ -15,7 +15,7 @@ export default function ReadingProgressBar({
         className="h-full bg-[#0F9EDA] transition-[width] duration-150 ease-out"
         style={{ width: `${progress}%` }}
       />
-      <div className="absolute -bottom-8 right-4 flex items-center gap-1.5 rounded-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 px-3 py-1 shadow-sm">
+      <div className="absolute -bottom-8 left-4 flex items-center gap-1.5 rounded-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 px-3 py-1 shadow-sm">
         <span className="text-xs font-medium text-gray-700 dark:text-gray-300">
           {progress}%
         </span>

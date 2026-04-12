@@ -4,7 +4,7 @@ interface NewsletterSidebarProps {
 
 export default function NewsletterSidebar({ onClose }: NewsletterSidebarProps) {
   return (
-    <aside className="hidden lg:flex flex-col fixed right-0 top-0 bottom-0 w-80 z-40 border-l border-gray-200 bg-white shadow-lg overflow-y-auto">
+    <aside className="hidden w-80 shrink-0 self-start overflow-y-auto border-l border-gray-200 bg-white shadow-2xs lg:sticky lg:top-8 lg:flex lg:max-h-[calc(100vh-7rem)] lg:flex-col">
       <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 sticky top-0 bg-white z-10">
         <span className="text-xs font-semibold uppercase tracking-widest text-gray-500">
           Newsletter
@@ -52,10 +52,12 @@ export default function NewsletterSidebar({ onClose }: NewsletterSidebarProps) {
               />
             </svg>
           </div>
-          <h3 className="text-base font-bold text-gray-900">Mantente al día</h3>
+          <h3 className="text-base font-bold text-gray-900">
+            Recibe novedades de LingText
+          </h3>
           <p className="mt-1 text-sm leading-relaxed text-gray-600">
-            Recibe consejos de aprendizaje, nuevas funcionalidades y textos
-            curados directamente en tu correo.
+            Únete para enterarte cuando publiquemos nuevos textos, recursos y
+            mejoras en LingText.
           </p>
           <a
             href="https://lingtext.kit.com/247af6aeca"
@@ -63,7 +65,7 @@ export default function NewsletterSidebar({ onClose }: NewsletterSidebarProps) {
             rel="noopener noreferrer"
             className="mt-4 inline-flex w-full items-center justify-center rounded-xl bg-[#0F9EDA] px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2"
           >
-            Suscribirme al newsletter
+            Quiero unirme
           </a>
         </div>
 
