@@ -91,7 +91,7 @@ export default function NewsletterSidebar({ onClose }: NewsletterSidebarProps) {
               Grupo de Facebook
             </a>
             <a
-              href="https://www.facebook.com/profile.php?id=61579571713917"
+              href="https://www.facebook.com/lingtext/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 rounded-xl border border-[#1877F2]/20 bg-[#1877F2]/5 px-3 py-2.5 text-sm font-medium text-[#1877F2] transition-colors duration-200 hover:bg-[#1877F2]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1877F2] focus-visible:ring-offset-2"
