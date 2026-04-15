@@ -2,7 +2,6 @@ import TestSessionPlayer from "~/components/tests/TestSessionPlayer";
 import {
   getTestDefinition,
   getTestLevelMeta,
-  getTestSkillMeta,
   isTestLevel,
   isTestSkill,
 } from "~/features/tests/catalog";
@@ -49,18 +48,14 @@ export function meta({ loaderData, params }: Route.MetaArgs) {
   }
 
   const levelMeta = getTestLevelMeta(params.level);
-  const skillMeta =
-    params.skill && isTestSkill(params.skill)
-      ? getTestSkillMeta(params.skill)
-      : null;
 
   return [
     {
-      title: `${skillMeta?.name ?? "Test"} ${levelMeta.name} | LingText`,
+      title: `${loaderData.test.title} | LingText`,
     },
     {
       name: "description",
-      content: `Sesion interactiva de ${skillMeta?.name ?? "test"} para ${levelMeta.name}.`,
+      content: `${loaderData.test.summary} Sesion interactiva para ${levelMeta.name}.`,
     },
     { name: "robots", content: "noindex" },
     {

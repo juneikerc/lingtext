@@ -125,6 +125,199 @@ interface LevelFixture {
   dictationQuestions: DictationQuestion[];
 }
 
+const TEST_COPY: Record<
+  TestLevel,
+  Record<
+    TestSkill,
+    {
+      title: string;
+      summary: string;
+      intro: string;
+    }
+  >
+> = {
+  a1: {
+    reading: {
+      title: "Rutinas cotidianas y detalles simples",
+      summary:
+        "Lee una escena diaria corta y detecta ideas basicas sin perderte en el texto.",
+      intro:
+        "Una prueba breve centrada en acciones del dia a dia, horarios y detalles faciles de localizar.",
+    },
+    grammar: {
+      title: "Present simple y verb to be en accion",
+      summary:
+        "Practica estructuras esenciales para presentarte, describir personas y hablar de rutinas.",
+      intro:
+        "Esta sesion se centra en las piezas gramaticales que mas se repiten cuando todavia estas construyendo base.",
+    },
+    vocabulary: {
+      title: "Palabras basicas para moverte en lo diario",
+      summary:
+        "Trabaja opuestos, objetos comunes y combinaciones faciles de reconocer.",
+      intro:
+        "La idea aqui es validar si ya manejas vocabulario basico de casa, comida, acciones y descripciones simples.",
+    },
+    dictation: {
+      title: "Primer dictado con frases cortas y claras",
+      summary:
+        "Escucha frases sencillas y completa el dictado con ayuda progresiva cuando haga falta.",
+      intro:
+        "Un dictado pensado para afinar el oido principiante con oraciones cortas y vocabulario muy frecuente.",
+    },
+  },
+  a2: {
+    reading: {
+      title: "Planes, mensajes y un fin de semana ocupado",
+      summary:
+        "Lee un mensaje simple y sigue planes, horarios y acciones futuras con mas autonomia.",
+      intro:
+        "Esta prueba gira alrededor de mensajes cotidianos, planes cercanos y detalles faciles pero ya mas variados.",
+    },
+    grammar: {
+      title: "Pasado simple, comparativos y planes cercanos",
+      summary:
+        "Refuerza estructuras tipicas de A2 para contar experiencias y comparar cosas o personas.",
+      intro:
+        "Aqui pones a prueba si ya controlas tiempos y estructuras muy comunes cuando dejas el nivel inicial puro.",
+    },
+    vocabulary: {
+      title: "Vida diaria, clima y collocations comunes",
+      summary:
+        "Practica vocabulario util para moverte en ciudad, estudio y conversaciones rutinarias.",
+      intro:
+        "La sesion mezcla palabras frecuentes con expresiones naturales que empiezan a sonar mas reales en A2.",
+    },
+    dictation: {
+      title: "Dictado cotidiano con pasado y planes",
+      summary:
+        "Escucha frases mas largas y consolida ortografia, contracciones y estructuras comunes.",
+      intro:
+        "Este dictado sube un poco la dificultad con frases de planes, experiencias recientes y contexto diario.",
+    },
+  },
+  b1: {
+    reading: {
+      title: "Habitos, trabajo remoto y decisiones personales",
+      summary:
+        "Lee un texto funcional y detecta cambios de rutina, causas y soluciones.",
+      intro:
+        "La prueba apunta a esa zona B1 en la que ya puedes seguir una idea completa y relacionar problema con respuesta.",
+    },
+    grammar: {
+      title: "Condicionales, conectores y tiempo verbal util",
+      summary:
+        "Practica estructuras que te permiten opinar, matizar y conectar mejor las ideas.",
+      intro:
+        "Aqui medimos si ya puedes pasar de frases sueltas a estructuras que dan mas control y autonomia al discurso.",
+    },
+    vocabulary: {
+      title: "Trabajo, decisiones y expresiones frecuentes",
+      summary:
+        "Entrena palabras utiles para estudio, trabajo y situaciones practicas del dia a dia.",
+      intro:
+        "Esta sesion combina significado en contexto con collocations que empiezan a sonar realmente naturales en B1.",
+    },
+    dictation: {
+      title: "Dictado intermedio con frases naturales",
+      summary:
+        "Escucha oraciones mas fluidas y trabaja precision sin salir de un ingles todavia funcional.",
+      intro:
+        "El reto aqui ya no es solo oir palabras aisladas, sino seguir ritmo, orden y combinaciones frecuentes.",
+    },
+  },
+  b2: {
+    reading: {
+      title: "Argumentos claros en contextos de trabajo real",
+      summary:
+        "Lee una opinion breve y distingue tesis, contraste y detalle de apoyo.",
+      intro:
+        "La prueba se apoya en un texto mas abstracto para validar si ya puedes seguir una linea argumental con claridad.",
+    },
+    grammar: {
+      title: "Matices verbales, inversion ligera y linkers",
+      summary:
+        "Pon a prueba estructuras que marcan diferencia entre un ingles correcto y uno mas fino.",
+      intro:
+        "Aqui importa menos la mecanica basica y mas tu capacidad de elegir la estructura precisa para el contexto.",
+    },
+    vocabulary: {
+      title: "Lenguaje abstracto y collocations de analisis",
+      summary:
+        "Practica vocabulario mas flexible para ideas, proyectos, cambios y argumentacion.",
+      intro:
+        "Esta sesion trabaja el salto hacia un vocabulario menos concreto y mas util para opiniones complejas.",
+    },
+    dictation: {
+      title: "Dictado con estructura flexible y mas matiz",
+      summary:
+        "Escucha frases con modales, comparaciones y orden mas variable sin perder precision.",
+      intro:
+        "El foco esta en sostener comprension auditiva cuando la frase ya no sigue un patron tan simple.",
+    },
+  },
+  c1: {
+    reading: {
+      title: "Innovacion, implementacion y lectura critica",
+      summary:
+        "Interpreta posicion, contraste y critica implicita dentro de un texto mas denso.",
+      intro:
+        "Esta prueba busca medir si ya puedes leer entre lineas y seguir una tesis con vocabulario mas exigente.",
+    },
+    grammar: {
+      title: "Inversion, relativas y control formal del ingles",
+      summary:
+        "Refuerza estructuras avanzadas que suelen separar un C1 claro de uno todavia inestable.",
+      intro:
+        "Aqui aparecen formas menos frecuentes, pero muy utiles cuando buscas precision formal y flexibilidad real.",
+    },
+    vocabulary: {
+      title: "Consenso, matiz y vocabulario de registro alto",
+      summary:
+        "Trabaja lenguaje mas abstracto, persuasivo y academico sin perder naturalidad.",
+      intro:
+        "La sesion se enfoca en ese vocabulario que no solo entiendes, sino que ya deberias poder reconocer con matiz.",
+    },
+    dictation: {
+      title: "Dictado avanzado con registro formal",
+      summary:
+        "Escucha frases mas densas y valida precision en estructuras largas y tono elevado.",
+      intro:
+        "El dictado de C1 obliga a sostener detalle, ritmo y ortografia cuando la frase ya lleva mas carga informativa.",
+    },
+  },
+  c2: {
+    reading: {
+      title: "Claridad, profundidad y discurso experto",
+      summary:
+        "Lee una reflexion compleja y detecta contraste conceptual, matiz y subtexto.",
+      intro:
+        "Esta prueba pone el foco en comprension fina: no solo entender ideas, sino como estan organizadas y matizadas.",
+    },
+    grammar: {
+      title: "Inversion avanzada y estructuras poco frecuentes",
+      summary:
+        "Pon a prueba formas raras pero naturales en un ingles de alta precision.",
+      intro:
+        "El objetivo aqui es medir control sobre recursos sintacticos que ya no pertenecen al uso intermedio ni avanzado comun.",
+    },
+    vocabulary: {
+      title: "Matiz fino y lenguaje analitico de alto nivel",
+      summary:
+        "Practica palabras que exigen distinciones sutiles, interpretacion y registro muy preciso.",
+      intro:
+        "La sesion trabaja el tipo de vocabulario que define un dominio experto mas alla de la simple correccion.",
+    },
+    dictation: {
+      title: "Dictado de alta precision y discurso complejo",
+      summary:
+        "Escucha oraciones cargadas de matiz y manten exactitud aunque la estructura sea exigente.",
+      intro:
+        "Este dictado esta pensado para usuarios que quieren medir detalle real cuando el ingles ya opera a maxima densidad.",
+    },
+  },
+};
+
 const FIXTURES: Record<TestLevel, LevelFixture> = {
   a1: {
     readingIntro: "Rutinas basicas, familia y acciones del dia a dia.",
@@ -1334,8 +1527,7 @@ function buildTestDefinition(
   skill: TestSkill
 ): TestDefinition {
   const fixture = FIXTURES[level];
-  const levelMeta = getTestLevelMeta(level);
-  const skillMeta = getTestSkillMeta(skill);
+  const copy = TEST_COPY[level][skill];
 
   const questions =
     skill === "reading"
@@ -1346,13 +1538,6 @@ function buildTestDefinition(
           ? fixture.vocabularyQuestions
           : fixture.dictationQuestions;
 
-  const intro =
-    skill === "reading"
-      ? fixture.readingIntro
-      : skill === "dictation"
-        ? "Escucha frases de este nivel y escribelas con ayuda progresiva si fallas."
-        : `${skillMeta.name} para ${levelMeta.name} con foco en ${levelMeta.focus}.`;
-
   const instructions =
     skill === "dictation"
       ? "Escucha la frase, escribe exactamente lo que oyes y usa las pistas solo cuando las necesites."
@@ -1361,8 +1546,10 @@ function buildTestDefinition(
   return {
     level,
     skill,
-    title: `${skillMeta.name} ${levelMeta.name}`,
-    intro,
+    title: copy.title,
+    summary: copy.summary,
+    intro:
+      skill === "reading" ? copy.intro || fixture.readingIntro : copy.intro,
     instructions,
     durationMinutes: skill === "dictation" ? 6 : 5,
     questions,
@@ -1395,7 +1582,8 @@ export function getLevelTestSummaries(level: TestLevel): LevelTestSummary[] {
     level: test.level,
     skill: test.skill,
     title: test.title,
-    shortDescription: getTestSkillMeta(test.skill).shortDescription,
+    shortDescription: test.summary,
+    summary: test.intro,
     durationMinutes: test.durationMinutes,
     questionCount: test.questions.length,
   }));

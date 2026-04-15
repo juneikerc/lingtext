@@ -76,6 +76,7 @@ export interface TestDefinition {
   level: TestLevel;
   skill: TestSkill;
   title: string;
+  summary: string;
   intro: string;
   instructions: string;
   durationMinutes: number;
@@ -88,6 +89,7 @@ export interface LevelTestSummary {
   skill: TestSkill;
   title: string;
   shortDescription: string;
+  summary: string;
   durationMinutes: number;
   questionCount: number;
 }

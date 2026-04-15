@@ -347,13 +347,13 @@ export default function TestSessionPlayer({
           <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
             <div>
               <p className="text-sm font-semibold text-[#0F9EDA]">
-                Resultado {skillMeta.name} {levelMeta.name}
+                Resultado de la sesion
               </p>
               <h1 className="mt-2 text-3xl font-bold text-gray-900 sm:text-4xl">
-                {scorePercent}% · {resultBand.label}
+                {test.title}
               </h1>
               <p className="mt-3 max-w-2xl text-base leading-relaxed text-gray-600">
-                {resultBand.summary}
+                {scorePercent}% · {resultBand.label}. {resultBand.summary}
               </p>
             </div>
             <div className="grid gap-3 sm:min-w-56">

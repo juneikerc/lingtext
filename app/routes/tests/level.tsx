@@ -93,12 +93,6 @@ export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
               </svg>
               Volver a tests
             </Link>
-            <Link
-              to={`/levels/${levelMeta.id}`}
-              className="text-gray-500 transition-colors duration-200 hover:text-[#0F9EDA]"
-            >
-              Ver lecturas {levelMeta.name}
-            </Link>
           </nav>
 
           <div className="inline-flex items-center rounded-full border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 px-4 py-2 text-sm font-medium text-[#0F9EDA]">
@@ -113,21 +107,6 @@ export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
             {levelMeta.description} Aqui cada skill esta pensada para ayudarte a
             detectar huecos rapido y pasar enseguida a lecturas del mismo nivel.
           </p>
-
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-            <Link
-              to={`/levels/${levelMeta.id}`}
-              className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-            >
-              Abrir lecturas {levelMeta.name}
-            </Link>
-            <Link
-              to="/review"
-              className="inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white px-6 py-3.5 text-sm font-semibold text-gray-700 transition-colors duration-200 hover:border-[#0F9EDA] hover:text-[#0F9EDA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-            >
-              Ir a review
-            </Link>
-          </div>
         </div>
       </section>
 
@@ -173,7 +152,11 @@ export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
                   </div>
 
                   <p className="mt-4 text-sm leading-relaxed text-gray-600">
-                    {skillMeta.longDescription}
+                    {test.shortDescription}
+                  </p>
+
+                  <p className="mt-3 text-sm leading-relaxed text-gray-500">
+                    {test.summary}
                   </p>
 
                   <div className="mt-5 flex flex-wrap gap-3 text-sm text-gray-600">
@@ -181,28 +164,45 @@ export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
                       {test.questionCount} preguntas
                     </span>
                     <span className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">
-                      {test.shortDescription}
+                      Sesion corta
                     </span>
                   </div>
 
-                  <div className="mt-auto flex flex-col gap-3 pt-6 sm:flex-row">
+                  <div className="mt-auto pt-6">
                     <button
                       type="button"
                       onClick={() => handleStart(test.skill)}
-                      className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                      className="inline-flex w-full items-center justify-center rounded-xl bg-[#0F9EDA] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                     >
-                      Iniciar sesion
+                      Empezar
                     </button>
-                    <Link
-                      to={`/levels/${levelMeta.id}`}
-                      className="inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white px-5 py-3 text-sm font-semibold text-gray-700 transition-colors duration-200 hover:border-[#0F9EDA] hover:text-[#0F9EDA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-                    >
-                      Practicar leyendo
-                    </Link>
                   </div>
                 </article>
               );
             })}
+          </div>
+
+          <div className="mt-12 rounded-3xl border border-[#0F9EDA]/15 bg-white p-6 shadow-sm sm:p-8">
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p className="text-sm font-semibold text-[#0F9EDA]">
+                  Despues del test
+                </p>
+                <h3 className="mt-2 text-2xl font-bold text-gray-900">
+                  Lleva este nivel a lectura real
+                </h3>
+                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-600">
+                  Cuando termines una o varias pruebas, pasa a las lecturas de
+                  este nivel para reforzar lo que acabas de detectar.
+                </p>
+              </div>
+              <Link
+                to={`/levels/${levelMeta.id}`}
+                className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              >
+                Ver lecturas {levelMeta.name}
+              </Link>
+            </div>
           </div>
         </div>
       </section>
