@@ -70,10 +70,7 @@ export default function TestSessionPage({ loaderData }: Route.ComponentProps) {
   return (
     <div className="bg-gray-50 py-10 sm:py-14">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <TestSessionPlayer
-          sessionId={loaderData.sessionId}
-          test={loaderData.test}
-        />
+        <TestSessionPlayer test={loaderData.test} />
       </div>
     </div>
   );

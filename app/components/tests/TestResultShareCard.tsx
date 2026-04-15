@@ -16,6 +16,10 @@ function buildShareMessage(
   return `Hice el test de ${skillName} ${levelName} en LingText y saque ${scorePercent}%. Pruebalo aqui: ${shareUrl}`;
 }
 
+function buildFacebookUrl(message: string, shareUrl: string): string {
+  return `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(message)}`;
+}
+
 function openShareWindow(url: string) {
   window.open(url, "_blank", "noopener,noreferrer,width=620,height=520");
 }
@@ -71,6 +75,13 @@ export default function TestResultShareCard({
           className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
         >
           Copiar texto
+        </button>
+        <button
+          type="button"
+          onClick={() => openShareWindow(buildFacebookUrl(message, shareUrl))}
+          className="inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white px-5 py-3 text-sm font-semibold text-gray-700 transition-colors duration-200 hover:border-gray-300 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+        >
+          Compartir en Facebook
         </button>
         <button
           type="button"

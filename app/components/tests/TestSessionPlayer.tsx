@@ -18,7 +18,6 @@ import { speak, stop } from "~/utils/tts";
 
 interface TestSessionPlayerProps {
   test: TestDefinition;
-  sessionId: string;
 }
 
 interface CompletedResult {
@@ -48,10 +47,7 @@ function getFeedbackClasses(tone: FeedbackState["tone"]) {
   return "border-gray-200 bg-gray-50 text-gray-700";
 }
 
-export default function TestSessionPlayer({
-  test,
-  sessionId,
-}: TestSessionPlayerProps) {
+export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
   const levelMeta = getTestLevelMeta(test.level);
   const skillMeta = getTestSkillMeta(test.skill);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -365,14 +361,6 @@ export default function TestSessionPlayer({
                   {correctAnswers}/{test.questions.length}
                 </p>
               </div>
-              <div className="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3">
-                <p className="text-xs uppercase tracking-[0.16em] text-gray-500">
-                  Session ID
-                </p>
-                <p className="mt-1 truncate text-sm font-medium text-gray-700">
-                  {sessionId}
-                </p>
-              </div>
             </div>
           </div>
 
@@ -388,12 +376,6 @@ export default function TestSessionPlayer({
               className="inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white px-5 py-3.5 text-sm font-semibold text-gray-700 transition-colors duration-200 hover:border-[#0F9EDA] hover:text-[#0F9EDA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               Ir a lecturas {levelMeta.name}
-            </Link>
-            <Link
-              to="/review"
-              className="inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white px-5 py-3.5 text-sm font-semibold text-gray-700 transition-colors duration-200 hover:border-[#0F9EDA] hover:text-[#0F9EDA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-            >
-              Abrir review de vocabulario
             </Link>
           </div>
         </section>
