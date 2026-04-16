@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router";
 
 import TestResultShareCard from "~/components/tests/TestResultShareCard";
@@ -13,8 +13,6 @@ import {
 } from "~/features/tests/engine";
 import { getTestLevelMeta, getTestSkillMeta } from "~/features/tests/catalog";
 import type { TestDefinition } from "~/features/tests/types";
-import { getSettings } from "~/services/db/settings";
-import { speak, stop } from "~/utils/tts";
 
 interface TestSessionPlayerProps {
   test: TestDefinition;
@@ -61,7 +59,8 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
   const [feedback, setFeedback] = useState<FeedbackState>({ variant: "idle" });
   const [isPlaying, setIsPlaying] = useState(false);
   const [isFinishing, setIsFinishing] = useState(false);
-  const [ttsError, setTtsError] = useState<string | null>(null);
+  const [audioError, setAudioError] = useState<string | null>(null);
+  const dictationAudioRef = useRef<HTMLAudioElement | null>(null);
 
   const currentQuestion = test.questions[currentIndex];
   const isLastQuestion = currentIndex === test.questions.length - 1;
@@ -91,16 +90,31 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
       : `${window.location.origin}/tests/${test.level}`;
 
   useEffect(() => {
+    const audioElement = dictationAudioRef.current;
+
+    if (audioElement) {
+      audioElement.pause();
+      audioElement.currentTime = 0;
+    }
+
     setSelectedChoiceId(null);
     setTextAnswer("");
     setReorderSelection([]);
     setDictationAttempts(0);
     setFeedback({ variant: "idle" });
-    setTtsError(null);
+    setAudioError(null);
+    setIsPlaying(false);
   }, [currentIndex]);
 
   useEffect(() => {
-    return () => stop();
+    const audioElement = dictationAudioRef.current;
+
+    return () => {
+      if (audioElement) {
+        audioElement.pause();
+        audioElement.currentTime = 0;
+      }
+    };
   }, []);
 
   async function handlePlayDictation() {
@@ -108,16 +122,22 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
       return;
     }
 
-    setTtsError(null);
+    const audioElement = dictationAudioRef.current;
+
+    if (!audioElement) {
+      setAudioError("No hay un audio configurado para este dictado.");
+      return;
+    }
+
+    setAudioError(null);
 
     try {
-      setIsPlaying(true);
-      const settings = await getSettings();
-      await speak(currentQuestion.transcript, settings.tts);
+      audioElement.pause();
+      audioElement.currentTime = 0;
+      await audioElement.play();
     } catch {
-      setTtsError("No se pudo reproducir el audio en este navegador.");
-    } finally {
       setIsPlaying(false);
+      setAudioError("No se pudo reproducir el audio.");
     }
   }
 
@@ -583,6 +603,21 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
           {currentQuestion.type === "dictation" ? (
             <div className="space-y-5">
               <div className="rounded-2xl border border-gray-200 bg-gray-50 p-5">
+                {/* Hidden playback element for static dictation audio. */}
+                {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+                <audio
+                  ref={dictationAudioRef}
+                  preload="none"
+                  src={currentQuestion.audioUrl}
+                  onPlay={() => setIsPlaying(true)}
+                  onPause={() => setIsPlaying(false)}
+                  onEnded={() => setIsPlaying(false)}
+                  onLoadedData={() => setAudioError(null)}
+                  onError={() => {
+                    setIsPlaying(false);
+                    setAudioError("No se pudo cargar el audio.");
+                  }}
+                />
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                   <div>
                     <p className="text-sm font-semibold text-gray-700">
@@ -625,8 +660,8 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
                 />
               </label>
 
-              {ttsError ? (
-                <p className="text-sm text-rose-600">{ttsError}</p>
+              {audioError ? (
+                <p className="text-sm text-rose-600">{audioError}</p>
               ) : null}
             </div>
           ) : null}

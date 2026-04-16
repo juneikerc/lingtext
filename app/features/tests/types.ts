@@ -60,6 +60,7 @@ export interface ReorderQuestion extends BaseQuestion {
 
 export interface DictationQuestion extends BaseQuestion {
   type: "dictation";
+  audioUrl: string;
   transcript: string;
   answers?: string[];
   maxAttempts: number;

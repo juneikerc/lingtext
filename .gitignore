@@ -17,3 +17,6 @@ premium.txt
 
 analyze-words.js
 word-analysis-results.json
+
+# Local scripts
+/scripts/local/

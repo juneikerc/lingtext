@@ -1,4 +1,4 @@
-import type { TestDefinition, TestResultBand } from "../types";
+import type { TestDefinition, TestQuestion, TestResultBand } from "../types";
 
 const DEFAULT_RESULT_BANDS: TestResultBand[] = [
   {
@@ -29,7 +29,31 @@ type TestDraft = Omit<
     Pick<TestDefinition, "instructions" | "durationMinutes" | "resultBands">
   >;
 
+function validateQuestions(questions: TestQuestion[]) {
+  questions.forEach((question) => {
+    if (
+      question.type === "dictation" &&
+      typeof question.audioUrl !== "string"
+    ) {
+      throw new Error(
+        `Dictation question "${question.id}" must define an audioUrl.`
+      );
+    }
+
+    if (
+      question.type === "dictation" &&
+      question.audioUrl.trim().length === 0
+    ) {
+      throw new Error(
+        `Dictation question "${question.id}" must define a non-empty audioUrl.`
+      );
+    }
+  });
+}
+
 export function defineTest(test: TestDraft): TestDefinition {
+  validateQuestions(test.questions);
+
   return {
     ...test,
     instructions:
