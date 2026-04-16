@@ -11,6 +11,13 @@ import { getTestTextByLevel } from "~/lib/content/runtime";
 import type { TestSkill } from "~/features/tests/types";
 import type { Route } from "./+types/level";
 
+const SKILL_ICONS: Record<string, string> = {
+  reading: "📖",
+  grammar: "✏️",
+  vocabulary: "💡",
+  dictation: "🎧",
+};
+
 function createSessionId() {
   if (
     typeof crypto !== "undefined" &&
@@ -75,17 +82,18 @@ export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
 
   return (
     <>
-      <section className="relative overflow-hidden border-b border-gray-200 bg-white py-16 sm:py-24">
+      {/* Hero */}
+      <section className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-gray-50 to-white py-20 md:py-28">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute left-[8%] top-[10%] h-64 w-64 rounded-full bg-[#0F9EDA]/5 blur-3xl"></div>
           <div className="absolute bottom-[10%] right-[10%] h-64 w-64 rounded-full bg-[#0F9EDA]/5 blur-3xl"></div>
         </div>
 
         <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <nav className="mb-8 flex flex-wrap gap-4 text-sm font-medium">
+          <nav className="mb-8">
             <Link
               to="/tests"
-              className="inline-flex items-center gap-1.5 text-gray-500 transition-colors duration-200 hover:text-[#0F9EDA]"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-500 transition-colors duration-200 hover:text-[#0F9EDA]"
             >
               <svg
                 className="h-4 w-4"
@@ -104,7 +112,7 @@ export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
             </Link>
           </nav>
 
-          <div className="inline-flex items-center rounded-full border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 px-4 py-2 text-sm font-medium text-[#0F9EDA]">
+          <div className="inline-flex items-center rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700">
             <span className="mr-2.5 h-2 w-2 rounded-full bg-[#0F9EDA]"></span>
             Nivel {levelMeta.name}
           </div>
@@ -119,13 +127,19 @@ export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
         </div>
       </section>
 
+      {/* Test sessions */}
       <section className="border-b border-gray-200 bg-gray-50 py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 max-w-3xl">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900">
-              Sesiones activas para {levelMeta.name}
+          <div className="mx-auto mb-16 max-w-3xl text-center">
+            <div className="mb-6 inline-flex items-center rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm">
+              <span className="mr-2.5 h-2 w-2 rounded-full bg-[#0F9EDA]"></span>
+              Sesiones disponibles
+            </div>
+            <h2 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
+              Sesiones activas para{" "}
+              <span className="text-[#0F9EDA]">{levelMeta.name}</span>
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-gray-600">
+            <p className="text-xl leading-relaxed text-gray-600">
               Todas las pruebas duran pocos minutos para que puedas repetirlas
               sin friccion, compartir tu resultado y luego saltar al contenido
               real.
@@ -139,18 +153,26 @@ export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
               return (
                 <article
                   key={test.skill}
-                  className="flex h-full flex-col rounded-3xl border border-gray-200 bg-white p-6 shadow-sm"
+                  className="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-8 shadow-sm transition-shadow duration-200 hover:shadow-md"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <span className="inline-flex rounded-full border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-[#0F9EDA]">
-                        {skillMeta.name}
-                      </span>
-                      <h3 className="mt-4 text-2xl font-bold text-gray-900">
+                      <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 text-xl">
+                        {SKILL_ICONS[test.skill] || "📝"}
+                      </div>
+                      <div className="mb-3 flex items-center gap-2 flex-wrap">
+                        <span className="inline-flex items-center rounded-full border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-[#0F9EDA]">
+                          {skillMeta.name}
+                        </span>
+                        <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600">
+                          Sesion corta
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900">
                         {test.title}
                       </h3>
                     </div>
-                    <div className="rounded-2xl border border-gray-200 bg-gray-50 px-3 py-2 text-right">
+                    <div className="flex-shrink-0 rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-right">
                       <p className="text-xs uppercase tracking-[0.16em] text-gray-500">
                         Duracion
                       </p>
@@ -168,12 +190,9 @@ export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
                     {test.summary}
                   </p>
 
-                  <div className="mt-5 flex flex-wrap gap-3 text-sm text-gray-600">
-                    <span className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">
+                  <div className="mt-5 flex flex-wrap gap-3">
+                    <span className="inline-flex items-center rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-sm text-gray-600">
                       {test.questionCount} preguntas
-                    </span>
-                    <span className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1">
-                      Sesion corta
                     </span>
                   </div>
 
@@ -181,7 +200,7 @@ export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
                     <button
                       type="button"
                       onClick={() => handleStart(test.skill)}
-                      className="inline-flex w-full items-center justify-center rounded-xl bg-[#0F9EDA] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                      className="inline-flex w-full items-center justify-center rounded-xl bg-[#0F9EDA] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                     >
                       Empezar
                     </button>
@@ -192,9 +211,9 @@ export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
           </div>
 
           {/* Disclaimer */}
-          <div className="mt-8 rounded-2xl border border-amber-200 bg-amber-50 p-5">
+          <div className="mt-8 rounded-2xl border border-amber-200 bg-amber-50 p-6">
             <div className="flex items-start gap-4">
-              <div className="shrink-0 pt-0.5">
+              <div className="flex-shrink-0 pt-0.5">
                 <svg
                   className="h-5 w-5 text-amber-600"
                   fill="none"
@@ -209,25 +228,26 @@ export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
                   />
                 </svg>
               </div>
-              <div className="space-y-2 text-sm text-amber-800">
+              <div className="space-y-3 text-sm text-amber-800">
                 <p>
                   <span className="font-semibold">En constante mejora:</span>{" "}
                   Estamos trabajando para agregar nuevas pruebas y ejercicios
-                  con el tiempo. Vuelve pronto para descubrir más formas de
+                  con el tiempo. Vuelve pronto para descubrir mas formas de
                   practicar y evaluar tu progreso.
                 </p>
                 <p>
                   <span className="font-semibold">No es un certificado:</span>{" "}
-                  Estas pruebas son herramientas de autoevaluación y práctica.
-                  No constituyen un certificado oficial ni reemplazan exámenes
+                  Estas pruebas son herramientas de autoevaluacion y practica.
+                  No constituyen un certificado oficial ni reemplazan examenes
                   acreditados como Cambridge, IELTS o TOEFL.
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="mt-12 rounded-3xl border border-[#0F9EDA]/15 bg-white p-6 shadow-sm sm:p-8">
-            <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+          {/* CTA */}
+          <div className="mt-12 rounded-2xl border border-gray-200 bg-white p-8 shadow-sm sm:p-12">
+            <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-sm font-semibold text-[#0F9EDA]">
                   Despues del test
@@ -242,7 +262,7 @@ export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
               </div>
               <Link
                 to={`/levels/${levelMeta.id}`}
-                className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                className="inline-flex flex-shrink-0 items-center justify-center rounded-xl bg-[#0F9EDA] px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               >
                 Ver lecturas {levelMeta.name}
               </Link>
@@ -251,10 +271,10 @@ export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
         </div>
       </section>
 
-      {/* Contenido SEO */}
+      {/* SEO content */}
       {loaderData.testText && (
-        <section className="relative overflow-hidden py-16 sm:py-24 bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative overflow-hidden bg-white py-16 sm:py-24">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <ProseContent html={loaderData.testText.html} />
           </div>
         </section>

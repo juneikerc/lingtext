@@ -45,6 +45,60 @@ function getFeedbackClasses(tone: FeedbackState["tone"]) {
   return "border-gray-200 bg-gray-50 text-gray-700";
 }
 
+function getFeedbackIcon(tone: FeedbackState["tone"]) {
+  if (tone === "success") {
+    return (
+      <svg
+        className="h-5 w-5 text-emerald-600"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M5 13l4 4L19 7"
+        />
+      </svg>
+    );
+  }
+
+  if (tone === "danger") {
+    return (
+      <svg
+        className="h-5 w-5 text-rose-600"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    );
+  }
+
+  return (
+    <svg
+      className="h-5 w-5 text-gray-500"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+      />
+    </svg>
+  );
+}
+
 export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
   const levelMeta = getTestLevelMeta(test.level);
   const skillMeta = getTestSkillMeta(test.skill);
@@ -359,7 +413,7 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
   if (isFinishing) {
     return (
       <div className="space-y-8">
-        <section className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
+        <section className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
             <div>
               <p className="text-sm font-semibold text-[#0F9EDA]">
@@ -387,13 +441,13 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
           <div className="mt-8 grid gap-4 lg:grid-cols-2">
             <Link
               to={`/tests/${test.level}`}
-              className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-5 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-8 py-4 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               Probar otro test de {levelMeta.name}
             </Link>
             <Link
               to={`/levels/${test.level}`}
-              className="inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white px-5 py-3.5 text-sm font-semibold text-gray-700 transition-colors duration-200 hover:border-[#0F9EDA] hover:text-[#0F9EDA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              className="inline-flex items-center justify-center rounded-xl border border-[#0F9EDA]/20 bg-white px-8 py-4 text-sm font-semibold text-[#0F9EDA] transition-colors duration-200 hover:border-[#0F9EDA]/40 hover:bg-[#0F9EDA]/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               Ir a lecturas {levelMeta.name}
             </Link>
@@ -424,11 +478,12 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
 
   return (
     <div className="space-y-6">
-      <section className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
+      {/* Header */}
+      <section className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <p className="text-sm font-semibold text-[#0F9EDA]">
-              {skillMeta.name} {levelMeta.name}
+              {skillMeta.name} · {levelMeta.name}
             </p>
             <h1 className="mt-2 text-3xl font-bold text-gray-900 sm:text-4xl">
               {test.title}
@@ -458,12 +513,13 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
         </div>
       </section>
 
-      <section className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
+      {/* Question */}
+      <section className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
         <div className="mb-6 flex flex-wrap items-center gap-3">
           <span className="inline-flex items-center rounded-full border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-[#0F9EDA]">
             Pregunta {currentIndex + 1}
           </span>
-          <span className="inline-flex items-center rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-gray-600">
+          <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium uppercase tracking-[0.16em] text-gray-600">
             {currentQuestion.type}
           </span>
         </div>
@@ -498,7 +554,7 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
                     type="button"
                     onClick={() => setSelectedChoiceId(choice.id)}
                     disabled={feedback.variant === "resolved"}
-                    className={`rounded-2xl border px-4 py-4 text-left text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
+                    className={`rounded-2xl border px-4 py-4 text-left text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
                       isSelected
                         ? "border-[#0F9EDA] bg-[#0F9EDA]/5 text-gray-900"
                         : "border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:bg-gray-50"
@@ -524,7 +580,7 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
                   value={textAnswer}
                   onChange={(event) => setTextAnswer(event.target.value)}
                   disabled={feedback.variant === "resolved"}
-                  className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-gray-900 shadow-sm outline-none transition-colors duration-200 placeholder:text-gray-400 focus:border-[#0F9EDA] focus:ring-2 focus:ring-[#0F9EDA]/20"
+                  className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 transition-all duration-200 placeholder:text-gray-400 focus:border-[#0F9EDA] focus:ring-2 focus:ring-[#0F9EDA]/20"
                   placeholder="Escribe la palabra o expresion"
                 />
               </label>
@@ -548,7 +604,7 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
                           key={`selected-${tokenIndex}`}
                           type="button"
                           onClick={() => handleRemoveToken(tokenIndex)}
-                          className="rounded-full bg-[#0F9EDA] px-3 py-1.5 text-sm font-semibold text-white"
+                          className="rounded-full bg-[#0F9EDA] px-3 py-1.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#0D8EC4]"
                         >
                           {currentQuestion.tokens[tokenIndex]}
                         </button>
@@ -574,10 +630,10 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
                         type="button"
                         onClick={() => handleSelectToken(tokenIndex)}
                         disabled={isUsed || feedback.variant === "resolved"}
-                        className={`rounded-full border px-3 py-1.5 text-sm font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
+                        className={`rounded-full border px-3 py-1.5 text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
                           isUsed
                             ? "border-gray-200 bg-gray-100 text-gray-400"
-                            : "border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:bg-gray-50"
+                            : "border-gray-200 bg-white text-gray-700 hover:border-[#0F9EDA]/30 hover:bg-[#0F9EDA]/5"
                         }`}
                       >
                         {token}
@@ -631,7 +687,7 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
                   <button
                     type="button"
                     onClick={handlePlayDictation}
-                    className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50"
+                    className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50"
                   >
                     {isPlaying ? "Reproduciendo..." : "Escuchar audio"}
                   </button>
@@ -655,7 +711,7 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
                   onChange={(event) => setTextAnswer(event.target.value)}
                   disabled={feedback.variant === "resolved"}
                   rows={3}
-                  className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-gray-900 shadow-sm outline-none transition-colors duration-200 placeholder:text-gray-400 focus:border-[#0F9EDA] focus:ring-2 focus:ring-[#0F9EDA]/20"
+                  className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 transition-all duration-200 placeholder:text-gray-400 focus:border-[#0F9EDA] focus:ring-2 focus:ring-[#0F9EDA]/20"
                   placeholder="Escribe la frase aqui"
                 />
               </label>
@@ -669,17 +725,24 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
 
         {currentFeedbackVisible ? (
           <div
-            className={`mt-6 rounded-2xl border px-4 py-4 text-sm leading-relaxed ${getFeedbackClasses(feedback.tone)}`}
+            className={`mt-6 rounded-2xl border px-5 py-4 text-sm leading-relaxed ${getFeedbackClasses(feedback.tone)}`}
           >
-            {feedback.title ? (
-              <p className="font-semibold">{feedback.title}</p>
-            ) : null}
-            {feedback.body ? <p className="mt-1">{feedback.body}</p> : null}
-            {feedback.hint ? (
-              <p className="mt-3 font-mono text-xs tracking-wide">
-                {feedback.hint}
-              </p>
-            ) : null}
+            <div className="flex items-start gap-3">
+              <div className="flex-shrink-0 pt-0.5">
+                {getFeedbackIcon(feedback.tone)}
+              </div>
+              <div>
+                {feedback.title ? (
+                  <p className="font-semibold">{feedback.title}</p>
+                ) : null}
+                {feedback.body ? <p className="mt-1">{feedback.body}</p> : null}
+                {feedback.hint ? (
+                  <p className="mt-3 font-mono text-xs tracking-wide">
+                    {feedback.hint}
+                  </p>
+                ) : null}
+              </div>
+            </div>
           </div>
         ) : null}
 
@@ -694,7 +757,7 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
               <button
                 type="button"
                 onClick={handleNext}
-                className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               >
                 {isLastQuestion ? "Ver resultado" : "Siguiente pregunta"}
               </button>
@@ -702,7 +765,7 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
               <button
                 type="button"
                 onClick={handleSubmit}
-                className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               >
                 Comprobar respuesta
               </button>

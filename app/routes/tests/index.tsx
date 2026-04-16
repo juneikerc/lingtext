@@ -27,12 +27,20 @@ export function meta(_args: Route.MetaArgs) {
   ];
 }
 
+const SKILL_ICONS: Record<string, string> = {
+  reading: "📖",
+  grammar: "✏️",
+  vocabulary: "💡",
+  dictation: "🎧",
+};
+
 export default function TestsIndexPage({ loaderData }: Route.ComponentProps) {
   const { levels, skills } = loaderData;
 
   return (
     <>
-      <section className="relative overflow-hidden border-b border-gray-200 bg-white py-16 sm:py-24">
+      {/* Hero */}
+      <section className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-gray-50 to-white py-20 md:py-28">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute left-[8%] top-[10%] h-64 w-64 rounded-full bg-[#0F9EDA]/5 blur-3xl"></div>
           <div className="absolute bottom-[8%] right-[10%] h-64 w-64 rounded-full bg-[#0F9EDA]/5 blur-3xl"></div>
@@ -61,14 +69,14 @@ export default function TestsIndexPage({ loaderData }: Route.ComponentProps) {
             </Link>
           </nav>
 
-          <div className="inline-flex items-center rounded-full border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 px-4 py-2 text-sm font-medium text-[#0F9EDA]">
+          <div className="inline-flex items-center rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700">
             <span className="mr-2.5 h-2 w-2 rounded-full bg-[#0F9EDA]"></span>
             Nuevo pilar de practica
           </div>
 
           <h1 className="mt-6 max-w-4xl text-4xl font-bold leading-tight tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-            Tests de ingles interactivos para medir tu nivel y volver a leer con
-            objetivo
+            Tests de ingles interactivos para medir tu nivel y volver a leer con{" "}
+            <span className="text-[#0F9EDA]">objetivo</span>
           </h1>
 
           <div className="mt-6 max-w-3xl space-y-4 text-lg leading-relaxed text-gray-600">
@@ -78,24 +86,36 @@ export default function TestsIndexPage({ loaderData }: Route.ComponentProps) {
               lecturas y review con una direccion mucho mas clara.
             </p>
             <p>
-              Puedes entrenar <strong className="text-gray-900">reading</strong>
-              , <strong className="text-gray-900">grammar</strong>,{" "}
-              <strong className="text-gray-900">vocabulary</strong> y{" "}
-              <strong className="text-gray-900">dictation</strong> segun el
-              nivel que quieras practicar.
+              Puedes entrenar{" "}
+              <span className="inline-flex items-center rounded-full border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 px-2.5 py-0.5 text-sm font-medium text-[#0F9EDA]">
+                reading
+              </span>
+              ,{" "}
+              <span className="inline-flex items-center rounded-full border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 px-2.5 py-0.5 text-sm font-medium text-[#0F9EDA]">
+                grammar
+              </span>
+              ,{" "}
+              <span className="inline-flex items-center rounded-full border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 px-2.5 py-0.5 text-sm font-medium text-[#0F9EDA]">
+                vocabulary
+              </span>{" "}
+              y{" "}
+              <span className="inline-flex items-center rounded-full border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 px-2.5 py-0.5 text-sm font-medium text-[#0F9EDA]">
+                dictation
+              </span>{" "}
+              segun el nivel que quieras practicar.
             </p>
           </div>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <Link
               to="/tests/a1"
-              className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-8 py-4 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               Empezar con A1
             </Link>
             <Link
               to="/textos-en-ingles"
-              className="inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white px-6 py-3.5 text-sm font-semibold text-gray-700 transition-colors duration-200 hover:border-[#0F9EDA] hover:text-[#0F9EDA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              className="inline-flex items-center justify-center rounded-xl border border-[#0F9EDA]/20 bg-white px-8 py-4 text-sm font-semibold text-[#0F9EDA] transition-colors duration-200 hover:border-[#0F9EDA]/40 hover:bg-[#0F9EDA]/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               Ver lecturas por nivel
             </Link>
@@ -103,13 +123,19 @@ export default function TestsIndexPage({ loaderData }: Route.ComponentProps) {
         </div>
       </section>
 
-      <section className="border-b border-gray-200 bg-gray-50 py-16 sm:py-24">
+      {/* Skills */}
+      <section className="relative border-b border-gray-200 bg-gray-50 py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto mb-12 max-w-3xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900">
-              Que skills puedes practicar ahora
+          <div className="mx-auto mb-16 text-center">
+            <div className="mb-6 inline-flex items-center rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm">
+              <span className="mr-2.5 h-2 w-2 rounded-full bg-[#0F9EDA]"></span>
+              Skills disponibles
+            </div>
+            <h2 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
+              Que <span className="text-[#0F9EDA]">skills</span> puedes
+              practicar
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-gray-600">
+            <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-600">
               Cada skill tiene sesiones cortas para mantener ritmo, detectar
               errores y llevarte luego al contenido adecuado dentro de LingText.
             </p>
@@ -119,15 +145,18 @@ export default function TestsIndexPage({ loaderData }: Route.ComponentProps) {
             {skills.map((skill) => (
               <article
                 key={skill.id}
-                className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm"
+                className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm transition-shadow duration-200 hover:shadow-md"
               >
-                <div className="inline-flex rounded-2xl border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 px-3 py-2 text-sm font-semibold text-[#0F9EDA]">
-                  {skill.name}
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 text-xl">
+                  {SKILL_ICONS[skill.id] || "📝"}
                 </div>
-                <h3 className="mt-4 text-xl font-bold text-gray-900">
-                  {skill.shortDescription}
+                <h3 className="mb-3 text-xl font-bold text-gray-900">
+                  {skill.name}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                <p className="mb-4 text-sm font-semibold text-[#0F9EDA]">
+                  {skill.shortDescription}
+                </p>
+                <p className="text-sm leading-relaxed text-gray-600">
                   {skill.longDescription}
                 </p>
               </article>
@@ -136,13 +165,19 @@ export default function TestsIndexPage({ loaderData }: Route.ComponentProps) {
         </div>
       </section>
 
+      {/* Levels */}
       <section className="bg-white py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto mb-12 max-w-3xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900">
-              Elige tu nivel y lanza una sesion
+          <div className="mx-auto mb-16 text-center">
+            <div className="mb-6 inline-flex items-center rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm">
+              <span className="mr-2.5 h-2 w-2 rounded-full bg-[#0F9EDA]"></span>
+              Por nivel
+            </div>
+            <h2 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
+              Elige tu <span className="text-[#0F9EDA]">nivel</span> y lanza una
+              sesion
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-gray-600">
+            <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-600">
               Cada landing por nivel agrupa las pruebas disponibles y te conecta
               luego con las lecturas del mismo nivel.
             </p>
@@ -150,49 +185,41 @@ export default function TestsIndexPage({ loaderData }: Route.ComponentProps) {
 
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {levels.map((level) => (
-              <article
+              <Link
                 key={level.id}
-                className="flex h-full flex-col rounded-3xl border border-gray-200 bg-gray-50 p-6 shadow-sm"
+                to={`/tests/${level.id}`}
+                className="group flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-200 hover:border-[#0F9EDA]/30 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50"
               >
-                <div className="flex items-center justify-between gap-4">
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-[#0F9EDA]/20 bg-white text-lg font-bold text-[#0F9EDA]">
+                <div className="mb-4 flex items-center justify-between">
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 text-lg font-bold text-[#0F9EDA] transition-colors duration-200 group-hover:bg-[#0F9EDA] group-hover:text-white group-hover:border-[#0F9EDA]">
                     {level.name}
                   </span>
-                  <span className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-gray-600">
-                    Tests por nivel
-                  </span>
+                  <svg
+                    className="h-5 w-5 text-gray-300 transition-colors duration-200 group-hover:text-[#0F9EDA]"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M9 5l7 7-7 7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                    />
+                  </svg>
                 </div>
-                <h3 className="mt-5 text-2xl font-bold text-gray-900">
+                <h3 className="mb-2 text-xl font-bold text-gray-900 transition-colors duration-200 group-hover:text-[#0F9EDA]">
                   {level.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                <p className="mb-4 text-sm leading-relaxed text-gray-600">
                   {level.description}
                 </p>
-                <p className="mt-4 text-sm font-medium text-gray-700">
-                  Foco: {level.focus}
-                </p>
-                <div className="mt-auto pt-6">
-                  <Link
-                    to={`/tests/${level.id}`}
-                    className="inline-flex w-full items-center justify-between rounded-xl bg-[#0F9EDA] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50"
-                  >
-                    <span>Ver pruebas {level.name}</span>
-                    <svg
-                      className="h-4 w-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M9 5l7 7-7 7"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                      />
-                    </svg>
-                  </Link>
+                <div className="mt-auto flex items-center gap-2">
+                  <span className="inline-flex items-center rounded-full border border-gray-200 bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600">
+                    {level.focus}
+                  </span>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </div>
