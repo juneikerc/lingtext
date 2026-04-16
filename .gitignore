@@ -15,6 +15,7 @@ premium.txt
 # TypeScript build info
 *.tsbuildinfo
 
+
 analyze-words.js
 word-analysis-results.json
 
