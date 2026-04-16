@@ -1,4 +1,9 @@
-export type CollectionName = "blogs" | "legalPages" | "levelsTexts" | "texts";
+export type CollectionName =
+  | "blogs"
+  | "legalPages"
+  | "levelsTexts"
+  | "testsTexts"
+  | "texts";
 
 export interface ContentPayload {
   content: string;
@@ -29,6 +34,15 @@ export interface LevelTextManifestEntry extends BaseEntryManifest {
   level: string;
 }
 
+export interface TestTextManifestEntry extends BaseEntryManifest {
+  collection: "testsTexts";
+  title: string;
+  mainHeading: string;
+  metaDescription: string;
+  intro: string;
+  level: string;
+}
+
 export interface LegalPageManifestEntry extends BaseEntryManifest {
   collection: "legalPages";
   slug: string;
@@ -49,6 +63,8 @@ export type BlogEntry = BlogManifestEntry & ContentPayload;
 
 export type LevelTextEntry = LevelTextManifestEntry & ContentPayload;
 
+export type TestTextEntry = TestTextManifestEntry & ContentPayload;
+
 export type LegalPageEntry = LegalPageManifestEntry & ContentPayload;
 
 export type TextEntry = TextManifestEntry & ContentPayload;
@@ -57,10 +73,12 @@ export type AnyContentManifestEntry =
   | BlogManifestEntry
   | LegalPageManifestEntry
   | LevelTextManifestEntry
+  | TestTextManifestEntry
   | TextManifestEntry;
 
 export type AnyContentEntry =
   | BlogEntry
   | LegalPageEntry
   | LevelTextEntry
+  | TestTextEntry
   | TextEntry;

@@ -139,10 +139,11 @@ export default function Header() {
                   <Link
                     key={link.to}
                     to={link.to}
-                    className={`flex items-center gap-2.5 px-3 py-2.5 text-sm transition-colors duration-200 ${isActive(link.to)
-                      ? "text-[#0F9EDA] bg-[#0F9EDA]/5 font-medium"
-                      : "text-gray-700 hover:bg-gray-50 hover:text-[#0F9EDA]"
-                      }`}
+                    className={`flex items-center gap-2.5 px-3 py-2.5 text-sm transition-colors duration-200 ${
+                      isActive(link.to)
+                        ? "text-[#0F9EDA] bg-[#0F9EDA]/5 font-medium"
+                        : "text-gray-700 hover:bg-gray-50 hover:text-[#0F9EDA]"
+                    }`}
                   >
                     <NivelesLevelBadge label={link.label} />
                     <span>{link.label.split(" ").slice(1).join(" ")}</span>
@@ -154,12 +155,25 @@ export default function Header() {
             {/* Textos link */}
             <Link
               to="/textos-en-ingles"
-              className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${isActive("/textos-en-ingles")
-                ? "text-[#0F9EDA] bg-[#0F9EDA]/5"
-                : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-                }`}
+              className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                isActive("/textos-en-ingles")
+                  ? "text-[#0F9EDA] bg-[#0F9EDA]/5"
+                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+              }`}
             >
               Textos
+            </Link>
+
+            {/* Tests link */}
+            <Link
+              to="/tests"
+              className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                isActive("/tests")
+                  ? "text-[#0F9EDA] bg-[#0F9EDA]/5"
+                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+              }`}
+            >
+              Tests
             </Link>
 
             {/* Recursos dropdown */}
@@ -173,10 +187,11 @@ export default function Header() {
                   <Link
                     key={link.to}
                     to={link.to}
-                    className={`block px-4 py-2.5 text-sm transition-colors duration-200 ${isActive(link.to)
-                      ? "text-[#0F9EDA] bg-[#0F9EDA]/5 font-medium"
-                      : "text-gray-700 hover:bg-gray-50 hover:text-[#0F9EDA]"
-                      }`}
+                    className={`block px-4 py-2.5 text-sm transition-colors duration-200 ${
+                      isActive(link.to)
+                        ? "text-[#0F9EDA] bg-[#0F9EDA]/5 font-medium"
+                        : "text-gray-700 hover:bg-gray-50 hover:text-[#0F9EDA]"
+                    }`}
                   >
                     {link.label}
                   </Link>
@@ -215,8 +230,9 @@ export default function Header() {
 
       {/* Mobile menu */}
       <div
-        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
-          }`}
+        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          mobileOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+        }`}
       >
         <nav className="border-t border-gray-100 bg-white px-4 pb-4 pt-2">
           <div className="space-y-1">
@@ -231,10 +247,11 @@ export default function Header() {
                   <Link
                     key={link.to}
                     to={link.to}
-                    className={`flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm transition-colors duration-200 ${isActive(link.to)
-                      ? "text-[#0F9EDA] bg-[#0F9EDA]/5 font-medium"
-                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                      }`}
+                    className={`flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm transition-colors duration-200 ${
+                      isActive(link.to)
+                        ? "text-[#0F9EDA] bg-[#0F9EDA]/5 font-medium"
+                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                    }`}
                   >
                     <NivelesLevelBadge label={link.label} />
                     <span>{link.label.split(" ").slice(1).join(" ")}</span>
@@ -246,12 +263,25 @@ export default function Header() {
             {/* Mobile Textos */}
             <Link
               to="/textos-en-ingles"
-              className={`block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 ${isActive("/textos-en-ingles")
-                ? "text-[#0F9EDA] bg-[#0F9EDA]/5"
-                : "text-gray-700 hover:bg-gray-50"
-                }`}
+              className={`block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 ${
+                isActive("/textos-en-ingles")
+                  ? "text-[#0F9EDA] bg-[#0F9EDA]/5"
+                  : "text-gray-700 hover:bg-gray-50"
+              }`}
             >
               Textos
+            </Link>
+
+            {/* Mobile Tests */}
+            <Link
+              to="/tests"
+              className={`block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 ${
+                isActive("/tests")
+                  ? "text-[#0F9EDA] bg-[#0F9EDA]/5"
+                  : "text-gray-700 hover:bg-gray-50"
+              }`}
+            >
+              Tests
             </Link>
 
             {/* Mobile Recursos */}
@@ -265,10 +295,11 @@ export default function Header() {
                   <Link
                     key={link.to}
                     to={link.to}
-                    className={`block px-3 py-2.5 rounded-lg text-sm transition-colors duration-200 ${isActive(link.to)
-                      ? "text-[#0F9EDA] bg-[#0F9EDA]/5 font-medium"
-                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                      }`}
+                    className={`block px-3 py-2.5 rounded-lg text-sm transition-colors duration-200 ${
+                      isActive(link.to)
+                        ? "text-[#0F9EDA] bg-[#0F9EDA]/5 font-medium"
+                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                    }`}
                   >
                     {link.label}
                   </Link>

@@ -1,11 +1,13 @@
 import { Link, useNavigate } from "react-router";
 
+import ProseContent from "~/components/ProseContent";
 import {
   getLevelTestSummaries,
   getTestLevelMeta,
   getTestSkillMeta,
   isTestLevel,
 } from "~/features/tests/catalog";
+import { getTestTextByLevel } from "~/lib/content/runtime";
 import type { TestSkill } from "~/features/tests/types";
 import type { Route } from "./+types/level";
 
@@ -20,16 +22,19 @@ function createSessionId() {
   return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
 }
 
-export function loader({ params }: Route.LoaderArgs) {
+export async function loader({ params }: Route.LoaderArgs) {
   const level = params.level;
 
   if (!level || !isTestLevel(level)) {
     throw new Response("Not Found", { status: 404 });
   }
 
+  const testText = await getTestTextByLevel(level);
+
   return {
     levelMeta: getTestLevelMeta(level),
     tests: getLevelTestSummaries(level),
+    testText,
   };
 }
 
@@ -41,8 +46,12 @@ export function meta({ loaderData }: Route.MetaArgs) {
     ];
   }
 
-  const title = `${loaderData.levelMeta.title} | Reading, grammar, vocabulary y dictation`;
-  const description = `${loaderData.levelMeta.description} Practica ${loaderData.levelMeta.name} con sesiones rapidas y vuelve a tus lecturas con una meta clara.`;
+  const title =
+    loaderData.testText?.title ??
+    `${loaderData.levelMeta.title} | Reading, grammar, vocabulary y dictation`;
+  const description =
+    loaderData.testText?.metaDescription ??
+    `${loaderData.levelMeta.description} Practica ${loaderData.levelMeta.name} con sesiones rapidas y vuelve a tus lecturas con una meta clara.`;
   const url = `https://lingtext.org/tests/${loaderData.levelMeta.id}`;
 
   return [
@@ -182,6 +191,41 @@ export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
             })}
           </div>
 
+          {/* Disclaimer */}
+          <div className="mt-8 rounded-2xl border border-amber-200 bg-amber-50 p-5">
+            <div className="flex items-start gap-4">
+              <div className="shrink-0 pt-0.5">
+                <svg
+                  className="h-5 w-5 text-amber-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <div className="space-y-2 text-sm text-amber-800">
+                <p>
+                  <span className="font-semibold">En constante mejora:</span>{" "}
+                  Estamos trabajando para agregar nuevas pruebas y ejercicios
+                  con el tiempo. Vuelve pronto para descubrir más formas de
+                  practicar y evaluar tu progreso.
+                </p>
+                <p>
+                  <span className="font-semibold">No es un certificado:</span>{" "}
+                  Estas pruebas son herramientas de autoevaluación y práctica.
+                  No constituyen un certificado oficial ni reemplazan exámenes
+                  acreditados como Cambridge, IELTS o TOEFL.
+                </p>
+              </div>
+            </div>
+          </div>
+
           <div className="mt-12 rounded-3xl border border-[#0F9EDA]/15 bg-white p-6 shadow-sm sm:p-8">
             <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
               <div>
@@ -206,6 +250,15 @@ export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
           </div>
         </div>
       </section>
+
+      {/* Contenido SEO */}
+      {loaderData.testText && (
+        <section className="relative overflow-hidden py-16 sm:py-24 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <ProseContent html={loaderData.testText.html} />
+          </div>
+        </section>
+      )}
     </>
   );
 }

@@ -6,6 +6,8 @@ declare module "virtual:content" {
     LegalPageManifestEntry,
     LevelTextEntry,
     LevelTextManifestEntry,
+    TestTextEntry,
+    TestTextManifestEntry,
     TextEntry,
     TextManifestEntry,
   } from "./types";
@@ -15,6 +17,7 @@ declare module "virtual:content" {
   export const blogManifests: BlogManifestEntry[];
   export const legalPageManifests: LegalPageManifestEntry[];
   export const levelTextManifests: LevelTextManifestEntry[];
+  export const testTextManifests: TestTextManifestEntry[];
   export const textManifests: TextManifestEntry[];
 
   export const blogLoaders: Record<string, ContentEntryLoader<BlogEntry>>;
@@ -25,6 +28,10 @@ declare module "virtual:content" {
   export const levelTextLoaders: Record<
     string,
     ContentEntryLoader<LevelTextEntry>
+  >;
+  export const testTextLoaders: Record<
+    string,
+    ContentEntryLoader<TestTextEntry>
   >;
   export const textLoaders: Record<string, ContentEntryLoader<TextEntry>>;
 }

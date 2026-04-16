@@ -145,7 +145,14 @@ export default function Footer() {
                   Estadísticas
                 </a>
               </li>
-              <li></li>
+              <li>
+                <a
+                  href="/tests"
+                  className="text-gray-300 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
+                >
+                  Tests
+                </a>
+              </li>
             </ul>
           </div>
 

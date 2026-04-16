@@ -5,6 +5,8 @@ import {
   legalPageManifests,
   levelTextLoaders,
   levelTextManifests,
+  testTextLoaders,
+  testTextManifests,
   textLoaders,
   textManifests,
 } from "virtual:content";
@@ -15,6 +17,8 @@ import type {
   LegalPageManifestEntry,
   LevelTextEntry,
   LevelTextManifestEntry,
+  TestTextEntry,
+  TestTextManifestEntry,
   TextEntry,
   TextManifestEntry,
 } from "./types";
@@ -46,6 +50,7 @@ async function loadEntry<TEntry>(
 export const allBlogManifests = blogManifests;
 export const allLegalPageManifests = legalPageManifests;
 export const allLevelTextManifests = levelTextManifests;
+export const allTestTextManifests = testTextManifests;
 export const allTextManifests = textManifests;
 
 export async function getBlogBySlug(
@@ -81,12 +86,27 @@ export async function getLevelTextByLevel(
   return loadEntry(levelTextLoaders, levelText.id);
 }
 
+export async function getTestTextByLevel(
+  level: string
+): Promise<TestTextEntry | undefined> {
+  const testText = testTextManifests.find((entry) => entry.level === level);
+  if (!testText) {
+    return undefined;
+  }
+
+  return loadEntry(testTextLoaders, testText.id);
+}
+
 export function getTextsByLevel(level: string): TextManifestEntry[] {
   return textManifests.filter((entry) => entry.level === level);
 }
 
-export async function getTextBySlug(slug: string): Promise<TextEntry | undefined> {
-  const text = textManifests.find((entry) => formatTextSlug(entry.title) === slug);
+export async function getTextBySlug(
+  slug: string
+): Promise<TextEntry | undefined> {
+  const text = textManifests.find(
+    (entry) => formatTextSlug(entry.title) === slug
+  );
   if (!text) {
     return undefined;
   }
@@ -110,4 +130,10 @@ export function getLevelTextManifestByLevel(
   level: string
 ): LevelTextManifestEntry | undefined {
   return levelTextManifests.find((entry) => entry.level === level);
+}
+
+export function getTestTextManifestByLevel(
+  level: string
+): TestTextManifestEntry | undefined {
+  return testTextManifests.find((entry) => entry.level === level);
 }

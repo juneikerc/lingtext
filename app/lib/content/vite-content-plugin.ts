@@ -31,6 +31,7 @@ const createEmptyContentMap = (): ContentMap => ({
   blogs: [],
   legalPages: [],
   levelsTexts: [],
+  testsTexts: [],
   texts: [],
 });
 
@@ -38,6 +39,7 @@ const createEmptyManifestMap = (): ManifestMap => ({
   blogs: [],
   legalPages: [],
   levelsTexts: [],
+  testsTexts: [],
   texts: [],
 });
 
@@ -132,10 +134,14 @@ ${entries}
     `export const levelTextManifests = ${JSON.stringify(
       manifestMap.levelsTexts
     )};`,
+    `export const testTextManifests = ${JSON.stringify(
+      manifestMap.testsTexts
+    )};`,
     `export const textManifests = ${JSON.stringify(manifestMap.texts)};`,
     `export const blogLoaders = ${buildLoaderRecord("blogs")};`,
     `export const legalPageLoaders = ${buildLoaderRecord("legalPages")};`,
     `export const levelTextLoaders = ${buildLoaderRecord("levelsTexts")};`,
+    `export const testTextLoaders = ${buildLoaderRecord("testsTexts")};`,
     `export const textLoaders = ${buildLoaderRecord("texts")};`,
   ].join("\n");
 }
@@ -237,7 +243,8 @@ export default function contentCollections(): Plugin {
         return undefined;
       }
 
-      const entry = cached.entryMap[toEntryKey(request.collection, request.entryId)];
+      const entry =
+        cached.entryMap[toEntryKey(request.collection, request.entryId)];
       if (!entry) {
         throw new Error(
           `[content] Missing entry for ${request.collection}/${request.entryId}`
@@ -255,7 +262,8 @@ export default function contentCollections(): Plugin {
 
       await rebuild();
 
-      const manifestModule = ctx.server.moduleGraph.getModuleById(resolvedVirtualId);
+      const manifestModule =
+        ctx.server.moduleGraph.getModuleById(resolvedVirtualId);
       if (manifestModule) {
         ctx.server.moduleGraph.invalidateModule(manifestModule);
       }

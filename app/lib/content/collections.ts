@@ -42,6 +42,17 @@ export const collectionDefinitions = [
     }),
   },
   {
+    name: "testsTexts",
+    directory: "app/content/testsTexts",
+    schema: z.object({
+      title: z.string(),
+      mainHeading: z.string(),
+      metaDescription: z.string(),
+      intro: z.string(),
+      level: z.enum(["a1", "a2", "b1", "b2", "c1", "c2"]),
+    }),
+  },
+  {
     name: "texts",
     directory: "app/content/texts",
     schema: z.object({
