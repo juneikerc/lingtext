@@ -13,7 +13,7 @@ export function loader() {
 export function meta(_args: Route.MetaArgs) {
   const title = "Tests de ingles interactivos por nivel | LingText";
   const description =
-    "Haz tests de ingles A1, A2, B1, B2, C1 y C2 con pruebas interactivas de reading, grammar, vocabulary y dictation.";
+    "Haz test de nivel de ingles A1, A2, B1, B2, C1 y C2 con pruebas interactivas de reading, grammar, vocabulary y dictation.";
   const url = "https://lingtext.org/tests";
 
   return [
@@ -75,11 +75,17 @@ export default function TestsIndexPage({ loaderData }: Route.ComponentProps) {
           </div>
 
           <h1 className="mt-6 max-w-4xl text-4xl font-bold leading-tight tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-            Tests de ingles interactivos para medir tu nivel y volver a leer con{" "}
-            <span className="text-[#0F9EDA]">objetivo</span>
+            Tests de ingles interactivos para practicar con pruebas ajustadas a
+            tu <span className="text-[#0F9EDA]">nivel</span>
           </h1>
 
           <div className="mt-6 max-w-3xl space-y-4 text-lg leading-relaxed text-gray-600">
+            <p>
+              Lingtext tiene como enfoque principal la practica de idioma a
+              través de la lectura. Sin embargo también creemos que pruebas
+              sencillas ajustadas a tu nivel pueden beneficiarte mucho para
+              medir tu destresa en ciertas habilidades.
+            </p>
             <p>
               Esta seccion convierte LingText en un circuito mas completo: haces
               una prueba rapida, detectas tu punto actual y luego saltas a
@@ -174,11 +180,11 @@ export default function TestsIndexPage({ loaderData }: Route.ComponentProps) {
               Por nivel
             </div>
             <h2 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
-              Elige tu <span className="text-[#0F9EDA]">nivel</span> y lanza una
-              sesion
+              Elige tu <span className="text-[#0F9EDA]">nivel</span> y empieza
+              un examen.
             </h2>
             <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-600">
-              Cada landing por nivel agrupa las pruebas disponibles y te conecta
+              Cada pagina agrupa las pruebas disponibles por nivel y te conecta
               luego con las lecturas del mismo nivel.
             </p>
           </div>
