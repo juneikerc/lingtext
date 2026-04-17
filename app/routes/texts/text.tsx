@@ -72,7 +72,9 @@ export async function clientLoader({
 
 export default function Text({ loaderData }: Route.ComponentProps) {
   const text = loaderData;
-  const [showWelcomeModal, setShowWelcomeModal] = useState(false);
+  // Welcome modal flow disabled for now. Keep the implementation commented
+  // in case we want to restore it later without rebuilding it from scratch.
+  // const [showWelcomeModal, setShowWelcomeModal] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
   useEffect(() => {
@@ -81,27 +83,27 @@ export default function Text({ loaderData }: Route.ComponentProps) {
     markTextAsVisited(text.id);
   }, [text.id]);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const storageKey = "lingtext_texts_welcome_modal_v1";
-    const hasSeenModal = window.localStorage.getItem(storageKey);
-
-    if (!hasSeenModal) {
-      setShowWelcomeModal(true);
-    }
-  }, []);
-
-  const handleCloseModal = () => {
-    const storageKey = "lingtext_texts_welcome_modal_v1";
-    window.localStorage.setItem(storageKey, "true");
-    setShowWelcomeModal(false);
-  };
+  // useEffect(() => {
+  //   if (typeof window === "undefined") return;
+  //
+  //   const storageKey = "lingtext_texts_welcome_modal_v1";
+  //   const hasSeenModal = window.localStorage.getItem(storageKey);
+  //
+  //   if (!hasSeenModal) {
+  //     setShowWelcomeModal(true);
+  //   }
+  // }, []);
+  //
+  // const handleCloseModal = () => {
+  //   const storageKey = "lingtext_texts_welcome_modal_v1";
+  //   window.localStorage.setItem(storageKey, "true");
+  //   setShowWelcomeModal(false);
+  // };
 
   return (
     <ReaderPreferencesProvider>
       <ReaderLexiconProvider>
-        {showWelcomeModal ? (
+        {/* {showWelcomeModal ? (
           <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6">
             <div
               className="absolute inset-0 bg-gray-950/60 backdrop-blur-sm"
@@ -155,7 +157,7 @@ export default function Text({ loaderData }: Route.ComponentProps) {
               </div>
             </div>
           </div>
-        ) : null}
+        ) : null} */}
         <ReaderHeader title={text.title} />
         <div className="lg:flex lg:items-start">
           <div className="min-w-0 flex-1">
