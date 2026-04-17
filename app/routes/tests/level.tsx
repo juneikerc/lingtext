@@ -74,7 +74,7 @@ export function meta({ loaderData }: Route.MetaArgs) {
 
 export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
   const navigate = useNavigate();
-  const { levelMeta, tests } = loaderData;
+  const { levelMeta, tests,testText } = loaderData;
 
   function handleStart(skill: TestSkill) {
     void navigate(`/tests/${levelMeta.id}/${skill}/${createSessionId()}`);
@@ -118,11 +118,10 @@ export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
           </div>
 
           <h1 className="mt-6 text-4xl font-bold leading-tight tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-            {levelMeta.title}
+            {testText?.mainHeading}
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-gray-600">
-            {levelMeta.description} Aqui cada skill esta pensada para ayudarte a
-            detectar huecos rapido y pasar enseguida a lecturas del mismo nivel.
+            {testText?.intro}
           </p>
         </div>
       </section>
@@ -131,12 +130,8 @@ export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
       <section className="border-b border-gray-200 bg-gray-50 py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto mb-16 max-w-3xl text-center">
-            <div className="mb-6 inline-flex items-center rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm">
-              <span className="mr-2.5 h-2 w-2 rounded-full bg-[#0F9EDA]"></span>
-              Sesiones disponibles
-            </div>
             <h2 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
-              Sesiones activas para{" "}
+              Pruebas disponibles para nivel {" "}
               <span className="text-[#0F9EDA]">{levelMeta.name}</span>
             </h2>
             <p className="text-xl leading-relaxed text-gray-600">

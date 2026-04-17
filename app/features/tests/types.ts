@@ -79,6 +79,7 @@ export interface TestDefinition {
   title: string;
   summary: string;
   intro: string;
+  passage?: string;
   instructions: string;
   durationMinutes: number;
   questions: TestQuestion[];

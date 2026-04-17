@@ -8,13 +8,13 @@ export default defineTest({
     "Lee un texto funcional y detecta cambios de rutina, causas y soluciones.",
   intro:
     "La prueba apunta a esa zona B1 en la que ya puedes seguir una idea completa y relacionar problema con respuesta.",
+  passage:
+    "Last year, Nora started working from home three days a week. At first, she enjoyed the flexibility, but after a few months she noticed she was moving less and finishing work later than before. To solve that, she now goes for a short walk before breakfast and sets a clear time to shut down her laptop every evening.",
   questions: [
     {
       id: "b1-reading-1",
       type: "multiple-choice",
       prompt: "Why did Nora change her routine?",
-      passage:
-        "Last year, Nora started working from home three days a week. At first, she enjoyed the flexibility, but after a few months she noticed she was moving less and finishing work later than before. To solve that, she now goes for a short walk before breakfast and sets a clear time to shut down her laptop every evening.",
       choices: [
         { id: "a", text: "She wanted to save money on food" },
         { id: "b", text: "She was missing her morning bus" },
@@ -30,8 +30,6 @@ export default defineTest({
       id: "b1-reading-2",
       type: "multiple-choice",
       prompt: "What does Nora do before breakfast?",
-      passage:
-        "Last year, Nora started working from home three days a week. At first, she enjoyed the flexibility, but after a few months she noticed she was moving less and finishing work later than before. To solve that, she now goes for a short walk before breakfast and sets a clear time to shut down her laptop every evening.",
       choices: [
         { id: "a", text: "Checks email" },
         { id: "b", text: "Goes for a walk" },

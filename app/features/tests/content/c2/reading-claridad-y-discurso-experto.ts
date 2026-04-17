@@ -8,13 +8,13 @@ export default defineTest({
     "Lee una reflexion compleja y detecta contraste conceptual, matiz y subtexto.",
   intro:
     "Esta prueba pone el foco en comprension fina: no solo entender ideas, sino como estan organizadas y matizadas.",
+  passage:
+    "Public discussion often frames expertise and accessibility as if they were mutually exclusive. Yet the most insightful communicators do not simplify by stripping away complexity; they simplify by structuring it. What frustrates audiences is rarely depth itself, but the impression that depth is being used to exclude rather than illuminate.",
   questions: [
     {
       id: "c2-reading-1",
       type: "multiple-choice",
       prompt: "What tension does the writer highlight?",
-      passage:
-        "Public discussion often frames expertise and accessibility as if they were mutually exclusive. Yet the most insightful communicators do not simplify by stripping away complexity; they simplify by structuring it. What frustrates audiences is rarely depth itself, but the impression that depth is being used to exclude rather than illuminate.",
       choices: [
         { id: "a", text: "Experts should avoid complex ideas" },
         {
@@ -33,8 +33,6 @@ export default defineTest({
       id: "c2-reading-2",
       type: "multiple-choice",
       prompt: "Why do audiences become frustrated, according to the text?",
-      passage:
-        "Public discussion often frames expertise and accessibility as if they were mutually exclusive. Yet the most insightful communicators do not simplify by stripping away complexity; they simplify by structuring it. What frustrates audiences is rarely depth itself, but the impression that depth is being used to exclude rather than illuminate.",
       choices: [
         { id: "a", text: "Because they reject experts completely" },
         { id: "b", text: "Because complexity is always boring" },

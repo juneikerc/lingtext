@@ -23,10 +23,10 @@ const DEFAULT_RESULT_BANDS: TestResultBand[] = [
 
 type TestDraft = Omit<
   TestDefinition,
-  "instructions" | "durationMinutes" | "resultBands"
+  "instructions" | "durationMinutes" | "resultBands" | "passage"
 > &
   Partial<
-    Pick<TestDefinition, "instructions" | "durationMinutes" | "resultBands">
+    Pick<TestDefinition, "instructions" | "durationMinutes" | "resultBands" | "passage">
   >;
 
 function validateQuestions(questions: TestQuestion[]) {

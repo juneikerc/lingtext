@@ -8,13 +8,13 @@ export default defineTest({
     "Lee un mensaje simple y sigue planes, horarios y acciones futuras con mas autonomia.",
   intro:
     "Esta prueba gira alrededor de mensajes cotidianos, planes cercanos y detalles faciles pero ya mas variados.",
+  passage:
+    "Mia sent a message to her friend Leo. She said that on Saturday she is visiting her aunt in Brighton and on Sunday she plans to clean her room and finish a short history project. She hopes to watch a film at night if she has time.",
   questions: [
     {
       id: "a2-reading-1",
       type: "multiple-choice",
       prompt: "What is Mia doing this weekend?",
-      passage:
-        "Mia sent a message to her friend Leo. She said that on Saturday she is visiting her aunt in Brighton and on Sunday she plans to clean her room and finish a short history project. She hopes to watch a film at night if she has time.",
       choices: [
         { id: "a", text: "Traveling to three cities" },
         { id: "b", text: "Studying and visiting family" },
@@ -29,8 +29,6 @@ export default defineTest({
       id: "a2-reading-2",
       type: "multiple-choice",
       prompt: "When does Mia want to watch a film?",
-      passage:
-        "Mia sent a message to her friend Leo. She said that on Saturday she is visiting her aunt in Brighton and on Sunday she plans to clean her room and finish a short history project. She hopes to watch a film at night if she has time.",
       choices: [
         { id: "a", text: "On Friday morning" },
         { id: "b", text: "On Saturday afternoon" },

@@ -8,13 +8,13 @@ export default defineTest({
     "Interpreta posicion, contraste y critica implicita dentro de un texto mas denso.",
   intro:
     "Esta prueba busca medir si ya puedes leer entre lineas y seguir una tesis con vocabulario mas exigente.",
+  passage:
+    "Some organizations celebrate innovation so enthusiastically that they forget the slower work required to make new ideas usable. A clever prototype may attract attention, but without documentation, training and support, it rarely changes everyday practice. The real challenge is not producing novelty; it is embedding it into routines people can actually maintain.",
   questions: [
     {
       id: "c1-reading-1",
       type: "multiple-choice",
       prompt: "What criticism does the writer make?",
-      passage:
-        "Some organizations celebrate innovation so enthusiastically that they forget the slower work required to make new ideas usable. A clever prototype may attract attention, but without documentation, training and support, it rarely changes everyday practice. The real challenge is not producing novelty; it is embedding it into routines people can actually maintain.",
       choices: [
         { id: "a", text: "People dislike new technology" },
         {
@@ -33,8 +33,6 @@ export default defineTest({
       id: "c1-reading-2",
       type: "multiple-choice",
       prompt: "What does 'embedding it into routines' imply?",
-      passage:
-        "Some organizations celebrate innovation so enthusiastically that they forget the slower work required to make new ideas usable. A clever prototype may attract attention, but without documentation, training and support, it rarely changes everyday practice. The real challenge is not producing novelty; it is embedding it into routines people can actually maintain.",
       choices: [
         { id: "a", text: "Hiding the idea from staff" },
         { id: "b", text: "Turning the idea into regular practice" },

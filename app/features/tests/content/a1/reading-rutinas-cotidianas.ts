@@ -8,14 +8,14 @@ export default defineTest({
     "Lee una escena diaria corta y detecta ideas basicas sin perderte en el texto.",
   intro:
     "Una prueba breve centrada en acciones del dia a dia, horarios y detalles faciles de localizar.",
+  passage:
+    "Tom wakes up at seven every day. He has bread and tea for breakfast, then he walks to the bus stop with his sister. After school, they play football in the park for thirty minutes.",
   questions: [
     {
       id: "a1-reading-1",
       type: "multiple-choice",
       prompt: "What is the text mainly about?",
       description: "Read the text and choose the best summary.",
-      passage:
-        "Tom wakes up at seven every day. He has bread and tea for breakfast, then he walks to the bus stop with his sister. After school, they play football in the park for thirty minutes.",
       choices: [
         { id: "a", text: "Tom's daily routine" },
         { id: "b", text: "Tom's summer vacation" },
@@ -31,8 +31,6 @@ export default defineTest({
       id: "a1-reading-2",
       type: "multiple-choice",
       prompt: "What does Tom drink for breakfast?",
-      passage:
-        "Tom wakes up at seven every day. He has bread and tea for breakfast, then he walks to the bus stop with his sister. After school, they play football in the park for thirty minutes.",
       choices: [
         { id: "a", text: "Milk" },
         { id: "b", text: "Tea" },

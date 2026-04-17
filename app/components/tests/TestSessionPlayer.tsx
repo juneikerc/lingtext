@@ -114,9 +114,14 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isFinishing, setIsFinishing] = useState(false);
   const [audioError, setAudioError] = useState<string | null>(null);
+  const [passageRevealed, setPassageRevealed] = useState(false);
   const dictationAudioRef = useRef<HTMLAudioElement | null>(null);
 
   const currentQuestion = test.questions[currentIndex];
+  const isReadingTest = test.skill === "reading";
+  const testPassage = test.passage;
+  const showTestPassage = isReadingTest && testPassage && currentIndex > 0;
+  const passageHighlighted = isReadingTest && testPassage && currentIndex === 0;
   const isLastQuestion = currentIndex === test.questions.length - 1;
   const progressPercent = Math.round(
     ((currentIndex + (feedback.variant === "resolved" ? 1 : 0)) /
@@ -158,6 +163,7 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
     setFeedback({ variant: "idle" });
     setAudioError(null);
     setIsPlaying(false);
+    setPassageRevealed(false);
   }, [currentIndex]);
 
   useEffect(() => {
@@ -535,6 +541,28 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
               </p>
             ) : null}
           </div>
+
+          {passageHighlighted && testPassage ? (
+            <div className="rounded-2xl border border-[#0F9EDA]/30 bg-[#0F9EDA]/5 p-5 text-sm leading-relaxed text-gray-800">
+              {testPassage}
+            </div>
+          ) : null}
+
+          {showTestPassage ? (
+            passageRevealed ? (
+              <div className="rounded-2xl border border-gray-200 bg-gray-50 p-5 text-sm leading-relaxed text-gray-700">
+                {testPassage}
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setPassageRevealed(true)}
+                className="inline-flex items-center justify-center rounded-xl border border-[#0F9EDA]/30 bg-white px-5 py-3 text-sm font-semibold text-[#0F9EDA] shadow-sm transition-all duration-200 hover:border-[#0F9EDA]/50 hover:bg-[#0F9EDA]/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              >
+                Mostrar texto de lectura
+              </button>
+            )
+          ) : null}
 
           {currentQuestion.type === "multiple-choice" &&
           currentQuestion.passage ? (
