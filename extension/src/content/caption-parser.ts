@@ -71,7 +71,8 @@ function parseXml(payload: string): SubtitleCue[] {
       return;
     }
 
-    const safeDuration = Number.isFinite(duration) && duration > 0 ? duration : 2;
+    const safeDuration =
+      Number.isFinite(duration) && duration > 0 ? duration : 2;
     cues.push({ start, end: start + safeDuration, text });
   });
 

@@ -52,11 +52,12 @@ export default function ReadingShareCard({
   return (
     <div
       onMouseUp={(e) => {
-        e.stopPropagation()
+        e.stopPropagation();
       }}
       ref={cardRef}
-      className={`mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8 py-6 transition-all duration-300 ${animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-        }`}
+      className={`mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8 py-6 transition-all duration-300 ${
+        animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+      }`}
     >
       <div className="rounded-2xl border border-[#0F9EDA]/20 bg-[#0F9EDA]/5 p-6 sm:p-8">
         <div className="flex items-start gap-4">

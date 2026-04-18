@@ -10,6 +10,7 @@ import {
 import { getTestTextByLevel } from "~/lib/content/runtime";
 import type { TestSkill } from "~/features/tests/types";
 import type { Route } from "./+types/level";
+import { isTestCompleted } from "~/utils/test-progress";
 
 const SKILL_ICONS: Record<string, string> = {
   reading: "📖",
@@ -74,7 +75,7 @@ export function meta({ loaderData }: Route.MetaArgs) {
 
 export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
   const navigate = useNavigate();
-  const { levelMeta, tests,testText } = loaderData;
+  const { levelMeta, tests, testText } = loaderData;
 
   function handleStart(skill: TestSkill) {
     void navigate(`/tests/${levelMeta.id}/${skill}/${createSessionId()}`);
@@ -131,7 +132,7 @@ export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto mb-16 max-w-3xl text-center">
             <h2 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
-              Pruebas disponibles para nivel {" "}
+              Pruebas disponibles para nivel{" "}
               <span className="text-[#0F9EDA]">{levelMeta.name}</span>
             </h2>
             <p className="text-xl leading-relaxed text-gray-600">
@@ -232,9 +233,15 @@ export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
                     <button
                       type="button"
                       onClick={() => handleStart(test.skill)}
-                      className="inline-flex w-full items-center justify-center rounded-xl bg-[#0F9EDA] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                      className={`inline-flex w-full items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold shadow-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
+                        isTestCompleted(levelMeta.id, test.skill)
+                          ? "border border-[#0F9EDA] bg-transparent text-[#0F9EDA] hover:bg-[#0F9EDA]/5"
+                          : "bg-[#0F9EDA] text-white hover:bg-[#0D8EC4] hover:shadow"
+                      }`}
                     >
-                      Empezar
+                      {isTestCompleted(levelMeta.id, test.skill)
+                        ? "Repetir"
+                        : "Empezar"}
                     </button>
                   </div>
                 </article>

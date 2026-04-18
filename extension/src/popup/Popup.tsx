@@ -32,14 +32,24 @@ export default function Popup() {
 
   const loadAll = async () => {
     const [words, phrases, currentSettings, syncInfo] = await Promise.all([
-      chrome.runtime.sendMessage({ type: "LT2_GET_WORDS" }) as Promise<WordEntry[]>,
-      chrome.runtime.sendMessage({ type: "LT2_GET_PHRASES" }) as Promise<PhraseEntry[]>,
-      chrome.runtime.sendMessage({ type: "LT2_GET_SETTINGS" }) as Promise<ExtensionSettings>,
+      chrome.runtime.sendMessage({ type: "LT2_GET_WORDS" }) as Promise<
+        WordEntry[]
+      >,
+      chrome.runtime.sendMessage({ type: "LT2_GET_PHRASES" }) as Promise<
+        PhraseEntry[]
+      >,
+      chrome.runtime.sendMessage({
+        type: "LT2_GET_SETTINGS",
+      }) as Promise<ExtensionSettings>,
       chrome.storage.local.get("lt2_last_sync"),
     ]);
 
     setStats({ words: words.length, phrases: phrases.length });
-    setSettings({ ...defaultSettings, ...currentSettings, captionLanguage: "en" });
+    setSettings({
+      ...defaultSettings,
+      ...currentSettings,
+      captionLanguage: "en",
+    });
 
     const syncTs = syncInfo.lt2_last_sync as number | undefined;
     setLastSync(syncTs ? new Date(syncTs).toLocaleString() : null);
@@ -198,7 +208,9 @@ export default function Popup() {
                 className="api-key-input"
                 placeholder="sk-or-..."
                 value={settings.apiKey}
-                onChange={(event) => updateSettings({ apiKey: event.target.value })}
+                onChange={(event) =>
+                  updateSettings({ apiKey: event.target.value })
+                }
               />
               <a
                 href="https://openrouter.ai/keys"
@@ -217,7 +229,11 @@ export default function Popup() {
           {lastSync && <p className="last-sync">Última sync: {lastSync}</p>}
           {syncStatus && <p className="sync-status">{syncStatus}</p>}
           <div className="sync-buttons">
-            <button className="btn btn-primary" onClick={handleSync} disabled={syncing}>
+            <button
+              className="btn btn-primary"
+              onClick={handleSync}
+              disabled={syncing}
+            >
               {syncing ? "Sincronizando..." : "🔄 Sincronizar"}
             </button>
             <button className="btn btn-secondary" onClick={openLingText}>

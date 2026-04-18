@@ -87,7 +87,11 @@ function ensureMetadata<Field extends string>(
     }
   }
 
-  const latestClock = maxClock(nextFields, existing?.updatedAt ?? updatedAt, existing?.updatedBy ?? updatedBy);
+  const latestClock = maxClock(
+    nextFields,
+    existing?.updatedAt ?? updatedAt,
+    existing?.updatedBy ?? updatedBy
+  );
 
   return {
     schemaVersion: SYNC_SCHEMA_VERSION,
@@ -104,8 +108,13 @@ function resolveFieldClock<Field extends string>(
   fallbackUpdatedAt: number,
   fallbackUpdatedBy: SyncPeer
 ): SyncFieldClock {
-  return metadata?.fields[field] ??
-    createClock(metadata?.updatedAt ?? fallbackUpdatedAt, metadata?.updatedBy ?? fallbackUpdatedBy);
+  return (
+    metadata?.fields[field] ??
+    createClock(
+      metadata?.updatedAt ?? fallbackUpdatedAt,
+      metadata?.updatedBy ?? fallbackUpdatedBy
+    )
+  );
 }
 
 function pickValue<T>(
@@ -329,7 +338,10 @@ export function mergeWordEntries(
 
   const latestClock = maxClock(
     nextFields,
-    Math.max(current.updatedAt ?? current.addedAt, incoming.updatedAt ?? incoming.addedAt),
+    Math.max(
+      current.updatedAt ?? current.addedAt,
+      incoming.updatedAt ?? incoming.addedAt
+    ),
     incoming.sync?.updatedBy ?? current.sync?.updatedBy ?? defaultPeer
   );
 
@@ -338,7 +350,8 @@ export function mergeWordEntries(
     updatedAt: latestClock.updatedAt,
     sync: {
       schemaVersion: SYNC_SCHEMA_VERSION,
-      revision: Math.max(current.sync?.revision ?? 1, incoming.sync?.revision ?? 1) + 1,
+      revision:
+        Math.max(current.sync?.revision ?? 1, incoming.sync?.revision ?? 1) + 1,
       updatedAt: latestClock.updatedAt,
       updatedBy: latestClock.updatedBy,
       fields: nextFields,
@@ -435,7 +448,10 @@ export function mergePhraseEntries(
 
   const latestClock = maxClock(
     nextFields,
-    Math.max(current.updatedAt ?? current.addedAt, incoming.updatedAt ?? incoming.addedAt),
+    Math.max(
+      current.updatedAt ?? current.addedAt,
+      incoming.updatedAt ?? incoming.addedAt
+    ),
     incoming.sync?.updatedBy ?? current.sync?.updatedBy ?? defaultPeer
   );
 
@@ -444,7 +460,8 @@ export function mergePhraseEntries(
     updatedAt: latestClock.updatedAt,
     sync: {
       schemaVersion: SYNC_SCHEMA_VERSION,
-      revision: Math.max(current.sync?.revision ?? 1, incoming.sync?.revision ?? 1) + 1,
+      revision:
+        Math.max(current.sync?.revision ?? 1, incoming.sync?.revision ?? 1) + 1,
       updatedAt: latestClock.updatedAt,
       updatedBy: latestClock.updatedBy,
       fields: nextFields,

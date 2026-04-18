@@ -14,7 +14,9 @@ import {
   setSettings,
 } from "./store";
 
-export async function handleMessage(message: ExtensionMessage): Promise<unknown> {
+export async function handleMessage(
+  message: ExtensionMessage
+): Promise<unknown> {
   switch (message.type) {
     case "LT2_GET_WORDS":
       return getWords();

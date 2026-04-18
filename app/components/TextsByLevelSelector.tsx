@@ -41,9 +41,7 @@ export default function TextsByLevelSelector({
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-xl font-bold text-gray-900">
-              {level.title}
-            </h3>
+            <h3 className="text-xl font-bold text-gray-900">{level.title}</h3>
             <p className="text-sm leading-relaxed text-gray-600">
               {level.description}
             </p>

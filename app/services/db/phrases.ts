@@ -1,7 +1,4 @@
-import {
-  ensurePhraseEntrySync,
-  mergePhraseEntries,
-} from "@shared/sync";
+import { ensurePhraseEntrySync, mergePhraseEntries } from "@shared/sync";
 import type { PhraseEntry, SpacedRepetitionData } from "../../types";
 import { getDB, scheduleSave } from "./core";
 

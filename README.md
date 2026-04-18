@@ -75,6 +75,7 @@ Su objetivo es ayudar a construir vocabulario en contexto, minimizando fricción
 - `/texts/:id` → `app/routes/texts/text.tsx`: lector, audio y popups de traducción.
 - `/words` → listado de palabras desconocidas con estadísticas de repaso.
 - `/review` → sesión de repaso con repetición espaciada.
+
 ## Flujo funcional
 
 1. **Biblioteca** (`app/components/Libary.tsx`)

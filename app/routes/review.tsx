@@ -44,10 +44,7 @@ function ReviewSkeleton() {
             Preparando sesión de repaso...
           </div>
           <h1 className="text-3xl md:text-4xl font-extrabold mb-4 text-gray-900">
-            Repaso de{" "}
-            <span className="text-indigo-600">
-              Vocabulario
-            </span>
+            Repaso de <span className="text-indigo-600">Vocabulario</span>
           </h1>
         </div>
 
@@ -72,10 +69,7 @@ function ReviewSkeleton() {
           {/* Rating buttons skeleton */}
           <div className="grid grid-cols-4 gap-3">
             {[1, 2, 3, 4].map((i) => (
-              <div
-                key={i}
-                className="h-14 bg-gray-200 rounded-xl"
-              ></div>
+              <div key={i} className="h-14 bg-gray-200 rounded-xl"></div>
             ))}
           </div>
         </div>

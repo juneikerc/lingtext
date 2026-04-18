@@ -1,20 +1,13 @@
 import { useCallback, useRef, useState } from "react";
 
-import {
-  getPhrase,
-  getSettings,
-  getWord,
-} from "~/services/db";
+import { getPhrase, getSettings, getWord } from "~/services/db";
 import { normalizeWord, tokenize } from "~/utils/tokenize";
 import { speak } from "~/utils/tts";
 import { translateTerm } from "~/utils/translate";
 import { getLocalWordMeaning } from "~/utils/local-word-bank";
 import type { Translator } from "~/types";
 
-import type {
-  SelectionPopupState,
-  WordPopupState,
-} from "./types";
+import type { SelectionPopupState, WordPopupState } from "./types";
 
 const MAX_SELECTION_TRANSLATE_WORDS = 20;
 const READER_COPY_HINTS = ["Clic para traducir"] as const;
@@ -262,7 +255,12 @@ export function useReaderInteractions({
       const selection = window.getSelection();
       const parent = containerRef.current;
 
-      if (!selection || selection.isCollapsed || selection.rangeCount === 0 || !parent) {
+      if (
+        !selection ||
+        selection.isCollapsed ||
+        selection.rangeCount === 0 ||
+        !parent
+      ) {
         return;
       }
 

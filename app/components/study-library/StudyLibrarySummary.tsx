@@ -61,9 +61,7 @@ export function StudyLibrarySummary({
           <div className="text-2xl font-bold text-amber-600">
             {stats.reviewsDue}
           </div>
-          <div className="text-sm font-medium text-amber-800">
-            Due
-          </div>
+          <div className="text-sm font-medium text-amber-800">Due</div>
         </div>
         <div className="rounded-xl border border-[#0F9EDA]/20 bg-[#0F9EDA]/5 p-5 text-center]/30]/10">
           <div className="text-2xl font-bold text-[#0F9EDA]]">
@@ -80,9 +78,7 @@ export function StudyLibrarySummary({
           <div className="text-2xl font-bold text-sky-600">
             {stats.phrasesCount}
           </div>
-          <div className="text-sm font-medium text-sky-800">
-            Phrases
-          </div>
+          <div className="text-sm font-medium text-sky-800">Phrases</div>
         </div>
         <div className="rounded-xl border border-gray-200 bg-white p-5 text-center">
           <div className="text-2xl font-bold text-gray-900">

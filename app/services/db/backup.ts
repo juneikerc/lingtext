@@ -313,7 +313,10 @@ export async function listOPFSFiles(): Promise<string[]> {
       files.push(name);
     }
   } catch (error) {
-    console.error("[DB] Error: no se pudieron listar los archivos de OPFS:", error);
+    console.error(
+      "[DB] Error: no se pudieron listar los archivos de OPFS:",
+      error
+    );
   }
   return files;
 }

@@ -62,21 +62,23 @@ chrome.runtime.onMessage.addListener(
   }
 );
 
-chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => {
-  if (!isAllowedExternalSender(sender)) {
-    sendResponse({ error: "Unauthorized origin" });
-    return;
-  }
+chrome.runtime.onMessageExternal.addListener(
+  (message, sender, sendResponse) => {
+    if (!isAllowedExternalSender(sender)) {
+      sendResponse({ error: "Unauthorized origin" });
+      return;
+    }
 
-  storeReady
-    .then(() => handleMessage(message as ExtensionMessage))
-    .then(sendResponse)
-    .catch((error) => {
-      console.error("[LingText] Error handling external message:", error);
-      sendResponse({
-        error: error instanceof Error ? error.message : String(error),
+    storeReady
+      .then(() => handleMessage(message as ExtensionMessage))
+      .then(sendResponse)
+      .catch((error) => {
+        console.error("[LingText] Error handling external message:", error);
+        sendResponse({
+          error: error instanceof Error ? error.message : String(error),
+        });
       });
-    });
 
-  return true;
-});
+    return true;
+  }
+);

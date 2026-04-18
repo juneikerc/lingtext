@@ -97,7 +97,9 @@ export function useReaderAudio(text: ReaderAudioInput) {
       let file: File;
 
       if (text.audioRef.fileHandle) {
-        const hasPermission = await ensureReadPermission(text.audioRef.fileHandle);
+        const hasPermission = await ensureReadPermission(
+          text.audioRef.fileHandle
+        );
         if (!hasPermission) {
           console.warn("Permiso denegado para archivo local");
           setAudioAccessError(true);

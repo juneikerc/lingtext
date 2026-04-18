@@ -1,8 +1,8 @@
---- 
-title: "The Community Garden Project" 
-level: "b1" 
+---
+title: "The Community Garden Project"
+level: "b1"
 date: "2026-04-08"
---- 
+---
 
 When Sofia moved to the city, she thought life would become more exciting. There were tall buildings, busy streets, and many places to visit. At first, she enjoyed the energy of her new neighborhood. There was always something happening, and she liked the idea of being surrounded by so many people. However, after a few months, she started to feel lonely.
 

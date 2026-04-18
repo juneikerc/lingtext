@@ -48,10 +48,7 @@ function WordsSkeleton() {
             Cargando vocabulario...
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900">
-            Tu{" "}
-            <span className="text-indigo-600">
-              Vocabulario
-            </span>
+            Tu <span className="text-indigo-600">Vocabulario</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Preparando tu lista de palabras...

@@ -6,7 +6,9 @@ export function getCurrentVideoId(): string | null {
   return new URLSearchParams(window.location.search).get("v");
 }
 
-export function watchVideoId(onChange: (videoId: string | null) => void): () => void {
+export function watchVideoId(
+  onChange: (videoId: string | null) => void
+): () => void {
   let current = getCurrentVideoId();
   onChange(current);
 
@@ -35,8 +37,12 @@ export function watchPlayerRect(
   onRect: (rect: DOMRect | null) => void
 ): () => void {
   let rafId: number | null = null;
-  let lastRect: { left: number; top: number; width: number; height: number } | null =
-    null;
+  let lastRect: {
+    left: number;
+    top: number;
+    width: number;
+    height: number;
+  } | null = null;
 
   const update = () => {
     if (rafId !== null) {

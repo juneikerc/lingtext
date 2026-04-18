@@ -1,8 +1,8 @@
---- 
-title: "Rainy Afternoon at Home" 
-level: "a1" 
+---
+title: "Rainy Afternoon at Home"
+level: "a1"
 date: "2026-04-08"
---- 
+---
 
 Today, the weather is rainy and cold. I stay at home all afternoon. I look out the window and see gray clouds and wet streets. I do not go outside.
 

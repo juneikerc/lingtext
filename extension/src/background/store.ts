@@ -46,15 +46,15 @@ export async function initializeStore(): Promise<void> {
     return;
   }
 
-  const legacyWords = ((result[STORAGE_KEYS.WORDS] as WordEntry[] | undefined) || []).map(
-    (word) => ensureWordEntrySync(word, "extension")
-  );
+  const legacyWords = (
+    (result[STORAGE_KEYS.WORDS] as WordEntry[] | undefined) || []
+  ).map((word) => ensureWordEntrySync(word, "extension"));
   const legacyPhrases = (
     (result[STORAGE_KEYS.PHRASES] as PhraseEntry[] | undefined) || []
   ).map((phrase) => ensurePhraseEntrySync(phrase, "extension"));
-  const currentSettings = (result[STORAGE_KEYS.SETTINGS] as
-    | ExtensionSettings
-    | undefined) || defaultSettings;
+  const currentSettings =
+    (result[STORAGE_KEYS.SETTINGS] as ExtensionSettings | undefined) ||
+    defaultSettings;
   const lastSync = (result[STORAGE_KEYS.LAST_SYNC] as number | undefined) || 0;
 
   await chrome.storage.local.set({
@@ -136,15 +136,15 @@ export async function exportSyncPayload(): Promise<SyncPayload> {
 export async function importSyncPayload(
   payload: VersionedSyncPayload
 ): Promise<void> {
-  const current = createSyncEnvelope("extension", await getWords(), await getPhrases());
+  const current = createSyncEnvelope(
+    "extension",
+    await getWords(),
+    await getPhrases()
+  );
   const incoming =
     "source" in payload && payload.schemaVersion === SYNC_SCHEMA_VERSION
       ? payload
-      : createSyncEnvelope(
-          "web",
-          payload.words || [],
-          payload.phrases || []
-        );
+      : createSyncEnvelope("web", payload.words || [], payload.phrases || []);
   const merged = mergeSyncEnvelopes(current, incoming);
 
   await chrome.storage.local.set({
@@ -155,9 +155,7 @@ export async function importSyncPayload(
 
 export async function getSettings(): Promise<ExtensionSettings> {
   const result = await chrome.storage.local.get(STORAGE_KEYS.SETTINGS);
-  const stored = result[STORAGE_KEYS.SETTINGS] as
-    | ExtensionSettings
-    | undefined;
+  const stored = result[STORAGE_KEYS.SETTINGS] as ExtensionSettings | undefined;
 
   if (!stored) {
     return defaultSettings;

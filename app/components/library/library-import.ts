@@ -1,6 +1,9 @@
 import { validateTitle } from "~/utils/validation";
 
-export function normalizeImportedTitle(rawTitle: string, sourceUrl: string): string {
+export function normalizeImportedTitle(
+  rawTitle: string,
+  sourceUrl: string
+): string {
   const cleanedTitle = rawTitle
     .replace(/[<>"'&]/g, " ")
     .replace(/\s+/g, " ")

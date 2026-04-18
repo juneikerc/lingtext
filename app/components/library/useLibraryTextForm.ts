@@ -173,7 +173,9 @@ export function useLibraryTextForm(
       event.target.value = "";
     } catch (error) {
       console.error("Error importing file:", error);
-      alert("Error al importar el archivo. Verifica que sea un archivo de texto válido.");
+      alert(
+        "Error al importar el archivo. Verifica que sea un archivo de texto válido."
+      );
       event.target.value = "";
     }
   }

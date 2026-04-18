@@ -171,7 +171,9 @@ export function sanitizeTextContent(content: string): string {
   const withoutControlChars = Array.from(content)
     .filter((character) => {
       const code = character.charCodeAt(0);
-      return code === 9 || code === 10 || code === 13 || (code >= 32 && code !== 127);
+      return (
+        code === 9 || code === 10 || code === 13 || (code >= 32 && code !== 127)
+      );
     })
     .join("");
 

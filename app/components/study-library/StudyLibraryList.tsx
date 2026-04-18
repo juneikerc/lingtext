@@ -76,9 +76,7 @@ export function StudyLibraryList({
     <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
       <div className="flex flex-col gap-3 border-b border-gray-200 px-6 py-4 md:flex-row md:items-center md:justify-between">
         <div>
-          <h3 className="font-bold text-gray-900">
-            Biblioteca activa
-          </h3>
+          <h3 className="font-bold text-gray-900">Biblioteca activa</h3>
           <p className="text-sm text-gray-500">
             Mostrando {visibleCount} de {words.length} · {selectedInViewCount}{" "}
             seleccionadas en esta vista
@@ -147,16 +145,12 @@ export function StudyLibraryList({
                             <p className="text-sm font-semibold text-gray-600">
                               {section.category}
                             </p>
-                            <p className="text-gray-900">
-                              {section.text}
-                            </p>
+                            <p className="text-gray-900">{section.text}</p>
                           </div>
                         ))}
                       </div>
                     ) : (
-                      <p className="mb-3 text-gray-600">
-                        {word.translation}
-                      </p>
+                      <p className="mb-3 text-gray-600">{word.translation}</p>
                     )}
 
                     <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500">

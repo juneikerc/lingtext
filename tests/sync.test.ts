@@ -1,9 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import {
-  createSyncEnvelope,
-  mergeSyncEnvelopes,
-} from "../shared/sync";
+import { createSyncEnvelope, mergeSyncEnvelopes } from "../shared/sync";
 import type { PhraseEntry, WordEntry } from "../shared/vocabulary";
 
 describe("mergeSyncEnvelopes", () => {
@@ -11,7 +8,7 @@ describe("mergeSyncEnvelopes", () => {
     const webWord: WordEntry = {
       word: "Run",
       wordLower: "run",
-      translation: "{\"info\":{\"Verb\":[\"correr\"]}}",
+      translation: '{"info":{"Verb":["correr"]}}',
       status: "unknown",
       addedAt: 10,
       updatedAt: 100,

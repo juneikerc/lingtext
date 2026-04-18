@@ -71,7 +71,10 @@ export function ReaderPreferencesProvider({
         settingsRef.current = settings;
         setPreferences(resolveReaderPreferences(settings.reader));
       } catch (error) {
-        console.error("[DB] Error: no se pudieron cargar las preferencias:", error);
+        console.error(
+          "[DB] Error: no se pudieron cargar las preferencias:",
+          error
+        );
       } finally {
         if (mounted) {
           setIsReady(true);

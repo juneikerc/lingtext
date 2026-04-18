@@ -140,4 +140,7 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   return true;
 });
 
-window.postMessage({ type: "LINGTEXT_EXTENSION_READY" }, window.location.origin);
+window.postMessage(
+  { type: "LINGTEXT_EXTENSION_READY" },
+  window.location.origin
+);

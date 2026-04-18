@@ -59,26 +59,29 @@ export async function translateWithOpenRouter(
   }
 
   try {
-    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-        "HTTP-Referer": "https://lingtext.org",
-        "X-Title": "LingText Extension",
-      },
-      body: JSON.stringify({
-        model,
-        messages: [
-          {
-            role: "user",
-            content: buildOpenRouterWordPrompt(sanitizedText),
-          },
-        ],
-        max_tokens: 100,
-        temperature: 0.3,
-      }),
-    });
+    const response = await fetch(
+      "https://openrouter.ai/api/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiKey}`,
+          "HTTP-Referer": "https://lingtext.org",
+          "X-Title": "LingText Extension",
+        },
+        body: JSON.stringify({
+          model,
+          messages: [
+            {
+              role: "user",
+              content: buildOpenRouterWordPrompt(sanitizedText),
+            },
+          ],
+          max_tokens: 100,
+          temperature: 0.3,
+        }),
+      }
+    );
 
     if (!response.ok) {
       if (response.status === 401) {

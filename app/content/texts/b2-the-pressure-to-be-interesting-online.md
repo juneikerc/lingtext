@@ -39,7 +39,7 @@ A few deeper consequences of this culture are worth noting:
 3. **Authenticity becomes difficult to define, because even “being real” can become a style.**
 4. **People may lose touch with activities they genuinely enjoy when those activities are not publicly rewarded.**
 
-The third point is particularly interesting. Many platforms now celebrate authenticity, vulnerability, and honesty. This seems like a positive shift, and in some ways it is. However, authenticity online can quickly become another kind of performance. A person may begin to ask not, *How do I really feel?*, but *What version of honesty will be best received?* In this case, even vulnerability becomes strategic.
+The third point is particularly interesting. Many platforms now celebrate authenticity, vulnerability, and honesty. This seems like a positive shift, and in some ways it is. However, authenticity online can quickly become another kind of performance. A person may begin to ask not, _How do I really feel?_, but _What version of honesty will be best received?_ In this case, even vulnerability becomes strategic.
 
 This does not mean social media is fake in every way. Real emotion, creativity, and connection absolutely exist there. Many people have found comfort, education, and community online. The issue is not that digital platforms are inherently bad. The issue is that they shape behavior through constant feedback, and human beings naturally adapt to feedback.
 

@@ -13,6 +13,7 @@ import {
 } from "~/features/tests/engine";
 import { getTestLevelMeta, getTestSkillMeta } from "~/features/tests/catalog";
 import type { TestDefinition } from "~/features/tests/types";
+import { markTestCompleted } from "~/utils/test-progress";
 
 interface TestSessionPlayerProps {
   test: TestDefinition;
@@ -165,6 +166,12 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
     setIsPlaying(false);
     setPassageRevealed(false);
   }, [currentIndex]);
+
+  useEffect(() => {
+    if (isFinishing) {
+      markTestCompleted(test.level, test.skill, scorePercent);
+    }
+  }, [isFinishing, test.level, test.skill, scorePercent]);
 
   useEffect(() => {
     const audioElement = dictationAudioRef.current;

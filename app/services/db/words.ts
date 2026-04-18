@@ -1,13 +1,6 @@
 import { normalizeWord } from "@shared/tokenize";
-import {
-  ensureWordEntrySync,
-  mergeWordEntries,
-} from "@shared/sync";
-import type {
-  VoiceParams,
-  SpacedRepetitionData,
-  WordEntry,
-} from "../../types";
+import { ensureWordEntrySync, mergeWordEntries } from "@shared/sync";
+import type { VoiceParams, SpacedRepetitionData, WordEntry } from "../../types";
 import { getDB, scheduleSave } from "./core";
 
 interface WordRow {

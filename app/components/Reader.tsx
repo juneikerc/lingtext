@@ -130,8 +130,6 @@ export default function Reader({
 
       {readerContent}
 
-
-
       {popup ? (
         <WordPopup
           popup={popup}

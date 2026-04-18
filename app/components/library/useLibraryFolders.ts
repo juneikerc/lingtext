@@ -10,10 +10,14 @@ export function useLibraryFolders(
 ) {
   const [isCreatingFolder, setIsCreatingFolder] = useState(false);
   const [newFolderName, setNewFolderName] = useState("");
-  const [newFolderColor, setNewFolderColor] = useState<FolderColor>(FOLDER_COLORS[0]);
+  const [newFolderColor, setNewFolderColor] = useState<FolderColor>(
+    FOLDER_COLORS[0]
+  );
   const [editingFolderId, setEditingFolderId] = useState<string | null>(null);
   const [editFolderName, setEditFolderName] = useState("");
-  const [editFolderColor, setEditFolderColor] = useState<FolderColor>(FOLDER_COLORS[0]);
+  const [editFolderColor, setEditFolderColor] = useState<FolderColor>(
+    FOLDER_COLORS[0]
+  );
 
   async function onCreateFolder() {
     const name = newFolderName.trim();

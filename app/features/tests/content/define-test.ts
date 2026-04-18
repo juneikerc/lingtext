@@ -26,7 +26,10 @@ type TestDraft = Omit<
   "instructions" | "durationMinutes" | "resultBands" | "passage"
 > &
   Partial<
-    Pick<TestDefinition, "instructions" | "durationMinutes" | "resultBands" | "passage">
+    Pick<
+      TestDefinition,
+      "instructions" | "durationMinutes" | "resultBands" | "passage"
+    >
   >;
 
 function validateQuestions(questions: TestQuestion[]) {

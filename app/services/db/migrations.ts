@@ -234,7 +234,10 @@ export function migrateDatabase(database: SQLiteDatabase): MigrationResult {
     }
   }
 
-  const schemaVersion = Math.max(getUserVersion(database), LATEST_SCHEMA_VERSION);
+  const schemaVersion = Math.max(
+    getUserVersion(database),
+    LATEST_SCHEMA_VERSION
+  );
   if (getUserVersion(database) !== schemaVersion) {
     setUserVersion(database, schemaVersion);
   }

@@ -73,9 +73,9 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
     ) {
       alert(
         "El traductor nativo de Chrome requiere:\n" +
-        "- Navegador Google Chrome de escritorio\n" +
-        "- API de traducción activada en tu navegador\n\n" +
-        "Si no cumples esos requisitos, puedes usar el traductor gratis (MyMemory) o agregar una API Key de OpenRouter para los modelos con IA."
+          "- Navegador Google Chrome de escritorio\n" +
+          "- API de traducción activada en tu navegador\n\n" +
+          "Si no cumples esos requisitos, puedes usar el traductor gratis (MyMemory) o agregar una API Key de OpenRouter para los modelos con IA."
       );
     }
   }, [selected]);
@@ -92,8 +92,9 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
   return (
     <>
       <div
-        className={`bg-white/95 backdrop-blur-sm border-b border-gray-200/50 sticky top-0 z-20 transition-transform duration-200 ${isHidden ? "-translate-y-full" : "translate-y-0"
-          }`}
+        className={`bg-white/95 backdrop-blur-sm border-b border-gray-200/50 sticky top-0 z-20 transition-transform duration-200 ${
+          isHidden ? "-translate-y-full" : "translate-y-0"
+        }`}
       >
         <div className="mx-auto max-w-6xl w-full px-4 sm:px-6 lg:px-8">
           {/* Primera fila compacta - Título y navegación */}
@@ -166,7 +167,9 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
                   value={selected}
                   onChange={(e) => setSelected(e.target.value as Translator)}
                 >
-                  <option value={TRANSLATORS.CHROME}>⚡ Rápido/Básico (Solo Chrome en pc)</option>
+                  <option value={TRANSLATORS.CHROME}>
+                    ⚡ Rápido/Básico (Solo Chrome en pc)
+                  </option>
                   <option value={TRANSLATORS.MYMEMORY}>
                     🆓 Gratis (Poco Preciso) | MyMemory
                   </option>
@@ -189,10 +192,11 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
                 <button
                   type="button"
                   onClick={() => setShowPreferences((current) => !current)}
-                  className={`inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-xs font-semibold shadow-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white ${showPreferences
-                    ? "border-[#0F9EDA] bg-[#0F9EDA] text-white"
-                    : "border-[#0F9EDA]/20 bg-[#0F9EDA]/5 text-[#0F9EDA] hover:border-[#0F9EDA]/40 hover:bg-[#0F9EDA]/10"
-                    }`}
+                  className={`inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-xs font-semibold shadow-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
+                    showPreferences
+                      ? "border-[#0F9EDA] bg-[#0F9EDA] text-white"
+                      : "border-[#0F9EDA]/20 bg-[#0F9EDA]/5 text-[#0F9EDA] hover:border-[#0F9EDA]/40 hover:bg-[#0F9EDA]/10"
+                  }`}
                   aria-expanded={showPreferences}
                   aria-controls="reader-preferences-panel"
                   title={
@@ -202,10 +206,11 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
                   }
                 >
                   <span
-                    className={`inline-flex h-6 w-6 items-center justify-center rounded-lg text-[11px] font-bold ${showPreferences
-                      ? "bg-white/20 text-white"
-                      : "bg-white text-[#0F9EDA]"
-                      }`}
+                    className={`inline-flex h-6 w-6 items-center justify-center rounded-lg text-[11px] font-bold ${
+                      showPreferences
+                        ? "bg-white/20 text-white"
+                        : "bg-white text-[#0F9EDA]"
+                    }`}
                   >
                     Aa
                   </span>
@@ -215,8 +220,9 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
                       : "Personalizar lectura"}
                   </span>
                   <svg
-                    className={`h-3.5 w-3.5 transition-transform duration-200 ${showPreferences ? "rotate-180" : "rotate-0"
-                      }`}
+                    className={`h-3.5 w-3.5 transition-transform duration-200 ${
+                      showPreferences ? "rotate-180" : "rotate-0"
+                    }`}
                     viewBox="0 0 20 20"
                     fill="none"
                     stroke="currentColor"
@@ -234,10 +240,11 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
                 <button
                   type="button"
                   onClick={() => setShowApiKeyConfig(true)}
-                  className={`flex items-center space-x-1 px-2 py-1 rounded text-xs font-medium transition-colors ${needsApiKey
-                    ? "bg-amber-100 text-amber-700 hover:bg-amber-200"
-                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                    }`}
+                  className={`flex items-center space-x-1 px-2 py-1 rounded text-xs font-medium transition-colors ${
+                    needsApiKey
+                      ? "bg-amber-100 text-amber-700 hover:bg-amber-200"
+                      : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                  }`}
                   title="Configurar API Key"
                 >
                   <svg

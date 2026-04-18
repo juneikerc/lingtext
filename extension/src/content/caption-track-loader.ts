@@ -94,7 +94,10 @@ function pickEnglishTrack(tracks: CaptionTrack[]): CaptionTrack | null {
 }
 
 async function fetchCaptionCues(baseUrl: string): Promise<SubtitleCue[]> {
-  const candidates = [forceFormat(baseUrl, "json3"), forceFormat(baseUrl, "srv3")];
+  const candidates = [
+    forceFormat(baseUrl, "json3"),
+    forceFormat(baseUrl, "srv3"),
+  ];
 
   for (const url of candidates) {
     try {

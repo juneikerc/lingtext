@@ -53,9 +53,7 @@ export default function Community() {
           </nav>
           <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 tracking-tight mb-6">
             Comunidad de{" "}
-            <span className="text-indigo-600">
-              aprendizaje de inglés
-            </span>
+            <span className="text-indigo-600">aprendizaje de inglés</span>
           </h1>
           <p className="max-w-2xl mx-auto text-lg sm:text-xl text-gray-600 mb-10">
             No aprendas solo. Únete a nuestra red de estudiantes y mejora tu
@@ -133,9 +131,7 @@ export default function Community() {
                 <h3 className="text-xl font-bold text-gray-900 mb-3">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {item.desc}
-                </p>
+                <p className="text-gray-600 leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>

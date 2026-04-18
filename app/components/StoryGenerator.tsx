@@ -160,9 +160,7 @@ export default function StoryGenerator({
                       Historia {index + 1}
                     </span>
                   </div>
-                  <span className="text-indigo-600">
-                    →
-                  </span>
+                  <span className="text-indigo-600">→</span>
                 </button>
               ))}
             </div>

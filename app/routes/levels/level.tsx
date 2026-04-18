@@ -66,7 +66,7 @@ export async function loader({ params }: Route.LoaderArgs) {
       const wordCount = entry ? countWords(entry.content) : 0;
       const diffDays = Math.floor(
         (new Date(today).getTime() - new Date(text.date).getTime()) /
-        (1000 * 60 * 60 * 24)
+          (1000 * 60 * 60 * 24)
       );
       const isRecent = diffDays >= 0 && diffDays <= 3;
 
@@ -196,10 +196,11 @@ export default function Level({ loaderData }: Route.ComponentProps) {
                 <Link
                   key={text.title}
                   to={`/texts/${textId}?source=collection`}
-                  className={`group rounded-2xl border shadow-sm transition-all duration-200 overflow-hidden block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 ${isVisited
-                    ? "bg-[#0F9EDA]/5 border-[#0F9EDA]/20 hover:shadow-md hover:border-[#0F9EDA]/30"
-                    : "bg-white border-gray-200 hover:shadow-md hover:border-[#0F9EDA]/30"
-                    }`}
+                  className={`group rounded-2xl border shadow-sm transition-all duration-200 overflow-hidden block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 ${
+                    isVisited
+                      ? "bg-[#0F9EDA]/5 border-[#0F9EDA]/20 hover:shadow-md hover:border-[#0F9EDA]/30"
+                      : "bg-white border-gray-200 hover:shadow-md hover:border-[#0F9EDA]/30"
+                  }`}
                   rel="nofollow"
                 >
                   <div className="p-6 sm:p-8">

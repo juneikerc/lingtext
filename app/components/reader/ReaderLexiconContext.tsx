@@ -36,8 +36,9 @@ interface ReaderLexiconContextValue {
   ) => Promise<void>;
 }
 
-const ReaderLexiconContext =
-  createContext<ReaderLexiconContextValue | null>(null);
+const ReaderLexiconContext = createContext<ReaderLexiconContextValue | null>(
+  null
+);
 
 function buildPhraseIndex(phrases: string[][]): ReaderPhraseIndex {
   const phraseIndex: ReaderPhraseIndex = new Map();
@@ -66,7 +67,9 @@ function appendPhraseIfMissing(currentPhrases: string[][], parts: string[]) {
   const phraseLower = parts.join(" ");
 
   if (
-    currentPhrases.some((currentParts) => currentParts.join(" ") === phraseLower)
+    currentPhrases.some(
+      (currentParts) => currentParts.join(" ") === phraseLower
+    )
   ) {
     return currentPhrases;
   }
@@ -98,7 +101,10 @@ export function ReaderLexiconProvider({
         setUnknownSet(new Set(unknownWords));
         setPhrases(phraseParts);
       } catch (error) {
-        console.error("[DB] Error: no se pudo cargar el lexico del lector:", error);
+        console.error(
+          "[DB] Error: no se pudo cargar el lexico del lector:",
+          error
+        );
       } finally {
         if (mounted) {
           setIsReady(true);
@@ -169,7 +175,9 @@ export function ReaderLexiconProvider({
         addedAt: Date.now(),
       });
 
-      setPhrases((currentPhrases) => appendPhraseIfMissing(currentPhrases, parts));
+      setPhrases((currentPhrases) =>
+        appendPhraseIfMissing(currentPhrases, parts)
+      );
     },
     []
   );

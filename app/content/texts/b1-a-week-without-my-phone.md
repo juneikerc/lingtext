@@ -1,6 +1,6 @@
 ---
-title: "A Week Without My Phone" 
-level: "b1" 
+title: "A Week Without My Phone"
+level: "b1"
 date: "2026-04-08"
 ---
 

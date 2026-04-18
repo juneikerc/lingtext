@@ -87,7 +87,9 @@ export default function UnknownWordsSection(props: UnknownWordsSectionProps) {
                 activeSortLabel={activeSortLabel}
                 onSelectFilteredWords={selectFilteredWords}
                 onClearSelection={clearSelection}
-                onExportSelection={() => void exportUnknownWordsCsv(selectedEntries)}
+                onExportSelection={() =>
+                  void exportUnknownWordsCsv(selectedEntries)
+                }
                 onOpenStoryGenerator={() => setShowStoryGenerator(true)}
                 onDeleteSelection={() => void handleBulkDelete()}
                 isStoryDisabled={isStoryDisabled}

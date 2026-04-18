@@ -1,10 +1,6 @@
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
 
-import {
-  deletePhrase,
-  deleteWord,
-  getSettings,
-} from "~/services/db";
+import { deletePhrase, deleteWord, getSettings } from "~/services/db";
 import type { WordEntry } from "~/types";
 import { speak } from "~/utils/tts";
 
@@ -41,7 +37,9 @@ export function useStudyLibrary({
   const [newCardsInput, setNewCardsInput] = useState(String(newCardsPerDay));
   const [isSavingNewCardsLimit, setIsSavingNewCardsLimit] = useState(false);
   const [showAlphaWarning, setShowAlphaWarning] = useState(true);
-  const deferredSearchQuery = useDeferredValue(searchQuery.trim().toLowerCase());
+  const deferredSearchQuery = useDeferredValue(
+    searchQuery.trim().toLowerCase()
+  );
 
   useEffect(() => {
     setNewCardsInput(String(newCardsPerDay));

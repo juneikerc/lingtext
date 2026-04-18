@@ -59,7 +59,10 @@ export async function saveToOPFS(): Promise<void> {
     await writable.write(new Uint8Array(data));
     await writable.close();
   } catch (error) {
-    console.error("[DB] Error: no se pudo guardar la base de datos en OPFS:", error);
+    console.error(
+      "[DB] Error: no se pudo guardar la base de datos en OPFS:",
+      error
+    );
   }
 }
 

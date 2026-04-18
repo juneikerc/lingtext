@@ -32,7 +32,7 @@ It is important, however, not to romanticize solitude too much. Not all time alo
 
 Still, when solitude is chosen and balanced with meaningful relationships, it can enrich life in quiet but powerful ways. Creativity often grows in these spaces. Writers, musicians, thinkers, and artists have long described the importance of withdrawing from social activity in order to reflect and create. This does not mean that creativity only exists in silence, but silence often gives ideas room to develop.
 
-Even outside artistic work, solitude can improve everyday thinking. A person who spends a little time alone may become better at making decisions because they are less influenced by the immediate moods and opinions of others. They may also become more comfortable with uncertainty. Instead of asking, *What should I do to be approved?*, they begin to ask, *What feels true to me?*
+Even outside artistic work, solitude can improve everyday thinking. A person who spends a little time alone may become better at making decisions because they are less influenced by the immediate moods and opinions of others. They may also become more comfortable with uncertainty. Instead of asking, _What should I do to be approved?_, they begin to ask, _What feels true to me?_
 
 There are many simple ways to practice solitude without making dramatic changes to daily life:
 

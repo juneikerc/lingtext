@@ -32,54 +32,57 @@ interface ExtensionSyncData {
 export function useExtensionSync() {
   const selectedTranslator = useTranslatorStore((state) => state.selected);
 
-  const handleSync = useCallback(async (extensionData: ExtensionSyncData) => {
-    try {
-      // Obtener datos actuales de la web
-      const webWords = await getAllUnknownWords();
-      const webPhrases = await getAllPhrases();
-      const apiKey = await getOpenRouterApiKey();
-      const currentEnvelope = createSyncEnvelope("web", webWords, webPhrases);
-      const incomingEnvelope =
-        extensionData.source === "extension"
-          ? {
-              schemaVersion: extensionData.schemaVersion ?? 2,
-              source: "extension" as const,
-              exportedAt: extensionData.exportedAt ?? Date.now(),
-              words: extensionData.words,
-              phrases: extensionData.phrases,
-            }
-          : createSyncEnvelope(
-              "extension",
-              extensionData.words,
-              extensionData.phrases
-            );
-      const { words: mergedWords, phrases: mergedPhrases } =
-        mergeSyncEnvelopes(currentEnvelope, incomingEnvelope);
+  const handleSync = useCallback(
+    async (extensionData: ExtensionSyncData) => {
+      try {
+        // Obtener datos actuales de la web
+        const webWords = await getAllUnknownWords();
+        const webPhrases = await getAllPhrases();
+        const apiKey = await getOpenRouterApiKey();
+        const currentEnvelope = createSyncEnvelope("web", webWords, webPhrases);
+        const incomingEnvelope =
+          extensionData.source === "extension"
+            ? {
+                schemaVersion: extensionData.schemaVersion ?? 2,
+                source: "extension" as const,
+                exportedAt: extensionData.exportedAt ?? Date.now(),
+                words: extensionData.words,
+                phrases: extensionData.phrases,
+              }
+            : createSyncEnvelope(
+                "extension",
+                extensionData.words,
+                extensionData.phrases
+              );
+        const { words: mergedWords, phrases: mergedPhrases } =
+          mergeSyncEnvelopes(currentEnvelope, incomingEnvelope);
 
-      // Guardar en la base de datos de la web
-      for (const word of mergedWords) {
-        await putUnknownWord(word);
-      }
-      for (const phrase of mergedPhrases) {
-        await putPhrase(phrase);
-      }
+        // Guardar en la base de datos de la web
+        for (const word of mergedWords) {
+          await putUnknownWord(word);
+        }
+        for (const phrase of mergedPhrases) {
+          await putPhrase(phrase);
+        }
 
-      // Enviar estado final a la extensión
-      window.postMessage(
-        {
-          type: "LINGTEXT_SYNC_COMPLETE",
-          payload: {
-            ...createSyncEnvelope("web", mergedWords, mergedPhrases),
-            apiKey: apiKey || undefined,
-            translator: selectedTranslator,
+        // Enviar estado final a la extensión
+        window.postMessage(
+          {
+            type: "LINGTEXT_SYNC_COMPLETE",
+            payload: {
+              ...createSyncEnvelope("web", mergedWords, mergedPhrases),
+              apiKey: apiKey || undefined,
+              translator: selectedTranslator,
+            },
           },
-        },
-        window.location.origin
-      );
-    } catch (error) {
-      console.error("[ExtensionSync] Error during sync:", error);
-    }
-  }, [selectedTranslator]);
+          window.location.origin
+        );
+      } catch (error) {
+        console.error("[ExtensionSync] Error during sync:", error);
+      }
+    },
+    [selectedTranslator]
+  );
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -124,10 +127,7 @@ export function useExtensionSync() {
     window.addEventListener("message", handleMessage);
 
     // Notificar que la web está lista para sincronizar
-    window.postMessage(
-      { type: "LINGTEXT_WEB_READY" },
-      window.location.origin
-    );
+    window.postMessage({ type: "LINGTEXT_WEB_READY" }, window.location.origin);
 
     return () => {
       window.removeEventListener("message", handleMessage);

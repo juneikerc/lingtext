@@ -136,10 +136,8 @@ export default function Contact() {
             <div className="space-y-6 text-lg leading-relaxed text-gray-700">
               <p>
                 Soy{" "}
-                <span className="font-semibold text-[#0F9EDA]]">
-                  Juneiker
-                </span>
-                , desarrollador web y la persona detrás de LingText. Creé esta
+                <span className="font-semibold text-[#0F9EDA]]">Juneiker</span>,
+                desarrollador web y la persona detrás de LingText. Creé esta
                 herramienta porque yo mismo pasé por la frustración de buscar
                 apps de aprendizaje que fueran gratuitas, respetaran mi
                 privacidad y me dejaran usar mis propios materiales.
@@ -257,9 +255,7 @@ export default function Contact() {
               </svg>
               Envíame un correo
             </a>
-            <p className="text-sm text-gray-500 mt-4">
-              juneikerc@gmail.com
-            </p>
+            <p className="text-sm text-gray-500 mt-4">juneikerc@gmail.com</p>
           </div>
 
           {/* Link de regreso */}

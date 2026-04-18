@@ -15,7 +15,10 @@ export function useLibraryManager() {
   const [isLoading, setIsLoading] = useState(true);
 
   async function refresh() {
-    const [textList, folderList] = await Promise.all([getAllTexts(), getAllFolders()]);
+    const [textList, folderList] = await Promise.all([
+      getAllTexts(),
+      getAllFolders(),
+    ]);
     textList.sort((left, right) => right.createdAt - left.createdAt);
     setTexts(textList);
     setFolders(folderList);
@@ -51,7 +54,10 @@ export function useLibraryManager() {
 
   function groupedTexts(): TextGroup[] {
     const groups: TextGroup[] = [];
-    groups.push({ folder: null, texts: texts.filter((text) => !text.folderId) });
+    groups.push({
+      folder: null,
+      texts: texts.filter((text) => !text.folderId),
+    });
 
     for (const folder of folders) {
       groups.push({

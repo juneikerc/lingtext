@@ -14,7 +14,7 @@ Public spaces include parks, libraries, plazas, sidewalks, playgrounds, communit
 
 One reason public spaces matter so much is that they are among the few environments where people can spend time without being expected to buy something. In many modern cities, access to comfort is increasingly linked to consumption. If someone wants to sit somewhere pleasant, use a clean bathroom, meet a friend, or rest for an hour, they are often pushed toward cafés, restaurants, or private venues. This creates a subtle but powerful message: you are welcome only if you can pay.
 
-Public spaces challenge that idea. A park bench does not ask for proof of income. A public library does not require fashionable clothes or expensive membership. These places are important precisely because they are *open*. They make urban life more democratic by allowing people from different social classes, age groups, and cultural backgrounds to occupy the same environment.
+Public spaces challenge that idea. A park bench does not ask for proof of income. A public library does not require fashionable clothes or expensive membership. These places are important precisely because they are _open_. They make urban life more democratic by allowing people from different social classes, age groups, and cultural backgrounds to occupy the same environment.
 
 This accessibility creates several social benefits:
 
