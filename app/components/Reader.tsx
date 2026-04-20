@@ -105,7 +105,7 @@ export default function Reader({
       className={
         isCompact
           ? "relative flex flex-col bg-transparent pb-2"
-          : "relative flex flex-col flex-1 pb-40 sm:pb-32 transition-colors duration-200"
+          : "relative flex flex-col flex-1 pb-[calc(12rem+env(safe-area-inset-bottom))] sm:pb-40 md:pb-36 transition-colors duration-200"
       }
       style={
         isCompact

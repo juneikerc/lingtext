@@ -23,10 +23,10 @@ export function ReaderEmptyState() {
 
 export function ReaderModeIndicator() {
   return (
-    <div className="absolute -top-6 left-0 right-0 flex justify-center">
-      <div className="rounded-full px-4 py-2 text-sm font-medium flex items-center space-x-2 mt-8 z-10 border bg-[#0F9EDA]/10 border-[#0F9EDA]/20 text-[#0A7AAB]">
-        <div className="w-2 h-2 bg-[#0F9EDA] rounded-full animate-pulse"></div>
-        <span>Haz clic en cualquier palabra para traducirla</span>
+    <div className="absolute -top-6 left-0 right-0 flex justify-center px-4">
+      <div className="rounded-full px-3 py-1.5 text-xs font-medium flex items-center space-x-2 mt-8 z-10 border bg-[#0F9EDA]/10 border-[#0F9EDA]/20 text-[#0A7AAB] max-w-[calc(100%-1rem)]">
+        <div className="w-1.5 h-1.5 bg-[#0F9EDA] rounded-full animate-pulse shrink-0"></div>
+        <span className="truncate">Haz clic en cualquier palabra para traducirla</span>
       </div>
     </div>
   );
@@ -83,26 +83,28 @@ export function ReaderProgressFooter({
   unknownCount,
 }: ReaderProgressFooterProps) {
   return (
-    <Link to="/words" className="flex justify-center">
+    <Link to="/words" className="flex justify-center px-2">
       <div
-        className="rounded-full px-6 py-3 text-sm flex items-center space-x-4 border"
+        className="rounded-full px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm flex items-center space-x-3 sm:space-x-4 border"
         style={{
           backgroundColor: "var(--reader-muted-bg)",
           borderColor: "var(--reader-border-color)",
           color: "var(--reader-text-color)",
         }}
       >
-        <div className="flex items-center space-x-2">
-          <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-          <span>Palabras conocidas</span>
+        <div className="flex items-center space-x-1.5 sm:space-x-2">
+          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full shrink-0"></span>
+          <span className="hidden sm:inline">Palabras conocidas</span>
+          <span className="sm:hidden">Conocidas</span>
         </div>
         <div
-          className="w-px h-4"
+          className="w-px h-3 sm:h-4 shrink-0"
           style={{ backgroundColor: "var(--reader-border-color)" }}
         ></div>
-        <div className="flex items-center space-x-2">
-          <span className="w-2 h-2 bg-yellow-500 rounded-full"></span>
-          <span>Palabras por aprender ({unknownCount})</span>
+        <div className="flex items-center space-x-1.5 sm:space-x-2">
+          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-yellow-500 rounded-full shrink-0"></span>
+          <span className="hidden sm:inline">Palabras por aprender ({unknownCount})</span>
+          <span className="sm:hidden">Por aprender ({unknownCount})</span>
         </div>
       </div>
     </Link>
