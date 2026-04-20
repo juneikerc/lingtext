@@ -152,6 +152,7 @@ export default function Reader({
 
       {showAudioSection ? (
         <AudioSection
+          alignmentRef={containerRef}
           show={Boolean(text.audioRef || text.audioUrl)}
           src={audioUrl ?? text.audioUrl ?? undefined}
           showReauthorize={Boolean(

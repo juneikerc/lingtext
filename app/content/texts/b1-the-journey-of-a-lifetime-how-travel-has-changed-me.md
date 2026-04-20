@@ -2,6 +2,7 @@
 title: "The Journey of a Lifetime: How Travel Has Changed Me"
 level: "b1"
 date: "2026-04-01"
+sound: "https://images.lingtext.org/the-journey-of-a-lifetime-how-travel-has-changed-me.mp3"
 ---
 
 # The Journey of a Lifetime: How Travel Has Changed Me
