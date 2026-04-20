@@ -7,8 +7,16 @@ import {
 import { formatSlug } from "~/helpers/formatSlug";
 import ProseContent from "~/components/ProseContent";
 import { Link } from "react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getVisitedTextIds } from "~/utils/visited-texts";
+
+type SortOption = "date" | "words" | "audio";
+
+const SORT_OPTIONS: { id: SortOption; label: string }[] = [
+  { id: "date", label: "Fecha" },
+  { id: "words", label: "Cantidad de palabras" },
+  { id: "audio", label: "Lecturas con sonido" },
+];
 
 interface TextCardData {
   title: string;
@@ -106,6 +114,7 @@ export default function Level({ loaderData }: Route.ComponentProps) {
   const texts = loaderData.texts;
   const levelText = loaderData.levelText;
   const [visitedTextIds, setVisitedTextIds] = useState<Set<string>>(new Set());
+  const [sortBy, setSortBy] = useState<SortOption>("date");
 
   useEffect(() => {
     const nextVisitedTextIds = new Set(getVisitedTextIds());
@@ -116,6 +125,36 @@ export default function Level({ loaderData }: Route.ComponentProps) {
         : nextVisitedTextIds
     );
   }, []);
+
+  const sortedTexts = useMemo(() => {
+    return [...texts].sort((a, b) => {
+      if (sortBy === "audio") {
+        const aHasSound = Boolean(a.sound);
+        const bHasSound = Boolean(b.sound);
+        if (aHasSound !== bHasSound) {
+          return aHasSound ? -1 : 1;
+        }
+      }
+
+      if (sortBy === "words") {
+        const wordDiff = b.wordCount - a.wordCount;
+        if (wordDiff !== 0) {
+          return wordDiff;
+        }
+      }
+
+      const dateDiff = b.date.localeCompare(a.date);
+      if (dateDiff !== 0) {
+        return dateDiff;
+      }
+
+      return a.title.localeCompare(b.title, undefined, {
+        sensitivity: "base",
+      });
+    });
+  }, [texts, sortBy]);
+
+  const hasAudioTexts = texts.some((text) => Boolean(text.sound));
 
   return (
     <>
@@ -187,8 +226,57 @@ export default function Level({ loaderData }: Route.ComponentProps) {
             </h2>
           </div>
 
+          <div className="mb-6">
+            <label
+              htmlFor="texts-sort"
+              className="mb-2 block text-sm font-medium text-gray-700"
+            >
+              Ordenar por
+            </label>
+            <select
+              id="texts-sort"
+              value={sortBy}
+              onChange={(event) => setSortBy(event.target.value as SortOption)}
+              className="w-full sm:w-72 rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none transition-colors duration-200 focus:border-[#0F9EDA] focus:ring-2 focus:ring-[#0F9EDA]/20"
+            >
+              {SORT_OPTIONS.map((option) => (
+                <option key={option.id} value={option.id}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {sortBy === "audio" && !hasAudioTexts ? (
+            <div className="mb-6 rounded-2xl border border-amber-200 bg-amber-50 p-6">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 pt-0.5">
+                  <svg
+                    className="h-5 w-5 text-amber-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <div className="space-y-2 text-sm text-amber-800">
+                  <p className="font-semibold">
+                    Actualmente en este nivel no tenemos lecturas con sonido.
+                  </p>
+                  <p>Pronto agregaremos sonido para varias lecturas.</p>
+                </div>
+              </div>
+            </div>
+          ) : null}
+
           <div className="grid gap-4">
-            {texts.map((text: TextCardData) => {
+            {sortedTexts.map((text: TextCardData) => {
               const textId = formatSlug(text.title);
               const isVisited = visitedTextIds.has(textId);
 
