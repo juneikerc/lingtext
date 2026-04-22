@@ -1,78 +1,54 @@
 {
   "stats": {
-    "vocabWords": 999,
-    "totalFiles": 43,
-    "totalContentWords": 25669,
-    "uniqueContentWords": 5477,
-    "notInVocab": 4925
+    "vocabWords": 1048,
+    "totalFiles": 92,
+    "totalContentWords": 44919,
+    "uniqueContentWords": 7736,
+    "notInVocab": 7064
   },
   "topContentWords": [
     {
-      "word": "like",
-      "frequency": 218
-    },
-    {
-      "word": "small",
-      "frequency": 156
-    },
-    {
-      "word": "time",
-      "frequency": 144
-    },
-    {
-      "word": "people",
-      "frequency": 126
+      "word": "said",
+      "frequency": 173
     },
     {
       "word": "your",
-      "frequency": 113
+      "frequency": 160
     },
     {
-      "word": "said",
-      "frequency": 96
+      "word": "maria",
+      "frequency": 132
     },
     {
-      "word": "new",
+      "word": "something",
+      "frequency": 125
+    },
+    {
+      "word": "felt",
+      "frequency": 104
+    },
+    {
+      "word": "looked",
       "frequency": 93
     },
     {
-      "word": "day",
-      "frequency": 92
-    },
-    {
-      "word": "work",
-      "frequency": 92
-    },
-    {
-      "word": "look",
-      "frequency": 79
-    },
-    {
-      "word": "city",
-      "frequency": 78
-    },
-    {
-      "word": "feel",
-      "frequency": 77
-    },
-    {
-      "word": "old",
-      "frequency": 77
-    },
-    {
-      "word": "home",
-      "frequency": 76
-    },
-    {
-      "word": "big",
-      "frequency": 75
-    },
-    {
-      "word": "says",
-      "frequency": 72
+      "word": "sometimes",
+      "frequency": 89
     },
     {
       "word": "things",
+      "frequency": 83
+    },
+    {
+      "word": "become",
+      "frequency": 82
+    },
+    {
+      "word": "never",
+      "frequency": 77
+    },
+    {
+      "word": "little",
       "frequency": 69
     },
     {
@@ -80,67 +56,67 @@
       "frequency": 68
     },
     {
-      "word": "sometimes",
+      "word": "public",
+      "frequency": 66
+    },
+    {
+      "word": "elena",
       "frequency": 65
     },
     {
-      "word": "something",
+      "word": "digital",
       "frequency": 65
     },
     {
-      "word": "little",
-      "frequency": 65
-    },
-    {
-      "word": "felt",
+      "word": "asked",
       "frequency": 63
     },
     {
-      "word": "years",
-      "frequency": 62
+      "word": "air",
+      "frequency": 60
     },
     {
-      "word": "morning",
-      "frequency": 62
+      "word": "experience",
+      "frequency": 60
     },
     {
-      "word": "water",
-      "frequency": 61
+      "word": "simple",
+      "frequency": 59
     },
     {
-      "word": "long",
+      "word": "attention",
+      "frequency": 58
+    },
+    {
+      "word": "saw",
       "frequency": 57
     },
     {
-      "word": "mother",
-      "frequency": 57
-    },
-    {
-      "word": "looked",
-      "frequency": 57
-    },
-    {
-      "word": "world",
-      "frequency": 57
-    },
-    {
-      "word": "talk",
+      "word": "everything",
       "frequency": 56
     },
     {
-      "word": "important",
+      "word": "park",
       "frequency": 56
     },
     {
-      "word": "always",
-      "frequency": 55
+      "word": "thank",
+      "frequency": 54
     },
     {
-      "word": "much",
-      "frequency": 53
+      "word": "becomes",
+      "frequency": 54
     },
     {
-      "word": "friends",
+      "word": "went",
+      "frequency": 54
+    },
+    {
+      "word": "found",
+      "frequency": 54
+    },
+    {
+      "word": "repair",
       "frequency": 53
     },
     {
@@ -148,35 +124,91 @@
       "frequency": 53
     },
     {
-      "word": "human",
+      "word": "love",
+      "frequency": 52
+    },
+    {
+      "word": "afternoon",
+      "frequency": 52
+    },
+    {
+      "word": "someone",
+      "frequency": 52
+    },
+    {
+      "word": "phone",
       "frequency": 51
     },
     {
-      "word": "future",
+      "word": "came",
       "frequency": 50
     },
     {
-      "word": "near",
+      "word": "memory",
       "frequency": 50
     },
     {
       "word": "ben",
+      "frequency": 50
+    },
+    {
+      "word": "put",
       "frequency": 49
     },
     {
-      "word": "energy",
+      "word": "says",
       "frequency": 48
     },
     {
-      "word": "beautiful",
+      "word": "sense",
       "frequency": 48
     },
     {
-      "word": "learning",
+      "word": "name",
+      "frequency": 47
+    },
+    {
+      "word": "better",
+      "frequency": 47
+    },
+    {
+      "word": "days",
+      "frequency": 47
+    },
+    {
+      "word": "apartment",
+      "frequency": 47
+    },
+    {
+      "word": "walked",
+      "frequency": 47
+    },
+    {
+      "word": "started",
+      "frequency": 47
+    },
+    {
+      "word": "longer",
+      "frequency": 47
+    },
+    {
+      "word": "friend",
+      "frequency": 46
+    },
+    {
+      "word": "few",
+      "frequency": 46
+    },
+    {
+      "word": "use",
+      "frequency": 46
+    },
+    {
+      "word": "best",
       "frequency": 45
     },
     {
-      "word": "saw",
+      "word": "eyes",
       "frequency": 45
     },
     {
@@ -184,63 +216,167 @@
       "frequency": 45
     },
     {
-      "word": "nice",
+      "word": "live",
       "frequency": 44
     },
     {
-      "word": "school",
+      "word": "sat",
+      "frequency": 44
+    },
+    {
+      "word": "real",
+      "frequency": 44
+    },
+    {
+      "word": "walking",
       "frequency": 43
     },
     {
-      "word": "father",
+      "word": "thought",
       "frequency": 43
     },
     {
-      "word": "bed",
+      "word": "difficult",
+      "frequency": 43
+    },
+    {
+      "word": "moment",
+      "frequency": 43
+    },
+    {
+      "word": "space",
+      "frequency": 43
+    },
+    {
+      "word": "health",
+      "frequency": 43
+    },
+    {
+      "word": "green",
       "frequency": 42
     },
     {
-      "word": "different",
+      "word": "part",
       "frequency": 42
     },
     {
-      "word": "eat",
+      "word": "ana",
+      "frequency": 42
+    },
+    {
+      "word": "understand",
+      "frequency": 42
+    },
+    {
+      "word": "told",
+      "frequency": 42
+    },
+    {
+      "word": "others",
+      "frequency": 42
+    },
+    {
+      "word": "minutes",
       "frequency": 41
     },
     {
-      "word": "lot",
+      "word": "sit",
+      "frequency": 41
+    },
+    {
+      "word": "really",
+      "frequency": 41
+    },
+    {
+      "word": "saturday",
+      "frequency": 41
+    },
+    {
+      "word": "kitchen",
+      "frequency": 41
+    },
+    {
+      "word": "map",
+      "frequency": 41
+    },
+    {
+      "word": "information",
+      "frequency": 41
+    },
+    {
+      "word": "lucas",
       "frequency": 40
     },
     {
-      "word": "maria",
+      "word": "music",
       "frequency": 40
     },
     {
-      "word": "made",
+      "word": "cannot",
+      "frequency": 40
+    },
+    {
+      "word": "week",
+      "frequency": 40
+    },
+    {
+      "word": "pasta",
+      "frequency": 40
+    },
+    {
+      "word": "museum",
+      "frequency": 40
+    },
+    {
+      "word": "grandmother",
+      "frequency": 40
+    },
+    {
+      "word": "knowledge",
+      "frequency": 40
+    },
+    {
+      "word": "understanding",
+      "frequency": 40
+    },
+    {
+      "word": "personal",
+      "frequency": 40
+    },
+    {
+      "word": "children",
       "frequency": 39
     },
     {
-      "word": "family",
+      "word": "took",
       "frequency": 39
     },
     {
-      "word": "help",
+      "word": "hours",
       "frequency": 39
     },
     {
-      "word": "went",
+      "word": "play",
       "frequency": 38
     },
     {
-      "word": "come",
+      "word": "helps",
       "frequency": 38
     },
     {
-      "word": "books",
+      "word": "sounds",
       "frequency": 38
     },
     {
-      "word": "technology",
+      "word": "london",
+      "frequency": 38
+    },
+    {
+      "word": "chapter",
+      "frequency": 38
+    },
+    {
+      "word": "quality",
       "frequency": 38
     },
     {
@@ -248,47 +384,163 @@
       "frequency": 37
     },
     {
-      "word": "wanted",
+      "word": "right",
       "frequency": 37
     },
     {
-      "word": "man",
+      "word": "woman",
+      "frequency": 37
+    },
+    {
+      "word": "looking",
+      "frequency": 37
+    },
+    {
+      "word": "practice",
+      "frequency": 37
+    },
+    {
+      "word": "smiled",
+      "frequency": 37
+    },
+    {
+      "word": "problem",
+      "frequency": 37
+    },
+    {
+      "word": "language",
+      "frequency": 37
+    },
+    {
+      "word": "physical",
+      "frequency": 37
+    },
+    {
+      "word": "sun",
       "frequency": 36
     },
     {
-      "word": "own",
+      "word": "full",
+      "frequency": 36
+    },
+    {
+      "word": "makes",
+      "frequency": 36
+    },
+    {
+      "word": "challenges",
+      "frequency": 36
+    },
+    {
+      "word": "individuals",
+      "frequency": 36
+    },
+    {
+      "word": "spaces",
+      "frequency": 36
+    },
+    {
+      "word": "skills",
+      "frequency": 36
+    },
+    {
+      "word": "open",
       "frequency": 35
     },
     {
-      "word": "social",
+      "word": "perfect",
       "frequency": 35
     },
     {
-      "word": "book",
+      "word": "class",
       "frequency": 35
     },
     {
-      "word": "put",
+      "word": "large",
+      "frequency": 35
+    },
+    {
+      "word": "question",
+      "frequency": 35
+    },
+    {
+      "word": "office",
+      "frequency": 35
+    },
+    {
+      "word": "less",
+      "frequency": 35
+    },
+    {
+      "word": "cities",
+      "frequency": 35
+    },
+    {
+      "word": "stories",
       "frequency": 34
     },
     {
-      "word": "kitchen",
+      "word": "lives",
       "frequency": 34
     },
     {
-      "word": "night",
+      "word": "left",
       "frequency": 34
     },
     {
-      "word": "pip",
+      "word": "story",
       "frequency": 34
     },
     {
-      "word": "london",
+      "word": "places",
       "frequency": 34
     },
     {
-      "word": "everything",
+      "word": "reality",
+      "frequency": 34
+    },
+    {
+      "word": "spent",
+      "frequency": 34
+    },
+    {
+      "word": "modern",
+      "frequency": 34
+    },
+    {
+      "word": "brother",
+      "frequency": 33
+    },
+    {
+      "word": "idea",
+      "frequency": 33
+    },
+    {
+      "word": "coffee",
+      "frequency": 33
+    },
+    {
+      "word": "trip",
+      "frequency": 33
+    },
+    {
+      "word": "money",
+      "frequency": 33
+    },
+    {
+      "word": "finally",
+      "frequency": 33
+    },
+    {
+      "word": "began",
+      "frequency": 33
+    },
+    {
+      "word": "requires",
+      "frequency": 33
+    },
+    {
+      "word": "emotional",
       "frequency": 33
     },
     {
@@ -296,585 +548,309 @@
       "frequency": 33
     },
     {
-      "word": "part",
+      "word": "red",
       "frequency": 32
     },
     {
-      "word": "days",
+      "word": "sky",
       "frequency": 32
     },
     {
-      "word": "name",
+      "word": "keys",
       "frequency": 32
     },
     {
-      "word": "best",
+      "word": "changed",
       "frequency": 32
     },
     {
-      "word": "park",
+      "word": "building",
       "frequency": 32
     },
     {
-      "word": "afternoon",
+      "word": "became",
       "frequency": 32
     },
     {
-      "word": "elena",
+      "word": "community",
       "frequency": 32
     },
     {
-      "word": "someone",
+      "word": "experiences",
+      "frequency": 32
+    },
+    {
+      "word": "fresh",
       "frequency": 31
     },
     {
-      "word": "helps",
+      "word": "true",
+      "frequency": 31
+    },
+    {
+      "word": "night",
+      "frequency": 31
+    },
+    {
+      "word": "lost",
+      "frequency": 31
+    },
+    {
+      "word": "past",
+      "frequency": 31
+    },
+    {
+      "word": "carefully",
+      "frequency": 31
+    },
+    {
+      "word": "start",
+      "frequency": 31
+    },
+    {
+      "word": "sound",
+      "frequency": 31
+    },
+    {
+      "word": "feeling",
+      "frequency": 31
+    },
+    {
+      "word": "environmental",
+      "frequency": 31
+    },
+    {
+      "word": "global",
+      "frequency": 31
+    },
+    {
+      "word": "looks",
       "frequency": 30
-    },
-    {
-      "word": "love",
-      "frequency": 30
-    },
-    {
-      "word": "asked",
-      "frequency": 30
-    },
-    {
-      "word": "chapter",
-      "frequency": 30
-    },
-    {
-      "word": "real",
-      "frequency": 29
-    },
-    {
-      "word": "live",
-      "frequency": 29
     },
     {
       "word": "house",
+      "frequency": 30
+    },
+    {
+      "word": "twenty",
+      "frequency": 30
+    },
+    {
+      "word": "lunch",
+      "frequency": 30
+    },
+    {
+      "word": "trees",
+      "frequency": 30
+    },
+    {
+      "word": "carlos",
+      "frequency": 30
+    },
+    {
+      "word": "exactly",
+      "frequency": 30
+    },
+    {
+      "word": "learned",
+      "frequency": 30
+    },
+    {
+      "word": "person",
+      "frequency": 30
+    },
+    {
+      "word": "complex",
+      "frequency": 30
+    },
+    {
+      "word": "data",
+      "frequency": 30
+    },
+    {
+      "word": "cognitive",
+      "frequency": 30
+    },
+    {
+      "word": "simply",
+      "frequency": 30
+    },
+    {
+      "word": "changes",
+      "frequency": 30
+    },
+    {
+      "word": "brown",
       "frequency": 29
     },
     {
-      "word": "saturday",
+      "word": "cooking",
       "frequency": 29
     },
     {
-      "word": "sit",
+      "word": "students",
+      "frequency": 29
+    },
+    {
+      "word": "online",
+      "frequency": 29
+    },
+    {
+      "word": "knew",
+      "frequency": 29
+    },
+    {
+      "word": "living",
+      "frequency": 29
+    },
+    {
+      "word": "working",
+      "frequency": 29
+    },
+    {
+      "word": "ways",
+      "frequency": 29
+    },
+    {
+      "word": "self",
+      "frequency": 29
+    },
+    {
+      "word": "form",
+      "frequency": 29
+    },
+    {
+      "word": "tools",
+      "frequency": 29
+    },
+    {
+      "word": "value",
+      "frequency": 29
+    },
+    {
+      "word": "communication",
+      "frequency": 29
+    },
+    {
+      "word": "existence",
+      "frequency": 29
+    },
+    {
+      "word": "slowly",
       "frequency": 28
     },
     {
-      "word": "never",
+      "word": "blue",
+      "frequency": 28
+    },
+    {
+      "word": "quickly",
+      "frequency": 28
+    },
+    {
+      "word": "stop",
+      "frequency": 28
+    },
+    {
+      "word": "decided",
+      "frequency": 28
+    },
+    {
+      "word": "arrived",
+      "frequency": 28
+    },
+    {
+      "word": "enough",
+      "frequency": 28
+    },
+    {
+      "word": "consciousness",
+      "frequency": 28
+    },
+    {
+      "word": "significant",
+      "frequency": 28
+    },
+    {
+      "word": "history",
+      "frequency": 28
+    },
+    {
+      "word": "train",
+      "frequency": 28
+    },
+    {
+      "word": "making",
+      "frequency": 28
+    },
+    {
+      "word": "professional",
+      "frequency": 28
+    },
+    {
+      "word": "samuel",
       "frequency": 28
     },
     {
       "word": "breakfast",
-      "frequency": 28
-    },
-    {
-      "word": "friend",
-      "frequency": 28
-    },
-    {
-      "word": "coffee",
-      "frequency": 28
-    },
-    {
-      "word": "green",
-      "frequency": 28
-    },
-    {
-      "word": "moment",
-      "frequency": 28
-    },
-    {
-      "word": "trip",
-      "frequency": 28
-    },
-    {
-      "word": "use",
-      "frequency": 28
-    },
-    {
-      "word": "language",
-      "frequency": 28
-    },
-    {
-      "word": "makes",
       "frequency": 27
-    },
-    {
-      "word": "looks",
-      "frequency": 27
-    },
-    {
-      "word": "phone",
-      "frequency": 27
-    },
-    {
-      "word": "simple",
-      "frequency": 27
-    },
-    {
-      "word": "better",
-      "frequency": 27
-    },
-    {
-      "word": "large",
-      "frequency": 27
-    },
-    {
-      "word": "walked",
-      "frequency": 27
-    },
-    {
-      "word": "came",
-      "frequency": 27
-    },
-    {
-      "word": "become",
-      "frequency": 27
-    },
-    {
-      "word": "found",
-      "frequency": 26
-    },
-    {
-      "word": "understand",
-      "frequency": 26
-    },
-    {
-      "word": "stories",
-      "frequency": 26
-    },
-    {
-      "word": "sun",
-      "frequency": 26
-    },
-    {
-      "word": "fresh",
-      "frequency": 26
-    },
-    {
-      "word": "air",
-      "frequency": 26
-    },
-    {
-      "word": "music",
-      "frequency": 26
-    },
-    {
-      "word": "quantum",
-      "frequency": 26
-    },
-    {
-      "word": "really",
-      "frequency": 25
-    },
-    {
-      "word": "exactly",
-      "frequency": 25
-    },
-    {
-      "word": "true",
-      "frequency": 25
-    },
-    {
-      "word": "money",
-      "frequency": 25
-    },
-    {
-      "word": "sense",
-      "frequency": 25
-    },
-    {
-      "word": "looking",
-      "frequency": 25
-    },
-    {
-      "word": "eyes",
-      "frequency": 25
-    },
-    {
-      "word": "train",
-      "frequency": 25
-    },
-    {
-      "word": "skills",
-      "frequency": 25
-    },
-    {
-      "word": "finally",
-      "frequency": 24
-    },
-    {
-      "word": "right",
-      "frequency": 24
-    },
-    {
-      "word": "office",
-      "frequency": 24
-    },
-    {
-      "word": "took",
-      "frequency": 24
-    },
-    {
-      "word": "started",
-      "frequency": 24
-    },
-    {
-      "word": "soft",
-      "frequency": 24
-    },
-    {
-      "word": "river",
-      "frequency": 24
-    },
-    {
-      "word": "alex",
-      "frequency": 24
-    },
-    {
-      "word": "marta",
-      "frequency": 24
-    },
-    {
-      "word": "thank",
-      "frequency": 23
-    },
-    {
-      "word": "start",
-      "frequency": 23
-    },
-    {
-      "word": "lives",
-      "frequency": 23
-    },
-    {
-      "word": "perfect",
-      "frequency": 23
-    },
-    {
-      "word": "minutes",
-      "frequency": 23
-    },
-    {
-      "word": "cannot",
-      "frequency": 23
-    },
-    {
-      "word": "play",
-      "frequency": 23
-    },
-    {
-      "word": "photos",
-      "frequency": 23
-    },
-    {
-      "word": "hours",
-      "frequency": 23
-    },
-    {
-      "word": "living",
-      "frequency": 23
-    },
-    {
-      "word": "global",
-      "frequency": 23
-    },
-    {
-      "word": "feels",
-      "frequency": 22
-    },
-    {
-      "word": "thought",
-      "frequency": 22
-    },
-    {
-      "word": "sky",
-      "frequency": 22
-    },
-    {
-      "word": "blue",
-      "frequency": 22
-    },
-    {
-      "word": "week",
-      "frequency": 22
-    },
-    {
-      "word": "favorite",
-      "frequency": 22
-    },
-    {
-      "word": "trees",
-      "frequency": 22
-    },
-    {
-      "word": "open",
-      "frequency": 22
-    },
-    {
-      "word": "voice",
-      "frequency": 22
-    },
-    {
-      "word": "cabin",
-      "frequency": 22
-    },
-    {
-      "word": "individuals",
-      "frequency": 22
-    },
-    {
-      "word": "building",
-      "frequency": 22
-    },
-    {
-      "word": "motivation",
-      "frequency": 22
-    },
-    {
-      "word": "stop",
-      "frequency": 21
-    },
-    {
-      "word": "idea",
-      "frequency": 21
-    },
-    {
-      "word": "told",
-      "frequency": 21
-    },
-    {
-      "word": "sunday",
-      "frequency": 21
-    },
-    {
-      "word": "wake",
-      "frequency": 21
-    },
-    {
-      "word": "tea",
-      "frequency": 21
-    },
-    {
-      "word": "sat",
-      "frequency": 21
-    },
-    {
-      "word": "famous",
-      "frequency": 21
-    },
-    {
-      "word": "pasta",
-      "frequency": 21
-    },
-    {
-      "word": "class",
-      "frequency": 21
-    },
-    {
-      "word": "car",
-      "frequency": 21
-    },
-    {
-      "word": "began",
-      "frequency": 21
-    },
-    {
-      "word": "problem",
-      "frequency": 21
-    },
-    {
-      "word": "practice",
-      "frequency": 21
-    },
-    {
-      "word": "system",
-      "frequency": 21
-    },
-    {
-      "word": "few",
-      "frequency": 21
-    },
-    {
-      "word": "digital",
-      "frequency": 21
-    },
-    {
-      "word": "white",
-      "frequency": 20
-    },
-    {
-      "word": "woman",
-      "frequency": 20
-    },
-    {
-      "word": "apartment",
-      "frequency": 20
-    },
-    {
-      "word": "left",
-      "frequency": 20
-    },
-    {
-      "word": "far",
-      "frequency": 20
-    },
-    {
-      "word": "places",
-      "frequency": 20
-    },
-    {
-      "word": "learned",
-      "frequency": 20
-    },
-    {
-      "word": "became",
-      "frequency": 20
-    },
-    {
-      "word": "nature",
-      "frequency": 20
-    },
-    {
-      "word": "history",
-      "frequency": 20
-    },
-    {
-      "word": "buildings",
-      "frequency": 20
-    },
-    {
-      "word": "cities",
-      "frequency": 20
-    },
-    {
-      "word": "modern",
-      "frequency": 20
-    },
-    {
-      "word": "health",
-      "frequency": 20
-    },
-    {
-      "word": "job",
-      "frequency": 19
-    },
-    {
-      "word": "communication",
-      "frequency": 19
-    },
-    {
-      "word": "brother",
-      "frequency": 19
-    },
-    {
-      "word": "red",
-      "frequency": 19
     },
     {
       "word": "bus",
-      "frequency": 19
+      "frequency": 27
     },
     {
-      "word": "chicken",
-      "frequency": 19
+      "word": "seemed",
+      "frequency": 27
     },
     {
-      "word": "slowly",
-      "frequency": 19
-    },
-    {
-      "word": "ask",
-      "frequency": 19
-    },
-    {
-      "word": "hands",
-      "frequency": 19
-    },
-    {
-      "word": "going",
-      "frequency": 19
-    },
-    {
-      "word": "understanding",
-      "frequency": 19
-    },
-    {
-      "word": "physical",
-      "frequency": 19
+      "word": "bought",
+      "frequency": 27
     }
   ],
   "recommendedToAdd": [
     {
-      "word": "like",
-      "frequency": 218
-    },
-    {
-      "word": "small",
-      "frequency": 156
-    },
-    {
-      "word": "time",
-      "frequency": 144
-    },
-    {
-      "word": "people",
-      "frequency": 126
+      "word": "said",
+      "frequency": 173
     },
     {
       "word": "your",
-      "frequency": 113
+      "frequency": 160
     },
     {
-      "word": "said",
-      "frequency": 96
+      "word": "maria",
+      "frequency": 132
     },
     {
-      "word": "new",
+      "word": "something",
+      "frequency": 125
+    },
+    {
+      "word": "felt",
+      "frequency": 104
+    },
+    {
+      "word": "looked",
       "frequency": 93
     },
     {
-      "word": "day",
-      "frequency": 92
-    },
-    {
-      "word": "work",
-      "frequency": 92
-    },
-    {
-      "word": "look",
-      "frequency": 79
-    },
-    {
-      "word": "city",
-      "frequency": 78
-    },
-    {
-      "word": "feel",
-      "frequency": 77
-    },
-    {
-      "word": "old",
-      "frequency": 77
-    },
-    {
-      "word": "home",
-      "frequency": 76
-    },
-    {
-      "word": "big",
-      "frequency": 75
-    },
-    {
-      "word": "says",
-      "frequency": 72
+      "word": "sometimes",
+      "frequency": 89
     },
     {
       "word": "things",
+      "frequency": 83
+    },
+    {
+      "word": "become",
+      "frequency": 82
+    },
+    {
+      "word": "never",
+      "frequency": 77
+    },
+    {
+      "word": "little",
       "frequency": 69
     },
     {
@@ -882,67 +858,67 @@
       "frequency": 68
     },
     {
-      "word": "sometimes",
+      "word": "public",
+      "frequency": 66
+    },
+    {
+      "word": "elena",
       "frequency": 65
     },
     {
-      "word": "something",
+      "word": "digital",
       "frequency": 65
     },
     {
-      "word": "little",
-      "frequency": 65
-    },
-    {
-      "word": "felt",
+      "word": "asked",
       "frequency": 63
     },
     {
-      "word": "years",
-      "frequency": 62
+      "word": "air",
+      "frequency": 60
     },
     {
-      "word": "morning",
-      "frequency": 62
+      "word": "experience",
+      "frequency": 60
     },
     {
-      "word": "water",
-      "frequency": 61
+      "word": "simple",
+      "frequency": 59
     },
     {
-      "word": "long",
+      "word": "attention",
+      "frequency": 58
+    },
+    {
+      "word": "saw",
       "frequency": 57
     },
     {
-      "word": "mother",
-      "frequency": 57
-    },
-    {
-      "word": "looked",
-      "frequency": 57
-    },
-    {
-      "word": "world",
-      "frequency": 57
-    },
-    {
-      "word": "talk",
+      "word": "everything",
       "frequency": 56
     },
     {
-      "word": "important",
+      "word": "park",
       "frequency": 56
     },
     {
-      "word": "always",
-      "frequency": 55
+      "word": "thank",
+      "frequency": 54
     },
     {
-      "word": "much",
-      "frequency": 53
+      "word": "becomes",
+      "frequency": 54
     },
     {
-      "word": "friends",
+      "word": "went",
+      "frequency": 54
+    },
+    {
+      "word": "found",
+      "frequency": 54
+    },
+    {
+      "word": "repair",
       "frequency": 53
     },
     {
@@ -950,35 +926,91 @@
       "frequency": 53
     },
     {
-      "word": "human",
+      "word": "love",
+      "frequency": 52
+    },
+    {
+      "word": "afternoon",
+      "frequency": 52
+    },
+    {
+      "word": "someone",
+      "frequency": 52
+    },
+    {
+      "word": "phone",
       "frequency": 51
     },
     {
-      "word": "future",
+      "word": "came",
       "frequency": 50
     },
     {
-      "word": "near",
+      "word": "memory",
       "frequency": 50
     },
     {
       "word": "ben",
+      "frequency": 50
+    },
+    {
+      "word": "put",
       "frequency": 49
     },
     {
-      "word": "energy",
+      "word": "says",
       "frequency": 48
     },
     {
-      "word": "beautiful",
+      "word": "sense",
       "frequency": 48
     },
     {
-      "word": "learning",
+      "word": "name",
+      "frequency": 47
+    },
+    {
+      "word": "better",
+      "frequency": 47
+    },
+    {
+      "word": "days",
+      "frequency": 47
+    },
+    {
+      "word": "apartment",
+      "frequency": 47
+    },
+    {
+      "word": "walked",
+      "frequency": 47
+    },
+    {
+      "word": "started",
+      "frequency": 47
+    },
+    {
+      "word": "longer",
+      "frequency": 47
+    },
+    {
+      "word": "friend",
+      "frequency": 46
+    },
+    {
+      "word": "few",
+      "frequency": 46
+    },
+    {
+      "word": "use",
+      "frequency": 46
+    },
+    {
+      "word": "best",
       "frequency": 45
     },
     {
-      "word": "saw",
+      "word": "eyes",
       "frequency": 45
     },
     {
@@ -986,63 +1018,167 @@
       "frequency": 45
     },
     {
-      "word": "nice",
+      "word": "live",
       "frequency": 44
     },
     {
-      "word": "school",
+      "word": "sat",
+      "frequency": 44
+    },
+    {
+      "word": "real",
+      "frequency": 44
+    },
+    {
+      "word": "walking",
       "frequency": 43
     },
     {
-      "word": "father",
+      "word": "thought",
       "frequency": 43
     },
     {
-      "word": "bed",
+      "word": "difficult",
+      "frequency": 43
+    },
+    {
+      "word": "moment",
+      "frequency": 43
+    },
+    {
+      "word": "space",
+      "frequency": 43
+    },
+    {
+      "word": "health",
+      "frequency": 43
+    },
+    {
+      "word": "green",
       "frequency": 42
     },
     {
-      "word": "different",
+      "word": "part",
       "frequency": 42
     },
     {
-      "word": "eat",
+      "word": "ana",
+      "frequency": 42
+    },
+    {
+      "word": "understand",
+      "frequency": 42
+    },
+    {
+      "word": "told",
+      "frequency": 42
+    },
+    {
+      "word": "others",
+      "frequency": 42
+    },
+    {
+      "word": "minutes",
       "frequency": 41
     },
     {
-      "word": "lot",
+      "word": "sit",
+      "frequency": 41
+    },
+    {
+      "word": "really",
+      "frequency": 41
+    },
+    {
+      "word": "saturday",
+      "frequency": 41
+    },
+    {
+      "word": "kitchen",
+      "frequency": 41
+    },
+    {
+      "word": "map",
+      "frequency": 41
+    },
+    {
+      "word": "information",
+      "frequency": 41
+    },
+    {
+      "word": "lucas",
       "frequency": 40
     },
     {
-      "word": "maria",
+      "word": "music",
       "frequency": 40
     },
     {
-      "word": "made",
+      "word": "cannot",
+      "frequency": 40
+    },
+    {
+      "word": "week",
+      "frequency": 40
+    },
+    {
+      "word": "pasta",
+      "frequency": 40
+    },
+    {
+      "word": "museum",
+      "frequency": 40
+    },
+    {
+      "word": "grandmother",
+      "frequency": 40
+    },
+    {
+      "word": "knowledge",
+      "frequency": 40
+    },
+    {
+      "word": "understanding",
+      "frequency": 40
+    },
+    {
+      "word": "personal",
+      "frequency": 40
+    },
+    {
+      "word": "children",
       "frequency": 39
     },
     {
-      "word": "family",
+      "word": "took",
       "frequency": 39
     },
     {
-      "word": "help",
+      "word": "hours",
       "frequency": 39
     },
     {
-      "word": "went",
+      "word": "play",
       "frequency": 38
     },
     {
-      "word": "come",
+      "word": "helps",
       "frequency": 38
     },
     {
-      "word": "books",
+      "word": "sounds",
       "frequency": 38
     },
     {
-      "word": "technology",
+      "word": "london",
+      "frequency": 38
+    },
+    {
+      "word": "chapter",
+      "frequency": 38
+    },
+    {
+      "word": "quality",
       "frequency": 38
     },
     {
@@ -1050,47 +1186,163 @@
       "frequency": 37
     },
     {
-      "word": "wanted",
+      "word": "right",
       "frequency": 37
     },
     {
-      "word": "man",
+      "word": "woman",
+      "frequency": 37
+    },
+    {
+      "word": "looking",
+      "frequency": 37
+    },
+    {
+      "word": "practice",
+      "frequency": 37
+    },
+    {
+      "word": "smiled",
+      "frequency": 37
+    },
+    {
+      "word": "problem",
+      "frequency": 37
+    },
+    {
+      "word": "language",
+      "frequency": 37
+    },
+    {
+      "word": "physical",
+      "frequency": 37
+    },
+    {
+      "word": "sun",
       "frequency": 36
     },
     {
-      "word": "own",
+      "word": "full",
+      "frequency": 36
+    },
+    {
+      "word": "makes",
+      "frequency": 36
+    },
+    {
+      "word": "challenges",
+      "frequency": 36
+    },
+    {
+      "word": "individuals",
+      "frequency": 36
+    },
+    {
+      "word": "spaces",
+      "frequency": 36
+    },
+    {
+      "word": "skills",
+      "frequency": 36
+    },
+    {
+      "word": "open",
       "frequency": 35
     },
     {
-      "word": "social",
+      "word": "perfect",
       "frequency": 35
     },
     {
-      "word": "book",
+      "word": "class",
       "frequency": 35
     },
     {
-      "word": "put",
+      "word": "large",
+      "frequency": 35
+    },
+    {
+      "word": "question",
+      "frequency": 35
+    },
+    {
+      "word": "office",
+      "frequency": 35
+    },
+    {
+      "word": "less",
+      "frequency": 35
+    },
+    {
+      "word": "cities",
+      "frequency": 35
+    },
+    {
+      "word": "stories",
       "frequency": 34
     },
     {
-      "word": "kitchen",
+      "word": "lives",
       "frequency": 34
     },
     {
-      "word": "night",
+      "word": "left",
       "frequency": 34
     },
     {
-      "word": "pip",
+      "word": "story",
       "frequency": 34
     },
     {
-      "word": "london",
+      "word": "places",
       "frequency": 34
     },
     {
-      "word": "everything",
+      "word": "reality",
+      "frequency": 34
+    },
+    {
+      "word": "spent",
+      "frequency": 34
+    },
+    {
+      "word": "modern",
+      "frequency": 34
+    },
+    {
+      "word": "brother",
+      "frequency": 33
+    },
+    {
+      "word": "idea",
+      "frequency": 33
+    },
+    {
+      "word": "coffee",
+      "frequency": 33
+    },
+    {
+      "word": "trip",
+      "frequency": 33
+    },
+    {
+      "word": "money",
+      "frequency": 33
+    },
+    {
+      "word": "finally",
+      "frequency": 33
+    },
+    {
+      "word": "began",
+      "frequency": 33
+    },
+    {
+      "word": "requires",
+      "frequency": 33
+    },
+    {
+      "word": "emotional",
       "frequency": 33
     },
     {
@@ -1098,171 +1350,335 @@
       "frequency": 33
     },
     {
-      "word": "part",
+      "word": "red",
       "frequency": 32
     },
     {
-      "word": "days",
+      "word": "sky",
       "frequency": 32
     },
     {
-      "word": "name",
+      "word": "keys",
       "frequency": 32
     },
     {
-      "word": "best",
+      "word": "changed",
       "frequency": 32
     },
     {
-      "word": "park",
+      "word": "building",
       "frequency": 32
     },
     {
-      "word": "afternoon",
+      "word": "became",
       "frequency": 32
     },
     {
-      "word": "elena",
+      "word": "community",
       "frequency": 32
     },
     {
-      "word": "someone",
+      "word": "experiences",
+      "frequency": 32
+    },
+    {
+      "word": "fresh",
       "frequency": 31
     },
     {
-      "word": "helps",
+      "word": "true",
+      "frequency": 31
+    },
+    {
+      "word": "night",
+      "frequency": 31
+    },
+    {
+      "word": "lost",
+      "frequency": 31
+    },
+    {
+      "word": "past",
+      "frequency": 31
+    },
+    {
+      "word": "carefully",
+      "frequency": 31
+    },
+    {
+      "word": "start",
+      "frequency": 31
+    },
+    {
+      "word": "sound",
+      "frequency": 31
+    },
+    {
+      "word": "feeling",
+      "frequency": 31
+    },
+    {
+      "word": "environmental",
+      "frequency": 31
+    },
+    {
+      "word": "global",
+      "frequency": 31
+    },
+    {
+      "word": "looks",
       "frequency": 30
-    },
-    {
-      "word": "love",
-      "frequency": 30
-    },
-    {
-      "word": "asked",
-      "frequency": 30
-    },
-    {
-      "word": "chapter",
-      "frequency": 30
-    },
-    {
-      "word": "real",
-      "frequency": 29
-    },
-    {
-      "word": "live",
-      "frequency": 29
     },
     {
       "word": "house",
+      "frequency": 30
+    },
+    {
+      "word": "twenty",
+      "frequency": 30
+    },
+    {
+      "word": "lunch",
+      "frequency": 30
+    },
+    {
+      "word": "trees",
+      "frequency": 30
+    },
+    {
+      "word": "carlos",
+      "frequency": 30
+    },
+    {
+      "word": "exactly",
+      "frequency": 30
+    },
+    {
+      "word": "learned",
+      "frequency": 30
+    },
+    {
+      "word": "person",
+      "frequency": 30
+    },
+    {
+      "word": "complex",
+      "frequency": 30
+    },
+    {
+      "word": "data",
+      "frequency": 30
+    },
+    {
+      "word": "cognitive",
+      "frequency": 30
+    },
+    {
+      "word": "simply",
+      "frequency": 30
+    },
+    {
+      "word": "changes",
+      "frequency": 30
+    },
+    {
+      "word": "brown",
       "frequency": 29
     },
     {
-      "word": "saturday",
+      "word": "cooking",
       "frequency": 29
     },
     {
-      "word": "sit",
+      "word": "students",
+      "frequency": 29
+    },
+    {
+      "word": "online",
+      "frequency": 29
+    },
+    {
+      "word": "knew",
+      "frequency": 29
+    },
+    {
+      "word": "living",
+      "frequency": 29
+    },
+    {
+      "word": "working",
+      "frequency": 29
+    },
+    {
+      "word": "ways",
+      "frequency": 29
+    },
+    {
+      "word": "self",
+      "frequency": 29
+    },
+    {
+      "word": "form",
+      "frequency": 29
+    },
+    {
+      "word": "tools",
+      "frequency": 29
+    },
+    {
+      "word": "value",
+      "frequency": 29
+    },
+    {
+      "word": "communication",
+      "frequency": 29
+    },
+    {
+      "word": "existence",
+      "frequency": 29
+    },
+    {
+      "word": "slowly",
       "frequency": 28
     },
     {
-      "word": "never",
+      "word": "blue",
+      "frequency": 28
+    },
+    {
+      "word": "quickly",
+      "frequency": 28
+    },
+    {
+      "word": "stop",
+      "frequency": 28
+    },
+    {
+      "word": "decided",
+      "frequency": 28
+    },
+    {
+      "word": "arrived",
+      "frequency": 28
+    },
+    {
+      "word": "enough",
+      "frequency": 28
+    },
+    {
+      "word": "consciousness",
+      "frequency": 28
+    },
+    {
+      "word": "significant",
+      "frequency": 28
+    },
+    {
+      "word": "history",
+      "frequency": 28
+    },
+    {
+      "word": "train",
+      "frequency": 28
+    },
+    {
+      "word": "making",
+      "frequency": 28
+    },
+    {
+      "word": "professional",
+      "frequency": 28
+    },
+    {
+      "word": "samuel",
       "frequency": 28
     },
     {
       "word": "breakfast",
-      "frequency": 28
-    },
-    {
-      "word": "friend",
-      "frequency": 28
-    },
-    {
-      "word": "coffee",
-      "frequency": 28
-    },
-    {
-      "word": "green",
-      "frequency": 28
-    },
-    {
-      "word": "moment",
-      "frequency": 28
-    },
-    {
-      "word": "trip",
-      "frequency": 28
-    },
-    {
-      "word": "use",
-      "frequency": 28
-    },
-    {
-      "word": "language",
-      "frequency": 28
-    },
-    {
-      "word": "makes",
       "frequency": 27
     },
     {
-      "word": "looks",
+      "word": "bus",
       "frequency": 27
     },
     {
-      "word": "phone",
+      "word": "seemed",
       "frequency": 27
     },
     {
-      "word": "simple",
+      "word": "bought",
       "frequency": 27
     },
     {
-      "word": "better",
+      "word": "streets",
       "frequency": 27
     },
     {
-      "word": "large",
+      "word": "useful",
       "frequency": 27
     },
     {
-      "word": "walked",
+      "word": "increasingly",
       "frequency": 27
     },
     {
-      "word": "came",
+      "word": "shadows",
       "frequency": 27
     },
     {
-      "word": "become",
+      "word": "marta",
       "frequency": 27
     },
     {
-      "word": "found",
+      "word": "course",
       "frequency": 26
     },
     {
-      "word": "understand",
+      "word": "later",
       "frequency": 26
     },
     {
-      "word": "stories",
+      "word": "animals",
       "frequency": 26
     },
     {
-      "word": "sun",
+      "word": "dog",
       "frequency": 26
     },
     {
-      "word": "fresh",
+      "word": "nothing",
       "frequency": 26
     },
     {
-      "word": "air",
+      "word": "hands",
       "frequency": 26
     },
     {
-      "word": "music",
+      "word": "easy",
+      "frequency": 26
+    },
+    {
+      "word": "stood",
+      "frequency": 26
+    },
+    {
+      "word": "moved",
+      "frequency": 26
+    },
+    {
+      "word": "systems",
+      "frequency": 26
+    },
+    {
+      "word": "present",
+      "frequency": 26
+    },
+    {
+      "word": "silence",
+      "frequency": 26
+    },
+    {
+      "word": "project",
       "frequency": 26
     },
     {
@@ -1270,67 +1686,151 @@
       "frequency": 26
     },
     {
-      "word": "really",
+      "word": "feels",
       "frequency": 25
     },
     {
-      "word": "exactly",
+      "word": "vegetables",
       "frequency": 25
     },
     {
-      "word": "true",
+      "word": "max",
       "frequency": 25
     },
     {
-      "word": "money",
+      "word": "usually",
       "frequency": 25
     },
     {
-      "word": "sense",
+      "word": "guitar",
       "frequency": 25
     },
     {
-      "word": "looking",
+      "word": "voice",
       "frequency": 25
     },
     {
-      "word": "eyes",
+      "word": "high",
       "frequency": 25
     },
     {
-      "word": "train",
+      "word": "ask",
       "frequency": 25
     },
     {
-      "word": "skills",
+      "word": "photos",
       "frequency": 25
     },
     {
-      "word": "finally",
+      "word": "opened",
+      "frequency": 25
+    },
+    {
+      "word": "seen",
+      "frequency": 25
+    },
+    {
+      "word": "shared",
+      "frequency": 25
+    },
+    {
+      "word": "nature",
+      "frequency": 25
+    },
+    {
+      "word": "traditional",
+      "frequency": 25
+    },
+    {
+      "word": "far",
+      "frequency": 25
+    },
+    {
+      "word": "understood",
+      "frequency": 25
+    },
+    {
+      "word": "local",
+      "frequency": 25
+    },
+    {
+      "word": "lived",
+      "frequency": 25
+    },
+    {
+      "word": "media",
+      "frequency": 25
+    },
+    {
+      "word": "essential",
+      "frequency": 25
+    },
+    {
+      "word": "hello",
       "frequency": 24
     },
     {
-      "word": "right",
+      "word": "car",
       "frequency": 24
     },
     {
-      "word": "office",
+      "word": "interesting",
       "frequency": 24
     },
     {
-      "word": "took",
+      "word": "favorite",
       "frequency": 24
     },
     {
-      "word": "started",
+      "word": "times",
       "frequency": 24
     },
     {
-      "word": "soft",
+      "word": "cost",
       "frequency": 24
     },
     {
-      "word": "river",
+      "word": "stayed",
+      "frequency": 24
+    },
+    {
+      "word": "turned",
+      "frequency": 24
+    },
+    {
+      "word": "going",
+      "frequency": 24
+    },
+    {
+      "word": "showed",
+      "frequency": 24
+    },
+    {
+      "word": "ideas",
+      "frequency": 24
+    },
+    {
+      "word": "training",
+      "frequency": 24
+    },
+    {
+      "word": "buildings",
+      "frequency": 24
+    },
+    {
+      "word": "memories",
+      "frequency": 24
+    },
+    {
+      "word": "matters",
+      "frequency": 24
+    },
+    {
+      "word": "pressure",
+      "frequency": 24
+    },
+    {
+      "word": "urban",
       "frequency": 24
     },
     {
@@ -1338,131 +1838,175 @@
       "frequency": 24
     },
     {
-      "word": "marta",
-      "frequency": 24
-    },
-    {
-      "word": "thank",
+      "word": "gives",
       "frequency": 23
     },
     {
-      "word": "start",
+      "word": "works",
       "frequency": 23
-    },
-    {
-      "word": "lives",
-      "frequency": 23
-    },
-    {
-      "word": "perfect",
-      "frequency": 23
-    },
-    {
-      "word": "minutes",
-      "frequency": 23
-    },
-    {
-      "word": "cannot",
-      "frequency": 23
-    },
-    {
-      "word": "play",
-      "frequency": 23
-    },
-    {
-      "word": "photos",
-      "frequency": 23
-    },
-    {
-      "word": "hours",
-      "frequency": 23
-    },
-    {
-      "word": "living",
-      "frequency": 23
-    },
-    {
-      "word": "global",
-      "frequency": 23
-    },
-    {
-      "word": "feels",
-      "frequency": 22
-    },
-    {
-      "word": "thought",
-      "frequency": 22
-    },
-    {
-      "word": "sky",
-      "frequency": 22
-    },
-    {
-      "word": "blue",
-      "frequency": 22
-    },
-    {
-      "word": "week",
-      "frequency": 22
-    },
-    {
-      "word": "favorite",
-      "frequency": 22
-    },
-    {
-      "word": "trees",
-      "frequency": 22
-    },
-    {
-      "word": "open",
-      "frequency": 22
-    },
-    {
-      "word": "voice",
-      "frequency": 22
-    },
-    {
-      "word": "cabin",
-      "frequency": 22
-    },
-    {
-      "word": "individuals",
-      "frequency": 22
-    },
-    {
-      "word": "building",
-      "frequency": 22
-    },
-    {
-      "word": "motivation",
-      "frequency": 22
-    },
-    {
-      "word": "stop",
-      "frequency": 21
-    },
-    {
-      "word": "idea",
-      "frequency": 21
-    },
-    {
-      "word": "told",
-      "frequency": 21
     },
     {
       "word": "sunday",
-      "frequency": 21
+      "frequency": 23
     },
     {
       "word": "wake",
-      "frequency": 21
+      "frequency": 23
     },
     {
       "word": "tea",
+      "frequency": 23
+    },
+    {
+      "word": "words",
+      "frequency": 23
+    },
+    {
+      "word": "reading",
+      "frequency": 23
+    },
+    {
+      "word": "busy",
+      "frequency": 23
+    },
+    {
+      "word": "job",
+      "frequency": 23
+    },
+    {
+      "word": "laughed",
+      "frequency": 23
+    },
+    {
+      "word": "happened",
+      "frequency": 23
+    },
+    {
+      "word": "culture",
+      "frequency": 23
+    },
+    {
+      "word": "system",
+      "frequency": 23
+    },
+    {
+      "word": "create",
+      "frequency": 23
+    },
+    {
+      "word": "effort",
+      "frequency": 23
+    },
+    {
+      "word": "require",
+      "frequency": 23
+    },
+    {
+      "word": "motivation",
+      "frequency": 23
+    },
+    {
+      "word": "likes",
+      "frequency": 22
+    },
+    {
+      "word": "tomatoes",
+      "frequency": 22
+    },
+    {
+      "word": "visit",
+      "frequency": 22
+    },
+    {
+      "word": "waiting",
+      "frequency": 22
+    },
+    {
+      "word": "anyone",
+      "frequency": 22
+    },
+    {
+      "word": "needed",
+      "frequency": 22
+    },
+    {
+      "word": "study",
+      "frequency": 22
+    },
+    {
+      "word": "river",
+      "frequency": 22
+    },
+    {
+      "word": "stopped",
+      "frequency": 22
+    },
+    {
+      "word": "science",
+      "frequency": 22
+    },
+    {
+      "word": "thinking",
+      "frequency": 22
+    },
+    {
+      "word": "valuable",
+      "frequency": 22
+    },
+    {
+      "word": "merely",
+      "frequency": 22
+    },
+    {
+      "word": "mental",
+      "frequency": 22
+    },
+    {
+      "word": "connection",
+      "frequency": 22
+    },
+    {
+      "word": "means",
+      "frequency": 22
+    },
+    {
+      "word": "maps",
+      "frequency": 22
+    },
+    {
+      "word": "habits",
+      "frequency": 22
+    },
+    {
+      "word": "constant",
+      "frequency": 22
+    },
+    {
+      "word": "thomas",
+      "frequency": 22
+    },
+    {
+      "word": "ordinary",
+      "frequency": 22
+    },
+    {
+      "word": "psychological",
+      "frequency": 22
+    },
+    {
+      "word": "support",
+      "frequency": 22
+    },
+    {
+      "word": "please",
       "frequency": 21
     },
     {
-      "word": "sat",
+      "word": "okay",
+      "frequency": 21
+    },
+    {
+      "word": "sister",
       "frequency": 21
     },
     {
@@ -1470,115 +2014,151 @@
       "frequency": 21
     },
     {
-      "word": "pasta",
+      "word": "tried",
       "frequency": 21
     },
     {
-      "word": "class",
+      "word": "neighborhood",
       "frequency": 21
     },
     {
-      "word": "car",
+      "word": "moving",
       "frequency": 21
     },
     {
-      "word": "began",
+      "word": "trying",
       "frequency": 21
     },
     {
-      "word": "problem",
+      "word": "result",
       "frequency": 21
     },
     {
-      "word": "practice",
+      "word": "letter",
       "frequency": 21
     },
     {
-      "word": "system",
+      "word": "profound",
       "frequency": 21
     },
     {
-      "word": "few",
+      "word": "ability",
       "frequency": 21
     },
     {
-      "word": "digital",
+      "word": "potential",
       "frequency": 21
     },
     {
-      "word": "white",
+      "word": "conclusion",
+      "frequency": 21
+    },
+    {
+      "word": "conversation",
+      "frequency": 21
+    },
+    {
+      "word": "benefits",
+      "frequency": 21
+    },
+    {
+      "word": "areas",
+      "frequency": 21
+    },
+    {
+      "word": "presence",
+      "frequency": 21
+    },
+    {
+      "word": "remote",
+      "frequency": 21
+    },
+    {
+      "word": "flowers",
       "frequency": 20
     },
     {
-      "word": "woman",
+      "word": "soft",
       "frequency": 20
     },
     {
-      "word": "apartment",
+      "word": "immediately",
       "frequency": 20
     },
     {
-      "word": "left",
+      "word": "talked",
       "frequency": 20
     },
     {
-      "word": "far",
+      "word": "problems",
       "frequency": 20
     },
     {
-      "word": "places",
+      "word": "meaningful",
       "frequency": 20
     },
     {
-      "word": "learned",
+      "word": "point",
       "frequency": 20
     },
     {
-      "word": "became",
+      "word": "challenge",
       "frequency": 20
     },
     {
-      "word": "nature",
+      "word": "moral",
       "frequency": 20
     },
     {
-      "word": "history",
+      "word": "progress",
       "frequency": 20
     },
     {
-      "word": "buildings",
+      "word": "completely",
       "frequency": 20
     },
     {
-      "word": "cities",
+      "word": "term",
       "frequency": 20
     },
     {
-      "word": "modern",
+      "word": "especially",
       "frequency": 20
     },
     {
-      "word": "health",
+      "word": "eleanor",
       "frequency": 20
     },
     {
-      "word": "job",
+      "word": "focus",
+      "frequency": 20
+    },
+    {
+      "word": "individual",
+      "frequency": 20
+    },
+    {
+      "word": "success",
+      "frequency": 20
+    },
+    {
+      "word": "solitude",
+      "frequency": 20
+    },
+    {
+      "word": "milk",
       "frequency": 19
     },
     {
-      "word": "communication",
+      "word": "area",
       "frequency": 19
     },
     {
-      "word": "brother",
+      "word": "special",
       "frequency": 19
     },
     {
-      "word": "red",
-      "frequency": 19
-    },
-    {
-      "word": "bus",
+      "word": "calm",
       "frequency": 19
     },
     {
@@ -1586,43 +2166,79 @@
       "frequency": 19
     },
     {
-      "word": "slowly",
+      "word": "moments",
       "frequency": 19
     },
     {
-      "word": "ask",
+      "word": "listen",
       "frequency": 19
     },
     {
-      "word": "hands",
+      "word": "parents",
       "frequency": 19
     },
     {
-      "word": "going",
+      "word": "bad",
       "frequency": 19
     },
     {
-      "word": "understanding",
+      "word": "wrote",
       "frequency": 19
     },
     {
-      "word": "physical",
+      "word": "cat",
       "frequency": 19
     },
     {
-      "word": "self",
+      "word": "lamp",
       "frequency": 19
     },
     {
-      "word": "past",
+      "word": "cabin",
       "frequency": 19
     },
     {
-      "word": "spent",
+      "word": "summer",
       "frequency": 19
     },
     {
-      "word": "longer",
+      "word": "gave",
+      "frequency": 19
+    },
+    {
+      "word": "continued",
+      "frequency": 19
+    },
+    {
+      "word": "traffic",
+      "frequency": 19
+    },
+    {
+      "word": "distance",
+      "frequency": 19
+    },
+    {
+      "word": "truly",
+      "frequency": 19
+    },
+    {
+      "word": "kept",
+      "frequency": 19
+    },
+    {
+      "word": "reason",
+      "frequency": 19
+    },
+    {
+      "word": "creates",
+      "frequency": 19
+    },
+    {
+      "word": "entirely",
+      "frequency": 19
+    },
+    {
+      "word": "access",
       "frequency": 19
     },
     {
@@ -1630,123 +2246,231 @@
       "frequency": 19
     },
     {
-      "word": "sounds",
+      "word": "process",
+      "frequency": 19
+    },
+    {
+      "word": "sitting",
       "frequency": 18
     },
     {
-      "word": "story",
+      "word": "starts",
+      "frequency": 18
+    },
+    {
+      "word": "white",
+      "frequency": 18
+    },
+    {
+      "word": "birds",
+      "frequency": 18
+    },
+    {
+      "word": "hour",
+      "frequency": 18
+    },
+    {
+      "word": "thirty",
+      "frequency": 18
+    },
+    {
+      "word": "loved",
+      "frequency": 18
+    },
+    {
+      "word": "taking",
+      "frequency": 18
+    },
+    {
+      "word": "questions",
+      "frequency": 18
+    },
+    {
+      "word": "difference",
+      "frequency": 18
+    },
+    {
+      "word": "free",
+      "frequency": 18
+    },
+    {
+      "word": "machines",
+      "frequency": 18
+    },
+    {
+      "word": "deeply",
+      "frequency": 18
+    },
+    {
+      "word": "parts",
+      "frequency": 18
+    },
+    {
+      "word": "built",
+      "frequency": 18
+    },
+    {
+      "word": "practical",
+      "frequency": 18
+    },
+    {
+      "word": "forms",
+      "frequency": 18
+    },
+    {
+      "word": "environment",
+      "frequency": 18
+    },
+    {
+      "word": "strength",
+      "frequency": 18
+    },
+    {
+      "word": "provide",
+      "frequency": 18
+    },
+    {
+      "word": "design",
       "frequency": 18
     },
     {
       "word": "beach",
-      "frequency": 18
-    },
-    {
-      "word": "twenty",
-      "frequency": 18
-    },
-    {
-      "word": "bought",
-      "frequency": 18
-    },
-    {
-      "word": "arrived",
-      "frequency": 18
-    },
-    {
-      "word": "full",
-      "frequency": 18
-    },
-    {
-      "word": "cat",
-      "frequency": 18
-    },
-    {
-      "word": "smiled",
-      "frequency": 18
-    },
-    {
-      "word": "map",
-      "frequency": 18
-    },
-    {
-      "word": "significant",
-      "frequency": 18
-    },
-    {
-      "word": "challenges",
-      "frequency": 18
-    },
-    {
-      "word": "museum",
-      "frequency": 18
-    },
-    {
-      "word": "working",
       "frequency": 17
     },
     {
-      "word": "changes",
+      "word": "puts",
       "frequency": 17
     },
     {
-      "word": "decided",
+      "word": "clear",
       "frequency": 17
     },
     {
-      "word": "easy",
+      "word": "eggs",
       "frequency": 17
     },
     {
-      "word": "study",
+      "word": "fruit",
       "frequency": 17
     },
     {
-      "word": "others",
+      "word": "broken",
       "frequency": 17
     },
     {
-      "word": "animals",
+      "word": "shopping",
       "frequency": 17
     },
     {
-      "word": "sister",
+      "word": "choose",
       "frequency": 17
     },
     {
-      "word": "vegetables",
+      "word": "funny",
       "frequency": 17
     },
     {
-      "word": "children",
+      "word": "body",
       "frequency": 17
     },
     {
-      "word": "stayed",
+      "word": "lies",
       "frequency": 17
     },
     {
-      "word": "changed",
+      "word": "black",
       "frequency": 17
     },
     {
-      "word": "cooking",
+      "word": "playing",
       "frequency": 17
     },
     {
-      "word": "camera",
+      "word": "nervous",
       "frequency": 17
     },
     {
-      "word": "summer",
+      "word": "met",
       "frequency": 17
     },
     {
-      "word": "knew",
+      "word": "visited",
       "frequency": 17
     },
     {
-      "word": "visit",
+      "word": "notebook",
+      "frequency": 17
+    },
+    {
+      "word": "called",
+      "frequency": 17
+    },
+    {
+      "word": "planning",
+      "frequency": 17
+    },
+    {
+      "word": "careful",
+      "frequency": 17
+    },
+    {
+      "word": "realized",
+      "frequency": 17
+    },
+    {
+      "word": "needs",
+      "frequency": 17
+    },
+    {
+      "word": "intelligence",
+      "frequency": 17
+    },
+    {
+      "word": "remains",
+      "frequency": 17
+    },
+    {
+      "word": "landscape",
+      "frequency": 17
+    },
+    {
+      "word": "goals",
+      "frequency": 17
+    },
+    {
+      "word": "impact",
+      "frequency": 17
+    },
+    {
+      "word": "society",
+      "frequency": 17
+    },
+    {
+      "word": "workers",
+      "frequency": 17
+    },
+    {
+      "word": "connected",
+      "frequency": 17
+    },
+    {
+      "word": "lighthouse",
+      "frequency": 17
+    },
+    {
+      "word": "reduce",
+      "frequency": 17
+    },
+    {
+      "word": "environments",
+      "frequency": 17
+    },
+    {
+      "word": "monitoring",
+      "frequency": 17
+    },
+    {
+      "word": "institutions",
       "frequency": 17
     },
     {
@@ -1754,111 +2478,255 @@
       "frequency": 17
     },
     {
-      "word": "talked",
+      "word": "mrs",
       "frequency": 16
     },
     {
-      "word": "feeling",
+      "word": "onions",
       "frequency": 16
     },
     {
-      "word": "touch",
+      "word": "helped",
       "frequency": 16
     },
     {
-      "word": "enough",
+      "word": "wants",
       "frequency": 16
     },
     {
-      "word": "lunch",
+      "word": "head",
       "frequency": 16
     },
     {
-      "word": "tried",
+      "word": "teacher",
       "frequency": 16
     },
     {
-      "word": "needs",
+      "word": "watched",
       "frequency": 16
     },
     {
-      "word": "intelligence",
+      "word": "computer",
       "frequency": 16
     },
     {
-      "word": "high",
+      "word": "leo",
       "frequency": 16
     },
     {
-      "word": "potential",
+      "word": "hair",
       "frequency": 16
     },
     {
-      "word": "busy",
+      "word": "camera",
+      "frequency": 16
+    },
+    {
+      "word": "becoming",
+      "frequency": 16
+    },
+    {
+      "word": "bicycle",
+      "frequency": 16
+    },
+    {
+      "word": "gone",
+      "frequency": 16
+    },
+    {
+      "word": "patterns",
+      "frequency": 16
+    },
+    {
+      "word": "designed",
+      "frequency": 16
+    },
+    {
+      "word": "risk",
+      "frequency": 16
+    },
+    {
+      "word": "technical",
+      "frequency": 16
+    },
+    {
+      "word": "content",
+      "frequency": 16
+    },
+    {
+      "word": "decisions",
+      "frequency": 16
+    },
+    {
+      "word": "exist",
+      "frequency": 16
+    },
+    {
+      "word": "remembered",
+      "frequency": 16
+    },
+    {
+      "word": "months",
+      "frequency": 16
+    },
+    {
+      "word": "constantly",
+      "frequency": 16
+    },
+    {
+      "word": "control",
+      "frequency": 16
+    },
+    {
+      "word": "transition",
+      "frequency": 16
+    },
+    {
+      "word": "growth",
+      "frequency": 16
+    },
+    {
+      "word": "relationships",
+      "frequency": 16
+    },
+    {
+      "word": "role",
+      "frequency": 16
+    },
+    {
+      "word": "led",
+      "frequency": 16
+    },
+    {
+      "word": "objects",
+      "frequency": 16
+    },
+    {
+      "word": "doing",
+      "frequency": 16
+    },
+    {
+      "word": "sources",
+      "frequency": 16
+    },
+    {
+      "word": "powerful",
+      "frequency": 16
+    },
+    {
+      "word": "describe",
+      "frequency": 16
+    },
+    {
+      "word": "recognition",
+      "frequency": 16
+    },
+    {
+      "word": "conditions",
+      "frequency": 16
+    },
+    {
+      "word": "particular",
+      "frequency": 16
+    },
+    {
+      "word": "routine",
+      "frequency": 16
+    },
+    {
+      "word": "piece",
       "frequency": 15
     },
     {
-      "word": "difficult",
+      "word": "yellow",
       "frequency": 15
     },
     {
-      "word": "usually",
+      "word": "sea",
       "frequency": 15
     },
     {
-      "word": "sad",
+      "word": "mom",
       "frequency": 15
     },
     {
-      "word": "quickly",
+      "word": "check",
       "frequency": 15
     },
     {
-      "word": "birds",
+      "word": "smiles",
       "frequency": 15
     },
     {
-      "word": "likes",
+      "word": "families",
       "frequency": 15
     },
     {
-      "word": "rice",
+      "word": "center",
       "frequency": 15
     },
     {
-      "word": "fruit",
+      "word": "continue",
       "frequency": 15
     },
     {
-      "word": "body",
+      "word": "walls",
       "frequency": 15
     },
     {
-      "word": "special",
+      "word": "student",
       "frequency": 15
     },
     {
-      "word": "traditional",
+      "word": "activities",
       "frequency": 15
     },
     {
-      "word": "requires",
+      "word": "close",
       "frequency": 15
     },
     {
-      "word": "seen",
+      "word": "watching",
       "frequency": 15
     },
     {
-      "word": "stood",
+      "word": "activity",
       "frequency": 15
     },
     {
-      "word": "moved",
+      "word": "replied",
       "frequency": 15
     },
     {
-      "word": "streets",
+      "word": "using",
+      "frequency": 15
+    },
+    {
+      "word": "creative",
+      "frequency": 15
+    },
+    {
+      "word": "possess",
+      "frequency": 15
+    },
+    {
+      "word": "subjective",
+      "frequency": 15
+    },
+    {
+      "word": "furthermore",
+      "frequency": 15
+    },
+    {
+      "word": "development",
+      "frequency": 15
+    },
+    {
+      "word": "level",
+      "frequency": 15
+    },
+    {
+      "word": "include",
       "frequency": 15
     },
     {
@@ -1866,11 +2734,47 @@
       "frequency": 15
     },
     {
-      "word": "growth",
+      "word": "confidence",
       "frequency": 15
     },
     {
-      "word": "success",
+      "word": "patience",
+      "frequency": 15
+    },
+    {
+      "word": "residents",
+      "frequency": 15
+    },
+    {
+      "word": "invisible",
+      "frequency": 15
+    },
+    {
+      "word": "genuine",
+      "frequency": 15
+    },
+    {
+      "word": "productivity",
+      "frequency": 15
+    },
+    {
+      "word": "fully",
+      "frequency": 15
+    },
+    {
+      "word": "provides",
+      "frequency": 15
+    },
+    {
+      "word": "absence",
+      "frequency": 15
+    },
+    {
+      "word": "political",
+      "frequency": 15
+    },
+    {
+      "word": "state",
       "frequency": 15
     },
     {
@@ -1878,15 +2782,39 @@
       "frequency": 15
     },
     {
-      "word": "times",
+      "word": "apples",
       "frequency": 14
     },
     {
-      "word": "nothing",
+      "word": "orange",
       "frequency": 14
     },
     {
-      "word": "personal",
+      "word": "rice",
+      "frequency": 14
+    },
+    {
+      "word": "tree",
+      "frequency": 14
+    },
+    {
+      "word": "show",
+      "frequency": 14
+    },
+    {
+      "word": "boy",
+      "frequency": 14
+    },
+    {
+      "word": "plans",
+      "frequency": 14
+    },
+    {
+      "word": "eating",
+      "frequency": 14
+    },
+    {
+      "word": "tall",
       "frequency": 14
     },
     {
@@ -1894,91 +2822,131 @@
       "frequency": 14
     },
     {
-      "word": "less",
+      "word": "art",
       "frequency": 14
     },
     {
-      "word": "hello",
+      "word": "exercise",
       "frequency": 14
     },
     {
-      "word": "funny",
+      "word": "ago",
       "frequency": 14
     },
     {
-      "word": "milk",
+      "word": "universe",
       "frequency": 14
     },
     {
-      "word": "interesting",
+      "word": "philosophical",
       "frequency": 14
     },
     {
-      "word": "smiles",
+      "word": "identity",
       "frequency": 14
     },
     {
-      "word": "flowers",
+      "word": "fundamental",
       "frequency": 14
     },
     {
-      "word": "opened",
+      "word": "meaning",
       "frequency": 14
     },
     {
-      "word": "called",
+      "word": "capacity",
       "frequency": 14
     },
     {
-      "word": "person",
+      "word": "boundaries",
       "frequency": 14
     },
     {
-      "word": "lost",
+      "word": "critical",
       "frequency": 14
     },
     {
-      "word": "showed",
+      "word": "common",
       "frequency": 14
     },
     {
-      "word": "stopped",
+      "word": "opportunities",
       "frequency": 14
     },
     {
-      "word": "question",
+      "word": "allows",
       "frequency": 14
     },
     {
-      "word": "knowledge",
+      "word": "known",
       "frequency": 14
     },
     {
-      "word": "goals",
+      "word": "market",
       "frequency": 14
     },
     {
-      "word": "memories",
+      "word": "worked",
       "frequency": 14
     },
     {
-      "word": "tools",
+      "word": "mean",
       "frequency": 14
     },
     {
-      "word": "quality",
+      "word": "platforms",
       "frequency": 14
     },
     {
-      "word": "focus",
+      "word": "convenience",
       "frequency": 14
     },
     {
-      "word": "essential",
+      "word": "surrounded",
       "frequency": 14
     },
     {
-      "word": "urban",
+      "word": "died",
+      "frequency": 14
+    },
+    {
+      "word": "decades",
+      "frequency": 14
+    },
+    {
+      "word": "comfort",
+      "frequency": 14
+    },
+    {
+      "word": "phenomenon",
+      "frequency": 14
+    },
+    {
+      "word": "interaction",
+      "frequency": 14
+    },
+    {
+      "word": "performance",
+      "frequency": 14
+    },
+    {
+      "word": "visible",
+      "frequency": 14
+    },
+    {
+      "word": "demands",
+      "frequency": 14
+    },
+    {
+      "word": "awareness",
+      "frequency": 14
+    },
+    {
+      "word": "source",
+      "frequency": 14
+    },
+    {
+      "word": "phenomena",
       "frequency": 14
     },
     {
@@ -1986,103 +2954,223 @@
       "frequency": 14
     },
     {
+      "word": "therefore",
+      "frequency": 14
+    },
+    {
+      "word": "communities",
+      "frequency": 14
+    },
+    {
+      "word": "economic",
+      "frequency": 14
+    },
+    {
+      "word": "responsibility",
+      "frequency": 14
+    },
+    {
+      "word": "technological",
+      "frequency": 14
+    },
+    {
       "word": "edinburgh",
       "frequency": 14
     },
     {
-      "word": "making",
+      "word": "comes",
       "frequency": 13
     },
     {
-      "word": "ago",
+      "word": "goodbye",
       "frequency": 13
     },
     {
-      "word": "yellow",
+      "word": "apple",
       "frequency": 13
     },
     {
-      "word": "works",
+      "word": "ones",
       "frequency": 13
     },
     {
-      "word": "dog",
+      "word": "cheese",
       "frequency": 13
     },
     {
-      "word": "center",
+      "word": "sunny",
       "frequency": 13
     },
     {
-      "word": "reading",
+      "word": "friendly",
       "frequency": 13
     },
     {
-      "word": "tomatoes",
+      "word": "woke",
       "frequency": 13
     },
     {
-      "word": "shopping",
+      "word": "returned",
       "frequency": 13
     },
     {
-      "word": "turned",
+      "word": "finished",
       "frequency": 13
     },
     {
-      "word": "smaller",
+      "word": "weeks",
       "frequency": 13
     },
     {
-      "word": "carefully",
+      "word": "standing",
       "frequency": 13
     },
     {
-      "word": "walls",
+      "word": "explained",
       "frequency": 13
     },
     {
-      "word": "listen",
+      "word": "windows",
       "frequency": 13
     },
     {
-      "word": "later",
+      "word": "noticed",
       "frequency": 13
     },
     {
-      "word": "mountains",
+      "word": "gently",
       "frequency": 13
     },
     {
-      "word": "complex",
+      "word": "added",
       "frequency": 13
     },
     {
-      "word": "experience",
+      "word": "sharing",
       "frequency": 13
     },
     {
-      "word": "conclusion",
+      "word": "begins",
       "frequency": 13
     },
     {
-      "word": "trying",
+      "word": "plants",
       "frequency": 13
     },
     {
-      "word": "hair",
+      "word": "station",
       "frequency": 13
     },
     {
-      "word": "community",
+      "word": "decision",
       "frequency": 13
     },
     {
-      "word": "emotional",
+      "word": "specific",
       "frequency": 13
     },
     {
-      "word": "parents",
+      "word": "suggests",
+      "frequency": 13
+    },
+    {
+      "word": "ethical",
+      "frequency": 13
+    },
+    {
+      "word": "offers",
+      "frequency": 13
+    },
+    {
+      "word": "epistemic",
+      "frequency": 13
+    },
+    {
+      "word": "intellectual",
+      "frequency": 13
+    },
+    {
+      "word": "possible",
+      "frequency": 13
+    },
+    {
+      "word": "older",
+      "frequency": 13
+    },
+    {
+      "word": "meeting",
+      "frequency": 13
+    },
+    {
+      "word": "having",
+      "frequency": 13
+    },
+    {
+      "word": "created",
+      "frequency": 13
+    },
+    {
+      "word": "improved",
+      "frequency": 13
+    },
+    {
+      "word": "appear",
+      "frequency": 13
+    },
+    {
+      "word": "perspective",
+      "frequency": 13
+    },
+    {
+      "word": "connections",
+      "frequency": 13
+    },
+    {
+      "word": "weight",
+      "frequency": 13
+    },
+    {
+      "word": "object",
+      "frequency": 13
+    },
+    {
+      "word": "results",
+      "frequency": 13
+    },
+    {
+      "word": "henri",
+      "frequency": 13
+    },
+    {
+      "word": "private",
+      "frequency": 13
+    },
+    {
+      "word": "choices",
+      "frequency": 13
+    },
+    {
+      "word": "consequences",
+      "frequency": 13
+    },
+    {
+      "word": "offer",
+      "frequency": 13
+    },
+    {
+      "word": "sustainable",
+      "frequency": 13
+    },
+    {
+      "word": "implications",
+      "frequency": 13
+    },
+    {
+      "word": "mapping",
+      "frequency": 13
+    },
+    {
+      "word": "interpretation",
       "frequency": 13
     },
     {
@@ -2090,299 +3178,463 @@
       "frequency": 13
     },
     {
-      "word": "needed",
+      "word": "takes",
       "frequency": 12
     },
     {
-      "word": "conversation",
+      "word": "else",
       "frequency": 12
     },
     {
-      "word": "course",
+      "word": "line",
       "frequency": 12
     },
     {
-      "word": "ideas",
+      "word": "arrive",
       "frequency": 12
     },
     {
-      "word": "gives",
+      "word": "serious",
       "frequency": 12
     },
     {
-      "word": "completely",
+      "word": "path",
       "frequency": 12
     },
     {
-      "word": "sea",
+      "word": "leaves",
       "frequency": 12
     },
     {
-      "word": "brown",
+      "word": "lake",
       "frequency": 12
     },
     {
-      "word": "thirty",
+      "word": "friday",
       "frequency": 12
     },
     {
-      "word": "words",
+      "word": "numbers",
       "frequency": 12
     },
     {
-      "word": "smile",
+      "word": "ate",
       "frequency": 12
     },
     {
-      "word": "seemed",
+      "word": "drank",
       "frequency": 12
     },
     {
-      "word": "visited",
+      "word": "delicious",
       "frequency": 12
     },
     {
-      "word": "laughed",
+      "word": "played",
       "frequency": 12
     },
     {
-      "word": "wrote",
+      "word": "tells",
       "frequency": 12
     },
     {
-      "word": "computer",
+      "word": "wooden",
       "frequency": 12
     },
     {
-      "word": "close",
+      "word": "steps",
       "frequency": 12
     },
     {
-      "word": "plans",
+      "word": "writing",
       "frequency": 12
     },
     {
-      "word": "thinking",
+      "word": "liked",
       "frequency": 12
     },
     {
-      "word": "bad",
+      "word": "buying",
       "frequency": 12
     },
     {
-      "word": "machines",
+      "word": "paper",
       "frequency": 12
     },
     {
-      "word": "truly",
+      "word": "girl",
       "frequency": 12
     },
     {
-      "word": "systems",
+      "word": "yourself",
       "frequency": 12
     },
     {
-      "word": "science",
+      "word": "artificial",
       "frequency": 12
     },
     {
-      "word": "mental",
+      "word": "natural",
       "frequency": 12
     },
     {
-      "word": "development",
+      "word": "ontological",
       "frequency": 12
     },
     {
-      "word": "challenge",
+      "word": "algorithmic",
       "frequency": 12
     },
     {
-      "word": "universe",
+      "word": "solve",
       "frequency": 12
     },
     {
-      "word": "problems",
+      "word": "aspects",
       "frequency": 12
     },
     {
-      "word": "information",
+      "word": "ethics",
       "frequency": 12
     },
     {
-      "word": "simply",
+      "word": "inquiry",
       "frequency": 12
     },
     {
-      "word": "space",
+      "word": "appeared",
       "frequency": 12
     },
     {
-      "word": "role",
+      "word": "speaking",
       "frequency": 12
     },
     {
-      "word": "areas",
+      "word": "allowing",
       "frequency": 12
     },
     {
-      "word": "entirely",
+      "word": "changing",
       "frequency": 12
     },
     {
-      "word": "memory",
+      "word": "management",
       "frequency": 12
     },
     {
-      "word": "public",
+      "word": "developed",
       "frequency": 12
     },
     {
-      "word": "environmental",
+      "word": "terrible",
       "frequency": 12
     },
     {
-      "word": "calm",
-      "frequency": 11
+      "word": "reward",
+      "frequency": 12
     },
     {
-      "word": "means",
-      "frequency": 11
-    },
-    {
-      "word": "online",
-      "frequency": 11
-    },
-    {
-      "word": "effort",
-      "frequency": 11
-    },
-    {
-      "word": "present",
-      "frequency": 11
-    },
-    {
-      "word": "okay",
-      "frequency": 11
-    },
-    {
-      "word": "families",
-      "frequency": 11
-    },
-    {
-      "word": "eggs",
-      "frequency": 11
-    },
-    {
-      "word": "starts",
-      "frequency": 11
-    },
-    {
-      "word": "cheese",
-      "frequency": 11
-    },
-    {
-      "word": "met",
-      "frequency": 11
-    },
-    {
-      "word": "black",
-      "frequency": 11
-    },
-    {
-      "word": "notebook",
-      "frequency": 11
-    },
-    {
-      "word": "lamp",
-      "frequency": 11
-    },
-    {
-      "word": "gold",
-      "frequency": 11
-    },
-    {
-      "word": "students",
-      "frequency": 11
-    },
-    {
-      "word": "nervous",
-      "frequency": 11
-    },
-    {
-      "word": "replied",
-      "frequency": 11
-    },
-    {
-      "word": "tree",
-      "frequency": 11
-    },
-    {
-      "word": "walking",
-      "frequency": 11
-    },
-    {
-      "word": "distance",
-      "frequency": 11
-    },
-    {
-      "word": "profound",
-      "frequency": 11
-    },
-    {
-      "word": "furthermore",
-      "frequency": 11
-    },
-    {
-      "word": "impact",
-      "frequency": 11
-    },
-    {
-      "word": "progress",
-      "frequency": 11
-    },
-    {
-      "word": "allows",
-      "frequency": 11
-    },
-    {
-      "word": "market",
-      "frequency": 11
-    },
-    {
-      "word": "kept",
-      "frequency": 11
-    },
-    {
-      "word": "boy",
-      "frequency": 11
-    },
-    {
-      "word": "lived",
-      "frequency": 11
-    },
-    {
-      "word": "sound",
-      "frequency": 11
+      "word": "stress",
+      "frequency": 12
     },
     {
       "word": "friendship",
+      "frequency": 12
+    },
+    {
+      "word": "example",
+      "frequency": 12
+    },
+    {
+      "word": "forgotten",
+      "frequency": 12
+    },
+    {
+      "word": "replaced",
+      "frequency": 12
+    },
+    {
+      "word": "measure",
+      "frequency": 12
+    },
+    {
+      "word": "measured",
+      "frequency": 12
+    },
+    {
+      "word": "finding",
+      "frequency": 12
+    },
+    {
+      "word": "employees",
+      "frequency": 12
+    },
+    {
+      "word": "beings",
+      "frequency": 12
+    },
+    {
+      "word": "navigate",
+      "frequency": 12
+    },
+    {
+      "word": "limited",
+      "frequency": 12
+    },
+    {
+      "word": "concerns",
+      "frequency": 12
+    },
+    {
+      "word": "education",
+      "frequency": 12
+    },
+    {
+      "word": "scale",
+      "frequency": 12
+    },
+    {
+      "word": "official",
+      "frequency": 12
+    },
+    {
+      "word": "cultural",
+      "frequency": 12
+    },
+    {
+      "word": "infrastructure",
+      "frequency": 12
+    },
+    {
+      "word": "chocolate",
       "frequency": 11
     },
     {
-      "word": "professional",
+      "word": "touch",
       "frequency": 11
     },
     {
-      "word": "transition",
+      "word": "running",
       "frequency": 11
     },
     {
-      "word": "provide",
+      "word": "jacket",
       "frequency": 11
     },
     {
-      "word": "access",
+      "word": "salad",
+      "frequency": 11
+    },
+    {
+      "word": "doctor",
+      "frequency": 11
+    },
+    {
+      "word": "cup",
+      "frequency": 11
+    },
+    {
+      "word": "childhood",
+      "frequency": 11
+    },
+    {
+      "word": "listened",
+      "frequency": 11
+    },
+    {
+      "word": "letters",
+      "frequency": 11
+    },
+    {
+      "word": "monday",
+      "frequency": 11
+    },
+    {
+      "word": "forty",
+      "frequency": 11
+    },
+    {
+      "word": "groups",
+      "frequency": 11
+    },
+    {
+      "word": "active",
+      "frequency": 11
+    },
+    {
+      "word": "plan",
+      "frequency": 11
+    },
+    {
+      "word": "worried",
+      "frequency": 11
+    },
+    {
+      "word": "suddenly",
+      "frequency": 11
+    },
+    {
+      "word": "discovered",
+      "frequency": 11
+    },
+    {
+      "word": "carrying",
+      "frequency": 11
+    },
+    {
+      "word": "probably",
+      "frequency": 11
+    },
+    {
+      "word": "meals",
+      "frequency": 11
+    },
+    {
+      "word": "taught",
+      "frequency": 11
+    },
+    {
+      "word": "mistakes",
+      "frequency": 11
+    },
+    {
+      "word": "filled",
+      "frequency": 11
+    },
+    {
+      "word": "stronger",
+      "frequency": 11
+    },
+    {
+      "word": "closed",
+      "frequency": 11
+    },
+    {
+      "word": "neighbors",
+      "frequency": 11
+    },
+    {
+      "word": "explore",
+      "frequency": 11
+    },
+    {
+      "word": "machine",
+      "frequency": 11
+    },
+    {
+      "word": "brain",
+      "frequency": 11
+    },
+    {
+      "word": "entities",
+      "frequency": 11
+    },
+    {
+      "word": "crisis",
+      "frequency": 11
+    },
+    {
+      "word": "algorithms",
+      "frequency": 11
+    },
+    {
+      "word": "normal",
+      "frequency": 11
+    },
+    {
+      "word": "child",
+      "frequency": 11
+    },
+    {
+      "word": "conversations",
+      "frequency": 11
+    },
+    {
+      "word": "easier",
+      "frequency": 11
+    },
+    {
+      "word": "order",
+      "frequency": 11
+    },
+    {
+      "word": "hidden",
+      "frequency": 11
+    },
+    {
+      "word": "described",
+      "frequency": 11
+    },
+    {
+      "word": "distant",
+      "frequency": 11
+    },
+    {
+      "word": "photograph",
+      "frequency": 11
+    },
+    {
+      "word": "model",
+      "frequency": 11
+    },
+    {
+      "word": "products",
+      "frequency": 11
+    },
+    {
+      "word": "effective",
+      "frequency": 11
+    },
+    {
+      "word": "hobbies",
+      "frequency": 11
+    },
+    {
+      "word": "creativity",
+      "frequency": 11
+    },
+    {
+      "word": "further",
+      "frequency": 11
+    },
+    {
+      "word": "act",
+      "frequency": 11
+    },
+    {
+      "word": "capture",
+      "frequency": 11
+    },
+    {
+      "word": "internet",
+      "frequency": 11
+    },
+    {
+      "word": "greater",
+      "frequency": 11
+    },
+    {
+      "word": "informed",
+      "frequency": 11
+    },
+    {
+      "word": "produce",
+      "frequency": 11
+    },
+    {
+      "word": "ambition",
+      "frequency": 11
+    },
+    {
+      "word": "evidence",
+      "frequency": 11
+    },
+    {
+      "word": "architecture",
+      "frequency": 11
+    },
+    {
+      "word": "fundamentally",
       "frequency": 11
     },
     {
@@ -2390,127 +3642,311 @@
       "frequency": 11
     },
     {
-      "word": "taking",
+      "word": "sad",
       "frequency": 10
     },
     {
-      "word": "happened",
+      "word": "clouds",
       "frequency": 10
     },
     {
-      "word": "doing",
+      "word": "smile",
       "frequency": 10
     },
     {
-      "word": "writing",
+      "word": "list",
       "frequency": 10
     },
     {
-      "word": "decisions",
+      "word": "tomato",
       "frequency": 10
     },
     {
-      "word": "media",
+      "word": "pictures",
       "frequency": 10
     },
     {
-      "word": "yourself",
+      "word": "math",
       "frequency": 10
     },
     {
-      "word": "puts",
+      "word": "perfectly",
       "frequency": 10
     },
     {
-      "word": "apple",
+      "word": "checked",
       "frequency": 10
     },
     {
-      "word": "wants",
+      "word": "answered",
       "frequency": 10
     },
     {
-      "word": "ate",
+      "word": "calls",
       "frequency": 10
     },
     {
-      "word": "drank",
+      "word": "reached",
       "frequency": 10
     },
     {
-      "word": "delicious",
+      "word": "laughing",
       "frequency": 10
     },
     {
-      "word": "played",
+      "word": "amazing",
       "frequency": 10
     },
     {
-      "word": "orange",
+      "word": "third",
       "frequency": 10
     },
     {
-      "word": "cost",
+      "word": "cars",
       "frequency": 10
     },
     {
-      "word": "returned",
+      "word": "surprised",
       "frequency": 10
     },
     {
-      "word": "listened",
+      "word": "brought",
       "frequency": 10
     },
     {
-      "word": "goes",
+      "word": "smaller",
       "frequency": 10
     },
     {
-      "word": "lights",
+      "word": "final",
       "frequency": 10
     },
     {
-      "word": "questions",
+      "word": "smelled",
       "frequency": 10
     },
     {
-      "word": "useful",
+      "word": "suggested",
       "frequency": 10
     },
     {
-      "word": "student",
+      "word": "offered",
       "frequency": 10
     },
     {
-      "word": "continued",
+      "word": "everywhere",
       "frequency": 10
     },
     {
-      "word": "planning",
+      "word": "message",
       "frequency": 10
     },
     {
-      "word": "level",
+      "word": "robot",
       "frequency": 10
     },
     {
-      "word": "reality",
+      "word": "tasks",
       "frequency": 10
     },
     {
-      "word": "continue",
+      "word": "possibility",
       "frequency": 10
     },
     {
-      "word": "opportunities",
+      "word": "philosophy",
       "frequency": 10
     },
     {
-      "word": "known",
+      "word": "according",
       "frequency": 10
     },
     {
-      "word": "built",
+      "word": "function",
+      "frequency": 10
+    },
+    {
+      "word": "humans",
+      "frequency": 10
+    },
+    {
+      "word": "perception",
+      "frequency": 10
+    },
+    {
+      "word": "similar",
+      "frequency": 10
+    },
+    {
+      "word": "humanity",
+      "frequency": 10
+    },
+    {
+      "word": "stations",
+      "frequency": 10
+    },
+    {
+      "word": "platform",
+      "frequency": 10
+    },
+    {
+      "word": "laptop",
+      "frequency": 10
+    },
+    {
+      "word": "lower",
+      "frequency": 10
+    },
+    {
+      "word": "dramatic",
+      "frequency": 10
+    },
+    {
+      "word": "expected",
+      "frequency": 10
+    },
+    {
+      "word": "movement",
+      "frequency": 10
+    },
+    {
+      "word": "meant",
+      "frequency": 10
+    },
+    {
+      "word": "held",
+      "frequency": 10
+    },
+    {
+      "word": "checking",
+      "frequency": 10
+    },
+    {
+      "word": "century",
+      "frequency": 10
+    },
+    {
+      "word": "observed",
+      "frequency": 10
+    },
+    {
+      "word": "following",
+      "frequency": 10
+    },
+    {
+      "word": "efficient",
+      "frequency": 10
+    },
+    {
+      "word": "creating",
+      "frequency": 10
+    },
+    {
+      "word": "particularly",
+      "frequency": 10
+    },
+    {
+      "word": "transformation",
+      "frequency": 10
+    },
+    {
+      "word": "friendships",
+      "frequency": 10
+    },
+    {
+      "word": "peace",
+      "frequency": 10
+    },
+    {
+      "word": "group",
+      "frequency": 10
+    },
+    {
+      "word": "named",
+      "frequency": 10
+    },
+    {
+      "word": "growing",
+      "frequency": 10
+    },
+    {
+      "word": "achieve",
+      "frequency": 10
+    },
+    {
+      "word": "traveling",
+      "frequency": 10
+    },
+    {
+      "word": "shaped",
+      "frequency": 10
+    },
+    {
+      "word": "allowed",
+      "frequency": 10
+    },
+    {
+      "word": "buttons",
+      "frequency": 10
+    },
+    {
+      "word": "accurate",
+      "frequency": 10
+    },
+    {
+      "word": "complexity",
+      "frequency": 10
+    },
+    {
+      "word": "action",
+      "frequency": 10
+    },
+    {
+      "word": "devices",
+      "frequency": 10
+    },
+    {
+      "word": "necessary",
+      "frequency": 10
+    },
+    {
+      "word": "solutions",
+      "frequency": 10
+    },
+    {
+      "word": "costs",
+      "frequency": 10
+    },
+    {
+      "word": "isolation",
+      "frequency": 10
+    },
+    {
+      "word": "crucial",
+      "frequency": 10
+    },
+    {
+      "word": "companies",
+      "frequency": 10
+    },
+    {
+      "word": "economy",
+      "frequency": 10
+    },
+    {
+      "word": "immediate",
+      "frequency": 10
+    },
+    {
+      "word": "effect",
+      "frequency": 10
+    },
+    {
+      "word": "collective",
+      "frequency": 10
+    },
+    {
+      "word": "workshop",
       "frequency": 10
     },
     {
@@ -2518,31 +3954,51 @@
       "frequency": 10
     },
     {
-      "word": "performance",
+      "word": "schools",
       "frequency": 10
     },
     {
-      "word": "term",
+      "word": "recognizing",
       "frequency": 10
     },
     {
-      "word": "particular",
+      "word": "precisely",
       "frequency": 10
     },
     {
-      "word": "ambition",
+      "word": "pollution",
       "frequency": 10
     },
     {
-      "word": "control",
+      "word": "educational",
       "frequency": 10
     },
     {
-      "word": "design",
+      "word": "observation",
+      "frequency": 10
+    },
+    {
+      "word": "expertise",
+      "frequency": 10
+    },
+    {
+      "word": "principle",
+      "frequency": 10
+    },
+    {
+      "word": "engagement",
+      "frequency": 10
+    },
+    {
+      "word": "thorne",
       "frequency": 10
     },
     {
       "word": "brindle",
+      "frequency": 10
+    },
+    {
+      "word": "physics",
       "frequency": 10
     },
     {

@@ -34,7 +34,7 @@ Rules:
 2. Values must be arrays of strings.
 3. Only include relevant categories.
 
-some of the categories are: Noun, Verb, Adjective, Adverb, Pronoun, Preposition, Conjunction, Interjection, Phrase, Sentence.
+some of the categories are: Noun, Verb, Adjective, Adverb, Pronoun, Preposition, Conjunction, Interjection, Phrase, Sentence,.
 
 EXAMPLES:
 
@@ -68,6 +68,8 @@ Assistant:
     "Adjective": ["hermoso", "bello", "bonito"]
   }
 }
+
+If a verb is in the past tense, indicate this with (pasado)
 
 translate this word to spanish: ${term} (respond only with the translation no additional text)`;
 }
