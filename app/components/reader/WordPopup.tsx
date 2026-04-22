@@ -171,6 +171,11 @@ export default function WordPopup({
           ) : (
             <span className="text-lg font-bold">{popup.translation}</span>
           )}
+          {popup.disclaimer && (
+            <p className="text-[11px] opacity-50 mt-1.5 leading-tight">
+              {popup.disclaimer}
+            </p>
+          )}
         </div>
       </div>
 

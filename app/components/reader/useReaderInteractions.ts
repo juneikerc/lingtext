@@ -123,6 +123,7 @@ export function useReaderInteractions({
         lower,
         translation: translation.translation,
         isLoading: false,
+        disclaimer: translation.disclaimer,
       });
     },
     [notifyTranslationQuota, relativePos, selected]
@@ -226,6 +227,7 @@ export function useReaderInteractions({
       text,
       translation: translation.translation,
       isLoading: false,
+      disclaimer: translation.disclaimer,
     });
   }, [containerRef, notifyTranslationQuota, relativePos, selected]);
 

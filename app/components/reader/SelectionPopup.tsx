@@ -149,6 +149,11 @@ export default function SelectionPopup({
               {selPopup.translation}
             </span>
           )}
+          {selPopup.disclaimer && (
+            <p className="text-[11px] text-gray-400 mt-1.5 leading-tight">
+              {selPopup.disclaimer}
+            </p>
+          )}
         </div>
       </div>
 
