@@ -10,9 +10,12 @@ import type { Translator } from "../types";
 
 export { isChromeAIAvailable };
 
+const MYMEMORY_DISCLAIMER =
+  "Este traductor gratuito a veces puede fallar.";
+
 export async function translateWithMyMemory(
   term: string
-): Promise<{ translation: string; error?: string }> {
+): Promise<{ translation: string; error?: string; disclaimer?: string }> {
   const sanitizedText = term.trim();
   if (!sanitizedText) {
     return { translation: "", error: "Invalid text content" };
@@ -66,7 +69,10 @@ export async function translateWithMyMemory(
       return { translation: "", error: "INVALID_RESPONSE" };
     }
 
-    return { translation };
+    return {
+      translation,
+      disclaimer: MYMEMORY_DISCLAIMER,
+    };
   } catch (error) {
     console.error("MyMemory translation error:", error);
     return { translation: "", error: "NETWORK_ERROR" };
@@ -76,11 +82,22 @@ export async function translateWithMyMemory(
 export async function translateFromChrome(
   term: string
 ): Promise<{ translation: string }> {
-  if ("Translator" in self) {
+  const runtime = globalThis as typeof globalThis & {
+    Translator?: {
+      create: (options: {
+        sourceLanguage: string;
+        targetLanguage: string;
+      }) => Promise<{
+        translate: (input: string) => Promise<string>;
+      }>;
+    };
+  };
+
+  if ("Translator" in runtime) {
     const translateWithChromeAPI = async () => {
       try {
         // @ts-expect-error Translator is a new Chrome API not in TS types yet
-        const translator = await Translator.create({
+        const translator = await runtime.Translator.create({
           sourceLanguage: "en",
           targetLanguage: "es",
         });
@@ -180,7 +197,7 @@ export async function translateWithOpenRouter(
 export async function translateTerm(
   term: string,
   selected: Translator
-): Promise<{ translation: string; error?: string }> {
+): Promise<{ translation: string; error?: string; disclaimer?: string }> {
   if (selected === TRANSLATORS.CHROME) {
     const local = await translateFromChrome(term);
     const value = (local.translation || "").trim();
@@ -188,7 +205,12 @@ export async function translateTerm(
 
     const free = await translateWithMyMemory(term);
     const freeValue = (free.translation || "").trim();
-    if (freeValue) return { translation: freeValue };
+    if (freeValue) {
+      return {
+        translation: freeValue,
+        disclaimer: free.disclaimer,
+      };
+    }
 
     // Fallback automático al modelo por defecto si Chrome no existe o falla
     return translateWithOpenRouter(term, TRANSLATORS.MEDIUM);
