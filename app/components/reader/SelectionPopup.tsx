@@ -26,6 +26,7 @@ export default function SelectionPopup({
 
   return (
     <div
+      data-reader-popup="true"
       className="absolute w-full backdrop-blur-md rounded-2xl shadow-xl border border-gray-200/50 z-30 overflow-hidden"
       style={{ left, top, width: popupWidth }}
     >

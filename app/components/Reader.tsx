@@ -113,7 +113,7 @@ export default function Reader({
           : { backgroundColor: "var(--reader-page-bg)", ...appearanceStyles }
       }
       ref={containerRef}
-      onMouseUp={() => void handleMouseUp()}
+      onMouseUp={(event) => void handleMouseUp(event)}
       onCopy={onCopy}
       onClick={(event) => {
         const target = event.target as HTMLElement;

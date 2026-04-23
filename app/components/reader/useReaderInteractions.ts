@@ -157,7 +157,12 @@ export function useReaderInteractions({
     setSelPopup(null);
   }, []);
 
-  const handleMouseUp = useCallback(async () => {
+  const handleMouseUp = useCallback(async (event: React.MouseEvent) => {
+    const target = event.target as HTMLElement;
+    if (target.closest("[data-reader-popup='true']")) {
+      return;
+    }
+
     const selection = window.getSelection();
 
     if (!selection || selection.isCollapsed || selection.rangeCount === 0) {
