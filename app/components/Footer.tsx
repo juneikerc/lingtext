@@ -147,10 +147,10 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="/tests"
+                  href="/pro"
                   className="text-gray-300 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
                 >
-                  Tests
+                  LingText PRO
                 </a>
               </li>
             </ul>
@@ -162,6 +162,14 @@ export default function Footer() {
               Recursos
             </h3>
             <ul className="space-y-2">
+              <li>
+                <a
+                  href="/tests"
+                  className="text-gray-300 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
+                >
+                  Tests
+                </a>
+              </li>
               <li>
                 <a
                   href="/1000-frases-en-ingles"
