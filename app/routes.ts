@@ -25,4 +25,5 @@ export default [
     "routes/language-island/island.tsx"
   ),
   route("my-library", "routes/my-library.tsx"),
+  route("pro", "routes/pro.tsx"),
 ] satisfies RouteConfig;
