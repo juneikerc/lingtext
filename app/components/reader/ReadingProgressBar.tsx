@@ -10,7 +10,7 @@ export default function ReadingProgressBar({
   if (!show || progress <= 0) return null;
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-30 h-1 bg-gray-200 dark:bg-gray-700">
+    <div className="fixed top-0 left-0 right-0 z-10 h-1 bg-gray-200 dark:bg-gray-700">
       <div
         className="h-full bg-[#0F9EDA] transition-[width] duration-150 ease-out"
         style={{ width: `${progress}%` }}
