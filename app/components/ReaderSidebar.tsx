@@ -1,13 +1,13 @@
-interface NewsletterSidebarProps {
+interface ReaderSidebarProps {
   onClose: () => void;
 }
 
-export default function NewsletterSidebar({ onClose }: NewsletterSidebarProps) {
+export default function ReaderSidebar({ onClose }: ReaderSidebarProps) {
   return (
     <aside className="hidden w-80 shrink-0 self-start overflow-y-auto border-l border-gray-200 bg-white shadow-2xs lg:sticky lg:top-8 lg:flex lg:max-h-[calc(100vh-7rem)] lg:flex-col">
       <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 sticky top-0 bg-white z-10">
         <span className="text-xs font-semibold uppercase tracking-widest text-gray-500">
-          Newsletter
+          Más de LingText
         </span>
         <button
           type="button"
@@ -34,39 +34,40 @@ export default function NewsletterSidebar({ onClose }: NewsletterSidebarProps) {
       </div>
 
       <div className="flex flex-col gap-4 p-5">
-        <div className="rounded-2xl border border-[#0F9EDA]/20 bg-[#0F9EDA]/5 p-5">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0F9EDA]/10 border border-[#0F9EDA]/20 mb-4">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              className="h-5 w-5 text-[#0F9EDA]"
-              aria-hidden="true"
+        <div className="relative overflow-hidden rounded-2xl border border-indigo-200 bg-gradient-to-br from-indigo-50 to-white p-5">
+          <div className="absolute -right-4 -top-4 h-20 w-20 rounded-full bg-indigo-100/60 blur-2xl" />
+          <div className="relative">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-100 border border-indigo-200 mb-4">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                className="h-5 w-5 text-indigo-600"
+                aria-hidden="true"
+              >
+                <path
+                  d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+            <h3 className="text-base font-bold text-gray-900">
+              LingText PRO está en camino
+            </h3>
+            <p className="mt-1.5 text-sm leading-relaxed text-gray-600">
+              Diccionario/traductor con IA preciso, textos exclusivos con
+              sonido, importación de artículos, de YouTube a lecciones.
+              Entérate antes que nadie.
+            </p>
+            <a
+              href="/pro"
+              className="mt-4 inline-flex w-full items-center justify-center rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2"
             >
-              <rect x="2" y="4" width="20" height="16" rx="2" strokeWidth="2" />
-              <path
-                d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+              Únete a la lista de espera
+            </a>
           </div>
-          <h3 className="text-base font-bold text-gray-900">
-            Recibe novedades de LingText
-          </h3>
-          <p className="mt-1 text-sm leading-relaxed text-gray-600">
-            Únete para enterarte cuando publiquemos nuevos textos, recursos y
-            mejoras en LingText.
-          </p>
-          <a
-            href="https://lingtext.kit.com/247af6aeca"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 inline-flex w-full items-center justify-center rounded-xl bg-[#0F9EDA] px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2"
-          >
-            Quiero unirme
-          </a>
         </div>
 
         <div className="border-t border-gray-100 pt-4">

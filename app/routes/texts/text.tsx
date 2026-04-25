@@ -11,7 +11,7 @@ import { getTextBySlug } from "~/lib/content/runtime";
 import { type TextItem } from "~/types";
 import { formatAudioRef } from "~/utils/format-audio-ref";
 import { markTextAsVisited } from "~/utils/visited-texts";
-import NewsletterSidebar from "~/components/NewsletterSidebar";
+import ReaderSidebar from "~/components/ReaderSidebar";
 
 const Reader = lazy(() => import("~/components/Reader"));
 
@@ -168,7 +168,7 @@ export default function Text({ loaderData }: Route.ComponentProps) {
             </ReaderErrorBoundary>
           </div>
           {sidebarOpen ? (
-            <NewsletterSidebar onClose={() => setSidebarOpen(false)} />
+            <ReaderSidebar onClose={() => setSidebarOpen(false)} />
           ) : null}
         </div>
 
@@ -176,8 +176,8 @@ export default function Text({ loaderData }: Route.ComponentProps) {
           <button
             type="button"
             onClick={() => setSidebarOpen(true)}
-            className="hidden lg:flex fixed right-4 bottom-4 z-30 items-center gap-2 rounded-full bg-[#0F9EDA] px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#0F9EDA]/30 transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2"
-            aria-label="Mostrar newsletter"
+            className="hidden lg:flex fixed right-4 bottom-4 z-30 items-center gap-2 rounded-full bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-600/30 transition-all duration-200 hover:bg-indigo-700 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2"
+            aria-label="Mostrar sidebar de LingText PRO"
           >
             <svg
               viewBox="0 0 24 24"
@@ -186,15 +186,14 @@ export default function Text({ loaderData }: Route.ComponentProps) {
               className="h-4 w-4"
               aria-hidden="true"
             >
-              <rect x="2" y="4" width="20" height="16" rx="2" strokeWidth="2" />
               <path
-                d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
+                d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
             </svg>
-            Newsletter
+            LingText PRO
           </button>
         ) : null}
       </ReaderLexiconProvider>
