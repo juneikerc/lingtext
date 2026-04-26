@@ -69,13 +69,10 @@ export function meta({ loaderData, params }: Route.MetaArgs) {
 export default function TestSessionPage({ loaderData }: Route.ComponentProps) {
   return (
     <div className="bg-gray-50 py-10 sm:py-14">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50 p-4 dark:border-amber-700 dark:bg-amber-950">
           <div className="flex items-start gap-3">
-            <span
-              className="mt-0.5 text-xl"
-              aria-hidden="true"
-            >
+            <span className="mt-0.5 text-xl" aria-hidden="true">
               🚧
             </span>
             <div>

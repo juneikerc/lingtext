@@ -9,7 +9,7 @@ export default defineTest({
   intro:
     "Esta prueba gira alrededor de mensajes cotidianos, planes cercanos y detalles faciles pero ya mas variados.",
   passage:
-    "Mia sent a message to her friend Leo. She said that on Saturday she is visiting her aunt in Brighton and on Sunday she plans to clean her room and finish a short history project. She hopes to watch a film at night if she has time.",
+    "Mia sent a long message to her friend Leo on Thursday evening. She explained that her weekend is going to be busy but not stressful. On Saturday morning, she is taking the train to Brighton to visit her aunt, who recently moved into a flat near the sea. They are planning to have lunch at a small cafe and walk along the beach if the weather is good. Mia will return home before dinner because she still has school work to finish. On Sunday, she plans to clean her room, organize her desk, and finish a short history project about old city markets. If she has enough time at night, she hopes to watch a film with her brother, but she says homework comes first.",
   questions: [
     {
       id: "a2-reading-1",
@@ -54,8 +54,8 @@ export default defineTest({
       type: "reorder",
       prompt: "Order the words to make a sentence.",
       clue: "Think about Mia's plan for Saturday.",
-      tokens: ["is", "she", "her", "aunt", "visiting"],
-      answer: ["she", "is", "visiting", "her", "aunt"],
+      tokens: ["taking", "train", "she", "the", "is"],
+      answer: ["she", "is", "taking", "the", "train"],
       explanation: "This matches the weekend plan in the passage.",
       points: 25,
     },

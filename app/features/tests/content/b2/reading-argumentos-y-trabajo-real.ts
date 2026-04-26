@@ -9,7 +9,7 @@ export default defineTest({
   intro:
     "La prueba se apoya en un texto mas abstracto para validar si ya puedes seguir una linea argumental con claridad.",
   passage:
-    "Many companies now offer remote work as a standard option, but the results are mixed. Employees often report fewer interruptions and better concentration at home, yet some teams struggle when communication becomes too informal or delayed. The most effective organizations seem to be the ones that define clear expectations instead of assuming flexibility alone will solve everything.",
+    "Many companies now offer remote work as a standard option rather than a temporary benefit, but the results are mixed. Employees often report fewer interruptions, better concentration at home, and more control over the rhythm of their day. Managers also notice that some people write more thoughtful updates when they are not forced into constant meetings. Yet the same flexibility can create problems when teams treat communication as something that will simply happen by itself. Important decisions may remain hidden in private chats, questions can wait too long for an answer, and new employees may struggle to understand unwritten rules. The most effective organizations seem to be the ones that define clear expectations, shared channels, and regular moments for review instead of assuming flexibility alone will solve everything.",
   questions: [
     {
       id: "b2-reading-1",
@@ -58,7 +58,7 @@ export default defineTest({
       type: "reorder",
       prompt: "Order the words.",
       clue: "Use the key contrast from the text.",
-      tokens: ["results", "mixed", "the", "are"],
+      tokens: ["mixed", "the", "are", "results"],
       answer: ["the", "results", "are", "mixed"],
       explanation: "This phrase summarizes the author's position.",
       points: 25,

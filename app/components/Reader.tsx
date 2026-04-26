@@ -107,11 +107,10 @@ export default function Reader({
           ? "relative flex flex-col bg-transparent pb-2"
           : "relative flex flex-col flex-1 pb-[calc(12rem+env(safe-area-inset-bottom))] sm:pb-40 md:pb-36 transition-colors duration-200"
       }
-      style={
-        isCompact
-          ? undefined
-          : { backgroundColor: "var(--reader-page-bg)", ...appearanceStyles }
-      }
+      style={{
+        ...appearanceStyles,
+        ...(isCompact ? {} : { backgroundColor: "var(--reader-page-bg)" }),
+      }}
       ref={containerRef}
       onMouseUp={(event) => void handleMouseUp(event)}
       onCopy={onCopy}

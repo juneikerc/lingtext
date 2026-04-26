@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router";
 
+import Reader from "~/components/Reader";
+import { ReaderLexiconProvider } from "~/components/reader/ReaderLexiconContext";
 import TestResultShareCard from "~/components/tests/TestResultShareCard";
 import {
   getDictationHint,
@@ -115,14 +117,11 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isFinishing, setIsFinishing] = useState(false);
   const [audioError, setAudioError] = useState<string | null>(null);
-  const [passageRevealed, setPassageRevealed] = useState(false);
   const dictationAudioRef = useRef<HTMLAudioElement | null>(null);
 
   const currentQuestion = test.questions[currentIndex];
   const isReadingTest = test.skill === "reading";
   const testPassage = test.passage;
-  const showTestPassage = isReadingTest && testPassage && currentIndex > 0;
-  const passageHighlighted = isReadingTest && testPassage && currentIndex === 0;
   const isLastQuestion = currentIndex === test.questions.length - 1;
   const progressPercent = Math.round(
     ((currentIndex + (feedback.variant === "resolved" ? 1 : 0)) /
@@ -164,7 +163,6 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
     setFeedback({ variant: "idle" });
     setAudioError(null);
     setIsPlaying(false);
-    setPassageRevealed(false);
   }, [currentIndex]);
 
   useEffect(() => {
@@ -488,6 +486,15 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
       : currentQuestion.type === "dictation"
         ? getDictationHint(currentQuestion, 1)
         : null;
+  const readingText =
+    isReadingTest && testPassage
+      ? {
+          id: `test-reading-${test.level}`,
+          title: test.title,
+          content: testPassage,
+          format: "txt" as const,
+        }
+      : null;
 
   return (
     <div className="space-y-6">
@@ -527,284 +534,301 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
       </section>
 
       {/* Question */}
-      <section className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
-        <div className="mb-6 flex flex-wrap items-center gap-3">
-          <span className="inline-flex items-center rounded-full border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-[#0F9EDA]">
-            Pregunta {currentIndex + 1}
-          </span>
-          <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium uppercase tracking-[0.16em] text-gray-600">
-            {currentQuestion.type}
-          </span>
-        </div>
-
-        <div className="space-y-4">
-          <div>
-            <h2 className="text-2xl font-bold text-gray-900">
-              {currentQuestion.prompt}
-            </h2>
-            {currentQuestion.description ? (
-              <p className="mt-2 text-sm leading-relaxed text-gray-600">
-                {currentQuestion.description}
-              </p>
-            ) : null}
-          </div>
-
-          {passageHighlighted && testPassage ? (
-            <div className="rounded-2xl border border-[#0F9EDA]/30 bg-[#0F9EDA]/5 p-5 text-sm leading-relaxed text-gray-800">
-              {testPassage}
-            </div>
-          ) : null}
-
-          {showTestPassage ? (
-            passageRevealed ? (
-              <div className="rounded-2xl border border-gray-200 bg-gray-50 p-5 text-sm leading-relaxed text-gray-700">
-                {testPassage}
-              </div>
-            ) : (
-              <button
-                type="button"
-                onClick={() => setPassageRevealed(true)}
-                className="inline-flex items-center justify-center rounded-xl border border-[#0F9EDA]/30 bg-white px-5 py-3 text-sm font-semibold text-[#0F9EDA] shadow-sm transition-all duration-200 hover:border-[#0F9EDA]/50 hover:bg-[#0F9EDA]/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-              >
-                Mostrar texto de lectura
-              </button>
-            )
-          ) : null}
-
-          {currentQuestion.type === "multiple-choice" &&
-          currentQuestion.passage ? (
-            <div className="rounded-2xl border border-gray-200 bg-gray-50 p-5 text-sm leading-relaxed text-gray-700">
-              {currentQuestion.passage}
-            </div>
-          ) : null}
-
-          {currentQuestion.type === "multiple-choice" ? (
-            <div className="grid gap-3">
-              {currentQuestion.choices.map((choice) => {
-                const isSelected = selectedChoiceId === choice.id;
-
-                return (
-                  <button
-                    key={choice.id}
-                    type="button"
-                    onClick={() => setSelectedChoiceId(choice.id)}
-                    disabled={feedback.variant === "resolved"}
-                    className={`rounded-2xl border px-4 py-4 text-left text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
-                      isSelected
-                        ? "border-[#0F9EDA] bg-[#0F9EDA]/5 text-gray-900"
-                        : "border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:bg-gray-50"
-                    }`}
-                  >
-                    {choice.text}
-                  </button>
-                );
-              })}
-            </div>
-          ) : null}
-
-          {currentQuestion.type === "cloze" ? (
-            <div className="space-y-4">
-              <div className="rounded-2xl border border-gray-200 bg-gray-50 p-5 text-base font-medium text-gray-900">
-                {currentQuestion.sentence}
-              </div>
-              <label className="block">
-                <span className="mb-2 block text-sm font-semibold text-gray-700">
-                  Tu respuesta
-                </span>
-                <input
-                  value={textAnswer}
-                  onChange={(event) => setTextAnswer(event.target.value)}
-                  disabled={feedback.variant === "resolved"}
-                  className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 transition-all duration-200 placeholder:text-gray-400 focus:border-[#0F9EDA] focus:ring-2 focus:ring-[#0F9EDA]/20"
-                  placeholder="Escribe la palabra o expresion"
-                />
-              </label>
-            </div>
-          ) : null}
-
-          {currentQuestion.type === "reorder" ? (
-            <div className="space-y-5">
-              {currentQuestion.clue ? (
-                <p className="text-sm text-gray-600">{currentQuestion.clue}</p>
-              ) : null}
-              <div>
-                <p className="mb-3 text-sm font-semibold text-gray-700">
-                  Tu orden
-                </p>
-                <div className="min-h-16 rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-4">
-                  {selectedWords.length > 0 ? (
-                    <div className="flex flex-wrap gap-2">
-                      {reorderSelection.map((tokenIndex) => (
-                        <button
-                          key={`selected-${tokenIndex}`}
-                          type="button"
-                          onClick={() => handleRemoveToken(tokenIndex)}
-                          className="rounded-full bg-[#0F9EDA] px-3 py-1.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#0D8EC4]"
-                        >
-                          {currentQuestion.tokens[tokenIndex]}
-                        </button>
-                      ))}
-                    </div>
-                  ) : (
-                    <p className="text-sm text-gray-500">
-                      Toca los bloques de abajo para formar la frase.
-                    </p>
-                  )}
+      <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:p-8">
+        <div
+          className={
+            readingText
+              ? "grid gap-6 xl:grid-cols-[minmax(0,1.25fr)_minmax(26rem,0.85fr)]"
+              : ""
+          }
+        >
+          {readingText ? (
+            <aside className="rounded-2xl border border-[#0F9EDA]/20 bg-[#0F9EDA]/5 p-4 xl:sticky xl:top-6 xl:max-h-[calc(100vh-3rem)] xl:overflow-y-auto">
+              <div className="mb-4 flex flex-wrap items-center justify-between gap-3 border-b border-[#0F9EDA]/10 pb-3">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#0F9EDA]">
+                    Texto interactivo
+                  </p>
+                  <h2 className="mt-1 text-lg font-bold text-gray-900">
+                    {test.title}
+                  </h2>
                 </div>
+                <span className="rounded-full border border-[#0F9EDA]/20 bg-white px-3 py-1 text-xs font-semibold text-[#0F9EDA]">
+                  Toca palabras
+                </span>
               </div>
+              <ReaderLexiconProvider>
+                <Reader
+                  text={readingText}
+                  variant="compact"
+                  showAudioSection={false}
+                />
+              </ReaderLexiconProvider>
+            </aside>
+          ) : null}
+
+          <div>
+            <div className="mb-6 flex flex-wrap items-center gap-3">
+              <span className="inline-flex items-center rounded-full border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-[#0F9EDA]">
+                Pregunta {currentIndex + 1}
+              </span>
+              <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium uppercase tracking-[0.16em] text-gray-600">
+                {currentQuestion.type}
+              </span>
+            </div>
+
+            <div className="space-y-4">
               <div>
-                <p className="mb-3 text-sm font-semibold text-gray-700">
-                  Bloques
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {currentQuestion.tokens.map((token, tokenIndex) => {
-                    const isUsed = reorderSelection.includes(tokenIndex);
+                <h2 className="text-2xl font-bold text-gray-900">
+                  {currentQuestion.prompt}
+                </h2>
+                {currentQuestion.description ? (
+                  <p className="mt-2 text-sm leading-relaxed text-gray-600">
+                    {currentQuestion.description}
+                  </p>
+                ) : null}
+              </div>
+
+              {currentQuestion.type === "multiple-choice" &&
+              currentQuestion.passage ? (
+                <div className="rounded-2xl border border-gray-200 bg-gray-50 p-5 text-sm leading-relaxed text-gray-700">
+                  {currentQuestion.passage}
+                </div>
+              ) : null}
+
+              {currentQuestion.type === "multiple-choice" ? (
+                <div className="grid gap-3">
+                  {currentQuestion.choices.map((choice) => {
+                    const isSelected = selectedChoiceId === choice.id;
+
                     return (
                       <button
-                        key={`${token}-${tokenIndex}`}
+                        key={choice.id}
                         type="button"
-                        onClick={() => handleSelectToken(tokenIndex)}
-                        disabled={isUsed || feedback.variant === "resolved"}
-                        className={`rounded-full border px-3 py-1.5 text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
-                          isUsed
-                            ? "border-gray-200 bg-gray-100 text-gray-400"
-                            : "border-gray-200 bg-white text-gray-700 hover:border-[#0F9EDA]/30 hover:bg-[#0F9EDA]/5"
+                        onClick={() => setSelectedChoiceId(choice.id)}
+                        disabled={feedback.variant === "resolved"}
+                        className={`rounded-2xl border px-4 py-4 text-left text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
+                          isSelected
+                            ? "border-[#0F9EDA] bg-[#0F9EDA]/5 text-gray-900"
+                            : "border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:bg-gray-50"
                         }`}
                       >
-                        {token}
+                        {choice.text}
                       </button>
                     );
                   })}
                 </div>
-              </div>
-              <button
-                type="button"
-                onClick={handleClearOrder}
-                disabled={
-                  feedback.variant === "resolved" ||
-                  reorderSelection.length === 0
-                }
-                className="text-sm font-semibold text-gray-600 transition-colors duration-200 hover:text-gray-900 disabled:cursor-not-allowed disabled:text-gray-400"
-              >
-                Limpiar orden
-              </button>
-            </div>
-          ) : null}
+              ) : null}
 
-          {currentQuestion.type === "dictation" ? (
-            <div className="space-y-5">
-              <div className="rounded-2xl border border-gray-200 bg-gray-50 p-5">
-                {/* Hidden playback element for static dictation audio. */}
-                {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-                <audio
-                  ref={dictationAudioRef}
-                  preload="none"
-                  src={currentQuestion.audioUrl}
-                  onPlay={() => setIsPlaying(true)}
-                  onPause={() => setIsPlaying(false)}
-                  onEnded={() => setIsPlaying(false)}
-                  onLoadedData={() => setAudioError(null)}
-                  onError={() => {
-                    setIsPlaying(false);
-                    setAudioError("No se pudo cargar el audio.");
-                  }}
-                />
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              {currentQuestion.type === "cloze" ? (
+                <div className="space-y-4">
+                  <div className="rounded-2xl border border-gray-200 bg-gray-50 p-5 text-base font-medium text-gray-900">
+                    {currentQuestion.sentence}
+                  </div>
+                  <label className="block">
+                    <span className="mb-2 block text-sm font-semibold text-gray-700">
+                      Tu respuesta
+                    </span>
+                    <input
+                      value={textAnswer}
+                      onChange={(event) => setTextAnswer(event.target.value)}
+                      disabled={feedback.variant === "resolved"}
+                      className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 transition-all duration-200 placeholder:text-gray-400 focus:border-[#0F9EDA] focus:ring-2 focus:ring-[#0F9EDA]/20"
+                      placeholder="Escribe la palabra o expresion"
+                    />
+                  </label>
+                </div>
+              ) : null}
+
+              {currentQuestion.type === "reorder" ? (
+                <div className="space-y-5">
+                  {currentQuestion.clue ? (
+                    <p className="text-sm text-gray-600">
+                      {currentQuestion.clue}
+                    </p>
+                  ) : null}
                   <div>
-                    <p className="text-sm font-semibold text-gray-700">
-                      {currentQuestion.hintLabel}
+                    <p className="mb-3 text-sm font-semibold text-gray-700">
+                      Tu orden
                     </p>
-                    <p className="mt-1 text-sm text-gray-500">
-                      Tienes {currentQuestion.maxAttempts} intentos. En cada
-                      fallo se revelan mas letras.
+                    <div className="min-h-16 rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-4">
+                      {selectedWords.length > 0 ? (
+                        <div className="flex flex-wrap gap-2">
+                          {reorderSelection.map((tokenIndex) => (
+                            <button
+                              key={`selected-${tokenIndex}`}
+                              type="button"
+                              onClick={() => handleRemoveToken(tokenIndex)}
+                              className="rounded-full bg-[#0F9EDA] px-3 py-1.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#0D8EC4]"
+                            >
+                              {currentQuestion.tokens[tokenIndex]}
+                            </button>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="text-sm text-gray-500">
+                          Toca los bloques de abajo para formar la frase.
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                  <div>
+                    <p className="mb-3 text-sm font-semibold text-gray-700">
+                      Bloques
                     </p>
+                    <div className="flex flex-wrap gap-2">
+                      {currentQuestion.tokens.map((token, tokenIndex) => {
+                        const isUsed = reorderSelection.includes(tokenIndex);
+                        return (
+                          <button
+                            key={`${token}-${tokenIndex}`}
+                            type="button"
+                            onClick={() => handleSelectToken(tokenIndex)}
+                            disabled={isUsed || feedback.variant === "resolved"}
+                            className={`rounded-full border px-3 py-1.5 text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
+                              isUsed
+                                ? "border-gray-200 bg-gray-100 text-gray-400"
+                                : "border-gray-200 bg-white text-gray-700 hover:border-[#0F9EDA]/30 hover:bg-[#0F9EDA]/5"
+                            }`}
+                          >
+                            {token}
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
                   <button
                     type="button"
-                    onClick={handlePlayDictation}
-                    className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50"
+                    onClick={handleClearOrder}
+                    disabled={
+                      feedback.variant === "resolved" ||
+                      reorderSelection.length === 0
+                    }
+                    className="text-sm font-semibold text-gray-600 transition-colors duration-200 hover:text-gray-900 disabled:cursor-not-allowed disabled:text-gray-400"
                   >
-                    {isPlaying ? "Reproduciendo..." : "Escuchar audio"}
+                    Limpiar orden
                   </button>
                 </div>
-                <div className="mt-5 rounded-2xl border border-dashed border-gray-300 bg-white px-4 py-4">
-                  <p className="text-xs uppercase tracking-[0.16em] text-gray-500">
-                    Pista visual
-                  </p>
-                  <p className="mt-2 break-words font-mono text-base text-gray-800">
-                    {dictationPreview}
-                  </p>
+              ) : null}
+
+              {currentQuestion.type === "dictation" ? (
+                <div className="space-y-5">
+                  <div className="rounded-2xl border border-gray-200 bg-gray-50 p-5">
+                    {/* Hidden playback element for static dictation audio. */}
+                    {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+                    <audio
+                      ref={dictationAudioRef}
+                      preload="none"
+                      src={currentQuestion.audioUrl}
+                      onPlay={() => setIsPlaying(true)}
+                      onPause={() => setIsPlaying(false)}
+                      onEnded={() => setIsPlaying(false)}
+                      onLoadedData={() => setAudioError(null)}
+                      onError={() => {
+                        setIsPlaying(false);
+                        setAudioError("No se pudo cargar el audio.");
+                      }}
+                    />
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                      <div>
+                        <p className="text-sm font-semibold text-gray-700">
+                          {currentQuestion.hintLabel}
+                        </p>
+                        <p className="mt-1 text-sm text-gray-500">
+                          Tienes {currentQuestion.maxAttempts} intentos. En cada
+                          fallo se revelan mas letras.
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={handlePlayDictation}
+                        className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50"
+                      >
+                        {isPlaying ? "Reproduciendo..." : "Escuchar audio"}
+                      </button>
+                    </div>
+                    <div className="mt-5 rounded-2xl border border-dashed border-gray-300 bg-white px-4 py-4">
+                      <p className="text-xs uppercase tracking-[0.16em] text-gray-500">
+                        Pista visual
+                      </p>
+                      <p className="mt-2 break-words font-mono text-base text-gray-800">
+                        {dictationPreview}
+                      </p>
+                    </div>
+                  </div>
+
+                  <label className="block">
+                    <span className="mb-2 block text-sm font-semibold text-gray-700">
+                      Escribe exactamente lo que oyes
+                    </span>
+                    <textarea
+                      value={textAnswer}
+                      onChange={(event) => setTextAnswer(event.target.value)}
+                      disabled={feedback.variant === "resolved"}
+                      rows={3}
+                      className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 transition-all duration-200 placeholder:text-gray-400 focus:border-[#0F9EDA] focus:ring-2 focus:ring-[#0F9EDA]/20"
+                      placeholder="Escribe la frase aqui"
+                    />
+                  </label>
+
+                  {audioError ? (
+                    <p className="text-sm text-rose-600">{audioError}</p>
+                  ) : null}
                 </div>
-              </div>
-
-              <label className="block">
-                <span className="mb-2 block text-sm font-semibold text-gray-700">
-                  Escribe exactamente lo que oyes
-                </span>
-                <textarea
-                  value={textAnswer}
-                  onChange={(event) => setTextAnswer(event.target.value)}
-                  disabled={feedback.variant === "resolved"}
-                  rows={3}
-                  className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 transition-all duration-200 placeholder:text-gray-400 focus:border-[#0F9EDA] focus:ring-2 focus:ring-[#0F9EDA]/20"
-                  placeholder="Escribe la frase aqui"
-                />
-              </label>
-
-              {audioError ? (
-                <p className="text-sm text-rose-600">{audioError}</p>
               ) : null}
             </div>
-          ) : null}
-        </div>
 
-        {currentFeedbackVisible ? (
-          <div
-            className={`mt-6 rounded-2xl border px-5 py-4 text-sm leading-relaxed ${getFeedbackClasses(feedback.tone)}`}
-          >
-            <div className="flex items-start gap-3">
-              <div className="flex-shrink-0 pt-0.5">
-                {getFeedbackIcon(feedback.tone)}
+            {currentFeedbackVisible ? (
+              <div
+                className={`mt-6 rounded-2xl border px-5 py-4 text-sm leading-relaxed ${getFeedbackClasses(feedback.tone)}`}
+              >
+                <div className="flex items-start gap-3">
+                  <div className="flex-shrink-0 pt-0.5">
+                    {getFeedbackIcon(feedback.tone)}
+                  </div>
+                  <div>
+                    {feedback.title ? (
+                      <p className="font-semibold">{feedback.title}</p>
+                    ) : null}
+                    {feedback.body ? (
+                      <p className="mt-1">{feedback.body}</p>
+                    ) : null}
+                    {feedback.hint ? (
+                      <p className="mt-3 font-mono text-xs tracking-wide">
+                        {feedback.hint}
+                      </p>
+                    ) : null}
+                  </div>
+                </div>
               </div>
-              <div>
-                {feedback.title ? (
-                  <p className="font-semibold">{feedback.title}</p>
-                ) : null}
-                {feedback.body ? <p className="mt-1">{feedback.body}</p> : null}
-                {feedback.hint ? (
-                  <p className="mt-3 font-mono text-xs tracking-wide">
-                    {feedback.hint}
-                  </p>
-                ) : null}
+            ) : null}
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div className="text-sm text-gray-500">
+                {feedback.variant === "resolved"
+                  ? "Puedes avanzar cuando quieras."
+                  : test.instructions}
+              </div>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                {feedback.variant === "resolved" ? (
+                  <button
+                    type="button"
+                    onClick={handleNext}
+                    className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                  >
+                    {isLastQuestion ? "Ver resultado" : "Siguiente pregunta"}
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={handleSubmit}
+                    className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                  >
+                    Comprobar respuesta
+                  </button>
+                )}
               </div>
             </div>
-          </div>
-        ) : null}
-
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div className="text-sm text-gray-500">
-            {feedback.variant === "resolved"
-              ? "Puedes avanzar cuando quieras."
-              : test.instructions}
-          </div>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            {feedback.variant === "resolved" ? (
-              <button
-                type="button"
-                onClick={handleNext}
-                className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-              >
-                {isLastQuestion ? "Ver resultado" : "Siguiente pregunta"}
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={handleSubmit}
-                className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-              >
-                Comprobar respuesta
-              </button>
-            )}
           </div>
         </div>
       </section>

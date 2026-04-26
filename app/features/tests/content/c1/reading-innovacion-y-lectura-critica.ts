@@ -9,7 +9,7 @@ export default defineTest({
   intro:
     "Esta prueba busca medir si ya puedes leer entre lineas y seguir una tesis con vocabulario mas exigente.",
   passage:
-    "Some organizations celebrate innovation so enthusiastically that they forget the slower work required to make new ideas usable. A clever prototype may attract attention, but without documentation, training and support, it rarely changes everyday practice. The real challenge is not producing novelty; it is embedding it into routines people can actually maintain.",
+    "Some organizations celebrate innovation so enthusiastically that they forget the slower work required to make new ideas usable. A clever prototype may attract attention at a conference, impress senior leaders, and suggest that the organization is moving quickly. However, the excitement often fades when the people expected to use the tool have not been given documentation, training, or support. In those conditions, the prototype becomes another isolated experiment rather than a change in everyday practice. This does not mean that novelty has no value; new ideas can reveal better ways of working. The real challenge is not producing novelty for its own sake, but embedding it into routines that people can actually maintain when the first wave of enthusiasm has passed.",
   questions: [
     {
       id: "c1-reading-1",
@@ -58,8 +58,8 @@ export default defineTest({
       type: "reorder",
       prompt: "Order the words.",
       clue: "Use the final insight from the passage.",
-      tokens: ["the", "real", "challenge", "is", "implementation"],
-      answer: ["the", "real", "challenge", "is", "implementation"],
+      tokens: ["embedding", "challenge", "the", "novelty", "is", "real"],
+      answer: ["the", "real", "challenge", "is", "embedding", "novelty"],
       explanation: "The text contrasts novelty with implementation.",
       points: 25,
     },

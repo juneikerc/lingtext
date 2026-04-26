@@ -91,26 +91,36 @@ export function useReaderInteractions({
       if (!target?.dataset?.lower || !target?.dataset?.word) return;
 
       const rect = target.getBoundingClientRect();
-      const { x, y } = relativePos(rect.left + rect.width / 2, rect.top);
+      const vx = rect.left + rect.width / 2;
+      const vy = rect.top;
+      const { x, y } = relativePos(vx, vy);
       const word = target.dataset.word;
       const lower = target.dataset.lower;
 
       const existing = await getWord(lower);
       if (existing) {
-        setPopup({ x, y, word, lower, translation: existing.translation });
+        setPopup({
+          x,
+          y,
+          vx,
+          vy,
+          word,
+          lower,
+          translation: existing.translation,
+        });
         return;
       }
 
       const localMeaning = getLocalWordMeaning(lower);
       if (localMeaning) {
         setSelPopup(null);
-        setPopup({ x, y, word, lower, translation: localMeaning });
+        setPopup({ x, y, vx, vy, word, lower, translation: localMeaning });
         return;
       }
 
       const requestId = ++translateRequestIdRef.current;
       setSelPopup(null);
-      setPopup({ x, y, word, lower, translation: "", isLoading: true });
+      setPopup({ x, y, vx, vy, word, lower, translation: "", isLoading: true });
 
       const translation = await translateTerm(word, selected);
       if (requestId !== translateRequestIdRef.current) return;
@@ -119,6 +129,8 @@ export function useReaderInteractions({
       setPopup({
         x,
         y,
+        vx,
+        vy,
         word,
         lower,
         translation: translation.translation,
@@ -157,84 +169,98 @@ export function useReaderInteractions({
     setSelPopup(null);
   }, []);
 
-  const handleMouseUp = useCallback(async (event: React.MouseEvent) => {
-    const target = event.target as HTMLElement;
-    if (target.closest("[data-reader-popup='true']")) {
-      return;
-    }
-
-    const selection = window.getSelection();
-
-    if (!selection || selection.isCollapsed || selection.rangeCount === 0) {
-      return;
-    }
-
-    const range = selection.getRangeAt(0);
-    const parent = containerRef.current;
-    if (!parent || !parent.contains(range.commonAncestorContainer)) {
-      return;
-    }
-
-    const text = normalizeReaderSelectionText(selection.toString());
-    if (!text) return;
-
-    const rect = range.getBoundingClientRect();
-    const { x, y } = relativePos(rect.left + rect.width / 2, rect.top);
-    const parts = tokenize(text)
-      .filter((token) => token.isWord)
-      .map((token) => token.lower || normalizeWord(token.text))
-      .filter((word) => word.length > 0);
-
-    if (parts.length > MAX_SELECTION_TRANSLATE_WORDS) {
-      translateRequestIdRef.current += 1;
-      setPopup(null);
-      setSelPopup(null);
-      return;
-    }
-
-    if (parts.length >= 2) {
-      const phraseLower = parts.join(" ");
-      try {
-        const existing = await getPhrase(phraseLower);
-        if (existing?.translation) {
-          setPopup(null);
-          setSelPopup({ x, y, text, translation: existing.translation });
-          return;
-        }
-
-        const cached = phraseCacheRef.current.get(phraseLower);
-        if (cached) {
-          setPopup(null);
-          setSelPopup({ x, y, text, translation: cached });
-          return;
-        }
-      } catch (_error) {
-        phraseCacheRef.current.delete(phraseLower);
+  const handleMouseUp = useCallback(
+    async (event: React.MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (target.closest("[data-reader-popup='true']")) {
+        return;
       }
-    }
 
-    const requestId = ++translateRequestIdRef.current;
-    setPopup(null);
-    setSelPopup({ x, y, text, translation: "", isLoading: true });
+      const selection = window.getSelection();
 
-    const translation = await translateTerm(text, selected);
-    if (requestId !== translateRequestIdRef.current) return;
+      if (!selection || selection.isCollapsed || selection.rangeCount === 0) {
+        return;
+      }
 
-    notifyTranslationQuota(translation.error);
+      const range = selection.getRangeAt(0);
+      const parent = containerRef.current;
+      if (!parent || !parent.contains(range.commonAncestorContainer)) {
+        return;
+      }
 
-    if (parts.length >= 2) {
-      phraseCacheRef.current.set(parts.join(" "), translation.translation);
-    }
+      const text = normalizeReaderSelectionText(selection.toString());
+      if (!text) return;
 
-    setSelPopup({
-      x,
-      y,
-      text,
-      translation: translation.translation,
-      isLoading: false,
-      disclaimer: translation.disclaimer,
-    });
-  }, [containerRef, notifyTranslationQuota, relativePos, selected]);
+      const rect = range.getBoundingClientRect();
+      const vx = rect.left + rect.width / 2;
+      const vy = rect.top;
+      const { x, y } = relativePos(vx, vy);
+      const parts = tokenize(text)
+        .filter((token) => token.isWord)
+        .map((token) => token.lower || normalizeWord(token.text))
+        .filter((word) => word.length > 0);
+
+      if (parts.length > MAX_SELECTION_TRANSLATE_WORDS) {
+        translateRequestIdRef.current += 1;
+        setPopup(null);
+        setSelPopup(null);
+        return;
+      }
+
+      if (parts.length >= 2) {
+        const phraseLower = parts.join(" ");
+        try {
+          const existing = await getPhrase(phraseLower);
+          if (existing?.translation) {
+            setPopup(null);
+            setSelPopup({
+              x,
+              y,
+              vx,
+              vy,
+              text,
+              translation: existing.translation,
+            });
+            return;
+          }
+
+          const cached = phraseCacheRef.current.get(phraseLower);
+          if (cached) {
+            setPopup(null);
+            setSelPopup({ x, y, vx, vy, text, translation: cached });
+            return;
+          }
+        } catch (_error) {
+          phraseCacheRef.current.delete(phraseLower);
+        }
+      }
+
+      const requestId = ++translateRequestIdRef.current;
+      setPopup(null);
+      setSelPopup({ x, y, vx, vy, text, translation: "", isLoading: true });
+
+      const translation = await translateTerm(text, selected);
+      if (requestId !== translateRequestIdRef.current) return;
+
+      notifyTranslationQuota(translation.error);
+
+      if (parts.length >= 2) {
+        phraseCacheRef.current.set(parts.join(" "), translation.translation);
+      }
+
+      setSelPopup({
+        x,
+        y,
+        vx,
+        vy,
+        text,
+        translation: translation.translation,
+        isLoading: false,
+        disclaimer: translation.disclaimer,
+      });
+    },
+    [containerRef, notifyTranslationQuota, relativePos, selected]
+  );
 
   const onSavePhrase = useCallback(
     async (text: string, translation: string) => {

@@ -9,7 +9,7 @@ export default defineTest({
   intro:
     "La prueba apunta a esa zona B1 en la que ya puedes seguir una idea completa y relacionar problema con respuesta.",
   passage:
-    "Last year, Nora started working from home three days a week. At first, she enjoyed the flexibility, but after a few months she noticed she was moving less and finishing work later than before. To solve that, she now goes for a short walk before breakfast and sets a clear time to shut down her laptop every evening.",
+    "Last year, Nora started working from home three days a week after her company changed its office policy. At first, she enjoyed the flexibility because she could start earlier, cook lunch at home, and avoid the crowded bus. However, after a few months she noticed that her new routine was creating different problems. She was moving less, answering messages during lunch, and finishing work later than before because her laptop was always nearby. Nora did not want to return to the office every day, but she needed clearer limits. To solve the problem, she now goes for a short walk before breakfast, keeps a bottle of water on her desk, and sets a clear time to shut down her laptop every evening. She says remote work is useful when it has structure.",
   questions: [
     {
       id: "b1-reading-1",
@@ -55,8 +55,8 @@ export default defineTest({
       type: "reorder",
       prompt: "Order the words.",
       clue: "Use the problem Nora noticed.",
-      tokens: ["was", "later", "she", "work", "finishing"],
-      answer: ["she", "was", "finishing", "work", "later"],
+      tokens: ["always", "her", "nearby", "was", "laptop"],
+      answer: ["her", "laptop", "was", "always", "nearby"],
       explanation: "This reflects the issue described in the text.",
       points: 25,
     },

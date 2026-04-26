@@ -9,7 +9,7 @@ export default defineTest({
   intro:
     "Esta prueba pone el foco en comprension fina: no solo entender ideas, sino como estan organizadas y matizadas.",
   passage:
-    "Public discussion often frames expertise and accessibility as if they were mutually exclusive. Yet the most insightful communicators do not simplify by stripping away complexity; they simplify by structuring it. What frustrates audiences is rarely depth itself, but the impression that depth is being used to exclude rather than illuminate.",
+    "Public discussion often frames expertise and accessibility as if they were mutually exclusive, especially when specialists speak to audiences outside their field. The usual assumption is that a rigorous explanation must be difficult, while an accessible one must be shallow. Yet the most insightful communicators do not simplify by stripping away complexity; they simplify by structuring it. They make the route through the argument visible, distinguish essential ideas from technical detail, and signal where uncertainty remains. What frustrates audiences is rarely depth itself, but the impression that depth is being used to exclude rather than illuminate. In that sense, clarity is not a concession to people who know less; it is a discipline that tests whether the expert has understood the subject well enough to guide someone else through it.",
   questions: [
     {
       id: "c2-reading-1",
@@ -58,8 +58,8 @@ export default defineTest({
       type: "reorder",
       prompt: "Order the words.",
       clue: "Use the key contrast from the final sentence.",
-      tokens: ["depth", "can", "exclude", "or", "illuminate"],
-      answer: ["depth", "can", "exclude", "or", "illuminate"],
+      tokens: ["discipline", "is", "clarity", "a"],
+      answer: ["clarity", "is", "a", "discipline"],
       explanation: "This condenses the core contrast in the paragraph.",
       points: 25,
     },

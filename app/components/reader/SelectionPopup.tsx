@@ -17,17 +17,21 @@ export default function SelectionPopup({
 }: SelectionPopupProps) {
   const viewportWidth =
     typeof window !== "undefined" ? window.innerWidth : 1200;
+  const viewportHeight =
+    typeof window !== "undefined" ? window.innerHeight : 800;
   const popupWidth = Math.min(400, Math.max(280, viewportWidth - 24));
+  const popupEstimatedHeight = 260;
+  const maxTop = Math.max(12, viewportHeight - popupEstimatedHeight - 12);
   const left = Math.min(
-    Math.max(12, selPopup.x - popupWidth / 2),
+    Math.max(12, selPopup.vx - popupWidth / 2),
     viewportWidth - popupWidth - 12
   );
-  const top = Math.max(12, selPopup.y - 100);
+  const top = Math.min(Math.max(12, selPopup.vy - 100), maxTop);
 
   return (
     <div
       data-reader-popup="true"
-      className="absolute w-full backdrop-blur-md rounded-2xl shadow-xl border border-gray-200/50 z-30 overflow-hidden"
+      className="fixed backdrop-blur-md rounded-2xl shadow-xl border border-gray-200/50 z-30 overflow-hidden"
       style={{ left, top, width: popupWidth }}
     >
       {/* Header */}

@@ -21,17 +21,21 @@ export default function WordPopup({
 }: WordPopupProps) {
   const viewportWidth =
     typeof window !== "undefined" ? window.innerWidth : 1200;
+  const viewportHeight =
+    typeof window !== "undefined" ? window.innerHeight : 800;
   const popupWidth = Math.min(320, Math.max(260, viewportWidth - 24));
+  const popupEstimatedHeight = 320;
+  const maxTop = Math.max(12, viewportHeight - popupEstimatedHeight - 12);
   const left = Math.min(
-    Math.max(12, popup.x - popupWidth / 2),
+    Math.max(12, popup.vx - popupWidth / 2),
     viewportWidth - popupWidth - 12
   );
-  const top = Math.max(12, popup.y - 80);
+  const top = Math.min(Math.max(12, popup.vy - 80), maxTop);
 
   return (
     <div
       data-reader-popup="true"
-      className="absolute w-full backdrop-blur-md rounded-2xl shadow-xl border z-30 overflow-hidden"
+      className="fixed backdrop-blur-md rounded-2xl shadow-xl border z-30 overflow-hidden"
       style={{
         left,
         top,

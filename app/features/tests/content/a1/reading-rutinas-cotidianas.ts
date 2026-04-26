@@ -9,7 +9,7 @@ export default defineTest({
   intro:
     "Una prueba breve centrada en acciones del dia a dia, horarios y detalles faciles de localizar.",
   passage:
-    "Tom wakes up at seven every day. He has bread and tea for breakfast, then he walks to the bus stop with his sister. After school, they play football in the park for thirty minutes.",
+    "Tom wakes up at seven every day because his school starts at eight thirty. He opens the window, makes his bed, and goes to the kitchen with his sister Anna. For breakfast, Tom has bread and tea, while Anna drinks milk and eats an apple. At seven forty-five, they leave the house together and walk to the bus stop near the small supermarket. Their mother works in the supermarket, so she waves at them from the door. After school, Tom and Anna do their homework at the kitchen table. Then they go to the park and play football with two friends for thirty minutes. In the evening, Tom reads a short story before dinner because he likes quiet time at home.",
   questions: [
     {
       id: "a1-reading-1",
@@ -55,8 +55,8 @@ export default defineTest({
       type: "reorder",
       prompt: "Put the words in the correct order.",
       clue: "Use the information from the text.",
-      tokens: ["walks", "Tom", "to", "the", "bus", "stop"],
-      answer: ["Tom", "walks", "to", "the", "bus", "stop"],
+      tokens: ["reads", "story", "Tom", "short", "a"],
+      answer: ["Tom", "reads", "a", "short", "story"],
       explanation: "This is the sentence pattern used in the passage.",
       points: 25,
     },
