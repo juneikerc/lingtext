@@ -87,6 +87,7 @@ export interface TestDefinition {
 }
 
 export interface LevelTestSummary {
+  id: string;
   level: TestLevel;
   skill: TestSkill;
   title: string;

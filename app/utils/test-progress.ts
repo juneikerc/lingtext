@@ -3,6 +3,7 @@ import type { TestSkill } from "~/features/tests/types";
 const STORAGE_KEY = "lingtext_test_progress";
 
 export interface TestProgressEntry {
+  testId: string;
   skill: TestSkill;
   completedAt: number;
   scorePercent: number;
@@ -41,6 +42,7 @@ function saveProgress(progress: TestProgressMap): void {
 
 export function markTestCompleted(
   level: string,
+  testId: string,
   skill: TestSkill,
   scorePercent: number
 ): void {
@@ -50,7 +52,8 @@ export function markTestCompleted(
     progress[level] = {};
   }
 
-  progress[level][skill] = {
+  progress[level][testId] = {
+    testId,
     skill,
     completedAt: Date.now(),
     scorePercent,
@@ -59,17 +62,17 @@ export function markTestCompleted(
   saveProgress(progress);
 }
 
-export function isTestCompleted(level: string, skill: TestSkill): boolean {
+export function isTestCompleted(level: string, testId: string): boolean {
   const progress = loadProgress();
-  return !!progress[level]?.[skill];
+  return !!progress[level]?.[testId];
 }
 
 export function getTestProgress(
   level: string,
-  skill: TestSkill
+  testId: string
 ): TestProgressEntry | undefined {
   const progress = loadProgress();
-  return progress[level]?.[skill];
+  return progress[level]?.[testId];
 }
 
 export function getAllCompletedTestsForLevel(

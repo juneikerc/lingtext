@@ -1,14 +1,20 @@
 import a1DictationPrimerDictado from "./a1/dictation-primer-dictado";
 import a1GrammarPresentSimpleToBe from "./a1/grammar-present-simple-to-be";
+import a1ReadingLaCasaDeLena from "./a1/reading-la-casa-de-lena";
 import a1ReadingRutinasCotidianas from "./a1/reading-rutinas-cotidianas";
+import a1ReadingUnDiaEnLaTienda from "./a1/reading-un-dia-en-la-tienda";
 import a1VocabularyPalabrasBasicas from "./a1/vocabulary-palabras-basicas";
 import a2DictationPasadoYPlanes from "./a2/dictation-pasado-y-planes";
 import a2GrammarPasadoYComparativos from "./a2/grammar-pasado-y-comparativos";
+import a2ReadingCorreoDeLaEscuela from "./a2/reading-correo-de-la-escuela";
 import a2ReadingPlanesYMensajes from "./a2/reading-planes-y-mensajes";
+import a2ReadingUnViajeCorto from "./a2/reading-un-viaje-corto";
 import a2VocabularyVidaDiariaYClima from "./a2/vocabulary-vida-diaria-y-clima";
 import b1DictationFrasesNaturales from "./b1/dictation-frases-naturales";
 import b1GrammarCondicionalesYConectores from "./b1/grammar-condicionales-y-conectores";
+import b1ReadingAprenderConPodcasts from "./b1/reading-aprender-con-podcasts";
 import b1ReadingHabitosYTrabajoRemoto from "./b1/reading-habitos-y-trabajo-remoto";
+import b1ReadingVoluntariadoEnLaCiudad from "./b1/reading-voluntariado-en-la-ciudad";
 import b1VocabularyTrabajoYDecisiones from "./b1/vocabulary-trabajo-y-decisiones";
 import b2DictationEstructuraYMatiz from "./b2/dictation-estructura-y-matiz";
 import b2GrammarMaticesYLinkers from "./b2/grammar-matices-y-linkers";
@@ -25,14 +31,20 @@ import c2VocabularyMatizFino from "./c2/vocabulary-matiz-fino";
 
 export const TEST_CATALOG = [
   a1ReadingRutinasCotidianas,
+  a1ReadingLaCasaDeLena,
+  a1ReadingUnDiaEnLaTienda,
   a1GrammarPresentSimpleToBe,
   a1VocabularyPalabrasBasicas,
   a1DictationPrimerDictado,
   a2ReadingPlanesYMensajes,
+  a2ReadingUnViajeCorto,
+  a2ReadingCorreoDeLaEscuela,
   a2GrammarPasadoYComparativos,
   a2VocabularyVidaDiariaYClima,
   a2DictationPasadoYPlanes,
   b1ReadingHabitosYTrabajoRemoto,
+  b1ReadingVoluntariadoEnLaCiudad,
+  b1ReadingAprenderConPodcasts,
   b1GrammarCondicionalesYConectores,
   b1VocabularyTrabajoYDecisiones,
   b1DictationFrasesNaturales,

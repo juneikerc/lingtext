@@ -18,7 +18,7 @@ import type { TestDefinition } from "~/features/tests/types";
 import { markTestCompleted } from "~/utils/test-progress";
 
 interface TestSessionPlayerProps {
-  test: TestDefinition;
+  test: TestDefinition & { id: string };
 }
 
 interface CompletedResult {
@@ -167,9 +167,9 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
 
   useEffect(() => {
     if (isFinishing) {
-      markTestCompleted(test.level, test.skill, scorePercent);
+      markTestCompleted(test.level, test.id, test.skill, scorePercent);
     }
-  }, [isFinishing, test.level, test.skill, scorePercent]);
+  }, [isFinishing, test.id, test.level, test.skill, scorePercent]);
 
   useEffect(() => {
     const audioElement = dictationAudioRef.current;
@@ -489,7 +489,7 @@ export default function TestSessionPlayer({ test }: TestSessionPlayerProps) {
   const readingText =
     isReadingTest && testPassage
       ? {
-          id: `test-reading-${test.level}`,
+          id: `test-reading-${test.id}`,
           title: test.title,
           content: testPassage,
           format: "txt" as const,

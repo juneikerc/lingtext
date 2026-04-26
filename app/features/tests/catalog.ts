@@ -110,8 +110,15 @@ export function isTestSkill(value: string): value is TestSkill {
   return TEST_SKILLS.some((skill) => skill.id === value);
 }
 
+export function getTestId(test: TestDefinition): string {
+  return (
+    test.questions[0]?.id.replace(/-\d+$/, "") ?? `${test.level}-${test.skill}`
+  );
+}
+
 export function getLevelTestSummaries(level: TestLevel): LevelTestSummary[] {
   return TEST_CATALOG.filter((test) => test.level === level).map((test) => ({
+    id: getTestId(test),
     level: test.level,
     skill: test.skill,
     title: test.title,
@@ -132,9 +139,13 @@ export function getAllTestSkills() {
 
 export function getTestDefinition(
   level: TestLevel,
-  skill: TestSkill
+  skill: TestSkill,
+  testId?: string
 ): TestDefinition | undefined {
   return TEST_CATALOG.find(
-    (test) => test.level === level && test.skill === skill
+    (test) =>
+      test.level === level &&
+      test.skill === skill &&
+      (!testId || getTestId(test) === testId)
   );
 }

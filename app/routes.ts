@@ -7,7 +7,7 @@ export default [
   route("review", "routes/review.tsx"),
   route("tests", "routes/tests/index.tsx"),
   route("tests/:level", "routes/tests/level.tsx"),
-  route("tests/:level/:skill/:sessionId", "routes/tests/session.tsx"),
+  route("tests/:level/:skill/:testId/:sessionId", "routes/tests/session.tsx"),
   route("contacto", "routes/contact.tsx"),
   route("levels/:level", "routes/levels/level.tsx"),
   route("textos-en-ingles", "routes/english-texts.tsx"),

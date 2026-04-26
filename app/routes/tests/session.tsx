@@ -1,6 +1,7 @@
 import TestSessionPlayer from "~/components/tests/TestSessionPlayer";
 import {
   getTestDefinition,
+  getTestId,
   getTestLevelMeta,
   isTestLevel,
   isTestSkill,
@@ -9,19 +10,20 @@ import { shuffleQuestions } from "~/features/tests/engine";
 import type { Route } from "./+types/session";
 
 export function loader({ params }: Route.LoaderArgs) {
-  const { level, skill, sessionId } = params;
+  const { level, skill, testId, sessionId } = params;
 
   if (
     !level ||
     !isTestLevel(level) ||
     !skill ||
     !isTestSkill(skill) ||
+    !testId ||
     !sessionId
   ) {
     throw new Response("Not Found", { status: 404 });
   }
 
-  const test = getTestDefinition(level, skill);
+  const test = getTestDefinition(level, skill, testId);
 
   if (!test) {
     throw new Response("Not Found", { status: 404 });
@@ -31,9 +33,10 @@ export function loader({ params }: Route.LoaderArgs) {
     sessionId,
     test: {
       ...test,
+      id: getTestId(test),
       questions: shuffleQuestions(
         test.questions,
-        `${sessionId}:${level}:${skill}`
+        `${sessionId}:${level}:${skill}:${testId}`
       ),
     },
   };

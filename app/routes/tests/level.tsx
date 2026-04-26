@@ -8,7 +8,7 @@ import {
   isTestLevel,
 } from "~/features/tests/catalog";
 import { getTestTextByLevel } from "~/lib/content/runtime";
-import type { TestSkill } from "~/features/tests/types";
+import type { LevelTestSummary } from "~/features/tests/types";
 import type { Route } from "./+types/level";
 import { isTestCompleted } from "~/utils/test-progress";
 
@@ -77,8 +77,10 @@ export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
   const navigate = useNavigate();
   const { levelMeta, tests, testText } = loaderData;
 
-  function handleStart(skill: TestSkill) {
-    void navigate(`/tests/${levelMeta.id}/${skill}/${createSessionId()}`);
+  function handleStart(test: LevelTestSummary) {
+    void navigate(
+      `/tests/${levelMeta.id}/${test.skill}/${test.id}/${createSessionId()}`
+    );
   }
 
   return (
@@ -185,7 +187,7 @@ export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
 
               return (
                 <article
-                  key={test.skill}
+                  key={test.id}
                   className="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-8 shadow-sm transition-shadow duration-200 hover:shadow-md"
                 >
                   <div className="flex items-start justify-between gap-4">
@@ -232,14 +234,14 @@ export default function TestLevelPage({ loaderData }: Route.ComponentProps) {
                   <div className="mt-auto pt-6">
                     <button
                       type="button"
-                      onClick={() => handleStart(test.skill)}
+                      onClick={() => handleStart(test)}
                       className={`inline-flex w-full items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold shadow-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
-                        isTestCompleted(levelMeta.id, test.skill)
+                        isTestCompleted(levelMeta.id, test.id)
                           ? "border border-[#0F9EDA] bg-transparent text-[#0F9EDA] hover:bg-[#0F9EDA]/5"
                           : "bg-[#0F9EDA] text-white hover:bg-[#0D8EC4] hover:shadow"
                       }`}
                     >
-                      {isTestCompleted(levelMeta.id, test.skill)
+                      {isTestCompleted(levelMeta.id, test.id)
                         ? "Repetir"
                         : "Empezar"}
                     </button>
