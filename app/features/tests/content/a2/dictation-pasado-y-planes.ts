@@ -12,7 +12,7 @@ export default defineTest({
     {
       id: "a2-dictation-1",
       type: "dictation",
-      prompt: "Listen and write the sentence.",
+      prompt: "Escucha y escribe la oración.",
       audioUrl: "/audio/tests/a2/a2-dictation-1.mp3",
       transcript: "We took the train to the coast",
       maxAttempts: 5,
@@ -22,7 +22,7 @@ export default defineTest({
     {
       id: "a2-dictation-2",
       type: "dictation",
-      prompt: "Listen and write the sentence.",
+      prompt: "Escucha y escribe la oración.",
       audioUrl: "/audio/tests/a2/a2-dictation-2.mp3",
       transcript: "My cousin is cooking dinner tonight",
       maxAttempts: 5,
@@ -32,7 +32,7 @@ export default defineTest({
     {
       id: "a2-dictation-3",
       type: "dictation",
-      prompt: "Listen and write the sentence.",
+      prompt: "Escucha y escribe la oración.",
       audioUrl: "/audio/tests/a2/a2-dictation-3.mp3",
       transcript: "There are some books on the chair",
       maxAttempts: 5,
@@ -42,7 +42,7 @@ export default defineTest({
     {
       id: "a2-dictation-4",
       type: "dictation",
-      prompt: "Listen and write the sentence.",
+      prompt: "Escucha y escribe la oración.",
       audioUrl: "/audio/tests/a2/a2-dictation-4.mp3",
       transcript: "I didn't call you after lunch",
       maxAttempts: 5,

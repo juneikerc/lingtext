@@ -14,7 +14,7 @@ export default defineTest({
     {
       id: "b1-reading-1",
       type: "multiple-choice",
-      prompt: "Why did Nora change her routine?",
+      prompt: "¿Por qué cambió Nora su rutina?",
       choices: [
         { id: "a", text: "She wanted to save money on food" },
         { id: "b", text: "She was missing her morning bus" },
@@ -23,13 +23,13 @@ export default defineTest({
       ],
       correctChoiceId: "c",
       explanation:
-        "She changed it because working from home affected her movement and schedule.",
+        "Cambió su rutina porque trabajar desde casa afectó su movimiento y horario.",
       points: 25,
     },
     {
       id: "b1-reading-2",
       type: "multiple-choice",
-      prompt: "What does Nora do before breakfast?",
+      prompt: "¿Qué hace Nora antes del desayuno?",
       choices: [
         { id: "a", text: "Checks email" },
         { id: "b", text: "Goes for a walk" },
@@ -38,26 +38,26 @@ export default defineTest({
       ],
       correctChoiceId: "b",
       explanation:
-        "The passage explicitly says she goes for a short walk before breakfast.",
+        "El texto dice explícitamente que da un paseo corto antes del desayuno.",
       points: 25,
     },
     {
       id: "b1-reading-3",
       type: "cloze",
-      prompt: "Complete the idea from the text.",
+      prompt: "Completa la idea del texto.",
       sentence: "Nora sets a clear time to shut down her ___ every evening.",
       answers: ["laptop"],
-      explanation: "The passage uses 'laptop'.",
+      explanation: "El texto usa la palabra 'laptop'.",
       points: 25,
     },
     {
       id: "b1-reading-4",
       type: "reorder",
-      prompt: "Order the words.",
+      prompt: "Ordena las palabras.",
       clue: "Use the problem Nora noticed.",
       tokens: ["always", "her", "nearby", "was", "laptop"],
       answer: ["her", "laptop", "was", "always", "nearby"],
-      explanation: "This reflects the issue described in the text.",
+      explanation: "Esto refleja el problema descrito en el texto.",
       points: 25,
     },
   ],

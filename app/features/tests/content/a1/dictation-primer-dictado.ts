@@ -12,7 +12,7 @@ export default defineTest({
     {
       id: "a1-dictation-1",
       type: "dictation",
-      prompt: "Listen and write the sentence.",
+      prompt: "Escucha y escribe la oración.",
       audioUrl: "/audio/tests/a1/a1-dictation-1.mp3",
       transcript: "I like apples and bananas",
       maxAttempts: 5,
@@ -22,7 +22,7 @@ export default defineTest({
     {
       id: "a1-dictation-2",
       type: "dictation",
-      prompt: "Listen and write the sentence.",
+      prompt: "Escucha y escribe la oración.",
       audioUrl: "/audio/tests/a1/a1-dictation-2.mp3",
       transcript: "My brother is at home",
       maxAttempts: 5,
@@ -32,7 +32,7 @@ export default defineTest({
     {
       id: "a1-dictation-3",
       type: "dictation",
-      prompt: "Listen and write the sentence.",
+      prompt: "Escucha y escribe la oración.",
       audioUrl: "/audio/tests/a1/a1-dictation-3.mp3",
       transcript: "We study English every day",
       maxAttempts: 5,
@@ -42,7 +42,7 @@ export default defineTest({
     {
       id: "a1-dictation-4",
       type: "dictation",
-      prompt: "Listen and write the sentence.",
+      prompt: "Escucha y escribe la oración.",
       audioUrl: "/audio/tests/a1/a1-dictation-4.mp3",
       transcript: "The bus is very late",
       maxAttempts: 5,

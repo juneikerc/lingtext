@@ -12,7 +12,7 @@ export default defineTest({
     {
       id: "b1-dictation-1",
       type: "dictation",
-      prompt: "Listen and write the sentence.",
+      prompt: "Escucha y escribe la oración.",
       audioUrl: "/audio/tests/b1/b1-dictation-1.mp3",
       transcript: "I would rather stay home tonight",
       maxAttempts: 5,
@@ -22,7 +22,7 @@ export default defineTest({
     {
       id: "b1-dictation-2",
       type: "dictation",
-      prompt: "Listen and write the sentence.",
+      prompt: "Escucha y escribe la oración.",
       audioUrl: "/audio/tests/b1/b1-dictation-2.mp3",
       transcript: "She has worked here since March",
       maxAttempts: 5,
@@ -32,7 +32,7 @@ export default defineTest({
     {
       id: "b1-dictation-3",
       type: "dictation",
-      prompt: "Listen and write the sentence.",
+      prompt: "Escucha y escribe la oración.",
       audioUrl: "/audio/tests/b1/b1-dictation-3.mp3",
       transcript: "We need to make a quick decision",
       maxAttempts: 5,
@@ -42,7 +42,7 @@ export default defineTest({
     {
       id: "b1-dictation-4",
       type: "dictation",
-      prompt: "Listen and write the sentence.",
+      prompt: "Escucha y escribe la oración.",
       audioUrl: "/audio/tests/b1/b1-dictation-4.mp3",
       transcript: "They were waiting outside the station",
       maxAttempts: 5,
