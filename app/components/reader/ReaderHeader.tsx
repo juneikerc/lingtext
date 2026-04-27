@@ -102,7 +102,16 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
             <div className="flex items-center space-x-2 sm:space-x-3 min-w-0">
               <button
                 type="button"
-                onClick={() => window.history.back()}
+                onClick={() => {
+                  if (
+                    document.referrer &&
+                    new URL(document.referrer).origin === window.location.origin
+                  ) {
+                    window.history.back();
+                  } else {
+                    window.location.href = "/";
+                  }
+                }}
                 className="group shrink-0 flex items-center gap-1.5 px-2 sm:px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-[#0F9EDA] hover:text-white text-gray-700 font-medium transition-all duration-200"
                 aria-label="Volver"
               >
