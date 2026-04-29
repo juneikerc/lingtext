@@ -145,7 +145,7 @@ export default function Popup() {
 
       await loadAll();
       setLastSync(new Date(updatedTs).toLocaleString());
-      setSyncStatus("✓ Sincronizado");
+      setSyncStatus("Sincronizado");
       setSyncing(false);
     } catch (error) {
       console.error("[LingText Popup] Sync failed:", error);
@@ -163,14 +163,16 @@ export default function Popup() {
             src="/icons/icon-32.png"
             alt="LingText"
           />
-          <span className="logo-text">LingText</span>
+          <span className="logo-text">
+            Ling<span className="logo-text-accent">Text</span>
+          </span>
         </div>
         <span className="version">v0.2.0</span>
       </header>
 
       <main className="popup-body">
-        <section className="stats">
-          <h2>Tu vocabulario</h2>
+        <section>
+          <h2 className="section-title">Tu vocabulario</h2>
           <div className="stats-grid">
             <div className="stat-card">
               <span className="stat-value">{stats.words}</span>
@@ -183,8 +185,8 @@ export default function Popup() {
           </div>
         </section>
 
-        <section className="translator-section">
-          <h2>Traductor</h2>
+        <section className="card">
+          <h2 className="section-title">Traductor</h2>
           <select
             className="translator-select"
             value={settings.translator}
@@ -206,8 +208,9 @@ export default function Popup() {
                 <button
                   className="toggle-visibility"
                   onClick={() => setShowApiKey((prev) => !prev)}
+                  aria-label={showApiKey ? "Ocultar API key" : "Mostrar API key"}
                 >
-                  {showApiKey ? "🙈" : "👁️"}
+                  {showApiKey ? "Ocultar" : "Mostrar"}
                 </button>
               </label>
               <input
@@ -225,14 +228,14 @@ export default function Popup() {
                 rel="noopener"
                 className="api-key-link"
               >
-                Obtener API Key →
+                Obtener API Key
               </a>
             </div>
           )}
         </section>
 
-        <section className="sync-section">
-          <h2>Sincronización</h2>
+        <section className="card">
+          <h2 className="section-title">Sincronización</h2>
           {lastSync && <p className="last-sync">Última sync: {lastSync}</p>}
           {syncStatus && <p className="sync-status">{syncStatus}</p>}
           <div className="sync-buttons">
@@ -241,7 +244,7 @@ export default function Popup() {
               onClick={handleSync}
               disabled={syncing}
             >
-              {syncing ? "Sincronizando..." : "🔄 Sincronizar"}
+              {syncing ? "Sincronizando..." : "Sincronizar"}
             </button>
             <button className="btn btn-secondary" onClick={openLingText}>
               Abrir LingText
@@ -257,7 +260,7 @@ export default function Popup() {
         </section>
 
         <section className="help-section">
-          <h2>Cómo usar</h2>
+          <h2 className="section-title">Cómo usar</h2>
           <ol>
             <li>Activa los subtítulos en inglés en YouTube</li>
             <li>Haz clic en palabras para traducirlas</li>
