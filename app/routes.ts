@@ -26,4 +26,5 @@ export default [
   ),
   route("my-library", "routes/my-library.tsx"),
   route("pro", "routes/pro.tsx"),
+  route("extension", "routes/extension.tsx"),
 ] satisfies RouteConfig;
