@@ -240,9 +240,10 @@ export default function TestsIndexPage({ loaderData }: Route.ComponentProps) {
 
               <div className="grid gap-3 sm:grid-cols-2">
                 {skills.map((skill) => (
-                  <div
+                  <Link
                     key={skill.id}
-                    className="rounded-2xl border border-gray-200 bg-gray-50 p-4 transition-colors duration-200 hover:border-[#0F9EDA]/30 hover:bg-[#0F9EDA]/5"
+                    to="#tests-por-nivel"
+                    className="rounded-2xl border border-gray-200 bg-gray-50 p-4 transition-colors duration-200 hover:border-[#0F9EDA]/30 hover:bg-[#0F9EDA]/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                   >
                     <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[#0F9EDA]/20 bg-white text-[#0F9EDA]">
                       {SKILL_ICONS[skill.id]}
@@ -253,7 +254,7 @@ export default function TestsIndexPage({ loaderData }: Route.ComponentProps) {
                     <p className="mt-1 text-xs leading-relaxed text-gray-500">
                       {skill.shortDescription}
                     </p>
-                  </div>
+                  </Link>
                 ))}
               </div>
 
@@ -322,7 +323,7 @@ export default function TestsIndexPage({ loaderData }: Route.ComponentProps) {
         </div>
       </section>
 
-      <section className="bg-white py-16 sm:py-24">
+      <section id="tests-por-nivel" className="bg-white py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto mb-16 max-w-3xl text-center">
             <div className="mb-6 inline-flex items-center rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm">

@@ -246,7 +246,7 @@ export default function TextosEnInglesPage({
                 {levelCards.map((level) => (
                   <Link
                     key={level.id}
-                    to={`/levels/${level.id}`}
+                    to={`#nivel-${level.id}`}
                     className="rounded-2xl border border-gray-200 bg-gray-50 p-3.5 transition-colors duration-200 hover:border-[#0F9EDA]/30 hover:bg-[#0F9EDA]/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                   >
                     <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-xl border border-[#0F9EDA]/20 bg-white text-sm font-bold text-[#0F9EDA]">
@@ -290,6 +290,7 @@ export default function TextosEnInglesPage({
             {levelCards.map((level) => (
               <article
                 key={level.id}
+                id={`nivel-${level.id}`}
                 className="group flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-200 hover:border-[#0F9EDA]/30 hover:shadow-md sm:p-8"
               >
                 <div className="mb-5 flex items-center justify-between gap-4">
