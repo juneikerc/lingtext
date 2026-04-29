@@ -16,6 +16,8 @@ const defaultSettings: ExtensionSettings = {
   hideNativeCc: true,
 };
 
+const PENDING_SYNC_KEY = "lt2_pending_sync";
+
 export default function Popup() {
   const [stats, setStats] = useState({ words: 0, phrases: 0 });
   const [lastSync, setLastSync] = useState<string | null>(null);
@@ -85,8 +87,9 @@ export default function Popup() {
 
       if (tabs.length === 0 || !tabs[0].id) {
         setSyncStatus("Abriendo LingText...");
+        await chrome.storage.local.set({ [PENDING_SYNC_KEY]: true });
         await chrome.tabs.create({ url: "https://lingtext.org" });
-        setSyncStatus("Abre LingText y vuelve a sincronizar");
+        setSyncStatus("LingText sincronizará al cargar");
         setSyncing(false);
         return;
       }

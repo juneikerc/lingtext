@@ -20,6 +20,8 @@ interface SyncCompletePayload {
   translator?: Translator;
 }
 
+const PENDING_SYNC_KEY = "lt2_pending_sync";
+
 function isAllowedOrigin(origin: string): boolean {
   if (!origin || origin === "null") {
     return false;
@@ -34,6 +36,20 @@ function isAllowedOrigin(origin: string): boolean {
     );
   } catch {
     return false;
+  }
+}
+
+function triggerSyncRequest(): void {
+  window.postMessage(
+    { type: "LINGTEXT_EXTENSION_SYNC_REQUEST" },
+    window.location.origin
+  );
+}
+
+async function triggerPendingSync(): Promise<void> {
+  const result = await chrome.storage.local.get(PENDING_SYNC_KEY);
+  if (result[PENDING_SYNC_KEY]) {
+    triggerSyncRequest();
   }
 }
 
@@ -86,10 +102,17 @@ window.addEventListener("message", async (event) => {
           });
         }
 
+        await chrome.storage.local.remove(PENDING_SYNC_KEY);
+
         window.postMessage(
           { type: "LINGTEXT_EXTENSION_SYNCED", payload: { success: true } },
           event.origin
         );
+        break;
+      }
+
+      case "LINGTEXT_WEB_READY": {
+        await triggerPendingSync();
         break;
       }
 
@@ -131,10 +154,7 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     return true;
   }
 
-  window.postMessage(
-    { type: "LINGTEXT_EXTENSION_SYNC_REQUEST" },
-    window.location.origin
-  );
+  triggerSyncRequest();
   sendResponse({ triggered: true });
 
   return true;
@@ -144,3 +164,7 @@ window.postMessage(
   { type: "LINGTEXT_EXTENSION_READY" },
   window.location.origin
 );
+
+triggerPendingSync().catch((error) => {
+  console.error("[LingText Bridge] Pending sync trigger failed:", error);
+});

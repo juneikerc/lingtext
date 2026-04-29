@@ -468,11 +468,10 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
     );
 
     const rect = range.getBoundingClientRect();
-    const containerRect = container.getBoundingClientRect();
 
     setSelectionPopup({
-      x: rect.left + rect.width / 2 - containerRect.left,
-      y: rect.top - containerRect.top,
+      x: rect.left + rect.width / 2,
+      y: rect.top,
       text,
       translation: result.translation || "...",
     });
