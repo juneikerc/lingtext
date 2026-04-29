@@ -37,6 +37,7 @@ export function watchPlayerRect(
   onRect: (rect: DOMRect | null) => void
 ): () => void {
   let rafId: number | null = null;
+  let observedPlayer: Element | null = null;
   let lastRect: {
     left: number;
     top: number;
@@ -44,7 +45,26 @@ export function watchPlayerRect(
     height: number;
   } | null = null;
 
-  const update = () => {
+  const playerObserver = new MutationObserver(update);
+  const pageObserver = new MutationObserver(update);
+
+  function observeCurrentPlayer() {
+    const player = document.querySelector("#movie_player");
+    if (player === observedPlayer) {
+      return;
+    }
+
+    playerObserver.disconnect();
+    observedPlayer = player;
+
+    if (player) {
+      playerObserver.observe(player, { childList: true, subtree: true });
+    }
+  }
+
+  function update() {
+    observeCurrentPlayer();
+
     if (rafId !== null) {
       return;
     }
@@ -80,12 +100,11 @@ export function watchPlayerRect(
       lastRect = nextRect;
       onRect(rect);
     });
-  };
+  }
 
-  const observer = new MutationObserver(update);
-  const moviePlayer = document.querySelector("#movie_player");
-  if (moviePlayer) {
-    observer.observe(moviePlayer, { childList: true, subtree: true });
+  const pageRoot = document.body || document.documentElement;
+  if (pageRoot) {
+    pageObserver.observe(pageRoot, { childList: true, subtree: true });
   }
 
   window.addEventListener("resize", update);
@@ -93,7 +112,8 @@ export function watchPlayerRect(
   update();
 
   return () => {
-    observer.disconnect();
+    playerObserver.disconnect();
+    pageObserver.disconnect();
     window.removeEventListener("resize", update);
     window.removeEventListener("scroll", update, true);
 

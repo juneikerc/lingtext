@@ -269,7 +269,7 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
       });
     };
 
-    const target = document.querySelector("#movie_player");
+    const target = document.body || document.documentElement;
     if (!target) {
       return;
     }
@@ -289,7 +289,7 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
         cancelAnimationFrame(rafId);
       }
     };
-  }, [useTranscript]);
+  }, [useTranscript, videoId]);
 
   useEffect(() => {
     if (currentSubtitle === displayedSubtitle) {
@@ -298,6 +298,12 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
 
     if (!currentSubtitle) {
       setDisplayedSubtitle("");
+      setIsTransitioning(false);
+      return;
+    }
+
+    if (!displayedSubtitle) {
+      setDisplayedSubtitle(currentSubtitle);
       setIsTransitioning(false);
       return;
     }
@@ -334,14 +340,14 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
     const shouldHide =
       settings.hideNativeCc &&
       window.location.pathname === "/watch" &&
-      Boolean(displayedSubtitle);
+      Boolean(currentSubtitle || displayedSubtitle);
 
     setNativeCcHidden(shouldHide);
 
     return () => {
       setNativeCcHidden(false);
     };
-  }, [settings.hideNativeCc, displayedSubtitle]);
+  }, [settings.hideNativeCc, currentSubtitle, displayedSubtitle]);
 
   const handleWordClick = useCallback(
     async (word: string, lower: string, x: number, y: number) => {
