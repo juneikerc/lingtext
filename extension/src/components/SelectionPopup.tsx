@@ -38,13 +38,25 @@ export default function SelectionPopup({
   const viewportWidth = window.innerWidth || 1200;
   const viewportHeight = window.innerHeight || 800;
   const popupWidth = Math.min(400, Math.max(280, viewportWidth - 24));
-  const popupEstimatedHeight = 260;
-  const maxTop = Math.max(12, viewportHeight - popupEstimatedHeight - 12);
+  const popupEstimatedHeight = 340;
+
   const left = Math.min(
     Math.max(12, popup.x - popupWidth / 2),
     viewportWidth - popupWidth - 12
   );
-  const top = Math.min(Math.max(12, popup.y - 100), maxTop);
+
+  // Flip the popup above the selection when it is in the lower half of the
+  // screen so it does not get cut off (e.g. YouTube fullscreen subtitles).
+  const showAbove = popup.y > viewportHeight / 2;
+  let top: number;
+  if (showAbove) {
+    top = Math.max(12, popup.y - popupEstimatedHeight - 12);
+  } else {
+    top = Math.min(
+      Math.max(12, popup.y + 12),
+      Math.max(12, viewportHeight - popupEstimatedHeight - 12)
+    );
+  }
   const translationInfo = getTranslationInfo(popup.translation);
   const selectedText =
     popup.text.length > 100 ? `${popup.text.substring(0, 100)}...` : popup.text;
