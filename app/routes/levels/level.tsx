@@ -18,6 +18,8 @@ const SORT_OPTIONS: { id: SortOption; label: string }[] = [
   { id: "audio", label: "Lecturas con sonido" },
 ];
 
+const SITE_URL = "https://lingtext.org";
+
 interface TextCardData {
   title: string;
   level: string;
@@ -94,6 +96,11 @@ export async function loader({ params }: Route.LoaderArgs) {
 
 export function meta({ loaderData }: Route.MetaArgs) {
   const { levelText } = loaderData;
+  const levelSlug = levelText.level.toLowerCase();
+  const url = `${SITE_URL}/levels/${levelSlug}`;
+  const image = `${SITE_URL}/og/level-${levelSlug}.png`;
+  const imageAlt = `Textos en inglés nivel ${levelText.level.toUpperCase()} en LingText`;
+
   return [
     {
       title: levelText.title,
@@ -105,7 +112,63 @@ export function meta({ loaderData }: Route.MetaArgs) {
     {
       tagName: "link",
       rel: "canonical",
-      href: `https://lingtext.org/levels/${levelText.level.toLowerCase()}`,
+      href: url,
+    },
+    {
+      property: "og:title",
+      content: levelText.title,
+    },
+    {
+      property: "og:description",
+      content: levelText.metaDescription,
+    },
+    {
+      property: "og:type",
+      content: "website",
+    },
+    {
+      property: "og:url",
+      content: url,
+    },
+    {
+      property: "og:site_name",
+      content: "LingText",
+    },
+    {
+      property: "og:image",
+      content: image,
+    },
+    {
+      property: "og:image:width",
+      content: "1200",
+    },
+    {
+      property: "og:image:height",
+      content: "630",
+    },
+    {
+      property: "og:image:alt",
+      content: imageAlt,
+    },
+    {
+      name: "twitter:card",
+      content: "summary_large_image",
+    },
+    {
+      name: "twitter:title",
+      content: levelText.title,
+    },
+    {
+      name: "twitter:description",
+      content: levelText.metaDescription,
+    },
+    {
+      name: "twitter:image",
+      content: image,
+    },
+    {
+      name: "twitter:image:alt",
+      content: imageAlt,
     },
   ];
 }
