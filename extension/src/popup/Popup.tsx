@@ -158,7 +158,11 @@ export default function Popup() {
     <div className="popup">
       <header className="popup-header">
         <div className="logo">
-          <span className="logo-icon">📚</span>
+          <img
+            className="logo-icon"
+            src="/icons/icon-32.png"
+            alt="LingText"
+          />
           <span className="logo-text">LingText</span>
         </div>
         <span className="version">v0.2.0</span>
@@ -243,6 +247,9 @@ export default function Popup() {
               Abrir LingText
             </button>
           </div>
+          <p className="sync-open-note">
+            Se abrirá LingText para sincronizar y almacenar tus datos en la web.
+          </p>
           <p className="sync-hint">
             La web es la fuente de verdad. Al sincronizar, la extensión se
             actualiza con el estado final.
