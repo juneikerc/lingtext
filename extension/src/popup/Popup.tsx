@@ -167,7 +167,7 @@ export default function Popup() {
             Ling<span className="logo-text-accent">Text</span>
           </span>
         </div>
-        <span className="version">v0.2.0</span>
+        <span className="version">v1.0.0</span>
       </header>
 
       <main className="popup-body">
