@@ -178,39 +178,39 @@ export default function SongsManualManager() {
   return (
     <section
       id="agregar-cancion-manual"
-      className="relative overflow-hidden py-12 px-4 bg-white border-b border-gray-200"
+      className="relative overflow-hidden border-b border-gray-200 bg-white py-16 sm:py-24"
     >
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-40 h-40 bg-sky-500/10 rounded-full blur-3xl"></div>
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-10 top-10 h-32 w-32 rounded-full bg-[#0F9EDA]/10 blur-3xl" />
+        <div className="absolute bottom-10 right-10 h-40 w-40 rounded-full bg-[#0F9EDA]/5 blur-3xl" />
       </div>
 
-      <div className="relative max-w-5xl mx-auto">
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-gray-700 bg-gray-100 rounded-full border border-gray-200">
-            <span className="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>
+      <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto mb-12 max-w-3xl text-center">
+          <div className="mb-6 inline-flex items-center rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700">
+            <span className="mr-2.5 h-2 w-2 rounded-full bg-[#0F9EDA]" />
             Biblioteca de Canciones
           </div>
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-3 text-gray-900">
+          <h2 className="mb-4 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
             Agrega canciones y practica con letras en inglés
           </h2>
-          <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="mx-auto max-w-3xl text-lg leading-relaxed text-gray-600">
             Pega una letra, añade un enlace de YouTube o Spotify y abre tu
             lector interactivo para traducir palabras y frases en contexto real.
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-8 mb-10">
-          <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-            <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center mr-3">
-              <span className="text-white text-sm">+</span>
-            </div>
+        <div className="mb-12 rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+          <h3 className="mb-6 flex items-center gap-3 text-2xl font-bold text-gray-900">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-[#0F9EDA] text-sm text-white">
+              +
+            </span>
             {editingSong ? "Editar canción" : "Agregar canción manualmente"}
           </h3>
 
           <form className="space-y-5" onSubmit={onSubmit}>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="mb-2 block text-sm font-medium text-gray-700">
                 Título de la canción
               </label>
               <input
@@ -219,13 +219,13 @@ export default function SongsManualManager() {
                 onChange={(event) =>
                   setForm((prev) => ({ ...prev, title: event.target.value }))
                 }
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-gray-50 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors duration-200"
+                className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 placeholder:text-gray-400 transition-all duration-200 focus:border-[#0F9EDA] focus:outline-none focus:ring-2 focus:ring-[#0F9EDA]/20"
                 placeholder="Ej: Coldplay - Yellow"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="mb-2 block text-sm font-medium text-gray-700">
                 Enlace de YouTube o Spotify
               </label>
               <input
@@ -237,13 +237,13 @@ export default function SongsManualManager() {
                     sourceUrl: event.target.value,
                   }))
                 }
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-gray-50 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors duration-200"
+                className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 placeholder:text-gray-400 transition-all duration-200 focus:border-[#0F9EDA] focus:outline-none focus:ring-2 focus:ring-[#0F9EDA]/20"
                 placeholder="https://www.youtube.com/watch?v=... o https://open.spotify.com/track/..."
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="mb-2 block text-sm font-medium text-gray-700">
                 Letra en inglés
               </label>
               <textarea
@@ -251,7 +251,7 @@ export default function SongsManualManager() {
                 onChange={(event) =>
                   setForm((prev) => ({ ...prev, lyrics: event.target.value }))
                 }
-                className="w-full min-h-[220px] px-4 py-3 rounded-xl border border-gray-300 bg-gray-50 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-vertical transition-colors duration-200"
+                className="min-h-[220px] w-full resize-vertical rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 placeholder:text-gray-400 transition-all duration-200 focus:border-[#0F9EDA] focus:outline-none focus:ring-2 focus:ring-[#0F9EDA]/20"
                 placeholder="Pega la letra completa..."
               />
             </div>
@@ -268,12 +268,12 @@ export default function SongsManualManager() {
               </p>
             ) : null}
 
-            <div className="flex flex-wrap gap-3 justify-end">
+            <div className="flex flex-wrap justify-end gap-3">
               {editingSong ? (
                 <button
                   type="button"
                   onClick={resetFormState}
-                  className="px-5 py-3 rounded-xl bg-gray-100 text-gray-700 font-semibold hover:bg-gray-200 transition-colors duration-200"
+                  className="rounded-xl bg-gray-100 px-5 py-3 font-semibold text-gray-700 transition-colors duration-200 hover:bg-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 >
                   Cancelar edición
                 </button>
@@ -282,7 +282,7 @@ export default function SongsManualManager() {
               <button
                 type="submit"
                 disabled={isSaving}
-                className="px-6 py-3 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-200 shadow-sm hover:shadow-md"
+                className="rounded-xl bg-[#0F9EDA] px-6 py-3 font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow disabled:cursor-not-allowed disabled:bg-gray-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               >
                 {isSaving
                   ? "Guardando..."
@@ -299,40 +299,40 @@ export default function SongsManualManager() {
             <h3 className="text-2xl font-bold text-gray-900">
               Canciones guardadas
             </h3>
-            <span className="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full border border-gray-200">
+            <span className="rounded-full border border-gray-200 bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600">
               {songs.length} total
             </span>
           </div>
 
           {isLoading ? (
-            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-8 animate-pulse">
-              <div className="h-5 bg-gray-200 rounded w-48 mb-4"></div>
+            <div className="animate-pulse rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+              <div className="mb-4 h-5 w-48 rounded bg-gray-200" />
               <div className="space-y-3">
-                <div className="h-20 bg-gray-100 rounded-xl"></div>
-                <div className="h-20 bg-gray-100 rounded-xl"></div>
+                <div className="h-20 rounded-xl bg-gray-100" />
+                <div className="h-20 rounded-xl bg-gray-100" />
               </div>
             </div>
           ) : songs.length > 0 ? (
             songs.map((song) => (
               <article
                 key={song.id}
-                className="group bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300 transition duration-200 overflow-hidden"
+                className="group rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-200 hover:border-[#0F9EDA]/30 hover:shadow-md"
               >
                 <div className="p-6">
-                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                  <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-center">
                     <div className="flex-1">
-                      <div className="flex items-start justify-between mb-2">
-                        <h4 className="text-xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors duration-200">
+                      <div className="mb-2 flex items-start justify-between">
+                        <h4 className="text-xl font-bold text-gray-900 transition-colors duration-200 group-hover:text-[#0F9EDA]">
                           {song.title}
                         </h4>
-                        <div className="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
+                        <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600">
                           {new Date(song.updatedAt).toLocaleDateString("es-ES")}
-                        </div>
+                        </span>
                       </div>
-                      <p className="text-gray-600 text-sm line-clamp-2 mb-3">
+                      <p className="mb-3 line-clamp-2 text-sm text-gray-600">
                         {song.lyrics.substring(0, 180)}...
                       </p>
-                      <span className="inline-flex items-center text-xs text-indigo-700 bg-indigo-50 px-3 py-1 rounded-full">
+                      <span className="inline-flex items-center rounded-full border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 px-3 py-1 text-xs font-medium text-[#0F9EDA]">
                         Fuente:{" "}
                         {song.provider === "youtube" ? "YouTube" : "Spotify"}
                       </span>
@@ -342,21 +342,21 @@ export default function SongsManualManager() {
                       <Link
                         to={`/aprender-ingles-con-canciones/${song.id}`}
                         reloadDocument
-                        className="inline-flex items-center px-5 py-3 rounded-xl bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition-colors duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                        className="inline-flex items-center gap-2 rounded-xl bg-[#0F9EDA] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                       >
                         Abrir lector
                       </Link>
                       <button
                         type="button"
                         onClick={() => startEdit(song)}
-                        className="px-4 py-3 rounded-xl bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 transition-colors duration-200"
+                        className="rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 transition-colors duration-200 hover:border-[#0F9EDA] hover:text-[#0F9EDA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                       >
                         Editar
                       </button>
                       <button
                         type="button"
                         onClick={() => void onDelete(song.id)}
-                        className="px-4 py-3 rounded-xl bg-red-50 text-red-700 font-medium hover:bg-red-100 transition-colors duration-200"
+                        className="rounded-xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-700 transition-colors duration-200 hover:bg-red-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                       >
                         Eliminar
                       </button>
@@ -366,14 +366,14 @@ export default function SongsManualManager() {
               </article>
             ))
           ) : (
-            <div className="text-center py-16 bg-white rounded-2xl border border-gray-200 shadow-sm">
-              <div className="w-20 h-20 mx-auto mb-5 bg-gray-100 rounded-full flex items-center justify-center">
+            <div className="rounded-2xl border border-gray-200 bg-white py-16 text-center shadow-sm">
+              <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-gray-100">
                 <span className="text-3xl">🎵</span>
               </div>
-              <h4 className="text-2xl font-bold text-gray-900 mb-3">
+              <h4 className="mb-3 text-2xl font-bold text-gray-900">
                 Aún no tienes canciones
               </h4>
-              <p className="text-gray-600 max-w-xl mx-auto">
+              <p className="mx-auto max-w-xl text-gray-600">
                 Empieza agregando una letra y un enlace para crear tu primera
                 práctica de inglés con música.
               </p>

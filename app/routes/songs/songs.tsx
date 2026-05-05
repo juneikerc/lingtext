@@ -25,42 +25,78 @@ export const links: Route.LinksFunction = () => [
 
 const HOW_TO_STEPS = [
   {
-    title: "1. Agrega una canción en inglés",
+    number: 1,
+    title: "Agrega una canción en inglés",
     description:
       "Pega el título, la letra y el enlace de YouTube o Spotify para guardar tu práctica personalizada.",
+    tipLabel: "Tip",
+    tipText:
+      "Empieza con canciones que ya conozcas bien. Así te concentras en las palabras nuevas en lugar de la melodía.",
   },
   {
-    title: "2. Abre el lector interactivo",
+    number: 2,
+    title: "Abre el lector interactivo",
     description:
       "Entra a la canción y reproduce el audio embebido mientras lees la letra completa en paralelo.",
+    tipLabel: "Tip",
+    tipText:
+      "Escucha la canción completa sin leer primero, luego vuelve a reproducirla siguiendo la letra.",
   },
   {
-    title: "3. Traduce y guarda vocabulario",
+    number: 3,
+    title: "Traduce y guarda vocabulario",
     description:
       "Haz clic en palabras o frases para traducirlas y convertirlas en material de repaso activo.",
+    tipLabel: "Tip",
+    tipText:
+      "Después de traducir, intenta escribir tus propias oraciones con las palabras nuevas.",
   },
 ];
 
 const BENEFITS = [
   {
+    icon: "🎵",
     title: "Inglés real y natural",
     description:
       "Las canciones exponen estructuras, vocabulario y pronunciación que sí aparecen en conversaciones reales.",
+    bullets: [
+      "Lenguaje auténtico y actual",
+      "Pronunciación natural de hablantes nativos",
+      "Expresiones coloquiales y modismos",
+    ],
   },
   {
+    icon: "🧠",
     title: "Mejor memoria por repetición",
     description:
       "La música facilita recordar frases completas y patrones gramaticales gracias al ritmo y la repetición.",
+    bullets: [
+      "El ritmo musical fija patrones",
+      "Repetición natural sin aburrimiento",
+      "Asociación emocional que mejora retención",
+    ],
   },
   {
+    icon: "📖",
     title: "Práctica contextual",
     description:
       "No estudias palabras sueltas: entiendes expresiones dentro de una historia y una intención comunicativa.",
+    bullets: [
+      "Vocabulario en contexto narrativo",
+      "Gramática incorporada en las frases",
+      "Aprendizaje significativo y duradero",
+    ],
   },
   {
+    icon: "⚡",
     title: "Flujo de estudio simple",
     description:
       "En una sola pantalla tienes letra, audio embebido y traducción instantánea para estudiar sin fricción.",
+    bullets: [
+      "Audio y letra sincronizados",
+      "Traducción con un clic",
+      "Sin cambios de pantalla ni distracciones",
+    ],
   },
 ];
 
@@ -89,173 +125,258 @@ const FAQS = [
 
 export default function SongsPage() {
   return (
-    <main className="min-h-screen bg-white">
-      <section className="relative overflow-hidden py-16 px-4 md:py-24 bg-white border-b border-gray-200">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-[18%] left-[12%] w-72 h-72 bg-[#0F9EDA]/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-[15%] right-[10%] w-72 h-72 bg-[#0F9EDA]/5 rounded-full blur-3xl"></div>
+    <>
+      <section className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-gray-50 to-white py-20 md:py-28">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute right-[5%] top-10 h-72 w-72 rounded-full bg-[#0F9EDA]/10 blur-3xl" />
+          <div className="absolute -bottom-24 left-[10%] h-64 w-64 rounded-full bg-[#0F9EDA]/5 blur-3xl" />
         </div>
 
-        <div className="relative max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-gray-700 bg-gray-50 rounded-full border border-gray-200">
-            <span className="w-2 h-2 bg-[#0F9EDA] rounded-full mr-2"></span>
-            Método práctico con música
+        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,26rem)] lg:px-8">
+          <div>
+            <div className="mb-6 inline-flex items-center rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm">
+              <span className="mr-2.5 h-2 w-2 rounded-full bg-[#0F9EDA]" />
+              Método práctico con música
+            </div>
+
+            <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+              Aprender inglés con canciones: letras, contexto y{" "}
+              <span className="text-[#0F9EDA]">práctica real</span>
+            </h1>
+
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-gray-600">
+              Usa canciones en inglés para mejorar vocabulario, comprensión y
+              pronunciación con un flujo simple: agregas la letra, pegas un
+              enlace de YouTube o Spotify, y practicas traducción contextual
+              dentro del lector de LingText.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <a
+                href="#agregar-cancion-manual"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#0F9EDA] px-8 py-4 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              >
+                Agregar mi primera canción
+                <svg
+                  className="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M13 7l5 5m0 0-5 5m5-5H6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                  />
+                </svg>
+              </a>
+              <a
+                href="#faq-canciones"
+                className="inline-flex items-center justify-center rounded-xl border border-[#0F9EDA]/20 bg-white px-8 py-4 text-sm font-semibold text-[#0F9EDA] transition-colors duration-200 hover:border-[#0F9EDA]/40 hover:bg-[#0F9EDA]/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              >
+                Resolver dudas comunes
+              </a>
+            </div>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
-            Aprender inglés con canciones: letras, contexto y práctica real
-          </h1>
+          <div className="relative lg:justify-self-end">
+            <div className="relative rounded-3xl border border-gray-200 bg-white p-5 shadow-lg sm:p-6">
+              <div className="mb-5 flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-sm font-semibold text-gray-900">
+                    Aprende con música
+                  </p>
+                  <p className="mt-1 text-sm text-gray-500">
+                    Letras, audio y traducción
+                  </p>
+                </div>
+              </div>
 
-          <p className="mt-6 text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Usa canciones en inglés para mejorar vocabulario, comprensión y
-            pronunciación con un flujo simple: agregas la letra, pegas un enlace
-            de YouTube o Spotify, y practicas traducción contextual dentro del
-            lector de LingText.
-          </p>
-
-          <p className="mt-4 text-base text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Esta herramienta está diseñada para estudiar inglés con contenido
-            que ya te gusta, aprovechar la repetición natural de la música y
-            convertir cada canción en una sesión efectiva de aprendizaje.
-          </p>
-
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a
-              href="#agregar-cancion-manual"
-              className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-            >
-              Agregar mi primera canción
-            </a>
-            <a
-              href="#faq-canciones"
-              className="inline-flex items-center justify-center rounded-xl border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-            >
-              Resolver dudas comunes
-            </a>
+              <div className="space-y-3">
+                {BENEFITS.slice(0, 3).map((benefit) => (
+                  <div
+                    key={benefit.title}
+                    className="flex items-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-4 py-3"
+                  >
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#0F9EDA]/20 bg-white text-sm">
+                      {benefit.icon}
+                    </span>
+                    <span className="text-sm font-medium text-gray-900">
+                      {benefit.title}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <SongsManualManager />
 
-      <section className="relative overflow-hidden py-16 sm:py-20 bg-gray-50 border-b border-gray-200">
-        <div className="mx-auto max-w-6xl px-6">
-          <header className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-wide text-[#0F9EDA]">
+      <section className="relative overflow-hidden border-b border-gray-200 bg-gray-50 py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-16 max-w-3xl text-center">
+            <div className="mb-6 inline-flex items-center rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm">
+              <span className="mr-2.5 h-2 w-2 rounded-full bg-[#0F9EDA]" />
               Cómo usar la herramienta
-            </p>
-            <h2 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
-              Tu rutina para estudiar inglés con canciones en 3 pasos
+            </div>
+            <h2 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
+              Tu rutina para estudiar inglés con canciones en{" "}
+              <span className="text-[#0F9EDA]">3 pasos</span>
             </h2>
-            <p className="mt-4 text-base text-gray-600">
+            <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-600">
               Sigue este flujo para convertir cualquier canción en una sesión de
               lectura y vocabulario enfocada en progreso real.
             </p>
-          </header>
+          </div>
 
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-3">
             {HOW_TO_STEPS.map((step) => (
-              <article
-                key={step.title}
-                className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6"
+              <div
+                key={step.number}
+                className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm transition-shadow duration-200 hover:shadow-md"
               >
-                <h3 className="text-lg font-semibold text-gray-900">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 text-lg font-bold text-[#0F9EDA]">
+                  {step.number}
+                </div>
+                <h3 className="mb-3 text-xl font-bold text-gray-900">
                   {step.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                <p className="mb-4 text-base leading-relaxed text-gray-700">
                   {step.description}
                 </p>
-              </article>
+                <div className="rounded-xl border border-[#0F9EDA]/10 bg-[#0F9EDA]/5 p-4">
+                  <p className="text-sm text-gray-700">
+                    <span className="font-semibold text-[#0F9EDA]">
+                      {step.tipLabel}:
+                    </span>{" "}
+                    {step.tipText}
+                  </p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-16 sm:py-20 bg-white border-b border-gray-200">
-        <div className="mx-auto max-w-6xl px-6">
-          <header className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-wide text-[#0F9EDA]">
+      <section className="relative overflow-hidden border-b border-gray-200 bg-white py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-16 max-w-3xl text-center">
+            <div className="mb-6 inline-flex items-center rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm">
+              <span className="mr-2.5 h-2 w-2 rounded-full bg-[#0F9EDA]" />
               Ventajas clave
-            </p>
-            <h2 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
-              Beneficios de aprender inglés con letras de canciones
+            </div>
+            <h2 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
+              Beneficios de aprender inglés con letras de{" "}
+              <span className="text-[#0F9EDA]">canciones</span>
             </h2>
-          </header>
+          </div>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2">
             {BENEFITS.map((benefit) => (
-              <article
+              <div
                 key={benefit.title}
-                className="rounded-2xl border border-gray-200 bg-gray-50 p-6"
+                className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm transition-shadow duration-200 hover:shadow-md"
               >
-                <h3 className="text-lg font-semibold text-gray-900">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-[#0F9EDA]/20 bg-[#0F9EDA]/10">
+                  <span className="text-xl">{benefit.icon}</span>
+                </div>
+                <h3 className="mb-3 text-xl font-bold text-gray-900">
                   {benefit.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                <p className="mb-6 leading-relaxed text-gray-600">
                   {benefit.description}
                 </p>
-              </article>
+                <div className="space-y-2.5">
+                  {benefit.bullets.map((bullet) => (
+                    <div
+                      key={bullet}
+                      className="flex items-center text-sm text-gray-700"
+                    >
+                      <span className="mr-3 h-1.5 w-1.5 rounded-full bg-[#0F9EDA]" />
+                      {bullet}
+                    </div>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-16 sm:py-20 bg-gray-50 border-b border-gray-200">
-        <div className="mx-auto max-w-5xl px-6">
-          <header className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-wide text-[#0F9EDA]">
+      <section className="relative overflow-hidden border-b border-gray-200 bg-gray-50 py-16 sm:py-24">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm sm:p-12">
+            <div className="mb-8 inline-flex items-center rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm">
+              <span className="mr-2.5 h-2 w-2 rounded-full bg-[#0F9EDA]" />
               Recomendaciones prácticas
-            </p>
-            <h2 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
+            </div>
+            <h2 className="mb-6 text-3xl font-bold tracking-tight text-gray-900">
               Qué canciones elegir para progresar más rápido
             </h2>
-          </header>
-
-          <div className="mt-8 space-y-4 text-base leading-relaxed text-gray-600">
-            <p>
-              Para un progreso constante, empieza con canciones de tempo
-              moderado, frases repetidas y pronunciación clara. Esto facilita
-              reconocer estructuras gramaticales y expresiones comunes.
-            </p>
-            <p>
-              Si estás en nivel básico-intermedio, prioriza pop, acústico o
-              baladas con narrativa simple. En niveles avanzados, puedes usar
-              rap, indie o letras con metáforas para ampliar comprensión
-              semántica.
-            </p>
-            <p>
-              Lo importante no es la complejidad inicial, sino la constancia.
-              Trabaja cada canción en ciclos cortos: escucha, lectura,
-              traducción y repaso de vocabulario.
-            </p>
+            <div className="space-y-4 text-base leading-relaxed text-gray-600">
+              <p>
+                Para un progreso constante, empieza con canciones de tempo
+                moderado, frases repetidas y pronunciación clara. Esto facilita
+                reconocer estructuras gramaticales y expresiones comunes.
+              </p>
+              <p>
+                Si estás en nivel básico-intermedio, prioriza pop, acústico o
+                baladas con narrativa simple. En niveles avanzados, puedes usar
+                rap, indie o letras con metáforas para ampliar comprensión
+                semántica.
+              </p>
+              <p>
+                Lo importante no es la complejidad inicial, sino la constancia.
+                Trabaja cada canción en ciclos cortos: escucha, lectura,
+                traducción y repaso de vocabulario.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       <section
         id="faq-canciones"
-        className="relative overflow-hidden py-16 sm:py-20 bg-white border-b border-gray-200"
+        className="relative overflow-hidden border-b border-gray-200 bg-white py-16 sm:py-24"
       >
-        <div className="mx-auto max-w-5xl px-6">
-          <header className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-wide text-[#0F9EDA]">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-16 max-w-3xl text-center">
+            <div className="mb-6 inline-flex items-center rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm">
+              <span className="mr-2.5 h-2 w-2 rounded-full bg-[#0F9EDA]" />
               FAQ
-            </p>
-            <h2 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
-              Preguntas frecuentes sobre aprender inglés con canciones
+            </div>
+            <h2 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
+              Preguntas frecuentes sobre aprender inglés con{" "}
+              <span className="text-[#0F9EDA]">canciones</span>
             </h2>
-          </header>
+          </div>
 
-          <div className="mt-10 space-y-4">
+          <div className="space-y-4">
             {FAQS.map((faq) => (
               <details
                 key={faq.question}
-                className="rounded-2xl border border-gray-200 bg-gray-50 p-5"
+                className="group rounded-2xl border border-gray-200 bg-gray-50 p-5 shadow-sm transition-shadow duration-200 hover:shadow-md [&[open]]:shadow-md"
               >
-                <summary className="cursor-pointer list-none text-base font-semibold text-gray-900">
-                  {faq.question}
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-semibold text-gray-900">
+                  <span>{faq.question}</span>
+                  <svg
+                    className="h-5 w-5 shrink-0 text-gray-400 transition-transform duration-200 group-open:rotate-180"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M19 9l-7 7-7-7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                    />
+                  </svg>
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                <p className="mt-4 text-sm leading-relaxed text-gray-600">
                   {faq.answer}
                 </p>
               </details>
@@ -264,31 +385,49 @@ export default function SongsPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-16 sm:py-20 bg-gray-50">
-        <div className="mx-auto max-w-5xl px-6 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-            Convierte tu música favorita en una rutina de inglés
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-gray-600 max-w-3xl mx-auto">
-            Empieza hoy con una canción que ya conozcas y úsala para practicar
-            lectura, comprensión y vocabulario en un solo flujo.
-          </p>
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a
-              href="#agregar-cancion-manual"
-              className="inline-flex items-center justify-center rounded-xl bg-[#0F9EDA] px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#0D8EC4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-            >
-              Comenzar ahora
-            </a>
-            <Link
-              to="/"
-              className="inline-flex items-center justify-center rounded-xl border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-            >
-              Volver al inicio
-            </Link>
+      <section className="relative overflow-hidden bg-white py-16 sm:py-24">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm sm:p-12">
+            <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-[#0F9EDA]/20 bg-[#0F9EDA]/10">
+              <span className="text-2xl">🎵</span>
+            </div>
+            <h3 className="mb-4 text-2xl font-bold text-gray-900">
+              Convierte tu música favorita en una rutina de inglés
+            </h3>
+            <p className="mx-auto mb-8 max-w-xl text-base text-gray-600">
+              Empieza hoy con una canción que ya conozcas y úsala para practicar
+              lectura, comprensión y vocabulario en un solo flujo.
+            </p>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <a
+                href="#agregar-cancion-manual"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#0F9EDA] px-8 py-4 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              >
+                Comenzar ahora
+                <svg
+                  className="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M13 7l5 5m0 0-5 5m5-5H6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                  />
+                </svg>
+              </a>
+              <Link
+                to="/"
+                className="inline-flex items-center justify-center rounded-xl border border-[#0F9EDA]/20 bg-white px-8 py-4 text-sm font-semibold text-[#0F9EDA] transition-colors duration-200 hover:border-[#0F9EDA]/40 hover:bg-[#0F9EDA]/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              >
+                Volver al inicio
+              </Link>
+            </div>
           </div>
         </div>
       </section>
-    </main>
+    </>
   );
 }
