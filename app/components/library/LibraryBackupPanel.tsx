@@ -62,24 +62,6 @@ function UploadIcon({ className }: { className?: string }) {
   );
 }
 
-function ChevronIcon() {
-  return (
-    <svg
-      className="h-5 w-5 rotate-0 text-gray-400 transition-transform duration-200 group-open:rotate-180"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={1.8}
-        d="M19 9l-7 7-7-7"
-      />
-    </svg>
-  );
-}
-
 export function LibraryBackupPanel({
   isExporting,
   isImporting,
@@ -88,94 +70,78 @@ export function LibraryBackupPanel({
   onImportDatabase,
 }: LibraryBackupPanelProps) {
   return (
-    <details className="group">
-      <summary className="list-none cursor-pointer">
-        <div className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm transition-all duration-200 hover:border-gray-300 hover:shadow-md">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#0F9EDA]/20 bg-[#0F9EDA]/10">
-                <DatabaseIcon />
-              </div>
-              <div>
-                <h3 className="font-bold text-gray-900">
-                  Backup de Base de Datos
-                </h3>
-                <p className="text-sm text-gray-500">
-                  Guarda o restaura todos tus datos
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-500">
-                .sqlite
-              </span>
-              <ChevronIcon />
-            </div>
-          </div>
+    <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
+      <div className="mb-5 flex items-start gap-3">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-[#0F9EDA]/20 bg-[#0F9EDA]/10">
+          <DatabaseIcon />
         </div>
-      </summary>
-
-      <div className="mt-3 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div className="rounded-xl border border-gray-200 bg-gray-50 p-5">
-            <div className="mb-4 flex items-start gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#0F9EDA]/20 bg-[#0F9EDA]/10">
-                <DownloadIcon className="h-5 w-5 text-[#0F9EDA]" />
-              </div>
-              <div>
-                <h4 className="font-semibold text-gray-900">Exportar Backup</h4>
-                <p className="text-xs text-gray-500">
-                  Descarga tu base de datos como archivo .sqlite
-                </p>
-              </div>
-            </div>
-            <button
-              onClick={onExportDatabase}
-              disabled={isExporting || isImporting}
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#0F9EDA] px-4 py-2.5 text-sm font-medium text-white transition-colors duration-200 hover:bg-[#0D8EC4] disabled:cursor-not-allowed disabled:bg-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-            >
-              <DownloadIcon className="h-4 w-4" />
-              {isExporting ? "Exportando..." : "Guardar en PC"}
-            </button>
-          </div>
-
-          <div className="rounded-xl border border-gray-200 bg-gray-50 p-5">
-            <div className="mb-4 flex items-start gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-amber-200 bg-amber-50">
-                <UploadIcon className="h-5 w-5 text-amber-600" />
-              </div>
-              <div>
-                <h4 className="font-semibold text-gray-900">
-                  Restaurar Backup
-                </h4>
-                <p className="text-xs text-gray-500">
-                  Reemplaza todos los datos actuales
-                </p>
-              </div>
-            </div>
-            <button
-              onClick={onImportDatabase}
-              disabled={isExporting || isImporting}
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-amber-600 px-4 py-2.5 text-sm font-medium text-white transition-colors duration-200 hover:bg-amber-700 disabled:cursor-not-allowed disabled:bg-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-            >
-              <UploadIcon className="h-4 w-4" />
-              {isImporting ? "Importando..." : "Cargar desde PC"}
-            </button>
-          </div>
+        <div>
+          <h3 className="text-xl font-bold tracking-tight text-gray-900">
+            Respaldo de biblioteca
+          </h3>
+          <p className="mt-1 text-sm text-gray-500">
+            Protege y administra tu base de datos de lecturas.
+          </p>
         </div>
-
-        {dbMessage ? (
-          <div
-            className={`mt-4 rounded-xl border px-4 py-3 text-sm ${
-              dbMessage.type === "success"
-                ? "border-green-200 bg-green-50 text-green-700"
-                : "border-red-200 bg-red-50 text-red-700"
-            }`}
-          >
-            {dbMessage.text}
-          </div>
-        ) : null}
       </div>
-    </details>
+
+      <div className="grid gap-5 lg:grid-cols-2">
+        <div className="rounded-2xl border border-[#0F9EDA]/20 bg-[#0F9EDA]/5 p-5">
+          <div className="mb-4 flex items-start gap-3">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#0F9EDA]/20 bg-white text-[#0F9EDA]">
+              <DownloadIcon className="h-5 w-5" />
+            </div>
+            <div>
+              <h4 className="font-bold text-[#0A7AAB]">Exportar backup</h4>
+              <p className="mt-1 text-sm text-gray-600">
+                Descarga una copia de seguridad de toda tu biblioteca.
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={onExportDatabase}
+            disabled={isExporting || isImporting}
+            className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-[#0F9EDA]/20 bg-white px-4 py-2.5 text-sm font-semibold text-[#0F9EDA] transition-colors duration-200 hover:border-[#0F9EDA]/40 hover:bg-[#0F9EDA]/5 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:w-auto sm:min-w-56"
+          >
+            <DownloadIcon className="h-4 w-4" />
+            {isExporting ? "Exportando..." : "Exportar ahora"}
+          </button>
+        </div>
+
+        <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5">
+          <div className="mb-4 flex items-start gap-3">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-amber-200 bg-white text-amber-600">
+              <UploadIcon className="h-5 w-5" />
+            </div>
+            <div>
+              <h4 className="font-bold text-amber-700">Restaurar backup</h4>
+              <p className="mt-1 text-sm text-gray-600">
+                Restaura tu biblioteca desde un archivo de respaldo.
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={onImportDatabase}
+            disabled={isExporting || isImporting}
+            className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-amber-200 bg-white px-4 py-2.5 text-sm font-semibold text-amber-700 transition-colors duration-200 hover:border-amber-300 hover:bg-amber-100 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:w-auto sm:min-w-56"
+          >
+            <UploadIcon className="h-4 w-4" />
+            {isImporting ? "Importando..." : "Restaurar backup"}
+          </button>
+        </div>
+      </div>
+
+      {dbMessage ? (
+        <div
+          className={`mt-4 rounded-xl border px-4 py-3 text-sm ${
+            dbMessage.type === "success"
+              ? "border-green-200 bg-green-50 text-green-700"
+              : "border-red-200 bg-red-50 text-red-700"
+          }`}
+        >
+          {dbMessage.text}
+        </div>
+      ) : null}
+    </section>
   );
 }

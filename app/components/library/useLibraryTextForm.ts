@@ -139,6 +139,11 @@ export function useLibraryTextForm(
 
       const text = await file.text();
       const filename = file.name.replace(/\.[^.]+$/, "");
+      const lowerFileName = file.name.toLowerCase();
+      const importedFormat =
+        lowerFileName.endsWith(".md") || lowerFileName.endsWith(".markdown")
+          ? "markdown"
+          : "txt";
       const contentValidation = validateTextContent(text, file.name);
 
       if (!contentValidation.isValid) {
@@ -168,7 +173,7 @@ export function useLibraryTextForm(
 
       setTitle(filename);
       setContent(sanitizeTextContent(text));
-      setInputFormat("txt");
+      setInputFormat(importedFormat);
       setImportUrl("");
       event.target.value = "";
     } catch (error) {

@@ -206,13 +206,13 @@ export function validateFileType(
 
   const fileName = file.name.toLowerCase();
 
-  const textExtensions = [".txt", ".text"];
+  const textExtensions = [".txt", ".text", ".md", ".markdown"];
 
   const hasTextExtension = textExtensions.some((ext) => fileName.endsWith(ext));
 
   if (!hasTextExtension) {
     warnings.push(
-      `Archivo con extensión inusual detectado. Se recomienda usar archivos .txt para mejor compatibilidad.`
+      `Archivo con extensión inusual detectado. Se recomienda usar archivos .txt, .md o .markdown para mejor compatibilidad.`
     );
   }
 

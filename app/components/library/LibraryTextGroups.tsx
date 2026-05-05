@@ -52,79 +52,133 @@ export function LibraryTextGroups({
   onMoveTextToFolder,
   onAudioMenuAction,
 }: LibraryTextGroupsProps) {
+  const visibleGroups = groups.filter(
+    (group) => group.folder || group.texts.length > 0
+  );
+
   return (
-    <div id="library">
+    <section
+      id="library"
+      className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8"
+    >
+      <div className="mb-5 flex items-start gap-3">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-[#0F9EDA]/20 bg-[#0F9EDA]/10">
+          <FolderIcon className="h-5 w-5 text-[#0F9EDA]" aria-hidden="true" />
+        </div>
+        <div>
+          <h3 className="text-xl font-bold tracking-tight text-gray-900">
+            Carpetas y lecturas
+          </h3>
+          <p className="mt-1 text-sm text-gray-500">
+            Organiza y accede a todas tus lecturas guardadas.
+          </p>
+        </div>
+      </div>
+
       {texts.length > 0 ? (
-        <div className="space-y-4">
-          {groups.map((group) => (
-            <div key={group.folder?.id ?? "uncategorized"}>
-              {group.folder ? (
-                <details className="group/folder" open>
-                  <summary className="list-none cursor-pointer">
-                    <div className="mb-4 flex items-center gap-3 rounded-xl border border-gray-200 bg-white px-4 py-3 shadow-sm transition-colors duration-200 hover:border-gray-300 hover:shadow-md">
+        <div className="grid gap-5 lg:grid-cols-[240px_minmax(0,1fr)]">
+          <aside className="rounded-2xl border border-gray-200 bg-gray-50 p-3">
+            <div className="mb-2 flex items-center justify-between rounded-xl bg-white px-3 py-2.5 text-sm font-bold text-[#0F9EDA] shadow-sm">
+              <span>Todas las lecturas</span>
+              <span className="rounded-full bg-[#0F9EDA]/10 px-2 py-0.5 text-xs">
+                {texts.length}
+              </span>
+            </div>
+            <div className="space-y-1">
+              {visibleGroups.map((group) => (
+                <div
+                  key={group.folder?.id ?? "uncategorized-nav"}
+                  className="flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-sm text-gray-600"
+                >
+                  <span className="inline-flex min-w-0 items-center gap-2">
+                    {group.folder ? (
                       <span
-                        className="h-3 w-3 shrink-0 rounded-full"
+                        className="h-2.5 w-2.5 shrink-0 rounded-full"
                         style={{ backgroundColor: group.folder.color }}
                       />
-                      <h3 className="text-base font-bold text-gray-900">
-                        {group.folder.name}
-                      </h3>
-                      <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-500">
-                        {group.texts.length}{" "}
-                        {group.texts.length === 1 ? "texto" : "textos"}
-                      </span>
-                      <ChevronDownIcon className="ml-auto h-4 w-4 text-gray-400 transition-transform duration-200 group-open/folder:rotate-180" />
-                    </div>
-                  </summary>
-                  <div className="ml-2 space-y-4">
-                    {group.texts.map((text) => (
-                      <LibraryTextCard
-                        key={text.id}
-                        text={text}
-                        folders={folders}
-                        onStartEdit={onStartEdit}
-                        onDeleteText={onDeleteText}
-                        onMoveToFolder={onMoveTextToFolder}
-                        onAudioMenuAction={onAudioMenuAction}
-                      />
-                    ))}
-                  </div>
-                </details>
-              ) : group.texts.length > 0 ? (
-                <details className="group/folder" open>
-                  <summary className="list-none cursor-pointer">
-                    <div className="mb-4 flex items-center gap-3 rounded-xl border border-gray-200 bg-white px-4 py-3 shadow-sm transition-colors duration-200 hover:border-gray-300 hover:shadow-md">
-                      <FolderIcon className="h-5 w-5 text-gray-400" />
-                      <h3 className="text-base font-bold text-gray-900">
-                        Sin carpeta
-                      </h3>
-                      <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-500">
-                        {group.texts.length}{" "}
-                        {group.texts.length === 1 ? "texto" : "textos"}
-                      </span>
-                      <ChevronDownIcon className="ml-auto h-4 w-4 text-gray-400 transition-transform duration-200 group-open/folder:rotate-180" />
-                    </div>
-                  </summary>
-                  <div className="ml-2 space-y-4">
-                    {group.texts.map((text) => (
-                      <LibraryTextCard
-                        key={text.id}
-                        text={text}
-                        folders={folders}
-                        onStartEdit={onStartEdit}
-                        onDeleteText={onDeleteText}
-                        onMoveToFolder={onMoveTextToFolder}
-                        onAudioMenuAction={onAudioMenuAction}
-                      />
-                    ))}
-                  </div>
-                </details>
-              ) : null}
+                    ) : (
+                      <FolderIcon className="h-4 w-4 shrink-0 text-gray-400" />
+                    )}
+                    <span className="truncate">
+                      {group.folder?.name ?? "Sin carpeta"}
+                    </span>
+                  </span>
+                  <span className="rounded-full bg-white px-2 py-0.5 text-xs font-semibold text-gray-500">
+                    {group.texts.length}
+                  </span>
+                </div>
+              ))}
             </div>
-          ))}
+          </aside>
+
+          <div className="min-w-0 rounded-2xl border border-gray-200 bg-gray-50 p-3">
+            <div className="mb-3 hidden grid-cols-[minmax(0,1fr)_170px_120px_92px_44px] px-4 py-2 text-xs font-bold uppercase tracking-wide text-gray-400 lg:grid">
+              <span>Lectura</span>
+              <span>Carpeta</span>
+              <span className="text-center">Audio</span>
+              <span className="text-center">Fecha</span>
+              <span />
+            </div>
+
+            <div className="space-y-3">
+              {visibleGroups.map((group) => (
+                <details
+                  key={group.folder?.id ?? "uncategorized"}
+                  className="group/folder overflow-visible"
+                  open
+                >
+                  <summary className="list-none cursor-pointer">
+                    <div className="mb-3 flex items-center gap-3 rounded-xl border border-gray-200 bg-white px-4 py-3 transition-colors duration-200 hover:border-[#0F9EDA]/30">
+                      {group.folder ? (
+                        <span
+                          className="h-3 w-3 shrink-0 rounded-full"
+                          style={{ backgroundColor: group.folder.color }}
+                        />
+                      ) : (
+                        <FolderIcon className="h-5 w-5 text-gray-400" />
+                      )}
+                      <h4 className="font-bold text-gray-900">
+                        {group.folder?.name ?? "Sin carpeta"}
+                      </h4>
+                      <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-semibold text-gray-500">
+                        {group.texts.length}{" "}
+                        {group.texts.length === 1 ? "lectura" : "lecturas"}
+                      </span>
+                      <ChevronDownIcon className="ml-auto h-4 w-4 text-gray-400 transition-transform duration-200 group-open/folder:rotate-180" />
+                    </div>
+                  </summary>
+
+                  {group.texts.length > 0 ? (
+                    <div className="space-y-2">
+                      {group.texts.map((text) => (
+                        <LibraryTextCard
+                          key={text.id}
+                          text={text}
+                          folders={folders}
+                          onStartEdit={onStartEdit}
+                          onDeleteText={onDeleteText}
+                          onMoveToFolder={onMoveTextToFolder}
+                          onAudioMenuAction={onAudioMenuAction}
+                        />
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="rounded-xl border border-dashed border-gray-300 bg-white px-4 py-5 text-sm text-gray-500">
+                      Esta carpeta todavía no tiene lecturas.
+                    </div>
+                  )}
+                </details>
+              ))}
+            </div>
+
+            <div className="mt-4 border-t border-gray-200 px-2 pt-3 text-sm text-gray-500">
+              Mostrando {texts.length}{" "}
+              {texts.length === 1 ? "lectura" : "lecturas"}
+            </div>
+          </div>
         </div>
       ) : (
-        <div className="rounded-2xl border border-gray-200 bg-white p-16 text-center shadow-sm">
+        <div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-10 text-center sm:p-16">
           <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl border border-[#0F9EDA]/20 bg-[#0F9EDA]/10">
             <EmptyLibraryIcon />
           </div>
@@ -136,13 +190,13 @@ export function LibraryTextGroups({
             aprendizaje en inglés
           </p>
           <button
-            className="inline-flex items-center rounded-xl bg-[#0F9EDA] px-8 py-3 font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+            className="inline-flex min-h-12 items-center rounded-xl bg-[#0F9EDA] px-8 py-3 font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             onClick={() => titleInputRef.current?.focus()}
           >
             Crear Primer Texto
           </button>
         </div>
       )}
-    </div>
+    </section>
   );
 }
