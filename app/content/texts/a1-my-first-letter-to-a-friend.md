@@ -1,7 +1,8 @@
 ---
 title: "My First Letter to a Friend"
 level: "a1"
-date: "2026-04-22"
+date: "2026-05-04"
+sound: "https://images.lingtext.org/reading-4ecfb31ad0.mp3"
 ---
 
 Today I write a letter to my friend Tom. He lives in another city. I miss him very much.

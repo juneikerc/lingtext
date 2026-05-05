@@ -81,6 +81,8 @@ export enum TRANSLATORS {
   SMART = "google/gemini-3.1-flash-lite-preview",
 }
 
+// deepseek/deepseek-v4-flash
+
 export type Translator = TRANSLATORS;
 
 export interface SyncEnvelope {

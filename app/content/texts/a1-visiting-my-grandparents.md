@@ -1,7 +1,8 @@
 ---
 title: "Visiting My Grandparents"
 level: "a1"
-date: "2026-04-22"
+date: "2026-04-21"
+sound: "https://images.lingtext.org/reading-65c35f7f6e.mp3"
 ---
 
 Every Sunday, I visit my grandparents. They live in a small house near the park. I love them very much.

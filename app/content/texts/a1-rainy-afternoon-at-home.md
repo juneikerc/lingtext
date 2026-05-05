@@ -1,7 +1,8 @@
 ---
 title: "Rainy Afternoon at Home"
 level: "a1"
-date: "2026-04-08"
+date: "2026-04-30"
+sound: "https://images.lingtext.org/reading-1361816b61.mp3"
 ---
 
 Today, the weather is rainy and cold. I stay at home all afternoon. I look out the window and see gray clouds and wet streets. I do not go outside.

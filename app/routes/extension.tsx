@@ -22,9 +22,8 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
-// TODO: Replace with actual Chrome Web Store URL
 const CHROME_STORE_URL =
-  "https://chromewebstore.google.com/detail/lingtext-for-youtube/YOUR_EXTENSION_ID";
+  "https://chromewebstore.google.com/detail/lingtext-for-youtube/phnakkjkhjmobonjiebnbhdknckmobhn";
 
 const features = [
   {

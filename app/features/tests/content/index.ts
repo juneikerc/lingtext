@@ -5,6 +5,7 @@ import a1ReadingRutinasCotidianas from "./a1/reading-rutinas-cotidianas";
 import a1ReadingUnDiaEnLaTienda from "./a1/reading-un-dia-en-la-tienda";
 import a1VocabularyPalabrasBasicas from "./a1/vocabulary-palabras-basicas";
 import a2DictationPasadoYPlanes from "./a2/dictation-pasado-y-planes";
+import a2GrammarComparativosYSuperlativos from "./a2/grammar-comparativos-y-superlativos";
 import a2GrammarPasadoYComparativos from "./a2/grammar-pasado-y-comparativos";
 import a2ReadingCorreoDeLaEscuela from "./a2/reading-correo-de-la-escuela";
 import a2ReadingPlanesYMensajes from "./a2/reading-planes-y-mensajes";
@@ -40,6 +41,7 @@ export const TEST_CATALOG = [
   a2ReadingUnViajeCorto,
   a2ReadingCorreoDeLaEscuela,
   a2GrammarPasadoYComparativos,
+  a2GrammarComparativosYSuperlativos,
   a2VocabularyVidaDiariaYClima,
   a2DictationPasadoYPlanes,
   b1ReadingHabitosYTrabajoRemoto,

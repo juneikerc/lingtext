@@ -2,6 +2,7 @@
 title: "My Small Window Garden"
 level: "a1"
 date: "2026-04-30"
+sound: "https://images.lingtext.org/reading-9a61b64d02.mp3"
 ---
 
 I live in a small flat. I do not have a big garden. But I have a window. The window is in my kitchen. It gets sun in the morning.

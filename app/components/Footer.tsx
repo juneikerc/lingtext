@@ -153,6 +153,14 @@ export default function Footer() {
                   LingText PRO
                 </a>
               </li>
+              <li>
+                <a
+                  href="/extension"
+                  className="text-gray-300 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
+                >
+                  LingText for YouTube
+                </a>
+              </li>
             </ul>
           </div>
 
