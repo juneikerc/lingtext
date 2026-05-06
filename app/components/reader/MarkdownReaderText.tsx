@@ -68,6 +68,7 @@ interface MarkdownReaderTextProps {
   onWordClick: (e: React.MouseEvent<HTMLSpanElement>) => void;
   showChrome?: boolean;
   compact?: boolean;
+  contentFooter?: React.ReactNode;
 }
 
 function MarkdownReaderText({
@@ -77,6 +78,7 @@ function MarkdownReaderText({
   onWordClick,
   showChrome = true,
   compact = false,
+  contentFooter,
 }: MarkdownReaderTextProps) {
   const parsedContent = useMemo(() => {
     const lines = content.split("\n");
@@ -360,6 +362,11 @@ function MarkdownReaderText({
         contentClassName="reader-prose prose prose-lg max-w-none"
       >
         {parsedContent}
+        {contentFooter ? (
+          <div className="not-prose mt-10 border-t border-gray-200 pt-6">
+            {contentFooter}
+          </div>
+        ) : null}
       </ReaderContentShell>
 
       {showChrome ? <LibraryBanner /> : null}

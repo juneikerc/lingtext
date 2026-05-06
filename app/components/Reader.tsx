@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, type ReactNode } from "react";
 
 import type { AudioRef } from "../types";
 import { useTranslatorStore } from "~/context/translatorSelector";
@@ -26,12 +26,14 @@ interface Props {
     audioRef?: AudioRef | null;
     audioUrl?: string | null;
   };
+  contentFooter?: ReactNode;
   variant?: "default" | "compact";
   showAudioSection?: boolean;
 }
 
 export default function Reader({
   text,
+  contentFooter,
   variant = "default",
   showAudioSection = true,
 }: Props) {
@@ -88,6 +90,7 @@ export default function Reader({
         onWordClick={onWordClick}
         showChrome={!isCompact}
         compact={isCompact}
+        contentFooter={contentFooter}
       />
     ) : (
       <ReaderText
@@ -97,6 +100,7 @@ export default function Reader({
         onWordClick={onWordClick}
         showChrome={!isCompact}
         compact={isCompact}
+        contentFooter={contentFooter}
       />
     );
 

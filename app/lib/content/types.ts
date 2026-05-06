@@ -57,6 +57,7 @@ export interface TextManifestEntry extends BaseEntryManifest {
   level: string;
   date: string;
   sound?: string;
+  chapters?: string[];
 }
 
 export type BlogEntry = BlogManifestEntry & ContentPayload;

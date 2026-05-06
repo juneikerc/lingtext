@@ -17,6 +17,7 @@ interface ReaderTextProps {
   onWordClick: (e: React.MouseEvent<HTMLSpanElement>) => void;
   showChrome?: boolean;
   compact?: boolean;
+  contentFooter?: React.ReactNode;
 }
 
 function ReaderText({
@@ -26,6 +27,7 @@ function ReaderText({
   onWordClick,
   showChrome = true,
   compact = false,
+  contentFooter,
 }: ReaderTextProps) {
   const paragraphs = useMemo(() => content.split("\n\n"), [content]);
 
@@ -53,6 +55,11 @@ function ReaderText({
             />
           </p>
         ))}
+        {contentFooter ? (
+          <div className="mt-10 border-t border-gray-200 pt-6">
+            {contentFooter}
+          </div>
+        ) : null}
       </ReaderContentShell>
 
       {showChrome ? <LibraryBanner /> : null}
