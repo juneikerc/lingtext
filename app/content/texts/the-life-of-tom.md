@@ -1,10 +1,26 @@
 ---
-title: "The Life of Tom (long)"
+title: "The Life of Tom (15 chapters)"
 level: "a1"
-date: "2026-04-01"
+date: "2026-05-05"
+chapters:
+  - "Chapter 1 — Hello! This is Me"
+  - "Chapter 2 — My Family"
+  - "Chapter 3 — My House"
+  - "Chapter 4 — My Daily Routine"
+  - "Chapter 5 — Food and Drink"
+  - "Chapter 6 — My City"
+  - "Chapter 7 — My Best Friend"
+  - "Chapter 8 — Hobbies and Free Time"
+  - "Chapter 9 — Animals and Pets"
+  - "Chapter 10 — Seasons and Weather"
+  - "Chapter 11 — Shopping and Money"
+  - "Chapter 12 — A Trip to the Beach"
+  - "Chapter 13 — Health and the Body"
+  - "Chapter 14 — Technology and Phones"
+  - "Chapter 15 — The Future"
 ---
 
-### Chapter 1: Hello! This is Me
+# Chapter 1 — Hello! This is Me
 
 Hello. My name is Tom. I am twenty-five years old. I am from the United Kingdom. I live in a big city. The city is London. I am an English teacher. I work in a school. I like my job very much.
 
@@ -12,19 +28,19 @@ I am tall and thin. I have short brown hair. I have blue eyes. I wear glasses. T
 
 My birthday is in May. It is on the fifth of May. On my birthday, I eat a big cake. I celebrate with my family and my friends. I have a lot of friends. They are very good people. I like to spend time with them. Life is good. I am young and I have a good life. I want to tell you about my life, my family, and my days.
 
-### Chapter 2: My Family
+# Chapter 2 — My Family
 
 I have a very nice family. We are a happy family. There are five people in my family. There is my father, my mother, my sister, my brother, and me.
 
-My father’s name is John. He is fifty-five years old. He is a doctor. He works in a hospital. He is very tall. He has grey hair and green eyes. He works hard every day. He likes to read books in the evening.
+My father's name is John. He is fifty-five years old. He is a doctor. He works in a hospital. He is very tall. He has grey hair and green eyes. He works hard every day. He likes to read books in the evening.
 
-My mother’s name is Mary. She is fifty-two years old. She is a nurse. She works in the same hospital as my father. She is short and beautiful. She has long blonde hair and blue eyes. She is very kind. She makes very good food. She likes to cook.
+My mother's name is Mary. She is fifty-two years old. She is a nurse. She works in the same hospital as my father. She is short and beautiful. She has long blonde hair and blue eyes. She is very kind. She makes very good food. She likes to cook.
 
-My sister’s name is Emma. She is twenty years old. She is a university student. She studies art. She can draw very well. She paints beautiful pictures. She has blonde hair like my mother.
+My sister's name is Emma. She is twenty years old. She is a university student. She studies art. She can draw very well. She paints beautiful pictures. She has blonde hair like my mother.
 
-My brother’s name is David. He is twelve years old. He is a young boy. He goes to school. He likes to play football. He plays football every day with his friends. He is very fast. He has brown hair like me. I love my family very much. We eat dinner together every Sunday.
+My brother's name is David. He is twelve years old. He is a young boy. He goes to school. He likes to play football. He plays football every day with his friends. He is very fast. He has brown hair like me. I love my family very much. We eat dinner together every Sunday.
 
-### Chapter 3: My House
+# Chapter 3 — My House
 
 I do not live with my parents. I live in a flat. My flat is in the center of London. It is a small flat, but it is very nice. It is my home.
 
@@ -36,7 +52,7 @@ My bedroom is my favorite room. The bed is very comfortable. The bed is big. I h
 
 The bathroom is very small. There is a shower, a toilet, and a mirror. I wash my face in the mirror every morning. I like my flat. It is warm and quiet.
 
-### Chapter 4: My Daily Routine
+# Chapter 4 — My Daily Routine
 
 I have a routine. Every day from Monday to Friday is the same. I wake up early. I wake up at exactly seven o'clock in the morning. I get out of bed. I go to the bathroom. I take a shower. I wash my hair. I brush my teeth. I get dressed. I put on my clothes for work.
 
@@ -48,9 +64,9 @@ I start work at nine o'clock. I teach English to children. The children are very
 
 At four o'clock, I finish work. I go home. I take the bus again. I arrive home at five o'clock. I relax. I listen to music. I make dinner at seven o'clock. After dinner, I watch a movie or read a book. At ten o'clock, I go to the bathroom. I brush my teeth again. I go to bed. I sleep very well.
 
-### Chapter 5: Food and Drink
+# Chapter 5 — Food and Drink
 
-I love food. I like to eat healthy food, but sometimes I eat unhealthy food.  
+I love food. I like to eat healthy food, but sometimes I eat unhealthy food.
 For breakfast, I usually eat toast with butter and jam. Sometimes, I eat an egg. I always drink black coffee. I do not put sugar or milk in my coffee. I like water. I drink a lot of water every day.
 
 For lunch, I eat a sandwich. I make my sandwich at home. It has cheese, tomato, and lettuce. Sometimes I put chicken in my sandwich. I also eat an apple or a banana. Fruit is very good for you. It gives you energy.
@@ -59,7 +75,7 @@ For dinner, I like to cook hot food. I like pasta. Pasta is my favorite food. I 
 
 On Saturdays, I do not cook. I go to a restaurant with my friends. We eat pizza. I love pizza with extra cheese. We drink orange juice or cola. After pizza, we eat dessert. I like chocolate ice cream. Food makes me very happy.
 
-### Chapter 6: My City
+# Chapter 6 — My City
 
 London is a very big city. It is in England. Many people live here. There are many tall buildings. There are many cars, buses, and taxis. The taxis in London are black. The buses are red. The red buses are very famous.
 
@@ -69,7 +85,7 @@ There are many shops in London. You can buy clothes, food, and books. There are 
 
 The weather in my city is often bad. It rains a lot. It is often cloudy. But sometimes the sun shines. When it is sunny, the city is beautiful. Everyone goes outside. I love London. It is a busy city, but it is a great city.
 
-### Chapter 7: My Best Friend
+# Chapter 7 — My Best Friend
 
 My best friend is Mark. Mark is twenty-six years old. He is one year older than me. We are friends from school. We know each other for a long time.
 
@@ -81,7 +97,7 @@ Mark is a very funny person. He always makes me laugh. He tells good jokes. We d
 
 Mark is not married. He does not have a wife. He does not have children. He has a dog. We walk his dog in the park. Mark is a very good friend. I can talk to him about my problems. He always listens. He always helps me.
 
-### Chapter 8: Hobbies and Free Time
+# Chapter 8 — Hobbies and Free Time
 
 I have a lot of free time on the weekend. I do not work on Saturday and Sunday. I have many hobbies. A hobby is something you do for fun.
 
@@ -93,7 +109,7 @@ My third hobby is music. I can play the guitar. I have a brown acoustic guitar. 
 
 Sometimes, my hobby is just sleeping. When I am very tired, I sleep for ten hours. Sleep is very important for the body and the mind.
 
-### Chapter 9: Animals and Pets
+# Chapter 9 — Animals and Pets
 
 I like animals. Animals are beautiful. I do not have a pet in my flat. My flat is too small for a pet. But I really want a pet. I want a cat. Cats are quiet and clean. They sleep a lot. They are very soft.
 
@@ -101,7 +117,7 @@ My parents have a dog. His name is Max. Max is a golden retriever. He is a big d
 
 I also like wild animals. I go to the zoo sometimes. The zoo is a place with many wild animals. At the zoo, I see lions, tigers, and elephants. Elephants are very big. They have big ears and a long trunk. I see monkeys. Monkeys are very funny. They jump from tree to tree. They eat bananas. I see giraffes. Giraffes are very tall. They have long necks. They eat leaves from the trees. Animals are wonderful.
 
-### Chapter 10: Seasons and Weather
+# Chapter 10 — Seasons and Weather
 
 There are four seasons in a year. The seasons are spring, summer, autumn, and winter.
 
@@ -113,7 +129,7 @@ Autumn starts in September. The weather gets cool. The leaves on the trees chang
 
 Winter starts in December. Winter is very cold. The days are short. It gets dark early in the afternoon. Sometimes, it snows. The snow is white and cold. Children love the snow. They make snowmen. In winter, I wear warm clothes. I wear a thick coat, a scarf, a hat, and gloves. I stay inside my warm flat. I drink hot tea.
 
-### Chapter 11: Shopping and Money
+# Chapter 11 — Shopping and Money
 
 I go shopping every week. I go to the supermarket on Saturday afternoon. I take a big bag with me. I push a trolley in the supermarket. I buy food for the week. I buy bread, milk, eggs, cheese, meat, and vegetables. I also buy soap and toilet paper.
 
@@ -121,7 +137,7 @@ When I finish, I go to the checkout. I talk to the cashier. The cashier says, "H
 
 Sometimes, I buy clothes. I go to a clothes shop in the city center. I need a new shirt. I look at the shirts. I find a nice blue shirt. I look at the size. It is a medium. That is my size. I look at the price tag. It is twenty pounds. That is cheap. I go to the fitting room. I try the shirt on. It looks good. I buy the shirt. I am happy with my new shirt.
 
-### Chapter 12: A Trip to the Beach
+# Chapter 12 — A Trip to the Beach
 
 Today is a special day. It is Saturday in the summer. It is very hot. The sun is shining in the blue sky. I am not in London today. I am at the beach with my friend Mark.
 
@@ -135,7 +151,7 @@ At one o'clock, we are hungry. We go to a small restaurant near the beach. We ea
 
 In the afternoon, we walk on the beach. We collect some beautiful shells. We sit on the sand and talk. We watch the sun go down. The sky turns pink and orange. It is a perfect day. We drive home. We are very tired, but very happy.
 
-### Chapter 13: Health and the Body
+# Chapter 13 — Health and the Body
 
 It is very important to be healthy. I try to be healthy. I eat good food and I do exercise. I have a healthy body. Let me describe the human body.
 
@@ -147,7 +163,7 @@ I have a chest and a stomach. I have two legs. My legs are long. I use my legs t
 
 Sometimes, I am not healthy. Sometimes, I am sick. Last month, I had a cold. I had a bad cough. My head hurt. I had a headache. I was very hot. I had a fever. I went to the doctor. The doctor checked my throat. The doctor gave me medicine. I stayed in bed for three days. I drank hot water with lemon and honey. I rested. After three days, I felt better. Now, I am strong again.
 
-### Chapter 14: Technology and Phones
+# Chapter 14 — Technology and Phones
 
 We live in a modern world. Technology is everywhere. I use technology every day. I have a smartphone. My phone is black and very thin. It has a big screen. I carry my phone in my pocket.
 
@@ -159,7 +175,7 @@ I also have a laptop computer at home. A laptop is a computer you can carry. I u
 
 Technology is very useful. It makes life easy. But sometimes, it is too much. Sometimes, I turn off my phone. I close my laptop. I just sit in silence. I read a paper book. It is good to have a break from screens.
 
-### Chapter 15: The Future
+# Chapter 15 — The Future
 
 We are at the end of my story. You know a lot about me now. You know my name, my age, my family, and my friends. You know about my flat, my job, and my hobbies.
 

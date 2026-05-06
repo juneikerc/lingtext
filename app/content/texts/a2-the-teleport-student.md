@@ -1,5 +1,5 @@
 ---
-title: "The Teleport Student"
+title: "The Teleport Student (6 chapters)"
 level: "a2"
 date: "2026-05-05"
 chapters:
