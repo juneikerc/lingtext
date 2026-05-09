@@ -195,23 +195,15 @@ npm run deploy
 
 - ~~Listado por texto de palabras desconocidas y progreso~~ (implementado)
 - ~~Generación de historias personalizadas~~ (implementado)
-- Sincronización opcional (autohosted) para múltiples dispositivos.
+- Sincronización multidispositivo opcional.
 - Importación EPUB/PDF con extracción de texto.
 - Decks Anki por texto/tema, tarjetas cloze.
 
 —
 
-## Contribuir
-
-1. Haz un fork y crea una rama: `feat/mi-mejora`.
-2. Ejecuta `npm run dev` y agrega tests/chequeos si aplica.
-3. Envía un PR describiendo el objetivo y el impacto en UX.
-
-—
-
 ## Licencia
 
-Por definir. Si te interesa un esquema específico (MIT/BSD-3/Apache-2.0), abre un issue.
+Proyecto privado. Todos los derechos reservados.
 
 —
 

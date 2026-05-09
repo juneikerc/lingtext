@@ -561,7 +561,7 @@ function SyncSection() {
             cualquier momento.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            {["Datos locales", "Sync seguro", "Exportar SQLite", "Open Source"].map(
+            {["Datos locales", "Sync seguro", "Exportar SQLite", "Privado"].map(
               (tag) => (
                 <span
                   key={tag}

@@ -338,14 +338,6 @@ export default function ReaderHeader({ title }: ReaderHeaderProps) {
                 </div>
 
                 <div className="flex items-center space-x-2 sm:space-x-3 w-full sm:w-auto">
-                  <a
-                    href="https://github.com/juneikerc/lingtext/blob/main/open-router-key.md"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 sm:flex-none text-center px-3 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs font-bold text-white bg-amber-600 hover:bg-amber-700 rounded-lg transition-colors shadow-sm"
-                  >
-                    ¿Cómo obtenerla? (Tutorial)
-                  </a>
                   <button
                     onClick={() => setShowApiKeyConfig(true)}
                     className="flex-1 sm:flex-none px-3 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs font-bold text-amber-700 bg-amber-100 hover:bg-amber-200 rounded-lg transition-colors border border-amber-200"

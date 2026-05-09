@@ -23,7 +23,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
           {/* Badge destacado */}
           <div className="inline-flex items-center px-4 py-2 mb-8 text-sm font-medium text-gray-700 bg-white rounded-full border border-gray-200 shadow-sm">
             <span className="w-2 h-2 bg-[#0F9EDA] rounded-full mr-2.5"></span>
-            Gratuito y Open Source
+            Gratuito y Privado
           </div>
 
           {/* Título principal */}
