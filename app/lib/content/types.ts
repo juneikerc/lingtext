@@ -3,7 +3,8 @@ export type CollectionName =
   | "legalPages"
   | "levelsTexts"
   | "testsTexts"
-  | "texts";
+  | "texts"
+  | "vocabulary";
 
 export interface ContentPayload {
   content: string;
@@ -60,6 +61,15 @@ export interface TextManifestEntry extends BaseEntryManifest {
   chapters?: string[];
 }
 
+export interface VocabularyManifestEntry extends BaseEntryManifest {
+  collection: "vocabulary";
+  title: string;
+  mainHeading: string;
+  metaDescription: string;
+  intro: string;
+  level: string;
+}
+
 export type BlogEntry = BlogManifestEntry & ContentPayload;
 
 export type LevelTextEntry = LevelTextManifestEntry & ContentPayload;
@@ -70,16 +80,20 @@ export type LegalPageEntry = LegalPageManifestEntry & ContentPayload;
 
 export type TextEntry = TextManifestEntry & ContentPayload;
 
+export type VocabularyEntry = VocabularyManifestEntry & ContentPayload;
+
 export type AnyContentManifestEntry =
   | BlogManifestEntry
   | LegalPageManifestEntry
   | LevelTextManifestEntry
   | TestTextManifestEntry
-  | TextManifestEntry;
+  | TextManifestEntry
+  | VocabularyManifestEntry;
 
 export type AnyContentEntry =
   | BlogEntry
   | LegalPageEntry
   | LevelTextEntry
   | TestTextEntry
-  | TextEntry;
+  | TextEntry
+  | VocabularyEntry;

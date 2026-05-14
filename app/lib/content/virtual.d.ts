@@ -10,6 +10,8 @@ declare module "virtual:content" {
     TestTextManifestEntry,
     TextEntry,
     TextManifestEntry,
+    VocabularyEntry,
+    VocabularyManifestEntry,
   } from "./types";
 
   export type ContentEntryLoader<TEntry> = () => Promise<{ entry: TEntry }>;
@@ -19,6 +21,7 @@ declare module "virtual:content" {
   export const levelTextManifests: LevelTextManifestEntry[];
   export const testTextManifests: TestTextManifestEntry[];
   export const textManifests: TextManifestEntry[];
+  export const vocabularyManifests: VocabularyManifestEntry[];
 
   export const blogLoaders: Record<string, ContentEntryLoader<BlogEntry>>;
   export const legalPageLoaders: Record<
@@ -34,4 +37,8 @@ declare module "virtual:content" {
     ContentEntryLoader<TestTextEntry>
   >;
   export const textLoaders: Record<string, ContentEntryLoader<TextEntry>>;
+  export const vocabularyLoaders: Record<
+    string,
+    ContentEntryLoader<VocabularyEntry>
+  >;
 }

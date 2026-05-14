@@ -1,0 +1,1532 @@
+[
+  {
+    "category": "Comunicación y opiniones",
+    "vocabulary": [
+      {
+        "word": "opinion",
+        "word_in_spanish": "opinión",
+        "sentence": "In my opinion, online learning can be very useful.",
+        "sentence_spanish": "En mi opinión, el aprendizaje en línea puede ser muy útil."
+      },
+      {
+        "word": "point of view",
+        "word_in_spanish": "punto de vista",
+        "sentence": "Try to understand his point of view before you answer.",
+        "sentence_spanish": "Intenta entender su punto de vista antes de responder."
+      },
+      {
+        "word": "argument",
+        "word_in_spanish": "discusión, argumento",
+        "sentence": "They had an argument about the best solution.",
+        "sentence_spanish": "Tuvieron una discusión sobre la mejor solución."
+      },
+      {
+        "word": "reason",
+        "word_in_spanish": "razón, motivo",
+        "sentence": "There are several reasons why people move abroad.",
+        "sentence_spanish": "Hay varias razones por las que la gente se muda al extranjero."
+      },
+      {
+        "word": "suggestion",
+        "word_in_spanish": "sugerencia",
+        "sentence": "I have a suggestion for your presentation.",
+        "sentence_spanish": "Tengo una sugerencia para tu presentación."
+      },
+      {
+        "word": "advice",
+        "word_in_spanish": "consejo",
+        "sentence": "She gave me useful advice before the interview.",
+        "sentence_spanish": "Me dio un consejo útil antes de la entrevista."
+      },
+      {
+        "word": "complaint",
+        "word_in_spanish": "queja, reclamación",
+        "sentence": "The customer made a complaint about the service.",
+        "sentence_spanish": "El cliente presentó una queja sobre el servicio."
+      },
+      {
+        "word": "apology",
+        "word_in_spanish": "disculpa",
+        "sentence": "He sent an apology after missing the meeting.",
+        "sentence_spanish": "Envió una disculpa después de perderse la reunión."
+      },
+      {
+        "word": "conversation",
+        "word_in_spanish": "conversación",
+        "sentence": "We had a long conversation about our plans.",
+        "sentence_spanish": "Tuvimos una larga conversación sobre nuestros planes."
+      },
+      {
+        "word": "statement",
+        "word_in_spanish": "declaración, afirmación",
+        "sentence": "Her statement was clear and easy to understand.",
+        "sentence_spanish": "Su declaración fue clara y fácil de entender."
+      },
+      {
+        "word": "agreement",
+        "word_in_spanish": "acuerdo",
+        "sentence": "The two companies reached an agreement.",
+        "sentence_spanish": "Las dos empresas llegaron a un acuerdo."
+      },
+      {
+        "word": "disagreement",
+        "word_in_spanish": "desacuerdo",
+        "sentence": "There was some disagreement about the final price.",
+        "sentence_spanish": "Hubo cierto desacuerdo sobre el precio final."
+      },
+      {
+        "word": "response",
+        "word_in_spanish": "respuesta",
+        "sentence": "We are waiting for a response from the manager.",
+        "sentence_spanish": "Estamos esperando una respuesta del gerente."
+      },
+      {
+        "word": "request",
+        "word_in_spanish": "solicitud, petición",
+        "sentence": "The hotel accepted our request for a quiet room.",
+        "sentence_spanish": "El hotel aceptó nuestra petición de una habitación tranquila."
+      },
+      {
+        "word": "permission",
+        "word_in_spanish": "permiso",
+        "sentence": "You need permission to use these photos.",
+        "sentence_spanish": "Necesitas permiso para usar estas fotos."
+      },
+      {
+        "word": "point out",
+        "word_in_spanish": "señalar",
+        "sentence": "She pointed out an important mistake in the report.",
+        "sentence_spanish": "Ella señaló un error importante en el informe."
+      },
+      {
+        "word": "claim",
+        "word_in_spanish": "afirmar",
+        "sentence": "The article claims that exercise improves memory.",
+        "sentence_spanish": "El artículo afirma que el ejercicio mejora la memoria."
+      },
+      {
+        "word": "argue",
+        "word_in_spanish": "argumentar",
+        "sentence": "He argued that the plan was too expensive.",
+        "sentence_spanish": "Él argumentó que el plan era demasiado caro."
+      },
+      {
+        "word": "disagree",
+        "word_in_spanish": "no estar de acuerdo",
+        "sentence": "I disagree with that opinion.",
+        "sentence_spanish": "No estoy de acuerdo con esa opinión."
+      },
+      {
+        "word": "persuade",
+        "word_in_spanish": "convencer",
+        "sentence": "She tried to persuade me to join the course.",
+        "sentence_spanish": "Intentó convencerme de unirme al curso."
+      },
+      {
+        "word": "briefly",
+        "word_in_spanish": "brevemente",
+        "sentence": "Briefly explain why you agree with the statement.",
+        "sentence_spanish": "Explica brevemente por qué estás de acuerdo con la afirmación."
+      },
+      {
+        "word": "clearly",
+        "word_in_spanish": "claramente",
+        "sentence": "She explained the problem clearly.",
+        "sentence_spanish": "Explicó el problema claramente."
+      },
+      {
+        "word": "mention",
+        "word_in_spanish": "mencionar",
+        "sentence": "He mentioned the meeting during lunch.",
+        "sentence_spanish": "Mencionó la reunión durante el almuerzo."
+      },
+      {
+        "word": "reaction",
+        "word_in_spanish": "reacción",
+        "sentence": "Her reaction surprised everyone.",
+        "sentence_spanish": "Su reacción sorprendió a todos."
+      },
+      {
+        "word": "summarise",
+        "word_in_spanish": "resumir",
+        "sentence": "Can you summarise the main points of the text?",
+        "sentence_spanish": "¿Puedes resumir los puntos principales del texto?"
+      },
+      {
+        "word": "emphasize",
+        "word_in_spanish": "enfatizar",
+        "sentence": "The speaker emphasized the need for teamwork.",
+        "sentence_spanish": "El ponente enfatizó la necesidad de trabajar en equipo."
+      }
+    ]
+  },
+  {
+    "category": "Trabajo y carrera profesional",
+    "vocabulary": [
+      {
+        "word": "career",
+        "word_in_spanish": "carrera profesional",
+        "sentence": "She wants a career in marketing.",
+        "sentence_spanish": "Ella quiere una carrera profesional en marketing."
+      },
+      {
+        "word": "application",
+        "word_in_spanish": "solicitud",
+        "sentence": "I sent my application for the job yesterday.",
+        "sentence_spanish": "Envié mi solicitud para el trabajo ayer."
+      },
+      {
+        "word": "interview",
+        "word_in_spanish": "entrevista",
+        "sentence": "My interview lasted about forty minutes.",
+        "sentence_spanish": "Mi entrevista duró unos cuarenta minutos."
+      },
+      {
+        "word": "experience",
+        "word_in_spanish": "experiencia",
+        "sentence": "The company needs someone with experience.",
+        "sentence_spanish": "La empresa necesita a alguien con experiencia."
+      },
+      {
+        "word": "skill",
+        "word_in_spanish": "habilidad, competencia",
+        "sentence": "Communication is an important skill at work.",
+        "sentence_spanish": "La comunicación es una habilidad importante en el trabajo."
+      },
+      {
+        "word": "training",
+        "word_in_spanish": "formación, capacitación",
+        "sentence": "New employees receive training during the first week.",
+        "sentence_spanish": "Los nuevos empleados reciben formación durante la primera semana."
+      },
+      {
+        "word": "responsibility",
+        "word_in_spanish": "responsabilidad",
+        "sentence": "Managing the team is her main responsibility.",
+        "sentence_spanish": "Gestionar el equipo es su principal responsabilidad."
+      },
+      {
+        "word": "deadline",
+        "word_in_spanish": "fecha límite, plazo",
+        "sentence": "We must finish the report before the deadline.",
+        "sentence_spanish": "Debemos terminar el informe antes de la fecha límite."
+      },
+      {
+        "word": "project",
+        "word_in_spanish": "proyecto",
+        "sentence": "They are working on a new project together.",
+        "sentence_spanish": "Están trabajando juntos en un nuevo proyecto."
+      },
+      {
+        "word": "contract",
+        "word_in_spanish": "contrato",
+        "sentence": "He signed a contract with the company.",
+        "sentence_spanish": "Firmó un contrato con la empresa."
+      },
+      {
+        "word": "promotion",
+        "word_in_spanish": "ascenso, promoción",
+        "sentence": "She got a promotion after two years.",
+        "sentence_spanish": "Consiguió un ascenso después de dos años."
+      },
+      {
+        "word": "employee",
+        "word_in_spanish": "empleado, empleada",
+        "sentence": "Every employee must follow the safety rules.",
+        "sentence_spanish": "Cada empleado debe seguir las normas de seguridad."
+      },
+      {
+        "word": "employer",
+        "word_in_spanish": "empleador, empresa",
+        "sentence": "A good employer listens to workers.",
+        "sentence_spanish": "Un buen empleador escucha a los trabajadores."
+      },
+      {
+        "word": "department",
+        "word_in_spanish": "departamento",
+        "sentence": "The finance department is on the third floor.",
+        "sentence_spanish": "El departamento de finanzas está en la tercera planta."
+      },
+      {
+        "word": "income",
+        "word_in_spanish": "ingresos",
+        "sentence": "Their income increased last year.",
+        "sentence_spanish": "Sus ingresos aumentaron el año pasado."
+      },
+      {
+        "word": "apply",
+        "word_in_spanish": "solicitar",
+        "sentence": "He applied for a job in marketing.",
+        "sentence_spanish": "Solicitó un trabajo en marketing."
+      },
+      {
+        "word": "requirement",
+        "word_in_spanish": "requisito",
+        "sentence": "Experience is a requirement for this position.",
+        "sentence_spanish": "La experiencia es un requisito para este puesto."
+      },
+      {
+        "word": "colleague",
+        "word_in_spanish": "compañero de trabajo",
+        "sentence": "My colleague helped me prepare the presentation.",
+        "sentence_spanish": "Mi compañero de trabajo me ayudó a preparar la presentación."
+      },
+      {
+        "word": "candidate",
+        "word_in_spanish": "candidato",
+        "sentence": "There were three candidates for the job.",
+        "sentence_spanish": "Había tres candidatos para el trabajo."
+      },
+      {
+        "word": "internship",
+        "word_in_spanish": "prácticas",
+        "sentence": "She found an internship at a design company.",
+        "sentence_spanish": "Encontró unas prácticas en una empresa de diseño."
+      },
+      {
+        "word": "workplace",
+        "word_in_spanish": "lugar de trabajo",
+        "sentence": "Communication is important in the workplace.",
+        "sentence_spanish": "La comunicación es importante en el lugar de trabajo."
+      }
+    ]
+  },
+  {
+    "category": "Educación y aprendizaje",
+    "vocabulary": [
+      {
+        "word": "course",
+        "word_in_spanish": "curso",
+        "sentence": "I am taking a course in business English.",
+        "sentence_spanish": "Estoy haciendo un curso de inglés de negocios."
+      },
+      {
+        "word": "lecture",
+        "word_in_spanish": "clase magistral, conferencia",
+        "sentence": "The lecture was about climate change.",
+        "sentence_spanish": "La conferencia fue sobre el cambio climático."
+      },
+      {
+        "word": "essay",
+        "word_in_spanish": "ensayo, redacción",
+        "sentence": "We have to write an essay about technology.",
+        "sentence_spanish": "Tenemos que escribir un ensayo sobre tecnología."
+      },
+      {
+        "word": "research",
+        "word_in_spanish": "investigación",
+        "sentence": "Good research takes time and patience.",
+        "sentence_spanish": "Una buena investigación requiere tiempo y paciencia."
+      },
+      {
+        "word": "degree",
+        "word_in_spanish": "título universitario, grado",
+        "sentence": "He has a degree in engineering.",
+        "sentence_spanish": "Tiene un título universitario en ingeniería."
+      },
+      {
+        "word": "qualification",
+        "word_in_spanish": "título, cualificación",
+        "sentence": "You need the right qualification for this position.",
+        "sentence_spanish": "Necesitas la cualificación adecuada para este puesto."
+      },
+      {
+        "word": "knowledge",
+        "word_in_spanish": "conocimiento",
+        "sentence": "This job requires knowledge of computers.",
+        "sentence_spanish": "Este trabajo requiere conocimientos de informática."
+      },
+      {
+        "word": "progress",
+        "word_in_spanish": "progreso",
+        "sentence": "You have made great progress this month.",
+        "sentence_spanish": "Has hecho un gran progreso este mes."
+      },
+      {
+        "word": "mistake",
+        "word_in_spanish": "error",
+        "sentence": "Making a mistake is part of learning.",
+        "sentence_spanish": "Cometer un error forma parte del aprendizaje."
+      },
+      {
+        "word": "improvement",
+        "word_in_spanish": "mejora",
+        "sentence": "There has been a clear improvement in your writing.",
+        "sentence_spanish": "Ha habido una mejora clara en tu escritura."
+      },
+      {
+        "word": "explanation",
+        "word_in_spanish": "explicación",
+        "sentence": "The teacher gave a simple explanation.",
+        "sentence_spanish": "El profesor dio una explicación sencilla."
+      },
+      {
+        "word": "definition",
+        "word_in_spanish": "definición",
+        "sentence": "Write the definition in your own words.",
+        "sentence_spanish": "Escribe la definición con tus propias palabras."
+      },
+      {
+        "word": "topic",
+        "word_in_spanish": "tema",
+        "sentence": "Today's topic is healthy habits.",
+        "sentence_spanish": "El tema de hoy son los hábitos saludables."
+      },
+      {
+        "word": "grade",
+        "word_in_spanish": "nota, calificación",
+        "sentence": "She received a high grade on the exam.",
+        "sentence_spanish": "Recibió una nota alta en el examen."
+      },
+      {
+        "word": "assignment",
+        "word_in_spanish": "tarea, trabajo asignado",
+        "sentence": "The assignment must be finished by Friday.",
+        "sentence_spanish": "La tarea debe estar terminada para el viernes."
+      },
+      {
+        "word": "source",
+        "word_in_spanish": "fuente",
+        "sentence": "Use reliable sources in your project.",
+        "sentence_spanish": "Usa fuentes fiables en tu proyecto."
+      },
+      {
+        "word": "revise",
+        "word_in_spanish": "repasar",
+        "sentence": "I need to revise before the exam.",
+        "sentence_spanish": "Necesito repasar antes del examen."
+      },
+      {
+        "word": "graduate",
+        "word_in_spanish": "graduarse",
+        "sentence": "She will graduate from university next year.",
+        "sentence_spanish": "Se graduará de la universidad el año que viene."
+      },
+      {
+        "word": "tutor",
+        "word_in_spanish": "tutor",
+        "sentence": "My tutor gave me advice about my project.",
+        "sentence_spanish": "Mi tutor me dio consejos sobre mi proyecto."
+      }
+    ]
+  },
+  {
+    "category": "Tecnología e internet",
+    "vocabulary": [
+      {
+        "word": "device",
+        "word_in_spanish": "dispositivo",
+        "sentence": "This device can connect to the internet.",
+        "sentence_spanish": "Este dispositivo puede conectarse a internet."
+      },
+      {
+        "word": "software",
+        "word_in_spanish": "programa, software",
+        "sentence": "We use special software to edit videos.",
+        "sentence_spanish": "Usamos un programa especial para editar vídeos."
+      },
+      {
+        "word": "website",
+        "word_in_spanish": "sitio web, página web",
+        "sentence": "The website has information about the course.",
+        "sentence_spanish": "El sitio web tiene información sobre el curso."
+      },
+      {
+        "word": "account",
+        "word_in_spanish": "cuenta",
+        "sentence": "You need an account to use the app.",
+        "sentence_spanish": "Necesitas una cuenta para usar la aplicación."
+      },
+      {
+        "word": "password",
+        "word_in_spanish": "contraseña",
+        "sentence": "Choose a strong password for your account.",
+        "sentence_spanish": "Elige una contraseña segura para tu cuenta."
+      },
+      {
+        "word": "privacy",
+        "word_in_spanish": "privacidad",
+        "sentence": "Privacy is important when you share information online.",
+        "sentence_spanish": "La privacidad es importante cuando compartes información en línea."
+      },
+      {
+        "word": "download",
+        "word_in_spanish": "descargar, descarga",
+        "sentence": "You can download the document from the website.",
+        "sentence_spanish": "Puedes descargar el documento desde el sitio web."
+      },
+      {
+        "word": "upload",
+        "word_in_spanish": "subir, cargar",
+        "sentence": "Please upload your homework before midnight.",
+        "sentence_spanish": "Por favor sube tu tarea antes de medianoche."
+      },
+      {
+        "word": "screen",
+        "word_in_spanish": "pantalla",
+        "sentence": "The screen is too bright at night.",
+        "sentence_spanish": "La pantalla es demasiado brillante por la noche."
+      },
+      {
+        "word": "keyboard",
+        "word_in_spanish": "teclado",
+        "sentence": "I bought a new keyboard for my computer.",
+        "sentence_spanish": "Compré un teclado nuevo para mi ordenador."
+      },
+      {
+        "word": "link",
+        "word_in_spanish": "enlace",
+        "sentence": "Send me the link to the article.",
+        "sentence_spanish": "Envíame el enlace al artículo."
+      },
+      {
+        "word": "search engine",
+        "word_in_spanish": "buscador",
+        "sentence": "Students often use a search engine to find information.",
+        "sentence_spanish": "Los estudiantes suelen usar un buscador para encontrar información."
+      },
+      {
+        "word": "social media",
+        "word_in_spanish": "redes sociales",
+        "sentence": "Many teenagers spend time on social media.",
+        "sentence_spanish": "Muchos adolescentes pasan tiempo en redes sociales."
+      },
+      {
+        "word": "update",
+        "word_in_spanish": "actualización, actualizar",
+        "sentence": "The latest update fixed several problems.",
+        "sentence_spanish": "La última actualización solucionó varios problemas."
+      },
+      {
+        "word": "online safety",
+        "word_in_spanish": "seguridad en línea",
+        "sentence": "Online safety should be taught at school.",
+        "sentence_spanish": "La seguridad en línea debería enseñarse en la escuela."
+      },
+      {
+        "word": "network",
+        "word_in_spanish": "red",
+        "sentence": "The office network is not working today.",
+        "sentence_spanish": "La red de la oficina no funciona hoy."
+      },
+      {
+        "word": "online",
+        "word_in_spanish": "en línea",
+        "sentence": "Many people prefer online banking.",
+        "sentence_spanish": "Muchas personas prefieren la banca en línea."
+      },
+      {
+        "word": "digital",
+        "word_in_spanish": "digital",
+        "sentence": "Digital skills are useful for most jobs.",
+        "sentence_spanish": "Las habilidades digitales son útiles para la mayoría de los trabajos."
+      }
+    ]
+  },
+  {
+    "category": "Salud y estilo de vida",
+    "vocabulary": [
+      {
+        "word": "health",
+        "word_in_spanish": "salud",
+        "sentence": "Regular exercise is good for your health.",
+        "sentence_spanish": "El ejercicio regular es bueno para tu salud."
+      },
+      {
+        "word": "habit",
+        "word_in_spanish": "hábito",
+        "sentence": "Sleeping well is a healthy habit.",
+        "sentence_spanish": "Dormir bien es un hábito saludable."
+      },
+      {
+        "word": "diet",
+        "word_in_spanish": "dieta, alimentación",
+        "sentence": "A balanced diet includes different types of food.",
+        "sentence_spanish": "Una dieta equilibrada incluye diferentes tipos de comida."
+      },
+      {
+        "word": "treatment",
+        "word_in_spanish": "tratamiento",
+        "sentence": "The doctor recommended a new treatment.",
+        "sentence_spanish": "El médico recomendó un nuevo tratamiento."
+      },
+      {
+        "word": "injury",
+        "word_in_spanish": "lesión",
+        "sentence": "He had a knee injury after the match.",
+        "sentence_spanish": "Tuvo una lesión de rodilla después del partido."
+      },
+      {
+        "word": "symptom",
+        "word_in_spanish": "síntoma",
+        "sentence": "A high temperature can be a symptom of flu.",
+        "sentence_spanish": "Una temperatura alta puede ser un síntoma de gripe."
+      },
+      {
+        "word": "stress",
+        "word_in_spanish": "estrés",
+        "sentence": "Too much stress can affect your sleep.",
+        "sentence_spanish": "Demasiado estrés puede afectar tu sueño."
+      },
+      {
+        "word": "energy",
+        "word_in_spanish": "energía",
+        "sentence": "I have more energy when I eat well.",
+        "sentence_spanish": "Tengo más energía cuando como bien."
+      },
+      {
+        "word": "mental health",
+        "word_in_spanish": "salud mental",
+        "sentence": "Talking to someone can help your mental health.",
+        "sentence_spanish": "Hablar con alguien puede ayudar a tu salud mental."
+      },
+      {
+        "word": "consultation",
+        "word_in_spanish": "consulta médica",
+        "sentence": "The consultation lasted twenty minutes.",
+        "sentence_spanish": "La consulta médica duró veinte minutos."
+      },
+      {
+        "word": "emergency",
+        "word_in_spanish": "emergencia",
+        "sentence": "Call this number in an emergency.",
+        "sentence_spanish": "Llama a este número en una emergencia."
+      },
+      {
+        "word": "recover",
+        "word_in_spanish": "recuperarse",
+        "sentence": "She needs time to recover after the operation.",
+        "sentence_spanish": "Necesita tiempo para recuperarse después de la operación."
+      },
+      {
+        "word": "avoid",
+        "word_in_spanish": "evitar",
+        "sentence": "Try to avoid eating too much sugar.",
+        "sentence_spanish": "Intenta evitar comer demasiado azúcar."
+      },
+      {
+        "word": "reduce",
+        "word_in_spanish": "reducir",
+        "sentence": "Walking can reduce stress.",
+        "sentence_spanish": "Caminar puede reducir el estrés."
+      },
+      {
+        "word": "balanced",
+        "word_in_spanish": "equilibrado",
+        "sentence": "A balanced lifestyle includes work and rest.",
+        "sentence_spanish": "Un estilo de vida equilibrado incluye trabajo y descanso."
+      },
+      {
+        "word": "prevent",
+        "word_in_spanish": "prevenir",
+        "sentence": "Regular exercise can prevent health problems.",
+        "sentence_spanish": "El ejercicio regular puede prevenir problemas de salud."
+      },
+      {
+        "word": "routine",
+        "word_in_spanish": "rutina",
+        "sentence": "A morning routine helps me start the day well.",
+        "sentence_spanish": "Una rutina de mañana me ayuda a empezar bien el día."
+      },
+      {
+        "word": "well-being",
+        "word_in_spanish": "bienestar",
+        "sentence": "Sleep is important for your well-being.",
+        "sentence_spanish": "Dormir es importante para tu bienestar."
+      }
+    ]
+  },
+  {
+    "category": "Viajes y experiencias",
+    "vocabulary": [
+      {
+        "word": "destination",
+        "word_in_spanish": "destino",
+        "sentence": "Portugal is a popular holiday destination.",
+        "sentence_spanish": "Portugal es un destino vacacional popular."
+      },
+      {
+        "word": "accommodation",
+        "word_in_spanish": "alojamiento",
+        "sentence": "We found cheap accommodation near the beach.",
+        "sentence_spanish": "Encontramos alojamiento barato cerca de la playa."
+      },
+      {
+        "word": "journey",
+        "word_in_spanish": "trayecto, viaje",
+        "sentence": "The journey by train took three hours.",
+        "sentence_spanish": "El trayecto en tren duró tres horas."
+      },
+      {
+        "word": "delay",
+        "word_in_spanish": "retraso",
+        "sentence": "There was a delay because of bad weather.",
+        "sentence_spanish": "Hubo un retraso por el mal tiempo."
+      },
+      {
+        "word": "luggage",
+        "word_in_spanish": "equipaje",
+        "sentence": "My luggage was lost at the airport.",
+        "sentence_spanish": "Mi equipaje se perdió en el aeropuerto."
+      },
+      {
+        "word": "border",
+        "word_in_spanish": "frontera",
+        "sentence": "They crossed the border early in the morning.",
+        "sentence_spanish": "Cruzaron la frontera temprano por la mañana."
+      },
+      {
+        "word": "guide",
+        "word_in_spanish": "guía",
+        "sentence": "The guide explained the history of the castle.",
+        "sentence_spanish": "El guía explicó la historia del castillo."
+      },
+      {
+        "word": "tour",
+        "word_in_spanish": "visita guiada, recorrido",
+        "sentence": "We took a tour of the old city.",
+        "sentence_spanish": "Hicimos una visita guiada por la ciudad antigua."
+      },
+      {
+        "word": "sightseeing",
+        "word_in_spanish": "turismo, visitas turísticas",
+        "sentence": "We spent the morning sightseeing.",
+        "sentence_spanish": "Pasamos la mañana haciendo turismo."
+      },
+      {
+        "word": "abroad",
+        "word_in_spanish": "en el extranjero",
+        "sentence": "She studied abroad for one year.",
+        "sentence_spanish": "Estudió en el extranjero durante un año."
+      },
+      {
+        "word": "local",
+        "word_in_spanish": "local",
+        "sentence": "We tried local food during our trip.",
+        "sentence_spanish": "Probamos comida local durante nuestro viaje."
+      },
+      {
+        "word": "custom",
+        "word_in_spanish": "costumbre",
+        "sentence": "It is a local custom to greet people warmly.",
+        "sentence_spanish": "Es una costumbre local saludar a la gente cordialmente."
+      },
+      {
+        "word": "landscape",
+        "word_in_spanish": "paisaje",
+        "sentence": "The landscape was beautiful after the rain.",
+        "sentence_spanish": "El paisaje era hermoso después de la lluvia."
+      },
+      {
+        "word": "souvenir",
+        "word_in_spanish": "recuerdo, souvenir",
+        "sentence": "I bought a small souvenir for my sister.",
+        "sentence_spanish": "Compré un pequeño recuerdo para mi hermana."
+      },
+      {
+        "word": "route",
+        "word_in_spanish": "ruta",
+        "sentence": "This route is faster but more expensive.",
+        "sentence_spanish": "Esta ruta es más rápida pero más cara."
+      },
+      {
+        "word": "explore",
+        "word_in_spanish": "explorar",
+        "sentence": "They spent the afternoon exploring the old town.",
+        "sentence_spanish": "Pasaron la tarde explorando el casco antiguo."
+      },
+      {
+        "word": "itinerary",
+        "word_in_spanish": "itinerario",
+        "sentence": "The itinerary includes three museums.",
+        "sentence_spanish": "El itinerario incluye tres museos."
+      },
+      {
+        "word": "departure",
+        "word_in_spanish": "salida",
+        "sentence": "The departure time is printed on the ticket.",
+        "sentence_spanish": "La hora de salida está impresa en el billete."
+      }
+    ]
+  },
+  {
+    "category": "Medio ambiente y naturaleza",
+    "vocabulary": [
+      {
+        "word": "environment",
+        "word_in_spanish": "medio ambiente",
+        "sentence": "We should protect the environment.",
+        "sentence_spanish": "Deberíamos proteger el medio ambiente."
+      },
+      {
+        "word": "pollution",
+        "word_in_spanish": "contaminación",
+        "sentence": "Air pollution is a serious problem in many cities.",
+        "sentence_spanish": "La contaminación del aire es un problema grave en muchas ciudades."
+      },
+      {
+        "word": "climate",
+        "word_in_spanish": "clima",
+        "sentence": "The climate in this region is changing.",
+        "sentence_spanish": "El clima en esta región está cambiando."
+      },
+      {
+        "word": "waste",
+        "word_in_spanish": "residuos, desperdicio",
+        "sentence": "We need to reduce plastic waste.",
+        "sentence_spanish": "Necesitamos reducir los residuos plásticos."
+      },
+      {
+        "word": "recycling",
+        "word_in_spanish": "reciclaje",
+        "sentence": "Recycling helps save natural resources.",
+        "sentence_spanish": "El reciclaje ayuda a ahorrar recursos naturales."
+      },
+      {
+        "word": "resource",
+        "word_in_spanish": "recurso",
+        "sentence": "Water is an important natural resource.",
+        "sentence_spanish": "El agua es un recurso natural importante."
+      },
+      {
+        "word": "wildlife",
+        "word_in_spanish": "vida silvestre",
+        "sentence": "The park protects local wildlife.",
+        "sentence_spanish": "El parque protege la vida silvestre local."
+      },
+      {
+        "word": "species",
+        "word_in_spanish": "especie",
+        "sentence": "Some species are in danger because of pollution.",
+        "sentence_spanish": "Algunas especies están en peligro por la contaminación."
+      },
+      {
+        "word": "forest",
+        "word_in_spanish": "bosque",
+        "sentence": "The forest is home to many animals.",
+        "sentence_spanish": "El bosque es el hogar de muchos animales."
+      },
+      {
+        "word": "coast",
+        "word_in_spanish": "costa",
+        "sentence": "They live near the coast.",
+        "sentence_spanish": "Viven cerca de la costa."
+      },
+      {
+        "word": "flood",
+        "word_in_spanish": "inundación",
+        "sentence": "Heavy rain caused a flood in the village.",
+        "sentence_spanish": "La lluvia intensa causó una inundación en el pueblo."
+      },
+      {
+        "word": "drought",
+        "word_in_spanish": "sequía",
+        "sentence": "The drought affected many farms.",
+        "sentence_spanish": "La sequía afectó a muchas granjas."
+      },
+      {
+        "word": "protect",
+        "word_in_spanish": "proteger",
+        "sentence": "We must protect rivers and forests.",
+        "sentence_spanish": "Debemos proteger ríos y bosques."
+      },
+      {
+        "word": "damage",
+        "word_in_spanish": "dañar, daño",
+        "sentence": "The storm caused serious damage to the road.",
+        "sentence_spanish": "La tormenta causó graves daños en la carretera."
+      },
+      {
+        "word": "sustainable",
+        "word_in_spanish": "sostenible",
+        "sentence": "Cycling is a sustainable way to travel.",
+        "sentence_spanish": "Ir en bicicleta es una forma sostenible de viajar."
+      },
+      {
+        "word": "recycle",
+        "word_in_spanish": "reciclar",
+        "sentence": "We recycle paper, glass and plastic at home.",
+        "sentence_spanish": "Reciclamos papel, vidrio y plástico en casa."
+      },
+      {
+        "word": "renewable",
+        "word_in_spanish": "renovable",
+        "sentence": "Solar energy is a renewable source of power.",
+        "sentence_spanish": "La energía solar es una fuente renovable de energía."
+      },
+      {
+        "word": "emission",
+        "word_in_spanish": "emisión",
+        "sentence": "Car emissions contribute to air pollution.",
+        "sentence_spanish": "Las emisiones de los coches contribuyen a la contaminación del aire."
+      }
+    ]
+  },
+  {
+    "category": "Sociedad y actualidad",
+    "vocabulary": [
+      {
+        "word": "community",
+        "word_in_spanish": "comunidad",
+        "sentence": "The community organized a local festival.",
+        "sentence_spanish": "La comunidad organizó un festival local."
+      },
+      {
+        "word": "society",
+        "word_in_spanish": "sociedad",
+        "sentence": "Technology has changed modern society.",
+        "sentence_spanish": "La tecnología ha cambiado la sociedad moderna."
+      },
+      {
+        "word": "government",
+        "word_in_spanish": "gobierno",
+        "sentence": "The government announced new transport plans.",
+        "sentence_spanish": "El gobierno anunció nuevos planes de transporte."
+      },
+      {
+        "word": "law",
+        "word_in_spanish": "ley",
+        "sentence": "The new law protects workers better.",
+        "sentence_spanish": "La nueva ley protege mejor a los trabajadores."
+      },
+      {
+        "word": "rule",
+        "word_in_spanish": "norma, regla",
+        "sentence": "Every school has rules for students.",
+        "sentence_spanish": "Cada escuela tiene normas para los estudiantes."
+      },
+      {
+        "word": "human right",
+        "word_in_spanish": "derecho humano",
+        "sentence": "Education is considered a basic human right.",
+        "sentence_spanish": "La educación se considera un derecho humano básico."
+      },
+      {
+        "word": "choice",
+        "word_in_spanish": "elección, opción",
+        "sentence": "You have a choice between two courses.",
+        "sentence_spanish": "Tienes una elección entre dos cursos."
+      },
+      {
+        "word": "opportunity",
+        "word_in_spanish": "oportunidad",
+        "sentence": "This job is a great opportunity for her.",
+        "sentence_spanish": "Este trabajo es una gran oportunidad para ella."
+      },
+      {
+        "word": "problem",
+        "word_in_spanish": "problema",
+        "sentence": "Traffic is a common problem in big cities.",
+        "sentence_spanish": "El tráfico es un problema común en las grandes ciudades."
+      },
+      {
+        "word": "solution",
+        "word_in_spanish": "solución",
+        "sentence": "We need a practical solution to this problem.",
+        "sentence_spanish": "Necesitamos una solución práctica para este problema."
+      },
+      {
+        "word": "change",
+        "word_in_spanish": "cambio, cambiar",
+        "sentence": "Social change can take many years.",
+        "sentence_spanish": "El cambio social puede tardar muchos años."
+      },
+      {
+        "word": "development",
+        "word_in_spanish": "desarrollo",
+        "sentence": "The development of the town created new jobs.",
+        "sentence_spanish": "El desarrollo del pueblo creó nuevos empleos."
+      },
+      {
+        "word": "support",
+        "word_in_spanish": "apoyo, apoyar",
+        "sentence": "Young people need support when they look for work.",
+        "sentence_spanish": "Los jóvenes necesitan apoyo cuando buscan trabajo."
+      },
+      {
+        "word": "volunteer",
+        "word_in_spanish": "voluntario, voluntaria",
+        "sentence": "She works as a volunteer at the hospital.",
+        "sentence_spanish": "Trabaja como voluntaria en el hospital."
+      },
+      {
+        "word": "charity",
+        "word_in_spanish": "organización benéfica, caridad",
+        "sentence": "The charity helps families in need.",
+        "sentence_spanish": "La organización benéfica ayuda a familias necesitadas."
+      },
+      {
+        "word": "citizen",
+        "word_in_spanish": "ciudadano",
+        "sentence": "Citizens have rights and responsibilities.",
+        "sentence_spanish": "Los ciudadanos tienen derechos y responsabilidades."
+      },
+      {
+        "word": "right",
+        "word_in_spanish": "derecho",
+        "sentence": "Education is a basic right.",
+        "sentence_spanish": "La educación es un derecho básico."
+      },
+      {
+        "word": "equality",
+        "word_in_spanish": "igualdad",
+        "sentence": "The campaign promotes equality at work.",
+        "sentence_spanish": "La campaña promueve la igualdad en el trabajo."
+      },
+      {
+        "word": "population",
+        "word_in_spanish": "población",
+        "sentence": "The population of the city is growing.",
+        "sentence_spanish": "La población de la ciudad está creciendo."
+      },
+      {
+        "word": "poverty",
+        "word_in_spanish": "pobreza",
+        "sentence": "The organization works to reduce poverty.",
+        "sentence_spanish": "La organización trabaja para reducir la pobreza."
+      },
+      {
+        "word": "public",
+        "word_in_spanish": "público",
+        "sentence": "Public transport is cheaper than driving.",
+        "sentence_spanish": "El transporte público es más barato que conducir."
+      },
+      {
+        "word": "economy",
+        "word_in_spanish": "economía",
+        "sentence": "The economy grew slowly this year.",
+        "sentence_spanish": "La economía creció lentamente este año."
+      },
+      {
+        "word": "policy",
+        "word_in_spanish": "política, norma",
+        "sentence": "The new policy will affect students.",
+        "sentence_spanish": "La nueva política afectará a los estudiantes."
+      }
+    ]
+  },
+  {
+    "category": "Emociones y personalidad",
+    "vocabulary": [
+      {
+        "word": "confident",
+        "word_in_spanish": "seguro de sí mismo",
+        "sentence": "She felt confident before the presentation.",
+        "sentence_spanish": "Se sintió segura antes de la presentación."
+      },
+      {
+        "word": "nervous",
+        "word_in_spanish": "nervioso",
+        "sentence": "I was nervous before the driving test.",
+        "sentence_spanish": "Estaba nervioso antes del examen de conducir."
+      },
+      {
+        "word": "anxious",
+        "word_in_spanish": "ansioso, preocupado",
+        "sentence": "He became anxious when he lost his phone.",
+        "sentence_spanish": "Se puso ansioso cuando perdió su teléfono."
+      },
+      {
+        "word": "proud",
+        "word_in_spanish": "orgulloso",
+        "sentence": "Her parents were proud of her progress.",
+        "sentence_spanish": "Sus padres estaban orgullosos de su progreso."
+      },
+      {
+        "word": "disappointed",
+        "word_in_spanish": "decepcionado",
+        "sentence": "They were disappointed with the result.",
+        "sentence_spanish": "Estaban decepcionados con el resultado."
+      },
+      {
+        "word": "relieved",
+        "word_in_spanish": "aliviado",
+        "sentence": "I felt relieved when I passed the exam.",
+        "sentence_spanish": "Me sentí aliviado cuando aprobé el examen."
+      },
+      {
+        "word": "surprised",
+        "word_in_spanish": "sorprendido",
+        "sentence": "We were surprised by the news.",
+        "sentence_spanish": "Nos sorprendieron las noticias."
+      },
+      {
+        "word": "patient",
+        "word_in_spanish": "paciente",
+        "sentence": "A good teacher needs to be patient.",
+        "sentence_spanish": "Un buen profesor necesita ser paciente."
+      },
+      {
+        "word": "honest",
+        "word_in_spanish": "honesto, sincero",
+        "sentence": "It is important to be honest with your friends.",
+        "sentence_spanish": "Es importante ser sincero con tus amigos."
+      },
+      {
+        "word": "reliable",
+        "word_in_spanish": "fiable, confiable",
+        "sentence": "He is a reliable person who always helps.",
+        "sentence_spanish": "Es una persona fiable que siempre ayuda."
+      },
+      {
+        "word": "creative",
+        "word_in_spanish": "creativo",
+        "sentence": "The team needs a creative solution.",
+        "sentence_spanish": "El equipo necesita una solución creativa."
+      },
+      {
+        "word": "independent",
+        "word_in_spanish": "independiente",
+        "sentence": "Living alone made her more independent.",
+        "sentence_spanish": "Vivir sola la hizo más independiente."
+      },
+      {
+        "word": "sensible",
+        "word_in_spanish": "sensato",
+        "sentence": "That sounds like a sensible idea.",
+        "sentence_spanish": "Eso parece una idea sensata."
+      },
+      {
+        "word": "generous",
+        "word_in_spanish": "generoso",
+        "sentence": "He is generous with his time.",
+        "sentence_spanish": "Es generoso con su tiempo."
+      },
+      {
+        "word": "rude",
+        "word_in_spanish": "grosero, maleducado",
+        "sentence": "It is rude to interrupt people.",
+        "sentence_spanish": "Es de mala educación interrumpir a la gente."
+      },
+      {
+        "word": "annoyed",
+        "word_in_spanish": "molesto",
+        "sentence": "I was annoyed by the noise outside.",
+        "sentence_spanish": "Me molestó el ruido de fuera."
+      },
+      {
+        "word": "curious",
+        "word_in_spanish": "curioso",
+        "sentence": "Children are naturally curious.",
+        "sentence_spanish": "Los niños son curiosos por naturaleza."
+      },
+      {
+        "word": "sensitive",
+        "word_in_spanish": "sensible, delicado",
+        "sentence": "Be careful; this is a sensitive topic.",
+        "sentence_spanish": "Ten cuidado; este es un tema delicado."
+      },
+      {
+        "word": "ambitious",
+        "word_in_spanish": "ambicioso",
+        "sentence": "She is ambitious and wants to start her own business.",
+        "sentence_spanish": "Es ambiciosa y quiere crear su propio negocio."
+      },
+      {
+        "word": "reasonable",
+        "word_in_spanish": "razonable",
+        "sentence": "That seems like a reasonable solution.",
+        "sentence_spanish": "Eso parece una solución razonable."
+      }
+    ]
+  },
+  {
+    "category": "Verbos frecuentes B1",
+    "vocabulary": [
+      {
+        "word": "achieve",
+        "word_in_spanish": "lograr, conseguir",
+        "sentence": "You can achieve your goals with regular practice.",
+        "sentence_spanish": "Puedes lograr tus objetivos con práctica regular."
+      },
+      {
+        "word": "improve",
+        "word_in_spanish": "mejorar",
+        "sentence": "Reading every day will improve your vocabulary.",
+        "sentence_spanish": "Leer todos los días mejorará tu vocabulario."
+      },
+      {
+        "word": "explain",
+        "word_in_spanish": "explicar",
+        "sentence": "Can you explain the problem again?",
+        "sentence_spanish": "¿Puedes explicar el problema otra vez?"
+      },
+      {
+        "word": "describe",
+        "word_in_spanish": "describir",
+        "sentence": "Describe the picture using as much detail as possible.",
+        "sentence_spanish": "Describe la imagen usando el mayor detalle posible."
+      },
+      {
+        "word": "compare",
+        "word_in_spanish": "comparar",
+        "sentence": "Compare the two options before you decide.",
+        "sentence_spanish": "Compara las dos opciones antes de decidir."
+      },
+      {
+        "word": "decide",
+        "word_in_spanish": "decidir",
+        "sentence": "We need to decide where to stay.",
+        "sentence_spanish": "Necesitamos decidir dónde alojarnos."
+      },
+      {
+        "word": "recommend",
+        "word_in_spanish": "recomendar",
+        "sentence": "I recommend this book for B1 learners.",
+        "sentence_spanish": "Recomiendo este libro para estudiantes de B1."
+      },
+      {
+        "word": "offer",
+        "word_in_spanish": "ofrecer",
+        "sentence": "They offered me a place on the course.",
+        "sentence_spanish": "Me ofrecieron una plaza en el curso."
+      },
+      {
+        "word": "accept",
+        "word_in_spanish": "aceptar",
+        "sentence": "She accepted the invitation immediately.",
+        "sentence_spanish": "Aceptó la invitación inmediatamente."
+      },
+      {
+        "word": "refuse",
+        "word_in_spanish": "rechazar, negarse",
+        "sentence": "He refused to answer the question.",
+        "sentence_spanish": "Se negó a responder la pregunta."
+      },
+      {
+        "word": "manage",
+        "word_in_spanish": "gestionar, lograr",
+        "sentence": "Did you manage to finish the report?",
+        "sentence_spanish": "¿Lograste terminar el informe?"
+      },
+      {
+        "word": "continue",
+        "word_in_spanish": "continuar",
+        "sentence": "The class will continue after a short break.",
+        "sentence_spanish": "La clase continuará después de un breve descanso."
+      },
+      {
+        "word": "increase",
+        "word_in_spanish": "aumentar",
+        "sentence": "Prices often increase during the summer.",
+        "sentence_spanish": "Los precios suelen aumentar durante el verano."
+      },
+      {
+        "word": "decrease",
+        "word_in_spanish": "disminuir, reducirse",
+        "sentence": "The number of visitors decreased in winter.",
+        "sentence_spanish": "El número de visitantes disminuyó en invierno."
+      },
+      {
+        "word": "include",
+        "word_in_spanish": "incluir",
+        "sentence": "The price includes breakfast.",
+        "sentence_spanish": "El precio incluye el desayuno."
+      },
+      {
+        "word": "depend on",
+        "word_in_spanish": "depender de",
+        "sentence": "The answer depends on the situation.",
+        "sentence_spanish": "La respuesta depende de la situación."
+      },
+      {
+        "word": "realize",
+        "word_in_spanish": "darse cuenta",
+        "sentence": "I realized that I had forgotten my keys.",
+        "sentence_spanish": "Me di cuenta de que había olvidado mis llaves."
+      },
+      {
+        "word": "solve",
+        "word_in_spanish": "resolver",
+        "sentence": "We solved the problem together.",
+        "sentence_spanish": "Resolvimos el problema juntos."
+      },
+      {
+        "word": "develop",
+        "word_in_spanish": "desarrollar",
+        "sentence": "The company developed a new product.",
+        "sentence_spanish": "La empresa desarrolló un nuevo producto."
+      },
+      {
+        "word": "admit",
+        "word_in_spanish": "admitir",
+        "sentence": "He admitted that he had made a mistake.",
+        "sentence_spanish": "Admitió que había cometido un error."
+      },
+      {
+        "word": "arrange",
+        "word_in_spanish": "organizar",
+        "sentence": "We arranged a meeting for Monday.",
+        "sentence_spanish": "Organizamos una reunión para el lunes."
+      },
+      {
+        "word": "complain",
+        "word_in_spanish": "quejarse",
+        "sentence": "Customers complained about the slow service.",
+        "sentence_spanish": "Los clientes se quejaron del servicio lento."
+      },
+      {
+        "word": "consider",
+        "word_in_spanish": "considerar",
+        "sentence": "You should consider all the options.",
+        "sentence_spanish": "Deberías considerar todas las opciones."
+      },
+      {
+        "word": "encourage",
+        "word_in_spanish": "animar",
+        "sentence": "Teachers should encourage students to speak.",
+        "sentence_spanish": "Los profesores deberían animar a los estudiantes a hablar."
+      }
+    ]
+  },
+  {
+    "category": "Conectores y expresiones para escribir",
+    "vocabulary": [
+      {
+        "word": "although",
+        "word_in_spanish": "aunque",
+        "sentence": "Although it was raining, we went for a walk.",
+        "sentence_spanish": "Aunque estaba lloviendo, salimos a caminar."
+      },
+      {
+        "word": "however",
+        "word_in_spanish": "sin embargo",
+        "sentence": "The hotel was expensive. However, the location was perfect.",
+        "sentence_spanish": "El hotel era caro. Sin embargo, la ubicación era perfecta."
+      },
+      {
+        "word": "therefore",
+        "word_in_spanish": "por lo tanto",
+        "sentence": "The train was cancelled; therefore, we took a bus.",
+        "sentence_spanish": "El tren fue cancelado; por lo tanto, tomamos un autobús."
+      },
+      {
+        "word": "because of",
+        "word_in_spanish": "debido a, por",
+        "sentence": "The match was cancelled because of the rain.",
+        "sentence_spanish": "El partido fue cancelado debido a la lluvia."
+      },
+      {
+        "word": "as a result",
+        "word_in_spanish": "como resultado",
+        "sentence": "He studied hard. As a result, he passed the exam.",
+        "sentence_spanish": "Estudió mucho. Como resultado, aprobó el examen."
+      },
+      {
+        "word": "in addition",
+        "word_in_spanish": "además",
+        "sentence": "The course is useful. In addition, it is free.",
+        "sentence_spanish": "El curso es útil. Además, es gratuito."
+      },
+      {
+        "word": "on the other hand",
+        "word_in_spanish": "por otro lado",
+        "sentence": "The city is exciting. On the other hand, it is noisy.",
+        "sentence_spanish": "La ciudad es emocionante. Por otro lado, es ruidosa."
+      },
+      {
+        "word": "for example",
+        "word_in_spanish": "por ejemplo",
+        "sentence": "Some hobbies are cheap, for example running.",
+        "sentence_spanish": "Algunas aficiones son baratas, por ejemplo correr."
+      },
+      {
+        "word": "in general",
+        "word_in_spanish": "en general",
+        "sentence": "In general, people enjoy living near parks.",
+        "sentence_spanish": "En general, a la gente le gusta vivir cerca de parques."
+      },
+      {
+        "word": "especially",
+        "word_in_spanish": "especialmente",
+        "sentence": "I enjoy outdoor sports, especially cycling.",
+        "sentence_spanish": "Disfruto los deportes al aire libre, especialmente el ciclismo."
+      },
+      {
+        "word": "instead of",
+        "word_in_spanish": "en lugar de",
+        "sentence": "We cooked at home instead of going to a restaurant.",
+        "sentence_spanish": "Cocinamos en casa en lugar de ir a un restaurante."
+      },
+      {
+        "word": "unless",
+        "word_in_spanish": "a menos que",
+        "sentence": "We will go hiking unless it rains.",
+        "sentence_spanish": "Iremos de excursión a menos que llueva."
+      },
+      {
+        "word": "while",
+        "word_in_spanish": "mientras, aunque",
+        "sentence": "I listened to music while I was cooking.",
+        "sentence_spanish": "Escuché música mientras cocinaba."
+      },
+      {
+        "word": "whereas",
+        "word_in_spanish": "mientras que",
+        "sentence": "My brother likes cities, whereas I prefer villages.",
+        "sentence_spanish": "A mi hermano le gustan las ciudades, mientras que yo prefiero los pueblos."
+      },
+      {
+        "word": "finally",
+        "word_in_spanish": "finalmente, por último",
+        "sentence": "Finally, I would like to thank everyone.",
+        "sentence_spanish": "Por último, me gustaría dar las gracias a todos."
+      },
+      {
+        "word": "for instance",
+        "word_in_spanish": "por ejemplo",
+        "sentence": "Some jobs, for instance teaching, require patience.",
+        "sentence_spanish": "Algunos trabajos, por ejemplo la enseñanza, requieren paciencia."
+      },
+      {
+        "word": "in conclusion",
+        "word_in_spanish": "en conclusión",
+        "sentence": "In conclusion, online learning can be very useful.",
+        "sentence_spanish": "En conclusión, el aprendizaje en línea puede ser muy útil."
+      },
+      {
+        "word": "despite",
+        "word_in_spanish": "a pesar de",
+        "sentence": "Despite the rain, we enjoyed the trip.",
+        "sentence_spanish": "A pesar de la lluvia, disfrutamos del viaje."
+      },
+      {
+        "word": "according to",
+        "word_in_spanish": "según",
+        "sentence": "According to the survey, most students prefer videos.",
+        "sentence_spanish": "Según la encuesta, la mayoría de los estudiantes prefiere vídeos."
+      },
+      {
+        "word": "as well as",
+        "word_in_spanish": "además de",
+        "sentence": "The course includes grammar as well as speaking practice.",
+        "sentence_spanish": "El curso incluye gramática además de práctica oral."
+      },
+      {
+        "word": "in contrast",
+        "word_in_spanish": "en cambio, por contraste",
+        "sentence": "In contrast, the second option is cheaper.",
+        "sentence_spanish": "En cambio, la segunda opción es más barata."
+      }
+    ]
+  },
+  {
+    "category": "Phrasal verbs y expresiones comunes",
+    "vocabulary": [
+      {
+        "word": "deal with",
+        "word_in_spanish": "ocuparse de, tratar con",
+        "sentence": "She has to deal with many emails every morning.",
+        "sentence_spanish": "Tiene que ocuparse de muchos correos cada mañana."
+      },
+      {
+        "word": "look forward to",
+        "word_in_spanish": "tener ganas de, esperar con ilusión",
+        "sentence": "I look forward to hearing from you.",
+        "sentence_spanish": "Espero tener noticias tuyas con ilusión."
+      },
+      {
+        "word": "take part in",
+        "word_in_spanish": "participar en",
+        "sentence": "Many students took part in the competition.",
+        "sentence_spanish": "Muchos estudiantes participaron en la competición."
+      },
+      {
+        "word": "carry on",
+        "word_in_spanish": "continuar",
+        "sentence": "Please carry on with the exercise.",
+        "sentence_spanish": "Por favor continúa con el ejercicio."
+      },
+      {
+        "word": "give up",
+        "word_in_spanish": "rendirse, dejar",
+        "sentence": "Do not give up when English feels difficult.",
+        "sentence_spanish": "No te rindas cuando el inglés parezca difícil."
+      },
+      {
+        "word": "set up",
+        "word_in_spanish": "organizar, configurar, montar",
+        "sentence": "They set up a small business last year.",
+        "sentence_spanish": "Montaron un pequeño negocio el año pasado."
+      },
+      {
+        "word": "find out",
+        "word_in_spanish": "averiguar",
+        "sentence": "We need to find out what happened.",
+        "sentence_spanish": "Necesitamos averiguar qué pasó."
+      },
+      {
+        "word": "turn up",
+        "word_in_spanish": "aparecer, llegar",
+        "sentence": "He turned up late for the meeting.",
+        "sentence_spanish": "Llegó tarde a la reunión."
+      },
+      {
+        "word": "pick up",
+        "word_in_spanish": "recoger, aprender poco a poco",
+        "sentence": "Can you pick me up at the station?",
+        "sentence_spanish": "¿Puedes recogerme en la estación?"
+      },
+      {
+        "word": "drop off",
+        "word_in_spanish": "dejar a alguien, entregar",
+        "sentence": "I will drop off the package tomorrow.",
+        "sentence_spanish": "Entregaré el paquete mañana."
+      },
+      {
+        "word": "run out of",
+        "word_in_spanish": "quedarse sin",
+        "sentence": "We ran out of milk this morning.",
+        "sentence_spanish": "Nos quedamos sin leche esta mañana."
+      },
+      {
+        "word": "get along with",
+        "word_in_spanish": "llevarse bien con",
+        "sentence": "I get along with my colleagues.",
+        "sentence_spanish": "Me llevo bien con mis compañeros."
+      },
+      {
+        "word": "come up with",
+        "word_in_spanish": "ocurrirse, proponer",
+        "sentence": "She came up with a brilliant idea.",
+        "sentence_spanish": "Se le ocurrió una idea brillante."
+      },
+      {
+        "word": "make up",
+        "word_in_spanish": "inventar, reconciliarse",
+        "sentence": "He made up a funny story for the children.",
+        "sentence_spanish": "Inventó una historia divertida para los niños."
+      },
+      {
+        "word": "put off",
+        "word_in_spanish": "posponer",
+        "sentence": "They put off the meeting until next week.",
+        "sentence_spanish": "Pospusieron la reunión hasta la semana que viene."
+      },
+      {
+        "word": "look after",
+        "word_in_spanish": "cuidar",
+        "sentence": "They look after their grandmother at weekends.",
+        "sentence_spanish": "Cuidan de su abuela los fines de semana."
+      },
+      {
+        "word": "come across",
+        "word_in_spanish": "encontrarse con",
+        "sentence": "I came across an interesting article online.",
+        "sentence_spanish": "Encontré por casualidad un artículo interesante en línea."
+      },
+      {
+        "word": "get over",
+        "word_in_spanish": "superar",
+        "sentence": "It took her months to get over the illness.",
+        "sentence_spanish": "Tardó meses en superar la enfermedad."
+      },
+      {
+        "word": "bring up",
+        "word_in_spanish": "mencionar",
+        "sentence": "She brought up an important question.",
+        "sentence_spanish": "Mencionó una pregunta importante."
+      }
+    ]
+  }
+]

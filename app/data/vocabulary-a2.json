@@ -1,0 +1,1594 @@
+[
+  {
+    "category": "Datos personales y relaciones",
+    "vocabulary": [
+      {
+        "word": "name",
+        "word_in_spanish": "nombre",
+        "sentence": "My name is Ana.",
+        "sentence_spanish": "Mi nombre es Ana."
+      },
+      {
+        "word": "surname / last name",
+        "word_in_spanish": "apellido",
+        "sentence": "My last name is García.",
+        "sentence_spanish": "Mi apellido es García."
+      },
+      {
+        "word": "age",
+        "word_in_spanish": "edad",
+        "sentence": "What is your age?",
+        "sentence_spanish": "¿Cuál es tu edad?"
+      },
+      {
+        "word": "address",
+        "word_in_spanish": "dirección",
+        "sentence": "Please write your address here.",
+        "sentence_spanish": "Por favor escribe tu dirección aquí."
+      },
+      {
+        "word": "phone number",
+        "word_in_spanish": "número de teléfono",
+        "sentence": "Can I have your phone number?",
+        "sentence_spanish": "¿Puedo tener tu número de teléfono?"
+      },
+      {
+        "word": "email",
+        "word_in_spanish": "correo electrónico",
+        "sentence": "I sent you an email yesterday.",
+        "sentence_spanish": "Te envié un correo electrónico ayer."
+      },
+      {
+        "word": "country",
+        "word_in_spanish": "país",
+        "sentence": "Spain is a beautiful country.",
+        "sentence_spanish": "España es un país hermoso."
+      },
+      {
+        "word": "city",
+        "word_in_spanish": "ciudad",
+        "sentence": "I live in a big city.",
+        "sentence_spanish": "Vivo en una ciudad grande."
+      },
+      {
+        "word": "husband",
+        "word_in_spanish": "esposo",
+        "sentence": "Her husband is a doctor.",
+        "sentence_spanish": "Su esposo es médico."
+      },
+      {
+        "word": "wife",
+        "word_in_spanish": "esposa",
+        "sentence": "His wife works at a hotel.",
+        "sentence_spanish": "Su esposa trabaja en un hotel."
+      },
+      {
+        "word": "neighbor",
+        "word_in_spanish": "vecino, vecina",
+        "sentence": "Our neighbor has a dog.",
+        "sentence_spanish": "Nuestro vecino tiene un perro."
+      },
+      {
+        "word": "family",
+        "word_in_spanish": "familia",
+        "sentence": "My family is very friendly.",
+        "sentence_spanish": "Mi familia es muy amable."
+      },
+      {
+        "word": "parents",
+        "word_in_spanish": "padres",
+        "sentence": "My parents live near me.",
+        "sentence_spanish": "Mis padres viven cerca de mí."
+      },
+      {
+        "word": "mother",
+        "word_in_spanish": "madre",
+        "sentence": "My mother cooks dinner every day.",
+        "sentence_spanish": "Mi madre cocina la cena todos los días."
+      },
+      {
+        "word": "father",
+        "word_in_spanish": "padre",
+        "sentence": "My father works in an office.",
+        "sentence_spanish": "Mi padre trabaja en una oficina."
+      },
+      {
+        "word": "brother",
+        "word_in_spanish": "hermano",
+        "sentence": "My brother likes football.",
+        "sentence_spanish": "A mi hermano le gusta el fútbol."
+      },
+      {
+        "word": "sister",
+        "word_in_spanish": "hermana",
+        "sentence": "My sister studies English.",
+        "sentence_spanish": "Mi hermana estudia inglés."
+      },
+      {
+        "word": "friend",
+        "word_in_spanish": "amigo, amiga",
+        "sentence": "My friend lives in London.",
+        "sentence_spanish": "Mi amigo vive en Londres."
+      }
+    ]
+  },
+  {
+    "category": "Casa, ciudad y entorno",
+    "vocabulary": [
+      {
+        "word": "flat / apartment",
+        "word_in_spanish": "piso, apartamento",
+        "sentence": "She lives in a small apartment.",
+        "sentence_spanish": "Ella vive en un apartamento pequeño."
+      },
+      {
+        "word": "living room",
+        "word_in_spanish": "sala de estar",
+        "sentence": "The TV is in the living room.",
+        "sentence_spanish": "La televisión está en la sala de estar."
+      },
+      {
+        "word": "sofa",
+        "word_in_spanish": "sofá",
+        "sentence": "We sit on the sofa after dinner.",
+        "sentence_spanish": "Nos sentamos en el sofá después de cenar."
+      },
+      {
+        "word": "fridge",
+        "word_in_spanish": "nevera",
+        "sentence": "The milk is in the fridge.",
+        "sentence_spanish": "La leche está en la nevera."
+      },
+      {
+        "word": "oven",
+        "word_in_spanish": "horno",
+        "sentence": "The bread is in the oven.",
+        "sentence_spanish": "El pan está en el horno."
+      },
+      {
+        "word": "washing machine",
+        "word_in_spanish": "lavadora",
+        "sentence": "The washing machine is in the kitchen.",
+        "sentence_spanish": "La lavadora está en la cocina."
+      },
+      {
+        "word": "garden",
+        "word_in_spanish": "jardín",
+        "sentence": "The children play in the garden.",
+        "sentence_spanish": "Los niños juegan en el jardín."
+      },
+      {
+        "word": "street",
+        "word_in_spanish": "calle",
+        "sentence": "My house is on this street.",
+        "sentence_spanish": "Mi casa está en esta calle."
+      },
+      {
+        "word": "neighborhood",
+        "word_in_spanish": "barrio",
+        "sentence": "This neighborhood is quiet.",
+        "sentence_spanish": "Este barrio es tranquilo."
+      },
+      {
+        "word": "building",
+        "word_in_spanish": "edificio",
+        "sentence": "That building is very old.",
+        "sentence_spanish": "Ese edificio es muy antiguo."
+      },
+      {
+        "word": "house",
+        "word_in_spanish": "casa",
+        "sentence": "This house has three bedrooms.",
+        "sentence_spanish": "Esta casa tiene tres dormitorios."
+      },
+      {
+        "word": "room",
+        "word_in_spanish": "habitación",
+        "sentence": "This room is very clean.",
+        "sentence_spanish": "Esta habitación está muy limpia."
+      },
+      {
+        "word": "bedroom",
+        "word_in_spanish": "dormitorio",
+        "sentence": "My bedroom is next to the bathroom.",
+        "sentence_spanish": "Mi dormitorio está al lado del baño."
+      },
+      {
+        "word": "bathroom",
+        "word_in_spanish": "baño",
+        "sentence": "The bathroom is upstairs.",
+        "sentence_spanish": "El baño está arriba."
+      },
+      {
+        "word": "kitchen",
+        "word_in_spanish": "cocina",
+        "sentence": "We eat breakfast in the kitchen.",
+        "sentence_spanish": "Desayunamos en la cocina."
+      },
+      {
+        "word": "door",
+        "word_in_spanish": "puerta",
+        "sentence": "Please close the door.",
+        "sentence_spanish": "Por favor cierra la puerta."
+      },
+      {
+        "word": "window",
+        "word_in_spanish": "ventana",
+        "sentence": "Open the window, please.",
+        "sentence_spanish": "Abre la ventana, por favor."
+      },
+      {
+        "word": "table",
+        "word_in_spanish": "mesa",
+        "sentence": "The keys are on the table.",
+        "sentence_spanish": "Las llaves están sobre la mesa."
+      },
+      {
+        "word": "chair",
+        "word_in_spanish": "silla",
+        "sentence": "There is a chair near the desk.",
+        "sentence_spanish": "Hay una silla cerca del escritorio."
+      },
+      {
+        "word": "bed",
+        "word_in_spanish": "cama",
+        "sentence": "The bed is very comfortable.",
+        "sentence_spanish": "La cama es muy cómoda."
+      }
+    ]
+  },
+  {
+    "category": "Vida diaria y rutinas",
+    "vocabulary": [
+      {
+        "word": "wake up",
+        "word_in_spanish": "despertarse",
+        "sentence": "I wake up at seven o'clock.",
+        "sentence_spanish": "Me despierto a las siete."
+      },
+      {
+        "word": "get up",
+        "word_in_spanish": "levantarse",
+        "sentence": "She gets up early every day.",
+        "sentence_spanish": "Ella se levanta temprano todos los días."
+      },
+      {
+        "word": "have breakfast",
+        "word_in_spanish": "desayunar",
+        "sentence": "We have breakfast at home.",
+        "sentence_spanish": "Desayunamos en casa."
+      },
+      {
+        "word": "go to work",
+        "word_in_spanish": "ir al trabajo",
+        "sentence": "I go to work by bus.",
+        "sentence_spanish": "Voy al trabajo en autobús."
+      },
+      {
+        "word": "go to school",
+        "word_in_spanish": "ir a la escuela",
+        "sentence": "The children go to school at eight.",
+        "sentence_spanish": "Los niños van a la escuela a las ocho."
+      },
+      {
+        "word": "start",
+        "word_in_spanish": "empezar",
+        "sentence": "The lesson starts at nine.",
+        "sentence_spanish": "La lección empieza a las nueve."
+      },
+      {
+        "word": "finish",
+        "word_in_spanish": "terminar",
+        "sentence": "I finish work at five.",
+        "sentence_spanish": "Termino el trabajo a las cinco."
+      },
+      {
+        "word": "arrive",
+        "word_in_spanish": "llegar",
+        "sentence": "They arrive home late.",
+        "sentence_spanish": "Ellos llegan a casa tarde."
+      },
+      {
+        "word": "leave",
+        "word_in_spanish": "salir, marcharse",
+        "sentence": "We leave the house at seven thirty.",
+        "sentence_spanish": "Salimos de casa a las siete y media."
+      },
+      {
+        "word": "relax",
+        "word_in_spanish": "relajarse",
+        "sentence": "I relax after work.",
+        "sentence_spanish": "Me relajo después del trabajo."
+      },
+      {
+        "word": "sleep",
+        "word_in_spanish": "dormir",
+        "sentence": "The baby sleeps in the bedroom.",
+        "sentence_spanish": "El bebé duerme en el dormitorio."
+      },
+      {
+        "word": "shower",
+        "word_in_spanish": "ducharse",
+        "sentence": "I shower before breakfast.",
+        "sentence_spanish": "Me ducho antes del desayuno."
+      },
+      {
+        "word": "walk",
+        "word_in_spanish": "caminar",
+        "sentence": "We walk to the station.",
+        "sentence_spanish": "Caminamos a la estación."
+      },
+      {
+        "word": "wait",
+        "word_in_spanish": "esperar",
+        "sentence": "Please wait here.",
+        "sentence_spanish": "Por favor espera aquí."
+      },
+      {
+        "word": "call",
+        "word_in_spanish": "llamar",
+        "sentence": "I call my mother every evening.",
+        "sentence_spanish": "Llamo a mi madre todas las tardes."
+      },
+      {
+        "word": "help",
+        "word_in_spanish": "ayudar",
+        "sentence": "Can you help me with this task?",
+        "sentence_spanish": "¿Puedes ayudarme con esta tarea?"
+      }
+    ]
+  },
+  {
+    "category": "Comida, restaurantes y hábitos",
+    "vocabulary": [
+      {
+        "word": "coffee",
+        "word_in_spanish": "café",
+        "sentence": "She wants coffee with milk.",
+        "sentence_spanish": "Ella quiere café con leche."
+      },
+      {
+        "word": "tea",
+        "word_in_spanish": "té",
+        "sentence": "Would you like some tea?",
+        "sentence_spanish": "¿Te gustaría un poco de té?"
+      },
+      {
+        "word": "pasta",
+        "word_in_spanish": "pasta",
+        "sentence": "They are having pasta for dinner.",
+        "sentence_spanish": "Ellos van a cenar pasta."
+      },
+      {
+        "word": "egg",
+        "word_in_spanish": "huevo",
+        "sentence": "I want an egg for breakfast.",
+        "sentence_spanish": "Quiero un huevo para desayunar."
+      },
+      {
+        "word": "vegetable",
+        "word_in_spanish": "verdura",
+        "sentence": "Carrots are my favorite vegetable.",
+        "sentence_spanish": "Las zanahorias son mi verdura favorita."
+      },
+      {
+        "word": "salad",
+        "word_in_spanish": "ensalada",
+        "sentence": "We ordered a green salad.",
+        "sentence_spanish": "Pedimos una ensalada verde."
+      },
+      {
+        "word": "breakfast",
+        "word_in_spanish": "desayuno",
+        "sentence": "Breakfast is at eight o'clock.",
+        "sentence_spanish": "El desayuno es a las ocho."
+      },
+      {
+        "word": "lunch",
+        "word_in_spanish": "almuerzo",
+        "sentence": "I have lunch at school.",
+        "sentence_spanish": "Almuerzo en la escuela."
+      },
+      {
+        "word": "dinner",
+        "word_in_spanish": "cena",
+        "sentence": "Dinner is ready.",
+        "sentence_spanish": "La cena está lista."
+      },
+      {
+        "word": "menu",
+        "word_in_spanish": "menú",
+        "sentence": "Can I see the menu, please?",
+        "sentence_spanish": "¿Puedo ver el menú, por favor?"
+      },
+      {
+        "word": "bill",
+        "word_in_spanish": "cuenta",
+        "sentence": "Can we have the bill, please?",
+        "sentence_spanish": "¿Nos trae la cuenta, por favor?"
+      },
+      {
+        "word": "restaurant",
+        "word_in_spanish": "restaurante",
+        "sentence": "This restaurant is near the hotel.",
+        "sentence_spanish": "Este restaurante está cerca del hotel."
+      }
+    ]
+  },
+  {
+    "category": "Educación y lugares comunes",
+    "vocabulary": [
+      {
+        "word": "class",
+        "word_in_spanish": "clase",
+        "sentence": "The class starts at ten.",
+        "sentence_spanish": "La clase empieza a las diez."
+      },
+      {
+        "word": "exam",
+        "word_in_spanish": "examen",
+        "sentence": "We have an exam tomorrow.",
+        "sentence_spanish": "Tenemos un examen mañana."
+      },
+      {
+        "word": "library",
+        "word_in_spanish": "biblioteca",
+        "sentence": "I study in the library.",
+        "sentence_spanish": "Estudio en la biblioteca."
+      },
+      {
+        "word": "university",
+        "word_in_spanish": "universidad",
+        "sentence": "He studies at university.",
+        "sentence_spanish": "Él estudia en la universidad."
+      },
+      {
+        "word": "subject",
+        "word_in_spanish": "asignatura",
+        "sentence": "English is my favorite subject.",
+        "sentence_spanish": "Inglés es mi asignatura favorita."
+      },
+      {
+        "word": "English",
+        "word_in_spanish": "inglés",
+        "sentence": "I study English every day.",
+        "sentence_spanish": "Estudio inglés todos los días."
+      },
+      {
+        "word": "history",
+        "word_in_spanish": "historia",
+        "sentence": "History is interesting for me.",
+        "sentence_spanish": "La historia es interesante para mí."
+      },
+      {
+        "word": "science",
+        "word_in_spanish": "ciencias",
+        "sentence": "Science is difficult but fun.",
+        "sentence_spanish": "Las ciencias son difíciles pero divertidas."
+      },
+      {
+        "word": "maths",
+        "word_in_spanish": "matemáticas",
+        "sentence": "Maths is on Monday morning.",
+        "sentence_spanish": "Matemáticas es el lunes por la mañana."
+      },
+      {
+        "word": "question",
+        "word_in_spanish": "pregunta",
+        "sentence": "I have a question.",
+        "sentence_spanish": "Tengo una pregunta."
+      },
+      {
+        "word": "answer",
+        "word_in_spanish": "respuesta",
+        "sentence": "The answer is on page ten.",
+        "sentence_spanish": "La respuesta está en la página diez."
+      },
+      {
+        "word": "school",
+        "word_in_spanish": "escuela",
+        "sentence": "The school is next to the library.",
+        "sentence_spanish": "La escuela está al lado de la biblioteca."
+      },
+      {
+        "word": "student",
+        "word_in_spanish": "estudiante",
+        "sentence": "She is a good student.",
+        "sentence_spanish": "Ella es una buena estudiante."
+      },
+      {
+        "word": "teacher",
+        "word_in_spanish": "profesor, profesora",
+        "sentence": "Our teacher speaks English slowly.",
+        "sentence_spanish": "Nuestro profesor habla inglés despacio."
+      },
+      {
+        "word": "book",
+        "word_in_spanish": "libro",
+        "sentence": "This book is very interesting.",
+        "sentence_spanish": "Este libro es muy interesante."
+      }
+    ]
+  },
+  {
+    "category": "Trabajo y profesiones",
+    "vocabulary": [
+      {
+        "word": "job",
+        "word_in_spanish": "trabajo",
+        "sentence": "She has a new job.",
+        "sentence_spanish": "Ella tiene un nuevo trabajo."
+      },
+      {
+        "word": "office",
+        "word_in_spanish": "oficina",
+        "sentence": "The office opens at nine.",
+        "sentence_spanish": "La oficina abre a las nueve."
+      },
+      {
+        "word": "company",
+        "word_in_spanish": "empresa",
+        "sentence": "My company is in the city center.",
+        "sentence_spanish": "Mi empresa está en el centro de la ciudad."
+      },
+      {
+        "word": "boss",
+        "word_in_spanish": "jefe, jefa",
+        "sentence": "My boss is very friendly.",
+        "sentence_spanish": "Mi jefe es muy amable."
+      },
+      {
+        "word": "colleague",
+        "word_in_spanish": "compañero de trabajo, compañera de trabajo",
+        "sentence": "I have lunch with a colleague.",
+        "sentence_spanish": "Almuerzo con un compañero de trabajo."
+      },
+      {
+        "word": "meeting",
+        "word_in_spanish": "reunión",
+        "sentence": "We have a meeting at three.",
+        "sentence_spanish": "Tenemos una reunión a las tres."
+      },
+      {
+        "word": "task",
+        "word_in_spanish": "tarea",
+        "sentence": "This task is easy.",
+        "sentence_spanish": "Esta tarea es fácil."
+      },
+      {
+        "word": "salary",
+        "word_in_spanish": "salario",
+        "sentence": "The salary is good.",
+        "sentence_spanish": "El salario es bueno."
+      },
+      {
+        "word": "schedule",
+        "word_in_spanish": "horario",
+        "sentence": "My schedule changes every week.",
+        "sentence_spanish": "Mi horario cambia cada semana."
+      },
+      {
+        "word": "doctor",
+        "word_in_spanish": "médico, médica",
+        "sentence": "The doctor works at the hospital.",
+        "sentence_spanish": "El médico trabaja en el hospital."
+      },
+      {
+        "word": "nurse",
+        "word_in_spanish": "enfermero, enfermera",
+        "sentence": "The nurse is helping the patient.",
+        "sentence_spanish": "La enfermera está ayudando al paciente."
+      },
+      {
+        "word": "waiter",
+        "word_in_spanish": "camarero, camarera",
+        "sentence": "The waiter brings the menu.",
+        "sentence_spanish": "El camarero trae el menú."
+      },
+      {
+        "word": "driver",
+        "word_in_spanish": "conductor, conductora",
+        "sentence": "The driver stops at the station.",
+        "sentence_spanish": "El conductor para en la estación."
+      },
+      {
+        "word": "shop assistant",
+        "word_in_spanish": "dependiente, dependienta",
+        "sentence": "The shop assistant helps the customer.",
+        "sentence_spanish": "El dependiente ayuda al cliente."
+      },
+      {
+        "word": "police officer",
+        "word_in_spanish": "policía",
+        "sentence": "A police officer is in the street.",
+        "sentence_spanish": "Un policía está en la calle."
+      },
+      {
+        "word": "engineer",
+        "word_in_spanish": "ingeniero, ingeniera",
+        "sentence": "My brother is an engineer.",
+        "sentence_spanish": "Mi hermano es ingeniero."
+      },
+      {
+        "word": "manager",
+        "word_in_spanish": "gerente",
+        "sentence": "The manager is in a meeting.",
+        "sentence_spanish": "El gerente está en una reunión."
+      },
+      {
+        "word": "work",
+        "word_in_spanish": "trabajar, trabajo",
+        "sentence": "I work in a small company.",
+        "sentence_spanish": "Trabajo en una empresa pequeña."
+      }
+    ]
+  },
+  {
+    "category": "Salud y cuerpo",
+    "vocabulary": [
+      {
+        "word": "body",
+        "word_in_spanish": "cuerpo",
+        "sentence": "Exercise is good for the body.",
+        "sentence_spanish": "El ejercicio es bueno para el cuerpo."
+      },
+      {
+        "word": "head",
+        "word_in_spanish": "cabeza",
+        "sentence": "My head hurts today.",
+        "sentence_spanish": "Me duele la cabeza hoy."
+      },
+      {
+        "word": "face",
+        "word_in_spanish": "cara",
+        "sentence": "Wash your face in the morning.",
+        "sentence_spanish": "Lávate la cara por la mañana."
+      },
+      {
+        "word": "eye",
+        "word_in_spanish": "ojo",
+        "sentence": "She has something in her eye.",
+        "sentence_spanish": "Ella tiene algo en el ojo."
+      },
+      {
+        "word": "ear",
+        "word_in_spanish": "oído, oreja",
+        "sentence": "My ear hurts.",
+        "sentence_spanish": "Me duele el oído."
+      },
+      {
+        "word": "nose",
+        "word_in_spanish": "nariz",
+        "sentence": "His nose is cold.",
+        "sentence_spanish": "Su nariz está fría."
+      },
+      {
+        "word": "mouth",
+        "word_in_spanish": "boca",
+        "sentence": "Open your mouth, please.",
+        "sentence_spanish": "Abre la boca, por favor."
+      },
+      {
+        "word": "tooth",
+        "word_in_spanish": "diente",
+        "sentence": "I have a bad tooth.",
+        "sentence_spanish": "Tengo un diente malo."
+      },
+      {
+        "word": "arm",
+        "word_in_spanish": "brazo",
+        "sentence": "He hurt his arm.",
+        "sentence_spanish": "Él se lastimó el brazo."
+      },
+      {
+        "word": "hand",
+        "word_in_spanish": "mano",
+        "sentence": "Wash your hands before dinner.",
+        "sentence_spanish": "Lávate las manos antes de cenar."
+      },
+      {
+        "word": "leg",
+        "word_in_spanish": "pierna",
+        "sentence": "My leg is tired.",
+        "sentence_spanish": "Mi pierna está cansada."
+      },
+      {
+        "word": "foot",
+        "word_in_spanish": "pie",
+        "sentence": "Her foot hurts after running.",
+        "sentence_spanish": "Le duele el pie después de correr."
+      },
+      {
+        "word": "back",
+        "word_in_spanish": "espalda",
+        "sentence": "My back hurts when I sit too long.",
+        "sentence_spanish": "Me duele la espalda cuando me siento demasiado tiempo."
+      },
+      {
+        "word": "stomach",
+        "word_in_spanish": "estómago",
+        "sentence": "His stomach hurts after lunch.",
+        "sentence_spanish": "Le duele el estómago después del almuerzo."
+      },
+      {
+        "word": "pain",
+        "word_in_spanish": "dolor",
+        "sentence": "I have pain in my leg.",
+        "sentence_spanish": "Tengo dolor en la pierna."
+      },
+      {
+        "word": "headache",
+        "word_in_spanish": "dolor de cabeza",
+        "sentence": "She has a headache today.",
+        "sentence_spanish": "Ella tiene dolor de cabeza hoy."
+      },
+      {
+        "word": "fever",
+        "word_in_spanish": "fiebre",
+        "sentence": "The child has a fever.",
+        "sentence_spanish": "El niño tiene fiebre."
+      },
+      {
+        "word": "medicine",
+        "word_in_spanish": "medicina",
+        "sentence": "Take this medicine after food.",
+        "sentence_spanish": "Toma esta medicina después de comer."
+      },
+      {
+        "word": "hospital",
+        "word_in_spanish": "hospital",
+        "sentence": "The hospital is near the station.",
+        "sentence_spanish": "El hospital está cerca de la estación."
+      },
+      {
+        "word": "appointment",
+        "word_in_spanish": "cita",
+        "sentence": "I have an appointment at ten.",
+        "sentence_spanish": "Tengo una cita a las diez."
+      }
+    ]
+  },
+  {
+    "category": "Compras y servicios",
+    "vocabulary": [
+      {
+        "word": "shop",
+        "word_in_spanish": "tienda",
+        "sentence": "The shop is open today.",
+        "sentence_spanish": "La tienda está abierta hoy."
+      },
+      {
+        "word": "market",
+        "word_in_spanish": "mercado",
+        "sentence": "The market is busy on Saturday.",
+        "sentence_spanish": "El mercado está lleno el sábado."
+      },
+      {
+        "word": "price",
+        "word_in_spanish": "precio",
+        "sentence": "What is the price of this bag?",
+        "sentence_spanish": "¿Cuál es el precio de esta bolsa?"
+      },
+      {
+        "word": "money",
+        "word_in_spanish": "dinero",
+        "sentence": "I need money for the bus.",
+        "sentence_spanish": "Necesito dinero para el autobús."
+      },
+      {
+        "word": "cash",
+        "word_in_spanish": "efectivo",
+        "sentence": "Do you accept cash?",
+        "sentence_spanish": "¿Aceptan efectivo?"
+      },
+      {
+        "word": "card",
+        "word_in_spanish": "tarjeta",
+        "sentence": "I want to pay by card.",
+        "sentence_spanish": "Quiero pagar con tarjeta."
+      },
+      {
+        "word": "sell",
+        "word_in_spanish": "vender",
+        "sentence": "They sell fruit in this shop.",
+        "sentence_spanish": "Venden fruta en esta tienda."
+      },
+      {
+        "word": "pay",
+        "word_in_spanish": "pagar",
+        "sentence": "You can pay at the desk.",
+        "sentence_spanish": "Puedes pagar en el mostrador."
+      },
+      {
+        "word": "cheap",
+        "word_in_spanish": "barato",
+        "sentence": "This shirt is cheap.",
+        "sentence_spanish": "Esta camisa es barata."
+      },
+      {
+        "word": "expensive",
+        "word_in_spanish": "caro",
+        "sentence": "That phone is expensive.",
+        "sentence_spanish": "Ese teléfono es caro."
+      },
+      {
+        "word": "size",
+        "word_in_spanish": "talla, tamaño",
+        "sentence": "What size do you need?",
+        "sentence_spanish": "¿Qué talla necesitas?"
+      },
+      {
+        "word": "color",
+        "word_in_spanish": "color",
+        "sentence": "I like this color.",
+        "sentence_spanish": "Me gusta este color."
+      },
+      {
+        "word": "receipt",
+        "word_in_spanish": "recibo",
+        "sentence": "Can I have the receipt, please?",
+        "sentence_spanish": "¿Puedo tener el recibo, por favor?"
+      },
+      {
+        "word": "customer",
+        "word_in_spanish": "cliente",
+        "sentence": "The customer is waiting.",
+        "sentence_spanish": "El cliente está esperando."
+      },
+      {
+        "word": "service",
+        "word_in_spanish": "servicio",
+        "sentence": "The service is very fast.",
+        "sentence_spanish": "El servicio es muy rápido."
+      }
+    ]
+  },
+  {
+    "category": "Aficiones, deporte y ocio",
+    "vocabulary": [
+      {
+        "word": "hobby",
+        "word_in_spanish": "afición, pasatiempo",
+        "sentence": "My hobby is painting.",
+        "sentence_spanish": "Mi afición es pintar."
+      },
+      {
+        "word": "music",
+        "word_in_spanish": "música",
+        "sentence": "I listen to music every day.",
+        "sentence_spanish": "Escucho música todos los días."
+      },
+      {
+        "word": "film / movie",
+        "word_in_spanish": "película",
+        "sentence": "We watched a movie last night.",
+        "sentence_spanish": "Vimos una película anoche."
+      },
+      {
+        "word": "cycling",
+        "word_in_spanish": "ciclismo",
+        "sentence": "Cycling is popular here.",
+        "sentence_spanish": "El ciclismo es popular aquí."
+      },
+      {
+        "word": "dancing",
+        "word_in_spanish": "bailar",
+        "sentence": "Dancing is fun.",
+        "sentence_spanish": "Bailar es divertido."
+      },
+      {
+        "word": "singing",
+        "word_in_spanish": "cantar",
+        "sentence": "Singing helps me relax.",
+        "sentence_spanish": "Cantar me ayuda a relajarme."
+      },
+      {
+        "word": "painting",
+        "word_in_spanish": "pintar, pintura",
+        "sentence": "Painting is her favorite hobby.",
+        "sentence_spanish": "Pintar es su afición favorita."
+      },
+      {
+        "word": "reading",
+        "word_in_spanish": "leer, lectura",
+        "sentence": "Reading is good for learning English.",
+        "sentence_spanish": "Leer es bueno para aprender inglés."
+      },
+      {
+        "word": "watching TV",
+        "word_in_spanish": "ver la televisión",
+        "sentence": "Watching TV is relaxing after work.",
+        "sentence_spanish": "Ver la televisión es relajante después del trabajo."
+      },
+      {
+        "word": "going out",
+        "word_in_spanish": "salir",
+        "sentence": "Going out with friends is fun.",
+        "sentence_spanish": "Salir con amigos es divertido."
+      },
+      {
+        "word": "free time",
+        "word_in_spanish": "tiempo libre",
+        "sentence": "I read in my free time.",
+        "sentence_spanish": "Leo en mi tiempo libre."
+      },
+      {
+        "word": "weekend",
+        "word_in_spanish": "fin de semana",
+        "sentence": "We go cycling at the weekend.",
+        "sentence_spanish": "Vamos en bicicleta el fin de semana."
+      }
+    ]
+  },
+  {
+    "category": "Viajes y transporte",
+    "vocabulary": [
+      {
+        "word": "travel",
+        "word_in_spanish": "viajar",
+        "sentence": "I like to travel by train.",
+        "sentence_spanish": "Me gusta viajar en tren."
+      },
+      {
+        "word": "trip",
+        "word_in_spanish": "viaje",
+        "sentence": "Our trip starts tomorrow.",
+        "sentence_spanish": "Nuestro viaje empieza mañana."
+      },
+      {
+        "word": "holiday / vacation",
+        "word_in_spanish": "vacaciones",
+        "sentence": "They are on vacation in Italy.",
+        "sentence_spanish": "Ellos están de vacaciones en Italia."
+      },
+      {
+        "word": "hotel",
+        "word_in_spanish": "hotel",
+        "sentence": "The hotel is near the beach.",
+        "sentence_spanish": "El hotel está cerca de la playa."
+      },
+      {
+        "word": "airport",
+        "word_in_spanish": "aeropuerto",
+        "sentence": "The airport is far from the city.",
+        "sentence_spanish": "El aeropuerto está lejos de la ciudad."
+      },
+      {
+        "word": "station",
+        "word_in_spanish": "estación",
+        "sentence": "The train station is on the left.",
+        "sentence_spanish": "La estación de tren está a la izquierda."
+      },
+      {
+        "word": "bus",
+        "word_in_spanish": "autobús",
+        "sentence": "The bus arrives at seven.",
+        "sentence_spanish": "El autobús llega a las siete."
+      },
+      {
+        "word": "train",
+        "word_in_spanish": "tren",
+        "sentence": "We take the train to Madrid.",
+        "sentence_spanish": "Tomamos el tren a Madrid."
+      },
+      {
+        "word": "taxi",
+        "word_in_spanish": "taxi",
+        "sentence": "Let's call a taxi.",
+        "sentence_spanish": "Llamemos a un taxi."
+      },
+      {
+        "word": "ticket",
+        "word_in_spanish": "billete, boleto, entrada",
+        "sentence": "I need a ticket to London.",
+        "sentence_spanish": "Necesito un billete a Londres."
+      },
+      {
+        "word": "passport",
+        "word_in_spanish": "pasaporte",
+        "sentence": "Show your passport at the airport.",
+        "sentence_spanish": "Muestra tu pasaporte en el aeropuerto."
+      },
+      {
+        "word": "suitcase",
+        "word_in_spanish": "maleta",
+        "sentence": "Her suitcase is very heavy.",
+        "sentence_spanish": "Su maleta es muy pesada."
+      },
+      {
+        "word": "map",
+        "word_in_spanish": "mapa",
+        "sentence": "We need a map of the city.",
+        "sentence_spanish": "Necesitamos un mapa de la ciudad."
+      },
+      {
+        "word": "road",
+        "word_in_spanish": "carretera",
+        "sentence": "The road is busy today.",
+        "sentence_spanish": "La carretera está muy transitada hoy."
+      },
+      {
+        "word": "left",
+        "word_in_spanish": "izquierda",
+        "sentence": "Turn left at the corner.",
+        "sentence_spanish": "Gira a la izquierda en la esquina."
+      },
+      {
+        "word": "right",
+        "word_in_spanish": "derecha",
+        "sentence": "The hotel is on the right.",
+        "sentence_spanish": "El hotel está a la derecha."
+      },
+      {
+        "word": "straight ahead",
+        "word_in_spanish": "todo recto",
+        "sentence": "Go straight ahead for two minutes.",
+        "sentence_spanish": "Sigue todo recto durante dos minutos."
+      },
+      {
+        "word": "near",
+        "word_in_spanish": "cerca",
+        "sentence": "The bus stop is near the hotel.",
+        "sentence_spanish": "La parada de autobús está cerca del hotel."
+      },
+      {
+        "word": "far",
+        "word_in_spanish": "lejos",
+        "sentence": "The airport is far from here.",
+        "sentence_spanish": "El aeropuerto está lejos de aquí."
+      }
+    ]
+  },
+  {
+    "category": "Naturaleza, animales y clima",
+    "vocabulary": [
+      {
+        "word": "cloud",
+        "word_in_spanish": "nube",
+        "sentence": "There is one cloud in the sky.",
+        "sentence_spanish": "Hay una nube en el cielo."
+      },
+      {
+        "word": "warm",
+        "word_in_spanish": "templado, cálido",
+        "sentence": "The weather is warm today.",
+        "sentence_spanish": "El clima está templado hoy."
+      },
+      {
+        "word": "season",
+        "word_in_spanish": "estación",
+        "sentence": "Spring is my favorite season.",
+        "sentence_spanish": "La primavera es mi estación favorita."
+      },
+      {
+        "word": "spring",
+        "word_in_spanish": "primavera",
+        "sentence": "Flowers grow in spring.",
+        "sentence_spanish": "Las flores crecen en primavera."
+      },
+      {
+        "word": "summer",
+        "word_in_spanish": "verano",
+        "sentence": "We travel in summer.",
+        "sentence_spanish": "Viajamos en verano."
+      },
+      {
+        "word": "autumn / fall",
+        "word_in_spanish": "otoño",
+        "sentence": "The leaves fall in autumn.",
+        "sentence_spanish": "Las hojas caen en otoño."
+      },
+      {
+        "word": "winter",
+        "word_in_spanish": "invierno",
+        "sentence": "Winter is very cold here.",
+        "sentence_spanish": "El invierno es muy frío aquí."
+      },
+      {
+        "word": "animal",
+        "word_in_spanish": "animal",
+        "sentence": "A dog is a friendly animal.",
+        "sentence_spanish": "Un perro es un animal amigable."
+      },
+      {
+        "word": "dog",
+        "word_in_spanish": "perro",
+        "sentence": "My dog likes the park.",
+        "sentence_spanish": "A mi perro le gusta el parque."
+      },
+      {
+        "word": "cat",
+        "word_in_spanish": "gato",
+        "sentence": "The cat sleeps on the sofa.",
+        "sentence_spanish": "El gato duerme en el sofá."
+      },
+      {
+        "word": "bird",
+        "word_in_spanish": "pájaro, ave",
+        "sentence": "A bird is in the garden.",
+        "sentence_spanish": "Hay un pájaro en el jardín."
+      }
+    ]
+  },
+  {
+    "category": "Celebraciones y cultura",
+    "vocabulary": [
+      {
+        "word": "party",
+        "word_in_spanish": "fiesta",
+        "sentence": "The party starts at eight.",
+        "sentence_spanish": "La fiesta empieza a las ocho."
+      },
+      {
+        "word": "birthday",
+        "word_in_spanish": "cumpleaños",
+        "sentence": "Today is my birthday.",
+        "sentence_spanish": "Hoy es mi cumpleaños."
+      },
+      {
+        "word": "wedding",
+        "word_in_spanish": "boda",
+        "sentence": "We went to a wedding last weekend.",
+        "sentence_spanish": "Fuimos a una boda el fin de semana pasado."
+      },
+      {
+        "word": "holiday",
+        "word_in_spanish": "festivo, vacaciones",
+        "sentence": "Monday is a holiday.",
+        "sentence_spanish": "El lunes es festivo."
+      },
+      {
+        "word": "tradition",
+        "word_in_spanish": "tradición",
+        "sentence": "This tradition is very old.",
+        "sentence_spanish": "Esta tradición es muy antigua."
+      },
+      {
+        "word": "culture",
+        "word_in_spanish": "cultura",
+        "sentence": "I like learning about British culture.",
+        "sentence_spanish": "Me gusta aprender sobre la cultura británica."
+      },
+      {
+        "word": "dance",
+        "word_in_spanish": "baile, bailar",
+        "sentence": "This dance is popular in Spain.",
+        "sentence_spanish": "Este baile es popular en España."
+      },
+      {
+        "word": "present / gift",
+        "word_in_spanish": "regalo",
+        "sentence": "I bought a gift for my friend.",
+        "sentence_spanish": "Compré un regalo para mi amigo."
+      },
+      {
+        "word": "invitation",
+        "word_in_spanish": "invitación",
+        "sentence": "She sent me an invitation.",
+        "sentence_spanish": "Ella me envió una invitación."
+      },
+      {
+        "word": "celebrate",
+        "word_in_spanish": "celebrar",
+        "sentence": "We celebrate her birthday today.",
+        "sentence_spanish": "Celebramos su cumpleaños hoy."
+      },
+      {
+        "word": "visit",
+        "word_in_spanish": "visitar",
+        "sentence": "We visit our grandparents on Sunday.",
+        "sentence_spanish": "Visitamos a nuestros abuelos el domingo."
+      },
+      {
+        "word": "meet",
+        "word_in_spanish": "conocer, reunirse",
+        "sentence": "I want to meet your friends.",
+        "sentence_spanish": "Quiero conocer a tus amigos."
+      },
+      {
+        "word": "festival",
+        "word_in_spanish": "festival",
+        "sentence": "The festival is in the city center.",
+        "sentence_spanish": "El festival está en el centro de la ciudad."
+      },
+      {
+        "word": "event",
+        "word_in_spanish": "evento",
+        "sentence": "This event is free.",
+        "sentence_spanish": "Este evento es gratuito."
+      }
+    ]
+  },
+  {
+    "category": "Verbos frecuentes A2",
+    "vocabulary": [
+      {
+        "word": "see",
+        "word_in_spanish": "ver",
+        "sentence": "I can see the station.",
+        "sentence_spanish": "Puedo ver la estación."
+      },
+      {
+        "word": "ask",
+        "word_in_spanish": "preguntar, pedir",
+        "sentence": "Ask the teacher a question.",
+        "sentence_spanish": "Hazle una pregunta al profesor."
+      },
+      {
+        "word": "stop",
+        "word_in_spanish": "parar, detenerse",
+        "sentence": "The bus stops here.",
+        "sentence_spanish": "El autobús para aquí."
+      },
+      {
+        "word": "open",
+        "word_in_spanish": "abrir",
+        "sentence": "Open your book, please.",
+        "sentence_spanish": "Abre tu libro, por favor."
+      },
+      {
+        "word": "close",
+        "word_in_spanish": "cerrar",
+        "sentence": "Close the window, please.",
+        "sentence_spanish": "Cierra la ventana, por favor."
+      },
+      {
+        "word": "find",
+        "word_in_spanish": "encontrar",
+        "sentence": "I can't find my ticket.",
+        "sentence_spanish": "No puedo encontrar mi billete."
+      },
+      {
+        "word": "give",
+        "word_in_spanish": "dar",
+        "sentence": "Give me the menu, please.",
+        "sentence_spanish": "Dame el menú, por favor."
+      },
+      {
+        "word": "take",
+        "word_in_spanish": "tomar, llevar",
+        "sentence": "Take the bus to the station.",
+        "sentence_spanish": "Toma el autobús a la estación."
+      },
+      {
+        "word": "make",
+        "word_in_spanish": "hacer",
+        "sentence": "I make breakfast every morning.",
+        "sentence_spanish": "Hago el desayuno todas las mañanas."
+      },
+      {
+        "word": "know",
+        "word_in_spanish": "saber, conocer",
+        "sentence": "I know the answer.",
+        "sentence_spanish": "Sé la respuesta."
+      },
+      {
+        "word": "think",
+        "word_in_spanish": "pensar",
+        "sentence": "I think this lesson is easy.",
+        "sentence_spanish": "Creo que esta lección es fácil."
+      },
+      {
+        "word": "feel",
+        "word_in_spanish": "sentir",
+        "sentence": "I feel tired today.",
+        "sentence_spanish": "Me siento cansado hoy."
+      }
+    ]
+  },
+  {
+    "category": "Adjetivos A2",
+    "vocabulary": [
+      {
+        "word": "tired",
+        "word_in_spanish": "cansado",
+        "sentence": "I am tired after work.",
+        "sentence_spanish": "Estoy cansado después del trabajo."
+      },
+      {
+        "word": "hungry",
+        "word_in_spanish": "hambriento, tener hambre",
+        "sentence": "The children are hungry.",
+        "sentence_spanish": "Los niños tienen hambre."
+      },
+      {
+        "word": "thirsty",
+        "word_in_spanish": "sediento, tener sed",
+        "sentence": "I am thirsty after running.",
+        "sentence_spanish": "Tengo sed después de correr."
+      },
+      {
+        "word": "ugly",
+        "word_in_spanish": "feo",
+        "sentence": "That old chair is ugly.",
+        "sentence_spanish": "Esa silla vieja es fea."
+      },
+      {
+        "word": "friendly",
+        "word_in_spanish": "amable, amistoso",
+        "sentence": "The people here are friendly.",
+        "sentence_spanish": "La gente aquí es amable."
+      },
+      {
+        "word": "dangerous",
+        "word_in_spanish": "peligroso",
+        "sentence": "This road is dangerous at night.",
+        "sentence_spanish": "Esta carretera es peligrosa por la noche."
+      },
+      {
+        "word": "important",
+        "word_in_spanish": "importante",
+        "sentence": "English is important for my job.",
+        "sentence_spanish": "El inglés es importante para mi trabajo."
+      },
+      {
+        "word": "interesting",
+        "word_in_spanish": "interesante",
+        "sentence": "The book is interesting.",
+        "sentence_spanish": "El libro es interesante."
+      },
+      {
+        "word": "boring",
+        "word_in_spanish": "aburrido",
+        "sentence": "The movie is boring.",
+        "sentence_spanish": "La película es aburrida."
+      },
+      {
+        "word": "fast",
+        "word_in_spanish": "rápido",
+        "sentence": "This train is fast.",
+        "sentence_spanish": "Este tren es rápido."
+      },
+      {
+        "word": "slow",
+        "word_in_spanish": "lento",
+        "sentence": "The bus is slow today.",
+        "sentence_spanish": "El autobús está lento hoy."
+      },
+      {
+        "word": "full",
+        "word_in_spanish": "lleno",
+        "sentence": "The bus is full.",
+        "sentence_spanish": "El autobús está lleno."
+      },
+      {
+        "word": "empty",
+        "word_in_spanish": "vacío",
+        "sentence": "The glass is empty.",
+        "sentence_spanish": "El vaso está vacío."
+      }
+    ]
+  },
+  {
+    "category": "Adverbios y expresiones de frecuencia",
+    "vocabulary": [
+      {
+        "word": "always",
+        "word_in_spanish": "siempre",
+        "sentence": "I always drink coffee in the morning.",
+        "sentence_spanish": "Siempre bebo café por la mañana."
+      },
+      {
+        "word": "usually",
+        "word_in_spanish": "normalmente",
+        "sentence": "She usually walks to school.",
+        "sentence_spanish": "Ella normalmente camina a la escuela."
+      },
+      {
+        "word": "often",
+        "word_in_spanish": "a menudo",
+        "sentence": "We often visit our friends.",
+        "sentence_spanish": "A menudo visitamos a nuestros amigos."
+      },
+      {
+        "word": "sometimes",
+        "word_in_spanish": "a veces",
+        "sentence": "I sometimes eat lunch at work.",
+        "sentence_spanish": "A veces almuerzo en el trabajo."
+      },
+      {
+        "word": "never",
+        "word_in_spanish": "nunca",
+        "sentence": "He never arrives late.",
+        "sentence_spanish": "Él nunca llega tarde."
+      },
+      {
+        "word": "now",
+        "word_in_spanish": "ahora",
+        "sentence": "I am studying now.",
+        "sentence_spanish": "Estoy estudiando ahora."
+      },
+      {
+        "word": "soon",
+        "word_in_spanish": "pronto",
+        "sentence": "The train will arrive soon.",
+        "sentence_spanish": "El tren llegará pronto."
+      },
+      {
+        "word": "later",
+        "word_in_spanish": "más tarde",
+        "sentence": "Call me later, please.",
+        "sentence_spanish": "Llámame más tarde, por favor."
+      },
+      {
+        "word": "again",
+        "word_in_spanish": "otra vez",
+        "sentence": "Can you say that again?",
+        "sentence_spanish": "¿Puedes decir eso otra vez?"
+      },
+      {
+        "word": "here",
+        "word_in_spanish": "aquí",
+        "sentence": "Please sit here.",
+        "sentence_spanish": "Por favor siéntate aquí."
+      },
+      {
+        "word": "there",
+        "word_in_spanish": "allí",
+        "sentence": "The hotel is over there.",
+        "sentence_spanish": "El hotel está allí."
+      },
+      {
+        "word": "very",
+        "word_in_spanish": "muy",
+        "sentence": "This lesson is very easy.",
+        "sentence_spanish": "Esta lección es muy fácil."
+      },
+      {
+        "word": "really",
+        "word_in_spanish": "realmente, de verdad",
+        "sentence": "I really like this song.",
+        "sentence_spanish": "Realmente me gusta esta canción."
+      },
+      {
+        "word": "just",
+        "word_in_spanish": "solo, justo",
+        "sentence": "I just need one ticket.",
+        "sentence_spanish": "Solo necesito un billete."
+      },
+      {
+        "word": "together",
+        "word_in_spanish": "juntos",
+        "sentence": "We study together after class.",
+        "sentence_spanish": "Estudiamos juntos después de clase."
+      },
+      {
+        "word": "slowly",
+        "word_in_spanish": "lentamente, despacio",
+        "sentence": "Please speak slowly.",
+        "sentence_spanish": "Por favor habla despacio."
+      },
+      {
+        "word": "quickly",
+        "word_in_spanish": "rápidamente",
+        "sentence": "She walks quickly to work.",
+        "sentence_spanish": "Ella camina rápidamente al trabajo."
+      }
+    ]
+  },
+  {
+    "category": "Frases útiles A2",
+    "vocabulary": [
+      {
+        "word": "How are you?",
+        "word_in_spanish": "¿Cómo estás?",
+        "sentence": "How are you? I am fine, thanks.",
+        "sentence_spanish": "¿Cómo estás? Estoy bien, gracias."
+      },
+      {
+        "word": "I’m fine, thank you.",
+        "word_in_spanish": "Estoy bien, gracias.",
+        "sentence": "I’m fine, thank you, and you?",
+        "sentence_spanish": "Estoy bien, gracias, ¿y tú?"
+      },
+      {
+        "word": "Nice to meet you.",
+        "word_in_spanish": "Encantado de conocerte, encantada de conocerte",
+        "sentence": "Nice to meet you, Maria.",
+        "sentence_spanish": "Encantado de conocerte, María."
+      },
+      {
+        "word": "Can I help you?",
+        "word_in_spanish": "¿Puedo ayudarte?",
+        "sentence": "Can I help you with your bag?",
+        "sentence_spanish": "¿Puedo ayudarte con tu bolsa?"
+      },
+      {
+        "word": "I’d like…",
+        "word_in_spanish": "Me gustaría…",
+        "sentence": "I’d like a coffee, please.",
+        "sentence_spanish": "Me gustaría un café, por favor."
+      },
+      {
+        "word": "I need help.",
+        "word_in_spanish": "Necesito ayuda.",
+        "sentence": "I need help with this form.",
+        "sentence_spanish": "Necesito ayuda con este formulario."
+      },
+      {
+        "word": "I don’t understand.",
+        "word_in_spanish": "No entiendo.",
+        "sentence": "I don’t understand this question.",
+        "sentence_spanish": "No entiendo esta pregunta."
+      },
+      {
+        "word": "Can you repeat, please?",
+        "word_in_spanish": "¿Puedes repetir, por favor?",
+        "sentence": "Can you repeat, please? I don’t understand.",
+        "sentence_spanish": "¿Puedes repetir, por favor? No entiendo."
+      },
+      {
+        "word": "What time is it?",
+        "word_in_spanish": "¿Qué hora es?",
+        "sentence": "Excuse me, what time is it?",
+        "sentence_spanish": "Disculpe, ¿qué hora es?"
+      },
+      {
+        "word": "Where is the…?",
+        "word_in_spanish": "¿Dónde está el, la…?",
+        "sentence": "Where is the train station?",
+        "sentence_spanish": "¿Dónde está la estación de tren?"
+      },
+      {
+        "word": "How much is it?",
+        "word_in_spanish": "¿Cuánto cuesta?",
+        "sentence": "How much is it for one ticket?",
+        "sentence_spanish": "¿Cuánto cuesta un billete?"
+      },
+      {
+        "word": "Can I pay by card?",
+        "word_in_spanish": "¿Puedo pagar con tarjeta?",
+        "sentence": "Can I pay by card in this shop?",
+        "sentence_spanish": "¿Puedo pagar con tarjeta en esta tienda?"
+      },
+      {
+        "word": "I have a reservation.",
+        "word_in_spanish": "Tengo una reserva.",
+        "sentence": "I have a reservation for two people.",
+        "sentence_spanish": "Tengo una reserva para dos personas."
+      },
+      {
+        "word": "I’m looking for…",
+        "word_in_spanish": "Estoy buscando…",
+        "sentence": "I’m looking for the bus station.",
+        "sentence_spanish": "Estoy buscando la estación de autobuses."
+      },
+      {
+        "word": "Excuse me.",
+        "word_in_spanish": "Disculpe, perdón",
+        "sentence": "Excuse me, where is the bathroom?",
+        "sentence_spanish": "Disculpe, ¿dónde está el baño?"
+      },
+      {
+        "word": "Sorry.",
+        "word_in_spanish": "Lo siento, perdón",
+        "sentence": "Sorry, I am late.",
+        "sentence_spanish": "Lo siento, llego tarde."
+      },
+      {
+        "word": "Thank you very much.",
+        "word_in_spanish": "Muchas gracias.",
+        "sentence": "Thank you very much for your help.",
+        "sentence_spanish": "Muchas gracias por tu ayuda."
+      },
+      {
+        "word": "See you later.",
+        "word_in_spanish": "Hasta luego.",
+        "sentence": "See you later after class.",
+        "sentence_spanish": "Hasta luego después de clase."
+      },
+      {
+        "word": "Have a nice day.",
+        "word_in_spanish": "Que tengas un buen día.",
+        "sentence": "Have a nice day and see you tomorrow.",
+        "sentence_spanish": "Que tengas un buen día y nos vemos mañana."
+      },
+      {
+        "word": "Could you help me?",
+        "word_in_spanish": "¿Podrías ayudarme?",
+        "sentence": "Could you help me with this ticket?",
+        "sentence_spanish": "¿Podrías ayudarme con este billete?"
+      }
+    ]
+  }
+]

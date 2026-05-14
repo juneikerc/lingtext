@@ -27,4 +27,6 @@ export default [
   route("my-library", "routes/my-library.tsx"),
   route("pro", "routes/pro.tsx"),
   route("extension", "routes/extension.tsx"),
+  route("vocabulario", "routes/vocabulary/index.tsx"),
+  route("vocabulario/:level", "routes/vocabulary/level.tsx"),
 ] satisfies RouteConfig;

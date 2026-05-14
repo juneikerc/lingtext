@@ -1,0 +1,1437 @@
+[
+  {
+    "category": "Pensamiento abstracto y análisis sofisticado",
+    "vocabulary": [
+      {
+        "word": "paradigm",
+        "word_in_spanish": "paradigma",
+        "sentence": "The discovery challenged the existing scientific paradigm.",
+        "sentence_spanish": "El descubrimiento cuestionó el paradigma científico existente."
+      },
+      {
+        "word": "dichotomy",
+        "word_in_spanish": "dicotomía",
+        "sentence": "The essay questions the dichotomy between nature and culture.",
+        "sentence_spanish": "El ensayo cuestiona la dicotomía entre naturaleza y cultura."
+      },
+      {
+        "word": "continuum",
+        "word_in_spanish": "continuo, escala gradual",
+        "sentence": "Language ability exists on a continuum rather than in fixed boxes.",
+        "sentence_spanish": "La habilidad lingüística existe en un continuo, no en cajas fijas."
+      },
+      {
+        "word": "conundrum",
+        "word_in_spanish": "enigma, dilema complejo",
+        "sentence": "The government faces a conundrum over housing policy.",
+        "sentence_spanish": "El gobierno se enfrenta a un dilema complejo sobre la política de vivienda."
+      },
+      {
+        "word": "quandary",
+        "word_in_spanish": "dilema",
+        "sentence": "She was in a quandary about whether to accept the offer.",
+        "sentence_spanish": "Estaba en un dilema sobre si aceptar la oferta."
+      },
+      {
+        "word": "paradox",
+        "word_in_spanish": "paradoja",
+        "sentence": "The paradox is that more choice can make decisions harder.",
+        "sentence_spanish": "La paradoja es que más opciones pueden dificultar las decisiones."
+      },
+      {
+        "word": "trade-off",
+        "word_in_spanish": "compensación, equilibrio entre ventajas y desventajas",
+        "sentence": "There is a trade-off between speed and accuracy.",
+        "sentence_spanish": "Hay una compensación entre velocidad y precisión."
+      },
+      {
+        "word": "interplay",
+        "word_in_spanish": "interacción compleja",
+        "sentence": "The book explores the interplay between memory and identity.",
+        "sentence_spanish": "El libro explora la interacción entre memoria e identidad."
+      },
+      {
+        "word": "causal link",
+        "word_in_spanish": "vínculo causal",
+        "sentence": "Researchers found no clear causal link between the two factors.",
+        "sentence_spanish": "Los investigadores no encontraron un vínculo causal claro entre los dos factores."
+      },
+      {
+        "word": "line of reasoning",
+        "word_in_spanish": "línea de razonamiento",
+        "sentence": "His line of reasoning was difficult to challenge.",
+        "sentence_spanish": "Su línea de razonamiento era difícil de rebatir."
+      },
+      {
+        "word": "train of thought",
+        "word_in_spanish": "hilo de pensamiento",
+        "sentence": "I lost my train of thought during the interview.",
+        "sentence_spanish": "Perdí el hilo de pensamiento durante la entrevista."
+      },
+      {
+        "word": "frame of reference",
+        "word_in_spanish": "marco de referencia",
+        "sentence": "Your frame of reference affects how you interpret events.",
+        "sentence_spanish": "Tu marco de referencia afecta cómo interpretas los acontecimientos."
+      },
+      {
+        "word": "school of thought",
+        "word_in_spanish": "corriente de pensamiento",
+        "sentence": "One school of thought argues that language shapes reality.",
+        "sentence_spanish": "Una corriente de pensamiento sostiene que el lenguaje moldea la realidad."
+      },
+      {
+        "word": "logical fallacy",
+        "word_in_spanish": "falacia lógica",
+        "sentence": "The argument contains a common logical fallacy.",
+        "sentence_spanish": "El argumento contiene una falacia lógica común."
+      },
+      {
+        "word": "false equivalence",
+        "word_in_spanish": "falsa equivalencia",
+        "sentence": "The article creates a false equivalence between two very different cases.",
+        "sentence_spanish": "El artículo crea una falsa equivalencia entre dos casos muy distintos."
+      },
+      {
+        "word": "cognitive bias",
+        "word_in_spanish": "sesgo cognitivo",
+        "sentence": "Cognitive bias can influence our decisions without us noticing.",
+        "sentence_spanish": "El sesgo cognitivo puede influir en nuestras decisiones sin que lo notemos."
+      },
+      {
+        "word": "heuristic",
+        "word_in_spanish": "heurística, atajo mental",
+        "sentence": "People often use a heuristic when judging risk.",
+        "sentence_spanish": "Las personas suelen usar un atajo mental al evaluar riesgos."
+      },
+      {
+        "word": "abstraction",
+        "word_in_spanish": "abstracción",
+        "sentence": "The theory is elegant, but it relies on a high level of abstraction.",
+        "sentence_spanish": "La teoría es elegante, pero depende de un alto nivel de abstracción."
+      },
+      {
+        "word": "reductionist",
+        "word_in_spanish": "reduccionista",
+        "sentence": "A reductionist explanation ignores social and historical factors.",
+        "sentence_spanish": "Una explicación reduccionista ignora factores sociales e históricos."
+      },
+      {
+        "word": "dialectical",
+        "word_in_spanish": "dialéctico",
+        "sentence": "The discussion followed a dialectical pattern of thesis and antithesis.",
+        "sentence_spanish": "La discusión siguió un patrón dialéctico de tesis y antítesis."
+      }
+    ]
+  },
+  {
+    "category": "Registro académico y retórica avanzada",
+    "vocabulary": [
+      {
+        "word": "notwithstanding the fact that",
+        "word_in_spanish": "a pesar de que",
+        "sentence": "Notwithstanding the fact that costs rose, the project continued.",
+        "sentence_spanish": "A pesar de que los costes aumentaron, el proyecto continuó."
+      },
+      {
+        "word": "be that as it may",
+        "word_in_spanish": "sea como fuere",
+        "sentence": "Be that as it may, we still need a practical solution.",
+        "sentence_spanish": "Sea como fuere, aún necesitamos una solución práctica."
+      },
+      {
+        "word": "for all its merits",
+        "word_in_spanish": "con todos sus méritos",
+        "sentence": "For all its merits, the proposal lacks detail.",
+        "sentence_spanish": "Con todos sus méritos, la propuesta carece de detalle."
+      },
+      {
+        "word": "it is incumbent upon",
+        "word_in_spanish": "corresponde a, es responsabilidad de",
+        "sentence": "It is incumbent upon leaders to act transparently.",
+        "sentence_spanish": "Corresponde a los líderes actuar con transparencia."
+      },
+      {
+        "word": "by the same token",
+        "word_in_spanish": "del mismo modo",
+        "sentence": "By the same token, consumers also have responsibilities.",
+        "sentence_spanish": "Del mismo modo, los consumidores también tienen responsabilidades."
+      },
+      {
+        "word": "all things considered",
+        "word_in_spanish": "considerándolo todo",
+        "sentence": "All things considered, the policy has been successful.",
+        "sentence_spanish": "Considerándolo todo, la política ha tenido éxito."
+      },
+      {
+        "word": "to all intents and purposes",
+        "word_in_spanish": "a efectos prácticos",
+        "sentence": "The old system is, to all intents and purposes, obsolete.",
+        "sentence_spanish": "El sistema antiguo está, a efectos prácticos, obsoleto."
+      },
+      {
+        "word": "in the final analysis",
+        "word_in_spanish": "en última instancia",
+        "sentence": "In the final analysis, the decision depends on values.",
+        "sentence_spanish": "En última instancia, la decisión depende de valores."
+      },
+      {
+        "word": "for the sake of argument",
+        "word_in_spanish": "a efectos de argumentación",
+        "sentence": "For the sake of argument, let us assume the data is reliable.",
+        "sentence_spanish": "A efectos de argumentación, supongamos que los datos son fiables."
+      },
+      {
+        "word": "that said",
+        "word_in_spanish": "dicho eso",
+        "sentence": "That said, there are exceptions to the rule.",
+        "sentence_spanish": "Dicho eso, hay excepciones a la regla."
+      },
+      {
+        "word": "needless to say",
+        "word_in_spanish": "no hace falta decir que",
+        "sentence": "Needless to say, safety must come first.",
+        "sentence_spanish": "No hace falta decir que la seguridad debe ser lo primero."
+      },
+      {
+        "word": "suffice it to say",
+        "word_in_spanish": "basta con decir que",
+        "sentence": "Suffice it to say, the results were disappointing.",
+        "sentence_spanish": "Basta con decir que los resultados fueron decepcionantes."
+      },
+      {
+        "word": "be tantamount to",
+        "word_in_spanish": "equivaler a",
+        "sentence": "Ignoring the warning would be tantamount to negligence.",
+        "sentence_spanish": "Ignorar la advertencia equivaldría a negligencia."
+      },
+      {
+        "word": "fall short of",
+        "word_in_spanish": "no estar a la altura de",
+        "sentence": "The reforms fall short of what campaigners demanded.",
+        "sentence_spanish": "Las reformas no están a la altura de lo que exigían los activistas."
+      },
+      {
+        "word": "give rise to",
+        "word_in_spanish": "dar lugar a",
+        "sentence": "The decision gave rise to widespread criticism.",
+        "sentence_spanish": "La decisión dio lugar a críticas generalizadas."
+      },
+      {
+        "word": "call into question",
+        "word_in_spanish": "poner en duda",
+        "sentence": "The findings call into question earlier assumptions.",
+        "sentence_spanish": "Los hallazgos ponen en duda suposiciones anteriores."
+      },
+      {
+        "word": "cast doubt on",
+        "word_in_spanish": "arrojar dudas sobre",
+        "sentence": "The new evidence casts doubt on his version of events.",
+        "sentence_spanish": "Las nuevas pruebas arrojan dudas sobre su versión de los hechos."
+      },
+      {
+        "word": "lend weight to",
+        "word_in_spanish": "dar peso a, reforzar",
+        "sentence": "The figures lend weight to her argument.",
+        "sentence_spanish": "Las cifras refuerzan su argumento."
+      },
+      {
+        "word": "stand up to scrutiny",
+        "word_in_spanish": "resistir el escrutinio",
+        "sentence": "The theory does not stand up to scrutiny.",
+        "sentence_spanish": "La teoría no resiste el escrutinio."
+      },
+      {
+        "word": "serve as a reminder",
+        "word_in_spanish": "servir de recordatorio",
+        "sentence": "The crisis serves as a reminder of our vulnerability.",
+        "sentence_spanish": "La crisis sirve de recordatorio de nuestra vulnerabilidad."
+      }
+    ]
+  },
+  {
+    "category": "Política, derecho y gobernanza avanzada",
+    "vocabulary": [
+      {
+        "word": "sovereignty",
+        "word_in_spanish": "soberanía",
+        "sentence": "The treaty raised questions about national sovereignty.",
+        "sentence_spanish": "El tratado planteó preguntas sobre la soberanía nacional."
+      },
+      {
+        "word": "jurisdiction",
+        "word_in_spanish": "jurisdicción",
+        "sentence": "The case falls outside the court's jurisdiction.",
+        "sentence_spanish": "El caso queda fuera de la jurisdicción del tribunal."
+      },
+      {
+        "word": "precedent",
+        "word_in_spanish": "precedente",
+        "sentence": "The ruling set an important legal precedent.",
+        "sentence_spanish": "La sentencia estableció un precedente legal importante."
+      },
+      {
+        "word": "statute",
+        "word_in_spanish": "ley, estatuto",
+        "sentence": "The statute was amended after public consultation.",
+        "sentence_spanish": "La ley fue modificada tras consulta pública."
+      },
+      {
+        "word": "provision",
+        "word_in_spanish": "disposición, cláusula legal",
+        "sentence": "The provision applies only to public institutions.",
+        "sentence_spanish": "La disposición se aplica solo a instituciones públicas."
+      },
+      {
+        "word": "injunction",
+        "word_in_spanish": "orden judicial",
+        "sentence": "The company sought an injunction to stop the publication.",
+        "sentence_spanish": "La empresa solicitó una orden judicial para detener la publicación."
+      },
+      {
+        "word": "liability waiver",
+        "word_in_spanish": "renuncia de responsabilidad",
+        "sentence": "Participants had to sign a liability waiver.",
+        "sentence_spanish": "Los participantes tuvieron que firmar una renuncia de responsabilidad."
+      },
+      {
+        "word": "due process",
+        "word_in_spanish": "debido proceso",
+        "sentence": "Every citizen has the right to due process.",
+        "sentence_spanish": "Todo ciudadano tiene derecho al debido proceso."
+      },
+      {
+        "word": "checks and balances",
+        "word_in_spanish": "controles y equilibrios",
+        "sentence": "Checks and balances limit the power of government.",
+        "sentence_spanish": "Los controles y equilibrios limitan el poder del gobierno."
+      },
+      {
+        "word": "separation of powers",
+        "word_in_spanish": "separación de poderes",
+        "sentence": "The separation of powers protects democracy.",
+        "sentence_spanish": "La separación de poderes protege la democracia."
+      },
+      {
+        "word": "rule of law",
+        "word_in_spanish": "estado de derecho, imperio de la ley",
+        "sentence": "The rule of law must apply to everyone equally.",
+        "sentence_spanish": "El estado de derecho debe aplicarse a todos por igual."
+      },
+      {
+        "word": "constituency",
+        "word_in_spanish": "circunscripción, electorado",
+        "sentence": "The politician visited her constituency every month.",
+        "sentence_spanish": "La política visitaba su circunscripción cada mes."
+      },
+      {
+        "word": "lobbying",
+        "word_in_spanish": "lobby, presión política",
+        "sentence": "Lobbying can influence public policy.",
+        "sentence_spanish": "El lobby puede influir en la política pública."
+      },
+      {
+        "word": "vested interest",
+        "word_in_spanish": "interés creado",
+        "sentence": "Some groups have a vested interest in blocking reform.",
+        "sentence_spanish": "Algunos grupos tienen un interés creado en bloquear la reforma."
+      },
+      {
+        "word": "partisanship",
+        "word_in_spanish": "partidismo",
+        "sentence": "Partisanship made compromise almost impossible.",
+        "sentence_spanish": "El partidismo hizo casi imposible el compromiso."
+      },
+      {
+        "word": "polarisation / polarization",
+        "word_in_spanish": "polarización",
+        "sentence": "Political polarisation has increased online.",
+        "sentence_spanish": "La polarización política ha aumentado en línea."
+      },
+      {
+        "word": "gerrymandering",
+        "word_in_spanish": "manipulación de distritos electorales",
+        "sentence": "Gerrymandering can distort election results.",
+        "sentence_spanish": "La manipulación de distritos electorales puede distorsionar los resultados electorales."
+      },
+      {
+        "word": "whistleblower",
+        "word_in_spanish": "denunciante interno",
+        "sentence": "A whistleblower revealed the corruption scandal.",
+        "sentence_spanish": "Un denunciante interno reveló el escándalo de corrupción."
+      },
+      {
+        "word": "red tape",
+        "word_in_spanish": "burocracia excesiva",
+        "sentence": "Businesses complained about excessive red tape.",
+        "sentence_spanish": "Las empresas se quejaron de la burocracia excesiva."
+      },
+      {
+        "word": "public procurement",
+        "word_in_spanish": "contratación pública",
+        "sentence": "Public procurement must be transparent.",
+        "sentence_spanish": "La contratación pública debe ser transparente."
+      }
+    ]
+  },
+  {
+    "category": "Economía, finanzas y empresa avanzada",
+    "vocabulary": [
+      {
+        "word": "macroeconomic",
+        "word_in_spanish": "macroeconómico",
+        "sentence": "The report examines macroeconomic trends.",
+        "sentence_spanish": "El informe examina tendencias macroeconómicas."
+      },
+      {
+        "word": "fiscal policy",
+        "word_in_spanish": "política fiscal",
+        "sentence": "Fiscal policy can stimulate economic growth.",
+        "sentence_spanish": "La política fiscal puede estimular el crecimiento económico."
+      },
+      {
+        "word": "monetary policy",
+        "word_in_spanish": "política monetaria",
+        "sentence": "Monetary policy affects interest rates.",
+        "sentence_spanish": "La política monetaria afecta los tipos de interés."
+      },
+      {
+        "word": "liquidity",
+        "word_in_spanish": "liquidez",
+        "sentence": "The bank had a serious liquidity problem.",
+        "sentence_spanish": "El banco tenía un problema grave de liquidez."
+      },
+      {
+        "word": "solvency",
+        "word_in_spanish": "solvencia",
+        "sentence": "The audit questioned the firm's solvency.",
+        "sentence_spanish": "La auditoría cuestionó la solvencia de la empresa."
+      },
+      {
+        "word": "leverage",
+        "word_in_spanish": "apalancamiento",
+        "sentence": "High leverage can increase financial risk.",
+        "sentence_spanish": "Un alto apalancamiento puede aumentar el riesgo financiero."
+      },
+      {
+        "word": "equity",
+        "word_in_spanish": "capital, patrimonio, acciones",
+        "sentence": "The company raised equity to fund expansion.",
+        "sentence_spanish": "La empresa captó capital para financiar la expansión."
+      },
+      {
+        "word": "dividend",
+        "word_in_spanish": "dividendo",
+        "sentence": "Shareholders received a higher dividend this year.",
+        "sentence_spanish": "Los accionistas recibieron un dividendo más alto este año."
+      },
+      {
+        "word": "asset",
+        "word_in_spanish": "activo",
+        "sentence": "Property is often considered a long-term asset.",
+        "sentence_spanish": "La propiedad suele considerarse un activo a largo plazo."
+      },
+      {
+        "word": "liability",
+        "word_in_spanish": "pasivo, responsabilidad",
+        "sentence": "The loan appears as a liability on the balance sheet.",
+        "sentence_spanish": "El préstamo aparece como un pasivo en el balance."
+      },
+      {
+        "word": "merger",
+        "word_in_spanish": "fusión empresarial",
+        "sentence": "The merger created the largest company in the sector.",
+        "sentence_spanish": "La fusión creó la empresa más grande del sector."
+      },
+      {
+        "word": "acquisition",
+        "word_in_spanish": "adquisición",
+        "sentence": "The acquisition was completed in April.",
+        "sentence_spanish": "La adquisición se completó en abril."
+      },
+      {
+        "word": "due diligence",
+        "word_in_spanish": "diligencia debida",
+        "sentence": "Investors carried out due diligence before signing.",
+        "sentence_spanish": "Los inversores realizaron diligencia debida antes de firmar."
+      },
+      {
+        "word": "valuation",
+        "word_in_spanish": "valoración",
+        "sentence": "The start-up received a surprisingly high valuation.",
+        "sentence_spanish": "La empresa emergente recibió una valoración sorprendentemente alta."
+      },
+      {
+        "word": "turnover",
+        "word_in_spanish": "facturación, rotación",
+        "sentence": "The company increased its turnover by twenty percent.",
+        "sentence_spanish": "La empresa aumentó su facturación un veinte por ciento."
+      },
+      {
+        "word": "profit margin",
+        "word_in_spanish": "margen de beneficio",
+        "sentence": "Rising costs reduced the profit margin.",
+        "sentence_spanish": "El aumento de costes redujo el margen de beneficio."
+      },
+      {
+        "word": "cash flow",
+        "word_in_spanish": "flujo de caja",
+        "sentence": "Poor cash flow can destroy a small business.",
+        "sentence_spanish": "Un mal flujo de caja puede destruir una pequeña empresa."
+      },
+      {
+        "word": "market share",
+        "word_in_spanish": "cuota de mercado",
+        "sentence": "The brand gained market share after the campaign.",
+        "sentence_spanish": "La marca ganó cuota de mercado después de la campaña."
+      },
+      {
+        "word": "competitive edge",
+        "word_in_spanish": "ventaja competitiva",
+        "sentence": "Innovation gave the company a competitive edge.",
+        "sentence_spanish": "La innovación dio a la empresa una ventaja competitiva."
+      },
+      {
+        "word": "economies of scale",
+        "word_in_spanish": "economías de escala",
+        "sentence": "Large firms benefit from economies of scale.",
+        "sentence_spanish": "Las grandes empresas se benefician de economías de escala."
+      }
+    ]
+  },
+  {
+    "category": "Ciencia, ética y tecnología avanzada",
+    "vocabulary": [
+      {
+        "word": "empirical",
+        "word_in_spanish": "empírico",
+        "sentence": "The theory is supported by empirical evidence.",
+        "sentence_spanish": "La teoría está respaldada por evidencia empírica."
+      },
+      {
+        "word": "anecdotal",
+        "word_in_spanish": "anecdótico",
+        "sentence": "Anecdotal evidence is not enough to prove the claim.",
+        "sentence_spanish": "La evidencia anecdótica no basta para demostrar la afirmación."
+      },
+      {
+        "word": "longitudinal study",
+        "word_in_spanish": "estudio longitudinal",
+        "sentence": "A longitudinal study follows participants over many years.",
+        "sentence_spanish": "Un estudio longitudinal sigue a los participantes durante muchos años."
+      },
+      {
+        "word": "randomised trial / randomized trial",
+        "word_in_spanish": "ensayo aleatorizado",
+        "sentence": "The treatment was tested in a randomised trial.",
+        "sentence_spanish": "El tratamiento se probó en un ensayo aleatorizado."
+      },
+      {
+        "word": "control group",
+        "word_in_spanish": "grupo de control",
+        "sentence": "The control group did not receive the new drug.",
+        "sentence_spanish": "El grupo de control no recibió el nuevo medicamento."
+      },
+      {
+        "word": "confounding factor",
+        "word_in_spanish": "factor de confusión",
+        "sentence": "Age was a confounding factor in the study.",
+        "sentence_spanish": "La edad fue un factor de confusión en el estudio."
+      },
+      {
+        "word": "statistical significance",
+        "word_in_spanish": "significación estadística",
+        "sentence": "The results did not reach statistical significance.",
+        "sentence_spanish": "Los resultados no alcanzaron significación estadística."
+      },
+      {
+        "word": "margin of error",
+        "word_in_spanish": "margen de error",
+        "sentence": "The poll has a margin of error of three percent.",
+        "sentence_spanish": "La encuesta tiene un margen de error del tres por ciento."
+      },
+      {
+        "word": "reproducibility",
+        "word_in_spanish": "reproducibilidad",
+        "sentence": "Reproducibility is essential in scientific research.",
+        "sentence_spanish": "La reproducibilidad es esencial en la investigación científica."
+      },
+      {
+        "word": "falsifiability",
+        "word_in_spanish": "falsabilidad",
+        "sentence": "Falsifiability is a key feature of scientific claims.",
+        "sentence_spanish": "La falsabilidad es una característica clave de las afirmaciones científicas."
+      },
+      {
+        "word": "biotechnology",
+        "word_in_spanish": "biotecnología",
+        "sentence": "Biotechnology is changing modern medicine.",
+        "sentence_spanish": "La biotecnología está cambiando la medicina moderna."
+      },
+      {
+        "word": "genetic engineering",
+        "word_in_spanish": "ingeniería genética",
+        "sentence": "Genetic engineering raises ethical questions.",
+        "sentence_spanish": "La ingeniería genética plantea cuestiones éticas."
+      },
+      {
+        "word": "data privacy",
+        "word_in_spanish": "privacidad de datos",
+        "sentence": "Data privacy is a major concern in healthcare apps.",
+        "sentence_spanish": "La privacidad de datos es una gran preocupación en aplicaciones de salud."
+      },
+      {
+        "word": "surveillance",
+        "word_in_spanish": "vigilancia",
+        "sentence": "Digital surveillance can threaten civil liberties.",
+        "sentence_spanish": "La vigilancia digital puede amenazar las libertades civiles."
+      },
+      {
+        "word": "bias in AI",
+        "word_in_spanish": "sesgo en la inteligencia artificial",
+        "sentence": "Bias in AI can lead to unfair decisions.",
+        "sentence_spanish": "El sesgo en la inteligencia artificial puede llevar a decisiones injustas."
+      },
+      {
+        "word": "transparency in algorithms",
+        "word_in_spanish": "transparencia algorítmica",
+        "sentence": "Transparency in algorithms helps users trust systems.",
+        "sentence_spanish": "La transparencia algorítmica ayuda a los usuarios a confiar en los sistemas."
+      },
+      {
+        "word": "human oversight",
+        "word_in_spanish": "supervisión humana",
+        "sentence": "Human oversight is necessary in automated decision-making.",
+        "sentence_spanish": "La supervisión humana es necesaria en la toma de decisiones automatizada."
+      },
+      {
+        "word": "ethical dilemma",
+        "word_in_spanish": "dilema ético",
+        "sentence": "The experiment created an ethical dilemma.",
+        "sentence_spanish": "El experimento creó un dilema ético."
+      },
+      {
+        "word": "informed consent",
+        "word_in_spanish": "consentimiento informado",
+        "sentence": "Patients must give informed consent before treatment.",
+        "sentence_spanish": "Los pacientes deben dar consentimiento informado antes del tratamiento."
+      },
+      {
+        "word": "precautionary principle",
+        "word_in_spanish": "principio de precaución",
+        "sentence": "The precautionary principle is used when risks are uncertain.",
+        "sentence_spanish": "El principio de precaución se usa cuando los riesgos son inciertos."
+      }
+    ]
+  },
+  {
+    "category": "Literatura, arte y cultura sofisticada",
+    "vocabulary": [
+      {
+        "word": "allusion",
+        "word_in_spanish": "alusión",
+        "sentence": "The poem contains an allusion to Greek mythology.",
+        "sentence_spanish": "El poema contiene una alusión a la mitología griega."
+      },
+      {
+        "word": "allegory",
+        "word_in_spanish": "alegoría",
+        "sentence": "The novel can be read as an allegory of political power.",
+        "sentence_spanish": "La novela puede leerse como una alegoría del poder político."
+      },
+      {
+        "word": "archetype",
+        "word_in_spanish": "arquetipo",
+        "sentence": "The hero is an archetype found in many cultures.",
+        "sentence_spanish": "El héroe es un arquetipo presente en muchas culturas."
+      },
+      {
+        "word": "subtext",
+        "word_in_spanish": "subtexto",
+        "sentence": "The subtext of the scene is more important than the dialogue.",
+        "sentence_spanish": "El subtexto de la escena es más importante que el diálogo."
+      },
+      {
+        "word": "juxtaposition",
+        "word_in_spanish": "yuxtaposición",
+        "sentence": "The painting uses juxtaposition to create tension.",
+        "sentence_spanish": "La pintura usa yuxtaposición para crear tensión."
+      },
+      {
+        "word": "motif",
+        "word_in_spanish": "motivo recurrente",
+        "sentence": "Water is a recurring motif throughout the film.",
+        "sentence_spanish": "El agua es un motivo recurrente a lo largo de la película."
+      },
+      {
+        "word": "foreshadowing",
+        "word_in_spanish": "presagio, anticipación narrativa",
+        "sentence": "The opening scene uses foreshadowing effectively.",
+        "sentence_spanish": "La escena inicial usa eficazmente la anticipación narrativa."
+      },
+      {
+        "word": "unreliable narrator",
+        "word_in_spanish": "narrador no fiable",
+        "sentence": "The unreliable narrator makes the reader question the story.",
+        "sentence_spanish": "El narrador no fiable hace que el lector cuestione la historia."
+      },
+      {
+        "word": "stream of consciousness",
+        "word_in_spanish": "flujo de conciencia",
+        "sentence": "The novel uses stream of consciousness to show inner thought.",
+        "sentence_spanish": "La novela usa el flujo de conciencia para mostrar el pensamiento interior."
+      },
+      {
+        "word": "aesthetic",
+        "word_in_spanish": "estética",
+        "sentence": "The director has a distinctive visual aesthetic.",
+        "sentence_spanish": "El director tiene una estética visual distintiva."
+      },
+      {
+        "word": "canon",
+        "word_in_spanish": "canon",
+        "sentence": "The book is part of the modern literary canon.",
+        "sentence_spanish": "El libro forma parte del canon literario moderno."
+      },
+      {
+        "word": "vernacular",
+        "word_in_spanish": "lengua vernácula, habla popular",
+        "sentence": "The author writes in the local vernacular.",
+        "sentence_spanish": "El autor escribe en el habla popular local."
+      },
+      {
+        "word": "dialect",
+        "word_in_spanish": "dialecto",
+        "sentence": "The characters speak in a regional dialect.",
+        "sentence_spanish": "Los personajes hablan en un dialecto regional."
+      },
+      {
+        "word": "prose",
+        "word_in_spanish": "prosa",
+        "sentence": "Her prose is elegant and precise.",
+        "sentence_spanish": "Su prosa es elegante y precisa."
+      },
+      {
+        "word": "lyricism",
+        "word_in_spanish": "lirismo",
+        "sentence": "The novel is admired for its lyricism.",
+        "sentence_spanish": "La novela es admirada por su lirismo."
+      },
+      {
+        "word": "satire",
+        "word_in_spanish": "sátira",
+        "sentence": "The programme uses satire to criticise politicians.",
+        "sentence_spanish": "El programa usa sátira para criticar a los políticos."
+      },
+      {
+        "word": "parody",
+        "word_in_spanish": "parodia",
+        "sentence": "The video is a parody of advertising culture.",
+        "sentence_spanish": "El video es una parodia de la cultura publicitaria."
+      },
+      {
+        "word": "pastiche",
+        "word_in_spanish": "pastiche",
+        "sentence": "The film is a pastiche of classic detective stories.",
+        "sentence_spanish": "La película es un pastiche de historias clásicas de detectives."
+      },
+      {
+        "word": "avant-garde",
+        "word_in_spanish": "vanguardista",
+        "sentence": "The artist became known for avant-garde performances.",
+        "sentence_spanish": "El artista se hizo conocido por actuaciones vanguardistas."
+      },
+      {
+        "word": "cultural appropriation",
+        "word_in_spanish": "apropiación cultural",
+        "sentence": "The exhibition sparked debate about cultural appropriation.",
+        "sentence_spanish": "La exposición provocó debate sobre la apropiación cultural."
+      }
+    ]
+  },
+  {
+    "category": "Matices emocionales y relaciones complejas",
+    "vocabulary": [
+      {
+        "word": "ambivalence",
+        "word_in_spanish": "ambivalencia",
+        "sentence": "She felt ambivalence about leaving her hometown.",
+        "sentence_spanish": "Sintió ambivalencia sobre dejar su ciudad natal."
+      },
+      {
+        "word": "melancholy",
+        "word_in_spanish": "melancolía",
+        "sentence": "There is a sense of melancholy in the final scene.",
+        "sentence_spanish": "Hay una sensación de melancolía en la escena final."
+      },
+      {
+        "word": "apprehension",
+        "word_in_spanish": "aprensión, inquietud",
+        "sentence": "He felt apprehension before the medical results arrived.",
+        "sentence_spanish": "Sintió aprensión antes de que llegaran los resultados médicos."
+      },
+      {
+        "word": "composure",
+        "word_in_spanish": "compostura",
+        "sentence": "She maintained her composure during the crisis.",
+        "sentence_spanish": "Mantuvo la compostura durante la crisis."
+      },
+      {
+        "word": "resignation",
+        "word_in_spanish": "resignación",
+        "sentence": "He accepted the news with quiet resignation.",
+        "sentence_spanish": "Aceptó la noticia con tranquila resignación."
+      },
+      {
+        "word": "indignation",
+        "word_in_spanish": "indignación",
+        "sentence": "The decision caused public indignation.",
+        "sentence_spanish": "La decisión causó indignación pública."
+      },
+      {
+        "word": "remorse",
+        "word_in_spanish": "remordimiento",
+        "sentence": "He expressed remorse for his behaviour.",
+        "sentence_spanish": "Expresó remordimiento por su comportamiento."
+      },
+      {
+        "word": "bitterness",
+        "word_in_spanish": "amargura, resentimiento",
+        "sentence": "Bitterness remained after the argument.",
+        "sentence_spanish": "Quedó amargura después de la discusión."
+      },
+      {
+        "word": "solace",
+        "word_in_spanish": "consuelo",
+        "sentence": "She found solace in music after the loss.",
+        "sentence_spanish": "Encontró consuelo en la música tras la pérdida."
+      },
+      {
+        "word": "rapport",
+        "word_in_spanish": "buena relación, sintonía",
+        "sentence": "The teacher quickly built rapport with the class.",
+        "sentence_spanish": "El profesor creó rápidamente una buena relación con la clase."
+      },
+      {
+        "word": "friction",
+        "word_in_spanish": "fricción, tensión",
+        "sentence": "There was friction between the two departments.",
+        "sentence_spanish": "Había tensión entre los dos departamentos."
+      },
+      {
+        "word": "reconciliation",
+        "word_in_spanish": "reconciliación",
+        "sentence": "Reconciliation took years after the conflict.",
+        "sentence_spanish": "La reconciliación llevó años después del conflicto."
+      },
+      {
+        "word": "estrangement",
+        "word_in_spanish": "distanciamiento",
+        "sentence": "The novel explores estrangement within a family.",
+        "sentence_spanish": "La novela explora el distanciamiento dentro de una familia."
+      },
+      {
+        "word": "vulnerability",
+        "word_in_spanish": "vulnerabilidad",
+        "sentence": "Sharing vulnerability can strengthen relationships.",
+        "sentence_spanish": "Compartir vulnerabilidad puede fortalecer las relaciones."
+      },
+      {
+        "word": "resilience",
+        "word_in_spanish": "resiliencia",
+        "sentence": "Her resilience helped her recover from failure.",
+        "sentence_spanish": "Su resiliencia la ayudó a recuperarse del fracaso."
+      },
+      {
+        "word": "assertiveness",
+        "word_in_spanish": "asertividad",
+        "sentence": "Assertiveness allows people to express needs clearly.",
+        "sentence_spanish": "La asertividad permite expresar necesidades con claridad."
+      },
+      {
+        "word": "self-awareness",
+        "word_in_spanish": "autoconciencia",
+        "sentence": "Self-awareness is important for personal growth.",
+        "sentence_spanish": "La autoconciencia es importante para el crecimiento personal."
+      },
+      {
+        "word": "introspection",
+        "word_in_spanish": "introspección",
+        "sentence": "The retreat encouraged silence and introspection.",
+        "sentence_spanish": "El retiro fomentó el silencio y la introspección."
+      },
+      {
+        "word": "come to terms with",
+        "word_in_spanish": "aceptar, asumir",
+        "sentence": "He struggled to come to terms with the diagnosis.",
+        "sentence_spanish": "Le costó aceptar el diagnóstico."
+      },
+      {
+        "word": "bottle up",
+        "word_in_spanish": "reprimir",
+        "sentence": "Bottling up emotions can make stress worse.",
+        "sentence_spanish": "Reprimir emociones puede empeorar el estrés."
+      }
+    ]
+  },
+  {
+    "category": "Phrasal verbs, idioms y expresiones de alta competencia",
+    "vocabulary": [
+      {
+        "word": "be snowed under",
+        "word_in_spanish": "estar hasta arriba de trabajo",
+        "sentence": "I am snowed under with deadlines this week.",
+        "sentence_spanish": "Estoy hasta arriba de trabajo con entregas esta semana."
+      },
+      {
+        "word": "get the hang of",
+        "word_in_spanish": "pillar el truco",
+        "sentence": "It took me a while to get the hang of the software.",
+        "sentence_spanish": "Tardé un tiempo en pillarle el truco al software."
+      },
+      {
+        "word": "go the extra mile",
+        "word_in_spanish": "hacer un esfuerzo adicional",
+        "sentence": "Good teachers often go the extra mile for students.",
+        "sentence_spanish": "Los buenos profesores suelen hacer un esfuerzo adicional por los estudiantes."
+      },
+      {
+        "word": "read between the lines",
+        "word_in_spanish": "leer entre líneas",
+        "sentence": "You need to read between the lines to understand the message.",
+        "sentence_spanish": "Necesitas leer entre líneas para entender el mensaje."
+      },
+      {
+        "word": "take with a pinch of salt",
+        "word_in_spanish": "tomar con cautela",
+        "sentence": "I would take those rumours with a pinch of salt.",
+        "sentence_spanish": "Tomaría esos rumores con cautela."
+      },
+      {
+        "word": "throw into question",
+        "word_in_spanish": "poner en duda",
+        "sentence": "The new data throws the conclusion into question.",
+        "sentence_spanish": "Los nuevos datos ponen en duda la conclusión."
+      },
+      {
+        "word": "be at odds with",
+        "word_in_spanish": "estar en desacuerdo con, contradecir",
+        "sentence": "His account is at odds with the evidence.",
+        "sentence_spanish": "Su versión contradice las pruebas."
+      },
+      {
+        "word": "come to grips with",
+        "word_in_spanish": "afrontar, comprender",
+        "sentence": "Society must come to grips with rapid technological change.",
+        "sentence_spanish": "La sociedad debe afrontar el rápido cambio tecnológico."
+      },
+      {
+        "word": "brush aside",
+        "word_in_spanish": "descartar, quitar importancia",
+        "sentence": "The minister brushed aside concerns about safety.",
+        "sentence_spanish": "El ministro restó importancia a las preocupaciones sobre seguridad."
+      },
+      {
+        "word": "play down",
+        "word_in_spanish": "minimizar",
+        "sentence": "The company tried to play down the incident.",
+        "sentence_spanish": "La empresa intentó minimizar el incidente."
+      },
+      {
+        "word": "zero in on",
+        "word_in_spanish": "centrarse en",
+        "sentence": "The investigation zeroed in on financial irregularities.",
+        "sentence_spanish": "La investigación se centró en irregularidades financieras."
+      },
+      {
+        "word": "phase in",
+        "word_in_spanish": "introducir gradualmente",
+        "sentence": "The new rules will be phased in over two years.",
+        "sentence_spanish": "Las nuevas normas se introducirán gradualmente durante dos años."
+      },
+      {
+        "word": "iron out",
+        "word_in_spanish": "resolver, pulir",
+        "sentence": "We need to iron out the remaining problems.",
+        "sentence_spanish": "Necesitamos resolver los problemas restantes."
+      },
+      {
+        "word": "water down",
+        "word_in_spanish": "debilitar, suavizar",
+        "sentence": "The proposal was watered down after negotiations.",
+        "sentence_spanish": "La propuesta se debilitó tras las negociaciones."
+      },
+      {
+        "word": "spell out",
+        "word_in_spanish": "explicar claramente",
+        "sentence": "The contract spells out each party's responsibilities.",
+        "sentence_spanish": "El contrato explica claramente las responsabilidades de cada parte."
+      },
+      {
+        "word": "set the record straight",
+        "word_in_spanish": "aclarar la verdad",
+        "sentence": "She gave an interview to set the record straight.",
+        "sentence_spanish": "Dio una entrevista para aclarar la verdad."
+      },
+      {
+        "word": "open a can of worms",
+        "word_in_spanish": "abrir la caja de Pandora",
+        "sentence": "Changing the law could open a can of worms.",
+        "sentence_spanish": "Cambiar la ley podría abrir la caja de Pandora."
+      },
+      {
+        "word": "the tip of the iceberg",
+        "word_in_spanish": "la punta del iceberg",
+        "sentence": "These complaints are only the tip of the iceberg.",
+        "sentence_spanish": "Estas quejas son solo la punta del iceberg."
+      },
+      {
+        "word": "a double-edged sword",
+        "word_in_spanish": "un arma de doble filo",
+        "sentence": "Social media can be a double-edged sword.",
+        "sentence_spanish": "Las redes sociales pueden ser un arma de doble filo."
+      },
+      {
+        "word": "a blessing in disguise",
+        "word_in_spanish": "un mal que por bien no venga",
+        "sentence": "Losing that job was a blessing in disguise.",
+        "sentence_spanish": "Perder aquel trabajo fue un mal que por bien no vino."
+      }
+    ]
+  },
+  {
+    "category": "Adjetivos y adverbios de precisión C2",
+    "vocabulary": [
+      {
+        "word": "meticulous",
+        "word_in_spanish": "meticuloso",
+        "sentence": "The editor was meticulous in checking every detail.",
+        "sentence_spanish": "El editor fue meticuloso al revisar cada detalle."
+      },
+      {
+        "word": "pervasive",
+        "word_in_spanish": "generalizado, omnipresente",
+        "sentence": "There is a pervasive sense of uncertainty.",
+        "sentence_spanish": "Hay una sensación generalizada de incertidumbre."
+      },
+      {
+        "word": "sporadic",
+        "word_in_spanish": "esporádico",
+        "sentence": "The region experienced sporadic outbreaks of violence.",
+        "sentence_spanish": "La región experimentó brotes esporádicos de violencia."
+      },
+      {
+        "word": "scant",
+        "word_in_spanish": "escaso",
+        "sentence": "There is scant evidence to support that claim.",
+        "sentence_spanish": "Hay escasas pruebas que apoyen esa afirmación."
+      },
+      {
+        "word": "ample",
+        "word_in_spanish": "amplio, abundante",
+        "sentence": "There is ample evidence of improvement.",
+        "sentence_spanish": "Hay abundantes pruebas de mejora."
+      },
+      {
+        "word": "conspicuous",
+        "word_in_spanish": "llamativo, evidente",
+        "sentence": "His absence was conspicuous at the meeting.",
+        "sentence_spanish": "Su ausencia fue evidente en la reunión."
+      },
+      {
+        "word": "inconspicuous",
+        "word_in_spanish": "discreto, poco llamativo",
+        "sentence": "The entrance is deliberately inconspicuous.",
+        "sentence_spanish": "La entrada es deliberadamente discreta."
+      },
+      {
+        "word": "erratic",
+        "word_in_spanish": "irregular, impredecible",
+        "sentence": "His attendance became increasingly erratic.",
+        "sentence_spanish": "Su asistencia se volvió cada vez más irregular."
+      },
+      {
+        "word": "resilient",
+        "word_in_spanish": "resiliente",
+        "sentence": "The economy proved more resilient than expected.",
+        "sentence_spanish": "La economía resultó más resiliente de lo esperado."
+      },
+      {
+        "word": "tentative",
+        "word_in_spanish": "provisional, cauteloso",
+        "sentence": "The agreement is still tentative.",
+        "sentence_spanish": "El acuerdo todavía es provisional."
+      },
+      {
+        "word": "unequivocal",
+        "word_in_spanish": "inequívoco",
+        "sentence": "The results provide unequivocal support for the theory.",
+        "sentence_spanish": "Los resultados proporcionan apoyo inequívoco a la teoría."
+      },
+      {
+        "word": "profound",
+        "word_in_spanish": "profundo",
+        "sentence": "The experience had a profound effect on her.",
+        "sentence_spanish": "La experiencia tuvo un efecto profundo en ella."
+      },
+      {
+        "word": "trivial",
+        "word_in_spanish": "trivial, insignificante",
+        "sentence": "The error may seem trivial, but it matters.",
+        "sentence_spanish": "El error puede parecer trivial, pero importa."
+      },
+      {
+        "word": "formidable",
+        "word_in_spanish": "formidable, imponente",
+        "sentence": "They faced a formidable challenge.",
+        "sentence_spanish": "Se enfrentaron a un desafío formidable."
+      },
+      {
+        "word": "precarious",
+        "word_in_spanish": "precario",
+        "sentence": "Many workers are in a precarious position.",
+        "sentence_spanish": "Muchos trabajadores están en una situación precaria."
+      },
+      {
+        "word": "plentiful",
+        "word_in_spanish": "abundante",
+        "sentence": "Fresh water is not plentiful in the area.",
+        "sentence_spanish": "El agua dulce no es abundante en la zona."
+      },
+      {
+        "word": "scarce",
+        "word_in_spanish": "escaso",
+        "sentence": "Jobs were scarce during the recession.",
+        "sentence_spanish": "Los empleos eran escasos durante la recesión."
+      },
+      {
+        "word": "steadfast",
+        "word_in_spanish": "firme",
+        "sentence": "She remained steadfast in her commitment.",
+        "sentence_spanish": "Se mantuvo firme en su compromiso."
+      },
+      {
+        "word": "fleeting",
+        "word_in_spanish": "fugaz",
+        "sentence": "For a fleeting moment, everything was quiet.",
+        "sentence_spanish": "Durante un momento fugaz, todo estuvo en silencio."
+      },
+      {
+        "word": "utterly",
+        "word_in_spanish": "absolutamente, completamente",
+        "sentence": "The claim is utterly unfounded.",
+        "sentence_spanish": "La afirmación es completamente infundada."
+      }
+    ]
+  },
+  {
+    "category": "Conocimiento, lenguaje y comunicación refinada",
+    "vocabulary": [
+      {
+        "word": "elocution",
+        "word_in_spanish": "elocución, forma de hablar",
+        "sentence": "Her elocution made the speech easy to follow.",
+        "sentence_spanish": "Su elocución hizo que el discurso fuera fácil de seguir."
+      },
+      {
+        "word": "articulate",
+        "word_in_spanish": "articulado, expresarse bien",
+        "sentence": "He is articulate and confident in interviews.",
+        "sentence_spanish": "Se expresa bien y tiene confianza en las entrevistas."
+      },
+      {
+        "word": "inarticulate",
+        "word_in_spanish": "poco elocuente",
+        "sentence": "Stress can make even confident speakers inarticulate.",
+        "sentence_spanish": "El estrés puede hacer que incluso hablantes seguros sean poco elocuentes."
+      },
+      {
+        "word": "circumlocution",
+        "word_in_spanish": "circunloquio, rodeo verbal",
+        "sentence": "The politician used circumlocution to avoid a direct answer.",
+        "sentence_spanish": "El político usó rodeos para evitar una respuesta directa."
+      },
+      {
+        "word": "euphemism",
+        "word_in_spanish": "eufemismo",
+        "sentence": "The phrase is a euphemism for dismissal.",
+        "sentence_spanish": "La frase es un eufemismo para despido."
+      },
+      {
+        "word": "connotation",
+        "word_in_spanish": "connotación",
+        "sentence": "The word has a negative connotation in this context.",
+        "sentence_spanish": "La palabra tiene una connotación negativa en este contexto."
+      },
+      {
+        "word": "denotation",
+        "word_in_spanish": "denotación",
+        "sentence": "A dictionary gives the denotation of a word.",
+        "sentence_spanish": "Un diccionario da la denotación de una palabra."
+      },
+      {
+        "word": "pragmatics",
+        "word_in_spanish": "pragmática",
+        "sentence": "Pragmatics studies meaning in context.",
+        "sentence_spanish": "La pragmática estudia el significado en contexto."
+      },
+      {
+        "word": "register",
+        "word_in_spanish": "registro",
+        "sentence": "Use a formal register in academic essays.",
+        "sentence_spanish": "Usa un registro formal en ensayos académicos."
+      },
+      {
+        "word": "collocation",
+        "word_in_spanish": "colocación",
+        "sentence": "Strong coffee is a common collocation.",
+        "sentence_spanish": "Strong coffee es una colocación común."
+      },
+      {
+        "word": "idiomaticity",
+        "word_in_spanish": "idiomaticidad",
+        "sentence": "Idiomaticity is hard for advanced learners to master.",
+        "sentence_spanish": "La idiomaticidad es difícil de dominar para estudiantes avanzados."
+      },
+      {
+        "word": "proficiency",
+        "word_in_spanish": "competencia, dominio",
+        "sentence": "She reached near-native proficiency in English.",
+        "sentence_spanish": "Alcanzó una competencia casi nativa en inglés."
+      },
+      {
+        "word": "eloquence",
+        "word_in_spanish": "elocuencia",
+        "sentence": "His eloquence impressed the audience.",
+        "sentence_spanish": "Su elocuencia impresionó al público."
+      },
+      {
+        "word": "brevity",
+        "word_in_spanish": "brevedad",
+        "sentence": "Brevity can make a message more powerful.",
+        "sentence_spanish": "La brevedad puede hacer que un mensaje sea más potente."
+      },
+      {
+        "word": "verbosity",
+        "word_in_spanish": "verborrea, exceso de palabras",
+        "sentence": "The report suffers from verbosity.",
+        "sentence_spanish": "El informe sufre de exceso de palabras."
+      },
+      {
+        "word": "clarity",
+        "word_in_spanish": "claridad",
+        "sentence": "Clarity is more important than complexity.",
+        "sentence_spanish": "La claridad es más importante que la complejidad."
+      },
+      {
+        "word": "conciseness",
+        "word_in_spanish": "concisión",
+        "sentence": "Good editing improves conciseness.",
+        "sentence_spanish": "Una buena edición mejora la concisión."
+      },
+      {
+        "word": "ambiguity",
+        "word_in_spanish": "ambigüedad",
+        "sentence": "Legal texts often try to avoid ambiguity.",
+        "sentence_spanish": "Los textos legales suelen intentar evitar la ambigüedad."
+      },
+      {
+        "word": "discourse marker",
+        "word_in_spanish": "marcador discursivo",
+        "sentence": "However is a common discourse marker.",
+        "sentence_spanish": "However es un marcador discursivo común."
+      },
+      {
+        "word": "turn of phrase",
+        "word_in_spanish": "giro, expresión",
+        "sentence": "That turn of phrase sounds very natural.",
+        "sentence_spanish": "Ese giro suena muy natural."
+      }
+    ]
+  },
+  {
+    "category": "Filosofía, ética y salud avanzada",
+    "vocabulary": [
+      {
+        "word": "existential",
+        "word_in_spanish": "existencial",
+        "sentence": "The novel explores existential questions about freedom.",
+        "sentence_spanish": "La novela explora cuestiones existenciales sobre la libertad."
+      },
+      {
+        "word": "epistemology",
+        "word_in_spanish": "epistemología",
+        "sentence": "Epistemology asks how we know what we know.",
+        "sentence_spanish": "La epistemología pregunta cómo sabemos lo que sabemos."
+      },
+      {
+        "word": "ontology",
+        "word_in_spanish": "ontología",
+        "sentence": "Ontology deals with the nature of being.",
+        "sentence_spanish": "La ontología trata de la naturaleza del ser."
+      },
+      {
+        "word": "phenomenon",
+        "word_in_spanish": "fenómeno",
+        "sentence": "Migration is a complex social phenomenon.",
+        "sentence_spanish": "La migración es un fenómeno social complejo."
+      },
+      {
+        "word": "consciousness",
+        "word_in_spanish": "conciencia",
+        "sentence": "Scientists still debate the nature of consciousness.",
+        "sentence_spanish": "Los científicos aún debaten la naturaleza de la conciencia."
+      },
+      {
+        "word": "agency",
+        "word_in_spanish": "capacidad de actuar, agencia",
+        "sentence": "Education can increase people's sense of agency.",
+        "sentence_spanish": "La educación puede aumentar la capacidad de actuación de las personas."
+      },
+      {
+        "word": "autonomy",
+        "word_in_spanish": "autonomía",
+        "sentence": "Patients should have autonomy over medical decisions.",
+        "sentence_spanish": "Los pacientes deberían tener autonomía sobre decisiones médicas."
+      },
+      {
+        "word": "determinism",
+        "word_in_spanish": "determinismo",
+        "sentence": "The essay discusses determinism and free will.",
+        "sentence_spanish": "El ensayo analiza el determinismo y el libre albedrío."
+      },
+      {
+        "word": "free will",
+        "word_in_spanish": "libre albedrío",
+        "sentence": "The story raises questions about free will.",
+        "sentence_spanish": "La historia plantea preguntas sobre el libre albedrío."
+      },
+      {
+        "word": "morality",
+        "word_in_spanish": "moralidad",
+        "sentence": "The film examines morality in times of war.",
+        "sentence_spanish": "La película examina la moralidad en tiempos de guerra."
+      },
+      {
+        "word": "virtue",
+        "word_in_spanish": "virtud",
+        "sentence": "Patience is treated as a virtue in the story.",
+        "sentence_spanish": "La paciencia se trata como una virtud en la historia."
+      },
+      {
+        "word": "vice",
+        "word_in_spanish": "vicio, defecto moral",
+        "sentence": "Greed is portrayed as the character's main vice.",
+        "sentence_spanish": "La codicia se presenta como el principal vicio del personaje."
+      },
+      {
+        "word": "altruism",
+        "word_in_spanish": "altruismo",
+        "sentence": "Altruism can exist even in competitive environments.",
+        "sentence_spanish": "El altruismo puede existir incluso en entornos competitivos."
+      },
+      {
+        "word": "utilitarian",
+        "word_in_spanish": "utilitarista",
+        "sentence": "A utilitarian approach focuses on overall benefit.",
+        "sentence_spanish": "Un enfoque utilitarista se centra en el beneficio general."
+      },
+      {
+        "word": "deontological",
+        "word_in_spanish": "deontológico",
+        "sentence": "A deontological view focuses on duties and rules.",
+        "sentence_spanish": "Una visión deontológica se centra en deberes y reglas."
+      },
+      {
+        "word": "ethical standpoint",
+        "word_in_spanish": "punto de vista ético",
+        "sentence": "From an ethical standpoint, the decision is troubling.",
+        "sentence_spanish": "Desde un punto de vista ético, la decisión es preocupante."
+      },
+      {
+        "word": "well-founded objection",
+        "word_in_spanish": "objeción bien fundada",
+        "sentence": "She raised a well-founded objection to the proposal.",
+        "sentence_spanish": "Planteó una objeción bien fundada a la propuesta."
+      },
+      {
+        "word": "thought experiment",
+        "word_in_spanish": "experimento mental",
+        "sentence": "The philosopher used a thought experiment to test the idea.",
+        "sentence_spanish": "El filósofo usó un experimento mental para probar la idea."
+      },
+      {
+        "word": "moral compass",
+        "word_in_spanish": "brújula moral",
+        "sentence": "The crisis tested the leader's moral compass.",
+        "sentence_spanish": "La crisis puso a prueba la brújula moral del líder."
+      },
+      {
+        "word": "worldview",
+        "word_in_spanish": "visión del mundo",
+        "sentence": "Travel can change a person's worldview.",
+        "sentence_spanish": "Viajar puede cambiar la visión del mundo de una persona."
+      },
+      {
+        "word": "life expectancy",
+        "word_in_spanish": "esperanza de vida",
+        "sentence": "Life expectancy has risen in many countries.",
+        "sentence_spanish": "La esperanza de vida ha aumentado en muchos países."
+      },
+      {
+        "word": "public health",
+        "word_in_spanish": "salud pública",
+        "sentence": "Public health policies saved thousands of lives.",
+        "sentence_spanish": "Las políticas de salud pública salvaron miles de vidas."
+      },
+      {
+        "word": "palliative care",
+        "word_in_spanish": "cuidados paliativos",
+        "sentence": "Palliative care focuses on comfort and dignity.",
+        "sentence_spanish": "Los cuidados paliativos se centran en el confort y la dignidad."
+      },
+      {
+        "word": "chronic condition",
+        "word_in_spanish": "enfermedad crónica",
+        "sentence": "Diabetes is a common chronic condition.",
+        "sentence_spanish": "La diabetes es una enfermedad crónica común."
+      },
+      {
+        "word": "comorbidity",
+        "word_in_spanish": "comorbilidad",
+        "sentence": "Comorbidity can make treatment more complicated.",
+        "sentence_spanish": "La comorbilidad puede hacer que el tratamiento sea más complicado."
+      },
+      {
+        "word": "prognosis",
+        "word_in_spanish": "pronóstico médico",
+        "sentence": "The prognosis improved after early treatment.",
+        "sentence_spanish": "El pronóstico mejoró tras el tratamiento temprano."
+      },
+      {
+        "word": "clinical trial",
+        "word_in_spanish": "ensayo clínico",
+        "sentence": "The vaccine was tested in a clinical trial.",
+        "sentence_spanish": "La vacuna se probó en un ensayo clínico."
+      },
+      {
+        "word": "placebo",
+        "word_in_spanish": "placebo",
+        "sentence": "Some participants received a placebo.",
+        "sentence_spanish": "Algunos participantes recibieron un placebo."
+      },
+      {
+        "word": "health disparity",
+        "word_in_spanish": "desigualdad sanitaria",
+        "sentence": "Health disparities often reflect social inequality.",
+        "sentence_spanish": "Las desigualdades sanitarias suelen reflejar desigualdad social."
+      },
+      {
+        "word": "quality of life",
+        "word_in_spanish": "calidad de vida",
+        "sentence": "The treatment improved the patient's quality of life.",
+        "sentence_spanish": "El tratamiento mejoró la calidad de vida del paciente."
+      }
+    ]
+  }
+]

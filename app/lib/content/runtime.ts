@@ -9,6 +9,8 @@ import {
   testTextManifests,
   textLoaders,
   textManifests,
+  vocabularyLoaders,
+  vocabularyManifests,
 } from "virtual:content";
 import type {
   BlogEntry,
@@ -21,6 +23,8 @@ import type {
   TestTextManifestEntry,
   TextEntry,
   TextManifestEntry,
+  VocabularyEntry,
+  VocabularyManifestEntry,
 } from "./types";
 
 type ContentEntryLoader<TEntry> = () => Promise<{ entry: TEntry }>;
@@ -52,6 +56,7 @@ export const allLegalPageManifests = legalPageManifests;
 export const allLevelTextManifests = levelTextManifests;
 export const allTestTextManifests = testTextManifests;
 export const allTextManifests = textManifests;
+export const allVocabularyManifests = vocabularyManifests;
 
 export async function getBlogBySlug(
   slug: string
@@ -136,4 +141,23 @@ export function getTestTextManifestByLevel(
   level: string
 ): TestTextManifestEntry | undefined {
   return testTextManifests.find((entry) => entry.level === level);
+}
+
+export async function getVocabularyTextByLevel(
+  level: string
+): Promise<VocabularyEntry | undefined> {
+  const vocabularyText = vocabularyManifests.find(
+    (entry) => entry.level === level
+  );
+  if (!vocabularyText) {
+    return undefined;
+  }
+
+  return loadEntry(vocabularyLoaders, vocabularyText.id);
+}
+
+export function getVocabularyTextManifestByLevel(
+  level: string
+): VocabularyManifestEntry | undefined {
+  return vocabularyManifests.find((entry) => entry.level === level);
 }

@@ -1,0 +1,1579 @@
+[
+  {
+    "category": "Gramática básica: pronombres, artículos y estructuras",
+    "vocabulary": [
+      {
+        "word": "I",
+        "word_in_spanish": "yo",
+        "sentence": "I am a student.",
+        "sentence_spanish": "Yo soy estudiante."
+      },
+      {
+        "word": "you",
+        "word_in_spanish": "tú, usted, vosotros",
+        "sentence": "You are my friend.",
+        "sentence_spanish": "Tú eres mi amigo."
+      },
+      {
+        "word": "he",
+        "word_in_spanish": "él",
+        "sentence": "He is happy.",
+        "sentence_spanish": "Él está feliz."
+      },
+      {
+        "word": "she",
+        "word_in_spanish": "ella",
+        "sentence": "She is my sister.",
+        "sentence_spanish": "Ella es mi hermana."
+      },
+      {
+        "word": "it",
+        "word_in_spanish": "ello, eso",
+        "sentence": "It is a book.",
+        "sentence_spanish": "Eso es un libro."
+      },
+      {
+        "word": "we",
+        "word_in_spanish": "nosotros",
+        "sentence": "We are at school.",
+        "sentence_spanish": "Nosotros estamos en la escuela."
+      },
+      {
+        "word": "they",
+        "word_in_spanish": "ellos",
+        "sentence": "They are my parents.",
+        "sentence_spanish": "Ellos son mis padres."
+      },
+      {
+        "word": "me",
+        "word_in_spanish": "me, mí",
+        "sentence": "Can you help me?",
+        "sentence_spanish": "¿Puedes ayudarme?"
+      },
+      {
+        "word": "him",
+        "word_in_spanish": "le, lo, a él",
+        "sentence": "I know him.",
+        "sentence_spanish": "Lo conozco a él."
+      },
+      {
+        "word": "her",
+        "word_in_spanish": "le, la, a ella",
+        "sentence": "I see her every day.",
+        "sentence_spanish": "La veo todos los días."
+      },
+      {
+        "word": "us",
+        "word_in_spanish": "nos, a nosotros",
+        "sentence": "The teacher helps us.",
+        "sentence_spanish": "El profesor nos ayuda."
+      },
+      {
+        "word": "them",
+        "word_in_spanish": "les, los, las",
+        "sentence": "I like them.",
+        "sentence_spanish": "Me gustan ellos."
+      },
+      {
+        "word": "my",
+        "word_in_spanish": "mi",
+        "sentence": "This is my house.",
+        "sentence_spanish": "Esta es mi casa."
+      },
+      {
+        "word": "your",
+        "word_in_spanish": "tu, su",
+        "sentence": "Is this your pen?",
+        "sentence_spanish": "¿Es este tu bolígrafo?"
+      },
+      {
+        "word": "his",
+        "word_in_spanish": "su, de él, suyo, de él",
+        "sentence": "This is his bag.",
+        "sentence_spanish": "Esta es su mochila."
+      },
+      {
+        "word": "its",
+        "word_in_spanish": "su, de ello",
+        "sentence": "The dog is in its bed.",
+        "sentence_spanish": "El perro está en su cama."
+      },
+      {
+        "word": "our",
+        "word_in_spanish": "nuestro, nuestra",
+        "sentence": "Our school is big.",
+        "sentence_spanish": "Nuestra escuela es grande."
+      },
+      {
+        "word": "their",
+        "word_in_spanish": "su, de ellos",
+        "sentence": "Their car is blue.",
+        "sentence_spanish": "Su coche es azul."
+      },
+      {
+        "word": "mine",
+        "word_in_spanish": "mío, mía",
+        "sentence": "This book is mine.",
+        "sentence_spanish": "Este libro es mío."
+      },
+      {
+        "word": "yours",
+        "word_in_spanish": "tuyo, tuya, suyo, suya",
+        "sentence": "Is this pencil yours?",
+        "sentence_spanish": "¿Es tuyo este lápiz?"
+      },
+      {
+        "word": "hers",
+        "word_in_spanish": "suyo, suya, de ella",
+        "sentence": "The jacket is hers.",
+        "sentence_spanish": "La chaqueta es suya."
+      },
+      {
+        "word": "ours",
+        "word_in_spanish": "nuestro, nuestra",
+        "sentence": "The house is ours.",
+        "sentence_spanish": "La casa es nuestra."
+      },
+      {
+        "word": "theirs",
+        "word_in_spanish": "suyo, suya, de ellos",
+        "sentence": "The room is theirs.",
+        "sentence_spanish": "La habitación es suya."
+      },
+      {
+        "word": "this",
+        "word_in_spanish": "este, esta, esto",
+        "sentence": "This is my friend.",
+        "sentence_spanish": "Este es mi amigo."
+      },
+      {
+        "word": "that",
+        "word_in_spanish": "ese, esa, aquello",
+        "sentence": "That is a big house.",
+        "sentence_spanish": "Esa es una casa grande."
+      },
+      {
+        "word": "these",
+        "word_in_spanish": "estos, estas",
+        "sentence": "These are my books.",
+        "sentence_spanish": "Estos son mis libros."
+      },
+      {
+        "word": "those",
+        "word_in_spanish": "esos, esas, aquellos",
+        "sentence": "Those are red cars.",
+        "sentence_spanish": "Esos son coches rojos."
+      },
+      {
+        "word": "a",
+        "word_in_spanish": "un, una",
+        "sentence": "I have a dog.",
+        "sentence_spanish": "Tengo un perro."
+      },
+      {
+        "word": "an",
+        "word_in_spanish": "un, una",
+        "sentence": "She eats an apple.",
+        "sentence_spanish": "Ella come una manzana."
+      },
+      {
+        "word": "the",
+        "word_in_spanish": "el, la, los, las",
+        "sentence": "The book is on the table.",
+        "sentence_spanish": "El libro está sobre la mesa."
+      },
+      {
+        "word": "There is",
+        "word_in_spanish": "hay, singular",
+        "sentence": "There is a cat in the room.",
+        "sentence_spanish": "Hay un gato en la habitación."
+      },
+      {
+        "word": "There are",
+        "word_in_spanish": "hay, plural",
+        "sentence": "There are four chairs.",
+        "sentence_spanish": "Hay cuatro sillas."
+      },
+      {
+        "word": "I am",
+        "word_in_spanish": "yo soy, yo estoy",
+        "sentence": "I am happy.",
+        "sentence_spanish": "Estoy feliz."
+      },
+      {
+        "word": "You are",
+        "word_in_spanish": "tú eres, tú estás, usted es, usted está",
+        "sentence": "You are my teacher.",
+        "sentence_spanish": "Tú eres mi profesor."
+      },
+      {
+        "word": "He is",
+        "word_in_spanish": "él es, él está",
+        "sentence": "He is at home.",
+        "sentence_spanish": "Él está en casa."
+      },
+      {
+        "word": "She is",
+        "word_in_spanish": "ella es, ella está",
+        "sentence": "She is my friend.",
+        "sentence_spanish": "Ella es mi amiga."
+      },
+      {
+        "word": "It is",
+        "word_in_spanish": "es, está",
+        "sentence": "It is cold today.",
+        "sentence_spanish": "Hace frío hoy."
+      },
+      {
+        "word": "We are",
+        "word_in_spanish": "somos, estamos",
+        "sentence": "We are students.",
+        "sentence_spanish": "Somos estudiantes."
+      },
+      {
+        "word": "They are",
+        "word_in_spanish": "son, están",
+        "sentence": "They are in the classroom.",
+        "sentence_spanish": "Ellos están en el aula."
+      },
+      {
+        "word": "I have",
+        "word_in_spanish": "tengo",
+        "sentence": "I have a blue pen.",
+        "sentence_spanish": "Tengo un bolígrafo azul."
+      },
+      {
+        "word": "I have got",
+        "word_in_spanish": "tengo",
+        "sentence": "I have got two sisters.",
+        "sentence_spanish": "Tengo dos hermanas."
+      },
+      {
+        "word": "I like",
+        "word_in_spanish": "me gusta",
+        "sentence": "I like apples.",
+        "sentence_spanish": "Me gustan las manzanas."
+      },
+      {
+        "word": "I need",
+        "word_in_spanish": "necesito",
+        "sentence": "I need my notebook.",
+        "sentence_spanish": "Necesito mi cuaderno."
+      },
+      {
+        "word": "I want",
+        "word_in_spanish": "quiero",
+        "sentence": "I want a new book.",
+        "sentence_spanish": "Quiero un libro nuevo."
+      }
+    ]
+  },
+  {
+    "category": "Preposiciones y ubicación",
+    "vocabulary": [
+      {
+        "word": "in",
+        "word_in_spanish": "en, dentro de",
+        "sentence": "The pen is in the bag.",
+        "sentence_spanish": "El bolígrafo está dentro de la mochila."
+      },
+      {
+        "word": "on",
+        "word_in_spanish": "en, sobre",
+        "sentence": "The book is on the desk.",
+        "sentence_spanish": "El libro está sobre el escritorio."
+      },
+      {
+        "word": "at",
+        "word_in_spanish": "en, a",
+        "sentence": "I am at school.",
+        "sentence_spanish": "Estoy en la escuela."
+      },
+      {
+        "word": "under",
+        "word_in_spanish": "debajo de",
+        "sentence": "The cat is under the table.",
+        "sentence_spanish": "El gato está debajo de la mesa."
+      },
+      {
+        "word": "next to",
+        "word_in_spanish": "al lado de",
+        "sentence": "The chair is next to the table.",
+        "sentence_spanish": "La silla está al lado de la mesa."
+      },
+      {
+        "word": "behind",
+        "word_in_spanish": "detrás de",
+        "sentence": "The car is behind the house.",
+        "sentence_spanish": "El coche está detrás de la casa."
+      },
+      {
+        "word": "in front of",
+        "word_in_spanish": "delante de",
+        "sentence": "The school is in front of the park.",
+        "sentence_spanish": "La escuela está delante del parque."
+      },
+      {
+        "word": "between",
+        "word_in_spanish": "entre",
+        "sentence": "The bag is between two chairs.",
+        "sentence_spanish": "La mochila está entre dos sillas."
+      },
+      {
+        "word": "before",
+        "word_in_spanish": "antes",
+        "sentence": "I eat before school.",
+        "sentence_spanish": "Como antes de la escuela."
+      },
+      {
+        "word": "after",
+        "word_in_spanish": "después",
+        "sentence": "I play after school.",
+        "sentence_spanish": "Juego después de la escuela."
+      },
+      {
+        "word": "to",
+        "word_in_spanish": "a, hacia",
+        "sentence": "I go to school.",
+        "sentence_spanish": "Voy a la escuela."
+      },
+      {
+        "word": "from",
+        "word_in_spanish": "de, desde",
+        "sentence": "I am from Spain.",
+        "sentence_spanish": "Soy de España."
+      },
+      {
+        "word": "through",
+        "word_in_spanish": "a través de",
+        "sentence": "We walk through the park.",
+        "sentence_spanish": "Caminamos a través del parque."
+      },
+      {
+        "word": "over",
+        "word_in_spanish": "por encima de",
+        "sentence": "The bird flies over the house.",
+        "sentence_spanish": "El pájaro vuela por encima de la casa."
+      }
+    ]
+  },
+  {
+    "category": "Personas y familia",
+    "vocabulary": [
+      {
+        "word": "family",
+        "word_in_spanish": "familia",
+        "sentence": "My family is small.",
+        "sentence_spanish": "Mi familia es pequeña."
+      },
+      {
+        "word": "mother",
+        "word_in_spanish": "madre",
+        "sentence": "My mother is kind.",
+        "sentence_spanish": "Mi madre es amable."
+      },
+      {
+        "word": "father",
+        "word_in_spanish": "padre",
+        "sentence": "My father works today.",
+        "sentence_spanish": "Mi padre trabaja hoy."
+      },
+      {
+        "word": "parents",
+        "word_in_spanish": "padres",
+        "sentence": "My parents are at home.",
+        "sentence_spanish": "Mis padres están en casa."
+      },
+      {
+        "word": "sister",
+        "word_in_spanish": "hermana",
+        "sentence": "My sister likes music.",
+        "sentence_spanish": "A mi hermana le gusta la música."
+      },
+      {
+        "word": "brother",
+        "word_in_spanish": "hermano",
+        "sentence": "My brother plays football.",
+        "sentence_spanish": "Mi hermano juega al fútbol."
+      },
+      {
+        "word": "son",
+        "word_in_spanish": "hijo",
+        "sentence": "Her son is young.",
+        "sentence_spanish": "Su hijo es joven."
+      },
+      {
+        "word": "daughter",
+        "word_in_spanish": "hija",
+        "sentence": "His daughter is happy.",
+        "sentence_spanish": "Su hija está feliz."
+      },
+      {
+        "word": "friend",
+        "word_in_spanish": "amigo, amiga",
+        "sentence": "Tom is my friend.",
+        "sentence_spanish": "Tom es mi amigo."
+      },
+      {
+        "word": "teacher",
+        "word_in_spanish": "profesor, profesora",
+        "sentence": "The teacher is in the classroom.",
+        "sentence_spanish": "El profesor está en el aula."
+      },
+      {
+        "word": "student",
+        "word_in_spanish": "estudiante",
+        "sentence": "I am a student.",
+        "sentence_spanish": "Soy estudiante."
+      },
+      {
+        "word": "child",
+        "word_in_spanish": "niño, niña",
+        "sentence": "The child has a ball.",
+        "sentence_spanish": "El niño tiene una pelota."
+      },
+      {
+        "word": "children",
+        "word_in_spanish": "niños, niñas",
+        "sentence": "The children are in the park.",
+        "sentence_spanish": "Los niños están en el parque."
+      },
+      {
+        "word": "man",
+        "word_in_spanish": "hombre",
+        "sentence": "The man is tall.",
+        "sentence_spanish": "El hombre es alto."
+      },
+      {
+        "word": "woman",
+        "word_in_spanish": "mujer",
+        "sentence": "The woman is my teacher.",
+        "sentence_spanish": "La mujer es mi profesora."
+      }
+    ]
+  },
+  {
+    "category": "Escuela y material de clase",
+    "vocabulary": [
+      {
+        "word": "school",
+        "word_in_spanish": "escuela, colegio",
+        "sentence": "I go to school every day.",
+        "sentence_spanish": "Voy a la escuela todos los días."
+      },
+      {
+        "word": "classroom",
+        "word_in_spanish": "aula",
+        "sentence": "The classroom is big.",
+        "sentence_spanish": "El aula es grande."
+      },
+      {
+        "word": "book",
+        "word_in_spanish": "libro",
+        "sentence": "I read a book.",
+        "sentence_spanish": "Leo un libro."
+      },
+      {
+        "word": "pen",
+        "word_in_spanish": "bolígrafo",
+        "sentence": "I write with a pen.",
+        "sentence_spanish": "Escribo con un bolígrafo."
+      },
+      {
+        "word": "pencil",
+        "word_in_spanish": "lápiz",
+        "sentence": "The pencil is yellow.",
+        "sentence_spanish": "El lápiz es amarillo."
+      },
+      {
+        "word": "notebook",
+        "word_in_spanish": "cuaderno",
+        "sentence": "My notebook is new.",
+        "sentence_spanish": "Mi cuaderno es nuevo."
+      },
+      {
+        "word": "desk",
+        "word_in_spanish": "pupitre, escritorio",
+        "sentence": "The book is on the desk.",
+        "sentence_spanish": "El libro está sobre el escritorio."
+      },
+      {
+        "word": "chair",
+        "word_in_spanish": "silla",
+        "sentence": "The chair is blue.",
+        "sentence_spanish": "La silla es azul."
+      },
+      {
+        "word": "bag",
+        "word_in_spanish": "mochila, bolsa",
+        "sentence": "My bag is heavy.",
+        "sentence_spanish": "Mi mochila es pesada."
+      },
+      {
+        "word": "homework",
+        "word_in_spanish": "deberes",
+        "sentence": "I do my homework after school.",
+        "sentence_spanish": "Hago mis deberes después de la escuela."
+      },
+      {
+        "word": "lesson",
+        "word_in_spanish": "lección",
+        "sentence": "The lesson is easy.",
+        "sentence_spanish": "La lección es fácil."
+      },
+      {
+        "word": "test",
+        "word_in_spanish": "examen, prueba",
+        "sentence": "We have a test today.",
+        "sentence_spanish": "Tenemos un examen hoy."
+      }
+    ]
+  },
+  {
+    "category": "Casa y objetos cotidianos",
+    "vocabulary": [
+      {
+        "word": "house",
+        "word_in_spanish": "casa",
+        "sentence": "My house is small.",
+        "sentence_spanish": "Mi casa es pequeña."
+      },
+      {
+        "word": "room",
+        "word_in_spanish": "habitación",
+        "sentence": "My room is clean.",
+        "sentence_spanish": "Mi habitación está limpia."
+      },
+      {
+        "word": "kitchen",
+        "word_in_spanish": "cocina",
+        "sentence": "The kitchen is big.",
+        "sentence_spanish": "La cocina es grande."
+      },
+      {
+        "word": "bathroom",
+        "word_in_spanish": "baño",
+        "sentence": "The bathroom is next to my room.",
+        "sentence_spanish": "El baño está al lado de mi habitación."
+      },
+      {
+        "word": "bedroom",
+        "word_in_spanish": "dormitorio",
+        "sentence": "My bedroom has a window.",
+        "sentence_spanish": "Mi dormitorio tiene una ventana."
+      },
+      {
+        "word": "table",
+        "word_in_spanish": "mesa",
+        "sentence": "The food is on the table.",
+        "sentence_spanish": "La comida está sobre la mesa."
+      },
+      {
+        "word": "door",
+        "word_in_spanish": "puerta",
+        "sentence": "The door is open.",
+        "sentence_spanish": "La puerta está abierta."
+      },
+      {
+        "word": "window",
+        "word_in_spanish": "ventana",
+        "sentence": "The window is closed.",
+        "sentence_spanish": "La ventana está cerrada."
+      },
+      {
+        "word": "bed",
+        "word_in_spanish": "cama",
+        "sentence": "The cat is on the bed.",
+        "sentence_spanish": "El gato está en la cama."
+      },
+      {
+        "word": "phone",
+        "word_in_spanish": "teléfono",
+        "sentence": "My phone is new.",
+        "sentence_spanish": "Mi teléfono es nuevo."
+      },
+      {
+        "word": "car",
+        "word_in_spanish": "coche",
+        "sentence": "The car is red.",
+        "sentence_spanish": "El coche es rojo."
+      },
+      {
+        "word": "bicycle",
+        "word_in_spanish": "bicicleta",
+        "sentence": "I have a bicycle.",
+        "sentence_spanish": "Tengo una bicicleta."
+      },
+      {
+        "word": "ball",
+        "word_in_spanish": "pelota",
+        "sentence": "The ball is under the table.",
+        "sentence_spanish": "La pelota está debajo de la mesa."
+      }
+    ]
+  },
+  {
+    "category": "Adjetivos básicos",
+    "vocabulary": [
+      {
+        "word": "big",
+        "word_in_spanish": "grande",
+        "sentence": "This is a big house.",
+        "sentence_spanish": "Esta es una casa grande."
+      },
+      {
+        "word": "small",
+        "word_in_spanish": "pequeño, pequeña",
+        "sentence": "The dog is small.",
+        "sentence_spanish": "El perro es pequeño."
+      },
+      {
+        "word": "tall",
+        "word_in_spanish": "alto, alta",
+        "sentence": "My brother is tall.",
+        "sentence_spanish": "Mi hermano es alto."
+      },
+      {
+        "word": "short",
+        "word_in_spanish": "bajo, baja, corto, corta",
+        "sentence": "The pencil is short.",
+        "sentence_spanish": "El lápiz es corto."
+      },
+      {
+        "word": "long",
+        "word_in_spanish": "largo, larga",
+        "sentence": "She has long hair.",
+        "sentence_spanish": "Ella tiene el pelo largo."
+      },
+      {
+        "word": "new",
+        "word_in_spanish": "nuevo, nueva",
+        "sentence": "I have a new book.",
+        "sentence_spanish": "Tengo un libro nuevo."
+      },
+      {
+        "word": "old",
+        "word_in_spanish": "viejo, vieja, antiguo, antigua",
+        "sentence": "This is an old car.",
+        "sentence_spanish": "Este es un coche viejo."
+      },
+      {
+        "word": "good",
+        "word_in_spanish": "bueno, buena",
+        "sentence": "This is a good lesson.",
+        "sentence_spanish": "Esta es una buena lección."
+      },
+      {
+        "word": "bad",
+        "word_in_spanish": "malo, mala",
+        "sentence": "The weather is bad.",
+        "sentence_spanish": "El tiempo es malo."
+      },
+      {
+        "word": "happy",
+        "word_in_spanish": "feliz",
+        "sentence": "I am happy today.",
+        "sentence_spanish": "Estoy feliz hoy."
+      },
+      {
+        "word": "sad",
+        "word_in_spanish": "triste",
+        "sentence": "She is sad.",
+        "sentence_spanish": "Ella está triste."
+      },
+      {
+        "word": "hot",
+        "word_in_spanish": "caliente, calor",
+        "sentence": "The tea is hot.",
+        "sentence_spanish": "El té está caliente."
+      },
+      {
+        "word": "cold",
+        "word_in_spanish": "frío, fría",
+        "sentence": "The water is cold.",
+        "sentence_spanish": "El agua está fría."
+      },
+      {
+        "word": "easy",
+        "word_in_spanish": "fácil",
+        "sentence": "The test is easy.",
+        "sentence_spanish": "El examen es fácil."
+      },
+      {
+        "word": "difficult",
+        "word_in_spanish": "difícil",
+        "sentence": "English is difficult today.",
+        "sentence_spanish": "El inglés es difícil hoy."
+      },
+      {
+        "word": "beautiful",
+        "word_in_spanish": "bonito, bonita, hermoso, hermosa",
+        "sentence": "This is a beautiful dress.",
+        "sentence_spanish": "Este es un vestido bonito."
+      },
+      {
+        "word": "young",
+        "word_in_spanish": "joven",
+        "sentence": "The teacher is young.",
+        "sentence_spanish": "El profesor es joven."
+      },
+      {
+        "word": "clean",
+        "word_in_spanish": "limpio, limpia",
+        "sentence": "The room is clean.",
+        "sentence_spanish": "La habitación está limpia."
+      },
+      {
+        "word": "dirty",
+        "word_in_spanish": "sucio, sucia",
+        "sentence": "The shoes are dirty.",
+        "sentence_spanish": "Los zapatos están sucios."
+      }
+    ]
+  },
+  {
+    "category": "Verbos esenciales A1",
+    "vocabulary": [
+      {
+        "word": "be",
+        "word_in_spanish": "ser, estar",
+        "sentence": "I want to be a teacher.",
+        "sentence_spanish": "Quiero ser profesor."
+      },
+      {
+        "word": "have",
+        "word_in_spanish": "tener",
+        "sentence": "I have two books.",
+        "sentence_spanish": "Tengo dos libros."
+      },
+      {
+        "word": "have got",
+        "word_in_spanish": "tener",
+        "sentence": "I have got a dog.",
+        "sentence_spanish": "Tengo un perro."
+      },
+      {
+        "word": "do",
+        "word_in_spanish": "hacer",
+        "sentence": "I do my homework.",
+        "sentence_spanish": "Hago mis deberes."
+      },
+      {
+        "word": "go",
+        "word_in_spanish": "ir",
+        "sentence": "I go to school.",
+        "sentence_spanish": "Voy a la escuela."
+      },
+      {
+        "word": "come",
+        "word_in_spanish": "venir",
+        "sentence": "They come home at five.",
+        "sentence_spanish": "Ellos vienen a casa a las cinco."
+      },
+      {
+        "word": "live",
+        "word_in_spanish": "vivir",
+        "sentence": "I live in Madrid.",
+        "sentence_spanish": "Vivo en Madrid."
+      },
+      {
+        "word": "like",
+        "word_in_spanish": "gustar",
+        "sentence": "I like football.",
+        "sentence_spanish": "Me gusta el fútbol."
+      },
+      {
+        "word": "love",
+        "word_in_spanish": "encantar, amar",
+        "sentence": "I love my family.",
+        "sentence_spanish": "Amo a mi familia."
+      },
+      {
+        "word": "want",
+        "word_in_spanish": "querer",
+        "sentence": "I want a banana.",
+        "sentence_spanish": "Quiero un plátano."
+      },
+      {
+        "word": "need",
+        "word_in_spanish": "necesitar",
+        "sentence": "I need water.",
+        "sentence_spanish": "Necesito agua."
+      },
+      {
+        "word": "eat",
+        "word_in_spanish": "comer",
+        "sentence": "I eat bread.",
+        "sentence_spanish": "Como pan."
+      },
+      {
+        "word": "drink",
+        "word_in_spanish": "beber",
+        "sentence": "I drink milk.",
+        "sentence_spanish": "Bebo leche."
+      },
+      {
+        "word": "speak",
+        "word_in_spanish": "hablar",
+        "sentence": "I speak English.",
+        "sentence_spanish": "Hablo inglés."
+      },
+      {
+        "word": "read",
+        "word_in_spanish": "leer",
+        "sentence": "She reads a book.",
+        "sentence_spanish": "Ella lee un libro."
+      },
+      {
+        "word": "write",
+        "word_in_spanish": "escribir",
+        "sentence": "I write in my notebook.",
+        "sentence_spanish": "Escribo en mi cuaderno."
+      },
+      {
+        "word": "listen",
+        "word_in_spanish": "escuchar",
+        "sentence": "We listen to music.",
+        "sentence_spanish": "Escuchamos música."
+      },
+      {
+        "word": "watch",
+        "word_in_spanish": "ver, mirar",
+        "sentence": "I watch TV at night.",
+        "sentence_spanish": "Veo la televisión por la noche."
+      },
+      {
+        "word": "play",
+        "word_in_spanish": "jugar, tocar",
+        "sentence": "They play tennis.",
+        "sentence_spanish": "Ellos juegan al tenis."
+      },
+      {
+        "word": "work",
+        "word_in_spanish": "trabajar",
+        "sentence": "My father works in a school.",
+        "sentence_spanish": "Mi padre trabaja en una escuela."
+      },
+      {
+        "word": "study",
+        "word_in_spanish": "estudiar",
+        "sentence": "I study English.",
+        "sentence_spanish": "Estudio inglés."
+      },
+      {
+        "word": "buy",
+        "word_in_spanish": "comprar",
+        "sentence": "I buy food at the supermarket.",
+        "sentence_spanish": "Compro comida en el supermercado."
+      },
+      {
+        "word": "cook",
+        "word_in_spanish": "cocinar",
+        "sentence": "My mother cooks rice.",
+        "sentence_spanish": "Mi madre cocina arroz."
+      },
+      {
+        "word": "wear",
+        "word_in_spanish": "llevar puesto",
+        "sentence": "I wear a jacket.",
+        "sentence_spanish": "Llevo puesta una chaqueta."
+      },
+      {
+        "word": "wash",
+        "word_in_spanish": "lavar",
+        "sentence": "Wash your hands.",
+        "sentence_spanish": "Lávate las manos."
+      }
+    ]
+  },
+  {
+    "category": "Verbos modales básicos",
+    "vocabulary": [
+      {
+        "word": "can",
+        "word_in_spanish": "poder, saber hacer algo",
+        "sentence": "I can swim.",
+        "sentence_spanish": "Sé nadar."
+      },
+      {
+        "word": "cannot / can’t",
+        "word_in_spanish": "no poder",
+        "sentence": "I can't play tennis.",
+        "sentence_spanish": "No puedo jugar al tenis."
+      },
+      {
+        "word": "must",
+        "word_in_spanish": "deber",
+        "sentence": "You must study today.",
+        "sentence_spanish": "Debes estudiar hoy."
+      },
+      {
+        "word": "should",
+        "word_in_spanish": "debería",
+        "sentence": "You should drink water.",
+        "sentence_spanish": "Deberías beber agua."
+      },
+      {
+        "word": "might",
+        "word_in_spanish": "podría, puede que",
+        "sentence": "It might rain today.",
+        "sentence_spanish": "Puede que llueva hoy."
+      }
+    ]
+  },
+  {
+    "category": "Números, días y tiempo",
+    "vocabulary": [
+      {
+        "word": "one",
+        "word_in_spanish": "uno",
+        "sentence": "I have one book.",
+        "sentence_spanish": "Tengo un libro."
+      },
+      {
+        "word": "two",
+        "word_in_spanish": "dos",
+        "sentence": "She has two pencils.",
+        "sentence_spanish": "Ella tiene dos lápices."
+      },
+      {
+        "word": "three",
+        "word_in_spanish": "tres",
+        "sentence": "There are three chairs.",
+        "sentence_spanish": "Hay tres sillas."
+      },
+      {
+        "word": "four",
+        "word_in_spanish": "cuatro",
+        "sentence": "I have four apples.",
+        "sentence_spanish": "Tengo cuatro manzanas."
+      },
+      {
+        "word": "five",
+        "word_in_spanish": "cinco",
+        "sentence": "The class starts at five.",
+        "sentence_spanish": "La clase empieza a las cinco."
+      },
+      {
+        "word": "six",
+        "word_in_spanish": "seis",
+        "sentence": "There are six students.",
+        "sentence_spanish": "Hay seis estudiantes."
+      },
+      {
+        "word": "seven",
+        "word_in_spanish": "siete",
+        "sentence": "I wake up at seven.",
+        "sentence_spanish": "Me despierto a las siete."
+      },
+      {
+        "word": "eight",
+        "word_in_spanish": "ocho",
+        "sentence": "The lesson is at eight.",
+        "sentence_spanish": "La lección es a las ocho."
+      },
+      {
+        "word": "nine",
+        "word_in_spanish": "nueve",
+        "sentence": "I have nine pens.",
+        "sentence_spanish": "Tengo nueve bolígrafos."
+      },
+      {
+        "word": "ten",
+        "word_in_spanish": "diez",
+        "sentence": "She is ten years old.",
+        "sentence_spanish": "Ella tiene diez años."
+      },
+      {
+        "word": "eleven",
+        "word_in_spanish": "once",
+        "sentence": "There are eleven books.",
+        "sentence_spanish": "Hay once libros."
+      },
+      {
+        "word": "twelve",
+        "word_in_spanish": "doce",
+        "sentence": "It is twelve o'clock.",
+        "sentence_spanish": "Son las doce en punto."
+      },
+      {
+        "word": "twenty",
+        "word_in_spanish": "veinte",
+        "sentence": "There are twenty students.",
+        "sentence_spanish": "Hay veinte estudiantes."
+      },
+      {
+        "word": "thirty",
+        "word_in_spanish": "treinta",
+        "sentence": "My father is thirty.",
+        "sentence_spanish": "Mi padre tiene treinta años."
+      },
+      {
+        "word": "forty",
+        "word_in_spanish": "cuarenta",
+        "sentence": "There are forty chairs.",
+        "sentence_spanish": "Hay cuarenta sillas."
+      },
+      {
+        "word": "fifty",
+        "word_in_spanish": "cincuenta",
+        "sentence": "The book has fifty pages.",
+        "sentence_spanish": "El libro tiene cincuenta páginas."
+      },
+      {
+        "word": "one hundred",
+        "word_in_spanish": "cien",
+        "sentence": "There are one hundred words.",
+        "sentence_spanish": "Hay cien palabras."
+      },
+      {
+        "word": "first",
+        "word_in_spanish": "primero",
+        "sentence": "Tom is first.",
+        "sentence_spanish": "Tom es primero."
+      },
+      {
+        "word": "second",
+        "word_in_spanish": "segundo",
+        "sentence": "Anna is second.",
+        "sentence_spanish": "Anna es segunda."
+      },
+      {
+        "word": "third",
+        "word_in_spanish": "tercero",
+        "sentence": "Mary is third.",
+        "sentence_spanish": "Mary es tercera."
+      },
+      {
+        "word": "fourth",
+        "word_in_spanish": "cuarto",
+        "sentence": "He is fourth in the game.",
+        "sentence_spanish": "Él es cuarto en el juego."
+      },
+      {
+        "word": "fifth",
+        "word_in_spanish": "quinto",
+        "sentence": "She is fifth in line.",
+        "sentence_spanish": "Ella es quinta en la fila."
+      },
+      {
+        "word": "sixth",
+        "word_in_spanish": "sexto",
+        "sentence": "I am sixth in the class.",
+        "sentence_spanish": "Soy sexto en la clase."
+      },
+      {
+        "word": "tenth",
+        "word_in_spanish": "décimo",
+        "sentence": "He is tenth in the race.",
+        "sentence_spanish": "Él es décimo en la carrera."
+      },
+      {
+        "word": "Monday",
+        "word_in_spanish": "lunes",
+        "sentence": "I study on Monday.",
+        "sentence_spanish": "Estudio el lunes."
+      },
+      {
+        "word": "Tuesday",
+        "word_in_spanish": "martes",
+        "sentence": "We play tennis on Tuesday.",
+        "sentence_spanish": "Jugamos al tenis el martes."
+      },
+      {
+        "word": "Wednesday",
+        "word_in_spanish": "miércoles",
+        "sentence": "The test is on Wednesday.",
+        "sentence_spanish": "El examen es el miércoles."
+      },
+      {
+        "word": "Thursday",
+        "word_in_spanish": "jueves",
+        "sentence": "I have English on Thursday.",
+        "sentence_spanish": "Tengo inglés el jueves."
+      },
+      {
+        "word": "Friday",
+        "word_in_spanish": "viernes",
+        "sentence": "Friday is my favorite day.",
+        "sentence_spanish": "El viernes es mi día favorito."
+      },
+      {
+        "word": "Saturday",
+        "word_in_spanish": "sábado",
+        "sentence": "I play football on Saturday.",
+        "sentence_spanish": "Juego al fútbol el sábado."
+      },
+      {
+        "word": "Sunday",
+        "word_in_spanish": "domingo",
+        "sentence": "I see my family on Sunday.",
+        "sentence_spanish": "Veo a mi familia el domingo."
+      },
+      {
+        "word": "January",
+        "word_in_spanish": "enero",
+        "sentence": "My birthday is in January.",
+        "sentence_spanish": "Mi cumpleaños es en enero."
+      },
+      {
+        "word": "February",
+        "word_in_spanish": "febrero",
+        "sentence": "It is cold in February.",
+        "sentence_spanish": "Hace frío en febrero."
+      },
+      {
+        "word": "March",
+        "word_in_spanish": "marzo",
+        "sentence": "School starts in March.",
+        "sentence_spanish": "La escuela empieza en marzo."
+      },
+      {
+        "word": "April",
+        "word_in_spanish": "abril",
+        "sentence": "It rains in April.",
+        "sentence_spanish": "Llueve en abril."
+      },
+      {
+        "word": "May",
+        "word_in_spanish": "mayo",
+        "sentence": "My sister was born in May.",
+        "sentence_spanish": "Mi hermana nació en mayo."
+      },
+      {
+        "word": "June",
+        "word_in_spanish": "junio",
+        "sentence": "It is hot in June.",
+        "sentence_spanish": "Hace calor en junio."
+      },
+      {
+        "word": "July",
+        "word_in_spanish": "julio",
+        "sentence": "We swim in July.",
+        "sentence_spanish": "Nadamos en julio."
+      },
+      {
+        "word": "August",
+        "word_in_spanish": "agosto",
+        "sentence": "I travel in August.",
+        "sentence_spanish": "Viajo en agosto."
+      },
+      {
+        "word": "September",
+        "word_in_spanish": "septiembre",
+        "sentence": "School starts in September.",
+        "sentence_spanish": "La escuela empieza en septiembre."
+      },
+      {
+        "word": "October",
+        "word_in_spanish": "octubre",
+        "sentence": "It is cool in October.",
+        "sentence_spanish": "Hace fresco en octubre."
+      },
+      {
+        "word": "November",
+        "word_in_spanish": "noviembre",
+        "sentence": "It rains in November.",
+        "sentence_spanish": "Llueve en noviembre."
+      },
+      {
+        "word": "December",
+        "word_in_spanish": "diciembre",
+        "sentence": "Christmas is in December.",
+        "sentence_spanish": "La Navidad es en diciembre."
+      },
+      {
+        "word": "today",
+        "word_in_spanish": "hoy",
+        "sentence": "Today is Monday.",
+        "sentence_spanish": "Hoy es lunes."
+      },
+      {
+        "word": "tomorrow",
+        "word_in_spanish": "mañana",
+        "sentence": "Tomorrow is Tuesday.",
+        "sentence_spanish": "Mañana es martes."
+      },
+      {
+        "word": "yesterday",
+        "word_in_spanish": "ayer",
+        "sentence": "Yesterday was Sunday.",
+        "sentence_spanish": "Ayer fue domingo."
+      },
+      {
+        "word": "morning",
+        "word_in_spanish": "mañana",
+        "sentence": "I study in the morning.",
+        "sentence_spanish": "Estudio por la mañana."
+      },
+      {
+        "word": "afternoon",
+        "word_in_spanish": "tarde",
+        "sentence": "I play in the afternoon.",
+        "sentence_spanish": "Juego por la tarde."
+      },
+      {
+        "word": "evening",
+        "word_in_spanish": "tarde, noche",
+        "sentence": "We eat in the evening.",
+        "sentence_spanish": "Comemos por la noche."
+      },
+      {
+        "word": "night",
+        "word_in_spanish": "noche",
+        "sentence": "I sleep at night.",
+        "sentence_spanish": "Duermo por la noche."
+      },
+      {
+        "word": "o’clock",
+        "word_in_spanish": "en punto",
+        "sentence": "It is four o'clock.",
+        "sentence_spanish": "Son las cuatro en punto."
+      }
+    ]
+  },
+  {
+    "category": "Tiempo atmosférico y ropa",
+    "vocabulary": [
+      {
+        "word": "weather",
+        "word_in_spanish": "tiempo, clima",
+        "sentence": "The weather is good today.",
+        "sentence_spanish": "El tiempo es bueno hoy."
+      },
+      {
+        "word": "sun",
+        "word_in_spanish": "sol",
+        "sentence": "The sun is hot.",
+        "sentence_spanish": "El sol está caliente."
+      },
+      {
+        "word": "rain",
+        "word_in_spanish": "lluvia",
+        "sentence": "I like the rain.",
+        "sentence_spanish": "Me gusta la lluvia."
+      },
+      {
+        "word": "snow",
+        "word_in_spanish": "nieve",
+        "sentence": "The snow is white.",
+        "sentence_spanish": "La nieve es blanca."
+      },
+      {
+        "word": "wind",
+        "word_in_spanish": "viento",
+        "sentence": "The wind is strong.",
+        "sentence_spanish": "El viento es fuerte."
+      },
+      {
+        "word": "cloudy",
+        "word_in_spanish": "nublado",
+        "sentence": "It is cloudy today.",
+        "sentence_spanish": "Está nublado hoy."
+      },
+      {
+        "word": "sunny",
+        "word_in_spanish": "soleado",
+        "sentence": "It is sunny in June.",
+        "sentence_spanish": "Hace sol en junio."
+      },
+      {
+        "word": "rainy",
+        "word_in_spanish": "lluvioso",
+        "sentence": "It is rainy in April.",
+        "sentence_spanish": "Es lluvioso en abril."
+      },
+      {
+        "word": "clothes",
+        "word_in_spanish": "ropa",
+        "sentence": "My clothes are clean.",
+        "sentence_spanish": "Mi ropa está limpia."
+      },
+      {
+        "word": "shirt",
+        "word_in_spanish": "camisa",
+        "sentence": "He wears a white shirt.",
+        "sentence_spanish": "Él lleva una camisa blanca."
+      },
+      {
+        "word": "T-shirt",
+        "word_in_spanish": "camiseta",
+        "sentence": "I wear a blue T-shirt.",
+        "sentence_spanish": "Llevo una camiseta azul."
+      },
+      {
+        "word": "trousers",
+        "word_in_spanish": "pantalones",
+        "sentence": "My trousers are black.",
+        "sentence_spanish": "Mis pantalones son negros."
+      },
+      {
+        "word": "shoes",
+        "word_in_spanish": "zapatos",
+        "sentence": "Her shoes are new.",
+        "sentence_spanish": "Sus zapatos son nuevos."
+      },
+      {
+        "word": "jacket",
+        "word_in_spanish": "chaqueta",
+        "sentence": "I need a jacket.",
+        "sentence_spanish": "Necesito una chaqueta."
+      },
+      {
+        "word": "coat",
+        "word_in_spanish": "abrigo",
+        "sentence": "Wear a coat in winter.",
+        "sentence_spanish": "Lleva un abrigo en invierno."
+      },
+      {
+        "word": "dress",
+        "word_in_spanish": "vestido",
+        "sentence": "She wears a red dress.",
+        "sentence_spanish": "Ella lleva un vestido rojo."
+      },
+      {
+        "word": "skirt",
+        "word_in_spanish": "falda",
+        "sentence": "The skirt is beautiful.",
+        "sentence_spanish": "La falda es bonita."
+      }
+    ]
+  },
+  {
+    "category": "Deportes y ocio",
+    "vocabulary": [
+      {
+        "word": "sport",
+        "word_in_spanish": "deporte",
+        "sentence": "Football is my favorite sport.",
+        "sentence_spanish": "El fútbol es mi deporte favorito."
+      },
+      {
+        "word": "football",
+        "word_in_spanish": "fútbol",
+        "sentence": "I play football on Saturday.",
+        "sentence_spanish": "Juego al fútbol el sábado."
+      },
+      {
+        "word": "basketball",
+        "word_in_spanish": "baloncesto",
+        "sentence": "She likes basketball.",
+        "sentence_spanish": "A ella le gusta el baloncesto."
+      },
+      {
+        "word": "tennis",
+        "word_in_spanish": "tenis",
+        "sentence": "We play tennis after school.",
+        "sentence_spanish": "Jugamos al tenis después de la escuela."
+      },
+      {
+        "word": "swimming",
+        "word_in_spanish": "natación",
+        "sentence": "Swimming is good exercise.",
+        "sentence_spanish": "La natación es buen ejercicio."
+      },
+      {
+        "word": "running",
+        "word_in_spanish": "correr, carrera",
+        "sentence": "Running is my exercise.",
+        "sentence_spanish": "Correr es mi ejercicio."
+      },
+      {
+        "word": "exercise",
+        "word_in_spanish": "ejercicio",
+        "sentence": "I do exercise every day.",
+        "sentence_spanish": "Hago ejercicio todos los días."
+      },
+      {
+        "word": "team",
+        "word_in_spanish": "equipo",
+        "sentence": "My team is good.",
+        "sentence_spanish": "Mi equipo es bueno."
+      },
+      {
+        "word": "game",
+        "word_in_spanish": "partido, juego",
+        "sentence": "The game starts at five.",
+        "sentence_spanish": "El partido empieza a las cinco."
+      },
+      {
+        "word": "player",
+        "word_in_spanish": "jugador, jugadora",
+        "sentence": "He is a football player.",
+        "sentence_spanish": "Él es jugador de fútbol."
+      }
+    ]
+  },
+  {
+    "category": "Comida y compras básicas",
+    "vocabulary": [
+      {
+        "word": "supermarket",
+        "word_in_spanish": "supermercado",
+        "sentence": "I buy food at the supermarket.",
+        "sentence_spanish": "Compro comida en el supermercado."
+      },
+      {
+        "word": "food",
+        "word_in_spanish": "comida",
+        "sentence": "We need food.",
+        "sentence_spanish": "Necesitamos comida."
+      },
+      {
+        "word": "water",
+        "word_in_spanish": "agua",
+        "sentence": "I drink water every day.",
+        "sentence_spanish": "Bebo agua todos los días."
+      },
+      {
+        "word": "milk",
+        "word_in_spanish": "leche",
+        "sentence": "She drinks milk in the morning.",
+        "sentence_spanish": "Ella bebe leche por la mañana."
+      },
+      {
+        "word": "bread",
+        "word_in_spanish": "pan",
+        "sentence": "I eat bread for breakfast.",
+        "sentence_spanish": "Como pan para desayunar."
+      },
+      {
+        "word": "rice",
+        "word_in_spanish": "arroz",
+        "sentence": "We cook rice for dinner.",
+        "sentence_spanish": "Cocinamos arroz para cenar."
+      },
+      {
+        "word": "meat",
+        "word_in_spanish": "carne",
+        "sentence": "He eats meat.",
+        "sentence_spanish": "Él come carne."
+      },
+      {
+        "word": "fish",
+        "word_in_spanish": "pescado",
+        "sentence": "I don't like fish.",
+        "sentence_spanish": "No me gusta el pescado."
+      },
+      {
+        "word": "fruit",
+        "word_in_spanish": "fruta",
+        "sentence": "Fruit is good.",
+        "sentence_spanish": "La fruta es buena."
+      },
+      {
+        "word": "apple",
+        "word_in_spanish": "manzana",
+        "sentence": "I eat an apple.",
+        "sentence_spanish": "Como una manzana."
+      },
+      {
+        "word": "banana",
+        "word_in_spanish": "plátano, banana",
+        "sentence": "The banana is yellow.",
+        "sentence_spanish": "El plátano es amarillo."
+      },
+      {
+        "word": "orange",
+        "word_in_spanish": "naranja",
+        "sentence": "She has an orange.",
+        "sentence_spanish": "Ella tiene una naranja."
+      },
+      {
+        "word": "vegetables",
+        "word_in_spanish": "verduras",
+        "sentence": "I like vegetables.",
+        "sentence_spanish": "Me gustan las verduras."
+      },
+      {
+        "word": "eggs",
+        "word_in_spanish": "huevos",
+        "sentence": "There are eggs in the fridge.",
+        "sentence_spanish": "Hay huevos en la nevera."
+      },
+      {
+        "word": "cheese",
+        "word_in_spanish": "queso",
+        "sentence": "I eat bread with cheese.",
+        "sentence_spanish": "Como pan con queso."
+      },
+      {
+        "word": "chicken",
+        "word_in_spanish": "pollo",
+        "sentence": "We have chicken for dinner.",
+        "sentence_spanish": "Tenemos pollo para cenar."
+      },
+      {
+        "word": "juice",
+        "word_in_spanish": "zumo, jugo",
+        "sentence": "I drink orange juice.",
+        "sentence_spanish": "Bebo zumo de naranja."
+      },
+      {
+        "word": "some",
+        "word_in_spanish": "algunos, algunas, algo de",
+        "sentence": "I have some apples.",
+        "sentence_spanish": "Tengo algunas manzanas."
+      },
+      {
+        "word": "any",
+        "word_in_spanish": "algún, alguna, nada de",
+        "sentence": "Do you have any eggs?",
+        "sentence_spanish": "¿Tienes huevos?"
+      }
+    ]
+  },
+  {
+    "category": "Celebraciones básicas",
+    "vocabulary": [
+      {
+        "word": "Christmas",
+        "word_in_spanish": "Navidad",
+        "sentence": "Christmas is in December.",
+        "sentence_spanish": "La Navidad es en diciembre."
+      },
+      {
+        "word": "Merry Christmas",
+        "word_in_spanish": "Feliz Navidad",
+        "sentence": "Merry Christmas to my family.",
+        "sentence_spanish": "Feliz Navidad a mi familia."
+      },
+      {
+        "word": "New Year",
+        "word_in_spanish": "Año Nuevo",
+        "sentence": "New Year is in January.",
+        "sentence_spanish": "El Año Nuevo es en enero."
+      },
+      {
+        "word": "Happy New Year",
+        "word_in_spanish": "Feliz Año Nuevo",
+        "sentence": "Happy New Year, my friend!",
+        "sentence_spanish": "¡Feliz Año Nuevo, amigo mío!"
+      },
+      {
+        "word": "present",
+        "word_in_spanish": "regalo",
+        "sentence": "I have a present for you.",
+        "sentence_spanish": "Tengo un regalo para ti."
+      },
+      {
+        "word": "tree",
+        "word_in_spanish": "árbol",
+        "sentence": "The Christmas tree is beautiful.",
+        "sentence_spanish": "El árbol de Navidad es bonito."
+      },
+      {
+        "word": "star",
+        "word_in_spanish": "estrella",
+        "sentence": "There is a star on the tree.",
+        "sentence_spanish": "Hay una estrella en el árbol."
+      },
+      {
+        "word": "family dinner",
+        "word_in_spanish": "cena familiar",
+        "sentence": "We have a family dinner at Christmas.",
+        "sentence_spanish": "Tenemos una cena familiar en Navidad."
+      }
+    ]
+  }
+]

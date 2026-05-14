@@ -63,4 +63,15 @@ export const collectionDefinitions = [
       chapters: z.array(z.string()).optional(),
     }),
   },
+  {
+    name: "vocabulary",
+    directory: "app/content/vocabulary",
+    schema: z.object({
+      title: z.string(),
+      mainHeading: z.string(),
+      metaDescription: z.string(),
+      intro: z.string(),
+      level: z.enum(["a1", "a2", "b1", "b2", "c1", "c2"]),
+    }),
+  },
 ] satisfies Array<CollectionDefinition<unknown>>;

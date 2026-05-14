@@ -33,6 +33,7 @@ const createEmptyContentMap = (): ContentMap => ({
   levelsTexts: [],
   testsTexts: [],
   texts: [],
+  vocabulary: [],
 });
 
 const createEmptyManifestMap = (): ManifestMap => ({
@@ -41,6 +42,7 @@ const createEmptyManifestMap = (): ManifestMap => ({
   levelsTexts: [],
   testsTexts: [],
   texts: [],
+  vocabulary: [],
 });
 
 const isContentFile = (file: string) =>
@@ -138,11 +140,13 @@ ${entries}
       manifestMap.testsTexts
     )};`,
     `export const textManifests = ${JSON.stringify(manifestMap.texts)};`,
+    `export const vocabularyManifests = ${JSON.stringify(manifestMap.vocabulary)};`,
     `export const blogLoaders = ${buildLoaderRecord("blogs")};`,
     `export const legalPageLoaders = ${buildLoaderRecord("legalPages")};`,
     `export const levelTextLoaders = ${buildLoaderRecord("levelsTexts")};`,
     `export const testTextLoaders = ${buildLoaderRecord("testsTexts")};`,
     `export const textLoaders = ${buildLoaderRecord("texts")};`,
+    `export const vocabularyLoaders = ${buildLoaderRecord("vocabulary")};`,
   ].join("\n");
 }
 
