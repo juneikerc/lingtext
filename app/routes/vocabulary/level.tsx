@@ -5,9 +5,12 @@ import { getVocabularyTextByLevel } from "~/lib/content/runtime";
 import { getSettings } from "~/services/db/settings";
 import { speak } from "~/utils/tts";
 import ProseContent from "~/components/ProseContent";
+import Breadcrumbs from "~/components/Breadcrumbs";
 
 const VALID_LEVELS = ["a1", "a2", "b1", "b2", "c1", "c2"] as const;
 type Level = (typeof VALID_LEVELS)[number];
+
+const SITE_URL = "https://lingtext.org";
 
 const vocabModules = import.meta.glob("../../data/vocabulary-*.json", {
   eager: false,
@@ -80,11 +83,17 @@ export async function loader({ params }: Route.LoaderArgs) {
 }
 
 export function meta({ loaderData }: Route.MetaArgs) {
-  const { vocabularyText } = loaderData;
+  const { vocabularyText, level } = loaderData;
+  const url = `${SITE_URL}/vocabulario/${level}`;
 
   return [
     { title: vocabularyText.title },
     { name: "description", content: vocabularyText.metaDescription },
+    {
+      tagName: "link",
+      rel: "canonical",
+      href: url,
+    },
   ];
 }
 
@@ -124,20 +133,12 @@ export default function VocabularyLevelPage({
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-3">
-                <Link
-                  to="/vocabulario"
-                  className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-6 py-3 text-gray-700 transition-colors duration-200 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-                >
-                  Todos los niveles
-                </Link>
-                <Link
-                  to="/"
-                  className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-6 py-3 text-gray-700 transition-colors duration-200 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-                >
-                  Volver al inicio
-                </Link>
-              </div>
+              <Breadcrumbs
+                items={[
+                  { label: "Vocabulario", href: "/vocabulario" },
+                  { label: `Nivel ${level.toUpperCase()}`, href: `/vocabulario/${level}` },
+                ]}
+              />
             </div>
           </div>
         </section>
@@ -290,7 +291,6 @@ export default function VocabularyLevelPage({
                 </div>
               </section>
             ))}
-
           </>
         )}
 
