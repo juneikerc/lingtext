@@ -857,9 +857,9 @@ export default function VocabularyIndexPage() {
                     <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 text-[#0F9EDA]">
                       {category.icon}
                     </div>
-                    <h4 className="mb-2 text-lg font-bold text-gray-900 transition-colors duration-200">
+                    <h3 className="mb-2 text-lg font-bold text-gray-900 transition-colors duration-200">
                       {category.title}
-                    </h4>
+                    </h3>
                     <p className="text-sm leading-relaxed text-gray-600">
                       {category.description}
                     </p>
@@ -915,7 +915,10 @@ export default function VocabularyIndexPage() {
 
               <h3>La ciencia detrás de la retención perfecta</h3>
               <p>
-                Entre las aplicaciones de referencia, <strong>Anki</strong>{" "}
+                Entre las aplicaciones de referencia,{" "}
+                <strong>
+                  <a href="/blog/rol-de-anki-ingles">Anki</a>
+                </strong>{" "}
                 destaca por ajustar los tiempos de repaso a tu propio ritmo.
                 Tras revisar una palabra, puedes valorar cuánto la recuerdas y
                 el sistema, usando un algoritmo ampliamente estudiado, programa
@@ -961,9 +964,13 @@ export default function VocabularyIndexPage() {
               </p>
               <ul>
                 <li>
-                  <strong>Lecturas adaptadas</strong> y artículos auténticos
-                  sirven para ver cómo el vocabulario aparece en contexto, lo
-                  cual refuerza su retención.
+                  <strong>
+                    <a href="/textos-en-ingles">
+                      Lecturas en inglés adaptadas por nivel
+                    </a>
+                  </strong>{" "}
+                  y artículos auténticos sirven para ver cómo el vocabulario
+                  aparece en contexto, lo cual refuerza su retención.
                 </li>
                 <li>
                   Llevar un <strong>cuaderno de palabras</strong> donde anotas

@@ -13,8 +13,7 @@ const nivelesLinks = [
 const recursosLinks = [
   { to: "/aprender-ingles-con-canciones", label: "Canciones" },
   { to: "/aprender-con-language-island", label: "Language Island" },
-  { to: "/1000-frases-en-ingles", label: "1000 Frases" },
-  { to: "/500-palabras-en-ingles", label: "500 Palabras" },
+  { to: "/vocabulario", label: "Vocabulario" },
   { to: "/comunidad", label: "Comunidad" },
   { to: "/blog", label: "Blog" },
 ];

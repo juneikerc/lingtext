@@ -1,6 +1,7 @@
 import type { Route } from "./+types/english-phrases";
 import { useCallback } from "react";
 import { Link } from "react-router";
+import Breadcrumbs from "~/components/Breadcrumbs";
 import data from "~/data/phrases.json";
 import { getSettings } from "~/services/db/settings";
 import { speak } from "~/utils/tts";
@@ -166,6 +167,15 @@ export default function EnglishPhrasesPage({
                   </p>
                 </div>
               </div>
+              <Breadcrumbs
+                items={[
+                  { label: "Vocabulario", href: "/vocabulario" },
+                  {
+                    label: "1000 frases en inglés",
+                    href: "/1000-frases-en-ingles",
+                  },
+                ]}
+              />
               <div className="flex flex-wrap gap-3">
                 <Link
                   to="/"

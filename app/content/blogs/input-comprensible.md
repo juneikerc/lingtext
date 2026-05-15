@@ -15,7 +15,7 @@ La comprensión del input comprensible es crucial para facilitar el proceso de a
 
 ### Definición y origen del input comprensible
 
-Este concepto fue introducido por Stephen Krashen durante las décadas de 1970 y 1980. La noción fundamental gira en torno a la idea de que los estudiantes adquieren un nuevo idioma de manera más efectiva cuando se enfrentan a un lenguaje que pueden entender, aunque sea ligeramente superior a su nivel actual. Esta exposición gradual permite la incorporación natural de nuevas estructuras y vocabulario.
+Este concepto fue introducido por Stephen Krashen durante las décadas de 1970 y 1980. La noción fundamental gira en torno a la idea de que los estudiantes adquieren un nuevo idioma de manera más efectiva cuando se enfrentan a un lenguaje que pueden entender, aunque sea ligeramente superior a su nivel actual. Esta exposición gradual permite la incorporación natural de nuevas estructuras y [vocabulario.](/vocabulario)
 
 ### La hipótesis del input de Stephen Krashen
 

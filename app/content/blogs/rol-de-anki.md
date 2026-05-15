@@ -7,7 +7,7 @@ image: "https://images.lingtext.org/rol-de-anki-en-el-aprendizaje-de-ingles.png"
 tags: ["Anki", "Repetición Espaciada", "Vocabulario", "Estrategias"]
 ---
 
-Anki es una aplicación muy utilizada para aprender inglés mediante tarjetas de repaso. Su enfoque en la repetición espaciada ayuda a mejorar la retención de vocabulario y frases importantes. El uso de Anki permite personalizar el contenido de las tarjetas según las necesidades del estudiante. Esto hace que el aprendizaje sea más eficiente y adaptado a cada persona, facilitando así el desarrollo de habilidades en el idioma.
+Anki es una aplicación muy utilizada para aprender inglés mediante tarjetas de repaso. Su enfoque en la repetición espaciada ayuda a mejorar la retención de [vocabulario](/vocabulario) y [frases importantes](/1000-frases-en-ingles). El uso de Anki permite personalizar el contenido de las tarjetas según las necesidades del estudiante. Esto hace que el aprendizaje sea más eficiente y adaptado a cada persona, facilitando así el desarrollo de habilidades en el idioma.
 
 ## Funcionamiento básico de Anki para aprender inglés
 

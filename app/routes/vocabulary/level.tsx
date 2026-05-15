@@ -107,6 +107,84 @@ export default function VocabularyLevelPage({
     await speak(text, settings.tts);
   }, []);
 
+  const onDownloadPdf = useCallback(async () => {
+    const [{ default: jsPDF }, { default: autoTable }] = await Promise.all([
+      import("jspdf"),
+      import("jspdf-autotable"),
+    ]);
+
+    const doc = new jsPDF({ unit: "pt", format: "a4" });
+    const pageWidth = doc.internal.pageSize.getWidth();
+    let cursorY = 56;
+
+    const drawWatermark = () => {
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(14);
+      doc.setTextColor(79, 70, 229);
+      doc.text("LINGTEXT.ORG", pageWidth - 40, 30, { align: "right" });
+      doc.setTextColor(17, 24, 39);
+    };
+
+    drawWatermark();
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(18);
+    doc.text(`Vocabulario Ingles Nivel ${level.toUpperCase()}`, 40, cursorY);
+    cursorY += 18;
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(11);
+    doc.setTextColor(75, 85, 99);
+    doc.text(vocabularyText.mainHeading, 40, cursorY);
+    cursorY += 18;
+
+    doc.setTextColor(17, 24, 39);
+
+    categories.forEach((category, index) => {
+      if (index > 0) cursorY += 8;
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(13);
+      doc.text(category.category, 40, cursorY);
+      cursorY += 8;
+
+      autoTable(doc, {
+        startY: cursorY,
+        head: [["Palabra", "Traduccion", "Oracion", "Traduccion oracion"]],
+        body: category.vocabulary.map((item) => [
+          item.word || "No disponible",
+          item.word_in_spanish || "No disponible",
+          item.sentence || "No disponible",
+          item.sentence_spanish || "No disponible",
+        ]),
+        margin: { left: 40, right: 40 },
+        styles: { font: "helvetica", fontSize: 9, cellPadding: 6 },
+        headStyles: {
+          fillColor: [249, 250, 251],
+          textColor: [17, 24, 39],
+          fontStyle: "bold",
+        },
+        bodyStyles: { textColor: [17, 24, 39] },
+        theme: "grid",
+        didDrawPage: () => {
+          drawWatermark();
+        },
+      });
+
+      const finalY = (doc as unknown as { lastAutoTable?: { finalY: number } })
+        .lastAutoTable?.finalY;
+      cursorY = (finalY ?? cursorY) + 12;
+
+      if (cursorY > doc.internal.pageSize.getHeight() - 80) {
+        doc.addPage();
+        drawWatermark();
+        cursorY = 48;
+      }
+    });
+
+    doc.save(`vocabulario-ingles-${level}.pdf`);
+  }, [categories, level, vocabularyText.mainHeading]);
+
   const hasVocabulary = categories.length > 0;
   const totalWords = categories.reduce(
     (sum, cat) => sum + cat.vocabulary.length,
@@ -136,9 +214,22 @@ export default function VocabularyLevelPage({
               <Breadcrumbs
                 items={[
                   { label: "Vocabulario", href: "/vocabulario" },
-                  { label: `Nivel ${level.toUpperCase()}`, href: `/vocabulario/${level}` },
+                  {
+                    label: `Nivel ${level.toUpperCase()}`,
+                    href: `/vocabulario/${level}`,
+                  },
                 ]}
               />
+
+              {hasVocabulary && (
+                <button
+                  type="button"
+                  onClick={onDownloadPdf}
+                  className="inline-flex items-center justify-center self-start rounded-lg bg-[#0F9EDA] px-6 py-3 font-medium text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                >
+                  Descargar vocabulario {level.toUpperCase()} en PDF
+                </button>
+              )}
             </div>
           </div>
         </section>

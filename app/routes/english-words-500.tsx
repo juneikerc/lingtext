@@ -1,6 +1,7 @@
 import type { Route } from "./+types/english-words-500";
 import { useCallback } from "react";
 import { Link } from "react-router";
+import Breadcrumbs from "~/components/Breadcrumbs";
 import data from "~/data/1000-words.json";
 import { getSettings } from "~/services/db/settings";
 import { speak } from "~/utils/tts";
@@ -242,6 +243,16 @@ export default function EnglishWords500Page({
                   </p>
                 </div>
               </div>
+
+              <Breadcrumbs
+                items={[
+                  { label: "Vocabulario", href: "/vocabulario" },
+                  {
+                    label: "500 palabras en inglés",
+                    href: "/500-palabras-en-ingles",
+                  },
+                ]}
+              />
 
               <div className="flex flex-wrap gap-3">
                 <Link

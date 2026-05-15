@@ -49,7 +49,7 @@ Implementar la lectura intensiva en el aula requiere de un enfoque metódico y e
 Una estrategia efectiva incluye la formulación de preguntas específicas que fomenten la comprensión del texto. Las preguntas pueden variar desde opciones de respuesta cerrada hasta preguntas abiertas que inviten a la discusión. Esto no solo ayuda a los estudiantes a reflexionar sobre la información presentada, sino que también les permite practicar la expresión de ideas y opiniones.
 
 - Utilizar técnicas de subrayado y anotaciones en los márgenes. Esto anima a los estudiantes a interactuar con el texto de manera activa.
-- Incorporar actividades de deducción de significado a partir del contexto. Estas actividades son útiles para desarrollar habilidades lingüísticas y facilitar el aprendizaje del vocabulario.
+- Incorporar actividades de deducción de significado a partir del contexto. Estas actividades son útiles para desarrollar habilidades lingüísticas y facilitar el [aprendizaje del vocabulario](/vocabulario).
 - Fomentar la reorganización de la información leída a través de resúmenes o presentaciones grupales. Estas dinámicas permiten a los estudiantes compartir su comprensión y escucharse mutuamente.
 
 Crear un ambiente de apoyo es crucial. Se pueden introducir sesiones cortas de lectura, junto con pausas estratégicas para discutir puntos clave del texto. Esto ayuda a mantener la atención y a evitar la fatiga mental que a veces puede surgir en la lectura intensiva. Promover el uso de diccionarios y herramientas digitales también facilita el proceso de aprendizaje, pues permite a los estudiantes buscar el significado de palabras o expresiones que no conocen.
