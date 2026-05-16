@@ -190,6 +190,13 @@ export default function VocabularyLevelPage({
     (sum, cat) => sum + cat.vocabulary.length,
     0
   );
+  const currentLevelIndex = VALID_LEVELS.indexOf(level as Level);
+  const previousLevel =
+    currentLevelIndex > 0 ? VALID_LEVELS[currentLevelIndex - 1] : undefined;
+  const nextLevel =
+    currentLevelIndex >= 0 && currentLevelIndex < VALID_LEVELS.length - 1
+      ? VALID_LEVELS[currentLevelIndex + 1]
+      : undefined;
 
   return (
     <>
@@ -382,6 +389,85 @@ export default function VocabularyLevelPage({
                 </div>
               </section>
             ))}
+
+            <section className="relative overflow-hidden border-b border-gray-200 bg-gray-50 py-12 sm:py-16">
+              <div className="mx-auto max-w-6xl px-6">
+                <div className="mb-6 max-w-3xl">
+                  <h2 className="text-2xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
+                    Continúa con vocabulario en inglés por niveles
+                  </h2>
+                  <p className="mt-3 text-gray-600">
+                    Avanza al siguiente nivel cuando ya reconozcas la mayoría de
+                    estas palabras, o vuelve al nivel anterior si necesitas
+                    reforzar vocabulario básico.
+                  </p>
+                </div>
+
+                <div className="grid gap-4 md:grid-cols-3">
+                  {previousLevel ? (
+                    <Link
+                      to={`/vocabulario/${previousLevel}`}
+                      className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition-colors duration-200 hover:border-[#0F9EDA]/30 hover:bg-[#0F9EDA]/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50"
+                    >
+                      <span className="text-sm font-medium text-gray-500">
+                        Nivel anterior
+                      </span>
+                      <span className="mt-2 block text-xl font-semibold text-gray-900">
+                        Vocabulario {previousLevel.toUpperCase()}
+                      </span>
+                    </Link>
+                  ) : null}
+
+                  <Link
+                    to="/vocabulario"
+                    className="rounded-2xl border border-[#0F9EDA]/20 bg-white p-5 shadow-sm transition-colors duration-200 hover:border-[#0F9EDA]/40 hover:bg-[#0F9EDA]/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50"
+                  >
+                    <span className="text-sm font-medium text-[#0F9EDA]">
+                      Índice principal
+                    </span>
+                    <span className="mt-2 block text-xl font-semibold text-gray-900">
+                      Ver todos los niveles
+                    </span>
+                  </Link>
+
+                  {nextLevel ? (
+                    <Link
+                      to={`/vocabulario/${nextLevel}`}
+                      className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition-colors duration-200 hover:border-[#0F9EDA]/30 hover:bg-[#0F9EDA]/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50"
+                    >
+                      <span className="text-sm font-medium text-gray-500">
+                        Siguiente nivel
+                      </span>
+                      <span className="mt-2 block text-xl font-semibold text-gray-900">
+                        Vocabulario {nextLevel.toUpperCase()}
+                      </span>
+                    </Link>
+                  ) : null}
+                </div>
+
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {VALID_LEVELS.map((entry) =>
+                    entry === level ? (
+                      <span
+                        key={entry}
+                        aria-current="page"
+                        className="inline-flex items-center rounded-full border border-[#0F9EDA] bg-[#0F9EDA] px-4 py-2 text-sm font-semibold text-white"
+                      >
+                        {entry.toUpperCase()}
+                      </span>
+                    ) : (
+                      <Link
+                        key={entry}
+                        to={`/vocabulario/${entry}`}
+                        className="inline-flex items-center rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 transition-colors duration-200 hover:border-[#0F9EDA]/30 hover:text-[#0F9EDA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50"
+                      >
+                        {entry.toUpperCase()}
+                      </Link>
+                    )
+                  )}
+                </div>
+              </div>
+            </section>
           </>
         )}
 

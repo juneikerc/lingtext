@@ -81,24 +81,24 @@ export default function VocabularyIndexPage() {
 
               <div className="mt-6 max-w-2xl space-y-4 text-lg leading-relaxed text-gray-600">
                 <p>
-                  Dominar el idioma de Shakespeare no es una cuestión de
-                  memorizar de principio a fin un diccionario, sino de elegir
-                  con intención aquellas palabras que nos acercan más al
-                  objetivo.
+                  Aprender vocabulario en inglés no consiste en acumular
+                  palabras sin orden, sino en entender cuáles necesitas primero,
+                  cómo usarlas en contexto y cuándo dar el salto a términos más
+                  precisos.
                 </p>
                 <p>
-                  Aquí encontrarás las estrategias, recursos y métodos más
-                  útiles para que tu aprendizaje del inglés avance mucho más
-                  rápido, sin verte estancado repasando palabras poco prácticas.
+                  Esta guía te ayuda a elegir un camino: empezar por palabras de
+                  alta frecuencia, avanzar según tu nivel y conectar cada nueva
+                  palabra con ejemplos, lectura y práctica real.
                 </p>
               </div>
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                 <Link
-                  to="/vocabulario/a1"
+                  to="/500-palabras-en-ingles"
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#0F9EDA] px-8 py-4 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#0D8EC4] hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 >
-                  Empieza con A1
+                  Empieza con vocabulario frecuente
                   <svg
                     className="h-4 w-4"
                     fill="none"
@@ -112,12 +112,6 @@ export default function VocabularyIndexPage() {
                       strokeWidth={2}
                     />
                   </svg>
-                </Link>
-                <Link
-                  to="/tests/a1"
-                  className="inline-flex items-center justify-center rounded-xl border border-[#0F9EDA]/20 bg-white px-8 py-4 text-sm font-semibold text-[#0F9EDA] transition-colors duration-200 hover:border-[#0F9EDA]/40 hover:bg-[#0F9EDA]/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-                >
-                  Haz un test de nivel
                 </Link>
               </div>
 
@@ -420,7 +414,7 @@ export default function VocabularyIndexPage() {
                 <p>
                   Las{" "}
                   <strong className="font-semibold text-gray-900">
-                    1.000 palabras de alta frecuencia
+                    500 palabras más usadas en inglés
                   </strong>{" "}
                   son un ejemplo claro de herramienta eficaz para enfocar el
                   estudio. Se trata de palabras seleccionadas porque se usan
@@ -431,7 +425,7 @@ export default function VocabularyIndexPage() {
                   elegidas reflejan genuinamente la realidad del inglés actual.
                   Este vocabulario conforma aproximadamente el{" "}
                   <strong className="font-semibold text-gray-900">
-                    70 % del idioma
+                    60 % del idioma
                   </strong>{" "}
                   que encontrarás en la mayoría de textos y situaciones
                   cotidianas, lo que otorga confianza al proceso y ahorra mucho
@@ -447,7 +441,7 @@ export default function VocabularyIndexPage() {
                     Muestra de las primeras 20 palabras
                   </p>
                   <span className="rounded-full border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 px-3 py-1 text-xs font-semibold text-[#0F9EDA]">
-                    1.000 palabras
+                    500 palabras
                   </span>
                 </div>
                 <div className="overflow-x-auto">
