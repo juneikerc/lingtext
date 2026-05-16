@@ -5,6 +5,7 @@ import {
   getTextBySlug,
 } from "~/lib/content/runtime";
 import { formatSlug } from "~/helpers/formatSlug";
+import Breadcrumbs from "~/components/Breadcrumbs";
 import ProseContent from "~/components/ProseContent";
 import { Link } from "react-router";
 import { useEffect, useMemo, useState } from "react";
@@ -229,27 +230,20 @@ export default function Level({ loaderData }: Route.ComponentProps) {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="mb-8">
-            <Link
-              to="/"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-[#0F9EDA] transition-colors duration-200"
-            >
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="m15 18-6-6 6-6"
-                />
-              </svg>
-              Volver al inicio
-            </Link>
-          </nav>
+          <div className="mb-8">
+            <Breadcrumbs
+              items={[
+                {
+                  label: "artículos en inglés",
+                  href: "/textos-en-ingles",
+                },
+                {
+                  label: `lecturas de nivel ${levelText.level}`,
+                  href: `/levels/${levelText.level.toLowerCase()}`,
+                },
+              ]}
+            />
+          </div>
 
           <div className="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-[#0F9EDA] bg-[#0F9EDA]/10 rounded-full border border-[#0F9EDA]/20">
             <span className="w-2 h-2 bg-[#0F9EDA] rounded-full mr-2.5"></span>
