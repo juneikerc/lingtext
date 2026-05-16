@@ -75,8 +75,8 @@ export default function VocabularyIndexPage() {
               </Link>
 
               <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-                Vocabulario en Inglés, Palabras más usadas y lista según tu{" "}
-                <span className="text-[#0F9EDA]">nivel</span>
+                Vocabulario en inglés: palabras más usadas y listas por{" "}
+                <span className="text-[#0F9EDA]">nivel (A1 a C2)</span>
               </h1>
 
               <div className="mt-6 max-w-2xl space-y-4 text-lg leading-relaxed text-gray-600">

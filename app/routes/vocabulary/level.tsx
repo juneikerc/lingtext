@@ -204,6 +204,16 @@ export default function VocabularyLevelPage({
         <section className="relative overflow-hidden border-b border-gray-200 bg-white py-16 sm:py-20">
           <div className="mx-auto max-w-6xl px-6">
             <div className="flex flex-col gap-6">
+              <Breadcrumbs
+                items={[
+                  { label: "Vocabulario", href: "/vocabulario" },
+                  {
+                    label: `Nivel ${level.toUpperCase()}`,
+                    href: `/vocabulario/${level}`,
+                  },
+                ]}
+              />
+
               <div className="inline-flex items-center gap-3 self-start rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700">
                 <span className="h-2 w-2 rounded-full bg-[#0F9EDA]" />
                 Vocabulario nivel {level.toUpperCase()}
@@ -217,16 +227,6 @@ export default function VocabularyLevelPage({
                   <p>{vocabularyText.intro}</p>
                 </div>
               </div>
-
-              <Breadcrumbs
-                items={[
-                  { label: "Vocabulario", href: "/vocabulario" },
-                  {
-                    label: `Nivel ${level.toUpperCase()}`,
-                    href: `/vocabulario/${level}`,
-                  },
-                ]}
-              />
 
               {hasVocabulary && (
                 <button
