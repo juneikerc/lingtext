@@ -44,6 +44,24 @@ const defaultSettings: ExtensionSettings = {
   hideNativeCc: true,
 };
 
+function readNativeCaptionsActive(): boolean {
+  const button = document.querySelector<HTMLElement>(".ytp-subtitles-button");
+  if (!button) {
+    return false;
+  }
+
+  const ariaPressed = button.getAttribute("aria-pressed");
+  if (ariaPressed === "true") {
+    return true;
+  }
+
+  if (ariaPressed === "false") {
+    return false;
+  }
+
+  return button.classList.contains("ytp-button-active");
+}
+
 export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const transitionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
@@ -60,6 +78,7 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
   const [transcriptCues, setTranscriptCues] = useState<SubtitleCue[]>([]);
   const [useTranscript, setUseTranscript] = useState(false);
 
+  const [nativeCaptionsActive, setNativeCaptionsActive] = useState(false);
   const [currentSubtitle, setCurrentSubtitle] = useState("");
   const [displayedSubtitle, setDisplayedSubtitle] = useState("");
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -153,6 +172,54 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
   }, []);
 
   useEffect(() => {
+    if (window.location.pathname !== "/watch") {
+      setNativeCaptionsActive(false);
+      return;
+    }
+
+    let rafId: number | null = null;
+
+    const update = () => {
+      if (rafId !== null) {
+        return;
+      }
+
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
+        setNativeCaptionsActive(readNativeCaptionsActive());
+      });
+    };
+
+    const target = document.body || document.documentElement;
+    if (!target) {
+      update();
+      return;
+    }
+
+    const observer = new MutationObserver(update);
+    observer.observe(target, {
+      attributes: true,
+      attributeFilter: ["aria-pressed", "class", "style", "hidden"],
+      childList: true,
+      subtree: true,
+    });
+
+    const intervalId = window.setInterval(update, 500);
+    window.addEventListener("yt-navigate-finish", update as EventListener);
+    update();
+
+    return () => {
+      observer.disconnect();
+      window.clearInterval(intervalId);
+      window.removeEventListener("yt-navigate-finish", update as EventListener);
+
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
+    };
+  }, [videoId]);
+
+  useEffect(() => {
     if (!videoId || window.location.pathname !== "/watch") {
       setTranscriptCues([]);
       setUseTranscript(false);
@@ -201,12 +268,18 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
   }, [videoId]);
 
   useEffect(() => {
-    if (!useTranscript || transcriptCues.length === 0) {
+    if (
+      !useTranscript ||
+      transcriptCues.length === 0 ||
+      !nativeCaptionsActive
+    ) {
+      setCurrentSubtitle("");
       return;
     }
 
     const video = document.querySelector<HTMLVideoElement>("video");
     if (!video) {
+      setCurrentSubtitle("");
       return;
     }
 
@@ -219,8 +292,12 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
       if (index !== -1 && index !== lastIndex) {
         lastIndex = index;
         setCurrentSubtitle(transcriptCues[index].text);
-      } else if (index === -1 && lastIndex !== -1) {
-        lastIndex = -1;
+      }
+
+      if (index === -1) {
+        if (lastIndex !== -1) {
+          lastIndex = -1;
+        }
         setCurrentSubtitle("");
       }
 
@@ -232,7 +309,7 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
     return () => {
       cancelAnimationFrame(rafId);
     };
-  }, [useTranscript, transcriptCues]);
+  }, [nativeCaptionsActive, useTranscript, transcriptCues]);
 
   useEffect(() => {
     if (useTranscript || window.location.pathname !== "/watch") {
@@ -249,6 +326,12 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
 
       rafId = requestAnimationFrame(() => {
         rafId = null;
+
+        if (!nativeCaptionsActive) {
+          cachedText = "";
+          setCurrentSubtitle("");
+          return;
+        }
 
         const segments = document.querySelectorAll(
           ".ytp-caption-window-container .ytp-caption-segment"
@@ -289,7 +372,7 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
         cancelAnimationFrame(rafId);
       }
     };
-  }, [useTranscript, videoId]);
+  }, [nativeCaptionsActive, useTranscript, videoId]);
 
   useEffect(() => {
     if (currentSubtitle === displayedSubtitle) {
@@ -340,6 +423,7 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
     const shouldHide =
       settings.hideNativeCc &&
       window.location.pathname === "/watch" &&
+      nativeCaptionsActive &&
       Boolean(currentSubtitle || displayedSubtitle);
 
     setNativeCcHidden(shouldHide);
@@ -347,7 +431,12 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
     return () => {
       setNativeCcHidden(false);
     };
-  }, [settings.hideNativeCc, currentSubtitle, displayedSubtitle]);
+  }, [
+    settings.hideNativeCc,
+    nativeCaptionsActive,
+    currentSubtitle,
+    displayedSubtitle,
+  ]);
 
   const handleWordClick = useCallback(
     async (word: string, lower: string, x: number, y: number) => {
