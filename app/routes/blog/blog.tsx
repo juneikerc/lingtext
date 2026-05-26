@@ -2,6 +2,15 @@ import type { Route } from "./+types/blog";
 import { getBlogBySlug } from "~/lib/content/runtime";
 import ProseContent from "~/components/ProseContent";
 
+const dateFormatter = new Intl.DateTimeFormat("es", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+
+const formatBlogDate = (date: string) =>
+  dateFormatter.format(new Date(`${date}T00:00:00`));
+
 export async function loader({ params }: Route.LoaderArgs) {
   const blog = await getBlogBySlug(params.slug ?? "");
   if (!blog) {
@@ -39,6 +48,14 @@ export function meta({ loaderData }: Route.MetaArgs) {
     {
       property: "og:type",
       content: "article",
+    },
+    {
+      property: "article:published_time",
+      content: blog.createdAt,
+    },
+    {
+      property: "article:modified_time",
+      content: blog.updatedAt,
     },
     {
       property: "og:url",
@@ -110,6 +127,14 @@ export default function Blog({ loaderData }: Route.ComponentProps) {
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
             {blog.mainHeading}
           </h1>
+          <div className="mb-8 flex flex-wrap gap-x-4 gap-y-2 text-sm text-gray-600">
+            <time dateTime={blog.createdAt}>
+              Publicado: {formatBlogDate(blog.createdAt)}
+            </time>
+            <time dateTime={blog.updatedAt}>
+              Actualizado: {formatBlogDate(blog.updatedAt)}
+            </time>
+          </div>
           <img
             crossOrigin="anonymous"
             src={blog.image}

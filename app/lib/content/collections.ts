@@ -18,6 +18,8 @@ export const collectionDefinitions = [
       metaDescription: z.string(),
       image: z.string(),
       tags: z.array(z.string()),
+      createdAt: z.string(),
+      updatedAt: z.string(),
     }),
   },
   {

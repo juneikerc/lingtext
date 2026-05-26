@@ -24,6 +24,8 @@ export interface BlogManifestEntry extends BaseEntryManifest {
   metaDescription: string;
   image: string;
   tags: string[];
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface LevelTextManifestEntry extends BaseEntryManifest {
