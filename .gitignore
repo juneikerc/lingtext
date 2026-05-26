@@ -5,7 +5,7 @@
 /.react-router/
 /build/
 
-.env
+.env*
 .dev.vars
 
 a-prompt.txt
