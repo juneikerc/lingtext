@@ -13,7 +13,6 @@ const nivelesLinks = [
 const recursosLinks = [
   { to: "/aprender-ingles-con-canciones", label: "Canciones" },
   { to: "/aprender-con-language-island", label: "Language Island" },
-  { to: "/vocabulario", label: "Vocabulario" },
   { to: "/comunidad", label: "Comunidad" },
   { to: "/blog", label: "Blog" },
 ];
@@ -82,20 +81,25 @@ function NivelesLevelBadge({ label }: { label: string }) {
 export default function Header() {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const nivelesRef = useRef<HTMLDetailsElement>(null);
+  const [textosLevelsOpen, setTextosLevelsOpen] = useState(false);
+  const [mobileTextosLevelsOpen, setMobileTextosLevelsOpen] = useState(false);
+  const textosMenuRef = useRef<HTMLDivElement>(null);
   const recursosRef = useRef<HTMLDetailsElement>(null);
 
   // Close mobile menu on route change
   useEffect(() => {
     setMobileOpen(false);
+    setTextosLevelsOpen(false);
+    setMobileTextosLevelsOpen(false);
+    recursosRef.current?.removeAttribute("open");
   }, [location.pathname]);
 
   // Close dropdowns when clicking outside
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       const target = e.target as Node;
-      if (nivelesRef.current && !nivelesRef.current.contains(target)) {
-        nivelesRef.current.removeAttribute("open");
+      if (textosMenuRef.current && !textosMenuRef.current.contains(target)) {
+        setTextosLevelsOpen(false);
       }
       if (recursosRef.current && !recursosRef.current.contains(target)) {
         recursosRef.current.removeAttribute("open");
@@ -106,6 +110,10 @@ export default function Header() {
   }, []);
 
   const isActive = (path: string) => location.pathname === path;
+  const isTextosActive =
+    isActive("/textos-en-ingles") || location.pathname.startsWith("/levels/");
+  const isVocabularioActive =
+    isActive("/vocabulario") || location.pathname.startsWith("/vocabulario/");
 
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/80">
@@ -127,13 +135,40 @@ export default function Header() {
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-1">
-            {/* Niveles dropdown */}
-            <details ref={nivelesRef} className="relative">
-              <summary className="flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-200 cursor-pointer list-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2">
-                Niveles
-                <ChevronIcon open={false} />
-              </summary>
-              <div className="absolute top-full left-0 mt-1 w-52 bg-white rounded-xl border border-gray-200 shadow-lg shadow-gray-200/50 py-1.5 z-50">
+            {/* Textos link with levels dropdown */}
+            <div ref={textosMenuRef} className="relative">
+              <div
+                className={`flex items-center rounded-lg transition-colors duration-200 ${
+                  isTextosActive
+                    ? "bg-[#0F9EDA]/5 text-[#0F9EDA]"
+                    : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                }`}
+              >
+                <Link
+                  to="/textos-en-ingles"
+                  className="px-3 py-2 text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2"
+                >
+                  Textos
+                </Link>
+                <button
+                  type="button"
+                  className="flex h-9 w-8 items-center justify-center rounded-r-lg transition-colors duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2"
+                  aria-label="Mostrar niveles de textos"
+                  aria-expanded={textosLevelsOpen}
+                  aria-controls="desktop-textos-levels"
+                  onClick={() => setTextosLevelsOpen((open) => !open)}
+                >
+                  <ChevronIcon open={textosLevelsOpen} />
+                </button>
+              </div>
+              <div
+                id="desktop-textos-levels"
+                className={`absolute top-full left-0 mt-1 w-52 rounded-xl border border-gray-200 bg-white py-1.5 shadow-lg shadow-gray-200/50 transition-all duration-200 z-50 ${
+                  textosLevelsOpen
+                    ? "visible translate-y-0 opacity-100"
+                    : "invisible -translate-y-1 opacity-0 pointer-events-none"
+                }`}
+              >
                 {nivelesLinks.map((link) => (
                   <Link
                     key={link.to}
@@ -149,19 +184,7 @@ export default function Header() {
                   </Link>
                 ))}
               </div>
-            </details>
-
-            {/* Textos link */}
-            <Link
-              to="/textos-en-ingles"
-              className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
-                isActive("/textos-en-ingles")
-                  ? "text-[#0F9EDA] bg-[#0F9EDA]/5"
-                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-              }`}
-            >
-              Textos
-            </Link>
+            </div>
 
             {/* Tests link */}
             <Link
@@ -173,6 +196,18 @@ export default function Header() {
               }`}
             >
               Tests
+            </Link>
+
+            {/* Vocabulario link */}
+            <Link
+              to="/vocabulario"
+              className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                isVocabularioActive
+                  ? "text-[#0F9EDA] bg-[#0F9EDA]/5"
+                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+              }`}
+            >
+              Vocabulario
             </Link>
 
             {/* Recursos dropdown */}
@@ -230,18 +265,45 @@ export default function Header() {
       {/* Mobile menu */}
       <div
         className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          mobileOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+          mobileOpen ? "max-h-[720px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <nav className="border-t border-gray-100 bg-white px-4 pb-4 pt-2">
           <div className="space-y-1">
-            {/* Mobile Niveles */}
-            <details className="group">
-              <summary className="flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors duration-200 cursor-pointer list-none">
-                Niveles
-                <ChevronIcon open={false} />
-              </summary>
-              <div className="ml-4 mt-1 space-y-1 border-l-2 border-gray-100 pl-3">
+            {/* Mobile Textos */}
+            <div>
+              <div
+                className={`flex items-center rounded-xl transition-colors duration-200 ${
+                  isTextosActive
+                    ? "bg-[#0F9EDA]/5 text-[#0F9EDA]"
+                    : "text-gray-700 hover:bg-gray-50"
+                }`}
+              >
+                <Link
+                  to="/textos-en-ingles"
+                  className="flex-1 px-4 py-3 text-sm font-medium transition-colors duration-200"
+                >
+                  Textos
+                </Link>
+                <button
+                  type="button"
+                  className="flex h-11 w-12 items-center justify-center rounded-r-xl transition-colors duration-200 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2"
+                  aria-label="Mostrar niveles de textos"
+                  aria-expanded={mobileTextosLevelsOpen}
+                  aria-controls="mobile-textos-levels"
+                  onClick={() => setMobileTextosLevelsOpen((open) => !open)}
+                >
+                  <ChevronIcon open={mobileTextosLevelsOpen} />
+                </button>
+              </div>
+              <div
+                id="mobile-textos-levels"
+                className={`ml-4 space-y-1 overflow-hidden border-l-2 border-gray-100 pl-3 transition-all duration-300 ${
+                  mobileTextosLevelsOpen
+                    ? "mt-1 max-h-96 opacity-100"
+                    : "mt-0 max-h-0 opacity-0 pointer-events-none"
+                }`}
+              >
                 {nivelesLinks.map((link) => (
                   <Link
                     key={link.to}
@@ -257,19 +319,7 @@ export default function Header() {
                   </Link>
                 ))}
               </div>
-            </details>
-
-            {/* Mobile Textos */}
-            <Link
-              to="/textos-en-ingles"
-              className={`block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 ${
-                isActive("/textos-en-ingles")
-                  ? "text-[#0F9EDA] bg-[#0F9EDA]/5"
-                  : "text-gray-700 hover:bg-gray-50"
-              }`}
-            >
-              Textos
-            </Link>
+            </div>
 
             {/* Mobile Tests */}
             <Link
@@ -281,6 +331,18 @@ export default function Header() {
               }`}
             >
               Tests
+            </Link>
+
+            {/* Mobile Vocabulario */}
+            <Link
+              to="/vocabulario"
+              className={`block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 ${
+                isVocabularioActive
+                  ? "text-[#0F9EDA] bg-[#0F9EDA]/5"
+                  : "text-gray-700 hover:bg-gray-50"
+              }`}
+            >
+              Vocabulario
             </Link>
 
             {/* Mobile Recursos */}

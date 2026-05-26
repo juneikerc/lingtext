@@ -3,7 +3,7 @@ slug: "mejor-manera-aprender-vocabulario-ingles"
 title: "Mejor manera de aprender vocabulario en inglés | Método práctico"
 mainHeading: "¿Cuál es la mejor manera de aprender vocabulario en inglés?"
 metaDescription: "Aprende una estrategia simple para memorizar vocabulario en inglés, repasarlo con Anki y consolidarlo con lectura, contexto y práctica real."
-image: "[https://images.lingtext.org/aprender-vocabulario.webp](https://images.lingtext.org/aprender-vocabulario.webp)"
+image: "https://images.lingtext.org/aprender-vocabulario.webp"
 tags: ["Vocabulario", "Anki", "Lectura", "Estrategias"]
 createdAt: "2026-05-25"
 updatedAt: "2026-05-25"
