@@ -1,8 +1,138 @@
 import { Link } from "react-router";
 import { allVocabularyManifests } from "~/lib/content/runtime";
-import highFreqWordsData from "~/data/1000-words.json";
 
 const SITE_URL = "https://lingtext.org";
+
+type HighFrequencyWordPreview = {
+  index: string;
+  word: string;
+  definition: string;
+  example_sentence: string;
+};
+
+const HIGH_FREQUENCY_WORD_PREVIEW: HighFrequencyWordPreview[] = [
+  {
+    index: "1",
+    word: "have",
+    definition: "1. (v.) Tener.\n2. (v.) Haber.",
+    example_sentence: "I have two dogs and a cat.",
+  },
+  {
+    index: "2",
+    word: "food",
+    definition: "1. (sus.) Comida, alimento",
+    example_sentence: "What is your favorite food?",
+  },
+  {
+    index: "3",
+    word: "buy",
+    definition: "1. (v.) Comprar.\n2. (v.) Creer, aceptar.",
+    example_sentence: "Johnathan needs to buy new pants.",
+  },
+  {
+    index: "4",
+    word: "store",
+    definition:
+      "1. (sus.) Tienda, establecimiento comercial.\n2. (v.) Reservar, conservar.",
+    example_sentence: "My boyfriend is buying food at the store.",
+  },
+  {
+    index: "5",
+    word: "get",
+    definition: "1. (v.) Obtener, conseguir, adquirir.\n2. (v.) Recibir.",
+    example_sentence: "Michael is getting food from the store.",
+  },
+  {
+    index: "6",
+    word: "know",
+    definition: "1. (v.) Conocer, saber.\n2. (v.) Comprender.",
+    example_sentence: "Do you know where the restaurant is?",
+  },
+  {
+    index: "7",
+    word: "where",
+    definition: "1. (pron.) Donde.\n2. (adv.) Dónde.",
+    example_sentence: "Excuse me, do you know where the bus stop is?",
+  },
+  {
+    index: "8",
+    word: "well",
+    definition: "1. (adv.) Bien.",
+    example_sentence: "I'm doing well! Thanks for asking.",
+  },
+  {
+    index: "9",
+    word: "go",
+    definition: "1. (v.) Ir, irse.",
+    example_sentence: "Where are you going?",
+  },
+  {
+    index: "10",
+    word: "all",
+    definition: "1. (adj.) Todo.\n2. (adv.) Completamente, totalmente.",
+    example_sentence: "All of my family is from Canada.",
+  },
+  {
+    index: "11",
+    word: "good",
+    definition: "1. (adj.) Bueno, buen.",
+    example_sentence: "Wow! You're really good at sports.",
+  },
+  {
+    index: "12",
+    word: "think",
+    definition: "1. (v.) Pensar.\n2. (v.) Creer.",
+    example_sentence: "I thought you were good at math.",
+  },
+  {
+    index: "13",
+    word: "take",
+    definition: "1. (v.) Tomar, llevar.\n2. (v.) Aguantar.",
+    example_sentence: "Take this to my brother, please.",
+  },
+  {
+    index: "14",
+    word: "glass",
+    definition: "1. (sus.) Vidrio, cristal\n2. (sus.) Vaso",
+    example_sentence: "Would you like a glass of orange juice?",
+  },
+  {
+    index: "15",
+    word: "pocket",
+    definition: "1. (sus.) Bolsillo.\n2. (v.) Embolsar, meter en el bolsillo.",
+    example_sentence: "Gianna took his glasses off and put them in his pocket.",
+  },
+  {
+    index: "16",
+    word: "about",
+    definition: "1. (prep.) Acerca de, sobre.\n2. (prep.) Con respecto a.",
+    example_sentence: "This book is about World War II.",
+  },
+  {
+    index: "17",
+    word: "tell",
+    definition: "1. (v.) Contar.\n2. (v.) Decir.",
+    example_sentence: "He told me he really liked working with her.",
+  },
+  {
+    index: "18",
+    word: "whole",
+    definition: "1. (adj.) Entero, íntegro, completo.\n2. (sus.) Todo.",
+    example_sentence: "Isabella was nice the whole time.",
+  },
+  {
+    index: "19",
+    word: "life",
+    definition: "1. (sus.) Vida.",
+    example_sentence: "He's lived in Chicago his whole life.",
+  },
+  {
+    index: "20",
+    word: "today",
+    definition: "1. (adv.) Hoy.",
+    example_sentence: "What are you doing today?",
+  },
+];
 
 export function meta() {
   return [
@@ -455,47 +585,38 @@ export default function VocabularyIndexPage() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-100">
-                      {(
-                        highFreqWordsData as Array<{
-                          index: string;
-                          word: string;
-                          definition: string;
-                          example_sentence: string;
-                        }>
-                      )
-                        .slice(0, 20)
-                        .map((item) => {
-                          const primaryDefinition = item.definition
-                            .split("\n")
-                            .map((l) => l.trim())
-                            .find(Boolean)
-                            ?.replace(/^\d+\.\s*/, "")
-                            .replace(/\([^)]*\)\s*/g, "")
-                            .replace(/\.$/, "")
-                            .trim();
+                      {HIGH_FREQUENCY_WORD_PREVIEW.map((item) => {
+                        const primaryDefinition = item.definition
+                          .split("\n")
+                          .map((l) => l.trim())
+                          .find(Boolean)
+                          ?.replace(/^\d+\.\s*/, "")
+                          .replace(/\([^)]*\)\s*/g, "")
+                          .replace(/\.$/, "")
+                          .trim();
 
-                          return (
-                            <tr
-                              key={item.index}
-                              className="transition-colors duration-150 hover:bg-[#0F9EDA]/5"
-                            >
-                              <td className="px-4 py-3 text-center text-xs text-gray-400">
-                                {item.index}
-                              </td>
-                              <td className="px-4 py-3">
-                                <span className="font-semibold text-gray-900">
-                                  {item.word}
-                                </span>
-                              </td>
-                              <td className="px-4 py-3 text-gray-700">
-                                {primaryDefinition ?? "—"}
-                              </td>
-                              <td className="px-4 py-3 text-gray-600">
-                                {item.example_sentence}
-                              </td>
-                            </tr>
-                          );
-                        })}
+                        return (
+                          <tr
+                            key={item.index}
+                            className="transition-colors duration-150 hover:bg-[#0F9EDA]/5"
+                          >
+                            <td className="px-4 py-3 text-center text-xs text-gray-400">
+                              {item.index}
+                            </td>
+                            <td className="px-4 py-3">
+                              <span className="font-semibold text-gray-900">
+                                {item.word}
+                              </span>
+                            </td>
+                            <td className="px-4 py-3 text-gray-700">
+                              {primaryDefinition ?? "—"}
+                            </td>
+                            <td className="px-4 py-3 text-gray-600">
+                              {item.example_sentence}
+                            </td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </table>
                 </div>

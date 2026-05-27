@@ -6,6 +6,44 @@ import data from "~/data/phrases.json";
 import { getSettings } from "~/services/db/settings";
 import { speak } from "~/utils/tts";
 
+type Phrase = {
+  phrase: string;
+  translation: string;
+  category: string;
+};
+
+type PhraseGroup = {
+  category: string;
+  phrases: { phrase: string; translation: string }[];
+};
+
+const phrasesByCategory = (data as Phrase[]).reduce<PhraseGroup[]>(
+  (groups, item) => {
+    const group = groups.find((entry) => entry.category === item.category);
+
+    if (group) {
+      group.phrases.push({
+        phrase: item.phrase,
+        translation: item.translation,
+      });
+      return groups;
+    }
+
+    groups.push({
+      category: item.category,
+      phrases: [
+        {
+          phrase: item.phrase,
+          translation: item.translation,
+        },
+      ],
+    });
+
+    return groups;
+  },
+  []
+);
+
 export function meta(_args: Route.MetaArgs) {
   return [
     { title: "1000 frases mas usadas en ingles | + sonido y traducción" },
@@ -24,29 +62,7 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
-export function loader() {
-  const categories = new Set(data.map((item) => item.category));
-  const newData: {
-    category: string;
-    phrases: { phrase: string; translation: string }[];
-  }[] = [];
-  categories.forEach((category) => {
-    const elems = data.filter((i) => i.category === category);
-
-    newData.push({
-      category,
-      phrases: elems,
-    });
-  });
-
-  return newData;
-}
-
-export default function EnglishPhrasesPage({
-  loaderData,
-}: Route.ComponentProps) {
-  const phrasesByCategory = loaderData;
-
+export default function EnglishPhrasesPage() {
   const onSpeak = useCallback(async (phrase: string) => {
     const settings = await getSettings();
     await speak(phrase, settings.tts);
