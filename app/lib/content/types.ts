@@ -70,6 +70,10 @@ export interface VocabularyManifestEntry extends BaseEntryManifest {
   metaDescription: string;
   intro: string;
   level: string;
+  ankiDeck?: {
+    url: string;
+    price: string;
+  };
 }
 
 export type BlogEntry = BlogManifestEntry & ContentPayload;

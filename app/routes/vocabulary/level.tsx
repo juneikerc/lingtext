@@ -55,6 +55,63 @@ function PlayIcon({ className }: { className?: string }) {
   );
 }
 
+function AnkiIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      className={className ?? "h-4 w-4"}
+      aria-hidden="true"
+    >
+      <rect
+        x="3"
+        y="3"
+        width="18"
+        height="18"
+        rx="4"
+        fill="currentColor"
+        opacity="0.18"
+      />
+      <path
+        d="m12 5.5 1.72 4.78 5.08.16-4.01 3.13 1.42 4.88L12 15.57l-4.21 2.88 1.42-4.88-4.01-3.13 5.08-.16L12 5.5Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function PdfIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      className={className ?? "h-4 w-4"}
+      aria-hidden="true"
+    >
+      <path
+        d="M6 3.5h8l4 4V20a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 5 20V5A1.5 1.5 0 0 1 6.5 3.5Z"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M14 3.5V8h4"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M7.75 15.75v-3.5h1.18c.76 0 1.22.42 1.22 1.06s-.46 1.05-1.22 1.05h-1.1m4.03 1.39v-3.5h.98c1.02 0 1.68.66 1.68 1.75s-.66 1.75-1.68 1.75h-.98Zm4.17 0v-3.5h2.05m-2.05 1.56h1.72"
+        stroke="currentColor"
+        strokeWidth="1.1"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export async function loader({ params }: Route.LoaderArgs) {
   const level = params.level?.toLowerCase() ?? "";
 
@@ -229,13 +286,26 @@ export default function VocabularyLevelPage({
               </div>
 
               {hasVocabulary && (
-                <button
-                  type="button"
-                  onClick={onDownloadPdf}
-                  className="inline-flex items-center justify-center self-start rounded-lg bg-[#0F9EDA] px-6 py-3 font-medium text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-                >
-                  Descargar vocabulario {level.toUpperCase()} en PDF
-                </button>
+                <div className="flex flex-wrap gap-3">
+                  {vocabularyText.ankiDeck ? (
+                    <a
+                      href={vocabularyText.ankiDeck.url}
+                      rel="nofollow"
+                      className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#0F9EDA] px-6 py-3 font-medium text-white shadow-sm transition-colors duration-200 hover:bg-[#0D8EC4] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                    >
+                      <AnkiIcon className="h-5 w-5" />
+                      Mazo de Anki {vocabularyText.ankiDeck.price}
+                    </a>
+                  ) : null}
+                  <button
+                    type="button"
+                    onClick={onDownloadPdf}
+                    className="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-6 py-3 font-medium text-gray-700 shadow-sm transition-colors duration-200 hover:bg-gray-50 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                  >
+                    <PdfIcon className="h-5 w-5 text-[#0F9EDA]" />
+                    Descargar vocabulario {level.toUpperCase()} en PDF
+                  </button>
+                </div>
               )}
             </div>
           </div>

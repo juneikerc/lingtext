@@ -74,6 +74,12 @@ export const collectionDefinitions = [
       metaDescription: z.string(),
       intro: z.string(),
       level: z.enum(["a1", "a2", "b1", "b2", "c1", "c2"]),
+      ankiDeck: z
+        .object({
+          url: z.string().url(),
+          price: z.string(),
+        })
+        .optional(),
     }),
   },
 ] satisfies Array<CollectionDefinition<unknown>>;
