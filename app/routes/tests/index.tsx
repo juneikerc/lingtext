@@ -342,9 +342,9 @@ export default function TestsIndexPage({ loaderData }: Route.ComponentProps) {
 
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {levels.map((level) => (
-              <Link
+              <a
                 key={level.id}
-                to={`/tests/${level.id}`}
+                href={`/tests/${level.id}`}
                 className="group flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-200 hover:border-[#0F9EDA]/30 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 sm:p-8"
               >
                 <div className="mb-5 flex items-center justify-between">
@@ -383,7 +383,7 @@ export default function TestsIndexPage({ loaderData }: Route.ComponentProps) {
                     </span>
                   ))}
                 </div>
-              </Link>
+              </a>
             ))}
           </div>
         </div>

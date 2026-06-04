@@ -1,5 +1,4 @@
 import { Link } from "react-router";
-import { allVocabularyManifests } from "~/lib/content/runtime";
 
 const SITE_URL = "https://lingtext.org";
 
@@ -8,6 +7,15 @@ type HighFrequencyWordPreview = {
   word: string;
   definition: string;
   example_sentence: string;
+};
+
+type LevelCard = {
+  level: "a1" | "a2" | "b1" | "b2" | "c1" | "c2";
+  to: string;
+  heading: string;
+  description: string;
+  intro: string;
+  cta: string;
 };
 
 const HIGH_FREQUENCY_WORD_PREVIEW: HighFrequencyWordPreview[] = [
@@ -134,6 +142,68 @@ const HIGH_FREQUENCY_WORD_PREVIEW: HighFrequencyWordPreview[] = [
   },
 ];
 
+export const LEVEL_CARDS: LevelCard[] = [
+  {
+    level: "a1",
+    to: "/vocabulario/a1",
+    heading: "A1: vocabulario básico y esencial",
+    description:
+      "Principiante — Bases para empezar a entender y formar frases simples.",
+    intro:
+      "Incluye gramática básica, preposiciones, familia, escuela, casa, comida, tiempo, ropa, deportes y otras palabras frecuentes del día a día.",
+    cta: "Ver vocabulario →",
+  },
+  {
+    level: "a2",
+    to: "/vocabulario/a2",
+    heading: "A2: vocabulario práctico y cotidiano",
+    description:
+      "Elemental — Lenguaje útil para desenvolverte con más independencia.",
+    intro:
+      "Trabaja relaciones, ciudad, rutinas, restaurantes, trabajo, salud, compras, ocio, viajes, clima y frases útiles para situaciones habituales.",
+    cta: "Ver vocabulario →",
+  },
+  {
+    level: "b1",
+    to: "/vocabulario/b1",
+    heading: "B1: vocabulario intermedio y funcional",
+    description:
+      "Intermedio — Recursos para explicar, comparar y opinar con más soltura.",
+    intro:
+      "Reúne vocabulario sobre comunicación, trabajo, educación, tecnología, salud, viajes, sociedad, emociones, conectores y phrasal verbs comunes.",
+    cta: "Ver vocabulario →",
+  },
+  {
+    level: "b2",
+    to: "/vocabulario/b2",
+    heading: "B2: vocabulario más preciso y natural",
+    description:
+      "Intermedio alto — Léxico para debatir y tratar temas más complejos.",
+    intro:
+      "Incluye argumentación, negocios, educación, tecnología, bienestar, sostenibilidad, cultura y relaciones con mayor precisión y naturalidad.",
+    cta: "Ver vocabulario →",
+  },
+  {
+    level: "c1",
+    to: "/vocabulario/c1",
+    heading: "C1: vocabulario avanzado y profesional",
+    description:
+      "Avanzado — Precisión, flexibilidad y control en contextos exigentes.",
+    intro:
+      "Cubre pensamiento crítico, política, economía, liderazgo, ciencia, escritura académica, relaciones humanas, idioms y matices de registro.",
+    cta: "Ver vocabulario →",
+  },
+  {
+    level: "c2",
+    to: "/vocabulario/c2",
+    heading: "C2: vocabulario experto y matizado",
+    description:
+      "Competencia — Dominio refinado para ideas abstractas y registros altos.",
+    intro:
+      "Abarca retórica avanzada, derecho, economía, ciencia, literatura, filosofía, ética, lenguaje refinado y expresiones de alta competencia.",
+    cta: "Ver vocabulario →",
+  },
+];
 export function meta() {
   return [
     {
@@ -152,26 +222,7 @@ export function meta() {
   ];
 }
 
-const LEVELS = ["a1", "a2", "b1", "b2", "c1", "c2"] as const;
-
-const vocabModules = import.meta.glob("../../data/vocabulary-*.json");
-
-const LEVEL_DESCRIPTIONS: Record<string, string> = {
-  a1: "Principiante — Vocabulario básico y esencial",
-  a2: "Elemental — Vocabulario cotidiano y funcional",
-  b1: "Intermedio — Comunicación en situaciones reales",
-  b2: "Intermedio alto — Temas abstractos y especializados",
-  c1: "Avanzado — Precisión y matices en contextos complejos",
-  c2: "Competencia — Dominio cercano al nativo",
-};
-
 export default function VocabularyIndexPage() {
-  const availableLevels = new Set(
-    Object.keys(vocabModules)
-      .map((path) => path.match(/vocabulary-([a-z][0-9])\.json$/)?.[1])
-      .filter((level): level is string => Boolean(level))
-  );
-
   return (
     <>
       <div className="bg-white">
@@ -524,44 +575,34 @@ export default function VocabularyIndexPage() {
             <div className="mx-auto mb-12 max-w-3xl text-center">
               <div className="mb-6 inline-flex items-center rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm">
                 <span className="mr-2.5 h-2 w-2 rounded-full bg-[#0F9EDA]" />
-                Palabras de alta frecuencia
+                Palabras comunes
               </div>
+
               <h2 className="mb-6 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                Por dónde empezar: las palabras más utilizadas que debes conocer
+                Empieza con vocabulario de alta frecuencia
               </h2>
-              <div className="space-y-4 text-lg leading-relaxed text-gray-600">
-                <p>
-                  Sin duda, una de las dudas iniciales más comunes es por dónde
-                  arrancar y qué lista de palabras merece la pena priorizar. A
-                  veces, los métodos convencionales animan a memorizar largas
-                  secuencias de terminología sin hacer distinción, lo que puede
-                  acabar siendo una fuente de desánimo. En realidad, distinguir
-                  entre vocabulario frecuente y aquel menos útil puede marcar
-                  toda la diferencia. Por encima de todo, conviene centrarse en
-                  términos que realmente vas a encontrar en contextos
-                  habituales, y dejar los más raros para etapas posteriores.
-                </p>
-                <p>
-                  Las{" "}
-                  <strong className="font-semibold text-gray-900">
-                    500 palabras más usadas en inglés
-                  </strong>{" "}
-                  son un ejemplo claro de herramienta eficaz para enfocar el
-                  estudio. Se trata de palabras seleccionadas porque se usan
-                  ampliamente en distintos ámbitos, desde la conversación hasta
-                  escenarios profesionales. Lo interesante aquí es que su
-                  confección está basada en datos reales provenientes de
-                  conversaciones, prensa y literatura, por lo que las palabras
-                  elegidas reflejan genuinamente la realidad del inglés actual.
-                  Este vocabulario conforma aproximadamente el{" "}
-                  <strong className="font-semibold text-gray-900">
-                    60 % del idioma
-                  </strong>{" "}
-                  que encontrarás en la mayoría de textos y situaciones
-                  cotidianas, lo que otorga confianza al proceso y ahorra mucho
-                  esfuerzo.
-                </p>
-              </div>
+
+              <p className="mb-4 text-lg leading-relaxed text-gray-600">
+                Al aprender inglés, no todas las palabras tienen la misma
+                importancia. En lugar de memorizar listas largas y poco
+                prácticas, conviene empezar por el vocabulario que aparece con
+                más frecuencia en conversaciones, textos, noticias y situaciones
+                cotidianas.
+              </p>
+
+              <p className="text-lg leading-relaxed text-gray-600">
+                Las{" "}
+                <strong className="font-semibold text-gray-900">
+                  500 palabras más usadas en inglés
+                </strong>{" "}
+                son una base eficaz para avanzar más rápido. Al dominarlas,
+                puedes comprender una parte muy amplia del idioma,
+                aproximadamente el{" "}
+                <strong className="font-semibold text-gray-900">
+                  60 % del inglés cotidiano
+                </strong>
+                , y estudiar con más confianza desde el principio.
+              </p>
             </div>
 
             <div className="mx-auto max-w-4xl">
@@ -570,10 +611,12 @@ export default function VocabularyIndexPage() {
                   <p className="text-sm font-semibold text-gray-900">
                     Muestra de las primeras 20 palabras
                   </p>
+
                   <span className="rounded-full border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 px-3 py-1 text-xs font-semibold text-[#0F9EDA]">
                     500 palabras
                   </span>
                 </div>
+
                 <div className="overflow-x-auto">
                   <table className="w-full min-w-[600px] text-left text-sm">
                     <thead>
@@ -584,6 +627,7 @@ export default function VocabularyIndexPage() {
                         <th className="px-4 py-3">Oración de ejemplo</th>
                       </tr>
                     </thead>
+
                     <tbody className="divide-y divide-gray-100">
                       {HIGH_FREQUENCY_WORD_PREVIEW.map((item) => {
                         const primaryDefinition = item.definition
@@ -603,14 +647,17 @@ export default function VocabularyIndexPage() {
                             <td className="px-4 py-3 text-center text-xs text-gray-400">
                               {item.index}
                             </td>
+
                             <td className="px-4 py-3">
                               <span className="font-semibold text-gray-900">
                                 {item.word}
                               </span>
                             </td>
+
                             <td className="px-4 py-3 text-gray-700">
                               {primaryDefinition ?? "—"}
                             </td>
+
                             <td className="px-4 py-3 text-gray-600">
                               {item.example_sentence}
                             </td>
@@ -654,110 +701,66 @@ export default function VocabularyIndexPage() {
                 <span className="mr-2.5 h-2 w-2 rounded-full bg-[#0F9EDA]" />
                 Por nivel
               </div>
+
               <h2 className="mb-6 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                Vocabulario según tu nivel:{" "}
+                Vocabulario en inglés por niveles:{" "}
                 <span className="text-[#0F9EDA]">
-                  El poder de la clasificación por niveles
+                  El poder de la clasificación.
                 </span>
               </h2>
-              <div className="space-y-4 text-lg leading-relaxed text-gray-600">
-                <p>
-                  Además, la lista de vocabulario asigna un nivel de dificultad
-                  a cada palabra, siguiendo el{" "}
-                  <strong className="font-semibold text-gray-900">MCER</strong>{" "}
-                  (Marco Común Europeo de Referencia para las Lenguas), lo que
-                  facilita enormemente la personalización del aprendizaje. Así,
-                  no te enfrentas prematuramente a términos que pueden resultar
-                  inalcanzables. Es decir, alguien que está empezando puede
-                  concentrarse en las palabras propias de los niveles A1 y A2 y,
-                  gradualmente, avanzar hasta el C1.
-                </p>
-                <p>
-                  Esta gradación protege tu motivación, ya que estudias
-                  vocabulario realmente útil e inmediatamente aplicable. Cada
-                  nivel está diseñado para que progreses con confianza,
-                  dominando primero lo esencial antes de dar el salto a
-                  conceptos más complejos.
-                </p>
-              </div>
+
+              <p className="mb-4 text-lg leading-relaxed text-gray-600">
+                Cada palabra está organizada según el{" "}
+                <strong className="font-semibold text-gray-900">MCER</strong>,
+                desde A1 hasta C1, para que estudies vocabulario adecuado a tu
+                etapa. Así evitas términos demasiado avanzados al principio y
+                puedes concentrarte primero en lo que realmente necesitas.
+              </p>
+
+              <p className="text-lg leading-relaxed text-gray-600">
+                Esta clasificación hace que el aprendizaje sea más claro y
+                motivador: empiezas con palabras esenciales, avanzas paso a paso
+                y construyes una base sólida antes de pasar a conceptos más
+                complejos.
+              </p>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {LEVELS.map((level) => {
-                const isAvailable = availableLevels.has(level);
-                const manifest = allVocabularyManifests.find(
-                  (entry) => entry.level === level
-                );
-
+              {LEVEL_CARDS.map((level) => {
                 return (
-                  <Link
-                    key={level}
-                    to={isAvailable ? `/vocabulario/${level}` : "#"}
-                    className={`group flex h-full flex-col rounded-2xl border p-6 transition-all duration-200 sm:p-8 ${
-                      isAvailable
-                        ? "border-gray-200 bg-white shadow-sm hover:border-[#0F9EDA]/30 hover:shadow-md"
-                        : "border-dashed border-gray-300 bg-gray-50 opacity-60"
-                    }`}
+                  <a
+                    key={level.level}
+                    href={level.to}
+                    className="group flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-200 hover:border-[#0F9EDA]/30 hover:shadow-md sm:p-8"
                   >
                     <div className="mb-5 flex items-center justify-between">
                       <span
-                        className={`inline-flex h-12 w-12 items-center justify-center rounded-xl border text-lg font-bold transition-colors duration-200 ${
-                          isAvailable
-                            ? "border-[#0F9EDA]/20 bg-[#0F9EDA]/10 text-[#0F9EDA] group-hover:border-[#0F9EDA] group-hover:bg-[#0F9EDA] group-hover:text-white"
-                            : "border-gray-200 bg-gray-100 text-gray-400"
-                        }`}
+                        className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 text-lg font-bold text-[#0F9EDA] transition-colors duration-200 group-hover:border-[#0F9EDA] group-hover:bg-[#0F9EDA] group-hover:text-white"
                       >
-                        {level.toUpperCase()}
+                        {level.level.toUpperCase()}
                       </span>
-                      {/* {!isAvailable && (
-                        <span className="text-xs font-medium text-gray-400">
-                          Próximamente
-                        </span>
-                      )} */}
-                      {isAvailable && (
-                        <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 text-gray-300 transition-colors duration-200 group-hover:border-[#0F9EDA]/30 group-hover:text-[#0F9EDA]">
-                          <svg
-                            className="h-5 w-5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              d="M9 5l7 7-7 7"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                            />
-                          </svg>
-                        </span>
-                      )}
                     </div>
+
                     <div>
                       <h3
-                        className={`text-xl font-bold transition-colors duration-200 ${
-                          isAvailable
-                            ? "text-gray-900 group-hover:text-[#0F9EDA]"
-                            : "text-gray-500"
-                        }`}
+                        className="text-xl font-bold text-gray-900 transition-colors duration-200 group-hover:text-[#0F9EDA]"
                       >
-                        {manifest?.mainHeading ??
-                          `Nivel ${level.toUpperCase()}`}
+                        {level.heading}
                       </h3>
+
                       <p className="mt-2 text-sm leading-relaxed text-gray-600">
-                        {LEVEL_DESCRIPTIONS[level]}
+                        {level.description}
                       </p>
                     </div>
-                    {manifest?.intro && (
-                      <p className="mt-3 line-clamp-2 text-sm text-gray-600">
-                        {manifest.intro}
-                      </p>
-                    )}
-                    {isAvailable && (
-                      <span className="mt-auto pt-5 text-sm font-semibold text-[#0F9EDA] transition-colors duration-200 group-hover:text-[#0D8EC4]">
-                        Ver vocabulario →
-                      </span>
-                    )}
-                  </Link>
+
+                    <p className="mt-3 line-clamp-2 text-sm text-gray-600">
+                      {level.intro}
+                    </p>
+
+                    <span className="mt-auto pt-5 text-sm font-semibold text-[#0F9EDA] transition-colors duration-200 group-hover:text-[#0D8EC4]">
+                      {level.cta}
+                    </span>
+                  </a>
                 );
               })}
             </div>
@@ -772,34 +775,42 @@ export default function VocabularyIndexPage() {
                 Por temáticas
               </div>
               <h2 className="mb-6 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                Vocabulario por temáticas:{" "}
+                Vocabulario en inglés por temas:{" "}
                 <span className="text-[#0F9EDA]">
                   aprende lo que realmente necesitas
                 </span>
               </h2>
               <div className="space-y-4 text-lg leading-relaxed text-gray-600">
                 <p>
-                  En la ruta hacia la fluidez, muchos han descubierto que
-                  agrupar palabras por temas ayuda a conectar el lenguaje con
-                  vivencias reales. Si las palabras se estudian en grupos
-                  temáticos, no sólo se recuerda mejor, sino que enseguida
-                  pueden aplicarse a situaciones similares. Por ejemplo, tener
-                  un conjunto de términos para el restaurante te vuelve más
-                  autónomo en ese contexto específico. De hecho, estudiar sin
-                  contexto es como querer armar un puzle sin imagen de
-                  referencia.
+                  En la ruta hacia la fluidez, estudiar vocabulario por temas
+                  ayuda a conectar el idioma con situaciones reales. Este
+                  enfoque no es casual: también se ha analizado en trabajos
+                  sobre{" "}
+                  <a
+                    href="https://escholarship.org/uc/item/5gh7006b"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-[#0F9EDA] underline underline-offset-4 hover:text-[#0D8EC4]"
+                  >
+                    aprendizaje de vocabulario en segundas lenguas
+                  </a>
+                  , que comparan distintas formas de organizar las palabras.
+                  Así, aprender términos sobre restaurantes, viajes o trabajo
+                  suele ser más útil que memorizar palabras sueltas sin
+                  contexto.
                 </p>
               </div>
             </div>
 
             <div className="mx-auto mb-12 max-w-3xl text-center">
               <h3 className="mb-2 text-xl font-bold text-gray-900">
-                Categorías esenciales para tu día a día
+                Categorías de vocabulario más útiles
               </h3>
               <p className="text-base text-gray-600">
                 Las siguientes áreas temáticas cubren muchos de los escenarios
                 en los que más frecuentemente se desenvuelven quienes estudian
-                inglés:
+                inglés, tanto en contextos cotidianos como académicos y
+                profesionales.
               </p>
             </div>
 
@@ -972,9 +983,9 @@ export default function VocabularyIndexPage() {
                     <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 text-[#0F9EDA]">
                       {category.icon}
                     </div>
-                    <h3 className="mb-2 text-lg font-bold text-gray-900 transition-colors duration-200">
+                    <h4 className="mb-2 text-lg font-bold text-gray-900 transition-colors duration-200">
                       {category.title}
-                    </h3>
+                    </h4>
                     <p className="text-sm leading-relaxed text-gray-600">
                       {category.description}
                     </p>

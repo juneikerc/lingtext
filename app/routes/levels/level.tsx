@@ -279,7 +279,7 @@ export default function Level({ loaderData }: Route.ComponentProps) {
               </svg>
             </div>
             <h2 className="text-3xl font-bold text-gray-900 tracking-tight">
-              Textos de este nivel
+              Textos de nivel {levelText.level}
             </h2>
           </div>
 

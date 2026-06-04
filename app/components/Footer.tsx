@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router";
 
 export default function Footer() {
@@ -9,7 +8,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo y descripción */}
-          <div className="md:col-span-2">
+          <div>
             <div className="flex items-center mb-4">
               <img
                 src="/logo-footer.png"
@@ -24,28 +23,13 @@ export default function Footer() {
               textos con traducción instantánea, audio integrado y seguimiento
               de progreso inteligente.
             </p>
-            <div className="flex space-x-4">
-              <a
-                href="https://www.facebook.com/groups/1199904721807372"
-                className="text-gray-400 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
-                aria-label="Facebook"
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M22.676 0H1.326C.593 0 0 .593 0 1.326v21.348C0 23.407.593 24 1.326 24h11.495v-9.294H9.691V11.41h3.13V8.797c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24h-1.918c-1.504 0-1.796.715-1.796 1.764v2.313h3.587l-.467 3.296h-3.12V24h6.116C23.407 24 24 23.407 24 22.674V1.326C24 .593 23.407 0 22.676 0z" />
-                </svg>
-              </a>
-            </div>
           </div>
 
           {/* Niveles */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-100 mb-4">
-              Textos por nivel
-            </h3>
+            <strong className="text-lg font-semibold text-gray-100 mb-4 block">
+              <a href="/textos-en-ingles">Textos en inglés por nivel →</a>
+            </strong>
             <ul className="space-y-2">
               <li>
                 <a
@@ -100,16 +84,16 @@ export default function Footer() {
 
           {/* Enlaces útiles */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-100 mb-4">
-              Producto
-            </h3>
+            <strong className="text-lg font-semibold text-gray-100 mb-4 block">
+              Recursos
+            </strong>
             <ul className="space-y-2">
               <li>
                 <a
                   href="/my-library"
                   className="text-gray-300 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
                 >
-                  Construye tú Biblioteca
+                  Sube tus textos
                 </a>
               </li>
               <li>
@@ -117,7 +101,7 @@ export default function Footer() {
                   href="/words"
                   className="text-gray-300 hover:text-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 rounded"
                 >
-                  Estadísticas
+                  Tus palabras guardadas
                 </a>
               </li>
               <li>
@@ -141,9 +125,9 @@ export default function Footer() {
 
           {/* Recursos */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-100 mb-4">
-              Recursos
-            </h3>
+            <strong className="text-lg font-semibold text-gray-100 mb-4 block">
+              Explora
+            </strong>
             <ul className="space-y-2">
               <li>
                 <a
