@@ -46,7 +46,9 @@ export default function WordPopup({
     viewportWidth - popupWidth - 12
   );
   const top = Math.min(Math.max(12, popup.y - 80), maxTop);
-  const translationInfo = getTranslationInfo(popup.translation);
+  const translationInfo = popup.isLoading
+    ? null
+    : getTranslationInfo(popup.translation);
 
   return (
     <div
@@ -120,7 +122,12 @@ export default function WordPopup({
 
       <div className="lingtext-reader-section lingtext-reader-section-compact">
         <div className="lingtext-reader-card">
-          {translationInfo ? (
+          {popup.isLoading ? (
+            <div className="lingtext-reader-loading" role="status">
+              <span className="lingtext-reader-loading-spinner" />
+              Traduciendo...
+            </div>
+          ) : translationInfo ? (
             <div className="lingtext-reader-translation-list">
               {Object.entries(translationInfo).map(
                 ([category, translations]) => (
@@ -169,6 +176,7 @@ export default function WordPopup({
         ) : (
           <button
             className="lingtext-reader-action-button unknown"
+            disabled={popup.isLoading}
             onClick={() =>
               onMarkUnknown(popup.lower, popup.word, popup.translation)
             }

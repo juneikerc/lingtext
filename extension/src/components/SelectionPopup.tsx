@@ -4,6 +4,7 @@ interface SelectionPopupProps {
     y: number;
     text: string;
     translation: string;
+    isLoading?: boolean;
   };
   onSpeak: (text: string) => void;
   onSave: (text: string, translation: string) => void;
@@ -57,7 +58,9 @@ export default function SelectionPopup({
       Math.max(12, viewportHeight - popupEstimatedHeight - 12)
     );
   }
-  const translationInfo = getTranslationInfo(popup.translation);
+  const translationInfo = popup.isLoading
+    ? null
+    : getTranslationInfo(popup.translation);
   const selectedText =
     popup.text.length > 100 ? `${popup.text.substring(0, 100)}...` : popup.text;
 
@@ -138,7 +141,12 @@ export default function SelectionPopup({
 
       <div className="lingtext-reader-section">
         <div className="lingtext-reader-card accent">
-          {translationInfo ? (
+          {popup.isLoading ? (
+            <div className="lingtext-reader-loading" role="status">
+              <span className="lingtext-reader-loading-spinner" />
+              Traduciendo...
+            </div>
+          ) : translationInfo ? (
             <div className="lingtext-reader-translation-list">
               {Object.entries(translationInfo).map(
                 ([category, translations]) => (
@@ -164,6 +172,7 @@ export default function SelectionPopup({
       <div className="lingtext-reader-actions with-border">
         <button
           className="lingtext-reader-action-button known"
+          disabled={popup.isLoading}
           onClick={() => onSave(popup.text, popup.translation)}
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">

@@ -33,6 +33,7 @@ interface SelectionPopupState {
   y: number;
   text: string;
   translation: string;
+  isLoading?: boolean;
 }
 
 const SUBTITLE_TRANSITION_MS = 80;
@@ -67,6 +68,8 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
   const transitionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
     null
   );
+  const wordLookupSeqRef = useRef(0);
+  const selectionLookupSeqRef = useRef(0);
 
   const [videoId, setVideoId] = useState<string | null>(getCurrentVideoId());
   const [playerRect, setPlayerRect] = useState<DOMRect | null>(null);
@@ -94,6 +97,8 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
       setDisplayedSubtitle("");
       setTranscriptCues([]);
       setUseTranscript(false);
+      wordLookupSeqRef.current += 1;
+      selectionLookupSeqRef.current += 1;
       setPopup(null);
       setSelectionPopup(null);
     });
@@ -440,14 +445,31 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
 
   const handleWordClick = useCallback(
     async (word: string, lower: string, x: number, y: number) => {
+      const lookupSeq = wordLookupSeqRef.current + 1;
+      wordLookupSeqRef.current = lookupSeq;
+      selectionLookupSeqRef.current += 1;
+      setSelectionPopup(null);
+      setPopup({ x, y, word, lower, translation: "", isLoading: true });
+
       try {
         const existing = (await chrome.runtime.sendMessage({
           type: "LT2_GET_WORD",
           payload: lower,
         })) as WordEntry | null;
 
+        if (lookupSeq !== wordLookupSeqRef.current) {
+          return;
+        }
+
         if (existing) {
-          setPopup({ x, y, word, lower, translation: existing.translation });
+          setPopup({
+            x,
+            y,
+            word,
+            lower,
+            translation: existing.translation,
+            isLoading: false,
+          });
           return;
         }
 
@@ -457,15 +479,30 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
           settings.apiKey || undefined
         );
 
+        if (lookupSeq !== wordLookupSeqRef.current) {
+          return;
+        }
+
         setPopup({
           x,
           y,
           word,
           lower,
           translation: translated.translation || "...",
+          isLoading: false,
         });
       } catch (error) {
         console.error("[LingText] Failed to open word popup:", error);
+        if (lookupSeq === wordLookupSeqRef.current) {
+          setPopup({
+            x,
+            y,
+            word,
+            lower,
+            translation: "No se pudo traducir.",
+            isLoading: false,
+          });
+        }
       }
     },
     [settings]
@@ -519,6 +556,8 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
   );
 
   const closePopups = useCallback(() => {
+    wordLookupSeqRef.current += 1;
+    selectionLookupSeqRef.current += 1;
     setPopup(null);
     setSelectionPopup(null);
   }, []);
@@ -556,23 +595,52 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
       return;
     }
 
-    const result = await translateTerm(
-      text,
-      settings.translator,
-      settings.apiKey || undefined
-    );
-
     const rect = range.getBoundingClientRect();
+    const lookupSeq = selectionLookupSeqRef.current + 1;
+    selectionLookupSeqRef.current = lookupSeq;
+    wordLookupSeqRef.current += 1;
 
     setSelectionPopup({
       x: rect.left + rect.width / 2,
       y: rect.top,
       text,
-      translation: result.translation || "...",
+      translation: "",
+      isLoading: true,
     });
 
     setPopup(null);
     selection.removeAllRanges();
+
+    try {
+      const result = await translateTerm(
+        text,
+        settings.translator,
+        settings.apiKey || undefined
+      );
+
+      if (lookupSeq !== selectionLookupSeqRef.current) {
+        return;
+      }
+
+      setSelectionPopup({
+        x: rect.left + rect.width / 2,
+        y: rect.top,
+        text,
+        translation: result.translation || "...",
+        isLoading: false,
+      });
+    } catch (error) {
+      console.error("[LingText] Failed to translate selection:", error);
+      if (lookupSeq === selectionLookupSeqRef.current) {
+        setSelectionPopup({
+          x: rect.left + rect.width / 2,
+          y: rect.top,
+          text,
+          translation: "No se pudo traducir.",
+          isLoading: false,
+        });
+      }
+    }
   }, [settings.apiKey, settings.translator, shadowRoot]);
 
   const handleSavePhrase = useCallback(
