@@ -85,15 +85,25 @@ export enum TRANSLATORS {
 
 export type Translator = TRANSLATORS;
 
+export interface DeletedEntry {
+  key: string;
+  deletedAt: number;
+  deletedBy: SyncPeer;
+}
+
 export interface SyncEnvelope {
   schemaVersion: number;
   source: SyncPeer;
   exportedAt: number;
   words: WordEntry[];
   phrases: PhraseEntry[];
+  deletedWords?: DeletedEntry[];
+  deletedPhrases?: DeletedEntry[];
 }
 
 export interface SyncMergeResult {
   words: WordEntry[];
   phrases: PhraseEntry[];
+  deletedWords?: DeletedEntry[];
+  deletedPhrases?: DeletedEntry[];
 }

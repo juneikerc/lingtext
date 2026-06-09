@@ -1,4 +1,5 @@
 import type {
+  DeletedEntry as SharedDeletedEntry,
   PhraseEntry as SharedPhraseEntry,
   SpacedRepetitionData as SharedSpacedRepetitionData,
   Translator as SharedTranslator,
@@ -73,6 +74,8 @@ export type SpacedRepetitionData = SharedSpacedRepetitionData;
 export type WordEntry = SharedWordEntry;
 
 export type PhraseEntry = SharedPhraseEntry;
+
+export type DeletedEntry = SharedDeletedEntry;
 
 export interface Settings {
   id: "preferences";

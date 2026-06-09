@@ -70,6 +70,14 @@ export default function Popup() {
     chrome.tabs.create({ url: "https://lingtext.org" });
   };
 
+  const queuePendingSync = async () => {
+    setSyncStatus("Abriendo LingText...");
+    await chrome.storage.local.set({ [PENDING_SYNC_KEY]: true });
+    await chrome.tabs.create({ url: "https://lingtext.org" });
+    setSyncStatus("LingText sincronizará al cargar");
+    setSyncing(false);
+  };
+
   const handleSync = async () => {
     setSyncing(true);
     setSyncStatus(null);
@@ -86,15 +94,18 @@ export default function Popup() {
       });
 
       if (tabs.length === 0 || !tabs[0].id) {
-        setSyncStatus("Abriendo LingText...");
-        await chrome.storage.local.set({ [PENDING_SYNC_KEY]: true });
-        await chrome.tabs.create({ url: "https://lingtext.org" });
-        setSyncStatus("LingText sincronizará al cargar");
-        setSyncing(false);
+        await queuePendingSync();
         return;
       }
 
-      await chrome.tabs.sendMessage(tabs[0].id, { type: "TRIGGER_SYNC" });
+      try {
+        await chrome.tabs.sendMessage(tabs[0].id, { type: "TRIGGER_SYNC" });
+      } catch (error) {
+        console.warn("[LingText Popup] Bridge not available:", error);
+        await queuePendingSync();
+        return;
+      }
+
       setSyncStatus("Sincronizando...");
 
       const updatedTs = await new Promise<number>((resolve, reject) => {
@@ -158,11 +169,7 @@ export default function Popup() {
     <div className="popup">
       <header className="popup-header">
         <div className="logo">
-          <img
-            className="logo-icon"
-            src="/icons/icon-32.png"
-            alt="LingText"
-          />
+          <img className="logo-icon" src="/icons/icon-32.png" alt="LingText" />
           <span className="logo-text">
             Ling<span className="logo-text-accent">Text</span>
           </span>
@@ -201,14 +208,17 @@ export default function Popup() {
             ))}
           </select>
 
-          {settings.translator !== TRANSLATORS.CHROME && (
+          {(settings.translator === TRANSLATORS.MEDIUM ||
+            settings.translator === TRANSLATORS.SMART) && (
             <div className="api-key-section">
               <label className="api-key-label">
                 OpenRouter API Key
                 <button
                   className="toggle-visibility"
                   onClick={() => setShowApiKey((prev) => !prev)}
-                  aria-label={showApiKey ? "Ocultar API key" : "Mostrar API key"}
+                  aria-label={
+                    showApiKey ? "Ocultar API key" : "Mostrar API key"
+                  }
                 >
                   {showApiKey ? "Ocultar" : "Mostrar"}
                 </button>
@@ -225,7 +235,7 @@ export default function Popup() {
               <a
                 href="https://openrouter.ai/keys"
                 target="_blank"
-                rel="noopener"
+                rel="noreferrer"
                 className="api-key-link"
               >
                 Obtener API Key
@@ -270,7 +280,7 @@ export default function Popup() {
       </main>
 
       <footer className="popup-footer">
-        <a href="https://lingtext.org" target="_blank" rel="noopener">
+        <a href="https://lingtext.org" target="_blank" rel="noreferrer">
           lingtext.org
         </a>
       </footer>

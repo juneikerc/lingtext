@@ -151,7 +151,7 @@ window.addEventListener("message", async (event) => {
 
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message.type !== "TRIGGER_SYNC") {
-    return true;
+    return false;
   }
 
   triggerSyncRequest();

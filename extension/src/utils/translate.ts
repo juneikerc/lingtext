@@ -13,10 +13,14 @@ import {
 import type { Translator } from "@/types";
 
 export const TRANSLATOR_LABELS: Record<
-  TRANSLATORS.CHROME | TRANSLATORS.MEDIUM | TRANSLATORS.SMART,
+  | TRANSLATORS.CHROME
+  | TRANSLATORS.MYMEMORY
+  | TRANSLATORS.MEDIUM
+  | TRANSLATORS.SMART,
   string
 > = {
   [TRANSLATORS.CHROME]: BASE_TRANSLATOR_LABELS[TRANSLATORS.CHROME],
+  [TRANSLATORS.MYMEMORY]: BASE_TRANSLATOR_LABELS[TRANSLATORS.MYMEMORY],
   [TRANSLATORS.MEDIUM]: BASE_TRANSLATOR_LABELS[TRANSLATORS.MEDIUM],
   [TRANSLATORS.SMART]: BASE_TRANSLATOR_LABELS[TRANSLATORS.SMART],
 };
@@ -111,6 +115,60 @@ export async function translateWithOpenRouter(
   }
 }
 
+export async function translateWithMyMemory(
+  term: string
+): Promise<{ translation: string; error?: string }> {
+  const sanitizedText = term.trim();
+  if (!sanitizedText) {
+    return { translation: "", error: "INVALID_TEXT" };
+  }
+
+  try {
+    const url = new URL("https://api.mymemory.translated.net/get");
+    url.searchParams.set("q", sanitizedText);
+    url.searchParams.set("langpair", "en|es");
+
+    const response = await fetch(url.toString());
+    if (!response.ok) {
+      return { translation: "", error: "API_ERROR" };
+    }
+
+    const data = (await response.json()) as {
+      responseData?: { translatedText?: string };
+      responseStatus?: number | string;
+      responseDetails?: string;
+      quotaFinished?: boolean;
+    };
+    const responseStatus =
+      data.responseStatus === undefined
+        ? 200
+        : Number.parseInt(String(data.responseStatus), 10);
+    const responseDetails = String(data.responseDetails || "").toLowerCase();
+    const quotaExceeded =
+      data.quotaFinished === true ||
+      responseDetails.includes("quota") ||
+      (responseDetails.includes("limit") && responseDetails.includes("day"));
+
+    if (quotaExceeded) {
+      return { translation: "", error: "MYMEMORY_QUOTA_EXCEEDED" };
+    }
+
+    if (responseStatus !== 200) {
+      return { translation: "", error: "API_ERROR" };
+    }
+
+    const translation = (data.responseData?.translatedText || "").trim();
+    if (!translation) {
+      return { translation: "", error: "INVALID_RESPONSE" };
+    }
+
+    return { translation };
+  } catch (error) {
+    console.error("[LingText] MyMemory translation error:", error);
+    return { translation: "", error: "NETWORK_ERROR" };
+  }
+}
+
 export async function translateTerm(
   term: string,
   translator: Translator,
@@ -127,6 +185,10 @@ export async function translateTerm(
     }
 
     return { translation: "", error: "CHROME_AI_NOT_AVAILABLE" };
+  }
+
+  if (translator === TRANSLATORS.MYMEMORY) {
+    return translateWithMyMemory(term);
   }
 
   if (!apiKey) {

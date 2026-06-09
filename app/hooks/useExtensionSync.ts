@@ -17,9 +17,10 @@ import {
   putUnknownWord,
   putPhrase,
   getOpenRouterApiKey,
+  deleteWord,
 } from "~/services/db";
 import { useTranslatorStore } from "~/context/translatorSelector";
-import type { WordEntry, PhraseEntry } from "~/types";
+import type { DeletedEntry, WordEntry, PhraseEntry } from "~/types";
 
 interface ExtensionSyncData {
   schemaVersion?: number;
@@ -27,6 +28,8 @@ interface ExtensionSyncData {
   exportedAt?: number;
   words: WordEntry[];
   phrases: PhraseEntry[];
+  deletedWords?: DeletedEntry[];
+  deletedPhrases?: DeletedEntry[];
 }
 
 export function useExtensionSync() {
@@ -48,16 +51,28 @@ export function useExtensionSync() {
                 exportedAt: extensionData.exportedAt ?? Date.now(),
                 words: extensionData.words,
                 phrases: extensionData.phrases,
+                deletedWords: extensionData.deletedWords,
+                deletedPhrases: extensionData.deletedPhrases,
               }
             : createSyncEnvelope(
                 "extension",
                 extensionData.words,
-                extensionData.phrases
+                extensionData.phrases,
+                Date.now(),
+                extensionData.deletedWords || [],
+                extensionData.deletedPhrases || []
               );
-        const { words: mergedWords, phrases: mergedPhrases } =
-          mergeSyncEnvelopes(currentEnvelope, incomingEnvelope);
+        const {
+          words: mergedWords,
+          phrases: mergedPhrases,
+          deletedWords = [],
+        } = mergeSyncEnvelopes(currentEnvelope, incomingEnvelope);
 
         // Guardar en la base de datos de la web
+        for (const deletedWord of deletedWords) {
+          await deleteWord(deletedWord.key);
+        }
+
         for (const word of mergedWords) {
           await putUnknownWord(word);
         }

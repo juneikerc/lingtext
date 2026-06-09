@@ -1,5 +1,6 @@
 import type {
   BaseSyncMetadata,
+  DeletedEntry,
   PhraseEntry,
   PhraseSyncField,
   SyncEnvelope,
@@ -189,6 +190,45 @@ function mergeAddedAtValue(
   incomingClock: SyncFieldClock
 ) {
   return pickAddedAt(currentValue, currentClock, incomingValue, incomingClock);
+}
+
+function mergeDeletedEntries(
+  current: DeletedEntry[] | undefined,
+  incoming: DeletedEntry[] | undefined
+): DeletedEntry[] {
+  const map = new Map<string, DeletedEntry>();
+
+  for (const entry of [...(current || []), ...(incoming || [])]) {
+    const key = entry.key.trim();
+    if (!key) continue;
+
+    const existing = map.get(key);
+    if (!existing || entry.deletedAt > existing.deletedAt) {
+      map.set(key, { ...entry, key });
+    }
+  }
+
+  return Array.from(map.values());
+}
+
+function deletedAtFor(
+  deletedEntries: DeletedEntry[],
+  key: string
+): number | null {
+  const deleted = deletedEntries.find((entry) => entry.key === key);
+  return deleted ? deleted.deletedAt : null;
+}
+
+function isEntryDeleted(
+  updatedAt: number | undefined,
+  addedAt: number | undefined,
+  deletedAt: number | null
+): boolean {
+  if (deletedAt === null) {
+    return false;
+  }
+
+  return deletedAt >= (updatedAt ?? addedAt ?? 0);
 }
 
 export function ensureWordEntrySync(
@@ -473,7 +513,9 @@ export function createSyncEnvelope(
   source: SyncPeer,
   words: WordEntry[],
   phrases: PhraseEntry[],
-  exportedAt = Date.now()
+  exportedAt = Date.now(),
+  deletedWords: DeletedEntry[] = [],
+  deletedPhrases: DeletedEntry[] = []
 ): SyncEnvelope {
   return {
     schemaVersion: SYNC_SCHEMA_VERSION,
@@ -481,6 +523,8 @@ export function createSyncEnvelope(
     exportedAt,
     words: words.map((word) => ensureWordEntrySync(word, source)),
     phrases: phrases.map((phrase) => ensurePhraseEntrySync(phrase, source)),
+    deletedWords,
+    deletedPhrases,
   };
 }
 
@@ -490,31 +534,62 @@ export function mergeSyncEnvelopes(
 ): SyncMergeResult {
   const wordMap = new Map<string, WordEntry>();
   const phraseMap = new Map<string, PhraseEntry>();
+  const deletedWords = mergeDeletedEntries(
+    current.deletedWords,
+    incoming.deletedWords
+  );
+  const deletedPhrases = mergeDeletedEntries(
+    current.deletedPhrases,
+    incoming.deletedPhrases
+  );
 
   for (const word of current.words) {
-    wordMap.set(word.wordLower, ensureWordEntrySync(word, current.source));
+    const normalized = ensureWordEntrySync(word, current.source);
+    const deletedAt = deletedAtFor(deletedWords, normalized.wordLower);
+    if (!isEntryDeleted(normalized.updatedAt, normalized.addedAt, deletedAt)) {
+      wordMap.set(normalized.wordLower, normalized);
+    }
   }
 
   for (const word of incoming.words) {
+    const normalized = ensureWordEntrySync(word, incoming.source);
+    const deletedAt = deletedAtFor(deletedWords, normalized.wordLower);
+    if (isEntryDeleted(normalized.updatedAt, normalized.addedAt, deletedAt)) {
+      wordMap.delete(normalized.wordLower);
+      continue;
+    }
+
     wordMap.set(
-      word.wordLower,
-      mergeWordEntries(wordMap.get(word.wordLower), word, incoming.source)
+      normalized.wordLower,
+      mergeWordEntries(
+        wordMap.get(normalized.wordLower),
+        normalized,
+        incoming.source
+      )
     );
   }
 
   for (const phrase of current.phrases) {
-    phraseMap.set(
-      phrase.phraseLower,
-      ensurePhraseEntrySync(phrase, current.source)
-    );
+    const normalized = ensurePhraseEntrySync(phrase, current.source);
+    const deletedAt = deletedAtFor(deletedPhrases, normalized.phraseLower);
+    if (!isEntryDeleted(normalized.updatedAt, normalized.addedAt, deletedAt)) {
+      phraseMap.set(normalized.phraseLower, normalized);
+    }
   }
 
   for (const phrase of incoming.phrases) {
+    const normalized = ensurePhraseEntrySync(phrase, incoming.source);
+    const deletedAt = deletedAtFor(deletedPhrases, normalized.phraseLower);
+    if (isEntryDeleted(normalized.updatedAt, normalized.addedAt, deletedAt)) {
+      phraseMap.delete(normalized.phraseLower);
+      continue;
+    }
+
     phraseMap.set(
-      phrase.phraseLower,
+      normalized.phraseLower,
       mergePhraseEntries(
-        phraseMap.get(phrase.phraseLower),
-        phrase,
+        phraseMap.get(normalized.phraseLower),
+        normalized,
         incoming.source
       )
     );
@@ -523,5 +598,7 @@ export function mergeSyncEnvelopes(
   return {
     words: Array.from(wordMap.values()),
     phrases: Array.from(phraseMap.values()),
+    deletedWords: deletedWords.filter((entry) => !wordMap.has(entry.key)),
+    deletedPhrases: deletedPhrases.filter((entry) => !phraseMap.has(entry.key)),
   };
 }
