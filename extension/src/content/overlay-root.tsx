@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import type { PointerEvent as ReactPointerEvent } from "react";
 
 import SelectionPopup from "@/components/SelectionPopup";
 import SubtitleOverlay from "@/components/SubtitleOverlay";
@@ -41,6 +42,48 @@ interface SelectionPopupState {
 }
 
 const SUBTITLE_TRANSITION_MS = 80;
+const SUBTITLE_OFFSET_KEY = "lt2_youtube_subtitle_offset";
+const DEFAULT_SUBTITLE_OFFSET = { x: 0, y: 0 };
+
+interface SubtitleOffset {
+  x: number;
+  y: number;
+}
+
+interface SubtitleDragState {
+  pointerId: number;
+  startX: number;
+  startY: number;
+  startOffset: SubtitleOffset;
+}
+
+function isSubtitleOffset(value: unknown): value is SubtitleOffset {
+  const candidate = value as Partial<SubtitleOffset> | undefined;
+  return (
+    typeof candidate?.x === "number" &&
+    Number.isFinite(candidate.x) &&
+    typeof candidate.y === "number" &&
+    Number.isFinite(candidate.y)
+  );
+}
+
+function clampSubtitleOffset(
+  offset: SubtitleOffset,
+  playerRect: DOMRect | null
+): SubtitleOffset {
+  if (!playerRect) {
+    return offset;
+  }
+
+  const maxX = Math.max(0, playerRect.width * 0.42);
+  const minY = -Math.max(0, playerRect.height - 140);
+  const maxY = 36;
+
+  return {
+    x: Math.min(Math.max(offset.x, -maxX), maxX),
+    y: Math.min(Math.max(offset.y, minY), maxY),
+  };
+}
 
 function readNativeCaptionsActive(): boolean {
   const button = document.querySelector<HTMLElement>(".ytp-subtitles-button");
@@ -67,6 +110,8 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
   );
   const wordLookupSeqRef = useRef(0);
   const selectionLookupSeqRef = useRef(0);
+  const subtitleOffsetRef = useRef<SubtitleOffset>(DEFAULT_SUBTITLE_OFFSET);
+  const subtitleDragRef = useRef<SubtitleDragState | null>(null);
 
   const [videoId, setVideoId] = useState<string | null>(getCurrentVideoId());
   const [playerRect, setPlayerRect] = useState<DOMRect | null>(null);
@@ -84,6 +129,9 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
   const [currentSubtitle, setCurrentSubtitle] = useState("");
   const [displayedSubtitle, setDisplayedSubtitle] = useState("");
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [subtitleOffset, setSubtitleOffset] = useState<SubtitleOffset>(
+    DEFAULT_SUBTITLE_OFFSET
+  );
 
   const [popup, setPopup] = useState<WordPopupState | null>(null);
   const [selectionPopup, setSelectionPopup] =
@@ -111,6 +159,24 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
       stopWatchingRect();
     };
   }, []);
+
+  useEffect(() => {
+    chrome.storage.local
+      .get(SUBTITLE_OFFSET_KEY)
+      .then((result) => {
+        const stored = result[SUBTITLE_OFFSET_KEY];
+        if (!isSubtitleOffset(stored)) {
+          return;
+        }
+
+        const next = clampSubtitleOffset(stored, playerRect);
+        subtitleOffsetRef.current = next;
+        setSubtitleOffset(next);
+      })
+      .catch((error) => {
+        console.error("[LingText] Failed to load subtitle position:", error);
+      });
+  }, [playerRect]);
 
   useEffect(() => {
     const loadInitial = async () => {
@@ -559,6 +625,74 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
     setSelectionPopup(null);
   }, []);
 
+  const persistSubtitleOffset = useCallback((offset: SubtitleOffset) => {
+    chrome.storage.local
+      .set({ [SUBTITLE_OFFSET_KEY]: offset })
+      .catch((error) => {
+        console.error("[LingText] Failed to save subtitle position:", error);
+      });
+  }, []);
+
+  const handleSubtitleDragStart = useCallback(
+    (event: ReactPointerEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      subtitleDragRef.current = {
+        pointerId: event.pointerId,
+        startX: event.clientX,
+        startY: event.clientY,
+        startOffset: subtitleOffsetRef.current,
+      };
+      event.currentTarget.setPointerCapture(event.pointerId);
+    },
+    []
+  );
+
+  const handleSubtitleDragMove = useCallback(
+    (event: ReactPointerEvent<HTMLButtonElement>) => {
+      const dragState = subtitleDragRef.current;
+      if (!dragState || dragState.pointerId !== event.pointerId) {
+        return;
+      }
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      const next = clampSubtitleOffset(
+        {
+          x: dragState.startOffset.x + event.clientX - dragState.startX,
+          y: dragState.startOffset.y + event.clientY - dragState.startY,
+        },
+        playerRect
+      );
+
+      subtitleOffsetRef.current = next;
+      setSubtitleOffset(next);
+    },
+    [playerRect]
+  );
+
+  const handleSubtitleDragEnd = useCallback(
+    (event: ReactPointerEvent<HTMLButtonElement>) => {
+      const dragState = subtitleDragRef.current;
+      if (!dragState || dragState.pointerId !== event.pointerId) {
+        return;
+      }
+
+      event.preventDefault();
+      event.stopPropagation();
+      subtitleDragRef.current = null;
+
+      if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+        event.currentTarget.releasePointerCapture(event.pointerId);
+      }
+
+      persistSubtitleOffset(subtitleOffsetRef.current);
+    },
+    [persistSubtitleOffset]
+  );
+
   const handleMouseUp = useCallback(async () => {
     // @ts-expect-error ShadowRoot.getSelection is not typed in lib.dom.
     const selection = shadowRoot.getSelection?.() || document.getSelection();
@@ -695,7 +829,24 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
     >
       <div
         className={`lingtext-container ${isTransitioning ? "lingtext-transitioning" : ""}`}
+        style={{
+          transform: `translate(calc(-50% + ${subtitleOffset.x}px), ${subtitleOffset.y}px)`,
+        }}
       >
+        <button
+          type="button"
+          className="lingtext-drag-handle"
+          aria-label="Mover subtítulos"
+          title="Mover subtítulos"
+          onPointerDown={handleSubtitleDragStart}
+          onPointerMove={handleSubtitleDragMove}
+          onPointerUp={handleSubtitleDragEnd}
+          onPointerCancel={handleSubtitleDragEnd}
+          onClick={(event) => event.stopPropagation()}
+          onMouseUp={(event) => event.stopPropagation()}
+        >
+          <span className="lingtext-drag-handle-dots" aria-hidden="true" />
+        </button>
         <SubtitleOverlay
           text={displayedSubtitle}
           unknownSet={unknownSet}

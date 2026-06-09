@@ -13,12 +13,49 @@ const STYLES = `
   position: absolute;
   bottom: 56px;
   left: 50%;
-  transform: translateX(-50%);
   width: min(90%, 980px);
   text-align: center;
   pointer-events: auto;
   opacity: 1;
   transition: opacity 0.12s ease-in-out;
+  user-select: text;
+}
+
+.lingtext-drag-handle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 18px;
+  margin: 0 auto 6px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(10, 10, 10, 0.72);
+  color: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+  cursor: grab;
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.lingtext-drag-handle:active {
+  cursor: grabbing;
+}
+
+.lingtext-drag-handle:focus-visible {
+  outline: 2px solid rgba(15, 158, 218, 0.75);
+  outline-offset: 2px;
+}
+
+.lingtext-drag-handle-dots {
+  position: relative;
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: currentColor;
+  box-shadow: -8px 0 currentColor, 8px 0 currentColor;
 }
 
 .lingtext-container.lingtext-transitioning {
