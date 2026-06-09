@@ -1,0 +1,5352 @@
+[
+  {
+    "word": "have",
+    "definition": "1. (v.) Tener.\n2. (v.) Haber.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "food",
+    "definition": "1. (sus.) Comida, alimento",
+    "irregular_forms": ""
+  },
+  {
+    "word": "buy",
+    "definition": "1. (v.) Comprar.\n2. (v.) Creer, aceptar.",
+    "irregular_forms": "bought"
+  },
+  {
+    "word": "store",
+    "definition": "1. (sus.) Tienda, establecimiento comercial.\n2. (v.) Reservar, conservar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "get",
+    "definition": "1. (v.) Obtener, conseguir, adquirir.\n2. (v.) Recibir.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "know",
+    "definition": "1. (v.) Conocer, saber.\n2. (v.) Comprender.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "where",
+    "definition": "1. (pron.) Donde.\n2. (adv.) Dónde.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "well",
+    "definition": "1. (adv.) Bien.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "go",
+    "definition": "1. (v.) Ir, irse.",
+    "irregular_forms": "went"
+  },
+  {
+    "word": "all",
+    "definition": "1. (adj.) Todo.\n2. (adv.) Completamente, totalmente.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "good",
+    "definition": "1. (adj.) Bueno, buen.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "think",
+    "definition": "1. (v.) Pensar.\n2. (v.) Creer.",
+    "irregular_forms": "thought"
+  },
+  {
+    "word": "take",
+    "definition": "1. (v.) Tomar, llevar.\n2. (v.) Aguantar.",
+    "irregular_forms": "took"
+  },
+  {
+    "word": "glass",
+    "definition": "1. (sus.) Vidrio, cristal\n2. (sus.) Vaso",
+    "irregular_forms": ""
+  },
+  {
+    "word": "pocket",
+    "definition": "1. (sus.) Bolsillo.\n2. (v.) Embolsar, meter en el bolsillo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "about",
+    "definition": "1. (prep.) Acerca de, sobre.\n2. (prep.) Con respecto a.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "tell",
+    "definition": "1. (v.) Contar.\n2. (v.) Decir.",
+    "irregular_forms": "told"
+  },
+  {
+    "word": "whole",
+    "definition": "1. (adj.) Entero, íntegro, completo.\n2. (sus.) Todo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "life",
+    "definition": "1. (sus.) Vida.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "today",
+    "definition": "1. (adv.) Hoy.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "want",
+    "definition": "1. (v.) Querer, desear.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "everyone",
+    "definition": "1. (pron.) Todos, todo el mundo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "leave",
+    "definition": "1. (v.) Salir, irse, marcharse.\n2. (v.) Dejar.",
+    "irregular_forms": "left"
+  },
+  {
+    "word": "some",
+    "definition": "1. (pron.) Algunos, algo, unos.\n2. (adj.) Extraordinario.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "can",
+    "definition": "1. (v.) Poder, saber hacer algo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "see",
+    "definition": "1. (v.) Ver.\n2. (v.) Entender.",
+    "irregular_forms": "saw"
+  },
+  {
+    "word": "up",
+    "definition": "1. (adj.) Arriba.\n2. (adj.) Despierto, levantado.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "say",
+    "definition": "1. (v.) Decir.",
+    "irregular_forms": "said"
+  },
+  {
+    "word": "how",
+    "definition": "1. (adv.) Cómo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "change",
+    "definition": "1. (sus.) Cambio, modificación.\n2. (v.) Cambiar, alterar, transformar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "mind",
+    "definition": "1. (v.) Considerar, importar.\n2. (sus.) Mente.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "late",
+    "definition": "1. (adv.) Tarde.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "now",
+    "definition": "1. (adv.) Ahora, actualmente.\n2. (adv.) Ahora mismo, inmediatamente.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "dinner",
+    "definition": "1. (sus.) Comida, cena.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "make",
+    "definition": "1. (v.) Hacer.\n2. (v.) Producir, construir.",
+    "irregular_forms": "made"
+  },
+  {
+    "word": "let",
+    "definition": "1. (v.) Dejar, permitir.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "who",
+    "definition": "1. (pron.) Quién.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "carry",
+    "definition": "1. (v.) Llevar, transportar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "box",
+    "definition": "1. (sus.) Caja.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "inside",
+    "definition": "1. (prep.) Dentro de.\n2. (adj.) Interior.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "key",
+    "definition": "1. (sus.) Llave, clave.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "winter",
+    "definition": "1. (sus.) Invierno.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "every",
+    "definition": "1. (adj.) Cada.\n2. (adj.) Todo, todos, todas.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "read",
+    "definition": "1. (v.) Leer.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "write",
+    "definition": "1. (v.) Escribir.",
+    "irregular_forms": "wrote"
+  },
+  {
+    "word": "wrong",
+    "definition": "1. (adj.) Equivocado, erróneo, incorrecto.\n2. (adj.) Falso.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "slow",
+    "definition": "1. (adj.) Lento",
+    "irregular_forms": ""
+  },
+  {
+    "word": "already",
+    "definition": "1. (adv.) Ya.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hungry",
+    "definition": "1. (adj.) Famélico, hambriento, tener hambre.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "more",
+    "definition": "1. (adv.) Más.\n2. (adj.) Mayor.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "speak",
+    "definition": "1. (v.) Hablar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "guy",
+    "definition": "1. (sus.) Tipo, hombre.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "thing",
+    "definition": "1. (sus.) Cosa.\n2. (sus.) Ser, criatura.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "should",
+    "definition": "1. (v.) Habría, debería.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "often",
+    "definition": "1. (adv. de tiempo) A menudo, normalmente.\n2. (adv. de tiempo) En muchas ocasiones.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "call",
+    "definition": "1. (v.) Llamar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "lose",
+    "definition": "1. (v.) Perder.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fine",
+    "definition": "1. (adj.) Bien.\n2. (adj.) Fino.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "clothes",
+    "definition": "1. (sus.) Ropa, ropaje.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "drive",
+    "definition": "1. (v.) Conducir, manejar (un vehículo)\n2. (sus.) Viaje, paseo en vehículo",
+    "irregular_forms": "drove"
+  },
+  {
+    "word": "expensive",
+    "definition": "1. (adj.) Costoso, caro",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wear",
+    "definition": "1. (v.) Vestir, llevar o portar en el cuerpo.\n2. (sus.) Desgaste, fatiga.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "ring",
+    "definition": "1. (sus.) Anillo, círculo.\n2. (v.) Sonar, doblar.",
+    "irregular_forms": "rung"
+  },
+  {
+    "word": "give",
+    "definition": "1. (v.) Dar.\n2. (v.) Entregar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "when",
+    "definition": "1. (adv.) Cuando.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wait",
+    "definition": "1. (v.) Esperar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "way",
+    "definition": "1. (sus.) Camino, vía, calle, avenida.\n2. (sus.) Manera, modo, forma, aspecto.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "last",
+    "definition": "1. (adj.) Último, pasado.\n2. (v.) Durar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "year",
+    "definition": "1. (sus.) Año.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "remember",
+    "definition": "1. (v.) Recordar.\n2. (v.) Acordarse de.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "happen",
+    "definition": "1. (v.) Suceder, ocurrir, pasar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "try",
+    "definition": "1. (v.) Probar, intentar.\n2. (sus.) Tentativa",
+    "irregular_forms": ""
+  },
+  {
+    "word": "save",
+    "definition": "1. (v.) Ahorrar, guardar.\n2. (v.) Salvar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "cook",
+    "definition": "1. (v.) Cocinar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "learn",
+    "definition": "1. (v.) Aprender, saber.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "maybe",
+    "definition": "1. (adv.) Quizá, tal vez.\n2. (adj.) Posible, incierto.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "anything",
+    "definition": "1. (pron.) Algo.\n2. (pron.) Cualquier cosa.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "sure",
+    "definition": "1. (adj.) Seguro, convencido.\n2. (interj.) Por supuesto.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "sorry",
+    "definition": "1. (adj.) Arrepentido.\n2. (interj.) ¡Lo lamento!, ¡lo siento!, disculpe.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "great",
+    "definition": "1. (adj.) Grande\n2. (adj.) Grandioso, extraordinario",
+    "irregular_forms": ""
+  },
+  {
+    "word": "avoid",
+    "definition": "1. (v.) Evitar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "rain",
+    "definition": "1. (sus.) Lluvia.\n2. (v.) Llover.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wet",
+    "definition": "1. (adj.) Húmedo, mojado.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "jump",
+    "definition": "1. (sus.) Salto.\n2. (v.) Saltar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "shirt",
+    "definition": "1. (sus.) Camisa.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "which",
+    "definition": "1. (pron.) Cuál.\n2. (pron.) Que, el que.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "sing",
+    "definition": "1. (v.) Cantar",
+    "irregular_forms": "sang, sung"
+  },
+  {
+    "word": "loud",
+    "definition": "1. (adj.) Ruidoso, hablar o cantar fuerte.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hear",
+    "definition": "1. (v.) Oír, escuchar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "many",
+    "definition": "1. (pron.) Muchos, muchas.\n2. (sus.) Mayoría, una gran cantidad.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "swim",
+    "definition": "1. (v.) Nadar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "cold",
+    "definition": "1. (adj.) Frío.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "complain",
+    "definition": "1. (v.) Quejarse.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "noise",
+    "definition": "1. (sus.) Ruido.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wake up",
+    "definition": "1. (v.) Despertarse",
+    "irregular_forms": ""
+  },
+  {
+    "word": "back",
+    "definition": "1. (adv.) De vuelta.\n2. (sus.) Espalda, parte trasera.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "run",
+    "definition": "1. (v.) Correr.\n2. (v.) Dirigir.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "yesterday",
+    "definition": "1. (adv.) Ayer.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "table",
+    "definition": "1. (sus.) Mesa.\n2. (sus.) Lista o tabla de datos.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wallet",
+    "definition": "1. (sus.) Billetera, cartera.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "out",
+    "definition": "1. (adv.) Fuera, afuera.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "find",
+    "definition": "1. (v.) Encontrar.",
+    "irregular_forms": "found"
+  },
+  {
+    "word": "able",
+    "definition": "1. (adj.) Capaz.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "believe",
+    "definition": "1. (v.) Creer.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "date",
+    "definition": "1. (sus.) Fecha.\n2. (sus.) Cita.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "each",
+    "definition": "1. (adj.) Cada.\n2. (pron.) Cada uno, cada una.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "meet",
+    "definition": "1. (v.) Conocer, presentar.\n2. (v.) Encontrar, encontrase con.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "kind",
+    "definition": "1. (adj.) Amable, amigable.\n2. (sus.) Clase, tipo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "choice",
+    "definition": "1. (sus.) Elección, selección.\n2. (sus.) Opción.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "season",
+    "definition": "1. (sus.) Estación, temporada.\n2. (v.) Condimentar, sazonar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "spring",
+    "definition": "1. (sus.) Primavera.\n2. (sus.) Muelle, resorte.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "after",
+    "definition": "1. (adv.) Después, después de.\n2. (adv.) Detrás, detrás de.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "only",
+    "definition": "1. (adv.) Sólo, solamente, únicamente.\n2. (adj.) Único.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "care",
+    "definition": "1. (v.) Preocuparse, importar.\n2. (v.) Cuidar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "forget",
+    "definition": "1. (v.) Olvidar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "move",
+    "definition": "1. (v.) Mover.\n2. (sus.) Jugada.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "door",
+    "definition": "1. (sus.) Puerta",
+    "irregular_forms": ""
+  },
+  {
+    "word": "room",
+    "definition": "1. (sus.) Habitación, cuarto.\n2. (sus.) Espacio.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fun",
+    "definition": "1. (sus.) Diversión, entretenimiento.\n2. (adj.) Divertido, entretenido.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hard",
+    "definition": "1. (adj.) Duro.\n2. (adj.) Difícil.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "shop",
+    "definition": "1. (sus.) Tienda, negocio, comercio.\n2. (v.) Ir de compras.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "while",
+    "definition": "1. (conj.) Mientras.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hurt",
+    "definition": "1. (v.) Herir, lastimar.\n2. (v.) Doler.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bucket",
+    "definition": "1. (sus.) Cubeta, balde, cubo (España).",
+    "irregular_forms": ""
+  },
+  {
+    "word": "pour",
+    "definition": "1. (v.) Verter, servir\n2. (v.) Derramar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fill",
+    "definition": "1. (v.) Llenar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "ever",
+    "definition": "1. (adv.) Nunca.\n2. (adv.) Alguna vez.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "keep",
+    "definition": "1. (v.) Guardar, conservar.\n2. (v.) Continuar, seguir.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "watch",
+    "definition": "1. (v.) Mirar, ver.\n2. (v.) Vigilar, cuidar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "turn",
+    "definition": "1. (v.) Girar, rotar.\n2. (sus.) Curva, recodo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "through",
+    "definition": "1. (prep.) A través de.\n2. (prep.) Por, a causa de.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "sleep",
+    "definition": "1. (v.) Dormir.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "throw",
+    "definition": "1. (v.) Tirar, lanzar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "win",
+    "definition": "1. (v.) Ganar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "most",
+    "definition": "1. (adj.) Que es mayoría, que es la mayor parte.\n2. (adv.) Más.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hand",
+    "definition": "1. (sus.) Mano.\n2. (v.) Dar, pasar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "sell",
+    "definition": "1. (v.) Vender",
+    "irregular_forms": "sold"
+  },
+  {
+    "word": "set",
+    "definition": "1. (v.) Poner, colocar\n2. (v.) Fijar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "front",
+    "definition": "1. (sus.) Frente.\n2. (sus.) Parte delantera.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "clean",
+    "definition": "1. (adj.) Limpio.\n2. (v.) Limpiar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bit",
+    "definition": "1. (sus.) Un poco\n2. (sus.) Pedazo, trozo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "eye",
+    "definition": "1. (sus.) Ojo.\n2. (v.) Ver, admirar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "month",
+    "definition": "1. (sus.) Mes.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "until, till",
+    "definition": "1. (prep.) Hasta que, hasta.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bury",
+    "definition": "1. (v.) Enterrar.",
+    "irregular_forms": "buried"
+  },
+  {
+    "word": "nose",
+    "definition": "1. (sus.) Nariz.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "window",
+    "definition": "1. (sus.) Ventana.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "mouth",
+    "definition": "1. (sus.) Boca.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "cover",
+    "definition": "1. (v.) Cubrir.\n2. (sus.) Cobertura.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "lay",
+    "definition": "1. (v.) Acostarse, tumbarse",
+    "irregular_forms": "laid"
+  },
+  {
+    "word": "stare",
+    "definition": "1. (v.) Mirar fijamente",
+    "irregular_forms": ""
+  },
+  {
+    "word": "floor",
+    "definition": "1. (sus.) Suelo\n2. (sus.) Piso, planta",
+    "irregular_forms": ""
+  },
+  {
+    "word": "dream",
+    "definition": "1. (sus.) Sueño.\n2. (v.) Soñar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hide",
+    "definition": "1. (v.) Ocultar, esconder.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "kid",
+    "definition": "1. (sus.) Niño, muchacho, chico\n2. (v.) Bromear.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "pay",
+    "definition": "1. (v.) Pagar.\n2. (v.) Valer la pena",
+    "irregular_forms": ""
+  },
+  {
+    "word": "together",
+    "definition": "1. (adv.) Juntos.\n2. (adv.) Al mismo tiempo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "tomorrow",
+    "definition": "1. (adv.) Mañana\n2. (sus.) Mañana",
+    "irregular_forms": ""
+  },
+  {
+    "word": "matter",
+    "definition": "1. (sus.) Asunto, tema, cuestión.\n2. (v.) Importar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "stay",
+    "definition": "1. (v.) Permanecer, quedarse.\n2. (sus.) Parada, estancia.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hit",
+    "definition": "1. (v.) Golpear, pegar, chocar.\n2. (sus.) Éxito.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "steal",
+    "definition": "1. (v.) Robar.",
+    "irregular_forms": "stole"
+  },
+  {
+    "word": "lie",
+    "definition": "1. (v.) Mentir.\n2. (v.) Acostarse",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fly",
+    "definition": "1. (v.) Volar.\n2. (sus.) Mosca.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fall",
+    "definition": "1. (v.) Caer, caerse.\n2. (sus.) Otoño.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "light",
+    "definition": "1. (sus.) Luz.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "horse",
+    "definition": "1. (sus.) Caballo, equino.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wall",
+    "definition": "1. (sus.) Pared.\n2. (sus.) Muro, muralla.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "across",
+    "definition": "1. (prep.) De un lado a otro de, a través de.\n2. (prep.) Al otro lado de.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "desk",
+    "definition": "1. (sus.) Escritorio.\n2. (sus.) Mesa de trabajo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "shake",
+    "definition": "1. (v.) Agitar, sacudir.\n2. (sus.) Batido.",
+    "irregular_forms": "shook"
+  },
+  {
+    "word": "evening",
+    "definition": "1. (sus.) Tarde, noche.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "quick",
+    "definition": "1. (adj.) Rápido, rapidamente.\n2. (adj.) Pronto.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "corner",
+    "definition": "1. (sus.) Esquina, rincón.\n2. (v.) Acorralar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "issue",
+    "definition": "1. (sus.) Cuestión, problema, asunto.\n2. (sus.) Ejemplar, edición.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "sharp",
+    "definition": "1. (adj.) Afilado.\n2. (adj.) Puntiagudo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "knife",
+    "definition": "1. (sus.) Cuchillo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "sick",
+    "definition": "1. (adj.) Enfermo, enferma.\n2. (adj.) Nauseabundo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "sudden",
+    "definition": "1. (adj.) Súbito, repentino.\n2. (adj.) Brusco.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "ground",
+    "definition": "1. (sus.) Suelo, tierra.\n2. (sus.) Los fundamentos de un argumento.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "chest",
+    "definition": "1. (sus.) Pecho.\n2. (sus.) Arcón, cofre.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "climb",
+    "definition": "1. (v.) Escalar, trepar, ascender.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "place",
+    "definition": "1. (sus.) Lugar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "face",
+    "definition": "1. (sus.) Cara, rostro.\n2. (v.) Afrontar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bill",
+    "definition": "1. (sus.) Cuenta.\n2. (sus.) Billete.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wine",
+    "definition": "1. (sus.) Vino.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bring",
+    "definition": "1. (v.) Traer.\n2. (v.) Llevar.",
+    "irregular_forms": "brought"
+  },
+  {
+    "word": "actually",
+    "definition": "1. (adv.) En realidad, de hecho, realmente.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "both",
+    "definition": "1. (adj.) Ambos, ambas.\n2. (pron.) Dos (nosotros dos).",
+    "irregular_forms": ""
+  },
+  {
+    "word": "forward",
+    "definition": "1. (adv.) Adelante, hacia adelante.\n2. (sus.) Delantero.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "street",
+    "definition": "1. (sus.) Calle.\n2. (adj.) Callejero.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "a few",
+    "definition": "1. (pron.) Pocos.\n2. (sus.) Unos cuantos, unos pocos.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "seat",
+    "definition": "1. (sus.) Silla.\n2. (sus.) Asiento.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "top",
+    "definition": "1. (sus.) Cima, cumbre, parte superior.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hang",
+    "definition": "1. (v.) Colgar.",
+    "irregular_forms": "hung"
+  },
+  {
+    "word": "trouble",
+    "definition": "1. (sus.) Problema, dificultad.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bag",
+    "definition": "1. (sus.) Bolsa, bolso, maleta.\n2. (sus.) Mochila.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "joke",
+    "definition": "1. (sus.) Chiste.\n2. (v.) Bromear.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "stick",
+    "definition": "1. (v.) Pegar.\n2. (sus.) Palo.",
+    "irregular_forms": "stuck"
+  },
+  {
+    "word": "step",
+    "definition": "1. (sus.) Paso.\n2. (v.) Dar un paso.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "taste",
+    "definition": "1. (v.) Probar.\n2. (sus.) sabor.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "afraid",
+    "definition": "1. (adj.) Temoroso, con miedo.\n2. (adj.) Reluctante, receloso.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "weekend",
+    "definition": "1. (sus.) Fin de semana",
+    "irregular_forms": ""
+  },
+  {
+    "word": "chair",
+    "definition": "1. (sus.) Silla.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "injure",
+    "definition": "1. (v.) Herir o causar daño físico.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wrist",
+    "definition": "1. (sus.) Muñeca (de la mano).",
+    "irregular_forms": ""
+  },
+  {
+    "word": "grab",
+    "definition": "1. (v.) Agarrar, tomar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "huge",
+    "definition": "1. (adj.) Enorme.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fish",
+    "definition": "1. (sus.) Pez.\n2. (sus.) Pescado.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "allow",
+    "definition": "1. (v.) Permitir, dejar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "burn",
+    "definition": "1. (v.) Quemar, prender fuego.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "handle",
+    "definition": "1. (sus.) Manija, mango, asa.\n2. (v.) Manejar, manipular.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "instead",
+    "definition": "1. (adv.) En su lugar, en cambio.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fit",
+    "definition": "1. (v.) Caber, encajar, quedar.\n2. (adj.) Adecuado.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "request",
+    "definition": "1. (sus.) Petición, pedido, solicitud.\n2. (v.) Solicitar, pedir.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "boss",
+    "definition": "1. (sus.) Jefe.\n2. (sus.) Patrón.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "meat",
+    "definition": "1. (sus.) Carne",
+    "irregular_forms": ""
+  },
+  {
+    "word": "tie",
+    "definition": "1. (sus.) Corbata.\n2. (v.) Atar, ligar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bread",
+    "definition": "1. (sus.) Pan.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "field",
+    "definition": "1. (sus.) Campo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wood",
+    "definition": "1. (sus.) Bosque.\n2. (sus.) Madera.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "tear",
+    "definition": "1. (v.) Rasgar, romper, partir.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "weigh",
+    "definition": "1. (v.) Pesar.\n2. (v.) Sopesar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "judge",
+    "definition": "1. (v.) Juzgar.\n2. (sus.) Juez.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "deaf",
+    "definition": "1. (adj.) Sordo, sorda.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "ear",
+    "definition": "1. (sus.) Oreja.\n2. (sus.) Oído.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "travel",
+    "definition": "1. (v.) Viajar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "safe",
+    "definition": "1. (adj.) Seguro, a salvo.\n2. (sus.) Caja fuerte, caja de seguridad.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "dish",
+    "definition": "1. (sus.) Plato.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "makeup",
+    "definition": "1. (sus.) Maquillaje.\n2. (sus.) Cosméticos.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "boil",
+    "definition": "1. (v.) Hervir.\n2. (v.) Cocer.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "towards",
+    "definition": "1. (prep.) Hacia.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "stair",
+    "definition": "1. (sus.) Escalera.\n2. (sus.) Escalón.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "knee",
+    "definition": "1. (sus.) Rodilla.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "recover",
+    "definition": "1. (v.) Recuperar, librar.\n2. (v.) Recuperarse.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "listen to",
+    "definition": "1. (v.) Escuchar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "laugh",
+    "definition": "1. (v.) Reír, carcajear.\n2. (sus.) Risa, carcajada, risotada.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "guess",
+    "definition": "1. (v.) Adivinar.\n2. (v.) Estimar, conjeturar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "pick",
+    "definition": "1. (v.) Elegir, seleccionar, escoger.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "walk",
+    "definition": "1. (v.) Caminar.\n2. (sus.) Vuelta, paseo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "another",
+    "definition": "1. (adj.) Otro.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "share",
+    "definition": "1. (sus.) Parte.\n2. (v.) Compartir.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "deal",
+    "definition": "1. (v.) Hacer un trato.\n2. (sus.) Negocio, trato o arreglo o pacto comercial.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "seem",
+    "definition": "1. (v.) Parecer.\n2. (v.) Aparentar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "nobody",
+    "definition": "1. (pron.) Nadie",
+    "irregular_forms": ""
+  },
+  {
+    "word": "side",
+    "definition": "1. (sus.) Lado, costado.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "drink",
+    "definition": "1. (v.) Beber, tomar.\n2. (sus.) Bebida",
+    "irregular_forms": ""
+  },
+  {
+    "word": "half",
+    "definition": "1. (sus.) Mitad.\n2. (adv.) Medio.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "shut",
+    "definition": "1. (v.) Cerrar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hope",
+    "definition": "1. (sus.) Esperanza.\n2. (v.) Esperar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "worry",
+    "definition": "1. (v.) Preocupar\n2. (sus.) Preocupación",
+    "irregular_forms": "worried"
+  },
+  {
+    "word": "tail",
+    "definition": "1. (sus.) Cola.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "pull",
+    "definition": "1. (v.) Tirar, jalar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "plane",
+    "definition": "1. (sus.) Avión.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "tired",
+    "definition": "1. (adj.) Cansado.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "almost",
+    "definition": "1. (adv.) Casi.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "raise",
+    "definition": "1. (v.) Levantar, alzar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "uncle",
+    "definition": "1. (sus.) Tío.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "ride",
+    "definition": "1. (sus.) Aventón.\n2. (v.) Ir en, montar.",
+    "irregular_forms": "rode"
+  },
+  {
+    "word": "fight",
+    "definition": "1. (v.) Pelear, luchar, combatir.\n2. (sus.) Discusión, riña.",
+    "irregular_forms": "fought"
+  },
+  {
+    "word": "least",
+    "definition": "1. (adj.) Mínimo.\n2. (adv.) Menos.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "shower",
+    "definition": "1. (sus.) Ducha.\n2. (v.) Ducharse.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wish",
+    "definition": "1. (v.) Desear, desear que\n2. (sus.) Deseo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "gift",
+    "definition": "1. (sus.) Regalo, detalle.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "town",
+    "definition": "1. (sus.) Pueblo, ciudad, zona urbana.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "soon",
+    "definition": "1. (adv.) Pronto, en breve.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fix",
+    "definition": "1. (v.) Reparar.\n2. (sus.) Reparación.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "coat",
+    "definition": "1. (sus.) Abrigo, chaqueta.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "rest",
+    "definition": "1. (v.) Descansar, reposar.\n2. (sus.) Resto.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "alone",
+    "definition": "1. (adj.) Solo.\n2. (adj.) Único.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "toilet",
+    "definition": "1. (sus.) Inodoro.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "realize",
+    "definition": "1. (v.) Comprender.\n2. (v.) Darse cuenta.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "mistake",
+    "definition": "1. (sus.) Error.\n2. (v.) Malinterpretar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fast",
+    "definition": "1. (adj.) Rápido, veloz.\n2. (adv.) Rapidamente.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "rock",
+    "definition": "1. (sus.) Piedras, rocas.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "answer",
+    "definition": "1. (v.) Responder, contestar.\n2. (sus.) Solución, respuesta.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "tough",
+    "definition": "1. (adv.) Difícil, duro.\n2. (adj.) Fuerte.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "country",
+    "definition": "1. (sus.) País.\n2. (sus.) Campo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "grow",
+    "definition": "1. (v.) Cultivar.\n2. (v.) Crecer.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wonderful",
+    "definition": "1. (adj.) Maravilloso, excelente, prodigioso.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "dance",
+    "definition": "1. (sus.) Baile.\n2. (v.) Bailar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "glad",
+    "definition": "1. (adj.) Contento, feliz, encantado.\n2. (adj.) Satisfecho, estar alegre.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "tooth",
+    "definition": "1. (sus.) Diente.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "weird",
+    "definition": "1. (adj.) Sobrenatural, extraño, extraordinario, raro.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "follow",
+    "definition": "1. (v.) Seguir.\n2. (v.) Entender, seguir.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "lock",
+    "definition": "1. (v.) Cerrar con llave, candar.\n2. (sus.) Cerradura.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "record",
+    "definition": "1. (v.) Grabar.\n2. (sus.) Registro, documento.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "somewhere",
+    "definition": "1. (adv.) En algún lugar, punto, parte o momento.\n2. (adv.) A alguna parte, a algún lado.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "apologize",
+    "definition": "1. (v.) Pedir perdón, disculparse.\n2. (v.) Apologizar, hacer apología.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "single",
+    "definition": "1. (adj.) Único, uno solo.\n2. (adj.) Soltero.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "neck",
+    "definition": "1. (sus.) Cuello, cogote, pescuezo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "heart",
+    "definition": "1. (sus.) Corazón.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "farm",
+    "definition": "1. (sus.) Granja.\n2. (v.) Cultivar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "land",
+    "definition": "1. (sus.) Tierra.\n2. (sus.) Suelo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "join",
+    "definition": "1. (v.) Unir, juntar, reunir.\n2. (v.) Adherirse, unirse, enlistarse.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "luck",
+    "definition": "1. (sus.) Suerte",
+    "irregular_forms": ""
+  },
+  {
+    "word": "pool",
+    "definition": "1. (sus.) Charca, charco, estanque.\n2. (sus.) Piscina.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hurry",
+    "definition": "1. (sus.) Prisa.\n2. (sus.) Urgencia.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "speed",
+    "definition": "1. (sus.) Rapidez.\n2. (sus.) Velocidad.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "mirror",
+    "definition": "1. (sus.) Espejo.\n2. (v.) Reflejar, imitar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "toast",
+    "definition": "1. (sus.) Tostada, pan tostado",
+    "irregular_forms": ""
+  },
+  {
+    "word": "excited",
+    "definition": "1. (adj.) Emocionado, entusiasmado.\n2. (adj.) Agitado, nervioso.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "worth",
+    "definition": "1. (sus.) Valía.\n2. (adj.) Valioso, valer la pena",
+    "irregular_forms": ""
+  },
+  {
+    "word": "heavy",
+    "definition": "1. (adj.) Pesado.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wash",
+    "definition": "1. (v.) Lavar, lavarse.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fan",
+    "definition": "1. (sus.) Abanico, ventilador.\n2. (sus.) Aficionado, fan",
+    "irregular_forms": ""
+  },
+  {
+    "word": "switch",
+    "definition": "1. (v.) Cambiar.\n2. (sus.) Interruptor, conmutador.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "age",
+    "definition": "1. (sus.) Edad, era.\n2. (v.) Envejecer",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hole",
+    "definition": "1. (sus.) Agujero, hoyo.\n2. (sus.) Hueco.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fair",
+    "definition": "1. (adj.) Justo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "angry",
+    "definition": "1. (adj.) Enojado, enfadado.\n2. (adj.) Furioso.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "shout",
+    "definition": "1. (v.) Gritar.\n2. (sus.) Grito.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "sock",
+    "definition": "1. (sus.) Calcetín.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "deep",
+    "definition": "1. (adj.) Profundo.\n2. (sus.) Vastedad.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "whenever",
+    "definition": "1. (adv.) Cuando quiera que, cada vez que.\n2. (conj.) Cuando.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "dark",
+    "definition": "1. (adj.) Oscuro.\n2. (adj.) Moreno.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "shame",
+    "definition": "1. (sus.) Vergüenza, pena.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wave",
+    "definition": "1. (v.) Saludar con la mano.\n2. (sus.) Onda.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "resource",
+    "definition": "1. (sus.) Recurso.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "oil",
+    "definition": "1. (sus.) Petróleo.\n2. (sus.) Aceite.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "thin",
+    "definition": "1. (adj.) Delgado, flaco",
+    "irregular_forms": ""
+  },
+  {
+    "word": "agree",
+    "definition": "1. (v.) Estar de acuerdo, concordar.\n2. (v.) Acordar, concordar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "tub",
+    "definition": "1. (sus.) Tina, bañera.\n2. (sus.) Cubo, balde.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "strike",
+    "definition": "1. (v.) Golpear.\n2. (sus.) Huelga, paro.",
+    "irregular_forms": "struck"
+  },
+  {
+    "word": "silly",
+    "definition": "1. (adj.) Ridículo.\n2. (adj.) Tonto.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bean",
+    "definition": "1. (sus.) Alubia, frijol, haba, judía, habichuela.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bunch",
+    "definition": "1. (sus.) Manojo, puñado, montón.\n2. (sus.) Ramo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "cheat",
+    "definition": "1. (v.) Engañar\n2. (v.) Hacer trampa",
+    "irregular_forms": ""
+  },
+  {
+    "word": "freeze",
+    "definition": "1. (v.) Helar\n2. (v.) Congelar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "above",
+    "definition": "1. (adv.) Arriba.\n2. (prep.) Sobre.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "warm",
+    "definition": "1. (adj.) Cálido, calientito.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "purse",
+    "definition": "1. (sus.) Monedero.\n2. (sus.) Bolso.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "breath",
+    "definition": "1. (sus.) Respiración, aliento.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "settle down",
+    "definition": "1. (v.) Calmar, disipar.\n2. (v.) Colonizar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "glove",
+    "definition": "1. (sus.) Guante.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "shoulder",
+    "definition": "1. (sus.) Hombro.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wide",
+    "definition": "1. (adj.) Ancho.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "receipt",
+    "definition": "1. (sus.) Recibo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "cheap",
+    "definition": "1. (adj.) Barato.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "chase",
+    "definition": "1. (sus.) Persecución, caza.\n2. (v.) Perseguir, cazar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "customer",
+    "definition": "1. (sus.) Cliente",
+    "irregular_forms": ""
+  },
+  {
+    "word": "envelope",
+    "definition": "1. (sus.) Sobre.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wipe",
+    "definition": "1. (v.) Limpiar, pasar un trapo a.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "sink",
+    "definition": "1. (sus.) Lavabo, fregadero.\n2. (sus.) Lavamanos, lavatorio.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "sweep",
+    "definition": "1. (v.) Barrer, limpiar, sacudir.\n2. (v.) Recoger, arrastrar, llevarse.",
+    "irregular_forms": "swept"
+  },
+  {
+    "word": "introduce",
+    "definition": "1. (v.) Introducir, iniciar.\n2. (v.) Presentar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "twist",
+    "definition": "1. (v.) Torcer, girar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "garden",
+    "definition": "1. (sus.) Jardín.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "successful",
+    "definition": "1. (adj.) Exitoso.\n2. (adj.) Próspero.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fork",
+    "definition": "1. (sus.) Tenedor.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "earth",
+    "definition": "1. (sus.) Suelo, tierra\n2. (sus.) Planeta Tierra",
+    "irregular_forms": ""
+  },
+  {
+    "word": "scratch",
+    "definition": "1. (sus.) Rasco, araño.\n2. (v.) Arañar, rascar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "manage",
+    "definition": "1. (v.) Administrar, dirigir, manejar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bug",
+    "definition": "1. (sus.) Insecto, bicho.\n2. (sus.) Defecto o error en una máquina o programa; bug.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "beer",
+    "definition": "1. (sus.) Cerveza.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "slice",
+    "definition": "1. (sus.) Porción.\n2. (sus.) Rebanada.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "rude",
+    "definition": "1. (adj.) Grosero",
+    "irregular_forms": ""
+  },
+  {
+    "word": "let go",
+    "definition": "1. (v.) Soltar.\n2. (v.) Librar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "spill",
+    "definition": "1. (v.) Derramar.\n2. (v.) Verter",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wing",
+    "definition": "1. (sus.) Ala",
+    "irregular_forms": ""
+  },
+  {
+    "word": "storm",
+    "definition": "1. (sus.) Tormenta.\n2. (sus.) Vendaval.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "roof",
+    "definition": "1. (sus.) Techo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "punch",
+    "definition": "1. (sus.) Puñetazo.\n2. (v.) Dar un puñetazo, golpear.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "threaten",
+    "definition": "1. (v.) Amenazar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "snow",
+    "definition": "1. (sus.) Nieve.\n2. (v.) Nevar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "yard",
+    "definition": "1. (sus.) Patio.\n2. (sus.) Jardín.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bright",
+    "definition": "1. (adj.) Brillante.\n2. (adj.) Iluminado, con luz.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "accomplish",
+    "definition": "1. (v.) Lograr",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bend",
+    "definition": "1. (v.) Inclinarse.\n2. (v.) Doblar, curvar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fog",
+    "definition": "1. (sus.) Niebla",
+    "irregular_forms": ""
+  },
+  {
+    "word": "pan",
+    "definition": "1. (sus.) Sartén",
+    "irregular_forms": ""
+  },
+  {
+    "word": "gain",
+    "definition": "1. (v.) Conseguir, obtener, ganar.\n2. (v.) Adquirir.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "seek",
+    "definition": "1. (v.) Buscar, perseguir.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "jar",
+    "definition": "1. (sus.) Frasco.\n2. (sus.) Tarro.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "advise",
+    "definition": "1. (v.) Aconsejar.\n2. (v.) Considerar, deliberar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "plug in",
+    "definition": "1. (v.) Enchufar, enchufarse.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "mouse",
+    "definition": "1. (sus.) Ratón, laucha.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "edge",
+    "definition": "1. (sus.) Orilla, lado, borde.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "cheek",
+    "definition": "1. (sus.) Mejilla.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "spoon",
+    "definition": "1. (sus.) Cuchara.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "stir",
+    "definition": "1. (v.) Revolver.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "faint",
+    "definition": "1. (v.) Desmayarse",
+    "irregular_forms": ""
+  },
+  {
+    "word": "overnight",
+    "definition": "1. (adv.) Para la noche, durante la noche, de la noche a la mañana.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "rocket",
+    "definition": "1. (sus.) Cohete.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "highway",
+    "definition": "1. (sus.) Carretera.\n2. (sus.) Autopista.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "dust",
+    "definition": "1. (sus.) Polvo\n2. (v.) Desempolvar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wound",
+    "definition": "1. (sus.) Herida",
+    "irregular_forms": ""
+  },
+  {
+    "word": "print",
+    "definition": "1. (v.) Imprimir, escribir.\n2. (sus.) Huella, estampado.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bake",
+    "definition": "1. (v.) Hornear.\n2. (v.) Asar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "shelf",
+    "definition": "1. (sus.) Estante.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hill",
+    "definition": "1. (sus.) Cerro, loma, colina.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "teenager",
+    "definition": "1. (sus.) Adolescente.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "plain",
+    "definition": "1. (adj.) Sencillo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "topic",
+    "definition": "1. (sus.) Tema.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "flood",
+    "definition": "1. (sus.) Inundación.\n2. (v.) Inundar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "break",
+    "definition": "1. (v.) Romper, quebrar.\n2. (sus.) Descanso.",
+    "irregular_forms": "broke"
+  },
+  {
+    "word": "same",
+    "definition": "1. (adj.) Mismo.\n2. (adj.) Igual, idéntico.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "stuff",
+    "definition": "1. (sus.) Cosa, cosas.\n2. (sus.) Material.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "knock",
+    "definition": "1. (sus.) Golpe, sonido de un golpe.\n2. (v.) Tocar la puerta.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "happy",
+    "definition": "1. (adj.) Feliz.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "ready",
+    "definition": "1. (adj.) Listo, preparado.\n2. (adj.) Dispuesto",
+    "irregular_forms": ""
+  },
+  {
+    "word": "end",
+    "definition": "1. (sus.) Final.\n2. (v.) Finalizar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "couple",
+    "definition": "1. (sus.) Par.\n2. (sus.) Pareja.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "buddy",
+    "definition": "1. (sus.) Camarada, amigo, compañero.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "smell",
+    "definition": "1. (v.) Oler",
+    "irregular_forms": ""
+  },
+  {
+    "word": "whatever",
+    "definition": "1. (pron.) Cualquiera, cualquier cosa, lo que sea",
+    "irregular_forms": ""
+  },
+  {
+    "word": "send",
+    "definition": "1. (v.) Mandar, enviar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "mine",
+    "definition": "1 (pron.) Mío.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "catch",
+    "definition": "1. (v.) Coger, atrapar.\n2. (v.) Pillar, sorprender.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "card",
+    "definition": "1. (sus.) Tarjeta.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "drop",
+    "definition": "1. (v.) Soltar, dejar caer.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fact",
+    "definition": "1. (sus.) Hecho.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "relationship",
+    "definition": "1. (sus.) Relación.\n2. (sus.) Conexión emocional entre personas.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "quite",
+    "definition": "1. (adv.) Totalmente.\n2. (adv.) Bastante.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "lady",
+    "definition": "1. (sus.) Dama.\n2. (sus.) Señora, señorita",
+    "irregular_forms": ""
+  },
+  {
+    "word": "sign",
+    "definition": "1. (sus.) Señal.\n2. (v.) Firmar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wonder",
+    "definition": "1. (v.) Preguntarse, cuestionarse.\n2. (v.) Maravillarse, sorprenderse, extrañarse.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "buck",
+    "definition": "1. (sus.) Dólar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "tape",
+    "definition": "1. (sus.) Cinta adhesiva\n2. (v.) Pegar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "naked",
+    "definition": "1. (adj.) Desnudo, en cueros.\n2. (adj.) Desprotegido.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bet",
+    "definition": "1. (v.) Apostar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "blow",
+    "definition": "1. (v.) Soplar.\n2. (sus.) Golpe.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "buzz",
+    "definition": "1. (sus.) Zumbido\n2. (sus.) Un sentimiento de entusiasmo o exitación.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hat",
+    "definition": "1. (sus.) Sombrero, gorra.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "either",
+    "definition": "1. (adj.) Cualquiera.\n2. (adj.) Ambos.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "enjoy",
+    "definition": "1. (v.) Disfrutar.\n2. (v.) Apreciar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "suit",
+    "definition": "1. (sus.) Traje.\n2. (v.) Adecuar, nivelar, adaptar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bald",
+    "definition": "1. (adj.) Calvo",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wedding",
+    "definition": "1. (sus.) Boda",
+    "irregular_forms": ""
+  },
+  {
+    "word": "cool",
+    "definition": "1. (adj.) Fresco, frío.\n2. Adjevtivo: Genial.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "scream",
+    "definition": "1. (sus.) Chillido, alarido.\n2. (v.) Gritar, llorar a gritos.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "dad",
+    "definition": "1. (sus.) Papi, papá.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "spend",
+    "definition": "1. (v.) Gastar.\n2. (v.) Pasar (un tiempo en una actividad).",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bother",
+    "definition": "1. (v.) Molestar.\n2. (v.) Preocupar, inquietar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "short",
+    "definition": "1. (adj.) Bajo, chaparro.\n2. (adj.) Corto.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "throat",
+    "definition": "1. (sus.) Garganta.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "dry",
+    "definition": "1. (adj.) Seco.\n2. (v.) Secar.",
+    "irregular_forms": "dried"
+  },
+  {
+    "word": "sort",
+    "definition": "1. (sus.) Clase, tipo, género\n2. (v.) Ordenar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "couch",
+    "definition": "1. (sus.) Sofá, diván.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "beat",
+    "definition": "1. (v.) Batir, golpear.\n2. (v.) Latir.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "tongue",
+    "definition": "1. (sus.) Lengua.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "meal",
+    "definition": "1. (sus.) Comida, el tiempo para comer.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "horn",
+    "definition": "1. (sus.) Bocina de un vehículo, claxon.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "strange",
+    "definition": "1. (adj.) Extraño.\n2. (adv.) Extrañamente.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "nut",
+    "definition": "1. (sus.) Nuez.\n2. (sus.) Fruta seca.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "yell",
+    "definition": "1. (v.) Gritar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "parking",
+    "definition": "1. (sus.) Estacionamiento, aparcamiento.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "gentleman",
+    "definition": "1. (sus.) Caballero.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "early",
+    "definition": "1. (adj.) Temprano.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "pound",
+    "definition": "1. (sus.) Libra, 0.45 kilos.\n2. (v.) Machacar, aporrear, majar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "comfortable",
+    "definition": "1. (adj.) Cómodo\n2. (adj.) Adecuado",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fault",
+    "definition": "1. (sus.) Defecto, imperfección, falla.\n2. (sus.) Culpa, responsabilidad de una falla.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "though",
+    "definition": "1. (adv.) Sin embargo, a pesar de todo, no obstante.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fat",
+    "definition": "1. (sus.) Grasa.\n2. (adj.) Gordo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "upset",
+    "definition": "1. (v.) Molestar, disturbar, perturbar.\n2. (adj.) Molesto, enojado.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "van",
+    "definition": "1. (sus.) Camioneta.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bubble",
+    "definition": "1. (sus.) Burbuja.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "owe",
+    "definition": "1. (v.) Deber.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "finger",
+    "definition": "1. (sus.) Dedo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "law",
+    "definition": "1. (sus.) Ley",
+    "irregular_forms": ""
+  },
+  {
+    "word": "toe",
+    "definition": "1. (sus.) Dedo del pie, ortejo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "sweet",
+    "definition": "1. (adj.) Dulce.\n2. (sus.) Caramelo, golosina.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "road",
+    "definition": "1. (sus.) Camino, calle.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bite",
+    "definition": "1. (v.) Morder.\n2. (sus.) Bocado.",
+    "irregular_forms": "bit"
+  },
+  {
+    "word": "expect",
+    "definition": "1. (v.) Esperar.\n2. (v.) Suponer.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "cop",
+    "definition": "1. (sus.) Poli (de policia).",
+    "irregular_forms": ""
+  },
+  {
+    "word": "poor",
+    "definition": "1. (adj.) Pobre.\n2. (adj.) Mal hecho",
+    "irregular_forms": ""
+  },
+  {
+    "word": "crowd",
+    "definition": "1. (sus.) Multitud, muchedumbre.\n2. (v.) Agolparse.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "young",
+    "definition": "1. (adj.) Joven.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "type",
+    "definition": "1. (sus.) Tipo.\n2. (v.) Teclar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "blood",
+    "definition": "1. (sus.) Sangre.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "neighbor",
+    "definition": "1. (sus.) Vecino.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "truth",
+    "definition": "1. (sus.) Verdad.\n2. (sus.) Sinceridad, integridad.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "screw",
+    "definition": "1. (sus.) Tornillo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "cousin",
+    "definition": "1. (sus.) Primo, prima.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "cash",
+    "definition": "1. (sus.) Dinero en efectivo.\n2. (sus.) Billetes",
+    "irregular_forms": ""
+  },
+  {
+    "word": "lip",
+    "definition": "1. (sus.) Labio.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "pack",
+    "definition": "1. (sus.) Paquete.\n2. (v.) Empaquetar, empacar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "low",
+    "definition": "1. (adv.) Bajo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "borrow",
+    "definition": "1. (v.) Tomar prestado.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "engine",
+    "definition": "1. (sus.) Motor.\n2. (sus.) Locomotora.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bone",
+    "definition": "1. (sus.) Hueso.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "lift",
+    "definition": "1. (sus.) Leventar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "freak",
+    "definition": "1. (sus.) Fanático, seguidor\n2. (sus.) Extravagancia, delirio",
+    "irregular_forms": ""
+  },
+  {
+    "word": "garbage",
+    "definition": "1. (sus.) Basura.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "trust",
+    "definition": "1. (v.) Confiar.\n2. (sus.) Confianza.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hall",
+    "definition": "1. (sus.) Vestíbulo, pasilllo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "mood",
+    "definition": "1. (sus.) Humor, estado de ánimo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "build",
+    "definition": "1. Verbo transitivo: Construir, formar.\n2. (sus.) Constitución, complexión.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "smoke",
+    "definition": "1. (v.) Fumar.\n2. (sus.) Humo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "kick",
+    "definition": "1. (v.) Patear.\n2. (sus.) Patada, puntapié.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "beg",
+    "definition": "1. (v.) Implorar, rogar, suplicar.\n2. (v.) Pedir.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "size",
+    "definition": "1. (sus.) Tamaño.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "appointment",
+    "definition": "1. (sus.) Cita.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wild",
+    "definition": "1. (adj.) Salvaje.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "truck",
+    "definition": "1. (sus.) Camión.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "straight",
+    "definition": "1. (adj.) Liso, lacio.\n2. (adj.) Recto, directo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "perhaps",
+    "definition": "1. (adv.) Quizá, quizás, a lo mejor.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "tip",
+    "definition": "1. (sus.) Punta.\n2. (v.) Dar propina.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bump",
+    "definition": "1. (v.) Golpear.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "get rid of",
+    "definition": "1. (v.) Quitarse, librar de.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "whose",
+    "definition": "1. (pron.) De quién, de quiénes\n2. (pron.) Cuyo, cuyos, cuya, cuyas.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "quit",
+    "definition": "1. (v.) Dejar.\n2. (v.) Renunciar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "dial",
+    "definition": "1. (v.) Marcar (en el teléfono).",
+    "irregular_forms": ""
+  },
+  {
+    "word": "skin",
+    "definition": "1. (sus.) Piel, cutis.\n2. (sus.) Pellejo de animal.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "waste",
+    "definition": "1. (v.) Malgastar.\n2. (sus.) Despilfarro, pérdida.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "interview",
+    "definition": "1. (sus.) Entrevista.\n2. (v.) Entrevistar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "unless",
+    "definition": "1. (conj.) A menos que.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "certain",
+    "definition": "1. (pron.) Algún, algunos.\n2. (adj.) Cierto.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "insane",
+    "definition": "1. (adj.) Loco.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "count",
+    "definition": "1. (v.) Contar.\n2. (sus.) Conde.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "rather",
+    "definition": "1. (v.) Preferir\n2. (adj.) Bastante",
+    "irregular_forms": ""
+  },
+  {
+    "word": "begin",
+    "definition": "1. (v.) Empezar, comenzar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "underwear",
+    "definition": "1. (sus.) Ropa interior.\n2. (sus.) Calzoncillo, trusa (México).",
+    "irregular_forms": ""
+  },
+  {
+    "word": "besides",
+    "definition": "1. (prep.) Aparte de, además de.\n2. (adv.) Además. adicionalmente.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "crack",
+    "definition": "1. (sus.) Fisura, grieta.\n2. (v.) Quebrarse, romperse.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "square",
+    "definition": "1. (sus.) Plaza.\n2. (sus.) Cuadrado.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "belong",
+    "definition": "1. (v.) Pertenecer.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "swear",
+    "definition": "1. (v.) Jurar.\n2. (v.) Blasfemar, decir palabrotas.",
+    "irregular_forms": "swore"
+  },
+  {
+    "word": "lane",
+    "definition": "1. (sus.) Carril.\n2. (sus.) Camino.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "magazine",
+    "definition": "1. (sus.) Revista.\n2. (sus.) Revistero.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "crash",
+    "definition": "1. (v.) Chocar, estrellarse.\n2. (sus.) Estrépito.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "doll",
+    "definition": "1. (sus.) Muñeca de juguete.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "terrific",
+    "definition": "1. (adj.) Estupendo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "rip",
+    "definition": "1. (v.) Romper.\n2. (v.) Rasgar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "neither",
+    "definition": "1. (conj.) Ni.\n2. (pron.) Ninguno.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fool",
+    "definition": "1. (sus.) Idiota, tonto.\n2. (v.) Engañar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "spit",
+    "definition": "1. (v.) Escupir.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hook",
+    "definition": "1. (sus.) Gancho, anzuelo.\n2. (v.) Enganchar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "round",
+    "definition": "1. (adj.) Circular.\n2. (sus.) Ronda.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "sauce",
+    "definition": "1. (sus.) Salsa.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "jerk",
+    "definition": "1. (sus.) Imbécil, gilipollas, idiota.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "power",
+    "definition": "1. (sus.) Energía, pila, luz.\n2. (sus.) Fuerza, poder.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "quiet",
+    "definition": "1. (adj.) Callado, silencioso.\n2. (adj.) Tranquilo, calmado.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "match",
+    "definition": "1. (v.) Empareajr, ser igual.\n2. (sus.) Cerilla, cerillo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "library",
+    "definition": "1. (sus.) Biblioteca.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "shave",
+    "definition": "1. (v.) Afeitar, afeitarse\n2. (sus.) Afeitada",
+    "irregular_forms": ""
+  },
+  {
+    "word": "push",
+    "definition": "1. (v.) Empujar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "disgusting",
+    "definition": "1. (adj.) Asqueroso, repugnante.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "slip",
+    "definition": "1. (v.) Patinar, resbalarse.\n2. (v.) Deslizar, deslizarse.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "ask out",
+    "definition": "1. (v.) Invitar a salir",
+    "irregular_forms": ""
+  },
+  {
+    "word": "spare",
+    "definition": "1. (adj.) Extra, de sobra, de repuesto, libre.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bottom",
+    "definition": "1. (sus.) Fondo.\n2. (sus.) Base, pie, parte inferior.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "plenty",
+    "definition": "1. (sus.) Abundancia.\n2. (adj.) Suficiente.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hot",
+    "definition": "1. (sus.) Calor.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "cheer up",
+    "definition": "1. (v.) Aclamar, animar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "cough",
+    "definition": "1. (sus.) Tos\n2. (v.) Toser",
+    "irregular_forms": ""
+  },
+  {
+    "word": "back up",
+    "definition": "1. (v.) Respaldar, apoyar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bark",
+    "definition": "1. (v.) Ladrar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "address",
+    "definition": "1. (sus.) Dirección, domicilio.\n2. (v.) Dirigirse a, abordar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "onto",
+    "definition": "1. (prep.) En, sobre.\n2. (prep.) Hacia.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hire",
+    "definition": "1. (v.) Contratar.\n2. (v.) Arrendar, alquilar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "dump",
+    "definition": "1. (v.) Tirar, botar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "laundry",
+    "definition": "1. (sus.) Ropa sucia.\n2. (sus.) Lavandería.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "twice",
+    "definition": "1. (adv.) Dos veces.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "beat up",
+    "definition": "1. (v.) Pegar, dar una paliza a",
+    "irregular_forms": ""
+  },
+  {
+    "word": "sweat",
+    "definition": "1. (sus.) Sudor, transpiración.\n2. (v.) Sudar, transpirar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "dear",
+    "definition": "1. (adj.) Querido, cariño.\n2. (adj.) Estimado.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wheel",
+    "definition": "1. (sus.) Rueda.\n2. (sus.) Volante.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "arrest",
+    "definition": "1. (sus.) Arresto, detención.\n2. (v.) Arrestar, atrapar, detener.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "blind",
+    "definition": "1. (adj.) Ciego.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "drawer",
+    "definition": "1. (sus.) Cajón.\n2. (sus.) Gaveta.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "engage",
+    "definition": "1. (v.) Captar.\n2. (adj.) Comprometido.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "blow up",
+    "definition": "1. (v.) Hacer explotar\n2. (v.) Poner aire, inflar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "congratulations",
+    "definition": "1. (sus.) Felicitación.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "ugly",
+    "definition": "1. (adj.) Feo, desagradable, repulsivo.\n2. (adj.) Peligroso, amenazante.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "label",
+    "definition": "1. (v.) Etiquetar.\n2. (sus.) Etiqueta.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "swing",
+    "definition": "1. (v.) Balancearse.\n2. (v.) Oscilar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wind",
+    "definition": "1. (sus.) Viento.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "break up",
+    "definition": "1. (v.) Separarse, cortar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "aware",
+    "definition": "1. (adj.) Consciente.\n2. (adj.) Informado.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "murder",
+    "definition": "1. (sus.) Asesinato.\n2. (v.) Asesinar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "insurance",
+    "definition": "1. (sus.) Seguro.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "reach",
+    "definition": "1. (v.) Alcanzar.\n2. (sus.) Rango de alcance.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "dirty",
+    "definition": "1. (adj.) Sucio",
+    "irregular_forms": ""
+  },
+  {
+    "word": "dip",
+    "definition": "1. (v.) Mojar.\n2. (v.) Remojar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "pain",
+    "definition": "1. (sus.) Dolor.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bring up",
+    "definition": "1. (v.) Sacar el tema, a relucir",
+    "irregular_forms": "brought up"
+  },
+  {
+    "word": "cotton",
+    "definition": "1. (sus.) Algodón.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "mess",
+    "definition": "1. (sus.) Desorden, revoltijo, desastre.\n2. (sus.) Lío.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "deliver",
+    "definition": "1. (v.) Entregar.\n2. (v.) Repartir.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "whistle",
+    "definition": "1. (sus.) Silbido.\n2. (v.) Silbar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "close to",
+    "definition": "1. (adj.) Cercano, próximo.\n2. (adj.) Aproximado.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "treat",
+    "definition": "1. (sus.) Delicia, manjar, placer.\n2. (v.) Tratar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "calm down",
+    "definition": "1. (v.) Tranquilizarse, calmarse",
+    "irregular_forms": ""
+  },
+  {
+    "word": "flip",
+    "definition": "1. (v.) Girar, voltear.\n2. (v.) Dar la vuelta.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "deserve",
+    "definition": "1. (v.) Merecer",
+    "irregular_forms": ""
+  },
+  {
+    "word": "blame",
+    "definition": "1. (v.) Culpar, echar la culpa.\n2. (sus.) Culpa, Imputación, culpación.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "sneak",
+    "definition": "1. (v.) Escabullirse, colarse.",
+    "irregular_forms": "snuck"
+  },
+  {
+    "word": "contest",
+    "definition": "1. (sus.) Concurso.\n2. (sus.) Competición.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "clock",
+    "definition": "1. (sus.) Reloj.\n2. (v.) Cronometrar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "suck",
+    "definition": "1. (v.) Ser malo, apestar.\n2. (v.) Chupar, sorber.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "catch up",
+    "definition": "1. (v.) Alcanzar, ponerse al día",
+    "irregular_forms": "caught up"
+  },
+  {
+    "word": "trade",
+    "definition": "1. (v.) Intercambiar, canjear.\n2. (sus.) Industria.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "tiny",
+    "definition": "1. (adj.) Minúsculo, diminuto, pequeño.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "alive",
+    "definition": "1. (adj.) Vivo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "rush",
+    "definition": "1. (sus.) Prisa, apuro.\n2. (v.) Apurarse, apresurarse.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "doubt",
+    "definition": "1. (v.) Dudar.\n2. (sus.) Desconfianza.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "cheer up",
+    "definition": "1. (v.) Aclamar, animar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "lead",
+    "definition": "1. (v.) Guiar, dirigir\n2. Adjectivo: Principal",
+    "irregular_forms": ""
+  },
+  {
+    "word": "butter",
+    "definition": "1. (sus.) Mantequilla, manteca\n2. (v.) Enmantequillar, untar mantequilla.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "row",
+    "definition": "1. (sus.) Fila, hilera.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fellow",
+    "definition": "1. (sus.) Tipo, hombre o muchacho.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "feed",
+    "definition": "1. (v.) Alimentar.\n2. (v.) Introducir.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "chicken out",
+    "definition": "1. (v.) Acobardarse, achicarse",
+    "irregular_forms": ""
+  },
+  {
+    "word": "screen",
+    "definition": "1. (sus.) Pantalla.\n2. (sus.) Filtro, malla.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "refuse",
+    "definition": "1. (v.) Rechazar, rehusar, negarse.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "disturb",
+    "definition": "1. (v.) Molestar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "kinda",
+    "definition": "1. (adv.) Un poco, also así.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bless",
+    "definition": "1. (v.) Bendecir.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "load",
+    "definition": "1. (sus.) Carga.\n2. (v.) Cargar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "come over",
+    "definition": "1. (v.) Venirse, pasarse",
+    "irregular_forms": "came over"
+  },
+  {
+    "word": "score",
+    "definition": "1. (sus.) Puntuación, nota.\n2. (sus.) Marcador, resultado.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "daily",
+    "definition": "1. (adj.) Diario,  a diario, cotidiano.\n2. (sus.) Diario, publicación diaria.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "sigh",
+    "definition": "1. (v.) Suspirar.\n2. (sus.) Suspiro.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "afford",
+    "definition": "1. (v.) Permitirse, poder pagar.\n2. (v.) Proporcionar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "shape",
+    "definition": "1. (v.) Formar.\n2. (sus.) Forma.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "stain",
+    "definition": "1. (sus.) Mancha.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "ribbon",
+    "definition": "1. (sus.) Moño.\n2. (sus.) Cinta.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "count on",
+    "definition": "1. (v.) Contar con",
+    "irregular_forms": ""
+  },
+  {
+    "word": "remind",
+    "definition": "1. (v.) Recordar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bench",
+    "definition": "1. (sus.) Banca, mesa de trabajo, banquillo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "split",
+    "definition": "1. (v.) Partir, compartir, repartir.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "eventually",
+    "definition": "1. (adv.) Finalmente, eventualmente, con el paso del tiempo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "gorgeous",
+    "definition": "1. (sus.) Precioso, guapísimo, divino.\n2. (sus.) Espléndido, magnífico.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "counter",
+    "definition": "1. (sus.) Mostrador, barra.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "weak",
+    "definition": "1. (adj.) Débil.\n2. (adj.) Agotado.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "cover up",
+    "definition": "1. (v.) Ocultar, tapar (la verdad)",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bell",
+    "definition": "1. (sus.) Campana, timbre.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "motion",
+    "definition": "1. (sus.) Movimiento,\n2. (v.) Hacer señas.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "awful",
+    "definition": "1. (adj.) Horrible, terrible.\n2. (adv.) Extremadamente.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fancy",
+    "definition": "1. (adj.) Elegante.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "none",
+    "definition": "1. (pron.) Ninguno.\n2. (pron.) Nada.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "proud",
+    "definition": "1. (adj.) Orgulloso.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "owner",
+    "definition": "1. (sus.) Propietario.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "deal with",
+    "definition": "1. (v.) Tratar con, encargarse de",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hip",
+    "definition": "1. (sus.) Cadera.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "trick",
+    "definition": "1. (sus.) Trampa, ardid.\n2. (v.) Engañar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "odd",
+    "definition": "1. (adj.) Raro, extraño, curioso.\n2. (adj.) Impar, non.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "rub",
+    "definition": "1. (v.) Frotar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "oven",
+    "definition": "1. (sus.) Horno.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "junk",
+    "definition": "1. (sus.) Basura, desperdicios, chatarra.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "end up",
+    "definition": "1. (v.) Acabar, terminar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "squeeze",
+    "definition": "1. (v.) Exprimir.\n2. (v.) Apretar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "carpet",
+    "definition": "1. (sus.) Alfombra.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "outfit",
+    "definition": "1. (sus.) Conjunto (de vestir).\n2. (sus.) Ropa, atuendo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "account",
+    "definition": "1. (sus.) Cuenta.\n2. (sus.) Relato.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "witness",
+    "definition": "1. (sus.) Testigo",
+    "irregular_forms": ""
+  },
+  {
+    "word": "cap",
+    "definition": "1. (sus.) Tapa, tapón.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "smooth",
+    "definition": "1. (adj.) Suave, liso.\n2. (v.) Alizar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "figure out",
+    "definition": "1. (v.) Resolver, entender, averiguar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "helmet",
+    "definition": "1. (sus.) Casco.\n2. (sus.) Yelmo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "belt",
+    "definition": "1. (sus.) Cinturón",
+    "irregular_forms": ""
+  },
+  {
+    "word": "starve",
+    "definition": "1. (v.) Morir de hambre\n2. (v.) Figurativamente, pasar mucha hambre.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "perform",
+    "definition": "1. (v.) Actuar, representar.\n2. (v.) Bailar, cantar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "concern",
+    "definition": "1. (v.) Interesar, afectar, concernir.\n2. (sus.) Preocupación.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "suggest",
+    "definition": "1. (v.) Sugerir.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "lean",
+    "definition": "1. (v.) Incllinarse.\n2. (v.) Apoyarse en algo, recargar en o sobre algo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "find out",
+    "definition": "1. (v.) Averiguar, enterarse de, darse cuenta.",
+    "irregular_forms": "found out"
+  },
+  {
+    "word": "pencil",
+    "definition": "1. (sus.) Lápiz",
+    "irregular_forms": ""
+  },
+  {
+    "word": "dot",
+    "definition": "1. (sus.) Punto.\n2. (sus.) Mancha, marca.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "thick",
+    "definition": "1. (adj.) Grueso, gordo.\n2. (adj.) Denso, espeso.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fabric",
+    "definition": "1. (sus.) Tela.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "awkward",
+    "definition": "1. (adj.) Incómodo, embarazoso.\n2. (adj.) Torpe.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "being",
+    "definition": "1. (sus.) Ser.\n2. (sus.) Existencia.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "empty",
+    "definition": "1. (adj.) Vacío\n2. (v.) Vaciar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "degree",
+    "definition": "1. (sus.) Título académico.\n2. (sus.) Grado.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "duty",
+    "definition": "1. (sus.) Deber, obligación.\n2. (sus.) Tarea asignada.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "flip out",
+    "definition": "1. (v.) Ponserse como loco, volverse loco, enloquecer",
+    "irregular_forms": ""
+  },
+  {
+    "word": "furniture",
+    "definition": "1. (sus.) Mobiliario.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "cow",
+    "definition": "1. (sus.) Vaca.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "rubber",
+    "definition": "1. (sus.) Goma.\n2. (sus.) Hule.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fear",
+    "definition": "1. (v.) Temer.\n2. (sus.) Miedo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "prove",
+    "definition": "1. (v.) Demostrar.\n2. (v.) Probar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "slide",
+    "definition": "1. (v.) Deslizar, deslizarse.\n2. (v.) Resbalar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "get along with",
+    "definition": "1. (v.) Llevarse bien con",
+    "irregular_forms": ""
+  },
+  {
+    "word": "dumb",
+    "definition": "1. (adj.) Tonto, estúpido\n2. (adj.) Mudo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bath",
+    "definition": "1. (sus.) Baño.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "subject",
+    "definition": "1. (sus.) Tema.\n2. (sus.) Sujeto.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "advantage",
+    "definition": "1. (sus.) Ventaja",
+    "irregular_forms": ""
+  },
+  {
+    "word": "according to",
+    "definition": "1. (prep.) Según",
+    "irregular_forms": ""
+  },
+  {
+    "word": "jealous",
+    "definition": "1. (adj.) Celoso.\n2. (adj.) Envidioso.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "subway",
+    "definition": "1. (sus.) Metro.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "tight",
+    "definition": "1. (adj.) Ajustado, apretado.\n2. (adj.) Firme, rígido.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "get around to",
+    "definition": "1. (v.) Encontrar el momento para, llegar a",
+    "irregular_forms": ""
+  },
+  {
+    "word": "tune",
+    "definition": "1. (sus.) Melodía, canción, tonada.\n2. (v.) Afinar, ajustar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "recognize",
+    "definition": "1. (v.) Reconocer.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "nurse",
+    "definition": "1. (sus.) Enfermera.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "barely",
+    "definition": "1. (adv.) Apenas.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "cartoon",
+    "definition": "1. (sus.) Caricatura.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "schedule",
+    "definition": "1. (sus.) Programa.\n2. (sus.) Horario.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "soap",
+    "definition": "1. (sus.) Jabón.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "available",
+    "definition": "1. (adj.) Disponible",
+    "irregular_forms": ""
+  },
+  {
+    "word": "get in",
+    "definition": "1. (v.) Subir a, meterse a",
+    "irregular_forms": ""
+  },
+  {
+    "word": "proof",
+    "definition": "1. (sus.) Prueba.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bridge",
+    "definition": "1. (sus.) Puente.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "brand",
+    "definition": "1. (sus.) Marca",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bitter",
+    "definition": "1. (adj.) Amargo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "disease",
+    "definition": "1. (sus.) Enfermedad.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "file",
+    "definition": "1. (sus.) Archivo, fichero\n2. (v.) Archivar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "charity",
+    "definition": "1. (sus.) Caridad.\n2. (sus.) Organización benéfica.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "holy",
+    "definition": "1. (adj.) Santo, sagrado.\n2. (adj.) Santificado.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "holiday",
+    "definition": "1. (sus.) Feriado, festivo, día de fiesta\n2. (sus.) Vacaciones",
+    "irregular_forms": ""
+  },
+  {
+    "word": "apology",
+    "definition": "1. (sus.) Disculpa, excusa.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "snap",
+    "definition": "1. (v.) Decir bruscamente, chasquear.\n2. (v.) Romper, partirse.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "boat",
+    "definition": "1. (sus.) Bote, barco, yate.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "steam",
+    "definition": "1. (sus.) Vapor.\n2. (v.) Humear.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "smash",
+    "definition": "1. (v.) Aplastar, estrellar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "sake",
+    "definition": "1. (sus.) Causa, interés, beneficio.\n2. (sus.) Propósito, finalidad.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "weather",
+    "definition": "1. (sus.) Tiempo, reporte meteorológico.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "get something over with",
+    "definition": "1. (v.) Terminar o acabar con algo",
+    "irregular_forms": ""
+  },
+  {
+    "word": "scare",
+    "definition": "1. (v.) Asustar.\n2. (v.) Atemorizar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "pregnant",
+    "definition": "1. (adj.) Embarazada",
+    "irregular_forms": ""
+  },
+  {
+    "word": "blanket",
+    "definition": "1. (sus.) Manta.\n2. (sus.) Manto.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "dare",
+    "definition": "1. (sus.) Atrevimiento.\n2. (v.) Atreverse",
+    "irregular_forms": ""
+  },
+  {
+    "word": "flush",
+    "definition": "1. (v.) Tirar de la cadena del retrete.\n2. (v.) Descargar el inodoro.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "delay",
+    "definition": "1. (sus.) Retraso.\n2. (v.) Retrasar, posponer.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "strong",
+    "definition": "1. (adj.) Fuerte.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "get up",
+    "definition": "1. (v.) Levantarse",
+    "irregular_forms": ""
+  },
+  {
+    "word": "scam",
+    "definition": "1. (v.) Estafar, timar.\n2. (sus.) Estafa, timo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "otherwise",
+    "definition": "1. (adv.) Por lo demás, por otra parte, de lo contrario.\n2. (adj.) De otra forma.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "dessert",
+    "definition": "1. (sus.) Postre.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "clever",
+    "definition": "1. (adj.) Inteligente, listo.\n2. (adj.) Hábil.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "loan",
+    "definition": "1. (sus.) Préstamo.\n2. (v.) Prestar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "give up",
+    "definition": "1. (v.) Rendirse, ceder\n2. (v.) Dejar, abandonar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "vacuum",
+    "definition": "1. (sus.) Pasar la aspiradora.\n2. (sus.) Aspiradora.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "remain",
+    "definition": "1. (v.) Permanecer.\n2. (v.) Quedar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "regret",
+    "definition": "1. (sus.) Arrepentimiento.\n2. (v.) Lamentar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "handsome",
+    "definition": "1. (adj.) Guapo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fund",
+    "definition": "1. (sus.) Fondo.\n2. (v.) Financiar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "nail",
+    "definition": "1. (sus.) Clavo.\n2. (sus.) Uña.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "go ahead",
+    "definition": "1. (v.) Seguir adelante",
+    "irregular_forms": "went out, gone out"
+  },
+  {
+    "word": "wrap",
+    "definition": "1. (v.) Envolver.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hop",
+    "definition": "1. (v.) Brincar, saltar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "moon",
+    "definition": "1. (sus.) Luna.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "chop",
+    "definition": "1. (v.) Cortar\n2. (v.) Cortar en pedacitos",
+    "irregular_forms": ""
+  },
+  {
+    "word": "view",
+    "definition": "1. (sus.) Vista.\n2. (v.) Ver.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "rough",
+    "definition": "1. (adj.) Áspero, rugoso.\n2. (adj.) Malo, escabroso, difícil.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "main",
+    "definition": "1. (adj.) Principal.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "cart",
+    "definition": "1. (sus.) Carrito.\n2. (sus.) Carreta.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "gross out",
+    "definition": "1. (v.) Dar asco a, asquear",
+    "irregular_forms": ""
+  },
+  {
+    "word": "stretch",
+    "definition": "1. (v.) Estirar.\n2. (v.) Extender.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "brush",
+    "definition": "1. (sus.) Cepillo.\n2. (v.) Cepillar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "thief",
+    "definition": "1. (sus.) Ladrón.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "rope",
+    "definition": "1. (sus.) Cuerda.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "stone",
+    "definition": "1. (sus.) Piedra.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "add",
+    "definition": "1. (v.) Añadir, adjuntar.\n2. (v.) Sumar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "commitment",
+    "definition": "1. (sus.) Responsabilidad, obligación.\n2. (sus.) Compromiso.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "seed",
+    "definition": "1. (sus.) Semilla.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "grow up",
+    "definition": "1. (v.) Crecer, criarse",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wire",
+    "definition": "1. (sus.) Cable.\n2. (sus.) Alambre.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "get there",
+    "definition": "1. (v.) Llegar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fail",
+    "definition": "1. (v.) Reprobar.\n2. (v.) Fracasar, fallar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "encourage",
+    "definition": "1. (v.) Alentar, animar.\n2. (v.) Fomentar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "spell",
+    "definition": "1. (v.) Deletrear, escribir.\n2. (sus.) Hechizo, encantamiento.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bounce",
+    "definition": "1. (v.) Rebotar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hand in",
+    "definition": "1. (v.) Entregar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "trial",
+    "definition": "1. (sus.) Proceso judicial, juicio.\n2. (sus.) Ensayo, prueba.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "make fun of",
+    "definition": "1. (v.) Burlarse, burlarse de.\n2. (v.) Imitar, simular.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "haul",
+    "definition": "1. (v.) Arrastrar, tirar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "sour",
+    "definition": "1. (adj.) Ácido.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "shock",
+    "definition": "1. (sus.) Choque, sacudida.\n2. (sus.) Asombro.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "cage",
+    "definition": "1. (sus.) Jaula.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "pipe",
+    "definition": "1. (sus.) Caño, tubo, tuberías.\n2. (sus.) Pipa.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "lend",
+    "definition": "1. (v.) Prestar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "gut",
+    "definition": "1. (sus.) Agallas, coraje.\n2. (sus.) Tripas.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "recipe",
+    "definition": "1. (sus.) Receta (de cocina).\n2. (sus.) Fórmula.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hang on to",
+    "definition": "1. (v.) Agarrarse, guardar",
+    "irregular_forms": "hung on to"
+  },
+  {
+    "word": "spread",
+    "definition": "1. (v.) Esparcir, difundir.\n2. (v.) Extender.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "balloon",
+    "definition": "1. (sus.) Globo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "give birth",
+    "definition": "1. (sus.) Nacimiento.\n2. (v.) Dar a luz.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "drag",
+    "definition": "1. (v.) Arrastrar.\n2. (sus.) Algo o alguien aburrido.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "slight",
+    "definition": "1. (adj.) Leve, pequeño, suave.\n2. (adj.) Poco importante; insignificante.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "struggle",
+    "definition": "1. (sus.) Gran esfuerzo.\n2. (v.) Luchar, forcejear.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "rare",
+    "definition": "1. (adv.) Rara vez, casi nunca.\n2. (adj.) Raro, poco común.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "poison",
+    "definition": "1. (sus.) Veneno.\n2. (v.) Envenenar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hang out",
+    "definition": "1. (v.) Pasar el rato, andar, salir con",
+    "irregular_forms": "hung out"
+  },
+  {
+    "word": "replace",
+    "definition": "1. (v.) Reemplazar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "loose",
+    "definition": "1. (adj.) Flojo, holgado, suelto.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "ill",
+    "definition": "1. (adj.) Enfermo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "spicy",
+    "definition": "1. (adj.) Picante.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "dig",
+    "definition": "1. (v.) Cavar, escarbar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "nap",
+    "definition": "1. (sus.) Siesta.\n2. (v.) Dormir una siesta, echar una cabezada.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "jam",
+    "definition": "1. (sus.) Jalea, mermelada.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "refund",
+    "definition": "1. (v.) Reembolsar.\n2. (sus.) Reembolso.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "chart",
+    "definition": "1. (sus.) Carta.\n2. (sus.) Gráfico.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hang up",
+    "definition": "1. (v.) Colgar",
+    "irregular_forms": "hung up"
+  },
+  {
+    "word": "regard",
+    "definition": "1. (sus.) Consideración, atención.\n2. (sus.) Estima, consideración, respeto",
+    "irregular_forms": ""
+  },
+  {
+    "word": "root",
+    "definition": "1. (sus.) Raíz.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "chain",
+    "definition": "1. (sus.) Cadena.\n2. (v.) Encadenar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "butt",
+    "definition": "1. (sus.) Trasero.\n2. (sus.) Culo, nalgas",
+    "irregular_forms": ""
+  },
+  {
+    "word": "beyond",
+    "definition": "1. (prep.) Más allá de.\n2. (prep.) Superior a.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "pillow",
+    "definition": "1. (sus.) Almohada, Faceruelo",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hold on",
+    "definition": "1. (v.) Esperar, aguantar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "drain",
+    "definition": "1. (v.) Drenar, escurrir.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "flat",
+    "definition": "1. (adj.) Plano, liso.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "item",
+    "definition": "1. (sus.) Ítem.\n2. (sus.) Objeto.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "exit",
+    "definition": "1. (sus.) Salida.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "indeed",
+    "definition": "1. (adv.) Realmente, verdaderamente.\n2. (adv.) En realidad, en verdad.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "pole",
+    "definition": "1. (sus.) Poste.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "feature",
+    "definition": "1. (sus.) Rasgo.\n2. (sus.) Característica.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "thumb",
+    "definition": "1. (sus.) Dedo pulgar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "keep on",
+    "definition": "1. (v.) Seguir, continuar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "recall",
+    "definition": "1. (sus.) Memoria.\n2. (v.) Recordar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wander",
+    "definition": "1. (v.) Pasear.\n2. (v.) Vagar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bull",
+    "definition": "1. (sus.) Toro.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "leather",
+    "definition": "1. (sus.) Cuero, piel.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "swallow",
+    "definition": "1. (v.) Tragar.\n2. (v.) Ingerir.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "dough",
+    "definition": "1. (sus.) Masa\n2. (sus.) Pasta",
+    "irregular_forms": ""
+  },
+  {
+    "word": "research",
+    "definition": "1. (sus.) Investigación.\n2. (v.) Investigar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "kick out",
+    "definition": "1. (v.) Echar, expulsar, echar a patadas",
+    "irregular_forms": ""
+  },
+  {
+    "word": "flavor",
+    "definition": "1. (sus.) Sabor.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "silver",
+    "definition": "1. (sus.) Plata.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "exchange",
+    "definition": "1. (sus.) Intercambio.\n2. (v.) Intercambiar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "breakdown",
+    "definition": "1. (sus.) Colapso.\n2. (sus.) Ruptura.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "soul",
+    "definition": "1. (sus.) Alma.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "alley",
+    "definition": "1. (sus.) Callejón.\n2. (sus.) Callejuela.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "revenge",
+    "definition": "1. (sus.) Venganza.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "attach",
+    "definition": "1. (v.) Sujetar, fijar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "forgive",
+    "definition": "1. (v.) Perdonar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "let down",
+    "definition": "1. (v.) Fallar, decepcionar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "pot",
+    "definition": "1. (sus.) Olla.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "argue",
+    "definition": "1. (v.) Discutir, litigar, argumentar, pelear.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "mayor",
+    "definition": "1. (sus.) Alcalde.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "slap",
+    "definition": "1. (v.) Abofetear.\n2. (v.) Cachetear",
+    "irregular_forms": ""
+  },
+  {
+    "word": "stall",
+    "definition": "1.(sus.) Compartimiento.\n2. (sus.) Cuarto pequeño, cubículo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "village",
+    "definition": "1. (sus.) Pueblo, aldea.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wise",
+    "definition": "1. (adj.) Sabio.\n2. (adj.) Prudente, juicioso.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "look after",
+    "definition": "1. (v.) Cuidar de, atender",
+    "irregular_forms": ""
+  },
+  {
+    "word": "chuck",
+    "definition": "1. (v.) Arrojar, lanzar.\n2. (v.) Botar, tirar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "gate",
+    "definition": "1. (sus.) Puerta, verja.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "height",
+    "definition": "1. (sus.) Altura.\n2. (sus.) Altitud.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "ban",
+    "definition": "1. (sus.) Prohibición, proscripción, veto.\n2. (v.) Prohibir, excluir, vetar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "string",
+    "definition": "1. (sus.) Cuerda, cordel.\n2. (sus.) Hilo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "compliment",
+    "definition": "1. (sus.) Cumplido.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hunt",
+    "definition": "1. (v.) Cazar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "embarrass",
+    "definition": "1. (v.) Avergonzar, dar vergüenza.\n2. (v.) Humillar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "flag",
+    "definition": "1. (sus.) Bandera.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "look forward to",
+    "definition": "1. (v.) Tener muchas ganas de",
+    "irregular_forms": ""
+  },
+  {
+    "word": "legal",
+    "definition": "1. (adj.) Legalmente.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "below",
+    "definition": "1. (adv.) Abajo.\n2. (prep.) Debajo, por debajo de, debajo de.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "pride",
+    "definition": "1. (sus.) Orgullo.\n2. (v.) Enorgullecerse.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "willing",
+    "definition": "1. (adj.) Dispuesto.\n2. (adj.) Servicial.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fold",
+    "definition": "1. (v.) Doblar.\n2. (v.) Cruzar (de brazos).",
+    "irregular_forms": ""
+  },
+  {
+    "word": "rack",
+    "definition": "1. (sus.) Estante.\n2. (sus.) Un espacio para poner algo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "healthy",
+    "definition": "1. (adj.) Saludable, sano.\n2. (adj.) Próspero.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "shift",
+    "definition": "1. (sus.) Turno.\n2. (v.) Cambiar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "look up",
+    "definition": "1. (v.) Buscar (en el internet o un libro)",
+    "irregular_forms": ""
+  },
+  {
+    "word": "streak",
+    "definition": "1. (sus.) Racha.\n2. (sus.) Cualidad, rasgo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "upside",
+    "definition": "1. (sus.) Un resultado o aspecto bueno o positivo, ventaja.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "behavior",
+    "definition": "1. (sus.) Conducta.\n2. (sus.) Comportamiento.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "develop",
+    "definition": "1. (v.) Desarrollar, crear.\n2. (v.) Ampliar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "strap",
+    "definition": "1. (sus.) Tirante.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "gap",
+    "definition": "1. (sus.) Hueco, laguna, espacio.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "several",
+    "definition": "1. (adj.) Varios.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "make up",
+    "definition": "1. (v.) Inventar\n2. (v.) Reconciliarse, hacer las paces",
+    "irregular_forms": ""
+  },
+  {
+    "word": "suspect",
+    "definition": "1. (v.) Sospechar.\n2. (sus.) Sospechoso.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "profit",
+    "definition": "1. (sus.) Ganancia, utilidades.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "neat",
+    "definition": "1. (adj.) Aseado, ordenado.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "lazy",
+    "definition": "1. (adj.) Perezoso, vago, haragán.\n2. (adj.) Flojo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "journey",
+    "definition": "1. (sus.) Trayecto, tramo.\n2. (sus.) Viaje, travesía.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "balance",
+    "definition": "1. (v.) Balancear.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "skill",
+    "definition": "1. (sus.) Habilidad, destreza.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "mess up",
+    "definition": "1. (v.) Desordenar, estropear",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hug",
+    "definition": "1. (v.) Abrazar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "umbrella",
+    "definition": "1. (sus.) Paraguas.\n2. (sus.) Sombrilla.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bold",
+    "definition": "1. (adj.) Audaz\n2. (adj.) Intenso, fuerte (color).",
+    "irregular_forms": ""
+  },
+  {
+    "word": "grateful",
+    "definition": "1. (adj.) Agradecido.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "thunder",
+    "definition": "1. (sus.) Truenos, estruendo",
+    "irregular_forms": ""
+  },
+  {
+    "word": "jail",
+    "definition": "1. (sus.) Cárcel, prisión.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "ankle",
+    "definition": "1. (sus.) Tobillo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "mix up",
+    "definition": "1. (v.) Cambiar, mezclar\n2. (v.) Confundir",
+    "irregular_forms": ""
+  },
+  {
+    "word": "charm",
+    "definition": "1. (sus.) Encanto.\n2. (sus.) Hechizo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "tale",
+    "definition": "1. (sus.) Relato o cuento.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "thrill",
+    "definition": "1. (sus.) Emoción.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "throughout",
+    "definition": "1. (prep.) En todo/toda, durante\n2. (prep.) A lo largo de todo/toda.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "lap",
+    "definition": "1. (sus.) Regazo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "skip",
+    "definition": "1. (v.) Saltarse.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "forever",
+    "definition": "1. (adv.) Eternamente, para siempre.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "nest",
+    "definition": "1. (sus.) Nido.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "move out",
+    "definition": "1. (v.) Mudarse",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fee",
+    "definition": "1. (sus.) Tarifa, cuota.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "filthy",
+    "definition": "1. (adj.) Mugriento, sucio.\n2. (adj.) Asqueroso.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "refer",
+    "definition": "1. (v.) Consultar.\n2. (v.) Referirse.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "spin",
+    "definition": "1. (v.) Girar, rotar.",
+    "irregular_forms": "spun"
+  },
+  {
+    "word": "joy",
+    "definition": "1. (sus.) Gozo, alegría, regocijo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "partner",
+    "definition": "1. (sus.) Socio.\n2. (v.) Asociar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "sample",
+    "definition": "1. (sus.) Muestra.\n2. (v.) Tomar muestras, probar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "pick on",
+    "definition": "1. (v.) Meterse con, fastidiar a",
+    "irregular_forms": ""
+  },
+  {
+    "word": "crop",
+    "definition": "1. (sus.) Cosecha, cultivo",
+    "irregular_forms": ""
+  },
+  {
+    "word": "stroke",
+    "definition": "1. (sus.) Caricia, golpe.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "pat",
+    "definition": "1. (sus.) Palmada.\n2. (v.) Dar palmadas.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "puzzle",
+    "definition": "1. (sus.) Acertijo.\n2. (sus.) Rompecabezas.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "tire",
+    "definition": "1. (sus.) Llanta\n2. (sus.) Neumático",
+    "irregular_forms": ""
+  },
+  {
+    "word": "stab",
+    "definition": "1. (v.) Apuñalar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "grind",
+    "definition": "1. (v.) Moler.",
+    "irregular_forms": "ground"
+  },
+  {
+    "word": "put away",
+    "definition": "1. (v.) Guardar, poner en su sitio\n2. (v.) Ahorrar (dinero)",
+    "irregular_forms": ""
+  },
+  {
+    "word": "ourselves",
+    "definition": "1. (pron.) Nos, nosotros",
+    "irregular_forms": ""
+  },
+  {
+    "word": "disposal",
+    "definition": "1. (sus.) Eliminación.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "puppet",
+    "definition": "1. (sus.) Marioneta, títere.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "strip",
+    "definition": "1. (sus.) Tira.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "guilt",
+    "definition": "1. (sus.) Culpa.\n2. (sus.) Culpabilidad.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "lung",
+    "definition": "1. (sus.) Pulmón.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "remark",
+    "definition": "1. (sus.) Comentario.\n2. (v.) Observar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "put on",
+    "definition": "1. (v.) Ponerse, aplicarse",
+    "irregular_forms": ""
+  },
+  {
+    "word": "goal",
+    "definition": "1. (sus.) Meta, objetivo.\n2. (sus.) Gol.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "basement",
+    "definition": "1. (sus.) Sótano.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "heel",
+    "definition": "1. (sus.) Talón.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "tax",
+    "definition": "1. (sus.) Impuesto.\n2. (v.) Asignar o cobrar impuestos.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "put up with",
+    "definition": "1. (v.) Aguantar, soportar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "meanwhile",
+    "definition": "1. (adv.) Entretanto, mientras tanto.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "groceries",
+    "definition": "1. (sus.) Comestibles, alborrotes.\n2. (adj.) Relacionado con las compras domésticas o de alimentos.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "reject",
+    "definition": "1. (v.) Rechazar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "chess",
+    "definition": "1. (sus.) Ajedrez",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wardrobe",
+    "definition": "1. (sus.) Armario",
+    "irregular_forms": ""
+  },
+  {
+    "word": "workout",
+    "definition": "1. (sus.) Entrenamiento.\n2. (sus.) Ejercicio.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "storage",
+    "definition": "1. (sus.) Depósito, almacenamiento, almacenaje.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "forest",
+    "definition": "1. (sus.) Bosque.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "rip off",
+    "definition": "1. (v.) Timar, estafar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "pump",
+    "definition": "1. (sus.) Bomba (dispositivo que bombea).\n2. (v.) Bombear gasolina.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "skull",
+    "definition": "1. (sus.) Cráneo.\n2. (sus.) Calavera.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "senior",
+    "definition": "1. (adj.) Mayor, con más experiencia o antigüedad.\n2. (adj.) Que tiene un rango más alto o una posición superior.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "broad",
+    "definition": "1. (adj.) Amplio.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "run into",
+    "definition": "1. (v.) Toparse con, encontrarse con",
+    "irregular_forms": ""
+  },
+  {
+    "word": "pleasant",
+    "definition": "1. (adj.) Placentero, agradable.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "polite",
+    "definition": "1. (adj.) Educado, cortés.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "run out of",
+    "definition": "1. (v.) Quedarse sin, acabarse",
+    "irregular_forms": ""
+  },
+  {
+    "word": "approach",
+    "definition": "1. (v.) Acercar, aproximar.\n2. (sus.) Método.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "backwards",
+    "definition": "1. (adj.) Al revés.\n2. (sus.) Reverso.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "chin",
+    "definition": "1. (sus.) Barbilla, mentón",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fare",
+    "definition": "1. (sus.) Tarifa.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "run over",
+    "definition": "1. (v.) Atropellar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "heaven",
+    "definition": "1. (sus.) Cielo, firmamento.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "however",
+    "definition": "1. (adv.) Sin embargo, no obstante.\n2. (adv.) Cómo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "danger",
+    "definition": "1. (sus.) Peligro.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "screw up",
+    "definition": "1. (v.) Arruinar, fastidiar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "arrange",
+    "definition": "1. (v.) Arreglar.\n2. (v.) Ordenar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "warehouse",
+    "definition": "1. (sus.) Bodega, almacén.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "loop",
+    "definition": "1. (sus.) Lazo, bucle.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "set up",
+    "definition": "1. (v.) Establecer, configuar, montar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "assure",
+    "definition": "1. (v.) Asegurar.\n2. (v.) Convencer.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fist",
+    "definition": "1. (sus.) Puño.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "mud",
+    "definition": "1. (sus.) Barro.\n2. (sus.) Lodo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "twin",
+    "definition": "1. (sus.) Gemelo, mellizo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "draw",
+    "definition": "1. (v.) Dibujar.",
+    "irregular_forms": "drew"
+  },
+  {
+    "word": "settle down",
+    "definition": "1. (v.) Calmar, disipar.\n2. (v.) Colonizar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "survive",
+    "definition": "1. (v.) Sobrevivir.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "urge",
+    "definition": "1. (sus.) Impulso, necesidad",
+    "irregular_forms": ""
+  },
+  {
+    "word": "alike",
+    "definition": "1. (adj.) Parecido, semejante.\n2. (adj.) Igual.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "pursue",
+    "definition": "1. (v.) Perseguir, buscar.\n2. (v.) Ejercer.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "show off",
+    "definition": "1. (v.) Presumir, alardear",
+    "irregular_forms": ""
+  },
+  {
+    "word": "nightmare",
+    "definition": "1. (sus.) Pesadilla.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "offensive",
+    "definition": "1. (adj.) Ofensivo\n2. (adj.) Insultante",
+    "irregular_forms": ""
+  },
+  {
+    "word": "amount",
+    "definition": "1. (sus.) Cantidad, monto.\n2. (v.) Totalizar, sumar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "earn",
+    "definition": "1. (v.) Ganar, recibir una retribución\n2. (v.) Merecer",
+    "irregular_forms": ""
+  },
+  {
+    "word": "shut up",
+    "definition": "1. (v.) Callarse",
+    "irregular_forms": ""
+  },
+  {
+    "word": "hesitate",
+    "definition": "1. (v.) Vacilar, dudar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "pray",
+    "definition": "1. (v.) Orar.\n2. (v.) Rogar, hacer una plegaria.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "sleep in",
+    "definition": "1. (v.) Dormir hasta tarde",
+    "irregular_forms": ""
+  },
+  {
+    "word": "rage",
+    "definition": "1. (sus.) Rabia.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "savage",
+    "definition": "1. (sus.) Salvaje.\n2. (adj.) Salvaje, violento.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "improve",
+    "definition": "1. (v.) Mejorar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "speak up",
+    "definition": "1. (v.) Hablar más alto",
+    "irregular_forms": "spoke up"
+  },
+  {
+    "word": "steady",
+    "definition": "1. (adj.) Firme.\n2. (adj.) Estable.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "purchase",
+    "definition": "1. (sus.) Compra, adquisición.\n2. (v.) Comprar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "church",
+    "definition": "1. (sus.) Iglesia.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "stay up",
+    "definition": "1. (v.) Quedarse despierto, desvelarse",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bizarre",
+    "definition": "1. (adj.) Extraño, raro.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "toss",
+    "definition": "1. (v.) Tirar, lanzar, echar.\n2. (v.) Desechar, botar, eliminar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "budget",
+    "definition": "1. (sus.) Presupuesto.\n2. (v.) Organizar, estimar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "crew",
+    "definition": "1. (sus.) Equipo.\n2. (sus.) Grupo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "ditch",
+    "definition": "1. (v.) Deshacerse\n2. (v.) Abandonar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "throw up",
+    "definition": "1. (v.) Devolver, vomitar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "tool",
+    "definition": "1. (sus.) Herramienta.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "fence",
+    "definition": "1. (sus.) Cerca, cerco.\n2. (sus.) Valla.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "delight",
+    "definition": "1. (v.) Deleitar.\n2. (v.) Hacer feliz.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "try on",
+    "definition": "1. (v.) Probarse",
+    "irregular_forms": ""
+  },
+  {
+    "word": "brick",
+    "definition": "1. (sus.) Ladrillo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "dismiss",
+    "definition": "1. (v.) Descartar\n2. (v.) Desestimar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "display",
+    "definition": "1. (sus.) Exposición, espectáculo.\n2. (sus.) Demostración.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "relieve",
+    "definition": "1. (adj.) Aliviado.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "turn into",
+    "definition": "1. (v.) Convertirse en",
+    "irregular_forms": ""
+  },
+  {
+    "word": "likely",
+    "definition": "1. (adj.) Probable, posible.\n2. (adv.) Probablemente.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "glow",
+    "definition": "1. (v.) Brillar.\n2. (v.) Resplandecer.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "blend",
+    "definition": "1. (v.) Mezclar, combinar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "watch out",
+    "definition": "1. (v.) Tener cuidado, estarse atento",
+    "irregular_forms": ""
+  },
+  {
+    "word": "blade",
+    "definition": "1. (sus.) Hoja, filo, cuchillo.\n2. (sus.) Espada.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bride",
+    "definition": "1. (sus.) Novia (en una boda).",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wear out",
+    "definition": "1. (v.) Gastar, desgastar.\n2. (v.) Agotarse, cansar",
+    "irregular_forms": "wore out"
+  },
+  {
+    "word": "sting",
+    "definition": "1. (v.) Picar\n2. (v.) Pinchar",
+    "irregular_forms": ""
+  },
+  {
+    "word": "warn",
+    "definition": "1. (v.) Advertir, avisar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bush",
+    "definition": "1. (sus.) Arbusto.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "glimpse",
+    "definition": "1. (sus.) Vistazo, ojeada.\n2. (v.) Atisbar, vislumbrar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "gather",
+    "definition": "1. (v.) Congregarse, reunirse.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "surround",
+    "definition": "1. (v.) Rodearse.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "cease",
+    "definition": "1. (v.) Cesar, dejar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "shadow",
+    "definition": "1. (sus.) Sombra.\n2. (v.) Seguir de cerca, en especial en secreto.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "grip",
+    "definition": "1. (sus.) Empuñadura.\n2. (v.) Agarrar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "sketch",
+    "definition": "1. (sus.) Boceto de dibujo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "punish",
+    "definition": "1. (v.) Castigar, sancionar.\n2. (v.) Dar una paliza.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "like",
+    "definition": "1. (prep.) Como, similar a.\n2. (v.) Gustar, querer.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "small",
+    "definition": "1. (adj.) Pequeño.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "time",
+    "definition": "1. (sus.) Tiempo.\n2. (sus.) Hora, momento.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "people",
+    "definition": "1. (sus.) Gente, personas.\n2. (sus.) Pueblo, nación.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "new",
+    "definition": "1. (adj.) Nuevo, reciente.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "day",
+    "definition": "1. (sus.) Día.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "work",
+    "definition": "1. (v.) Trabajar.\n2. (sus.) Trabajo, empleo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "look",
+    "definition": "1. (v.) Mirar, buscar.\n2. (sus.) Mirada, apariencia.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "city",
+    "definition": "1. (sus.) Ciudad.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "feel",
+    "definition": "1. (v.) Sentir, palpar.\n2. (sus.) Sensación, tacto.",
+    "irregular_forms": "felt"
+  },
+  {
+    "word": "old",
+    "definition": "1. (adj.) Viejo, anciano.\n2. (adj.) Antiguo, de edad.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "home",
+    "definition": "1. (sus.) Hogar, casa.\n2. (adv.) A casa, en casa.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "big",
+    "definition": "1. (adj.) Grande, amplio.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "years",
+    "definition": "1. (sus. pl.) Años.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "morning",
+    "definition": "1. (sus.) Mañana, por la mañana.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "water",
+    "definition": "1. (sus.) Agua.\n2. (v.) Regar, dar agua.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "long",
+    "definition": "1. (adj.) Largo, extenso.\n2. (adv.) Mucho tiempo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "mother",
+    "definition": "1. (sus.) Madre, mamá.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "world",
+    "definition": "1. (sus.) Mundo, tierra.\n2. (sus.) Sociedad, gente.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "talk",
+    "definition": "1. (v.) Hablar, conversar.\n2. (sus.) Charla, conversación.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "important",
+    "definition": "1. (adj.) Importante, significativo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "always",
+    "definition": "1. (adv.) Siempre, en todo momento.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "much",
+    "definition": "1. (adv.) Mucho, bastante.\n2. (adj.) Mucho, gran cantidad.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "friends",
+    "definition": "1. (sus. pl.) Amigos.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "human",
+    "definition": "1. (adj.) Humano.\n2. (sus.) Ser humano.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "future",
+    "definition": "1. (sus.) Futuro, porvenir.\n2. (adj.) Futuro, venidero.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "near",
+    "definition": "1. (prep.) Cerca de, junto a.\n2. (adj.) Cercano, próximo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "energy",
+    "definition": "1. (sus.) Energía, vigor.\n2. (sus.) Fuerza, poder.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "beautiful",
+    "definition": "1. (adj.) Hermoso, bello, precioso.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "learning",
+    "definition": "1. (sus.) Aprendizaje, conocimiento.\n2. (v. gerundio) Aprendiendo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "nice",
+    "definition": "1. (adj.) Agradable, simpático.\n2. (adj.) Bueno, amable.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "school",
+    "definition": "1. (sus.) Escuela, colegio.\n2. (sus.) Estudio, aprendizaje.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "father",
+    "definition": "1. (sus.) Padre, papá.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "bed",
+    "definition": "1. (sus.) Cama, lecho.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "different",
+    "definition": "1. (adj.) Diferente, distinto.\n2. (adj.) Variado, diverso.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "eat",
+    "definition": "1. (v.) Comer, ingerir.",
+    "irregular_forms": "ate, eaten"
+  },
+  {
+    "word": "lot",
+    "definition": "1. (sus.) Lote, terreno.\n2. (sus.) Mucho, gran cantidad.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "made",
+    "definition": "1. (v.) Hecho, fabricado.\n2. (v. pasado) Hacer.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "family",
+    "definition": "1. (sus.) Familia, parentela.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "help",
+    "definition": "1. (v.) Ayudar, asistir.\n2. (sus.) Ayuda, asistencia.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "come",
+    "definition": "1. (v.) Venir, llegar.",
+    "irregular_forms": "came"
+  },
+  {
+    "word": "books",
+    "definition": "1. (sus. pl.) Libros.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "technology",
+    "definition": "1. (sus.) Tecnología.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "wanted",
+    "definition": "1. (v.) Querido, deseado.\n2. (v. pasado) Querer.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "man",
+    "definition": "1. (sus.) Hombre, varón.\n2. (sus.) Ser humano, persona.",
+    "irregular_forms": "men"
+  },
+  {
+    "word": "own",
+    "definition": "1. (adj.) Propio, particular.\n2. (v.) Poseer, tener.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "social",
+    "definition": "1. (adj.) Social, sociable.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "book",
+    "definition": "1. (sus.) Libro, volumen.\n2. (v.) Reservar, agendar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "outside",
+    "definition": "1. (adv.) Fuera, al aire libre.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "said",
+    "definition": "1. (v. pasado de say) Dijo, dicho.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "asked",
+    "definition": "1. (v. pasado de ask) Preguntó.\n2. (v. pasado de ask) Pidió.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "saw",
+    "definition": "1. (v. pasado de see) Vio.\n2. (sus.) Sierra.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "went",
+    "definition": "1. (v. pasado de go) Fue, fue a.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "came",
+    "definition": "1. (v. pasado de come) Vino, llegó.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "found",
+    "definition": "1. (v. pasado de find) Encontró, encontrado.\n2. (v.) Fundar, establecer.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "looked",
+    "definition": "1. (v. pasado de look) Miró.\n2. (v. pasado de look) Pareció.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "felt",
+    "definition": "1. (v. pasado de feel) Sintió.\n2. (v. pasado de feel) Tocó, palpó.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "became",
+    "definition": "1. (v. pasado de become) Se convirtió en, llegó a ser.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "started",
+    "definition": "1. (v. pasado de start) Empezó, comenzó.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "walked",
+    "definition": "1. (v. pasado de walk) Caminó, anduvo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "thought",
+    "definition": "1. (v. pasado de think) Pensó.\n2. (sus.) Pensamiento, idea.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "put",
+    "definition": "1. (v.) Poner, colocar.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "your",
+    "definition": "1. (adj. posesivo) Tu, tus.\n2. (adj. posesivo) Su, sus.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "something",
+    "definition": "1. (pron.) Algo.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "someone",
+    "definition": "1. (pron.) Alguien.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "everything",
+    "definition": "1. (pron.) Todo, todas las cosas.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "sometimes",
+    "definition": "1. (adv.) A veces, algunas veces.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "never",
+    "definition": "1. (adv.) Nunca, jamás.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "little",
+    "definition": "1. (adj.) Pequeño, pequeño de tamaño.\n2. (adj.) Poco, escaso.",
+    "irregular_forms": ""
+  },
+  {
+    "word": "her",
+    "definition": "1. (pron.) Ella (objeto), su, sus.\n2. (adj. posesivo) Su, sus.",
+    "irregular_forms": ""
+  }
+]

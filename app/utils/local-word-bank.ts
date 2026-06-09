@@ -1,4 +1,4 @@
-import data from "~/data/1000-words.json";
+import data from "~/data/1000-words-slim.json";
 import { normalizeWord } from "~/utils/tokenize";
 
 type LocalWordBankEntry = {
