@@ -7,21 +7,20 @@ import type {
   WordEntry,
 } from "@/types";
 import { TRANSLATORS } from "@/types";
+import {
+  getDefaultExtensionSettings,
+  normalizeExtensionSettings,
+} from "@/utils/settings";
 import { TRANSLATOR_LABELS } from "@/utils/translate";
-
-const defaultSettings: ExtensionSettings = {
-  translator: TRANSLATORS.CHROME,
-  apiKey: "",
-  captionLanguage: "en",
-  hideNativeCc: true,
-};
 
 const PENDING_SYNC_KEY = "lt2_pending_sync";
 
 export default function Popup() {
   const [stats, setStats] = useState({ words: 0, phrases: 0 });
   const [lastSync, setLastSync] = useState<string | null>(null);
-  const [settings, setSettings] = useState<ExtensionSettings>(defaultSettings);
+  const [settings, setSettings] = useState<ExtensionSettings>(
+    getDefaultExtensionSettings
+  );
   const [showApiKey, setShowApiKey] = useState(false);
   const [syncing, setSyncing] = useState(false);
   const [syncStatus, setSyncStatus] = useState<string | null>(null);
@@ -47,11 +46,7 @@ export default function Popup() {
     ]);
 
     setStats({ words: words.length, phrases: phrases.length });
-    setSettings({
-      ...defaultSettings,
-      ...currentSettings,
-      captionLanguage: "en",
-    });
+    setSettings(normalizeExtensionSettings(currentSettings));
 
     const syncTs = syncInfo.lt2_last_sync as number | undefined;
     setLastSync(syncTs ? new Date(syncTs).toLocaleString() : null);
@@ -63,7 +58,7 @@ export default function Popup() {
       payload: patch,
     })) as ExtensionSettings;
 
-    setSettings({ ...defaultSettings, ...next, captionLanguage: "en" });
+    setSettings(normalizeExtensionSettings(next));
   };
 
   const openLingText = () => {

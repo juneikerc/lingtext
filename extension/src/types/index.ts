@@ -33,6 +33,7 @@ export interface WordPopupState {
   word: string;
   lower: string;
   translation: string;
+  disclaimer?: string;
   isLoading?: boolean;
 }
 

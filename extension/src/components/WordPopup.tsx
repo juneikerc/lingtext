@@ -145,6 +145,9 @@ export default function WordPopup({
               {popup.translation}
             </span>
           )}
+          {popup.disclaimer && (
+            <p className="lingtext-reader-disclaimer">{popup.disclaimer}</p>
+          )}
         </div>
       </div>
 

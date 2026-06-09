@@ -10,7 +10,10 @@ import type {
   WordEntry,
   WordPopupState,
 } from "@/types";
-import { TRANSLATORS } from "@/types";
+import {
+  getDefaultExtensionSettings,
+  normalizeExtensionSettings,
+} from "@/utils/settings";
 import { translateTerm } from "@/utils/translate";
 import { normalizeWord, tokenize } from "@/utils/tokenize";
 
@@ -33,17 +36,11 @@ interface SelectionPopupState {
   y: number;
   text: string;
   translation: string;
+  disclaimer?: string;
   isLoading?: boolean;
 }
 
 const SUBTITLE_TRANSITION_MS = 80;
-
-const defaultSettings: ExtensionSettings = {
-  translator: TRANSLATORS.CHROME,
-  apiKey: "",
-  captionLanguage: "en",
-  hideNativeCc: true,
-};
 
 function readNativeCaptionsActive(): boolean {
   const button = document.querySelector<HTMLElement>(".ytp-subtitles-button");
@@ -73,7 +70,9 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
 
   const [videoId, setVideoId] = useState<string | null>(getCurrentVideoId());
   const [playerRect, setPlayerRect] = useState<DOMRect | null>(null);
-  const [settings, setSettings] = useState<ExtensionSettings>(defaultSettings);
+  const [settings, setSettings] = useState<ExtensionSettings>(
+    getDefaultExtensionSettings
+  );
 
   const [unknownSet, setUnknownSet] = useState<Set<string>>(new Set());
   const [phrases, setPhrases] = useState<string[][]>([]);
@@ -130,11 +129,7 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
 
         setUnknownSet(new Set(words.map((word) => word.wordLower)));
         setPhrases(phrasesResult.map((phrase) => phrase.parts));
-        setSettings({
-          ...defaultSettings,
-          ...settingsResult,
-          captionLanguage: "en",
-        });
+        setSettings(normalizeExtensionSettings(settingsResult));
       } catch (error) {
         console.error("[LingText] Failed to load extension data:", error);
       }
@@ -167,8 +162,8 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
       if (changes.lt2_settings) {
         const next =
           (changes.lt2_settings.newValue as ExtensionSettings | undefined) ||
-          defaultSettings;
-        setSettings({ ...defaultSettings, ...next, captionLanguage: "en" });
+          getDefaultExtensionSettings();
+        setSettings(normalizeExtensionSettings(next));
       }
     };
 
@@ -468,6 +463,7 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
             word,
             lower,
             translation: existing.translation,
+            disclaimer: undefined,
             isLoading: false,
           });
           return;
@@ -489,6 +485,7 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
           word,
           lower,
           translation: translated.translation || "...",
+          disclaimer: translated.disclaimer,
           isLoading: false,
         });
       } catch (error) {
@@ -627,6 +624,7 @@ export default function OverlayRoot({ shadowRoot }: OverlayRootProps) {
         y: rect.top,
         text,
         translation: result.translation || "...",
+        disclaimer: result.disclaimer,
         isLoading: false,
       });
     } catch (error) {

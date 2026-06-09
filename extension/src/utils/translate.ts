@@ -12,6 +12,14 @@ import {
 } from "@shared/translation";
 import type { Translator } from "@/types";
 
+const MYMEMORY_DISCLAIMER = "Este traductor gratuito a veces puede fallar.";
+
+interface TranslationResult {
+  translation: string;
+  error?: string;
+  disclaimer?: string;
+}
+
 export const TRANSLATOR_LABELS: Record<
   | TRANSLATORS.CHROME
   | TRANSLATORS.MYMEMORY
@@ -52,7 +60,7 @@ export async function translateWithOpenRouter(
   term: string,
   apiKey: string,
   model: Translator = TRANSLATORS.MEDIUM
-): Promise<{ translation: string; error?: string }> {
+): Promise<TranslationResult> {
   if (!apiKey) {
     return { translation: "", error: "NO_API_KEY" };
   }
@@ -117,7 +125,7 @@ export async function translateWithOpenRouter(
 
 export async function translateWithMyMemory(
   term: string
-): Promise<{ translation: string; error?: string }> {
+): Promise<TranslationResult> {
   const sanitizedText = term.trim();
   if (!sanitizedText) {
     return { translation: "", error: "INVALID_TEXT" };
@@ -162,7 +170,7 @@ export async function translateWithMyMemory(
       return { translation: "", error: "INVALID_RESPONSE" };
     }
 
-    return { translation };
+    return { translation, disclaimer: MYMEMORY_DISCLAIMER };
   } catch (error) {
     console.error("[LingText] MyMemory translation error:", error);
     return { translation: "", error: "NETWORK_ERROR" };
@@ -173,7 +181,7 @@ export async function translateTerm(
   term: string,
   translator: Translator,
   apiKey?: string
-): Promise<{ translation: string; error?: string }> {
+): Promise<TranslationResult> {
   if (translator === TRANSLATORS.CHROME) {
     const local = await translateFromChrome(term);
     if (local.translation) {

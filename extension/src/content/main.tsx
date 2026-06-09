@@ -295,6 +295,13 @@ const STYLES = `
   line-height: 1.4;
 }
 
+.lingtext-reader-disclaimer {
+  margin: 6px 0 0;
+  color: rgba(31, 41, 55, 0.55);
+  font-size: 11px;
+  line-height: 1.25;
+}
+
 .lingtext-reader-main-translation {
   display: inline-block;
   color: #111827;

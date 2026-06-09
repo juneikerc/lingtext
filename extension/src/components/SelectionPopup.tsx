@@ -4,6 +4,7 @@ interface SelectionPopupProps {
     y: number;
     text: string;
     translation: string;
+    disclaimer?: string;
     isLoading?: boolean;
   };
   onSpeak: (text: string) => void;
@@ -165,6 +166,9 @@ export default function SelectionPopup({
             <span className="lingtext-reader-selection-translation">
               {popup.translation}
             </span>
+          )}
+          {popup.disclaimer && (
+            <p className="lingtext-reader-disclaimer">{popup.disclaimer}</p>
           )}
         </div>
       </div>

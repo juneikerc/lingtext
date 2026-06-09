@@ -6,7 +6,10 @@ import type {
   VersionedSyncPayload,
   WordEntry,
 } from "@/types";
-import { TRANSLATORS } from "@/types";
+import {
+  getDefaultExtensionSettings,
+  normalizeExtensionSettings,
+} from "@/utils/settings";
 import {
   createSyncEnvelope,
   ensurePhraseEntrySync,
@@ -26,13 +29,6 @@ const STORAGE_KEYS = {
   LAST_SYNC: "lt2_last_sync",
   DELETED_WORDS: "lt2_deleted_words",
 } as const;
-
-const defaultSettings: ExtensionSettings = {
-  translator: TRANSLATORS.CHROME,
-  apiKey: "",
-  captionLanguage: "en",
-  hideNativeCc: true,
-};
 
 let storageMutationQueue: Promise<unknown> = Promise.resolve();
 
@@ -99,18 +95,14 @@ export async function initializeStore(): Promise<void> {
   ).map((phrase) => ensurePhraseEntrySync(phrase, "extension"));
   const currentSettings =
     (result[STORAGE_KEYS.SETTINGS] as ExtensionSettings | undefined) ||
-    defaultSettings;
+    getDefaultExtensionSettings();
   const lastSync = (result[STORAGE_KEYS.LAST_SYNC] as number | undefined) || 0;
 
   await chrome.storage.local.set({
     [STORAGE_KEYS.VERSION]: SCHEMA_VERSION,
     [STORAGE_KEYS.WORDS]: legacyWords,
     [STORAGE_KEYS.PHRASES]: legacyPhrases,
-    [STORAGE_KEYS.SETTINGS]: {
-      ...defaultSettings,
-      ...currentSettings,
-      captionLanguage: "en",
-    },
+    [STORAGE_KEYS.SETTINGS]: normalizeExtensionSettings(currentSettings),
     [STORAGE_KEYS.LAST_SYNC]: lastSync,
     [STORAGE_KEYS.DELETED_WORDS]: normalizeDeletedWords(
       result[STORAGE_KEYS.DELETED_WORDS] as DeletedEntry[] | undefined
@@ -278,14 +270,10 @@ export async function getSettings(): Promise<ExtensionSettings> {
   const stored = result[STORAGE_KEYS.SETTINGS] as ExtensionSettings | undefined;
 
   if (!stored) {
-    return defaultSettings;
+    return getDefaultExtensionSettings();
   }
 
-  return {
-    ...defaultSettings,
-    ...stored,
-    captionLanguage: "en",
-  };
+  return normalizeExtensionSettings(stored);
 }
 
 export async function setSettings(
@@ -293,11 +281,7 @@ export async function setSettings(
 ): Promise<ExtensionSettings> {
   return enqueueStorageMutation(async () => {
     const current = await getSettings();
-    const next: ExtensionSettings = {
-      ...current,
-      ...patch,
-      captionLanguage: "en",
-    };
+    const next = normalizeExtensionSettings({ ...current, ...patch });
 
     await chrome.storage.local.set({ [STORAGE_KEYS.SETTINGS]: next });
     return next;
