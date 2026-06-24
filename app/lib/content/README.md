@@ -74,8 +74,12 @@ This keeps route bundles smaller:
 
 ## MDX rules
 
-- MDX is supported, but JSX components and expressions are not allowed.
-- Treat MDX as Markdown-only syntax; JSX tags will fail the build.
+- MDX supports JSX with components registered in `mdx-components.ts`.
+- The currently registered MDX components are `Callout` and `LinkButton`.
+- MDX imports and exports are not supported inside content files. Add shared
+  components to `app/lib/content/mdx-components.ts` instead.
+- MDX is compiled to static HTML at build/dev time, so components must be
+  server-renderable and should not depend on browser-only state or effects.
 
 ## Adding a new collection
 
