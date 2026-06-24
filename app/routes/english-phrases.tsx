@@ -242,49 +242,60 @@ export default function EnglishPhrasesPage() {
             className="relative overflow-hidden border-b border-gray-200 bg-white py-12 sm:py-16"
           >
             <div className="mx-auto max-w-6xl px-6">
-              <div className="mb-6 flex items-baseline justify-between">
-                <h2 className="text-xl font-semibold text-gray-900 sm:text-2xl">
+              <div className="mb-6 flex items-center justify-between gap-4">
+                <h2 className="text-xl font-semibold tracking-tight text-gray-900 sm:text-2xl">
                   {group.category}
                 </h2>
-                <span className="text-sm text-gray-500">
+                <span className="inline-flex flex-shrink-0 items-center rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-medium text-gray-500">
                   {group.phrases.length} frases
                 </span>
               </div>
 
-              <div className="divide-y divide-gray-100 rounded-xl border border-gray-200">
-                {group.phrases.map((phrase) => (
-                  <div
+              <ul className="list-none space-y-3">
+                {group.phrases.map((phrase, index) => (
+                  <li
                     key={`${group.category}-${phrase.phrase}`}
-                    className="group flex items-center gap-4 px-5 py-4 transition-colors duration-150 hover:bg-[#0F9EDA]/5 sm:gap-6"
+                    className="group rounded-2xl border border-gray-200 bg-white p-4 transition-all duration-200 hover:border-[#0F9EDA]/30 hover:shadow-md sm:p-5"
                   >
-                    <div className="min-w-0 flex-1">
-                      <p className="text-base font-medium text-gray-900">
-                        {phrase.phrase}
-                      </p>
-                      <p className="mt-1 text-sm text-gray-500">
-                        {phrase.translation}
-                      </p>
+                    <div className="flex items-start gap-4">
+                      <span className="mt-0.5 inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 text-xs font-semibold tabular-nums text-gray-500 transition-colors duration-200 group-hover:bg-[#0F9EDA]/10 group-hover:text-[#0F9EDA]">
+                        {index + 1}
+                      </span>
+
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-wrap items-start justify-between gap-x-3 gap-y-2">
+                          <div className="min-w-0">
+                            <p className="text-base font-semibold leading-snug text-gray-900 sm:text-lg">
+                              {phrase.phrase}
+                            </p>
+                            <p className="mt-0.5 text-sm font-medium text-gray-500">
+                              {phrase.translation}
+                            </p>
+                          </div>
+
+                          <button
+                            type="button"
+                            className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-500 transition-colors duration-200 hover:border-[#0F9EDA]/30 hover:bg-[#0F9EDA]/5 hover:text-[#0F9EDA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                            title="Reproducir frase"
+                            aria-label={`Reproducir frase: ${phrase.phrase}`}
+                            onClick={async () => {
+                              await onSpeak(phrase.phrase);
+                            }}
+                          >
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="currentColor"
+                              className="h-3.5 w-3.5"
+                            >
+                              <polygon points="5 3 19 12 5 21 5 3" />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                    <button
-                      type="button"
-                      className="shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-lg text-gray-400 transition-colors duration-200 hover:bg-[#0F9EDA]/10 hover:text-[#0F9EDA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-                      title="Reproducir frase"
-                      aria-label={`Reproducir frase: ${phrase.phrase}`}
-                      onClick={async () => {
-                        await onSpeak(phrase.phrase);
-                      }}
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        className="h-4 w-4"
-                      >
-                        <polygon points="5 3 19 12 5 21 5 3" />
-                      </svg>
-                    </button>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </section>
         ))}

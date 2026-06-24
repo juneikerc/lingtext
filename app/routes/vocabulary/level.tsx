@@ -371,59 +371,41 @@ export default function VocabularyLevelPage({
                 className="relative overflow-hidden border-b border-gray-200 bg-white py-12 sm:py-16"
               >
                 <div className="mx-auto max-w-6xl px-6">
-                  <div className="mb-6 flex items-baseline justify-between">
-                    <h2 className="text-xl font-semibold text-gray-900 sm:text-2xl">
+                  <div className="mb-6 flex items-center justify-between gap-4">
+                    <h2 className="text-xl font-semibold tracking-tight text-gray-900 sm:text-2xl">
                       {cat.category}
                     </h2>
-                    <span className="text-sm text-gray-500">
+                    <span className="inline-flex flex-shrink-0 items-center rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-medium text-gray-500">
                       {cat.vocabulary.length} palabras
                     </span>
                   </div>
 
-                  <div className="overflow-x-auto rounded-xl border border-gray-200">
-                    <table className="w-full min-w-[720px] text-left text-sm">
-                      <thead>
-                        <tr className="border-b border-gray-200 bg-gray-50 text-xs font-medium uppercase tracking-wider text-gray-500">
-                          <th className="w-12 px-4 py-3 text-center">#</th>
-                          <th className="px-4 py-3">Palabra</th>
-                          <th className="px-4 py-3">Traducción</th>
-                          <th className="px-4 py-3">Oración</th>
-                          <th className="px-4 py-3">Traducción oración</th>
-                          <th className="w-20 px-4 py-3 text-center">Audio</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-gray-100">
-                        {cat.vocabulary.map((item, index) => (
-                          <tr
-                            key={`${cat.category}-${item.word}-${index}`}
-                            className="transition-colors duration-150 hover:bg-[#0F9EDA]/5"
-                          >
-                            <td className="px-4 py-3 text-center text-xs text-gray-400">
-                              {index + 1}
-                            </td>
-                            <td className="px-4 py-3">
-                              <span className="font-semibold text-gray-900">
-                                {item.word || "—"}
-                              </span>
-                            </td>
-                            <td className="px-4 py-3 text-gray-700">
-                              {item.word_in_spanish || "—"}
-                            </td>
-                            <td className="max-w-xs px-4 py-3">
-                              <p className="line-clamp-2 text-gray-700">
-                                {item.sentence || "—"}
-                              </p>
-                            </td>
-                            <td className="max-w-xs px-4 py-3">
-                              <p className="line-clamp-2 text-gray-600">
-                                {item.sentence_spanish || "—"}
-                              </p>
-                            </td>
-                            <td className="px-4 py-3">
-                              <div className="flex items-center justify-center gap-1">
+                  <ul className="list-none space-y-3">
+                    {cat.vocabulary.map((item, index) => (
+                      <li
+                        key={`${cat.category}-${item.word}-${index}`}
+                        className="group rounded-2xl border border-gray-200 bg-white p-4 transition-all duration-200 hover:border-[#0F9EDA]/30 hover:shadow-md sm:p-5"
+                      >
+                        <div className="flex items-start gap-4">
+                          <span className="mt-0.5 inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 text-xs font-semibold tabular-nums text-gray-500 transition-colors duration-200 group-hover:bg-[#0F9EDA]/10 group-hover:text-[#0F9EDA]">
+                            {index + 1}
+                          </span>
+
+                          <div className="min-w-0 flex-1">
+                            <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
+                              <div className="min-w-0">
+                                <span className="block text-xl font-bold tracking-tight text-gray-900 sm:text-2xl">
+                                  {item.word || "—"}
+                                </span>
+                                <span className="mt-0.5 block text-sm font-medium text-gray-500">
+                                  {item.word_in_spanish || "—"}
+                                </span>
+                              </div>
+
+                              <div className="flex flex-shrink-0 items-center gap-2">
                                 <button
                                   type="button"
-                                  className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-gray-400 transition-colors duration-200 hover:bg-[#0F9EDA]/10 hover:text-[#0F9EDA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-30"
+                                  className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-500 transition-colors duration-200 hover:border-[#0F9EDA]/30 hover:bg-[#0F9EDA]/5 hover:text-[#0F9EDA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:pointer-events-none disabled:opacity-40"
                                   title="Reproducir palabra"
                                   aria-label={`Reproducir palabra: ${item.word}`}
                                   disabled={!item.word}
@@ -434,26 +416,40 @@ export default function VocabularyLevelPage({
                                 >
                                   <PlayIcon className="h-3.5 w-3.5" />
                                 </button>
-                                <button
-                                  type="button"
-                                  className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-gray-400 transition-colors duration-200 hover:bg-[#0F9EDA]/10 hover:text-[#0F9EDA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-30"
-                                  title="Reproducir oración"
-                                  aria-label={`Reproducir oración: ${item.sentence}`}
-                                  disabled={!item.sentence}
-                                  onClick={async () => {
-                                    if (!item.sentence) return;
-                                    await onSpeak(item.sentence);
-                                  }}
-                                >
-                                  <PlayIcon className="h-3 w-3" />
-                                </button>
                               </div>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
+                            </div>
+
+                            {(item.sentence || item.sentence_spanish) && (
+                              <div className="mt-4 space-y-2 border-t border-gray-100 pt-4">
+                                <div className="flex items-start gap-2">
+                                  <p className="text-base font-medium leading-relaxed text-gray-900 sm:text-lg">
+                                    {item.sentence || "—"}
+                                  </p>
+                                  <button
+                                    type="button"
+                                    className="mt-0.5 inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-500 transition-colors duration-200 hover:border-[#0F9EDA]/30 hover:bg-[#0F9EDA]/5 hover:text-[#0F9EDA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:pointer-events-none disabled:opacity-40"
+                                    title="Reproducir oración"
+                                    aria-label={`Reproducir oración: ${item.sentence}`}
+                                    disabled={!item.sentence}
+                                    onClick={async () => {
+                                      if (!item.sentence) return;
+                                      await onSpeak(item.sentence);
+                                    }}
+                                  >
+                                    <PlayIcon className="h-3.5 w-3.5" />
+                                  </button>
+                                </div>
+                                <p className="text-sm leading-relaxed text-gray-500">
+                                  <span className="sr-only">Traducción: </span>
+                                  {item.sentence_spanish || "—"}
+                                </p>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </section>
             ))}
