@@ -3,8 +3,7 @@ import { useCallback } from "react";
 import { Link } from "react-router";
 import Breadcrumbs from "~/components/Breadcrumbs";
 import data from "~/data/phrases.json";
-import { getSettings } from "~/services/db/settings";
-import { speak } from "~/utils/tts";
+import { getStaticAudioUrl, playStaticAudio } from "~/utils/static-audio";
 
 type Phrase = {
   phrase: string;
@@ -64,8 +63,7 @@ export const links: Route.LinksFunction = () => [
 
 export default function EnglishPhrasesPage() {
   const onSpeak = useCallback(async (phrase: string) => {
-    const settings = await getSettings();
-    await speak(phrase, settings.tts);
+    await playStaticAudio(getStaticAudioUrl("english-phrases", phrase));
   }, []);
 
   const slugify = useCallback((value: string) => {
@@ -150,7 +148,7 @@ export default function EnglishPhrasesPage() {
     });
 
     doc.save("1000-frases-en-ingles.pdf");
-  }, [phrasesByCategory]);
+  }, []);
 
   return (
     <>

@@ -3,8 +3,7 @@ import { useCallback } from "react";
 import { Link } from "react-router";
 import Breadcrumbs from "~/components/Breadcrumbs";
 import data from "~/data/1000-words.json";
-import { getSettings } from "~/services/db/settings";
-import { speak } from "~/utils/tts";
+import { getStaticAudioUrl, playStaticAudio } from "~/utils/static-audio";
 
 type SourceWord = {
   index: string;
@@ -122,8 +121,7 @@ export default function EnglishWords500Page({
   const wordsByGroup = loaderData;
 
   const onSpeak = useCallback(async (text: string) => {
-    const settings = await getSettings();
-    await speak(text, settings.tts);
+    await playStaticAudio(getStaticAudioUrl("english-words-500", text));
   }, []);
 
   const onDownloadPdf = useCallback(async () => {

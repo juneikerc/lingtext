@@ -2,8 +2,7 @@ import type { Route } from "./+types/level";
 import { useCallback } from "react";
 import { Link } from "react-router";
 import { getVocabularyTextByLevel } from "~/lib/content/runtime";
-import { getSettings } from "~/services/db/settings";
-import { speak } from "~/utils/tts";
+import { getStaticAudioUrl, playStaticAudio } from "~/utils/static-audio";
 import ProseContent from "~/components/ProseContent";
 import Breadcrumbs from "~/components/Breadcrumbs";
 
@@ -160,8 +159,7 @@ export default function VocabularyLevelPage({
   const { vocabularyText, categories, level } = loaderData;
 
   const onSpeak = useCallback(async (text: string) => {
-    const settings = await getSettings();
-    await speak(text, settings.tts);
+    await playStaticAudio(getStaticAudioUrl("vocabulary", text));
   }, []);
 
   const onDownloadPdf = useCallback(async () => {
