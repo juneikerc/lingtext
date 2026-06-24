@@ -1,4 +1,5 @@
 import type { Route } from "./+types/blog";
+import { Link } from "react-router";
 import { getBlogBySlug } from "~/lib/content/runtime";
 import ProseContent from "~/components/ProseContent";
 
@@ -135,6 +136,24 @@ export default function Blog({ loaderData }: Route.ComponentProps) {
               Actualizado: {formatBlogDate(blog.updatedAt)}
             </time>
           </div>
+          <Link
+            to="/autor/juneikerc"
+            className="mb-8 inline-flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-600 transition-colors duration-200 hover:border-[#0F9EDA]/40 hover:text-[#0A7AAB] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+          >
+            <img
+              src="/juneiker-castillo.png"
+              alt=""
+              className="h-9 w-9 rounded-full object-cover"
+              decoding="async"
+              loading="lazy"
+            />
+            <span>
+              Por{" "}
+              <span className="font-semibold text-gray-900">
+                Juneiker Castillo
+              </span>
+            </span>
+          </Link>
           <img
             crossOrigin="anonymous"
             src={blog.image}

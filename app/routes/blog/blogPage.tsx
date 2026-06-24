@@ -88,52 +88,54 @@ export default function Blog({ loaderData }: Route.ComponentProps) {
       <section className="border-b border-gray-200 py-10 sm:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {featuredBlog ? (
-            <article className="group overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-colors duration-200 hover:border-gray-300">
+            <article className="group grid overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-colors duration-200 hover:border-gray-300 md:grid-cols-[1.05fr_1fr]">
               <Link
                 to={`/blog/${featuredBlog.slug}`}
-                className="grid focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 md:grid-cols-[1.05fr_1fr]"
+                className="block aspect-[16/10] overflow-hidden bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 md:aspect-auto"
               >
-                <div className="aspect-[16/10] overflow-hidden bg-gray-100 md:aspect-auto">
-                  <img
-                    crossOrigin="anonymous"
-                    src={featuredBlog.image}
-                    alt={featuredBlog.title}
-                    className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-[1.01]"
-                    decoding="async"
-                    loading="eager"
-                  />
-                </div>
-                <div className="flex min-h-[320px] flex-col justify-center p-6 sm:p-10 lg:p-14">
-                  <div className="mb-5 flex flex-wrap gap-2">
-                    {featuredBlog.tags?.slice(0, 3).map((tag: string) => (
-                      <span
-                        key={tag}
-                        className="inline-flex items-center rounded-full border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 px-2.5 py-1 text-xs font-medium text-[#0A7AAB]"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <h2 className="max-w-2xl text-3xl font-bold leading-tight tracking-tight text-gray-950 sm:text-4xl">
-                    {featuredBlog.title}
-                  </h2>
-                  <p className="mt-5 line-clamp-3 max-w-2xl text-base leading-7 text-gray-600">
-                    {featuredBlog.metaDescription}
-                  </p>
-                  <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-3 text-sm text-gray-600">
-                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#0F9EDA]/10 text-sm font-bold text-[#0A7AAB]">
-                      L
-                    </span>
-                    <span className="font-medium text-gray-900">LingText</span>
-                    <time dateTime={featuredBlog.updatedAt}>
-                      {formatBlogDate(featuredBlog.updatedAt)}
-                    </time>
-                  </div>
-                  <span className="mt-8 inline-flex w-fit items-center rounded-lg border border-gray-200 bg-white px-5 py-3 text-sm font-semibold text-gray-950 transition-colors duration-200 group-hover:border-[#0F9EDA]/40 group-hover:text-[#0A7AAB]">
-                    Leer más
-                  </span>
-                </div>
+                <img
+                  crossOrigin="anonymous"
+                  src={featuredBlog.image}
+                  alt={featuredBlog.title}
+                  className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-[1.01]"
+                  decoding="async"
+                  loading="eager"
+                />
               </Link>
+              <div className="flex min-h-[320px] flex-col justify-center p-6 sm:p-10 lg:p-14">
+                <div className="mb-5 flex flex-wrap gap-2">
+                  {featuredBlog.tags?.slice(0, 3).map((tag: string) => (
+                    <span
+                      key={tag}
+                      className="inline-flex items-center rounded-full border border-[#0F9EDA]/20 bg-[#0F9EDA]/10 px-2.5 py-1 text-xs font-medium text-[#0A7AAB]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <h2 className="max-w-2xl text-3xl font-bold leading-tight tracking-tight text-gray-950 sm:text-4xl">
+                  <Link
+                    to={`/blog/${featuredBlog.slug}`}
+                    className="transition-colors duration-200 hover:text-[#0A7AAB] focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                  >
+                    {featuredBlog.title}
+                  </Link>
+                </h2>
+                <p className="mt-5 line-clamp-3 max-w-2xl text-base leading-7 text-gray-600">
+                  {featuredBlog.metaDescription}
+                </p>
+                <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-3 text-sm text-gray-600">
+                  <time dateTime={featuredBlog.updatedAt}>
+                    {formatBlogDate(featuredBlog.updatedAt)}
+                  </time>
+                </div>
+                <Link
+                  to={`/blog/${featuredBlog.slug}`}
+                  className="mt-8 inline-flex w-fit items-center rounded-lg border border-gray-200 bg-white px-5 py-3 text-sm font-semibold text-gray-950 transition-colors duration-200 hover:border-[#0F9EDA]/40 hover:text-[#0A7AAB] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                >
+                  Leer más
+                </Link>
+              </div>
             </article>
           ) : null}
 
@@ -216,51 +218,48 @@ export default function Blog({ loaderData }: Route.ComponentProps) {
 
 function BlogCard({ blog }: { blog: BlogManifestEntry }) {
   return (
-    <article className="group overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-colors duration-200 hover:border-gray-300">
+    <article className="group flex h-full flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-colors duration-200 hover:border-gray-300">
       <Link
         to={`/blog/${blog.slug}`}
-        className="flex h-full flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50"
+        className="block aspect-[16/9] overflow-hidden bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50"
       >
-        <div className="aspect-[16/9] overflow-hidden bg-gray-100">
-          <img
-            crossOrigin="anonymous"
-            src={blog.image}
-            alt={blog.title}
-            className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-[1.02]"
-            decoding="async"
-            loading="lazy"
-          />
-        </div>
-        <div className="flex flex-1 flex-col p-5 sm:p-6">
-          <div className="mb-4 flex flex-wrap gap-2">
-            {blog.tags?.slice(0, 2).map((tag: string) => (
-              <span
-                key={tag}
-                className="inline-flex items-center rounded-full border border-gray-200 px-2.5 py-1 text-xs font-medium text-gray-600"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-          <h3 className="text-xl font-bold leading-snug text-gray-950 transition-colors duration-200 group-hover:text-[#0A7AAB]">
-            {blog.title}
-          </h3>
-          <p className="mt-3 line-clamp-3 text-sm leading-6 text-gray-600">
-            {blog.metaDescription}
-          </p>
-          <div className="mt-auto flex items-center gap-3 pt-6 text-sm text-gray-600">
-            <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#0F9EDA]/10 text-xs font-bold text-[#0A7AAB]">
-              L
-            </span>
-            <div className="min-w-0">
-              <p className="font-medium text-gray-900">LingText</p>
-              <time dateTime={blog.updatedAt}>
-                {formatBlogDate(blog.updatedAt)}
-              </time>
-            </div>
-          </div>
-        </div>
+        <img
+          crossOrigin="anonymous"
+          src={blog.image}
+          alt={blog.title}
+          className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-[1.02]"
+          decoding="async"
+          loading="lazy"
+        />
       </Link>
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <div className="mb-4 flex flex-wrap gap-2">
+          {blog.tags?.slice(0, 2).map((tag: string) => (
+            <span
+              key={tag}
+              className="inline-flex items-center rounded-full border border-gray-200 px-2.5 py-1 text-xs font-medium text-gray-600"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+        <h3 className="text-xl font-bold leading-snug text-gray-950 transition-colors duration-200 group-hover:text-[#0A7AAB]">
+          <Link
+            to={`/blog/${blog.slug}`}
+            className="focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F9EDA] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+          >
+            {blog.title}
+          </Link>
+        </h3>
+        <p className="mt-3 line-clamp-3 text-sm leading-6 text-gray-600">
+          {blog.metaDescription}
+        </p>
+        <div className="mt-auto pt-6 text-sm text-gray-600">
+          <time dateTime={blog.updatedAt}>
+            {formatBlogDate(blog.updatedAt)}
+          </time>
+        </div>
+      </div>
     </article>
   );
 }
